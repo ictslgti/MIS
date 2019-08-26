@@ -1,4 +1,8 @@
- 
+ <footer class="footer row">
+  <div class="col">
+    <span class="text-muted"> ©2019. All Rights Reserved.  </span>
+  </div>
+</footer>
  
  <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
