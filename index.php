@@ -7,7 +7,7 @@ $title = "Home | SLGTI";
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
 
-<!--BLOCK#2 START YOUR CODER HERE -->
+<!--BLOCK#2 START YOUR CODE HERE -->
     <h1>Hello, world!</h1>
     <button type="button" class="btn btn-primary">Primary</button>
 <!--END OF YOUR COD-->
