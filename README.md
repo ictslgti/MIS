@@ -1,4 +1,4 @@
-# mis
+# List of some basic Git commands to get you going with Git.
 
 ### Create a working copy of a local repository:
 - **C:\wamp64\www>** git clone https://github.com/ictslgti/mis.git
