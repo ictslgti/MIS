@@ -51,4 +51,16 @@ echo $c."<br>";
 echo $y."<br>";
 echo $d."<br>";
 
+<html>
+    <body>
+        <form action="login_get.php" method="GET">
+            User Name:<br>
+            <input type="text" name="username"><br>
+            Password:<br>
+            <input type="password" name="password"><br>
+            <input type="Submit" value="LogIN">
+        </form>
+    </body>
+</html>
+
 ?>
