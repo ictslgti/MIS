@@ -10,6 +10,7 @@ echo 'Address: '.$ad."<br>";
 echo 'Birthday: '.$bo."<br>";
 echo 'School: '.$sc."<br>";
 
+
 $car = array ("Volve","BMW","Toyota");
 $number = array(10,14,12);
 var_dump ($car);
