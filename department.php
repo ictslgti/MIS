@@ -9,7 +9,7 @@ $title = "Department Details | SLGTI";
 
 <!--BLOCK#2 START YOUR CODER HERE -->
 <div class="row">
-    <div class="col-10"><h3>Department Details</h3></div>
+    <div class="col-10"><h3>ICT Department Details</h3></div>
     <div class="col-2"><button type="button" class="btn btn-outline-primary">Add</button></div>
 </div>    
 <div class="row">
