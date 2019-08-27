@@ -30,6 +30,7 @@ $title = "Department Details | SLGTI";
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
+    <h1>hello</h1>
     <tr>
       <th scope="row">2</th>
       <td>Jacob</td>
