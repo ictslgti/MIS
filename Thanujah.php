@@ -10,6 +10,7 @@ echo 'Address: '.$ad."<br>";
 echo 'Birthday: '.$bo."<br>";
 echo 'School: '.$sc."<br>";
 
+
 $car = array ("Volve","BMW","Toyota");
 $number = array(10,14,12);
 var_dump ($car);
@@ -29,4 +30,25 @@ $x="Hello world";
 $x=null;
 
 var_dump($x);
+
+
+
+
+$x=8956785;
+var_dump($x);
+
+$c="false";
+var_dump($c);
+
+$d=false;
+var_dump($d);
+
+$y=10.6782;
+var_dump($y);
+
+echo $x."<br>";
+echo $c."<br>";
+echo $y."<br>";
+echo $d."<br>";
+
 ?>
