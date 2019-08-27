@@ -27,6 +27,7 @@ $title = "Department Details | SLGTI";
     <tr>
       <th scope="row">1</th>
       <td>Mark</td>
+    
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
@@ -49,6 +50,12 @@ $title = "Department Details | SLGTI";
 </div>
 
 <!--END OF YOUR COD-->
+
+<h1>iam</h1>
+<h2>hello</h2>
+<h3>world</h3>
+<h4>from</h4>
+<h5>mars</h5>
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
