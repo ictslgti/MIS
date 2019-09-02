@@ -12,7 +12,7 @@ $title = "Home | SLGTI";
    
     
     <button type="button" class="btn btn-primary">Primary</button>
-    <button type="button" class="btn btn-outline-info">Canteen</button>
+    <button type="button" class="btn btn-outline-info" href="#">Canteen</button>
 <!--END OF YOUR COD-->
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
