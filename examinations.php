@@ -59,6 +59,7 @@ $title = "Department Details | SLGTI";
 <h4>from</h4>
 <h5>mars</h5>
 <h4>jupiter</h4>
+<h5>pluto</h5>
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
