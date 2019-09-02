@@ -7,59 +7,9 @@ $title = "Department Details | SLGTI";
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODER HERE -->
-<div class="row">
-    <div class="col-10">
-        <h3>ICT Department Details</h3>
-    </div>
-    <div class="col-2"><button type="button" class="btn btn-outline-primary">Add</button></div>
-</div>
-<div class="row">
-    <div class="col">
-        <table class="table">
-            <caption>List of users</caption>
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
 
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <h1>hello</h1>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
 
-<!--END OF YOUR COD-->
 
-<h1>iam</h1>
-<h2>hello</h2>
-<h3>world</h3>
-<h4>from</h4>
-<h5>mars</h5>
-<h4>jupiter</h4>
-<h5>pluto</h5>
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
