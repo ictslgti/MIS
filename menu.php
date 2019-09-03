@@ -16,6 +16,9 @@
             <li class="nav-item">
               <a class="nav-link disabled" href="#">Disabled</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Canteen</a>
+            </li>
           </ul>
           <ul class="navbar-nav px-3">
           <li class="nav-item dropdown">
