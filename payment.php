@@ -6,24 +6,6 @@ include_once("menu.php");
 ?>
 <!-- dont change -->
 <!-- your code -->
-
-
-
-
-    
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-      <title>loginss.html</title>
-      <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-      <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-      <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
-      <link rel="stylesheet" href="assets/css/styles.css">
-      <link rel="stylesheet" href="assets/css/Bootstrap-Payment-Form.css">
-    <link rel="stylesheet" href="assets/css/Contact-Form-v2-Modal--Full-with-Google-Map.css">
-  </head>
-  
-  <body style="height: 100%;width: 100%;">
     <div>
         <div class="row">
             <div class="col align-self-end">
@@ -216,13 +198,6 @@ include_once("menu.php");
                 </div>
             </div>
         </div>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
-</body>
-
-</html>
 
     <!--end part-->
 
