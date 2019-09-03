@@ -9,7 +9,7 @@ $title = "Home | SLGTI";
 
 <!--BLOCK#2 START YOUR CODE HERE -->
     <h1>Hello, world!</h1>
-   <h1>Deployment automation on every minute</h1>
+   <h1>Deployment automation on every minute#1</h1>
     
     <button type="button" class="btn btn-primary">Primary</button>
    
