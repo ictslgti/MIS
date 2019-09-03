@@ -32,17 +32,32 @@ $title = "Department Details | SLGTI";
           
         </div>
     </div>
+    <!--  -->
+
     <div></div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.min.js"></script>
-<?php
-$module = "database";
-?>
+<!--  -->
+<div class="input-group">
+  <select class="custom-select" id="inputGroupSelect04">
+    <option selected>Select Department</option>
+    <option value="1">ICT</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+    <option value="1">ICT</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button">Button</button>
+  </div>
+</div><br>
     <form>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label class="control-label"  for="inputEmail4">amh</label>
+      <!-- <label class="control-label"  for="inputEmail4">amh</label> -->
+     
       <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
     </div>
     <div class="form-group col-md-6">
