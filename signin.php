@@ -9,7 +9,7 @@ $title = "Sign-in | SLGTI";
 <!--BLOCK#2 START YOUR CODE HERE -->
 <div class="text-center signin">
     <form class="form-signin" action="index.php">
-      <img class="mb-4" src="http://slgti.com/wp-content/uploads/2016/03/SLGTI-Logo-1.png" alt="" height="72">
+      <img class="mb-4" src="img/logo.png" alt="" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
