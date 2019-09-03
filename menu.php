@@ -14,10 +14,10 @@
               <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
+              <a class="nav-link" href="library.php">Library</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Canteen</a>
+              <a class="nav-link" href="canteen.php">Canteen</a>
             </li>
           </ul>
           <ul class="navbar-nav px-3">
