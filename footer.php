@@ -1,7 +1,9 @@
- <footer class="footer row">
-  <div class="col">
-    <span class="text-muted"> ©2019. All Rights Reserved.  </span>
-  </div>
+</main>
+<footer class="footer">
+      <div class="container">
+        <span class="text-muted">Designed and Developed by Department of Information and Communication Technology</span>
+        <span class="text-muted">All Rights Reserved</span>
+      </div>
 </footer>
  
  <!-- Optional JavaScript -->

@@ -7,8 +7,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="css/signin.css">
+    <link rel="stylesheet" href="css/footer.css">
     <title><?php echo $title; ?></title>
   </head>
-  <body class="container">
-    
+  <body >
+  <main role="main" class="container">
