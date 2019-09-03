@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/signin.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link href="css/all.min.css" rel="stylesheet"> 
     <title><?php echo $title; ?></title>
   </head>
   <body >
