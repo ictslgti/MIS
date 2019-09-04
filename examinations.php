@@ -19,27 +19,40 @@ $title = "Department Details | SLGTI";
       
     </style>
 </head>
-
+<!-- header text -->
 <body style="background-color: rgb(255,255,255);">
     <div class="highlight-blue">
         <div class="container">
             <div class="intro">
                 <h1 class="display-4 text-center">Examinations Portal</h1>
-                <H2 class="display-4 text-center">Department of Information & Technology</H2>
+                <H3 class="display-5 text-center">Department of Information & Technology</H3>
                 <p class="text-center">Welcome to examinations portal for lectures or admin. This section to add examinations and assignments/asessments results&nbsp;</p>
             </div>
+            <!-- header text end -->
             
             
           
         </div>
     </div>
-    <!--  -->
-
+    <!-- import css/js -->
     <div></div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.min.js"></script>
-<!--  -->
+<!-- end import  -->
+
+<!-- mainform start  -->
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Select Semister</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+    <option value="1">Semister 1</option>
+    <option value="2">Semister 2</option>
+  </select>
+</div>
+
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Select Module</label>
@@ -51,20 +64,12 @@ $title = "Department Details | SLGTI";
     <option value="3">System Analysis and Design</option>
     <option value="3">Manage Workplace</option>
     <option value="3">Manage Workplace & Communication</option>
-
   </select>
 </div>
 
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Select Semister</label>
-  </div>
-  <select class="custom-select" id="inputGroupSelect01">
-    <option selected>Choose...</option>
-    <option value="1">Semister 1</option>
-    <option value="2">Semister 2</option>
-  </select>
-</div>
+<input class="btn btn-primary" type="reset" value="Reset">
+
+
 
 <!-- <div class="input-group">
   <select class="custom-select" id="inputGroupSelect04">
@@ -79,7 +84,7 @@ $title = "Department Details | SLGTI";
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div> -->
-  
+
 </div><br>
     <form>
   <div class="form-row">
