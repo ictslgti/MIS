@@ -8,22 +8,7 @@ $title = "Home | SLGTI";
 <!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm">
-                Order ID
-            </div>
-            <div class="col-sm">
-                Item ID
-            </div>
-            <div class="col-sm">
-                Item name
-            </div>
-            <div class="col-sm">
-               Amount
-            </div>
-        </div>
-    </div>
+    <p>order your food and enjoy your meal</p>
 
    
 <!--END OF YOUR COD-->
