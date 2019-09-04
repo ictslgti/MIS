@@ -57,8 +57,15 @@ $title = "Department Details | SLGTI";
   <div class="form-row">
     <div class="form-group col-md-6">
       <!-- <label class="control-label"  for="inputEmail4">amh</label> -->
-     
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+     <?php
+     $module1 = 'Database';
+     $module2 = 'Graphic Design';
+     $module3 = 'Programming';
+     $module4 = 'Testing';
+     $module5 = 'ICT';
+
+     ?>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="<?php echo $name ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Module2</label>
