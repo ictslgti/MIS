@@ -25,6 +25,7 @@ $title = "Department Details | SLGTI";
         <div class="container">
             <div class="intro">
                 <h1 class="display-4 text-center">Examinations Portal</h1>
+                <H2 class="display-4 text-center">Department of Information & Technology</H2>
                 <p class="text-center">Welcome to examinations portal for lectures or admin. This section to add examinations and assignments/asessments results&nbsp;</p>
             </div>
             
@@ -39,7 +40,33 @@ $title = "Department Details | SLGTI";
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.min.js"></script>
 <!--  -->
-<div class="input-group">
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Select Module</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Graphic Design</option>
+    <option value="1">Programming</option>
+    <option value="2">Database 1</option>
+    <option value="3">System Analysis and Design</option>
+    <option value="3">Manage Workplace</option>
+    <option value="3">Manage Workplace & Communication</option>
+
+  </select>
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Select Semister</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+    <option value="1">Semister 1</option>
+    <option value="2">Semister 2</option>
+  </select>
+</div>
+
+<!-- <div class="input-group">
   <select class="custom-select" id="inputGroupSelect04">
     <option selected>Select Department</option>
     <option value="1">ICT</option>
@@ -51,7 +78,8 @@ $title = "Department Details | SLGTI";
   </select>
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" type="button">Button</button>
-  </div>
+  </div> -->
+  
 </div><br>
     <form>
   <div class="form-row">
@@ -65,7 +93,8 @@ $title = "Department Details | SLGTI";
      $module5 = 'ICT';
 
      ?>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="<?php echo $name ?>">
+     <h4><?php echo $module1 ?></h4>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="<?php echo $module1 ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Module2</label>
