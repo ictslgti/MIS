@@ -43,11 +43,11 @@ $title = "Department Details | SLGTI";
   <select class="custom-select" id="inputGroupSelect04">
     <option selected>Select Department</option>
     <option value="1">ICT</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-    <option value="1">ICT</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+    <option value="2">Automobile</option>
+    <option value="3">Construction</option>
+    <option value="1">Food & Technology</option>
+    <option value="2">Mechanical</option>
+    <option value="3">Electrical & Electronics</option>
   </select>
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" type="button">Button</button>
