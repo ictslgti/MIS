@@ -8,7 +8,8 @@ $title = "Home | SLGTI";
 <!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-    <h1>Welcome to food order</h1>
+    <p>order your food and enjoy your meal</p>
+
    
 <!--END OF YOUR COD-->
 
