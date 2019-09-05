@@ -29,15 +29,17 @@ $title = "Home | SLGTI";
                     <tbody class="table-borderless">
                         <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>1</td>
+                        <td>Pittu</td>
+                        <td></td>
+                        <td>2</td>
                         </tr>
                         <tr>
                         <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
+                        <td>2</td>
+                        <td>kothu</td>
+                        <td></td>
+                        <td>1</td>
                         </tr>
                     </tbody>
                  </table>
@@ -56,11 +58,11 @@ $title = "Home | SLGTI";
                         <tbody class="table-borderless">
                             <tr>
                             <th scope="row">1</th>
-                            <td>Mark</td>                        
+                            <td>60</td>                        
                             </tr>
                             <tr>
                             <th scope="row">2</th>
-                            <td>Jacob</td>                    
+                            <td>100</td>                    
                             </tr>
                         </tbody>
                 </table>
