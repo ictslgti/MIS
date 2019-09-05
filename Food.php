@@ -46,7 +46,10 @@ $title = "Home | SLGTI";
             </div>
         </div>
 
-        <div class="col-md-4 border border-primary rounded-lg shadow p-3 mb-5 bg-white rounded"><strong>Total amount</strong>
+        <div class="col-md-1">
+        </div>
+
+        <div class="col-md-3 border border-primary rounded-lg shadow p-3 mb-5 bg-white rounded"><strong>Total amount</strong>
             <div class="row">
                 <table class="table">
                         <thead>
