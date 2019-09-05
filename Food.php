@@ -14,7 +14,7 @@ $title = "Home | SLGTI";
         <div class="row"><blockquote class="blockquote"><h1>ORDER CART</h1></blockquote></div>
      
     <div class="row ">
-        <div class="col-md-8 border border-primary rounded-lg shadow p-3 mb-5 bg-white rounded"><strong>Order details</strong>
+        <div class="col-md-8 border border-primary rounded-lg shadow p-3 mb-5 bg-white rounded"><h4 class="font-italic"><strong>Order Details</strong></h4>
             <div class="row">
                 <table class="table">
                     <thead>
@@ -49,7 +49,7 @@ $title = "Home | SLGTI";
         <div class="col-md-1">
         </div>
 
-        <div class="col-md-3 border border-primary rounded-lg shadow p-3 mb-5 bg-white rounded"><strong>Total amount</strong>
+        <div class="col-md-3 border border-primary rounded-lg shadow p-3 mb-5 bg-white rounded"><h4 class="font-italic"><strong> FOOD CART</strong></h4>
             <div class="row">
                 <table class="table">
                         <thead>
