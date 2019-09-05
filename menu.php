@@ -10,11 +10,12 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php"> <i class="fas fa-home"></i> Dashboard <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php"> <i class="fas fa-home"></i> Dashboard <span
+                            class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="Department" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="Department" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-university"></i> Department
                     </a>
                     <div class="dropdown-menu" aria-labelledby="Department">
@@ -25,8 +26,8 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="Staff" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="Staff" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user-tie"></i> Staff
                     </a>
                     <div class="dropdown-menu" aria-labelledby="Staff">
@@ -37,8 +38,8 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="Student" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="Student" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user-graduate"></i> Student
                     </a>
                     <div class="dropdown-menu" aria-labelledby="Student">
@@ -65,6 +66,36 @@
                 </li>
             </ul>
             <ul class="navbar-nav px-3">
+                <li class="nav-item dropdown dropleft">
+                    <a class="nav-link dropdown-toggle " href="#" id="bell" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-bell"></i> <span class="badge badge-warning badge-pill">14</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="bell" data-spy="scroll">
+                    <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  
+                    <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
+                    <div class="dropdown-divider"></div>    
+                </div>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,8 +107,6 @@
                         <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="signin.php">Signout</a>
                     </div>
-                </li>
-                <li class="nav-item">
                 </li>
             </ul>
         </div>
