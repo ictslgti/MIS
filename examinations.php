@@ -20,28 +20,28 @@ $title = "Department Details | SLGTI";
         </style>
     </head>
     <!-- header text -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.min.js"></script>
 
     <body style="background-color: rgb(255,255,255);">
+
+        <!-- Main PHP Declarations  -->
+        <?php
+    $ictDepartmentName = "Department Of Information & Communication Technology";
+    ?>
+
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
                     <h1 class="display-4 text-center">Examinations Portal</h1>
-                    <H3 class="display-5 text-center">Department of Information & Technology</H3>
+                    <H3 class="display-5 text-center"><?php echo $ictDepartmentName ?></H3>
                     <p class="text-center">Welcome to examinations portal for lectures or admin. This section to add
                         examinations and assignments/asessments results&nbsp;</p>
                 </div>
-                <!-- header text end -->
-
-
-
             </div>
         </div>
-        <!-- import css/js -->
-        <div></div>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/script.min.js"></script>
-        <!-- end import  -->
+
 
         <!-- mainform start  -->
         <div class="input-group mb-3">
@@ -67,57 +67,113 @@ $title = "Department Details | SLGTI";
                 <option value="3">Manage Workplace</option>
                 <option value="3">Manage Workplace & Communication</option>
             </select>
-            
+
         </div><br>
 
+        <?php
+        // modules for ict sem1
+     $Sem1module1 = 'Database';
+     $Sem1module2 = 'Graphic Design';
+     $Sem1module3 = 'Programming';
+     $Sem1module4 = 'Testing';
+     $Sem1module5 = 'ICT';
+    //  students details
+    $stdname = 'midhusahn';
+
+
+     ?>
+
         <div class="mb-9">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        
-                        <a href="#" class="btn btn-primary" onclick="addExamModule()">Add Results</a>
-                    </div>
+            <div class="card text-center">
+                <div class="card-body">
+                    <!-- <h5 class="card-title">Special title treatment</h5> -->
+                    <h1 class="display-2"><?php echo $Sem1module1 ?></h1>
+
+                    <!-- <a href="#" class="btn btn-primary" onclick="addExamModule()">Add Results</a> -->
                 </div>
             </div>
-            <br>
+        </div>
+        <br>
+
 
 
         <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <!-- <label class="control-label"  for="inputEmail4">amh</label> -->
-                    <?php
-     $module1 = 'Database';
-     $module2 = 'Graphic Design';
-     $module3 = 'Programming';
-     $module4 = 'Testing';
-     $module5 = 'ICT';
+                    <label for="inputPassword4">Student Roll Number </label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder=""><br>
 
-     ?>
-                    <h5><?php echo $module1 ?></h5>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="module">
+                    <label for="inputPassword4">Student Full Name </label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="">
+
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Module2</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="">
                 </div>
             </div>
-
-
-
-
-
         </form><br>
+
+        <!-- table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Student Roll Number</th>
+                    <th scope="col">Student Full Name</th>
+                    <th scope="col">Module</th>
+                    <th scope="col">Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>
+                        <div class="input-group mb-3">
+                           
+                            <input type="text" class="form-control" placeholder="Enter the Marks" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
 
     </body>
 
