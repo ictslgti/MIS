@@ -55,7 +55,7 @@
                     <a class="nav-link" href="library.php"><i class="far fa-file-alt"></i> Inventory</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="library.php"> <i class="fas fa-book-open"></i> Library</a>
+                    <a class="nav-link" href="Library_dashboard.php"> <i class="fas fa-book-open"></i> Library</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Food.php"> <i class="fas fa-hamburger"></i> Canteen</a>
