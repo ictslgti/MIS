@@ -171,7 +171,7 @@ $title = "Department Details | SLGTI";
                     <td>Larry</td>
                     <td>the Bird</td>
                     <td>@twitter</td>
-                </tr>
+                </tr>\
             </tbody>
         </table>
 
