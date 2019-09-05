@@ -49,7 +49,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-chalkboard-teacher"></i> Assessment</a>
+                    <a class="nav-link" href="examinations.php"><i class="fas fa-chalkboard-teacher"></i> Assessment</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="library.php"><i class="far fa-file-alt"></i> Inventory</a>
