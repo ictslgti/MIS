@@ -32,14 +32,14 @@ $title = "Home | SLGTI";
                         <td>1</td>
                         <td>Pittu</td>
                         <td></td>
-                        <td>2</td>
+                        <td>60</td>
                         </tr>
                         <tr>
                         <th scope="row">2</th>
                         <td>2</td>
                         <td>kothu</td>
                         <td></td>
-                        <td>1</td>
+                        <td>100</td>
                         </tr>
                     </tbody>
                  </table>
