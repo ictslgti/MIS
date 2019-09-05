@@ -4,10 +4,12 @@ $title = "Department Details | SLGTI" ;
 include_once("config.php"); 
 include_once("head.php"); 
 include_once("menu.php");
+
  ?>
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
+
 <h1>Department Details</h1>
 <table class="table table-hover">
   <thead class="thead-dark">
@@ -31,9 +33,9 @@ include_once("menu.php");
       <td><button type="button" class="btn btn-light dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
       
       <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 04</a>
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 05</a>
-      <a class="dropdown-item" href="#">New Batch</a>
+       <a class="dropdown-item" href="#">Course</a>
+      <a class="dropdown-item" href="#">Batches</a>
+      
     </div>
     <!-- <button type="submit" formaction="academic.php" value="Add" name="Add"  class="btn btn-link">Add</button> </td>                            -->
     </tr>
@@ -45,9 +47,9 @@ include_once("menu.php");
       <td><button type="button" class="btn btn-light dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
       
       <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 04</a>
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 05</a>
-      <a class="dropdown-item" href="#">New Batch</a>
+      <a class="dropdown-item" href="#">Course</a>
+      <a class="dropdown-item" href="#">Batches</a>
+      
     </div>
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     </tr>
@@ -59,9 +61,9 @@ include_once("menu.php");
       <td><button type="button" class="btn btn-light dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
       
       <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 04</a>
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 05</a>
-      <a class="dropdown-item" href="#">New Batch</a>
+      <a class="dropdown-item" href="#">Course</a>
+      <a class="dropdown-item" href="#">Batches</a>
+      
     </div>
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     </tr>
@@ -73,9 +75,9 @@ include_once("menu.php");
       <td><button type="button" class="btn btn-light dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
       
       <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 04</a>
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 05</a>
-      <a class="dropdown-item" href="#">New Batch</a>
+      <a class="dropdown-item" href="#">Course</a>
+      <a class="dropdown-item" href="#">Batches</a>
+      
     </div>
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     </tr>
@@ -87,9 +89,10 @@ include_once("menu.php");
       <td><button type="button" class="btn btn-light dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
       
       <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 04</a>
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 05</a>
-      <a class="dropdown-item" href="#">New Batch</a>
+      <a class="dropdown-item" href="#">Course</a>
+      <a class="dropdown-item" href="#">Batches</a>
+      
+      
     </div>
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     </tr>
@@ -101,9 +104,9 @@ include_once("menu.php");
       <td><button type="button" class="btn btn-light dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
       
       <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 04</a>
-      <a class="dropdown-item" href="#">2018/2019 NVQ - 05</a>
-      <a class="dropdown-item" href="#">New Batch</a>
+      <a class="dropdown-item" href="#">Course</a>
+      <a class="dropdown-item" href="#">Batches</a>
+      
     </div>
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     </tr>
