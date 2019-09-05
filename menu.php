@@ -1,7 +1,7 @@
 <header class="container">
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-secondary">
-        <a class="navbar-brand" href="index.php"> <img src="img/logo.png" height="30" class="d-inline-block align-top"
+    <nav class="navbar navbar-expand-md  fixed-top navbar-light bg-white border-bottom">
+        <a class="navbar-brand" href="index.php"> <img src="img/logo-1.png" height="30" class="d-inline-block align-top"
                 alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
