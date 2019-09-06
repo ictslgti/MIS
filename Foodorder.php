@@ -14,8 +14,8 @@ $title = "Home | SLGTI";
         <div class="row"><blockquote class="blockquote"><h1>ORDER CART</h1></blockquote></div>
      
     <div class="row ">
-        <div class="col-md-8 border border-primary rounded-lg shadow p-3 mb-5 bg-white rounded"><h4 class="font-italic"><strong>Order Details</strong></h4>
-            <div class="row">
+        <div class="col-md-8"><h4 class="font-italic"><strong>Order Details</strong></h4>
+            <div class="row  border border-secondary rounded-lg  bg-white rounded">
                 <table class="table">
                     <thead>
                         <tr>
