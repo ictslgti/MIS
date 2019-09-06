@@ -57,6 +57,8 @@ $title = "Department Details | SLGTI";
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="text-center">
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>

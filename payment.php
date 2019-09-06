@@ -47,7 +47,7 @@ include_once("menu.php");
 
       <div class="col-sm-4">
         <div class="row">
-        <img src="img/payment.png" alt="..." class="img-thumbnail">
+        <img src="img/payment.png" alt="photo irutha podalam" class="img-thumbnail">
          </div>
          <br>
          <br>
@@ -129,13 +129,14 @@ include_once("menu.php");
     <option value="3">Three</option>
   </select>
 </div>
-</div>
 
-  
-<div class="input-group mb-3">
+</div>
+<br>
+  <div class="input-group mb-3">
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-swatchbook"></i>Payment Reason</label>
   </div>
+  <br>
   <select class="custom-select" id="inputGroupSelect01">
     <option selected>Choose...</option>
     <option value="1">One</option>
@@ -180,8 +181,9 @@ include_once("menu.php");
 <br>
 <a href="#" class="btn btn-primary btn-lg btn-block " role="button" aria-pressed="true"> <i class="fab fa-amazon-pay"></i> Pay </a>
 <a href="#" class="btn btn-secondary btn-lg  btn-sm" role="button" aria-pressed="true"> <i class="fas fa-redo-alt"></i>Reset</a>
+<a href="#" class="btn btn-danger btn-lg  btn-sm" role="button" aria-pressed="true"> <i class="fas fa-window-close"></i></i>Close</a>
 
-<button type="button" class="btn btn-danger btn-lg  btn-sm"> <i class="fas fa-window-close"></i>Close</button>
+<!-- <button type="button" class="btn btn-danger btn-lg  btn-sm"> <i class="fas fa-window-close"></i>Close</button> -->
 
 
 </div>
