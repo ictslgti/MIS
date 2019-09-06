@@ -66,7 +66,7 @@ include_once("menu.php");
     <div class="col-2" >
     <br>
     
-    <button type="button" class="btn btn-primary">Submit Request</button>
+    <button type="button" class="btn btn-primary">Request to approval</button>
     
     
     <br> <br> <br>

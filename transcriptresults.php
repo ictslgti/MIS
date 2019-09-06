@@ -17,7 +17,7 @@ $title = "Department Details | SLGTI";
 </form>
 <form>
 
-<div style="height:297mm;width:210mm; background-color: rgba(255,0,0,0.1);" class="border border-dark">
+<div style="height:180mm;width:275mm; background-color: rgba(255,0,0,0.1);" class="border border-dark">
   <div>
       <div>
         <div>
@@ -27,7 +27,37 @@ $title = "Department Details | SLGTI";
         </div>
         <hr class="my-1">
         <div>
-           <h1 class="align-center">Sri Lanka German Training Institute</h1>
+           <h1 class="text-center">Sri Lanka German Training</h1>
+           <h1 class="text-center">Institute</h1>
+        </div>
+        <div class="text-center">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+
+    </tr>
+  </tbody>
+</table>
+
         </div>
     </div>
 
