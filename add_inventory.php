@@ -8,7 +8,8 @@ $title = "Department Details | SLGTI";
 
 <!-- start my code -->
 
-<h1>hello world</h1>
+
+
 
 
 
