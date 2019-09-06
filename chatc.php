@@ -19,53 +19,36 @@ include_once("menu.php");
       
      
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
-    
-    
-     
-    <div class="wrapper">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Group Chat</h3>
-                </div>
+    <form>
 
-                <ul class="list-unstyled components">
-                    <p>GSN</p>
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li><a href="#">Home 1</a></li>
-                            <li><a href="#">Home 2</a></li>
-                            <li><a href="#">Home 3</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
+    <div class="container"> 
+            <div class="row">
+            <div class="col form-group  container" style="background-color:#0275d8">
+            <p class="text-white">Group Chat</p>
+            <h1> </h1>
+            
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
 
-                <ul class="list-unstyled CTAs">
-                    <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
-                    <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
-                </ul>
+
+  
+
+</ul>
+
+  
+         
+            
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     
-   
-  </tbody>
-  </form>
-</table>
+
 
 <!-- END YOUR CODER HERE -->
 
