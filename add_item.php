@@ -9,9 +9,9 @@ $title = "Department Details | SLGTI";
 
 <!-- start my code -->
 <form>
-        <div class="container" style=" margin-top: 10%; border: 2px solid #0275d8; border-radius: 8px;"> 
+        <div class="container" style=" margin-top: 10%; border: 2px solid #ADD8E6; border-radius: 8px;"> 
             <div class="row">
-                <div class="col form-group  container" style="background-color:#0275d8">
+                <div class="col form-group  container" style="background-color:#ADD8E6">
                      <h2  class="pt-2" style="color:white"><b>Add Item</b></h2>
                 </div>
 
@@ -40,11 +40,11 @@ $title = "Department Details | SLGTI";
                             </select>
                         <small id="pubNameHelp" class="form-text text-muted"></small>
                         <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
-                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">delete</button>
-                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">update </button>
-                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">Add </button>
+                        <button type="submit" class="btn btn-danger ml-2 mt-3 float-right">delete</button>
+                        <button type="submit" class="btn btn-success ml-2 mt-3 float-right">update </button>
+                        <button type="submit" class="btn btn-primary  ml-2 mt-3 float-right">Add </button>
                       
-                    </div>\
+                    </div>
                     </div>
                 
                 

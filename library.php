@@ -9,7 +9,7 @@ $title = "Home | SLGTI";
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <form>
-        <div class="container" style=" margin-top: 10%; border: 2px solid #0275d8; border-radius: 8px;"> 
+        <div> 
             <div class="row">
             <div class="col form-group  container" style="background-color:#0275d8">
                 <h2  class="pt-2" style="color:white"><b>Book info</b></h2>
