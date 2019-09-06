@@ -31,6 +31,11 @@ $title = "Department Details | SLGTI";
                         <label for="Supplier Phone Number">04. Supplier Phone Number</label>
                         <input type="text" class="form-control" id="Supplier Phone Number" aria-describedby="Supplier Phone Number" placeholder="Supplier Phone Number">
                         <small id="Supplier Phone Number" class="form-text text-muted"></small>
+                        
+                        <label for="datePic">05. Date</label>
+                        <input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp">
+                         <small id="datePicHelp" class="form-text text-muted"></small>
+
               
                             </select>
                         <small id="pubNameHelp" class="form-text text-muted"></small>
@@ -39,7 +44,7 @@ $title = "Department Details | SLGTI";
                         <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">update </button>
                         <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">Add </button>
                       
-                    </div>
+                    </div>\
                     </div>
                 
                 
