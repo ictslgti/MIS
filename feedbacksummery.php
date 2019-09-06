@@ -11,18 +11,21 @@
 
 
 <div class="container" style="margin-top:5%">
-    
+<div class="row" style="border: 2px solid #37b6ff; border-top-right-radius: 20px ;border-top-left-radius: 20px ;background-color:#37b6ff ">
+        <div class="col" style=" ">
+            <h1 style="color:white;"><i class="fas fa-chart-line"></i>  Feedback info</h1>
+        </div>
+</div>
+
     <div  class="row" style="border: 2px solid #37b6ff  ;padding:20px; border-bottom-right-radius: 20px ;border-bottom-left-radius: 20px ;">
-    <div class="col" style="background-color:#37b6ff ">
-        <h1 style="text-align:center">Feedback Menu</h1>
-    </div>
+        
 
 
   <div class="row">
 
         <div class="col">
             <div class="form-group">
-                <label>Department</label>
+                <label> <i class="fas fa-university">  Department</i></label>
                 <select class="browser-default custom-select">
                 <option selected>Open this select menu</option>
                 <option value="1">Automobile & Agricultual </option>
@@ -38,7 +41,7 @@
 
         <div class="col">
             <div class="form-group">
-                <label>Academin Year</label>
+                <label><i class="fas fa-hourglass-half">  Academin Year </i></label>
                 <select class="browser-default custom-select">
                 <option selected>Open this select menu</option>
                 <option value="1">2018/2019</option>
@@ -53,7 +56,7 @@
 
         <div class="col">
             <div class="form-group">
-                <label>Course</label>
+                <label> <i class="fab fa-discourse">  Course</i></label>
                 <select class="browser-default custom-select">
                 <option selected>Open this select menu</option>
                 <option value="1">Automobile & Agricultual Technology</option>
@@ -68,7 +71,7 @@
 
         <div class="col">
             <div class="form-group">
-                <label>Modules</label>
+                <label>  <i class="fas fa-book">  Modules</i></label>
                 <select class="browser-default custom-select">
                 <option selected>Open this select menu</option>
                 <option value="1">One</option>
@@ -82,7 +85,7 @@
 
         <div class="col-6">
             <div class="form-group">
-                <label>Staff Name</label>
+                <label>  <i class="fas fa-user-tie">  Staff Name</i></label>
                 <select class="browser-default custom-select">
                 <option selected>Open this select menu</option>
                 <option value="1">Y.Achchuthan</option>
@@ -97,7 +100,7 @@
 
         <div class="col">
             <div class="form-group">
-                <label>Start Date</label>
+                <label>  <i class="far fa-calendar-alt">  Start Date</i></label>
                 <br>
                   <input type="date">
                         
@@ -106,7 +109,7 @@
 
         <div class="col">
             <div class="form-group">
-                <label>End Date</label>
+                <label>  <i class="far fa-calendar-alt">  End Date</i></label>
                 <br>
                   <input type="date">
                         
@@ -119,12 +122,12 @@
         <div class="col">
             <div class="form-group">
             <a href="feedback.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">create</a>
-           
-          
+            <a href="#" class="btn btn-dark btn-lg active" role="button" aria-pressed="true">Reset</a>
             </div>                              
         </div>
         
     </div>
+   
 </div>
 </div>
 
