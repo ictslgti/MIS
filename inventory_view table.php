@@ -24,6 +24,10 @@ $title = "Department Details | SLGTI";
       <th scope="col">Item Id</th>
       <th scope="col">Qunatity</th>
       <th scope="col">sataus</th>
+      <th scope="col">supplier</th>
+      <th scope="col">supplier phone number</th>
+      <th scope="col">date_add</th>
+    
     </tr>
   </thead>
   <tbody>
@@ -31,6 +35,9 @@ $title = "Department Details | SLGTI";
       <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
       <td>@mdo</td>
     </tr>
     <tr>
