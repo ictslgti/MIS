@@ -21,7 +21,7 @@ include_once("menu.php");
 </head>
 
 <body>
-<h1 class="text-center">SLGTI Payment Portal</h1>
+<h1 class="text-center display-3">SLGTI Payment Portal</h1>
 
 <br>
 <div class="row">
@@ -54,6 +54,9 @@ include_once("menu.php");
          <br>
          <br>
          <br>
+         <br>
+         <br>
+         <br>
          <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   <i class="fas fa-folder"></i>Report
@@ -64,7 +67,7 @@ include_once("menu.php");
     <a class="dropdown-item" href="#">Monthly</a>
     <a class="dropdown-item" href="#">On Search ID</a>
   </div>
-</div>
+</div><br>
 
 
 <div class="dropdown">
@@ -179,11 +182,10 @@ include_once("menu.php");
   </tbody>
 </table>
 <br>
-<a href="#" class="btn btn-primary btn-lg btn-block " role="button" aria-pressed="true"> <i class="fab fa-amazon-pay"></i> Pay </a>
-<a href="#" class="btn btn-secondary btn-lg  btn-sm" role="button" aria-pressed="true"> <i class="fas fa-redo-alt"></i>Reset</a>
-<a href="#" class="btn btn-danger btn-lg  btn-sm" role="button" aria-pressed="true"> <i class="fas fa-window-close"></i></i>Close</a>
+<button type="button" class="btn btn-primary btn-block"><i class="fab fa-amazon-pay"></i> Pay</button><br>
+<button type="button" class="btn btn-secondary  btn-sm"><i class="fas fa-redo-alt"></i>Reset</button>&nbsp;
+<button type="button" class="btn btn-danger  btn-sm"><i class="fas fa-times"></i>Close</button>
 
-<!-- <button type="button" class="btn btn-danger btn-lg  btn-sm"> <i class="fas fa-window-close"></i>Close</button> -->
 
 
 </div>
