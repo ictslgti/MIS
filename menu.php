@@ -82,8 +82,19 @@
          <li class="nav-item">
              <a class="list-group-item list-group-item-action bg-light" href="#"><i class="fab fa-facebook-messenger"></i> Messaging</a>
          </li>
-         <li class="nav-item">
-             <a class="list-group-item list-group-item-action bg-light" href="feedbackmenu.php"><i class="far fa-grin"></i> Feedback</a>
+         <li class="nav-item dropdown dropright">
+             
+             <a class="list-group-item list-group-item-action bg-light dropdown-toggle" href="#" id="library" role="button" data-toggle="dropdown"
+                 aria-haspopup="true" aria-expanded="false">
+                 <i class="far fa-grin"></i> Feedback 
+             </a>
+             <div class="dropdown-menu" aria-labelledby="library">
+                 <a class="dropdown-item" href="feedbacksummery.php">Feedback info</a>
+                 <a class="dropdown-item" href="feedback.php">Student report feedback</a>
+               
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="Feedback_dashboard">Feedback Home</a>
+             </div>
          </li>
 
          <li class="nav-item">
