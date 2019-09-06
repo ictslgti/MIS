@@ -52,7 +52,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="ojt" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <i class="far fa-briefcase"></i> OJT
+                        <i class="fas fa-briefcase"></i> OJT
                     </a>
                     <div class="dropdown-menu" aria-labelledby="ojt">
                         <a class="dropdown-item" href="#">Requesting to a place</a>
