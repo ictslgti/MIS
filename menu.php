@@ -69,7 +69,19 @@
                     <a class="nav-link" href="library.php"><i class="far fa-file-alt"></i> Inventory</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Library_dashboard.php"> <i class="fas fa-book-open"></i> Library</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="library" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-book-open"></i> Library
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="library">
+                        <a class="dropdown-item" href="library.php">Manage books</a>
+                        <a class="dropdown-item" href="library.php">Add new book</a>
+                        <a class="dropdown-item" href="library_issue.php">Issue Book</a>
+                        <a class="dropdown-item" href="library_issue.php">Manage Issued books</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="library_dashboard">Library Home</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Foodorder.php"> <i class="fas fa-hamburger"></i> Canteen</a>
