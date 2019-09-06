@@ -26,10 +26,8 @@ include_once("menu.php");
 
 <br>
 <div class="row">
-        <div class="col-3">
-        <img src="img/our-staff.png" class="img-fluid" alt="Responsive image">
-         </div>
-         <div class="col-3">
+        
+         <div class="col-5">
          <div class="form-group">
          <label for="inputFirstName">First Name</label>
         <input type="text" class="form-control" id="inputAddress" placeholder="First Name">
@@ -104,13 +102,13 @@ include_once("menu.php");
         </select>
         </div>
      </div>
-       <div class="col-3">
+       <div class="col-5">
          <div class="form-group">
          <label for="inputLastName">Last Name</label>
         <input type="text" class="form-control" id="inputAddress" placeholder="Last Name">
         </div>
 </div>
-<div class="col-sm-3">
+<div class="col-sm-2">
 <div class="form-group mx-sm-3 mb-2 text-right">
     <label for="inputPassword2" class="sr-only">Student ID</label><br>
     <input type="text" class="form-control" id="inputPassword2" placeholder="Student ID"><br>
