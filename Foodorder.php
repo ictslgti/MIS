@@ -70,8 +70,8 @@ $title = "Home | SLGTI";
                         </tbody>
                 </table>
             </div>
-            <div class="row">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Order</button>
+            <div class="row float-right">
+                <button type="button" class="btn btn-success">Success</button>
             </div>
         </div>
     </div>
