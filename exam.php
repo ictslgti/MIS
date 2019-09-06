@@ -14,14 +14,27 @@ include_once("menu.php");
 
 <!--BLOCK#2  START YOUR CODE HERE -->
 
-<div class="row">
-<div class="col-10"><h3>Department Details</h3></div>
-<div class="col-2"><button type="button" class="btn btn-primary">Add Department +</button></div>
-</div>
+<html>
+    </head>
+        
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+                <title>examinations</title>
+                <link rel="stylesheet" href="css/bootstrap.min.css">
+                <link rel="bootstrap.min.js" href="css/styles.min.css">
+                <style>
+                    
+                </style>
+    </head>
 
-<DIV class="row">
-<div class="col">
-<table class="table">
+    <!-- header text -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.min.js"></script>
+
+    <body style="background-color: antiquewhite">
+
+<table class="table table-sm table-dark">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -45,16 +58,15 @@ include_once("menu.php");
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
+      <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
     </tr>
   </tbody>
 </table>
 
+    </body>
 
-</div>
-</div>
+</html>
 
     <!--BLOCK#1  START DON'T CHANGE THE ORDER -->
     <?php include_once("footer.php") ;?>

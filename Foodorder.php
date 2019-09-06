@@ -11,13 +11,17 @@ $title = "Home | SLGTI";
 <p>order your food and enjoy your meal</p>
 
 <div class="container-fluid">
-        <div class="row"><blockquote class="blockquote"><h1>ORDER CART</h1></blockquote></div>
-     
+     <!-- FOOD MENU DESIGN    -->
+
+
+    <!-- ORDE CART DESIGN  -->
+
+    <div class="row"><blockquote class="blockquote"><h1>ORDER CART</h1></blockquote></div>
+
     <div class="row ">
-        <div class="col-md-8 border border-primary rounded-lg shadow p-3 mb-5 bg-white rounded"><h4 class="font-italic"><strong>Order Details</strong></h4>
-            <div class="row">
+        <div class="col-md-8"><h4 class="font-italic"><strong>Order Details</strong></h4>
+            <div class="row  border border-secondary rounded-lg  bg-white rounded">
                 <table class="table">
-                    <thead>
                         <tr>
                         <th scope="col">Order ID</th>
                         <th scope="col">Item ID</th>
@@ -71,7 +75,7 @@ $title = "Home | SLGTI";
                 </table>
             </div>
             <div class="row">
-                 <button type="button" class="btn btn-success btn-sm " type="submit">Order</button>
+                <button type="button" class="btn btn-success w-100">Order</button>
             </div>
         </div>
     </div>
