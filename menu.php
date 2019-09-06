@@ -67,6 +67,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="feedback.php"><i class="fab fa-facebook-messenger"></i> Feedback</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="onpeak.php"><i class="fas fa-leaf"></i>k-messenger"></i> Onpeak</a>
+                </li>
             </ul>
             <ul class="navbar-nav px-3">
                 <li class="nav-item dropdown dropleft">
