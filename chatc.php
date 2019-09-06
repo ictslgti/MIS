@@ -20,23 +20,45 @@ include_once("menu.php");
      
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     <form>
-
+        
+    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple primary list group item</a>
+    
     <div class="container"> 
+   
             <div class="row">
-            <div class="col form-group  container" style="background-color:#0275d8">
-            <p class="text-white">Group Chat</p>
-            <h1> </h1>
+
+            <p class="text-white"></p>
+
+            <div class="list-group">
+  
+            <div class="list-group">
+  
+
+  <a href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">Gafoor Sahan</h5>
+      <small class="text-muted">3 days ago</small>
+    </div>
+    <p class="mb-1">hi how are you</p>
+    <small class="text-muted">hi</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action">
+  <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">Fahim</h5>
+      <small class="text-muted">3 days ago</small>
+    </div>
+    <p class="mb-1">Fine you</p>
+    <small class="text-muted">hi..........</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small class="text-muted">Donec id elit non mi porta.</small>
+  </a>
+</div>
+           
             
     <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
+        
+  
 
 
   
