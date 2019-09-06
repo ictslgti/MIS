@@ -165,5 +165,5 @@ include_once ("menu.php");
 
 
 <!--Block#3 start dont change the order-->
-<?php include_once ("menu.php"); ?>  
+<?php include_once ("footer.php"); ?>  
 <!--  end dont change the order-->
