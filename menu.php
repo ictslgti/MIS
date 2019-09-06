@@ -49,6 +49,19 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="ojt" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-briefcase"></i> OJT
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="ojt">
+                        <a class="dropdown-item" href="#">Requesting to a place</a>
+                        <a class="dropdown-item" href="#">view your training place</a>
+                        <a class="dropdown-item" href="#">Changing request to your training place</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="examinations.php"><i class="fas fa-chalkboard-teacher"></i> Assessment</a>
                 </li>
@@ -59,45 +72,23 @@
                     <a class="nav-link" href="Library_dashboard.php"> <i class="fas fa-book-open"></i> Library</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Food.php"> <i class="fas fa-hamburger"></i> Canteen</a>
+                    <a class="nav-link" href="Foodorder.php"> <i class="fas fa-hamburger"></i> Canteen</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fab fa-facebook-messenger"></i> Messaging</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="feedback.php"><i class="fab fa-facebook-messenger"></i> Feedback</a>
+                    <a class="nav-link" href="feedbackmenu.php"><i class="far fa-grin"></i> Feedback</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="onpeak.php"><i class="fas fa-leaf"></i> Onpeak</a>
                 </li>
             </ul>
             <ul class="navbar-nav px-3">
-                <li class="nav-item dropdown dropleft">
-                    <a class="nav-link dropdown-toggle " href="#" id="bell" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-bell"></i> <span class="badge badge-warning badge-pill">14</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="bell" data-spy="scroll">
-                    <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  
-                    <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>  <a class="dropdown-item" href="#">examinations Timetable -12/12/2019 <span class="badge badge-warning badge-pill">1</span> </a>
-                    <div class="dropdown-divider"></div>    
-                </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="notifications.php"><i class="fas fa-bell"></i> <span
+                            class="badge badge-primary badge-pill">14</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
