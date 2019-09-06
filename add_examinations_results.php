@@ -50,9 +50,9 @@ $title = "Department Details | SLGTI";
         </div>
     </div>
 
-<div>
+<!-- <div>
     <img src="img/add_examinations_results_main_cart.jpg" class="img-fluid" alt="Responsive image">
-</div>
+</div> -->
     
     <br>
 
