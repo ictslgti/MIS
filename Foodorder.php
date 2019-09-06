@@ -17,7 +17,6 @@ $title = "Home | SLGTI";
         <div class="col-md-8"><h4 class="font-italic"><strong>Order Details</strong></h4>
             <div class="row  border border-secondary rounded-lg  bg-white rounded">
                 <table class="table">
-                    <thead>
                         <tr>
                         <th scope="col">Order ID</th>
                         <th scope="col">Item ID</th>
@@ -70,8 +69,8 @@ $title = "Home | SLGTI";
                         </tbody>
                 </table>
             </div>
-            <div class="row float-right">
-                <button type="button" class="btn btn-success">Success</button>
+            <div class="row">
+                <button type="button" class="btn btn-success w-100">Order</button>
             </div>
         </div>
     </div>
