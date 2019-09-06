@@ -49,6 +49,19 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="ojt" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-briefcase"></i> OJT
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="ojt">
+                        <a class="dropdown-item" href="#">Requesting to a place</a>
+                        <a class="dropdown-item" href="#">view your training place</a>
+                        <a class="dropdown-item" href="#">Changing request to your training place</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="examinations.php"><i class="fas fa-chalkboard-teacher"></i> Assessment</a>
                 </li>
@@ -71,6 +84,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="onpeak.php"><i class="fas fa-leaf"></i> Onpeak</a>
                 </li>
+                
             </ul>
             <ul class="navbar-nav px-3">
                 <li class="nav-item dropdown dropleft">
