@@ -22,6 +22,7 @@ include_once("menu.php");
 <DIV class="row">
 <div class="col">
 <table class="table">
+
   <thead>
     <tr>
       <th scope="col">#</th>
