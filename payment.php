@@ -26,12 +26,12 @@ include_once("menu.php");
 <br>
 <div class="row">
 
-<div class="col-sm-7"></div>
+<div class="col-sm-9"></div>
 <div class="col-sm-3">
 <div class="form-group mx-sm-3 mb-2 text-right">
     <label for="inputPassword2" class="sr-only">Student ID</label>
     <input type="text" class="form-control" id="inputPassword2" placeholder="Student ID">
-    <button type="submit" class="btn btn-primary mb-2">Search</button>
+    <button type="submit" class="btn btn-primary mb-3">Search</button>
   </div>
   </div>
   
@@ -44,13 +44,11 @@ include_once("menu.php");
 
 
         <div class="row">
-        <div class="col-sm-4">
-        <img src="img/Payment.png" class="img-fluid" alt="Responsive image">
-        </div>
+        <div class="col-sm-4"></div>
         <div class="col-sm-4">
         <form>
-  <div class="form-row">
-    <div class="form-group col-md-12">
+       <div class="form-row">
+       <div class="form-group col-md-12">
       <label for="inputEmail4">Name</label>
       <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
     </div>
@@ -73,45 +71,107 @@ include_once("menu.php");
       <input type="phonenumber" class="form-control" id="inputCity"placeholder="Phone Number">
     </div>
     <div class="form-group ">
-    <label for="inputEmail4">Hostal Info</label>
-      <input type="HostalInfo" class="form-control" id="inputEmail4" placeholder="Hostal Info">
-        
-    </div>
-    
-  
-  
-  
-</form>
-        </div>
-        
-        <div class="col-sm-4">
-        
-                                   
-        
-        </div>
-     </div>
-     <div class="row">
-     <div class="col-sm-3">
-     <div class="form-group">
-      <label for="inputEmail4">Amount</label>
+    <label for="inputEmail4">Amount</label>
       <input type="Amount" class="form-control" id="inputEmail4" placeholder="Amount">
-    </div>
+      </div>
+      
+<div class="btn-group">
+  <button type="button" class="btn btn-danger">Payment Method</button>
+  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
 
-    <div class="form-group">
-      <label for="inputEmail4">Reason</label>
-      <input type="Reason" class="form-control" id="inputEmail4" placeholder="Reason">
-    </div>
+  
+  <div class="btn-group">
+  <button type="button" class="btn btn-primary">Payment Reason</button>
+  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+  </div>
+ 
+</div>
+<br>
+
+    
+    
+</form>
+</div>
 
 
-     </div>
-     <div class="col-sm-5"></div>
-     <div class="col-sm-4">
-     <button type="button" class="btn btn-primary">Clear</button>
-      <button type="button" class="btn btn-secondary">Daily Report</button>
-      <button type="button" class="btn btn-success">Pay&Print</button>
-      <button type="button" class="btn btn-danger">Close</button>
-     </div>
-     </div>
+
+<!-- colom3........start -->
+
+<div class="col-sm-4">
+<br>
+<br>
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Reason</th>
+      <th scope="col">Amount</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <th>Total:</th>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<a href="#" class="btn btn-primary btn-lg btn-block " role="button" aria-pressed="true"> <i class="fas fa-user-graduate"></i> Pay </a>
+<a href="#" class="btn btn-secondary btn-lg active btn-sm" role="button" aria-pressed="true">Reset</a>
+</div>
+<!-- colom3........ end    -->
+
+
+
+
+
+
+
+        </div>
+        
+        
+        
+        
+       
+       
+     
+     
+     
+<br>
+    
+    
 
      </div>
  <!-- dont change -->

@@ -19,4 +19,5 @@
 ### Send changes to the master branch of your remote repository:
 - **C:\wamp64\www\mis>** git push -u origin master
 
-
+### clean the working tree
+- **C:\wamp64\www\mis>** git reset --hard

@@ -9,14 +9,18 @@ $title = "Home | SLGTI";
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <form>
-        <div class="container">
+        <div class="container" style=" margin-top: 10%; border: 2px solid #0275d8; border-radius: 8px;"> 
             <div class="row">
-              <div class="col form-group ml-5 mr-5 container">
+            <div class="col form-group  container" style="background-color:#0275d8">
+                <h2  class="pt-2" style="color:white"><b>Book info</b></h2>
+              </div>
+              <div class="w-100"></div>
+              <div class="col form-group ml-5 mr-5 mt-3 container">
                       <label for="bookName">01. Book Name</label>
                       <input type="text" class="form-control" id="bookName" aria-describedby="bookNameHelp" placeholder="Book Name">
                       <small id="bookNameHelp" class="form-text text-muted">Name of the book appeared on front cover.</small>
               </div>
-              <div class="col form-group ml-5 mr-5 container">
+              <div class="col form-group ml-5 mr-5 mt-3 container">
                       <label for="authorName">02. Author Name</label>
                       <input type="text" class="form-control" id="authorName" aria-describedby="authorNameHelp" placeholder="Author Name">
                       <small id="bookNameHelp" class="form-text text-muted">Name of the the person who written the book.</small>
@@ -63,9 +67,10 @@ $title = "Home | SLGTI";
                   <input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp">
                   <small id="datePicHelp" class="form-text text-muted">Purchesed Date or donated date.</small>
 
-                  <button type="submit" class="btn btn-primary mt-3">Add Book</button>
-                  <input class="btn btn-dark ml-2 mt-3" type="reset" value="Reset">
-          </div>
+                  <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
+                  <button type="submit" class="btn btn-primary mt-3 float-right">Add Book</button>
+
+            </div>
             </div>
           </div>
       </form>

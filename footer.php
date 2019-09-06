@@ -1,8 +1,8 @@
 </main>
 <footer class="footer">
       <div class="container">
-        <span class="text-muted">Designed and Developed by Department of Information and Communication Technology</span>
-        <span class="text-muted">All Rights Reserved</span>
+        <p class="text-muted text-center">All Rights Reserved. Designed and Developed by Department of Information and Communication Technology, Sri Lanka-German Training Institute.</p>
+      
       </div>
 </footer>
  
