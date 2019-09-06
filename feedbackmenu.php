@@ -78,7 +78,7 @@ include_once("menu.php");
                            
                     </div>
                     <div class="col order-1">
-                    <a href="feedbacksummery"><img src="img/feedbackmenu3.png" alt="feedback"> </a>
+                    <a href="feedbacksummery.php"><img src="img/feedbackmenu3.png" alt="feedback"> </a>
                     </div>
             </div>
 
