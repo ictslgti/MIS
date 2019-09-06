@@ -15,9 +15,16 @@ $title = "Department Details | SLGTI";
         <title>examinations</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/styles.min.css">
+        <!-- my css -->
         <style>
+        th, td {
+            text-align: center;
+        }
+
 
         </style>
+        <!-- my css end -->
+
     </head>
     <!-- header text -->
     <script src="js/jquery.min.js"></script>
@@ -31,17 +38,32 @@ $title = "Department Details | SLGTI";
     $ictDepartmentName = "Department Of Information & Communication Technology";
     ?>
 
-        <div class="highlight-blue">
-            <div class="container">
-                <div class="intro">
-                    <h1 class="display-4 text-center">Examinations Portal</h1>
-                    <H3 class="display-5 text-center"><?php echo $ictDepartmentName ?></H3>
-                    <p class="text-center">Welcome to examinations portal for lectures or admin. This section to add
-                        examinations and assignments/asessments results&nbsp;</p>
-                </div>
+    <div class="highlight-blue">
+        <div class="container">
+            <div class="intro">
+                <h1 class="display-4 text-center">Add Asignments Results</h1>
+                <H3 class="display-5 text-center"><?php echo $ictDepartmentName ?></H3>
+                <p class="text-center">Welcome to examinations portal for lectures or admin. This section to add
+                    examinations and assignments/asessments results&nbsp;</p>
+
             </div>
         </div>
+    </div>
 
+<div>
+    <img src="img/add_examinations_results_main_cart.jpg" class="img-fluid" alt="Responsive image">
+</div>
+    
+    <br>
+
+        <!-- <div class="card mb-3">
+            
+            <img src="img/add_examinations_results_main_cart.jpg" class="card-img-top" alt="exampic">
+            <div class="card-body">
+            </div>
+        </div> -->
+
+        
 
         <!-- mainform start  -->
         <div class="input-group mb-3">
@@ -67,8 +89,29 @@ $title = "Department Details | SLGTI";
                 <option value="3">Manage Workplace</option>
                 <option value="3">Manage Workplace & Communication</option>
             </select>
+        </div>
 
-        </div><br>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Select Asignments</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">A1</option>
+                <option value="2">A2</option>
+            </select>
+        </div>
+        <br>
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+              
+              <div class="col-md-auto">
+                <!-- main button  -->
+                <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus"></i>&nbsp;Add Results</button>
+              </div>
+             
+            </div>
 
         <?php
         // modules for ict sem1
@@ -83,24 +126,15 @@ $title = "Department Details | SLGTI";
 
      ?>
 
-        <div class="mb-9">
-            <div class="card text-center">
-                <div class="card-body">
-                    <!-- <h5 class="card-title">Special title treatment</h5> -->
-                    <h1 class="display-2"><?php echo $Sem1module1 ?></h1>
-
-                    <!-- <a href="#" class="btn btn-primary" onclick="addExamModule()">Add Results</a> -->
-                </div>
-            </div>
-        </div>
-        <br>
+        <h1 class="display-4">
+            <center><?php echo $Sem1module1 ?></center>
+        </h1>
 
 
 
-        <form>
+        <!-- <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <!-- <label class="control-label"  for="inputEmail4">amh</label> -->
                     <label for="inputPassword4">Student Roll Number </label>
                     <input type="email" class="form-control" id="inputEmail4" placeholder=""><br>
 
@@ -123,7 +157,7 @@ $title = "Department Details | SLGTI";
                     <input type="password" class="form-control" id="inputPassword4" placeholder="">
                 </div>
             </div>
-        </form><br>
+        </form><br> -->
 
         <!-- table -->
         <table class="table">
@@ -142,7 +176,7 @@ $title = "Department Details | SLGTI";
                     <td>Otto</td>
                     <td>
                         <div class="input-group mb-3">
-                           
+
                             <input type="text" class="form-control" placeholder="Enter the Marks" aria-label="Username"
                                 aria-describedby="basic-addon1">
                         </div>
