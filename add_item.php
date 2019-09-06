@@ -35,9 +35,9 @@ $title = "Department Details | SLGTI";
                             </select>
                         <small id="pubNameHelp" class="form-text text-muted"></small>
                         <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
-                        <button type="submit" class="btn btn-primary mt-3 float-right">delete</button>
-                        <button type="submit" class="btn btn-primary mt-3 float-right">update </button>
-                        <button type="submit" class="btn btn-primary mt-3 float-right">Add </button>
+                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">delete</button>
+                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">update </button>
+                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">Add </button>
                       
                     </div>
                     </div>
