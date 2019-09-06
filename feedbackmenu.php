@@ -21,7 +21,7 @@ include_once("menu.php");
 
             <div  class="row" style="background-color:#37b6ff  ;padding:20px; border-top-right-radius: 20px ;border-top-left-radius: 20px ;">
                 <div class="col" style=" ">
-               
+
                 </div>
             </div>
 
@@ -30,7 +30,7 @@ include_once("menu.php");
      
     </div>
     <div class="col-md-auto">
-    <img src="img/feedbackmenu.png" alt="feedback">
+  <p style="font-family: 'Permanent Marker', cursive; font-size:50px"> feedback  </p>
     </div>
     <div class="col col-lg-2">
    
@@ -39,7 +39,7 @@ include_once("menu.php");
     <div class="row">
    
         <div class="col-md-auto">
-        <img src="img/feedbackmenu1.png" alt="feedback">
+      
         </div>
         <div class="col">
 
@@ -66,7 +66,7 @@ include_once("menu.php");
            
         </div>
         <div class="col-sm-auto">
-        <img src="img/feedbackmenu2.png" alt="feedback">
+       
         </div>
     </div>
     <!--feedbackmenu3-->
@@ -83,8 +83,8 @@ include_once("menu.php");
             </div>
 
             <div class="row">
-                <div class="col-auto mr-auto"><img src="img/feedbackmenu7.png" alt="feedback"></div>
-                <div class="col-auto"><img src="img/feedbackmenu6.png" alt="feedback"></div>
+                <div class="col-auto mr-auto"></div>
+                <div class="col-auto"></div>
             </div>
 
 
