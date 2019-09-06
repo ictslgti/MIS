@@ -27,11 +27,9 @@ include_once("menu.php");
                 INFORMATION AND COMMUNICATION TECHNOLGY- HEAD OF THE DEPARTMNET
         </div>
 
-        <div class=row Style="padding: 20px" >
-                <?php $today = getdate();
-                print_r($today); ?>
+        <div class=row>
+                Today Date
         </div>
-
         
         <div class=row >
         <table class="table table-hover">
