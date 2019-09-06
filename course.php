@@ -15,7 +15,7 @@ include_once ("menu.php");
   
 		<div class="card mt-12 ">
 			<div class="card-header">
-				<h4 align="center">ADD ICT Course Details</h4>
+				<h4 align="center">ADD Course Details</h4>
       </div>
       </div>
       </div>
@@ -31,16 +31,13 @@ include_once ("menu.php");
                 </div>
               </div>
 
+              
               <div class="col-md-6 mb-3">
-                <label for="lastName">Course Name</label>
-                
-                <select class="custom-select d-block w-100" id="state" required>
-                  <option value="">Choose...</option>
-                  <option>5IT</option>
-                  <option>4TE</option>
-                  <option>Bridging</option>
-               
-                </select>
+                <label for="firstName">Course Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid Course Name is required.
+                </div>
                 
                 <div class="invalid-feedback">
                   Please provide a Course name
@@ -50,66 +47,79 @@ include_once ("menu.php");
             
 
             </div>
-            
-
-            <div class="mb-3">
-              <label for="username">Duration</label>
+            <div class="row">
+            <div class="col-md-6 mb-3"> 
+              <label for="username">Duration-Institute Learning</label>
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text">Hrs</span>
+                  <span class="input-group-text">Months</span>
                 </div>
                 <input type="text" class="form-control" id="username" placeholder="Hours in Digits" required>
-                <div class="invalid-feedback" style="width: 100%;">
+                
+                <div class="invalid-feedback" style="width: 50%;">
                   Duration is required.
                 </div>
+                
               </div>
+           
+
+            </div>
+
+            <div class="col-md-6 mb-3"> 
+              <label for="username">Duration-OJT</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Months</span>
+                </div>
+                <input type="text" class="form-control" id="username" placeholder="Hours in Digits" required>
+                
+                <div class="invalid-feedback" style="width: 50%;">
+                  Duration is required.
+                </div>
+                
+              </div>
+           
+
+            </div>
+
+
+
+
             </div>
 
            
 
             <div class="row">
-              <div class="col-md-5 mb-3">
+
+              <div class="col-md-6 mb-3">
               <label for="state">Department</label>
-                <select class="custom-select d-block w-100" id="state" required>
-                  <option value="">Choose...</option>
-                  <option>ICT</option>
-                  <option>Construction</option>
-                  <option>Mechanical</option>
-                  <option>Electrical</option>
-                  <option>Automobile</option>
-                  <option>Food Dept</option>
-                </select>
+                  <select class="custom-select d-block w-100" id="state" required>
+                    <option value="">Choose...</option>
+                    <option>ICT</option>
+                    <option>Construction</option>
+                    <option>Mechanical</option>
+                    <option>Electrical</option>
+                    <option>Automobile</option>
+                    <option>Food Dept</option>
+                  </select>
                 <div class="invalid-feedback">
                   Please provide a Department.
                 </div>
-               
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="country">NVQ Level</label>
-                <select class="custom-select d-block w-100" id="country" required>
-                  <option value="">Choose...</option>
-                  <option>5</option>
-                  <option>4</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please select a valid Level.
-                </div>
               </div>
 
-              <div class="col-md-3 mb-3">
-              <label for="state">Academic Year</label>
-                <select class="custom-select d-block w-100" id="state" required>
-                  <option value="">Choose...</option>
-                  <option>2016/2017</option>
-                  <option>2017/2018</option>
-                  <option>2018/2019</option>
-                </select>
-                <div class="invalid-feedback">
-                  Choose your academic year.
-                  
-                </div>
-              
+              <div class="col-md-6 mb-3">
+                <label for="country">NVQ Level</label>
+                  <select class="custom-select d-block w-100" id="country" required>
+                    <option value="">Choose...</option>
+                    <option>5</option>
+                    <option>4</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please select a valid Level.
+                  </div>
+              </div>
                 <br><br>
+
             </div>
             
             

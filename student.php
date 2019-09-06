@@ -26,76 +26,71 @@ include_once("MENU.PHP");
 </div>
 
 
-<form id="student_request_form" name="student_request_form" class=" form-horizontal" action="" method="POST">
-            <input type="hidden" name="step" value="1">
-			<fieldset>            
-    
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <p class="note" style="font-size: 16px; font-weight: 700; border-bottom: 2px solid #aaa;">Personal Information</p>
-                    </div>                    
-                    <div class="form-group col-md-2">
-                        <label class="control-label col-xs-12" for="pippin_student_salutation">Title <span class="req">*</span></label>
-                        <div class="col-xs-12">
-                            <select name="pippin_student_salutation" id="pippin_student_salutation" class="form-control" >
-                                <option value="">Select</option>
-                                                                                <option value="4"  >Mr</option>
-                                                                                <option value="5"  >Mrs</option>
-                                                                                <option value="6"  >Miss</option>
-                                                                                <option value="7"  >Ms</option>
-                                                                                <option value="8"  >Master</option>
-                                                                
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-5">
-                        <label class="control-label col-xs-12" for="pippin_student_forename">Forename(s) <span class="req">*</span></label>
-                        <div class="col-xs-12">
-                            <input name="pippin_student_forename" id="pippin_student_forename" class="form-control required" type="text" value="" />
-                        </div>
-                    </div>
-                    <div class="form-group col-md-5">
-                            <label class="control-label col-xs-12" for="pippin_student_surname">Surname <span class="req">*</span></label>
-                        <div class="col-xs-12">
-                            <input name="pippin_student_surname" id="pippin_student_surname" class="form-control required" type="text" value="" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-12">
-                            <label class="control-label col-xs-12" for="pippin_student_name_on_certificate">How it should appear on the Certificate <span class="req">*</span></label>
-                        <div class="col-xs-12">
-                            <input name="pippin_student_name_on_certificate" id="pippin_student_name_on_certificate" class="form-control required" type="text" value="" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-xs-12">
-                        <label class="control-label col-xs-12" for="pippin_user_address">Home Address <span class="req">*</span></label>
-                        <div class="col-xs-12">
-                            <textarea rows="4" cols="4" name="pippin_student_address" id="pippin_student_address" class="form-control address-group"></textarea>
-                        </div>
-                    </div>
-                    <!-- <div class="form-group col-xs-4">
-                        <label class="control-label col-xs-12" for="pippin_student_email">Email Address <span class="req">*</span></label>
-                        <div class="col-xs-12">
-                        <input name="pippin_student_email" id="pippin_student_email" class="form-control required" value="" type="email"/>
-                        </div>
-                    </div>  -->                   
-                    <div class="form-group col-xs-4">
-                        <label class="control-label col-xs-12" for="pippin_student_telephone">Telephone</label>
-                        <div class="col-xs-12">
-                            <input name="pippin_student_telephone" id="pippin_student_telephone" class="form-control" value="" type="text" />
-                        </div>
-                    </div>                  
-                    <div class="form-group col-xs-4">
-                        <label class="control-label col-xs-12" for="pippin_student_mobile">Mobile <span class="req">*</span></label>
-                        <div class="col-xs-12">
-                            <input name="pippin_student_mobile" id="pippin_student_mobile" class="form-control" type="text"  value="" />
-                        </div>
-                    </div>
-                    
-                </div> 
+<form class="needs-validation" novalidate action="">
+     <div class="row">
+          <div class class="col-md-1">
+          </div>
+          <div class="col">
+          <p style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">Personal Information</p>
+          </div>  
+     </div> 
+                      
+     <div class="row">
+          <div class="col-md-2 mb-3">
+          <label for="title">Title</label>
+          <select name="title" id="title" class="form-control" >
+               <option value="">Select</option>
+                    <option value="4"> Mr </option>
+                    <option value="5"> Mrs </option>
+                    <option value="6"> Miss </option>
+         </select>
+          </div>
+
+          <div class="col-md-10 mb-3">
+          <label for="ini_name">Name with Initials</label>
+          <input type="text" class="form-control" id="ini_name" placeholder="" value="" required>
+          </div>
+   
+     </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltipUsername">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+        </div>
+        <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
+        <div class="invalid-tooltip">
+          Please choose a unique and valid username.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationTooltip03">City</label>
+      <input type="text" class="form-control" id="validationTooltip03" placeholder="City" required>
+      <div class="invalid-tooltip">
+        Please provide a valid city.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationTooltip04">State</label>
+      <input type="text" class="form-control" id="validationTooltip04" placeholder="State" required>
+      <div class="invalid-tooltip">
+        Please provide a valid state.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationTooltip05">Zip</label>
+      <input type="text" class="form-control" id="validationTooltip05" placeholder="Zip" required>
+      <div class="invalid-tooltip">
+        Please provide a valid zip.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
 
 
 
