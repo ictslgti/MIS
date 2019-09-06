@@ -69,7 +69,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="onpeak.php"><i class="fas fa-leaf"></i>k-messenger"></i> Onpeak</a>
+                    <a class="nav-link" href="onpeak.php"><i class="fas fa-leaf"></i> Onpeak</a>
                 </li>
             </ul>
             <ul class="navbar-nav px-3">
