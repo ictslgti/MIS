@@ -63,7 +63,7 @@ include_once("menu.php");
   <div class="form-group row">
     <label for="inputPassword3" class="col-3 col-form-label">Reference_id</label>
     <div class="col-9">
-      <input type="password" class="form-control" id="inputPassword3" >
+      <input type="text" class="form-control" id="inputtext" >
     </div>
   </div>
   <div class="form-group row">
@@ -72,7 +72,6 @@ include_once("menu.php");
       <input type="D_ID" class="form-control" id="inputEmail3">
     </div>
   </div>
-  <img src="img/blood.png" class="img-fluid" alt="Responsive image">
   <div class="form-group row">
     <div class="col-sm-10">
       <button type="submit" class="btn btn-primary">Join</button>
