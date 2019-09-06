@@ -8,12 +8,7 @@ $title = "Department Details | SLGTI";
 
 <!-- start my code -->
 
-
-
-
-
-<!-- end my code -->
-
+<h1>hello world</h1>
 
 
 
@@ -22,12 +17,8 @@ $title = "Department Details | SLGTI";
 
 
 
+<!-- end my code\ -->
 
-
-
-
-
- 
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
