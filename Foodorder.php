@@ -14,10 +14,9 @@ $title = "Home | SLGTI";
         <div class="row"><blockquote class="blockquote"><h1>ORDER CART</h1></blockquote></div>
      
     <div class="row ">
-        <div class="col-md-8 border border-primary rounded-lg shadow p-3 mb-5 bg-white rounded"><h4 class="font-italic"><strong>Order Details</strong></h4>
-            <div class="row">
+        <div class="col-md-8"><h4 class="font-italic"><strong>Order Details</strong></h4>
+            <div class="row  border border-secondary rounded-lg  bg-white rounded">
                 <table class="table">
-                    <thead>
                         <tr>
                         <th scope="col">Order ID</th>
                         <th scope="col">Item ID</th>
@@ -71,7 +70,7 @@ $title = "Home | SLGTI";
                 </table>
             </div>
             <div class="row">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Order</button>
+                <button type="button" class="btn btn-success w-100 font-weight-bold">Order</button>
             </div>
         </div>
     </div>
