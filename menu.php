@@ -34,7 +34,7 @@
                         <a class="dropdown-item" href="#">Leave Request</a>
                         <a class="dropdown-item" href="#">Academic Year</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="staffdetails.php">staffdetails</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
