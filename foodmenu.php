@@ -79,8 +79,9 @@ include_once ("Menu.php");
         </div>
     </div>
 </div>
-<div class="col container">
+
 <div class="row" style="margin-top:1%;"> 
+    <div class="col container">
             <div class="card" style="width:100%;Height:100% ; margin-top:1%;">
                 <img class="card-img-top" src="img/Sun spl.png" alt="Card image cap">
                 <div class="card-body">
