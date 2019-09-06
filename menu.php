@@ -45,6 +45,7 @@
                     <div class="dropdown-menu" aria-labelledby="Student">
                         <a class="dropdown-item" href="#">On-Peak/Off-Peak Request</a>
                         <a class="dropdown-item" href="#">Academic Year</a>
+                        <a class="dropdown-item" href="notice.php">Notice</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
