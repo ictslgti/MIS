@@ -60,7 +60,7 @@ include_once ("menu.php");
                 </div>
                 <input type="text" class="form-control" id="username" placeholder="Hours in Digits" required>
                 <div class="invalid-feedback" style="width: 100%;">
-                  Your username is required.
+                  Duration is required.
                 </div>
               </div>
             </div>
@@ -80,7 +80,7 @@ include_once ("menu.php");
                   <option>Food Dept</option>
                 </select>
                 <div class="invalid-feedback">
-                  Please provide a valid state.
+                  Please provide a Department.
                 </div>
                
               </div>
@@ -92,7 +92,7 @@ include_once ("menu.php");
                   <option>4</option>
                 </select>
                 <div class="invalid-feedback">
-                  Please select a valid country.
+                  Please select a valid Level.
                 </div>
               </div>
 
@@ -105,7 +105,7 @@ include_once ("menu.php");
                   <option>2018/2019</option>
                 </select>
                 <div class="invalid-feedback">
-                  Please provide a valid state.
+                  Choose your academic year.
                   
                 </div>
               
