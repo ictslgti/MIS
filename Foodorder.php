@@ -71,7 +71,7 @@ $title = "Home | SLGTI";
                 </table>
             </div>
             <div class="row">
-                 <button type="button" class="btn btn-success btn-sm " type="submit">Order</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Order</button>
             </div>
         </div>
     </div>

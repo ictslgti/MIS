@@ -59,7 +59,7 @@
                     <a class="nav-link" href="Library_dashboard.php"> <i class="fas fa-book-open"></i> Library</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Food.php"> <i class="fas fa-hamburger"></i> Canteen</a>
+                    <a class="nav-link" href="Foodorder.php"> <i class="fas fa-hamburger"></i> Canteen</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fab fa-facebook-messenger"></i> Messaging</a>
