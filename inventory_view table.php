@@ -11,7 +11,7 @@ $title = "Department Details | SLGTI";
 <div class="w-100"></div>
                         <div class="col form-group ml-5 mr-5 mt-3 container">
                             <input type="text" class="form-control" id="search" aria-describedby="Department ID" placeholder="search">
-                            <button type="submit" class="btn btn-success ml-2 mt-3 float-right">update </button>
+                            <button type="submit" class="btn btn-success ml-2 mt-3 float-right">search </button>
                             <small id="bookNameHelp" class="form-text text-muted"></small> 
         <div class="container" style=" margin-top: 10%; border: 2px solid 	#ADD8E6; border-radius: 8px;"> 
             <div class="row">
