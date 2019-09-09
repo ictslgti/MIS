@@ -41,7 +41,7 @@ $title = "Home | SLGTI";
                         <tr>
                         <th scope="row">2</th>
                         <td>2</td>
-                        <td>kothu</td>
+                        <td>idiyapam</td>
                         <td></td>
                         <td>100</td>
                         </tr>
