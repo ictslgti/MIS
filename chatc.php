@@ -6,69 +6,38 @@ include_once("head.php");
 include_once("menu.php");
  ?>
 <!-- END DON'T CHANGE THE ORDER -->
+<!-- Sidebar -->
 
-<!-- BLOCK#2 START YOUR CODER HERE -->
 
 
-     
-      
-      
-      
-    <!-- <button type="submit" formaction="academic.php" value="Add" name="Add"  class="btn btn-link">Add</button> </td>                            -->
-    
-      
-     
-      <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
-    <form>
-        
-    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple primary list group item</a>
-    
-    <div class="container"> 
-   
-            <div class="row">
 
-            <p class="text-white"></p>
-
-            <div class="list-group">
-  
-            <div class="list-group">
-  
-
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Gafoor Sahan</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">hi how are you</p>
-    <small class="text-muted">hi</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-  <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Fahim</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Fine you</p>
-    <small class="text-muted">hi..........</small>
-    </div>
-    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small class="text-muted">Donec id elit non mi porta.</small>
-  </a>
+<div class ="row">
+<div class ="col-4"><h4>group chat</h4>
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Featured
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
 </div>
-           
-            
-    <ul class="nav justify-content-end">
-        
-  
 
 
-  
+</div>
+<div class ="col-5">message</div>
+<div class ="col-3">icon</div>
 
-</ul>
 
-  
-         
-            
-      <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
+
+</div>
+
+
+ <!-- /#sidebar-wrapper -->
+ <!-- Page Content -->
+ 
+
     
 
 
