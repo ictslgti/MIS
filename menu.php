@@ -1,14 +1,14 @@
  <!-- Sidebar -->
- <div class="bg-light border-right" id="sidebar-wrapper">
+ <div class="border-right" id="sidebar-wrapper">
      <div class="sidebar-heading">  <a href="index.php"> <img src="img/logo-1.png" height="30" class="d-inline-block align-top"
                 alt=""></a> </div>
      <div class="list-group list-group-flush">
 
-         <a class="list-group-item list-group-item-action bg-light" href="index.php"> <i class="fas fa-home"></i>
+         <a class="list-group-item list-group-item-action" href="index.php"> <i class="fas fa-home"></i>
              Dashboard <span class="sr-only">(current)</span></a>
 
-         <li class="nav-item dropdown dropright">
-             <a class="list-group-item list-group-item-action bg-light dropdown-toggle" href="#" id="Department"
+         <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Department"
                  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-university"></i> Department
              </a>
@@ -18,9 +18,9 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="#">Something else here</a>
              </div>
-         </li>
-         <li class="nav-item dropdown dropright">
-             <a class="list-group-item list-group-item-action bg-light dropdown-toggle" href="#" id="Staff" role="button" data-toggle="dropdown"
+        </div>
+        <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Staff" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-user-tie"></i> Staff
              </a>
@@ -30,9 +30,9 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="staffdetails.php">staffdetails</a>
              </div>
-         </li>
-         <li class="nav-item dropdown dropright">
-             <a class="list-group-item list-group-item-action bg-light dropdown-toggle" href="#" id="Student" role="button" data-toggle="dropdown"
+        </div>
+        <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Student" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-user-graduate"></i> Student
              </a>
@@ -42,9 +42,9 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="#">Something else here</a>
              </div>
-         </li>
-         <li class="nav-item dropdown dropright">
-             <a class="list-group-item list-group-item-action bg-light dropdown-toggle" href="#" id="ojt" role="button" data-toggle="dropdown"
+        </div>
+        <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="ojt" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-briefcase"></i> OJT
              </a>
@@ -55,15 +55,12 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="#">Something else here</a>
              </div>
-         </li>
-         <li class="nav-item">
-             <a class="list-group-item list-group-item-action bg-light" href="examinations.php"><i class="fas fa-chalkboard-teacher"></i> Assessment</a>
-         </li>
-         <li class="nav-item">
-             <a class="list-group-item list-group-item-action bg-light" href="library.php"><i class="far fa-file-alt"></i> Inventory</a>
-         </li>
-         <li class="nav-item dropdown dropright">
-             <a class="list-group-item list-group-item-action bg-light dropdown-toggle" href="#" id="library" role="button" data-toggle="dropdown"
+        </div>
+             <a class="list-group-item list-group-item-action" href="examinations.php"><i class="fas fa-chalkboard-teacher"></i> Assessment</a>
+
+             <a class="list-group-item list-group-item-action" href="library.php"><i class="far fa-file-alt"></i> Inventory</a>
+        <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="library" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-book-open"></i> Library 
              </a>
@@ -75,16 +72,13 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="library_dashboard">Library Home</a>
              </div>
-         </li>
-         <li class="nav-item">
-             <a class="list-group-item list-group-item-action bg-light" href="Foodorder.php"> <i class="fas fa-hamburger"></i> Canteen</a>
-         </li>
-         <li class="nav-item">
-             <a class="list-group-item list-group-item-action bg-light" href="#"><i class="fab fa-facebook-messenger"></i> Messaging</a>
-         </li>
-         <li class="nav-item dropdown dropright">
-             
-             <a class="list-group-item list-group-item-action bg-light dropdown-toggle" href="#" id="library" role="button" data-toggle="dropdown"
+        </div>
+
+             <a class="list-group-item list-group-item-action" href="Foodorder.php"> <i class="fas fa-hamburger"></i> Canteen</a>
+
+             <a class="list-group-item list-group-item-action" href="#"><i class="fab fa-facebook-messenger"></i> Messaging</a>
+        <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="library" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                  <i class="far fa-grin"></i> Feedback 
              </a>
@@ -95,11 +89,11 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="Feedback_dashboard">Feedback Home</a>
              </div>
-         </li>
+        </div>
+             <a class="list-group-item list-group-item-action" href="onpeak.php"><i class="fas fa-leaf"></i> Onpeak</a>
 
-         <li class="nav-item">
-             <a class="list-group-item list-group-item-action bg-light" href="onpeak.php"><i class="fas fa-leaf"></i> Onpeak</a>
-         </li>
+             <a class="list-group-item list-group-item-action" href="notice.php"><i class="fas fa-"></i>Notice</a>
+
      </div>
  </div>
  <!-- /#sidebar-wrapper -->

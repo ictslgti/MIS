@@ -28,39 +28,45 @@ include_once ("menu.php");
     </style>
 </head>
 <body>
-    
 
 
-<div class="jumbotron-small text-center" style="margin-bottom:0">
-  <h1>Student Attendance System</h1>
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="grade-tab" data-toggle="tab" href="grade.php" role="tab" aria-controls="grade" aria-selected="false">Grade</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="teacher-tab" data-toggle="tab" href="teacher.php" role="tab" aria-controls="teacher" aria-selected="false">Teacher</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="student-tab" data-toggle="tab" href="student.php" role="tab" aria-controls="student" aria-selected="false">Student</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="attendance-tab" data-toggle="tab" href="attendance.php" role="tab" aria-controls="attendance" aria-selected="false">Attendance</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="logout-tab" data-toggle="tab" href="logout.php" role="tab" aria-controls="logout" aria-selected="false">Logout</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+  <div class="tab-pane fade" id="grade" role="tabpanel" aria-labelledby="grade-tab">...</div>
+  <div class="tab-pane fade" id="teacher" role="tabpanel" aria-labelledby="teacher-tab">...</div>
+  <div class="tab-pane fade" id="student" role="tabpanel" aria-labelledby="student-tab">...</div>
+  <div class="tab-pane fade" id="attendance" role="tabpanel" aria-labelledby="attendance-tab">...</div>
+  <div class="tab-pane fade" id="logout" role="tabpanel" aria-labelledby="logout-tab">...</div>
 </div>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="index.php">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="grade.php">Grade</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="teacher.php">Teacher</a>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="student.php">Student</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="attendance.php">Attendance</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="logout.php">Logout</a>
-      </li>  
-    </ul>
-  </div>  
-</nav>
 
 
 

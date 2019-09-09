@@ -19,7 +19,7 @@ include_once("menu.php");
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Description</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" >
+    <input type="password" class="form-control" id="exampleInputPassword1">
   </div>
   <form>
   <div class="form-group">

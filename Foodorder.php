@@ -8,22 +8,109 @@ $title = "Home | SLGTI";
 <!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-<p>order your food and enjoy your meal</p>
+<h1 class="display-"><em>EAT GOOD FEEL GOOD</em></h1>
 
-<div class="container-fluid">
-     <!-- FOOD MENU DESIGN    -->
+ <!-- FOOD MENU DESIGN    -->
 
+<div class="container-fluid"> 
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-3 container">
+                <div class="card" style="width:80%;Height:60% ;margin-top:3%;">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Monday</h5>
+                        <a href="#" class="btn btn-primary">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3 container">
+                <div class="card" style="width:80%;Height:60%;margin-top:3%;">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Tuesday</h5>
+                        <a href="#" class="btn btn-primary">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3 container">
+                <div class="card" style="width:80%;Height:60%;margin-top:3%;">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Wednesday</h5>
+                        <a href="#" class="btn btn-primary">Click Here</a>
+                    </div>
+                </div>
+            </div>
+   
+    
+        
+            <div class="col-sm-12 col-md-4 col-lg-3 container">
+                <div class="card" style="width:80%;Height:60%; margin-top:3%;">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Thursday</h5>
+                        <a href="#" class="btn btn-primary">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3 container">
+                <div class="card" style="width:80%;Height:60%; margin-top:3%;">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Friday</h5>
+                        <a href="#" class="btn btn-primary">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3 container">
+                <div class="card" style="width:80%;Height:60%;margin-top:3%;">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Saturday</h5>
+                        <a href="#" class="btn btn-primary">Click Here</a>
+                    </div>
+                </div>
+            </div>
+      
+  
+      
+            <div class="col-sm-12 col-md-4 col-lg-3 container">
+                <div class="card" style="width:80%;Height:60% ;margin-top:3%;">
+                    <img class="card-img-top" src="img/logo-1.png"alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Sunday</h5>
+                        <a href="#" class="btn btn-primary">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col container invisible">
+                <div class="card" style="width:50%;Height:50% ;margin-top:3%;">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Tuesday</h5>
+                        <a href="#" class="btn btn-primary">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col container invisible">
+                <div class="card" style="width:50%;Height:50%;margin-top:3%;">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Wednesday</h5>
+                        <a href="#" class="btn btn-primary">Click Here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
 
     <!-- ORDE CART DESIGN  -->
-
-    <div class="row"><blockquote class="blockquote"><h1>ORDER CART</h1></blockquote></div>
-
+  
     <div class="row ">
-        <div class="col-md-8"><h4 class="font-italic"><strong>Order Details</strong></h4>
-            <div class="row  border border-secondary rounded-lg  bg-white rounded">
+        <div class="col-md-8"><h4 class="font-italic">
+            <div class="row">
                 <table class="table">
                         <tr>
-                        <th scope="col">Order ID</th>
                         <th scope="col">Item ID</th>
                         <th scope="col">Item Name</th>
                         <th scope="col">Qty</th>
@@ -32,16 +119,14 @@ $title = "Home | SLGTI";
                     </thead>
                     <tbody class="table-borderless">
                         <tr>
-                        <th scope="row">1</th>
                         <td>1</td>
                         <td>Pittu</td>
                         <td></td>
                         <td>60</td>
                         </tr>
                         <tr>
-                        <th scope="row">2</th>
                         <td>2</td>
-                        <td>kothu</td>
+                        <td>idiyapam</td>
                         <td></td>
                         <td>100</td>
                         </tr>
@@ -53,7 +138,7 @@ $title = "Home | SLGTI";
         <div class="col-md-1">
         </div>
 
-        <div class="col-md-3 border border-primary rounded-lg shadow p-3 mb-5 bg-white rounded"><h4 class="font-italic"><strong> FOOD CART</strong></h4>
+        <div class="col-md-3">
             <div class="row">
                 <table class="table">
                         <thead>

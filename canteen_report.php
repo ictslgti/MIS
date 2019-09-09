@@ -11,19 +11,20 @@ include_once("menu.php");
     <!-- end dont change the order-->
 <!--block 2 start my code here-->  
 
-    <h3>Daily Canteen Report</h3>
-    
-  
-
-    
-
-
-    
-<table class="table table-hover ">
+   <div class= "row"> 
+   <div class ="col-8"><h3>Daily Canteen Report</h3></div>
+   <div class ="col-4"><div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
+    </div>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+</div>
+<table class="table table-borderless ">
   <thead class=" thead-dark">
     <tr>
-      <th scope="col">SALES TIME</th>
-      <th scope="col">Invest</th>
+      <th scope="col" >SALES</th>
+      <th scope="col">Costs</th>
       <th scope="col">Sales</th>
 
 
@@ -53,15 +54,16 @@ include_once("menu.php");
       <td>3000</td>
     </tr>
     <tr>
-      <th scope="row">TOTAL SALES</th>
-      <td >19500</td>
-      <td>26500</td>
+      <th scope="row" class="table-danger">TOTAL SALES</th>
+      <td class="table-danger">19500</td>
+      <td class="table-danger">26500</td>
     </tr>
   </tbody>
 </table>
+<button type="button" class="btn btn-outline-info">Print</button>
 
 
-<table class="table table-hover ">
+<table class="table table-borderless ">
   <thead class=" thead-dark">
     <tr>
       <th scope="col">SHAREHOLDERS SCORES</th>
@@ -72,19 +74,31 @@ include_once("menu.php");
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Sales</th>
-      <td >26500</td>
+      <th scope="row" class="text-dark">Sales</th>
+      <td class="text-danger">26500</td>
     </tr>
     <tr>
-      <th scope="row">Costs</th>
-      <td>19500</td>
+      <th scope="row" class="text-dark">Costs</th>
+      <td class="text-danger">19500</td>
     </tr>
     <tr>
-      <th scope="row">Net pfofit</th>
-      <td>7000</td>
+      <th scope="row" class="text-dark">Net pfofit</th>
+      <td class="text-danger">7000</td>
     </tr>
   </tbody>
 </table>
+   
+
+
+   </div>
+    
+  
+
+    
+
+
+    
+
     
   
 <!--block 3 start dont change the order-->

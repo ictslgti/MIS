@@ -7,7 +7,6 @@ include_once("head.php");
 include_once("menu.php"); 
 //include_once("head.php"); 
 
-
 ?>
  <!-- END DON'T CHANGE THE ORDER -->
 
@@ -18,54 +17,108 @@ include_once("menu.php");
     </head>
         
                 <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0,">
                 <title>examinations</title>
                 <link rel="stylesheet" href="css/bootstrap.min.css">
                 <link rel="bootstrap.min.js" href="css/styles.min.css">
-                <style>
-                    
-                </style>
     </head>
+<body>
+<!--Heading-->
+  <div class="row">
+  <div class="input-group mb-3">
+  <div class="col">
+    <h1 class="display-4 text-center">Students Assessments Results</h4>
+    </div>
+  </div>   
+  </div>
 
-    <!-- header text -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/script.min.js"></script>
+  <div class="row">
+  <div class="input-group mb-3">
+  <div class="col">
+    <h1 class="text-center">Department of Information & Communication Technology</h1>
+    </div>
+  </div>  
+  </div>
 
-    <body style="background-color: antiquewhite">
+<!--Heading End-->
 
-<table class="table table-sm table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+  <div class="row">
+  <div class="input-group mb-3">
+</div>
+</div>
 
-    </body>
 
+<!--Dropdown-->
+  <div class="row">
+    <div class="col">
+    <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect036">Select Semister</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">Semister 1</option>
+                <option value="2">Semister 2</option>
+            </select>
+    </div>
+
+    <div class="col">
+    <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect036">Select Modules</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">M07</option>
+                <option value="2">M05</option>
+            </select>
+    </div>
+   
+
+    <div class="col">
+    <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect036">Assessment Type</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">Written</option>
+                <option value="2">Practical</option>
+            </select>
+    </div>
+    </div>
+<!--Dropdown End-->
+
+    <div class="row">
+  <div class="input-group mb-3">
+</div>
+</div>
+
+
+<!--Submit-->
+
+<div class="row">
+  <div class="input-group mb-3">
+  <div class="col">
+  <button class="btn btn-primary btn-block" type="submit">Submit form</button>
+    </div>
+    </div>
+  </div>
+
+
+    <!-- Message -->
+    <div class="form-group">
+        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+    </div>
+
+    <!-- Copy -->
+    <div class="custom-control custom-checkbox mb-4">
+        <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
+        <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this message</label>
+    </div>
+
+    <!-- Send button -->
+    <button class="btn btn-info btn-block" type="submit">Send</button>
+
+</body>
+    
 </html>
 
     <!--BLOCK#1  START DON'T CHANGE THE ORDER -->
