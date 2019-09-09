@@ -1,9 +1,9 @@
  <!-- Sidebar -->
  <div class="border-right" id="sidebar-wrapper">
      <div class="sidebar-heading">  <a href="index.php"> <img src="img/logo-1.png" height="30" class="d-inline-block align-top"
-                alt=""></a> </div>
-     <div class="list-group list-group-flush">
-
+                alt=""></a>       
+    </div>
+     <div class="list-group list-group-flush">    
          <a class="list-group-item list-group-item-action" href="index.php"> <i class="fas fa-home"></i>
              Dashboard <span class="sr-only">(current)</span></a>
 
@@ -107,6 +107,7 @@
              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
          </button>
+         <div id="timestamp" class="pr-5 pl-2 ml-auto"></div>  
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                  <li class="nav-item">
