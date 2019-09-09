@@ -10,12 +10,11 @@ include_once ("Menu.php");
 
 <!--BLOCK#2 START YOUR CODE HEAR -->
 <div class="row">
-                        <div class="col-12">
-                                <h1 class="h1">Food Menu</h1>
-                                <p> Foods very Testy and best quality.
-                                </p>
-                            </div>
-                    </div>
+    <div class="col-12">
+        <h1 class="h1">Food Menu</h1>
+            <p> Foods very Testy and best quality.   </p>
+    </div>
+</div>
 
 <div class="container">
     <div class="row" style="margin-top:3%;">
@@ -48,6 +47,7 @@ include_once ("Menu.php");
         </div>
     </div>
 </div>
+
 <div class="container">
     <div class="row" style="margin-top:3%;">
         <div class="col container">
@@ -79,6 +79,7 @@ include_once ("Menu.php");
         </div>
     </div>
 </div>
+
 <div class="container">
     <div class="row" style="margin-top:3%;">
         <div class="col container">
