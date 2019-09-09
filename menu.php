@@ -100,6 +100,9 @@
          <li class="nav-item">
              <a class="list-group-item list-group-item-action bg-light" href="onpeak.php"><i class="fas fa-leaf"></i> Onpeak</a>
          </li>
+         <li class="nav-item">
+             <a class="list-group-item list-group-item-action bg-light" href="notice.php"><i class="far fa-money-check-edit"></i>Notice</a>
+         </li>
      </div>
  </div>
  <!-- /#sidebar-wrapper -->
