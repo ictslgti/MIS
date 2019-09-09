@@ -13,17 +13,17 @@
                  <i class="fas fa-university"></i> Department
              </a>
              <div class="dropdown-menu " aria-labelledby="Department">
-                 <a class="dropdown-item" href="#">Department Info</a>
-                 <a class="dropdown-item" href="#">Add a Department</a>
+                 <a class="dropdown-item" href="Department.php">Department Info</a>
+                 <a class="dropdown-item" href="AddDepartment.php">Add a Department</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Academic Year Info</a>
-                 <a class="dropdown-item" href="#">Add a Academic Year</a>
+                 <a class="dropdown-item" href="AcademicYear.php">Academic Year Info</a>
+                 <a class="dropdown-item" href="AddAcademicYear">Add a Academic Year</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Course Info</a>
-                 <a class="dropdown-item" href="#">Add a Course</a>
+                 <a class="dropdown-item" href="Course.php">Course Info</a>
+                 <a class="dropdown-item" href="AddCourse.php">Add a Course</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Module Info</a>
-                 <a class="dropdown-item" href="#">Add a Module</a>
+                 <a class="dropdown-item" href="Module.php">Module Info</a>
+                 <a class="dropdown-item" href="addModule.php">Add a Module</a>
              </div>
          </div>
          <div class="dropdown">
@@ -32,12 +32,12 @@
                  <i class="fas fa-user-tie"></i> Staff
              </a>
              <div class="dropdown-menu" aria-labelledby="Staff">
-                 <a class="dropdown-item" href="staffdetails.php">Staff Info</a>
-                 <a class="dropdown-item" href="#">Add a Staff</a>
+                 <a class="dropdown-item" href="Staff.php">Staff Info</a>
+                 <a class="dropdown-item" href="AddStaff.php">Add a Staff</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Module Enrollment</a>
+                 <a class="dropdown-item" href="StaffModuleEnrollment.php">Module Enrollment</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="staffdetails.php">Staff Exit</a>
+                 <a class="dropdown-item" href="StaffExit.php">Staff Exit</a>
              </div>
          </div>
          <div class="dropdown">
@@ -46,12 +46,12 @@
                  <i class="fas fa-user-graduate"></i> Student
              </a>
              <div class="dropdown-menu" aria-labelledby="Student">
-                 <a class="dropdown-item" href="#">Student Info</a>
-                 <a class="dropdown-item" href="#">Add a Student</a>
+                 <a class="dropdown-item" href="Student.php">Student Info</a>
+                 <a class="dropdown-item" href="AddStudent.php">Add a Student</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Studen Re Enroll</a>
+                 <a class="dropdown-item" href="StudentReEnroll.php">Student Re Enroll</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Student Enrollment Report</a>
+                 <a class="dropdown-item" href="StudentEnrollmentReport.php">Student Enrollment Report</a>
              </div>
          </div>
          <div class="dropdown">
@@ -60,12 +60,13 @@
                  <i class="fas fa-chalkboard-teacher"></i> Examination
              </a>
              <div class="dropdown-menu" aria-labelledby="Assessment">
-                 <a class="dropdown-item" href="#">Assessment Info</a>
-                 <a class="dropdown-item" href="#">Add a Assessment</a>
+                 <a class="dropdown-item" href="Assessment.php">Assessment Info</a>
+                 <a class="dropdown-item" href="AddAssessment.php">Add a Assessment</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Assessment Report</a>
+                 <a class="dropdown-item" href="AssessmentReport.php">Assessment Report</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">TVEC Examination Info</a>
+                 <a class="dropdown-item" href="TVECExamination.php">TVEC Examination Info</a>
+                 <a class="dropdown-item" href="AddTVECExamination.php">Add TVEC Examination</a>
              </div>
          </div>
          <div class="dropdown">
@@ -74,12 +75,12 @@
                  <i class="fas fa-chalkboard-teacher"></i> Attendance
              </a>
              <div class="dropdown-menu" aria-labelledby="Assessment">
-                 <a class="dropdown-item" href="#">Attendance Info</a>
-                 <a class="dropdown-item" href="#">Add a Attendance</a>
+                 <a class="dropdown-item" href="Attendance.php">Attendance Info</a>
+                 <a class="dropdown-item" href="AddAttendance.php">Add a Attendance</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Attendance Report</a>
+                 <a class="dropdown-item" href="AttendanceReport.php">Attendance Report</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Warnings Letters</a>
+                 <a class="dropdown-item" href="WarningsLetters.php">Warnings Letters</a>
              </div>
          </div>
          <div class="dropdown">
@@ -88,15 +89,15 @@
                  <i class="fas fa-briefcase"></i> On-the-job Training
              </a>
              <div class="dropdown-menu" aria-labelledby="ojt">
-                 <a class="dropdown-item" href="#">On-the-job Training Info</a>
-                 <a class="dropdown-item" href="#">Add a Training Place</a>
-                 <a class="dropdown-item" href="#">Students Request</a>
+                 <a class="dropdown-item" href="OJT.php">On-the-job Training Info</a>
+                 <a class="dropdown-item" href="AddOJT.php">Add a Training Place</a>
+                 <a class="dropdown-item" href="OJTRequest.php">Students Request</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Placement Request</a>
-                 <a class="dropdown-item" href="#">Training Place Info </a>
-                 <a class="dropdown-item" href="#">Placement Chage</a>
+                 <a class="dropdown-item" href="PlacementRequest.php">Student Placement Request</a>
+                 <a class="dropdown-item" href="OJTInfo.php">Training Place Info </a>
+                 <a class="dropdown-item" href="OJTChange.php">Placement Chage</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">OJT Report</a>
+                 <a class="dropdown-item" href="OJTReport.php">OJT Report</a>
              </div>
          </div>
          <div class="dropdown">
@@ -105,30 +106,43 @@
                  <i class="far fa-grin"></i> Feedback
              </a>
              <div class="dropdown-menu" aria-labelledby="library">
-                 <a class="dropdown-item" href="feedbacksummery.php">Student Feedback Info</a>
-                 <a class="dropdown-item" href="feedback.php">Create a Student Feedback</a>
+                 <a class="dropdown-item" href="StudentFeedback.php">Student Feedback Info</a>
+                 <a class="dropdown-item" href="AddStudentFeedback.php">Create a Student Feedback</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Teacher Feedback Info</a>
-                 <a class="dropdown-item" href="#">Create a Teacher Feedback</a>
+                 <a class="dropdown-item" href="TeacherFeedback.php">Teacher Feedback Info</a>
+                 <a class="dropdown-item" href="AddTeacherFeedback.php">Create a Teacher Feedback</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Industry Feedback Info</a>
-                 <a class="dropdown-item" href="#">Create a Industry Feedback</a>
+                 <a class="dropdown-item" href="IndustryFeedback.php">Industry Feedback Info</a>
+                 <a class="dropdown-item" href="AddIndustryFeedback.php">Create a Industry Feedback</a>
              </div>
          </div>
-         <a class="list-group-item list-group-item-action" href="library.php"><i class="far fa-file-alt"></i>
-             Inventory</a>
+         <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Inventory" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-file-alt"></i> Inventory
+             </a>
+             <div class="dropdown-menu" aria-labelledby="Inventory">
+                 <a class="dropdown-item" href="Inventory.php">Inventory Info</a>
+                 <a class="dropdown-item" href="AddInventory.php">Add a Inventory</a>
+                 <a class="dropdown-item" href="AddItem.php">Add a Item</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="InventoryReport.php">Inventory Report</a>
+             </div>
+         </div>
          <div class="dropdown">
              <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="library" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-book-open"></i> Library
              </a>
              <div class="dropdown-menu" aria-labelledby="library">
-                 <a class="dropdown-item" href="library.php">Manage books</a>
-                 <a class="dropdown-item" href="library.php">Add new book</a>
-                 <a class="dropdown-item" href="library_issue.php">Issue Book</a>
-                 <a class="dropdown-item" href="library_issue.php">Manage Issued books</a>
+                 <a class="dropdown-item" href="Library.php">Library Info</a>
+                 <a class="dropdown-item" href="AddBook.php">Add a Book</a>
+                 <a class="dropdown-item" href="AddBookCategory.php">Add a category</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="library_dashboard">Library Home</a>
+                 <a class="dropdown-item" href="IssuedBook.php">Issued book Info</a>
+                 <a class="dropdown-item" href="IssueBook.php">Issue a Book</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="LibraryReport.php">Library Report</a>
              </div>
          </div>
 
@@ -154,12 +168,12 @@
              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
          </button>
-         <div id="timestamp" class="pr-5 pl-2 ml-auto"></div>
+         <div id="timestamp" class="pr-5 pl-2 ml-auto text-info"></div>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                  <li class="nav-item">
                      <a class="nav-link" href="chat.php"><i class="fab fa-facebook-messenger"></i> <span
-                             class="badge badge-primary badge-pill">14</span></a>
+                             class="badge badge-primary badge-pill">109</span></a>
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="notifications.php"><i class="fas fa-bell"></i> <span
