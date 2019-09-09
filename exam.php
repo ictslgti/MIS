@@ -83,6 +83,11 @@ include_once("menu.php");
                 <option value="2">Practical</option>
             </select>
     </div>
+
+    <div class="col">
+    <div class="input-group-prepend">
+    <button class="btn btn-primary btn-block" type="submit">Submit form</button>
+    </div>
     </div>
 <!--Dropdown End-->
 
@@ -92,30 +97,6 @@ include_once("menu.php");
 </div>
 
 
-<!--Submit-->
-
-<div class="row">
-  <div class="input-group mb-3">
-  <div class="col">
-  <button class="btn btn-primary btn-block" type="submit">Submit form</button>
-    </div>
-    </div>
-  </div>
-
-
-    <!-- Message -->
-    <div class="form-group">
-        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
-    </div>
-
-    <!-- Copy -->
-    <div class="custom-control custom-checkbox mb-4">
-        <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
-        <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this message</label>
-    </div>
-
-    <!-- Send button -->
-    <button class="btn btn-info btn-block" type="submit">Send</button>
 
 </body>
     
