@@ -24,7 +24,7 @@ include_once ("menu.php");
 
 </p>
 <div class="row">
-<p >
+
 <div class="col-sm-6 " ></div>
 <div class="col-sm-3 " > 
 <form class="form-inline md-form form-sm mt-4">
@@ -33,12 +33,12 @@ include_once ("menu.php");
   <i class="fas fa-search ml-3" aria-hidden="true"></i>
 </form>
 </div>
-</p>
+
 </div>
 <div class="row">
-<div class=" col-sm-1"></div>
-<div class=" col-sm-10">
-<p > Personaal Info <hr color ="black" style="height:1px;"></p>
+
+<div class=" col-sm-12">
+<p style="font-size:20px;"> Personaal Info <hr color ="black" style="height:1px;"></p>
 </div>
 </div>
 
@@ -46,19 +46,16 @@ include_once ("menu.php");
         <form action="">
          
         <div class="form-row">
-        <div class="col-md-1"></div>
-          <!-- <div class="col-md-3"></div> -->
-        <div class="form-group col-md-5 mt-4">
-        <label for="firstname">First Name</label>
-        <input type="text" class="form-control border border-primary" id="firstname" placeholder="first Name">
-
-        </div>
        
-        <div class="col-sm-5 mt-4">
-        <label for="firstname">Last Name</label>
-        <input type="text" class="form-control border-primary" id="lastname" placeholder="last Name">
-</div>
+        <div class="form-group col-md-12 mt-4">
+        <label for="firstname">Full Name</label> <br>
+        <label for="firstname"></label>
+      
+
         </div>
+        </div>
+
+
 
 
 
@@ -66,9 +63,9 @@ include_once ("menu.php");
         <div  class="form-row">
         <div class="col-md-1"></div>
 
-       <div class="form-group col-md-10 ">
+       <div class="form-group col-md-12 ">
         <label for="address">Address</label>
-        <input type="text" class="form-control border border-primary" id="address" placeholder="Your address here">
+        <label for="address"></label>
 
         </div>
         </div>
@@ -79,9 +76,9 @@ include_once ("menu.php");
 
 
         <div  class="form-row">
-        <div class="col-md-1"></div>
+       
 
-       <div class="form-group col-md-2 ">
+       <div class="form-group col-md-3 ">
         <label for="address">Distance</label>
         <input type="text" class="form-control border border-primary" id="address" placeholder="distances in Km">
 
@@ -95,10 +92,26 @@ include_once ("menu.php");
         </div>
 
 
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-5">
         <label for="address">Date of Birth</label>
         <input type="text" class="form-control border border-primary" id="address" placeholder="Your address here">
         </div>
+        </div>
+
+
+
+        <div class="form-row">
+        
+        <div class="form-group col-md-6 mt-4">
+        <label for="firstname">Date of requesting</label>
+        <input type="text" class="form-control border border-primary" id="firstname" placeholder="first Name">
+
+        </div>
+       
+        <div class="col-sm-6 mt-4">
+        <label for="firstname">Last Name</label>
+        <input type="text" class="form-control border-primary" id="lastname" placeholder="last Name">
+</div>
         </div>
 
 
