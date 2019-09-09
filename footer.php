@@ -25,20 +25,29 @@
     $("#wrapper").toggleClass("toggled");
   });
 
-$(document).ready(function() {
-    setInterval(timestamp, 1000);
-});
-
-function timestamp() {
-  var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("timestamp").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET", "controller/timestamp.php", true);
-        xmlhttp.send();
+var timeDisplay = document.getElementById("timestamp");
+function refreshTime() {
+  var dateString = new Date().toLocaleString("en-US", {timeZone: "Asia/Colombo"});
+  var formattedString = dateString.replace(", ", " - ");
+  timeDisplay.innerHTML = formattedString;
 }
+
+setInterval(refreshTime, 1000);
+
+// $(document).ready(function() {
+//     setInterval(timestamp, 1000);
+// });
+
+// function timestamp() {
+//   var xmlhttp = new XMLHttpRequest();
+//         xmlhttp.onreadystatechange = function() {
+//             if (this.readyState == 4 && this.status == 200) {
+//                 document.getElementById("timestamp").innerHTML = this.responseText;
+//             }
+//         };
+//         xmlhttp.open("GET", "controller/timestamp.php", true);
+//         xmlhttp.send();
+// }
 
 </script>
 
