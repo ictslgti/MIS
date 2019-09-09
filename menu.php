@@ -7,7 +7,7 @@
          <a class="list-group-item list-group-item-action" href="index.php"> <i class="fas fa-home"></i>
              Dashboard <span class="sr-only">(current)</span></a>
 
-         
+         <div class="dropdown">
              <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Department"
                  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-university"></i> Department
@@ -18,8 +18,8 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="#">Something else here</a>
              </div>
-        
-        
+        </div>
+        <div class="dropdown">
              <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Staff" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-user-tie"></i> Staff
@@ -30,7 +30,8 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="staffdetails.php">staffdetails</a>
              </div>
-    
+        </div>
+        <div class="dropdown">
              <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Student" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-user-graduate"></i> Student
@@ -41,7 +42,8 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="#">Something else here</a>
              </div>
-    
+        </div>
+        <div class="dropdown">
              <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="ojt" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-briefcase"></i> OJT
@@ -53,11 +55,11 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="#">Something else here</a>
              </div>
-
+        </div>
              <a class="list-group-item list-group-item-action" href="examinations.php"><i class="fas fa-chalkboard-teacher"></i> Assessment</a>
 
              <a class="list-group-item list-group-item-action" href="library.php"><i class="far fa-file-alt"></i> Inventory</a>
-        
+        <div class="dropdown">
              <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="library" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-book-open"></i> Library 
@@ -70,12 +72,12 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="library_dashboard">Library Home</a>
              </div>
-   
+        </div>
 
              <a class="list-group-item list-group-item-action" href="Foodorder.php"> <i class="fas fa-hamburger"></i> Canteen</a>
 
              <a class="list-group-item list-group-item-action" href="#"><i class="fab fa-facebook-messenger"></i> Messaging</a>
-  
+        <div class="dropdown">
              <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="library" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                  <i class="far fa-grin"></i> Feedback 
@@ -87,7 +89,7 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="Feedback_dashboard">Feedback Home</a>
              </div>
-
+        </div>
              <a class="list-group-item list-group-item-action" href="onpeak.php"><i class="fas fa-leaf"></i> Onpeak</a>
 
              <a class="list-group-item list-group-item-action" href="notice.php"><i class="fas fa-"></i>Notice</a>
