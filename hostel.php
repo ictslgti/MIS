@@ -23,23 +23,28 @@ include_once ("menu.php");
 
 
 </p>
+
 <div class="row">
 
-<div class="col-sm-6 " ></div>
+<div class=" col-sm-6 mt-4">
+<p style="font-size:20px;"> Personal Info</p>
+</div>
 <div class="col-sm-3 " > 
-<form class="form-inline md-form form-sm mt-4">
+<form class="form-inline md-form form-sm mt-4 ">
  
   <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_Student_ID" aria-label="Search"id="search"> 
-  <i class="fas fa-search ml-3" aria-hidden="true"></i>
+  <i class="fas fa-search ml-3" aria-hidden="true"></i> 
 </form>
 </div>
-
 </div>
 <div class="row">
 
-<div class=" col-sm-12">
-<p style="font-size:20px;"> Personal Info <hr color ="black" style="height:1px;"></p>
+<div class="col-sm-12" >
+
+<hr color ="black" style="height:1px;">
 </div>
+
+
 </div>
 
 
