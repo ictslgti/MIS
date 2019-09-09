@@ -38,7 +38,7 @@ include_once ("menu.php");
 <div class="row">
 
 <div class=" col-sm-12">
-<p style="font-size:20px;"> Personaal Info <hr color ="black" style="height:1px;"></p>
+<p style="font-size:20px;"> Personal Info <hr color ="black" style="height:1px;"></p>
 </div>
 </div>
 
@@ -47,72 +47,96 @@ include_once ("menu.php");
          
         <div class="form-row">
        
-        <div class="form-group col-md-12 mt-4">
-        <label for="firstname">Full Name</label> <br>
-        <label for="firstname"></label>
-      
-
-        </div>
+        <div class="form-group col-md-6  ">
+        <label for="fullname">Full Name</label> <br>
+        <input type="text" class="form-control " id="fullname"disabled placeholder="Name disabled">
         </div>
 
-
-
-
-
-
-        <div  class="form-row">
-        <div class="col-md-1"></div>
-
-       <div class="form-group col-md-12 ">
-        <label for="address">Address</label>
-        <label for="address"></label>
+        <div class="form-group col-md-3 ">
+        <label for="dob">Date of birth</label>
+        <input type="text" class="form-control " id="dob" placeholder="dd/mm/yyyy" disabled>
 
         </div>
+        <div class="form-group col-md-3 ">
+        <label for="phone">phone</label>
+        <input type="text" class="form-control " id="phone" placeholder="07" disabled>
+
         </div>
 
+              
+        </div>
 
+        <div class="form-row">
+        <div class="form-group col-md-6 ">
+        <label for="disabledTextInput">Address</label>
+        <textarea name="message" class="rounded  form-control bg-light text-black"  type="text" id="disabledTextInput" placeholder="Disabled input" cols="5" rows="3" disabled ></textarea>
+        </div>
 
+        <div class="form-group col-md-3 ">
+        <label for="postalcode">Postal Code</label>
+        <input type="text" class="form-control " id="postalcode" placeholder="code disabled" disabled>
 
-
-
-        <div  class="form-row">
        
-
-       <div class="form-group col-md-3 ">
-        <label for="address">Distance</label>
-        <input type="text" class="form-control border border-primary" id="address" placeholder="distances in Km">
-
         </div>
 
+        <div class="form-group col-md-3 ">
+        <label for="ds">district</label>
+        <input type="text" class="form-control " id="ds" placeholder="content disabled" disabled>
 
-        <div class="form-group col-md-4 ">
-        <label for="address">Postal Code</label>
-        <input type="text" class="form-control border border-primary" id="address" placeholder="Your address here">
-
-        </div>
-
-
-        <div class="form-group col-md-5">
-        <label for="address">Date of Birth</label>
-        <input type="text" class="form-control border border-primary" id="address" placeholder="Your address here">
+       
         </div>
         </div>
+
+
+
 
 
 
         <div class="form-row">
+        <div class="form-group col-md-3 ">
+        <label for="gender">gender</label>
+        <input type="text" class="form-control " id="gender" placeholder="content disabled" disabled>
+        </div>
         
-        <div class="form-group col-md-6 mt-4">
+        <div class="form-group col-md-3 ">
+        <label for="nic">NIC</label>
+        <input type="text" class="form-control " id="nic" placeholder="content disabled" disabled>
+        </div>
+
+
+
+        <div class="form-group col-md-3">
+        <label for="address">distance</label>
+        <input type="text" class="form-control " id="address" placeholder="distances in Km">
+        </div>       
+
+
+
+        
+        
+        <div class="form-group col-md-3 ">
         <label for="firstname">Date of requesting</label>
-        <input type="text" class="form-control border border-primary" id="firstname" placeholder="first Name">
+        <input type="text" class="form-control " id="date" placeholder="dd/mm/yyyy">
+
+        </div>       
+        </div>
+
+        <div class="form-row">
+        <div class="form-group col-md-3">
+        <button type="button" class="btn btn-outline-primary btn-rounded waves-effect btn-block"><i class="fa fa-paper-plane "></i> Request</button><br>
+        </div>    
+        
+        <div class="form-group col-md-3">
+        <button type="button" class="btn btn-outline-danger btn-rounded waves-effect  "><i class=" fas fa-bolt  "></i>  Cancel</button>
+        
+
+        </div>          
+
+
 
         </div>
-       
-        <div class="col-sm-6 mt-4">
-        <label for="firstname">Last Name</label>
-        <input type="text" class="form-control border-primary" id="lastname" placeholder="last Name">
-</div>
-        </div>
+
+
 
 
 
