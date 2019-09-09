@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/signin.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link href="css/all.min.css" rel="stylesheet"> 
+    <link href="css/all.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
     <title><?php echo $title; ?></title>
   </head>
-  <body >
-  <main role="main" class="container">
+  <body>
+  <div class="d-flex" id="wrapper">

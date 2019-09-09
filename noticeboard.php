@@ -12,7 +12,7 @@ include_once("menu.php");
 <!-- bLOCK#2 start your code here & u can change -->
 <table class="table table-bordered">
 <div class="row">
-    <div class="col-8"> <h3>Notice</h3> </div>
+    <div class="col-8"> <h3>Notice & Updates</h3> </div>
     <div class="col-4"><button type="button" class="btn btn-info"> ADD </button></div>
     </div>
 
@@ -21,8 +21,8 @@ include_once("menu.php");
       <th scope="col">Department Name:</th>
       <th>
 
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option selected>Choose Your Department</option>
+    <select class="form-control" id="department">
+      <option selected>Choose Your Department...</option>
       <option>Electrical & Electronic Technology Department Department</option>
       <option>Construction Technology Department</option>
       <option>Information & Communications Technology Department</option>
@@ -44,7 +44,25 @@ include_once("menu.php");
 
     <tr>
     <th>Academic Year:</th>
-    <td><input type="text" class="form-control" placeholder="Acedemic Year"></td>
+    <td>
+    <select class="form-control" id="academiyear">
+      <option selected>Select Your Academic Year...</option>
+      <option>Others</option>
+      <option>2017/2018</option>
+      <option>2018/2019</option>
+      <option>2019/2020</option>
+    </select></td>
+    </tr>
+
+    <tr>
+    <th>Type of Notice</th>
+    <td><select class="form-control" id="typeofnotice">
+      <option selected>Choose Your Notice Type...</option>
+      <option>Exam</option>
+      <option>Result</option>
+      <option>Event</option>
+      <option>Others</option>
+    </select></td>
     </tr>
 
     <tr>
@@ -56,7 +74,12 @@ include_once("menu.php");
     <th>Editing Date:</th>
     <td><input type="text" class="form-control" placeholder="Editing Date"></td>
     </tr>
+  
 
+    <div class="row">
+    <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+    </div>
+    
   </tbody>
 </table>
  <!-- end your code here-->

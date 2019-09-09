@@ -12,26 +12,28 @@ include_once("menu.php");
 <html>
 <body>
 
-<body>
+
 <div class="container">
           <!-- Content here -->
         <div class=row>
-                <img src="img/onPeak-GES.png" class="rounded mx-auto d-block" alt="..." style="width:500px; padding-bottom: 20px; padding-top: 20px">
+            <blockquote class="blockquote text-center">
+                <p class="mb-0" style="font-family: 'Luckiest Guy', cursive; font-size: 75px; padding-left: 468px">Onpeak</p>
+                <footer class="blockquote-footer" style=" padding-left: 468px">Temporary Exit Request <cite title="Source Title"></cite></footer>
+            </blockquote>
+        </div>
+
+        
+        <div class="alert alert-primary" role="alert" Style="padding: 20px; font-size: 20px" >
+                INFORMATION AND COMMUNICATION TECHNOLOGY- HEAD OF THE DEPARTMNET
         </div>
 
         <div class=row>
-            <h5> Temporary Exit Form   </h5>
+                <br>
+                <br>
+                Today Date
+                <br>
+                <br>
         </div>
-
-        <div class="alert alert-primary" role="alert" Style="padding: 20px; font-size: 20px" >
-                INFORMATION AND COMMUNICATION TECHNOLGY- HEAD OF THE DEPARTMNET
-        </div>
-
-        <div class=row Style="padding: 20px" >
-                <?php $today = getdate();
-                print_r($today); ?>
-        </div>
-
         
         <div class=row >
         <table class="table table-hover">
@@ -52,7 +54,7 @@ include_once("menu.php");
                     <td></td>
                     <td>
                         <button type="button" class="btn btn-outline-primary">Approved</button>
-                        <button type="button" class="btn btn-outline-success">Disapproved</button>
+                        <button type="button" class="btn btn-outline-danger">Disapproved</button>
                     </td>
                   </tr>
                   <tr>
@@ -62,21 +64,51 @@ include_once("menu.php");
                     <td></td>
                     <td>
                         <button type="button" class="btn btn-outline-primary">Approved</button>
-                        <button type="button" class="btn btn-outline-success">Disapproved</button></td>
+                        <button type="button" class="btn btn-outline-danger">Disapproved</button>
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">Hephzibha Pathmanathan</th>
-                    <td>family issues </td>
+                    <td> family issues </td>
                     <td></td>
                     <td></td>
                     <td>
                         <button type="button" class="btn btn-outline-primary">Approved</button>
-                        <button type="button" class="btn btn-outline-success">Disapproved</button>
+                        <button type="button" class="btn btn-outline-danger">Disapproved</button>
                     </td>
                   </tr>
             </tbody>
         </table> 
         </div>
+
+
+        <div class="row">
+        <div class="card border-light mb-3" style="max-width: 18rem;margin: 30px">
+            <div class="card-header">SLGTI</div>
+            <div class="card-body">
+                <h5 class="card-title">Time Line</h5>
+                <p class="card-text">This Ruquest must be submitted to the guards, when Students want to exit SLGTI during school hours / on peak (8.15am - 4.15pm).</p>
+            </div>
+        </div>
+
+        <div class="card border-light mb-3" style="max-width: 18rem;margin: 30px">
+            <div class="card-header">SLGTI</div>
+            <div class="card-body">
+                <h5 class="card-title">Justification</h5>
+                <p class="card-text">Please supervise that students fall within the juristiction of the Code of Conduct </p>
+            </div>
+        </div>
+
+        <div class="card border-light mb-3" style="max-width: 18rem; margin: 30px">
+            <div class="card-header">SLGTI</div>
+            <div class="card-body">
+                <h5 class="card-title">Approvel</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+</div>
+
+        
 
 </div>    
 </body>

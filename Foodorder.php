@@ -11,8 +11,13 @@ $title = "Home | SLGTI";
 <p>order your food and enjoy your meal</p>
 
 <div class="container-fluid">
-        <div class="row"><blockquote class="blockquote"><h1>ORDER CART</h1></blockquote></div>
-     
+     <!-- FOOD MENU DESIGN    -->
+
+
+    <!-- ORDE CART DESIGN  -->
+
+    <div class="row"><blockquote class="blockquote"><h1>ORDER CART</h1></blockquote></div>
+
     <div class="row ">
         <div class="col-md-8"><h4 class="font-italic"><strong>Order Details</strong></h4>
             <div class="row  border border-secondary rounded-lg  bg-white rounded">
@@ -36,7 +41,7 @@ $title = "Home | SLGTI";
                         <tr>
                         <th scope="row">2</th>
                         <td>2</td>
-                        <td>kothu</td>
+                        <td>idiyapam</td>
                         <td></td>
                         <td>100</td>
                         </tr>

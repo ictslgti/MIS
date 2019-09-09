@@ -24,7 +24,7 @@ include_once ("Menu.php");
                 <img class="card-img-top" src="img/123.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Monday</h5>
-                    <a href="#" class="btn btn-primary">Select Foods</a>
+                    <a href="#" class="btn btn-primary">Click Here</a>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@ include_once ("Menu.php");
                 <img class="card-img-top" src="img/154.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Tuesday</h5>
-                    <a href="#" class="btn btn-primary">Select Foods</a>
+                    <a href="#" class="btn btn-primary">Click Here</a>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@ include_once ("Menu.php");
                 <img class="card-img-top" src="img/564.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Wednesday</h5>
-                    <a href="#" class="btn btn-primary">Select Foods</a>
+                    <a href="#" class="btn btn-primary">Click Here</a>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@ include_once ("Menu.php");
                 <img class="card-img-top" src="img/234.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Thursday</h5>
-                    <a href="#" class="btn btn-primary">Select Foods</a>
+                    <a href="#" class="btn btn-primary">Click Here</a>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@ include_once ("Menu.php");
                 <img class="card-img-top" src="img/789.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Friday</h5>
-                    <a href="#" class="btn btn-primary">Select Foods</a>
+                    <a href="#" class="btn btn-primary">Click Here</a>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@ include_once ("Menu.php");
                 <img class="card-img-top" src="img/987.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Saturday</h5>
-                    <a href="#" class="btn btn-primary">Select Foods</a>
+                    <a href="#" class="btn btn-primary">Click Here</a>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@ include_once ("Menu.php");
                 <img class="card-img-top" src="img/369.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Sunday</h5>
-                    <a href="#" class="btn btn-primary">Select Foods</a>
+                    <a href="#" class="btn btn-primary">Click Here</a>
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@ include_once ("Menu.php");
                 <img class="card-img-top" src="img/New spl.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Tuesday</h5>
-                    <a href="#" class="btn btn-primary">Select Foods</a>
+                    <a href="#" class="btn btn-primary">Click Here</a>
                 </div>
             </div>
         </div>
@@ -104,7 +104,7 @@ include_once ("Menu.php");
                 <img class="card-img-top" src="img/Thu spl.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Wednesday</h5>
-                    <a href="#" class="btn btn-primary">Select Foods</a>
+                    <a href="#" class="btn btn-primary">Click Here</a>
                 </div>
             </div>
         </div>

@@ -19,53 +19,58 @@ include_once("menu.php");
       
      
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
+    <form>
+        
+    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">A simple primary list group item</a>
     
-    
-     
-    <div class="wrapper">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Group Chat</h3>
-                </div>
+    <div class="container"> 
+   
+            <div class="row">
 
-                <ul class="list-unstyled components">
-                    <p>GSN</p>
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li><a href="#">Home 1</a></li>
-                            <li><a href="#">Home 2</a></li>
-                            <li><a href="#">Home 3</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
+            <p class="text-white"></p>
 
-                <ul class="list-unstyled CTAs">
-                    <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
-                    <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
-                </ul>
+            <div class="list-group">
+  
+            <div class="list-group">
+  
+
+  <a href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">Gafoor Sahan</h5>
+      <small class="text-muted">3 days ago</small>
+    </div>
+    <p class="mb-1">hi how are you</p>
+    <small class="text-muted">hi</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action">
+  <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">Fahim</h5>
+      <small class="text-muted">3 days ago</small>
+    </div>
+    <p class="mb-1">Fine you</p>
+    <small class="text-muted">hi..........</small>
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small class="text-muted">Donec id elit non mi porta.</small>
+  </a>
+</div>
+           
+            
+    <ul class="nav justify-content-end">
+        
+  
+
+
+  
+
+</ul>
+
+  
+         
+            
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     
-   
-  </tbody>
-  </form>
-</table>
+
 
 <!-- END YOUR CODER HERE -->
 

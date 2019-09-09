@@ -21,7 +21,7 @@ include_once("menu.php");
 </head>
 
 <body>
-<h1 class="text-center">SLGTI Payment Portal</h1>
+<h1 class="text-center display-3">SLGTI Payment Portal</h1>
 
 <br>
 <div class="row">
@@ -31,7 +31,7 @@ include_once("menu.php");
 <div class="form-group mx-sm-3 mb-2 text-right">
     <label for="inputPassword2" class="sr-only">Student ID</label>
     <input type="text" class="form-control" id="inputPassword2" placeholder="Student ID">
-    <button type="submit" class="btn btn-primary mb-3">Search</button>
+    <button type="submit" class="btn btn-primary mb-3"> <i class="fas fa-search"></i>Search</button>
   </div>
   </div>
   
@@ -44,77 +44,111 @@ include_once("menu.php");
 
 
         <div class="row">
-        <div class="col-sm-4"></div>
+
+      <div class="col-sm-4">
+        <div class="row">
+        <img src="img/payment.png" alt="photo irutha podalam" class="img-thumbnail">
+         </div>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fas fa-folder"></i>Report
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Daliy</a>
+    <a class="dropdown-item" href="#">Weely</a>
+    <a class="dropdown-item" href="#">Monthly</a>
+    <a class="dropdown-item" href="#">On Search ID</a>
+  </div>
+</div><br>
+
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fas fa-folder-open"></i>Report Type
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Exam</a>
+    <a class="dropdown-item" href="#">Re Exam</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+
+
+
+
+
+
+      </div>
+        <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+       
+       
+       
         <div class="col-sm-4">
         <form>
        <div class="form-row">
-       <div class="form-group col-md-12">
+       <div class="form-group col-md-12"><i class="fas fa-user"></i>
       <label for="inputEmail4">Name</label>
       <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
     </div>
-    <div class="form-group col-md-12">
+    <div class="form-group col-md-12"><i class="fas fa-building"></i>
     <label for="inputEmail4">Department</label>
       <input type="Department" class="form-control" id="inputEmail4" placeholder="Department">
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group"><i class="fas fa-map-marked-alt"></i>
     <label for="inputAddress">Address</label>
     <input type="text" class="form-control" id="inputAddress" placeholder="Address">
   </div>
-  <div class="form-group">
+  <div class="form-group"><i class="fas fa-at"></i>
   <label for="inputEmail4">Email</label>
       <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
   </div>
   
-    <div class="form-group ">
+    <div class="form-group "><i class="fas fa-phone-volume"></i>
       <label for="inputCity">Phone</label>
       <input type="phonenumber" class="form-control" id="inputCity"placeholder="Phone Number">
     </div>
-    <div class="form-group ">
+    <div class="form-group "><i class="fas fa-coins"></i>
     <label for="inputEmail4">Amount</label>
       <input type="Amount" class="form-control" id="inputEmail4" placeholder="Amount">
       </div>
-      
-<div class="btn-group">
-  <button type="button" class="btn btn-danger">Payment Method</button>
-  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
+      <div>
+      <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-swatchbook"></i>Payment Type&nbsp;&nbsp;&nbsp;&nbsp;</label>
   </div>
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
 
-  
-  <div class="btn-group">
-  <button type="button" class="btn btn-primary">Payment Reason</button>
-  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
-  </div>
-  </div>
- 
 </div>
 <br>
-
-    
-    
-</form>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-swatchbook"></i>Payment Reason</label>
+  </div>
+  <br>
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
 </div>
-
-
-
-<!-- colom3........start -->
-
+</div>
+ 
 <div class="col-sm-4">
 <br>
 <br>
@@ -148,8 +182,27 @@ include_once("menu.php");
   </tbody>
 </table>
 <br>
-<a href="#" class="btn btn-primary btn-lg btn-block " role="button" aria-pressed="true"> <i class="fas fa-user-graduate"></i> Pay </a>
-<a href="#" class="btn btn-secondary btn-lg active btn-sm" role="button" aria-pressed="true">Reset</a>
+<button type="button" class="btn btn-primary btn-block"><i class="fab fa-amazon-pay"></i> Pay</button><br>
+<button type="button" class="btn btn-secondary  btn-sm"><i class="fas fa-redo-alt"></i>Reset</button>&nbsp;
+<button type="button" class="btn btn-danger  btn-sm"><i class="fas fa-times"></i>Close</button>
+
+
+
+</div>
+
+<br>
+
+    
+    
+</form>
+</div>
+
+
+<!-- colom3........start -->
+
+<div class="col-sm-4">
+
+
 </div>
 <!-- colom3........ end    -->
 
