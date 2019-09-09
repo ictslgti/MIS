@@ -23,13 +23,32 @@ include_once("menu.php");
 <body>
 <h1 class="text-center">STAFF DETAILS</h1>
 
-<br>
+<div class="row">
+<p >
+<div class="col-sm-6" > </div>
+<div class="col-sm-6" > 
+<form class="form-inline md-form form-sm mt-4">
+ 
+  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_Staff_ID" aria-label="Search"id="search"> 
+  <i class="fas fa-search ml-3" aria-hidden="true"></i>
+  
+</div>
+</p>
+</div>
+<br><br>
 <div class="row">
             
-         <div class="col-6">
+         <div class="col-sm-12 and col-md-12 ">
          <div class="form-group">
          <label for="inputStaff_ID">Staff_ID</label>
         <input type="text" class="form-control" id="inputAddress" placeholder="Staff_ID">
+        </div>
+        </div>
+      
+         <div class="col-sm-6 ">
+         <div class="form-group">
+         <label for="inputNIC">NIC</label>
+        <input type="text" class="form-control" id="inputNIC" placeholder="NIC">
         </div>
          <div class="form-group">
          <label for="inputFirstName">First Name</label>
@@ -45,6 +64,11 @@ include_once("menu.php");
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
         <label class="form-check-label" for="inlineRadio2">Female</label>
         </div><br><br>
+        <div class="form-group">
+         <label for="inputFirstName">E-mail</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="E-mail">
+        </div><br>
+        
         <div class="form-row align-items-center">
      <label for="inputFirstName">Position</label><br>
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Position</label>
@@ -67,17 +91,14 @@ include_once("menu.php");
 			<option value="Warden">Warden</option>
       </select>
     </div><br>
-       <div class="form-group">
-         <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="Address">
-        </div>
+    
         <div class="form-group">
          <label for="inputDate_of_Join">Date_of_Join</label>
         <input type="text" class="form-control" id="inputDate_of_Join" placeholder="DD/MM/YYYY">
         </div>
         <button type="submit" class="btn btn-primary"  style="width:100%">ADD STAFF DETAILS</button>
      </div>
-       <div class="col-6">
+       <div class="col-sm-6 S">
        <div class="form-group">
          <label for="inputEPFNO">EPF NO</label>
         <input type="text" class="form-control" id="inputEPFNO" placeholder="EPF NO">
@@ -86,10 +107,14 @@ include_once("menu.php");
          <label for="inputLastName">Last Name</label>
         <input type="text" class="form-control" id="inputAddress" placeholder="Last Name">
         </div>
-        
+       
         <div class="form-group">
-         <label for="inputNIC">NIC</label>
-        <input type="text" class="form-control" id="inputNIC" placeholder="NIC">
+         <label for="inputNIC">Telephone number</label>
+        <input type="text" class="form-control" id="inputNIC" placeholder="Telephone_number">
+        </div>
+        <div class="form-group">
+         <label for="inputAddress">Address</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Address">
         </div>
         <div class="form-row align-items-center">
        <label for="inputFirstName">Type</label>
@@ -104,13 +129,7 @@ include_once("menu.php");
          <label for="inputDate_of_birth">Date_of_birth</label>
         <input type="text" class="form-control" id="inputDate_of_birth" placeholder="DD/MM/YYYY">
         </div>
-        <div class="form-group">
-         <label for="inputLeave_Date">Leave_Date</label>
-        <input type="text" class="form-control" id="inputLeave_Date" placeholder="DD/MM/YYYY">
-        </div>
 </div>
-
-  
 </form>
 
   </div>
