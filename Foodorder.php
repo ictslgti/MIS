@@ -13,12 +13,6 @@ $title = "Home | SLGTI";
  <!-- FOOD MENU DESIGN    -->
 
 <div class="container-fluid"> 
-     <div class="row">
-        <div class="col-12">
-            <h1 class="h1">Food Menu</h1>
-        </div>
-    </div>
-
         <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-3 container">
                 <div class="card" style="width:80%;Height:60% ;margin-top:3%;">
