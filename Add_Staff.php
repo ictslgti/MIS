@@ -17,7 +17,7 @@ include_once("menu.php");
 <br><br>
     <form>
       <div class="col form-group  container p-3 mb-2 " >
-    <h1 class="p-5 mb-5 bg-primary display-4 text-white rounded text-center  "><i class="fas fa-file-alt"></i>   STAFF DETAILS</h1>
+    <h1 class="text-center  "><i class="fas fa-file-alt"></i>   STAFF DETAILS</h1>
     <p style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">Personal Information</p>
     
    <br><br>

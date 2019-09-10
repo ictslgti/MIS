@@ -17,9 +17,9 @@ $title = "Department Details | SLGTI";
 </form>
 <form>
 
-    <div style="height:180mm;width:275mm;" class="border border-dark">
+    <div class="row border border-dark">
         <div class="col form-group container p-3 mb-2">
-            <div>
+            <div class="px-lg-5 container">
                 <div>
                     <img src="img/ministry.png" class="rounded float-left;" width="100" height="100" alt="">
                     <img src="img/SLGTI.png" class="rounded float-right" width="250" height="85" alt="">
