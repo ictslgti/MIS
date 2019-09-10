@@ -15,7 +15,7 @@ $title = "Examinations | SLGTI";
     $ictDepartmentName = "Department Of Information & Communication Technology";
     ?>
 
-
+<div class="shadow p-3 mb-5 bg-white rounded">
 
         <div class="highlight-blue">
             <div class="container">
@@ -28,12 +28,13 @@ $title = "Examinations | SLGTI";
                 </div>
             </div>
         </div>
+    </div>
 
         <!-- card start -->
 
         <div class="table container">
             <!-- <div class="shadow p-3 mb-5 bg-white rounded"> -->
-            <div class="card">
+            <div class="card alert alert-primary">
                 <br>
                 <div class="container">
                     <div class="intro">
@@ -44,6 +45,7 @@ $title = "Examinations | SLGTI";
             </div>
             <!-- </div> -->
         </div>
+    
         <!-- end start -->
 
         <br>
@@ -53,7 +55,7 @@ $title = "Examinations | SLGTI";
 
 
             <!-- mainform start  -->
-            <div class="shadow p-3 mb-5 bg-white rounded">
+           
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01"><i
@@ -107,7 +109,7 @@ $title = "Examinations | SLGTI";
                         </div>
                     </div>
                 </div>
-            </div>
+           
             <!-- main form end -->
 
             <br>
@@ -126,7 +128,8 @@ $title = "Examinations | SLGTI";
 
 
      ?>
-            <div class="card">
+     
+            <div class="card alert alert-primary">
                 <br>
                 <div class="container">
                     <div class="intro">
@@ -188,6 +191,7 @@ $title = "Examinations | SLGTI";
                     </tr>
                 </tbody>
             </table>
+        
             <!-- end of add table -->
             <br>
             <!-- save button start -->
