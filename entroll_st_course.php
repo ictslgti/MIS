@@ -99,4 +99,6 @@ include_once("menu.php");
 
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->
-<?php include_once("FOOTER.PHP"); ?>
+<?php 
+include_once("FOOTER.PHP"); 
+?>

@@ -12,7 +12,7 @@ $title = "Home | SLGTI";
 
  <!-- FOOD MENU DESIGN    -->
 
-<div class="container-fluid"> 
+
         <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-3 container">
                 <div class="card" style="width:80%;Height:60% ;margin-top:3%;">
@@ -104,7 +104,7 @@ $title = "Home | SLGTI";
         </div>
  
 
-    <!-- ORDE CART DESIGN  -->
+        <!-- ORDE CART DESIGN  -->
   
     <div class="row ">
         <div class="col-md-8"><h4 class="font-italic">
@@ -139,32 +139,28 @@ $title = "Home | SLGTI";
         </div>
 
         <div class="col-md-3">
-            <div class="row">
-                <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col">Order ID</th>
-                            <th scope="col">Total Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-borderless">
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>60</td>                        
-                            </tr>
-                            <tr>
-                            <th scope="row">2</th>
-                            <td>100</td>                    
-                            </tr>
-                        </tbody>
-                </table>
+            <div class="row border-top ">
+                <div class="col">
+                   OrderID
+                </div>
+                <div class="col">
+                    1
+                </div>
+            </div>
+            <div class="row border-bottom">
+                <div class="col">
+                    Total
+                </div>
+                <div class="col">
+                    100
+                </div>
             </div>
             <div class="row">
-                <button type="button" class="btn btn-success w-100">Order</button>
+                <button type="button" class="btn btn-success">Order</button>
             </div>
         </div>
-    </div>
-</div>
+    </div>lvol
+
 
    
 <!--END OF YOUR COD-->

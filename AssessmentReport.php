@@ -17,9 +17,9 @@ $title = "Department Details | SLGTI";
 </form>
 <form>
 
-    <div style="height:180mm;width:275mm;" class="border border-dark">
+    <div class="row border border-dark">
         <div class="col form-group container p-3 mb-2">
-            <div>
+            <div class="px-lg-5 container">
                 <div>
                     <img src="img/ministry.png" class="rounded float-left;" width="100" height="100" alt="">
                     <img src="img/SLGTI.png" class="rounded float-right" width="250" height="85" alt="">
@@ -27,7 +27,7 @@ $title = "Department Details | SLGTI";
                 </div>
                 <hr class="my-1">
                 <div>
-                    <h1 class="text-center">Sri Lanka German Training Institute</h1>
+                    <h1 class="text-center font-weight-bold">Sri Lanka German Training Institute</h1>
                 </div>
 
 
@@ -56,10 +56,22 @@ $title = "Department Details | SLGTI";
                                     <tr>
                                         <th scope="row">Module 3</th>
                                         <td>Larry</td>
-
                                     </tr>
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Semester I</th>
+                                            <th scope="col">Marks</th>
+
+                                        </tr>
+                                    </thead>
+
+
                                 </tbody>
                             </table>
+
+                        </div>
+                        <div>
+
                         </div>
                         <div class="col py-3 px-lg-5 border bg-light">
                             <table class="table">
@@ -86,6 +98,13 @@ $title = "Department Details | SLGTI";
                                         <td>Larry</td>
 
                                     </tr>
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Semester II</th>
+                                            <th scope="col">Marks</th>
+
+                                        </tr>
+                                    </thead>
                                 </tbody>
                             </table>
                         </div>

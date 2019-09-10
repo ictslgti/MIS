@@ -13,7 +13,7 @@ include_once("menu.php");
 
 <h1 class="text-center">Donor Request Form</h1>
 <br>
-<div class="container">
+
 <div class="row">
 
 <div class="col-sm-6 " ></div>
@@ -72,7 +72,8 @@ include_once("menu.php");
   <div class="form-group col-md-12">
       <label for="inputState">Designation</label>
       <select id="inputState" class="form-control">
-        <option selected>Staff</option>
+        <option selected>choose</option>
+        <option>Staff</option>
         <option>Student</option>
       </select>
     </div>
@@ -98,7 +99,7 @@ include_once("menu.php");
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <button type="button" class="btn btn-secondary">Add Donor..</button>
 
 </form>
 
