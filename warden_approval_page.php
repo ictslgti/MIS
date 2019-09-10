@@ -9,9 +9,12 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
+<br><br>
 
-<div class="card mb-md-5">
-  <h1 class="h4 text-center p-3 mb-2 bg-primary text-white">Off-peak Requests</h1>
+
+<div class="col form-group  container p-3 mb-2 bg-light text-dark border border-primary rounded">
+  <h1 class="h4 text-center p-3 mb-2 bg-primary text-white rounded">Off-peak Requests</h1>
+  
 
     <table class="table">
   <thead class="thead-dark">
@@ -62,6 +65,18 @@ include_once("menu.php");
       <td><button type="button" class="btn btn-success btn-sm">Approve</button>   <button type="button" class="btn btn-danger btn-sm">Reject</button></td>
     </tr>
     
+    <tr>
+      <th scope="row">3</th>
+      <td>????</td>
+      <td>????</td>
+      <td>????</td>
+      <td>?????</td>
+      <td>?????</td>
+      <td>????</td>
+      <td>??????</td>
+      <td><button type="button" class="btn btn-success btn-sm">Approve</button>   <button type="button" class="btn btn-danger btn-sm">Reject</button></td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -69,7 +84,7 @@ include_once("menu.php");
   </tbody>
 </table>
 </div>
-    
+   
 
 <!--END OF YOUR COD-->
 
