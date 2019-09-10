@@ -13,10 +13,10 @@ include_once("menu.php");
 
    <div class= "row"> 
    <div class ="col-4"><h1>Daily Canteen Report</h1></div>
-   <div class ="col-5"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
+   <div class ="col-4"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
 
-<div class ="col-3"><div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle ,d-flex align-items-start flex-column bd-highlight mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type </button>
+<div class ="col-1"></div>
+  <div class ="col-3"><button class="btn btn-secondary dropdown-toggle ,d-flex align-items-start flex-column bd-highlight mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="#">Breakfast</a>
     <a class="dropdown-item" href="#">Lunch</a>
