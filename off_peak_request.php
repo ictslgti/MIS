@@ -16,8 +16,8 @@ include_once("menu.php");
     <h1 class="p-5 mb-5 bg-primary display-4 text-white rounded text-center  "><i class="fas fa-file-alt"></i>   Student Off-Peak Request</h1>
     <hr class="my-1">
    
-  <div class="form-row container">
   
+  <div class="form-row">
     <div class="col-4" >
     <br>
      
@@ -39,7 +39,8 @@ include_once("menu.php");
     <label for="text" class="font-weight-bolder"  >Department :</label><br>
     <input type="text" class="form-control" placeholder="" disabled>
     </div>
-    
+    </div>
+    <div class="form-row">
     <div class="col-4" >
     <br>
    <label for="text" class="font-weight-bolder"  >Contact No :</label><br>
@@ -63,25 +64,28 @@ include_once("menu.php");
     <label for="exampleFormControlTextarea1" class="font-weight-bolder" >Reason for exit :</label><br>
     <textarea class="form-control form-control-lg " id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
-    <div class="col-2" >
+
+
+    
+    <div class="col-2">
     <br>
     
-    <button type="button" class="btn btn-primary">Request to approval</button>
-    
-    
-    <br> <br> <br>
+    <button type="button" class="btn btn-primary ">Request to approval</button>
     </div>
-    <div class="col-1" style="width:65px;" >
+    
+   
+    
+    <div class="col-1">
     <br>
-    <button type="button" class="btn btn-info">Clear</button>
+    <button type="button" class="btn btn-info ">Clear</button>
     </div>
-    <div class="col-1" >
+    <div class="col-1">
     <br>
-    <button type="button" class="btn btn-secondary">Cancel</button>
+    <button type="button" class="btn btn-secondary ">Cancel</button>
     </div>
     
 
-  </div>
+ 
   </div>
 </form>
 
