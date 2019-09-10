@@ -101,23 +101,34 @@ include_once ("menu.php");
 
             <div class="row">
 
-                <div class="col-md-12 mb-3">
-                <label for="Outcomes ID">Learning Outcomes</label>
-                <input type="text" class="form-control" id="Course ID" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                    Valid Learning outcomes is required.
-                </div>
-                </div>
+              <div class="col-md-12 mb-3">
+              <label for="Self">Learning Hours</label>
+              <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Hrs</span>
+              </div>
+                <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" required>
+              <div class="invalid-feedback" style="width: 50%;">
+                Duration is required.
+              </div>
+              </div>
+              </div>
+
             </div>
             
 
             <div class="row">
 
               <div class="col-md-6 mb-3">
-                <label for="semister">Semister</label>
-                <input type="text" class="form-control" id="semister" placeholder="" value="" required>
+              <label for="Department">Semister</label>
+                <select class="custom-select d-block w-100" id="Department" required>
+                    <option value="">Choose...</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
               <div class="invalid-feedback">
-                Valid semister is required.
+                Please provide a Department.
               </div>
               </div>
 
