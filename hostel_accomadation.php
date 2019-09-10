@@ -9,48 +9,157 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
-<div class="container" style="margin-top:30px">
-  <div class="card">
-   <div class="card-header">
-      <div class="row">
-        <div class="col-md-9">student accomadation</div>
-        <!-- <div class="col-md-3" align="right">
-          <button type="button" id="report_button" class="btn btn-danger btn-sm">Report</button>
-          <button type="button" id="add_button" class="btn btn-info btn-sm">Add</button>
-        </div> -->
-      </div>
-    </div>
-
-    <div class="card-body">
-    <div class="table-responsive">
-        <span id="message_operation"></span>
-
-<table class="table table-bordered  table-striped" id="Hostel accomadation">
-<thead>
-<tr>
-      <th scope="col">Student_id</th>
-      <th scope="col">full name</th>
-      <th scope="col">gender</th>
-      <th scope="col">room no</th>
-      <th scope="col">Block no</th>
-      <th scope="col">Date of admission</th>
-      
-      <th scope="col">Leaving date</th>
-      <th scope="col">address</th>
-      <th scope="col">district</th>
-    </tr>
-
-</thead>
-
-<tbody>
+<!-- <h1 class="text-center">SLGTI Hostel Management</h1>
+<p  class="text-center display-4"  style="font-size:25px;">Welcome to SLGTI Hostel Management <br> -->
 
 
-</tbody>
-</table>
+
+<div >
+          <!-- Content here -->
+        <div class=row>
+            <blockquote class="blockquote ">
+                <p class="mb-0 container" style="font-family: 'Luckiest Guy', cursive; font-size: 50px; padding-left: 200px  ">Hostel Management System</p>
+                <footer class="blockquote-footer" style=" padding-left: 468px">Hostel Allocation <cite title="Source Title"></cite></footer>
+            </blockquote>
+        </div>
+
+        
+     
+<div class="row">
+
+<div class=" col-sm-6 mt-4">
+<small class="display-4"   style="font-size:25px;">Hostel Accomadation </small>
+
 </div>
-   </div>
-  </div>
+<div class="col-sm-3 " > 
+
+<form class="form-inline md-form form-sm mt-4 ">
+ 
+  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_Student_ID" aria-label="Search"id="search"> 
+  <i class="fas fa-search ml-3" aria-hidden="true"></i> 
+</form>
 </div>
+</div>
+<div class="row">
+
+<div class="col-sm-12" >
+
+<hr color ="black" style="height:1px;">
+</div>
+
+</div>
+
+<form action="" method="get">
+
+<div class="form-row">
+       
+       <div class="form-group col-md-3 ">
+       <label for="id">Student ID</label> <br>
+       <input type="text" class="form-control " id="id" disabled placeholder="ID disabled">
+       </div>
+
+       
+    
+       
+       <div class="form-group col-md-9  ">
+       <label for="name">Full Name</label> <br>
+       <input type="text" class="form-control " id="name"disabled placeholder="Name disabled">
+       </div>
+       </div>
+
+       
+<div class="form-row">
+
+<div class="form-group col-md-6  ">
+       <label for="ad">Address</label> <br>
+       <textarea name="message" class="rounded  form-control bg-light text-black"  type="text" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3" disabled ></textarea>
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+            <label for="district">District</label>
+            <input type="text" class="form-control" id="district" placeholder="" disabled required>
+          </div>
+
+       </div>
+
+
+<div class="form-row">
+
+
+<div class="form-group col-md-3  ">
+<label for="hostel">select Hostel :</label>
+<select name="title" id="gender" class="form-control" >
+               <option value="">---Select---</option>
+               
+               <option value="male">  Male </option>
+                    <option value="female"> Female </option>
+                    
+         </select>
+         </div>
+
+
+         
+         <div class="form-group col-md-3  ">
+         <label for="hostel"> Block No:</label>
+        
+         <select name="hostel" id="block" class="form-control" >
+               <option value="">---Select---</option>
+                    <option value="block1">B12 </option>
+                    <option value="block2"> B14 </option>
+                    
+         </select>
+</div>
+
+<div class="form-group col-md-3  ">
+         <label for="hostel"> Room No:</label>
+        
+         <select name="hostel" id="block" class="form-control" >
+               <option value="">---Select---</option>
+                    <option value="block1">Room-1 </option>
+                    <option value="block2"> Room-2</option>
+                    
+         </select>
+</div>
+</div>
+
+
+
+
+
+
+<div class="form-row">
+<div class="col-md-3 mb-3">
+            <label for="add">Date of Addmission</label>
+            <input type="date" class="form-control" id="add" placeholder=""  required>
+          </div>
+
+          <div class="col-md-3 mb-3">
+            <label for="leave">Date of Leaving</label>
+            <input type="date" class="form-control" id="leave" placeholder=""  required>
+          </div>
+          </div>
+
+
+          <div class="form-row">
+        <div class="form-group col-md-2">
+        <button type="button" class="btn btn-primary rounded-pill btn-block waves-effect  ">
+        <i class="fa fa-paper-plane "></i> Allocated</button><br>
+        </div>    
+        
+        <div class="form-group col-md-2">
+        <button type="reset" class="btn btn-outline-danger rounded-pill btn-block waves-effect  ">
+        <i class=" fas fa-bolt  "></i> clear</button>
+        </div>
+        </div>
+        
+
+</form>
+
+
+
+
+
 
 
 
