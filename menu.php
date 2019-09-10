@@ -101,6 +101,22 @@
              </div>
          </div>
          <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="hostel.php" id="hostel" role="button" data-toggle="dropdown"
+                 aria-haspopup="true" aria-expanded="false">
+                 <i class="far fa-building"></i> Hostel
+             </a>
+
+
+        <div class="dropdown-menu" aria-labelledby="hostel">
+                 <a class="dropdown-item" href="hostel.php">Hostel registration</a>
+                 <a class="dropdown-item" href="hostel_allocation">hostel accomadation</a>
+                 <a class="dropdown-item" href="Admin view table">Admin</a>
+                 
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="#">student hostel details</a>
+             </div>
+        </div>
+         <div class="dropdown">
              <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="library" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <i class="far fa-grin"></i> Feedback
