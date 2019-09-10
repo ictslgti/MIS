@@ -12,7 +12,7 @@ include_once("menu.php");
 
 <br><br>
     <form>
-      <div class="col form-group  container p-3 mb-2 bg-light text-dark border border-primary rounded" >
+      <div class=" form-group  container p-3 mb-2 bg-light text-dark border border-primary rounded" >
     <h1 class="p-5 mb-5 bg-primary display-4 text-white rounded text-center  "><i class="fas fa-file-alt"></i>   Student Off-Peak Request</h1>
     <hr class="my-1">
    
@@ -58,7 +58,7 @@ include_once("menu.php");
    <label for="date" class="font-weight-bolder"  >Time :</label><br>
     <input type="time" class="form-control" placeholder="">
     </div>
-
+   
     <div class="col-12" >
     <br>
     <label for="exampleFormControlTextarea1" class="font-weight-bolder" >Reason for exit :</label><br>
@@ -66,25 +66,25 @@ include_once("menu.php");
     </div>
 
 
-    
-    <div class="col-2">
+    <div class="row">
+    <div class="col-7">
     <br>
     
-    <button type="button" class="btn btn-primary ">Request to approval</button>
+    <button type="button" class="btn btn-primary "><i class="fas fa-paper-plane"></i> Request to approval</button>
     </div>
     
    
     
-    <div class="col-1">
+    <div class="col-3">
     <br>
     <button type="button" class="btn btn-info ">Clear</button>
     </div>
-    <div class="col-1">
+    <div class="col-2">
     <br>
     <button type="button" class="btn btn-secondary ">Cancel</button>
     </div>
     
-
+    </div>
  
   </div>
 </form>

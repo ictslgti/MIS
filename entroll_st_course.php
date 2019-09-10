@@ -61,8 +61,8 @@ include_once("menu.php");
         <button type="button" class="btn btn-success">UPDATE</button><br>
         <button type="button" class="btn btn-danger">DELETE</button><br>
     </div>
-</form>
- 
+</form><br><br><br><br><br>
+
  <div class="table-row">
     <table class="table table-sm">
         <thead>
