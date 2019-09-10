@@ -1,12 +1,13 @@
+<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->  
 <?php
-$title = "Department Details | SLGTI";
+$title = "Home | SLGTI";
  include_once("config.php"); 
  include_once("head.php"); 
  include_once("menu.php"); 
  ?>
-<!-- end default code -->
+<!--END DON'T CHANGE THE ORDER--> 
 
-<!-- start my code -->
+<!--BLOCK#2 START YOUR CODE HERE -->
 <form>
             <div class="row border rounded-lg border-info mr-5 ml-5 mt-5 mb-5">
             <div class="col-md-12 col-sm-12  form-group  container bg-info">
@@ -59,30 +60,18 @@ $title = "Department Details | SLGTI";
           </div>
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
               
-          <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
-                        <button type="submit" class="btn btn-danger  ml-2 mt-3 float-right">delete</button>
-                        <button type="submit" class="btn btn-success ml-2 mt-3 float-right">update </button>
-                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">Add </button>
-                 
+
+                  <input class="btn btn-dark ml-2 mt-2 float-right" type="reset" value="Reset">
+                  <button type="submit" class="btn btn-info mt-2 float-right">Add Book</button>
+                  <button type="submit" class="btn btn-success ml- mt-3 float-right">update </button>
                  
 
             </div>
             </div>
       </form>
 
+<!--END OF YOUR COD-->
 
-
-
-
-
-
-
-
-
-
-
-<!-- end my code\ -->
-
-
-<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
+<!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
+<!--END DON'T CHANGE THE ORDER-->  
