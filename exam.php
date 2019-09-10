@@ -1,106 +1,67 @@
-<!--BLOCK#1 START DON'T CHANGE THE ORDER-->
-
+	
+<!--Block#1 start dont change the order-->
 <?php 
-$title="DEPARTMENT DETAIL | SLGTI";
-include_once("config.php");// in this field we can use for database connectivity, email configure
-include_once("head.php"); 
-include_once("menu.php"); 
-//include_once("head.php"); 
+$title="Add Course details | SLGTI";    
+include_once ("config.php");
+include_once ("head.php");
+include_once ("menu.php");
 ?>
- <!-- END DON'T CHANGE THE ORDER -->
+<!-- end dont change the order-->
 
 
-<!--BLOCK#2  START YOUR CODE HERE -->
-
-<html>
-    </head>
-        
-                <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0,">
-                <title>examinations</title>
-                <link rel="stylesheet" href="css/bootstrap.min.css">
-                <link rel="bootstrap.min.js" href="css/styles.min.css">
-    </head>
-<body>
-<!--Heading-->
-  <div class="row">
-  <div class="input-group mb-3">
-  <div class="col">
-    <h1 class="display-4 text-center">Students Assessments Results</h4>
-    </div>
-  </div>   
-  </div>
-
-  <div class="row">
-  <div class="input-group mb-3">
-  <div class="col">
-    <h1 class="text-center">Department of Information & Communication Technology</h1>
-    </div>
-  </div>  
-  </div>
-
-<!--Heading End-->
-
-  <div class="row">
-  <div class="input-group mb-3">
-</div>
-</div>
-
-
-<!--Dropdown-->
-  <div class="row">
-    <div class="col">
-    <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect036">Select Semister</label>
-            </div>
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="1">Semister 1</option>
-                <option value="2">Semister 2</option>
-            </select>
+<!-- Block#2 start your code -->
+<div class="ROW">
+        <div class="col text-center">
+            <h2>STUDENT AND COURSE DETAILS</h2>   
+        </div>
     </div>
 
-    <div class="col">
-    <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect036">Select Modules</label>
-            </div>
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="1">M07</option>
-                <option value="2">M05</option>
-            </select>
-    </div>
-   
-
-    <div class="col">
-    <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect036">Assessment Type</label>
-            </div>
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="1">Written</option>
-                <option value="2">Practical</option>
-            </select>
+    <form class="needs-validation">
+    <div class="form-row">
+          <div class class="col-md-1">
+          </div>
+          <div class="col">
+          <p style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">ENTROLLMENT</p>
+          </div>  
+    </div> 
+                      
+    <div class="form-row">
+          <div class="col-md-12 mb-3">
+          Student_Id :
+          <input type="text"  id="id" placeholder="" aria-describedby="idPrepend" required>
+         </div>
     </div>
 
-    <div class="col">
-    <div class="input-group-prepend">
-    <button class="btn btn-primary btn-block" type="submit">Submit form</button>
+    <div class="form-row">
+          <div class="col-md-12 mb-3">
+          Course_Id :
+          <input type="text"  id="no" placeholder="" aria-describedby="noPrepend" required>
+         </div>
     </div>
+
+    <div class="form-row">
+          <div class="col-md-12 mb-3">
+          Entroll Year :
+          <input type="text"  id="year" placeholder="" aria-describedby="fullnamePrepend" required>
+         </div>
     </div>
-<!--Dropdown End-->
 
-    <div class="row">
-  <div class="input-group mb-3">
-</div>
-</div>
-
-
-
-</body>
     
-</html>
+    <div class="form-row">
+        <button type="button" class="btn btn-primary">ADD</button><br>
+        <button type="button" class="btn btn-success">UPDATE</button><br>
+        <button type="button" class="btn btn-danger">DELETE</button><br>
+    </div>
+</form>
+</div>
 
-    <!--BLOCK#1  START DON'T CHANGE THE ORDER -->
-    <?php include_once("footer.php") ;?>
-    <!-- END DON'T CHANGE THE ORDER -->
+
+<!-- end your code -->
+
+
+<!--Block#3 start dont change the order-->
+<?php include_once ("footer.php"); ?>  
+<!--  end dont change the order-->
+    
+    
+  
