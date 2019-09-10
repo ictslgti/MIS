@@ -58,7 +58,7 @@ include_once("menu.php");
    <label for="date" class="font-weight-bolder"  >Time :</label><br>
     <input type="time" class="form-control" placeholder="">
     </div>
-
+   
     <div class="col-12" >
     <br>
     <label for="exampleFormControlTextarea1" class="font-weight-bolder" >Reason for exit :</label><br>
@@ -66,8 +66,8 @@ include_once("menu.php");
     </div>
 
 
-    
-    <div class="col-2">
+    <div class="row">
+    <div class="col-7">
     <br>
     
     <button type="button" class="btn btn-primary ">Request to approval</button>
@@ -75,16 +75,16 @@ include_once("menu.php");
     
    
     
-    <div class="col-1">
+    <div class="col-3">
     <br>
     <button type="button" class="btn btn-info ">Clear</button>
     </div>
-    <div class="col-1">
+    <div class="col-2">
     <br>
     <button type="button" class="btn btn-secondary ">Cancel</button>
     </div>
     
-
+    </div>
  
   </div>
 </form>
