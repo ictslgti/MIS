@@ -12,7 +12,7 @@ include_once("menu.php");
 <!--block 2 start my code here-->  
 
    <div class= "row"> 
-   <div class ="col-8"><h3>Daily Canteen Report</h3></div>
+   <div class ="col-4"><h1>Daily Canteen Report</h1></div>
    <div class ="col-4"><div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
@@ -20,6 +20,14 @@ include_once("menu.php");
   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
 </div>
+<div class ="col-4 colspan 6"><div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Breakfast</a>
+    <a class="dropdown-item" href="#">Lunch</a>
+    <a class="dropdown-item" href="#">Dinner</a>
+  </div>
+</div></div>
 <table class="table table-borderless ">
   <thead class=" thead-dark">
     <tr>
@@ -60,7 +68,7 @@ include_once("menu.php");
     </tr>
   </tbody>
 </table>
-<button type="button" class="btn btn-outline-info">Print</button>
+
 
 
 <table class="table table-borderless ">
