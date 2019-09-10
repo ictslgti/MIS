@@ -275,7 +275,7 @@ include_once("menu.php");
 
             <tr>
               <th scope="row">1</th>
-              <td>Science</td>
+              <td>Maths</td>
               <td><select name="science" id="science"  >
                 <option value="">Select</option>
                 <option value="a"> A </option>
