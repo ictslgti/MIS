@@ -16,8 +16,8 @@ include_once("menu.php");
     <h1 class="p-5 mb-5 bg-primary display-4 text-white rounded text-center  "><i class="fas fa-file-alt"></i>   Student Off-Peak Request</h1>
     <hr class="my-1">
    
-  <div class="form-row container">
   
+  <div class="form-row">
     <div class="col-4" >
     <br>
      
@@ -39,7 +39,8 @@ include_once("menu.php");
     <label for="text" class="font-weight-bolder"  >Department :</label><br>
     <input type="text" class="form-control" placeholder="" disabled>
     </div>
-    
+    </div>
+    <div class="form-row">
     <div class="col-4" >
     <br>
    <label for="text" class="font-weight-bolder"  >Contact No :</label><br>
@@ -81,7 +82,7 @@ include_once("menu.php");
     </div>
     
 
-  </div>
+ 
   </div>
 </form>
 
