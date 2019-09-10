@@ -56,10 +56,22 @@ $title = "Department Details | SLGTI";
                                     <tr>
                                         <th scope="row">Module 3</th>
                                         <td>Larry</td>
-
                                     </tr>
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Semester I</th>
+                                            <th scope="col">Marks</th>
+
+                                        </tr>
+                                    </thead>
+
+
                                 </tbody>
                             </table>
+
+                        </div>
+                        <div>
+
                         </div>
                         <div class="col py-3 px-lg-5 border bg-light">
                             <table class="table">
@@ -86,6 +98,13 @@ $title = "Department Details | SLGTI";
                                         <td>Larry</td>
 
                                     </tr>
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Semester II</th>
+                                            <th scope="col">Marks</th>
+
+                                        </tr>
+                                    </thead>
                                 </tbody>
                             </table>
                         </div>
