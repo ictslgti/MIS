@@ -17,7 +17,7 @@ $title = "Department Details | SLGTI";
 </form>
 <form>
 
-    <div class="row border border-dark">
+    <div class="row border border-dark" id="printableArea">
         <div class="col form-group container p-3 mb-2">
             <div class="px-lg-5 container">
                 <div>
