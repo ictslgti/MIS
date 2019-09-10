@@ -13,15 +13,10 @@ include_once("menu.php");
 
    <div class= "row"> 
    <div class ="col-4"><h1>Daily Canteen Report</h1></div>
-   <div class ="col-4"><div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
-    </div>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-</div>
-<div class ="col-4 colspan 6"><div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type </button>
+   <div class ="col-5"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
+
+<div class ="col-3"><div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle ,d-flex align-items-start flex-column bd-highlight mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="#">Breakfast</a>
     <a class="dropdown-item" href="#">Lunch</a>
@@ -62,9 +57,9 @@ include_once("menu.php");
       <td>3000</td>
     </tr>
     <tr>
-      <th scope="row" class="table-danger">TOTAL SALES</th>
-      <td class="table-danger">19500</td>
-      <td class="table-danger">26500</td>
+      <th scope="row" class="table-secondary">TOTAL SALES</th>
+      <td class="table-secondary">19500</td>
+      <td class="table-secondary">26500</td>
     </tr>
   </tbody>
 </table>
