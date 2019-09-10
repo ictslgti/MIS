@@ -13,7 +13,7 @@ include_once("menu.php");
 
 
 <div class="col form-group  container p-3 mb-2 bg-light text-dark border border-primary rounded">
-  <h1 class="h4 text-center p-3 mb-2 bg-primary text-white rounded">Off-peak Requests</h1>
+  <h1 class="display-4 text-center p-3 mb-2 bg-primary text-white rounded">Off-peak Requests</h1>
   
 
     <table class="table">
