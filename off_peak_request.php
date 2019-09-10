@@ -12,7 +12,7 @@ include_once("menu.php");
 
 <br><br>
     <form>
-      <div class="col form-group  container p-3 mb-2 bg-light text-dark border border-primary rounded" >
+      <div class=" form-group  container p-3 mb-2 bg-light text-dark border border-primary rounded" >
     <h1 class="p-5 mb-5 bg-primary display-4 text-white rounded text-center  "><i class="fas fa-file-alt"></i>   Student Off-Peak Request</h1>
     <hr class="my-1">
    
@@ -70,7 +70,7 @@ include_once("menu.php");
     <div class="col-7">
     <br>
     
-    <button type="button" class="btn btn-primary ">Request to approval</button>
+    <button type="button" class="btn btn-primary "><i class="fas fa-paper-plane"></i> Request to approval</button>
     </div>
     
    
