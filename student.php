@@ -121,20 +121,234 @@ include_once("menu.php");
     </div>    
 
     <div class="form-row"> 
-
+          <div class="col-md-12 mb-3">
+            <label for="address"> Address (Permanent) </label>
+            <input type="address" class="form-control" id="address" placeholder="House-No, Street, Hometown."  required>
+          </div>
+    </div>
+ 
+    <div class="form-row">
+          <div class="col-md-1 mb-3">
+            <label for="zip">ZIP-Code</label>
+            <input type="text" class="form-control" id="zip" placeholder=""  required>
+          </div>
           
+          <div class="col-md-2 mb-3">
+            <label for="district">District</label>
+            <input type="text" class="form-control" id="district" placeholder=""  required>
+          </div>
+
+          <div class="col-md-2 mb-3">
+            <label for="ds">Divisional Secretariat</label>
+            <input type="text" class="form-control" id="ds" placeholder=""  required>
+          </div>
+          
+          <div class="col-md-2 mb-3">
+            <label for="province">Province</label>
+            <input type="text" class="form-control" id="provice" placeholder=""  required>
+          </div>
+    </div>
+
+    <div class="form-row"> 
+          <div class="col-md-12 mb-3">
+            <label for="address"> Address (Temporary) </label>
+            <input type="address" class="form-control" id="address" placeholder="House-No, Street, Hometown,District."  required>
+          </div>
+    </div>
+
+
+
+    <div class="form-row">
+          <div class class="col-md-1"></div>
+          <div class="col">
+          <p style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;"> Educational Qalification </p>
+          </div>  
+    </div> 
+
+    <div class="form-row">
+      <div class class="col-md-6 mb-3">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col6">No.</th>
+              <th scope="col6">Subject</th>
+              <th scope="col6">Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Science</td>
+              <td><select name="science" id="science"  >
+                <option value="">Select</option>
+                <option value="a"> A </option>
+                <option value="b"> B </option>
+                <option value="c"> C </option>
+                <option value="s"> S </option>
+                <option value="f"> F </option>
+            </select>
+            </td>
+            </tr>
+
+            <tr>
+              <th scope="row">1</th>
+              <td>Science</td>
+              <td><select name="science" id="science"  >
+                <option value="">Select</option>
+                <option value="a"> A </option>
+                <option value="b"> B </option>
+                <option value="c"> C </option>
+                <option value="s"> S </option>
+                <option value="f"> F </option>
+            </select>
+            </td>
+            </tr>
+
+            <tr>
+              <th scope="row">1</th>
+              <td>Science</td>
+              <td><select name="science" id="science"  >
+                <option value="">Select</option>
+                <option value="a"> A </option>
+                <option value="b"> B </option>
+                <option value="c"> C </option>
+                <option value="s"> S </option>
+                <option value="f"> F </option>
+            </select>
+            </td>
+            </tr>
+
+            <tr>
+              <th scope="row">1</th>
+              <td>Science</td>
+              <td><select name="science" id="science"  >
+                <option value="">Select</option>
+                <option value="a"> A </option>
+                <option value="b"> B </option>
+                <option value="c"> C </option>
+                <option value="s"> S </option>
+                <option value="f"> F </option>
+            </select>
+            </td>
+            </tr>
+
+            <tr>
+              <th scope="row">1</th>
+              <td>Science</td>
+              <td><select name="science" id="science"  >
+                <option value="">Select</option>
+                <option value="a"> A </option>
+                <option value="b"> B </option>
+                <option value="c"> C </option>
+                <option value="s"> S </option>
+                <option value="f"> F </option>
+            </select>
+            </td>
+            </tr>
+          </tbody>
+    </table>
+    </div>
+
+    <div class class="col-md-6 mb-3">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col6">No.</th>
+              <th scope="col6">Subject</th>
+              <th scope="col6">Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Science</td>
+              <td><select name="science" id="science"  >
+                <option value="">Select</option>
+                <option value="a"> A </option>
+                <option value="b"> B </option>
+                <option value="c"> C </option>
+                <option value="s"> S </option>
+                <option value="f"> F </option>
+            </select>
+            </td>
+            </tr>
+
+            <tr>
+              <th scope="row">1</th>
+              <td>Science</td>
+              <td><select name="science" id="science"  >
+                <option value="">Select</option>
+                <option value="a"> A </option>
+                <option value="b"> B </option>
+                <option value="c"> C </option>
+                <option value="s"> S </option>
+                <option value="f"> F </option>
+            </select>
+            </td>
+            </tr>
+
+            <tr>
+              <th scope="row">1</th>
+              <td>Science</td>
+              <td><select name="science" id="science"  >
+                <option value="">Select</option>
+                <option value="a"> A </option>
+                <option value="b"> B </option>
+                <option value="c"> C </option>
+                <option value="s"> S </option>
+                <option value="f"> F </option>
+            </select>
+            </td>
+            </tr>
+
+            <tr>
+              <th scope="row">1</th>
+              <td>Science</td>
+              <td><select name="science" id="science"  >
+                <option value="">Select</option>
+                <option value="a"> A </option>
+                <option value="b"> B </option>
+                <option value="c"> C </option>
+                <option value="s"> S </option>
+                <option value="f"> F </option>
+            </select>
+            </td>
+            </tr>
+
+            <tr>
+              <th scope="row">1</th>
+              <td>Science</td>
+              <td><select name="science" id="science"  >
+                <option value="">Select</option>
+                <option value="a"> A </option>
+                <option value="b"> B </option>
+                <option value="c"> C </option>
+                <option value="s"> S </option>
+                <option value="f"> F </option>
+            </select>
+            </td>
+            </tr>
+          </tbody>
+      </table>
+      </div> 
     </div>
 
     <div class="form-row">
-
+    <div class="table-responsive-lg">
+  <table class="table">
+    ...
+  </table>
+</div>
+    </div>         
           
           
-          
-    </div>
-
+  
+    <div class="form-row">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>       
 
   
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  
 </form>
 
 
