@@ -64,21 +64,24 @@ include_once("menu.php");
     <label for="exampleFormControlTextarea1" class="font-weight-bolder" >Reason for exit :</label><br>
     <textarea class="form-control form-control-lg " id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
-    <div class="col-2" >
+
+
+    
+    <div class="col-2">
     <br>
     
-    <button type="button" class="btn btn-primary">Request to approval</button>
-    
-    
-    <br> <br> <br>
+    <button type="button" class="btn btn-primary ">Request to approval</button>
     </div>
-    <div class="col-1" style="width:65px;" >
+    
+   
+    
+    <div class="col-1">
     <br>
-    <button type="button" class="btn btn-info">Clear</button>
+    <button type="button" class="btn btn-info ">Clear</button>
     </div>
-    <div class="col-1" >
+    <div class="col-1">
     <br>
-    <button type="button" class="btn btn-secondary">Cancel</button>
+    <button type="button" class="btn btn-secondary ">Cancel</button>
     </div>
     
 
