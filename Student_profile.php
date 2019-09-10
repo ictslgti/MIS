@@ -2,11 +2,11 @@
 <!---BLOCK 01--->
 <?php 
    
-include_once("CONFIG.PHP");
+include_once("config.php");
 
 $title ="STUDENT PROFILE | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
-include_once("HEAD.PHP");
-include_once("MENU.PHP");
+include_once("head.php");
+include_once("menu.php");
 
 ?>
 <!----END DON'T CHANGE THE ORDER---->
