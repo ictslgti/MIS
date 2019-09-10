@@ -27,7 +27,7 @@ $title = "Department Details | SLGTI";
                 </div>
                 <hr class="my-1">
                 <div>
-                    <h1 class="text-center">Sri Lanka German Training Institute</h1>
+                    <h1 class="text-center font-weight-bold">Sri Lanka German Training Institute</h1>
                 </div>
 
 
