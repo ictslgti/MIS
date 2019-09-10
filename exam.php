@@ -6,7 +6,6 @@ include_once("config.php");// in this field we can use for database connectivity
 include_once("head.php"); 
 include_once("menu.php"); 
 //include_once("head.php"); 
-
 ?>
  <!-- END DON'T CHANGE THE ORDER -->
 
