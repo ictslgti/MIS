@@ -11,16 +11,17 @@ include_once("menu.php");
     <!-- end dont change the order-->
 <!--block 2 start my code here-->  
 
+
    <div class= "row"> 
    <div class ="col-4"><h1>Daily Canteen Report</h1></div>
    <div class ="col-4"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
 
 <div class ="col-1"></div>
-  <div class ="col-3"><button class="btn btn-secondary dropdown-toggle ,d-flex align-items-start flex-column bd-highlight mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Breakfast</a>
-    <a class="dropdown-item" href="#">Lunch</a>
-    <a class="dropdown-item" href="#">Dinner</a>
+  <div class ="col-3"><select class="custom-select d-block w-100" id="Department" required="">
+                    <option value="">Type...</option>
+                    <option>Breakfast</option>
+                    <option>Lunch</option>
+                    <option>Dinner</option>
   </div>
 </div></div>
 <table class="table table-borderless ">
@@ -95,14 +96,19 @@ include_once("menu.php");
 
    </div>
     
+  <div class="row">
   
+  <div class ="col-4"></div>
+  <div class ="col-4"></div>
+  <div class ="col-1"></div>
+  <div class ="col-3"><button type="button" class="btn btn-info">Print</button></div>
+
+
+  
+  </div>
 
     
-
-
-    
-
-    
+  
   
 <!--block 3 start dont change the order-->
 
