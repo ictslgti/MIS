@@ -112,6 +112,7 @@ $title = "Department Details | SLGTI";
             </div>
 
         </div>
+    </div>
 
 </form>
 
