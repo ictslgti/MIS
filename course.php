@@ -19,26 +19,23 @@ include_once ("menu.php");
     </div>
  <br>
  
- <div class="row">
+ 
 
-      <div class="col-6"></div>
-      <div class="col-3"></div>
-      <div class="col-2">
-      <div class="btn-group">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-          Select Department
+    <div class="col-3">
+      <div class="btn-group dropright">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select Your Deparement
         </button>
-        
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-          <button class="dropdown-item" type="button">Mechnical</button>
-          <button class="dropdown-item" type="button">Food Dept</button>
-          <button class="dropdown-item" type="button">Automotive</button>
-          <button class="dropdown-item" type="button">Construction</button>
+        <div class="dropdown-menu">
+       <button class="dropdown-item" type="button">Mechnical</button>
+              <button class="dropdown-item" type="button">Food Dept</button>
+              <button class="dropdown-item" type="button">Automotive</button>
+              <button class="dropdown-item" type="button">Construction</button>
         </div>
       </div>
-      </div>
+    </div>
 
-  </div>
+
 
   <div class="card-body">
               <div class="table-responsive">
@@ -59,7 +56,8 @@ include_once ("menu.php");
                       <td>5</td>
                       <td>
                       <a href="#" class="btn btn-info btn-icon-split"> <span class="text">View Module</span></a>
-                      <a href="#" class="btn btn-success btn-icon-split"><span class="text">View More</span></a>
+                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">View More</span></a>
+                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">Batch</span></a>
                     </td>
                     </tr>
                     <tr>
@@ -68,7 +66,8 @@ include_once ("menu.php");
                       <td>4</td>
                       <td>
                       <a href="#" class="btn btn-info btn-icon-split"> <span class="text">View Module</span></a>
-                      <a href="#" class="btn btn-success btn-icon-split"><span class="text">View More</span></a>
+                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">View More</span></a>
+                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">Batch</span></a>
                     </td>
                     </tr>
                   </tbody>
