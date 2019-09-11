@@ -185,7 +185,6 @@ include_once("menu.php");
 <!-- colom3........ end -->
 </div>
 <br>
-<<<<<<< HEAD:payment.php
 </div>
 <!-- dont change -->
 <?php
@@ -193,7 +192,6 @@ include_once("footer.php");
 ?>
 </body>
 </html>
-=======
     
     
 
@@ -204,4 +202,3 @@ include_once("footer.php");
     ?>
     </body>
     </html>
->>>>>>> 6b6e824383b1524a57c45d44c9a638ebb16da982:Payment.php
