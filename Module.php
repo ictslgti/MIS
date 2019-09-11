@@ -1,7 +1,7 @@
 	
 <!--Block#1 start dont change the order-->
 <?php 
-$title="Add Module details | SLGTI";    
+$title="Module details | SLGTI";    
 include_once ("config.php");
 include_once ("head.php");
 include_once ("menu.php");
@@ -42,9 +42,8 @@ include_once ("menu.php");
 
 
             <div class="row">
-
-              <div class="col-md-3 mb-3"> 
-                <label for="Notional">Notional Hours</label>
+              <div class="col-md-6 mb-3"> 
+                <label for="National">National Hours</label>
               <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
@@ -56,85 +55,36 @@ include_once ("menu.php");
               </div>
               </div>
 
-              <div class="col-md-3 mb-3"> 
-                <label for="Lectures">Lecture Hours</label>
-              <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Hrs</span>
-              </div>
-                <input type="text" class="form-control" id="Lectures" placeholder="Hours in Digits" required>
-              <div class="invalid-feedback" style="width: 50%;">
-                Duration is required.
-              </div>
-              </div>
-              </div>
-
-              <div class="col-md-3 mb-3"> 
-                <label for="Practical">Practical & Site Visits</label>
-              <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Hrs</span>
-              </div>
-                <input type="text" class="form-control" id="Practical" placeholder="Hours in Digits" required>
-              <div class="invalid-feedback" style="width: 50%;">
-                Duration is required.
-              </div>
-              </div>
-              </div>
-
-              <div class="col-md-3 mb-3"> 
-                <label for="Self">Self Study</label>
-              <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Hrs</span>
-              </div>
-                <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" required>
-              <div class="invalid-feedback" style="width: 50%;">
-                Duration is required.
-              </div>
-              </div>
-              </div>
+              <div class="col-md-6 mb-3"> 
+                <label for="Learning">Learning Hours</label>
+                <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Hrs</span>
+                </div>
+                <input type="text" class="form-control" id="Learning" placeholder="Hours in Digits" required>
+                <div class="invalid-feedback" style="width: 50%;">
+                  Duration is required.
+                </div>
+                </div>
+                </div>
 
             </div>
 
-            
-
             <div class="row">
-
-              <div class="col-md-12 mb-3">
-              <label for="Self">Learning Hours</label>
-              <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Hrs</span>
-              </div>
-                <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" required>
-              <div class="invalid-feedback" style="width: 50%;">
-                Duration is required.
-              </div>
-              </div>
-              </div>
-
-            </div>
-            
-
-            <div class="row">
-
               <div class="col-md-6 mb-3">
-              <label for="Department">Semister</label>
-                <select class="custom-select d-block w-100" id="Department" required>
-                    <option value="">Choose...</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
+                <label for="semister">Semister</label>
+                <input type="text" class="form-control" id="semister" placeholder="" value="" required>
               <div class="invalid-feedback">
-                Please provide a Department.
+                Valid semister is required.
               </div>
               </div>
 
               <div class="col-md-6 mb-3">
                 <label for="unit">Relative Unit</label>
                 <input type="text" class="form-control" id="unit" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid Relative Unit is required.
+                </div>
                 <div class="invalid-feedback">
                   Please provide a Relative Unit name
                 </div>
@@ -144,10 +94,9 @@ include_once ("menu.php");
                
                 
             <div class="row">
-
               <div class="col-md-3 mb-3">
                 <label for="aim">Module aim</label>
-                <textarea class="form-control" id="Module aim" rows="8"></textarea>
+                <textarea class="form-control" id="Module aim" rows="3"></textarea>
               <div class="invalid-feedback">
                 Module is required.
               </div>
@@ -155,15 +104,18 @@ include_once ("menu.php");
               
               <div class="col-md-3 mb-3">
                 <label for="unit">Learning Outcomes</label>
-                <textarea class="form-control" id="Outcomes" rows="8"></textarea>
+                <textarea class="form-control" id="Outcomes" rows="3"></textarea>
               <div class="invalid-feedback">
                 Learning Outcomes is required.
+              </div>
+              <div class="invalid-feedback">
+                Please provide a Relative Unit name
               </div>
               </div>
 
               <div class="col-md-3 mb-3">
                 <label for="resources">Resources</label>
-                <textarea class="form-control" id="resources" rows="8"></textarea>
+                <textarea class="form-control" id="resources" rows="3"></textarea>
               <div class="invalid-feedback">
                 Resources is required.
               </div>
@@ -171,9 +123,12 @@ include_once ("menu.php");
 
               <div class="col-md-3 mb-3">
                 <label for="references">References</label>
-                <textarea class="form-control" id="References" rows="8"></textarea>
+                <textarea class="form-control" id="References" rows="3"></textarea>
               <div class="invalid-feedback">
                 References is required.
+              </div>
+              <div class="invalid-feedback">
+                Please provide References name
               </div>
               </div>
             
@@ -188,7 +143,7 @@ include_once ("menu.php");
 
 
 <!--Block#3 start dont change the order-->
-<?php include_once ("footer.php"); ?>  
+<?php include_once ("menu.php"); ?>  
 <!--  end dont change the order-->
     
     
