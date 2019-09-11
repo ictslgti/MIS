@@ -210,7 +210,7 @@ $title = "Home | SLGTI";
 
         <div class="col-sm-12 col-md-4 col-lg-3 container">
         <div class="card bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+            <div class="card-header">FOOD CART</div>
                 <div class="card-body">
 
                     <div class="row">
@@ -232,7 +232,7 @@ $title = "Home | SLGTI";
                     </div>
 
                     <div class="row">
-                        <button type="button" class="btn btn-success w-75">Order</button>
+                        <a href="OrderView" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" >Order</button></a>
                     </div>
                     
                 </div>
