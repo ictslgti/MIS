@@ -16,12 +16,12 @@ include_once("menu.php");
 
 
           <!-- Content here -->
-        <div class=row>
+        
             <blockquote class="blockquote ">
-                <p class="mb-0 container" style="font-family: 'Luckiest Guy', cursive; font-size: 50px; padding-left: 200px  ">Hostel Management System</p>
-                <footer class="blockquote-footer" style=" padding-left: 468px">Hostel Allocation <cite title="Source Title"></cite></footer>
+                <p class=" ml-4" style="font-family: 'Luckiest Guy', cursive; font-size: 50px; padding-left: 450px;   ">Hostel Management System</p>
+                <footer class="blockquote-footer" style=" padding-left: 650px">Hostel Allocation <cite title="Source Title"></cite></footer>
             </blockquote>
-        </div>
+        
 
         
      
@@ -147,7 +147,7 @@ include_once("menu.php");
           </div>
 
          <div class="form-group col-md-2 mt-5 ml-5">
-        <button type="button" class="btn btn-primary rounded-pill btn-block waves-effect  ">
+        <button type="submit" class="btn btn-primary rounded-pill btn-block waves-effect onclick='window.location.reload();'  ">
         <i class="fa fa-paper-plane "></i> Allocated</button><br>
         </div>    
         <div class="form-group col-md-2 mt-5 ml-1">
@@ -157,17 +157,7 @@ include_once("menu.php");
           </div>
 
 
-          <div class="form-row">
-        <!-- <div class="form-group col-md-2">
-        <button type="button" class="btn btn-primary rounded-pill btn-block waves-effect  ">
-        <i class="fa fa-paper-plane "></i> Allocated</button><br>
-        </div>     -->
-        
-        <!-- <div class="form-group col-md-2">
-        <button type="reset" class="btn btn-outline-danger rounded-pill btn-block waves-effect  ">
-        <i class=" fas fa-bolt  "></i> clear</button>
-        </div> -->
-        </div>
+          
         
 
 </form>
