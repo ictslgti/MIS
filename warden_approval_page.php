@@ -12,7 +12,7 @@ include_once("menu.php");
 <br><br>
 
 
-<div class="container form-group   p-3 mb-2 bg-light text-dark border border-primary rounded">
+<div class="col container form-group   p-3 mb-2 bg-light text-dark border border-primary rounded">
   <h1 class="display-4 text-center p-3 mb-2 bg-primary text-white rounded"><i class="fas fa-inbox"></i> Off-peak Requests</h1>
   
 
