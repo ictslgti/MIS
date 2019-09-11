@@ -50,8 +50,7 @@ $title ="Home | SLGTI";
                         
 </form>
 </div>
-</body>
-</html>
+
 
     
 
