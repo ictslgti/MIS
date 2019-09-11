@@ -12,8 +12,8 @@ include_once("menu.php");
 <!--block 2 start my code here-->  
 
    <div class= "row"> 
-   <div class ="col-3"><h1>"Perfect Food is Born of Perfect Order..."</h1></div>
-   <div class ="col-4"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
+   <div class ="col-sm-12 col-md-6 col-lg-6 container"><h1>"Perfect Food is Born of Perfect Order..."</h1></div>
+   <div class ="col-sm-12 col-md-4 col-lg-4 container"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
 
 <div class ="col-3"></div>
   <div class ="col-1"> </div>
