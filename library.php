@@ -42,7 +42,7 @@ $title = "Home | SLGTI";
 </div>
 
 <div class="card-deck pt-5 pl-3 pr-3">
-<a href="library.php" class="text-white" style ="text-decoration: none">
+<a href="AddBook.php" class="text-white" style ="text-decoration: none">
   <div class="card text-white bg-primary" style="max-height: 14rem;">
   <div class="card-header"><b>Add Book</b></div>
     <div class="card-body">
@@ -52,7 +52,7 @@ $title = "Home | SLGTI";
     </div>
 </a>
   </div>
-  <a href="url" class="text-white" style ="text-decoration: none">
+  <a href="IssueBook.php" class="text-white" style ="text-decoration: none">
   <div class="card text-white bg-success" style="max-height: 14rem;">
   <div class="card-header">Issue Book</div>
     <div class="card-body">
@@ -61,7 +61,7 @@ $title = "Home | SLGTI";
     </div>
     </a>
   </div>
-  <a href="url" class="text-white" style ="text-decoration: none">
+  <a href="returnBook.php" class="text-white" style ="text-decoration: none">
   <div class="card text-white bg-secondary" style="max-height: 14rem;">
   <div class="card-header">Manage Issued books</div>
     <div class="card-body">
@@ -71,7 +71,7 @@ $title = "Home | SLGTI";
     </a>
   </div>
 
-  <a href="url" class="text-white" style ="text-decoration: none">
+  <a href="#" class="text-white" style ="text-decoration: none">
   <div class="card text-white bg-info" style="max-height: 14rem;">
   <div class="card-header">Manage books</div>
     <div class="card-body">
