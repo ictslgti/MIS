@@ -240,11 +240,11 @@
              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                  <li class="nav-item">
                      <a class="nav-link" href="chat"><i class="fab fa-facebook-messenger"></i> <span
-                             class="badge badge-primary badge-pill">109</span></a>
+                             class="badge badge-primary badge-pill" id="messengerx">109</span></a>
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="notifications"><i class="fas fa-bell"></i> <span
-                             class="badge badge-warning badge-pill">14</span></a>
+                             class="badge badge-warning badge-pill" id="notificationx">14</span></a>
                  </li>
                  <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"

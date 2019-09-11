@@ -53,6 +53,14 @@ setInterval(refreshTime, 1000);
 //         xmlhttp.open("GET", "controller/timestamp.php", true);
 //         xmlhttp.send();
 // }
+
+//notification sample number
+var x = document.getElementById("notificationx")
+x.innerHTML = Math.floor((Math.random() * 1000) + 1);
+
+//message sample number
+var x = document.getElementById("messengerx")
+x.innerHTML = Math.floor((Math.random() * 2000) + 1);
   </script>
 
 
