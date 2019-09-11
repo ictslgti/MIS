@@ -17,7 +17,7 @@ $title = "Department Details | SLGTI";
 </form>
 <form>
 
-    <div class="row border border-dark">
+    <div class="row border border-dark" id="printableArea">
         <div class="col form-group container p-3 mb-2">
             <div class="px-lg-5 container">
                 <div>
@@ -70,9 +70,7 @@ $title = "Department Details | SLGTI";
                             </table>
 
                         </div>
-                        <div>
 
-                        </div>
                         <div class="col py-3 px-lg-5 border bg-light">
                             <table class="table">
                                 <thead class="thead-dark">
@@ -114,6 +112,7 @@ $title = "Department Details | SLGTI";
             </div>
 
         </div>
+    </div>
 
 </form>
 

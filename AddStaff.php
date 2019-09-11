@@ -15,20 +15,38 @@ include_once("menu.php");
 </head>
 <body>
 <br><br>
-    <form>
+    
       <div class="col form-group  container p-3 mb-2 " >
-    <h1 class="text-center  "><i class="fas fa-file-alt"></i>   STAFF DETAILS</h1>
-    <p style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">Personal Information</p>
+    <h1 class=" text-center  "><i class="fas fa-file-alt"></i>   STAFF DETAILS</h1>
+    </p>
     
    <br><br>
 
-<div class="row">
-<form class="form-inline md-form form-sm mt-4">
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_Staff_ID" aria-label="Search"id="search"> 
-  <i class="fas fa-search ml-3" aria-hidden="true"></i>  
-</div>
-</p>
 
+   <div class="row">
+
+<div class=" col-sm-6 mt-4">
+<p style="font-size: 20px; font-weight: 700; ">Personal Information</p>
+</div>
+<div class="col-sm-3 " > 
+<form class="form-inline md-form form-sm mt-4 ">
+
+  <input class="form-control form-control-sm ml-3 w-65 rounded-pill" type="text" placeholder="Search_Student_ID" aria-label="Search"id="search"> 
+  <i class="fas fa-search ml-3 " aria-hidden="true"></i> 
+</form>
+</div>
+</div>
+<div class="row">
+
+<div class="col-sm-12" >
+
+<hr color ="black" style="height:1px;">
+</div>
+
+
+</div>
+
+<form>
 <div class="form-row">
     <div class="col-4" >
     <br>
@@ -81,7 +99,7 @@ include_once("menu.php");
     <label for="text" class="font-weight-bolder"  >Email :</label><br>
     <input type="text" class="form-control" placeholder="Email " ><br>
 
-     <label for="inputFirstName">Position</label><br>
+    <label for="text" class="font-weight-bolder"  >Position :</label><br>
      <div class="form-row align-items-center">
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Position</label>
       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
@@ -112,7 +130,7 @@ include_once("menu.php");
        <input type="text" class="form-control" placeholder="Date_of_Join"><br>  
       
        <div class="form-row align-items-center">
-       <label for="inputFirstName">Type</label>
+       <label for="text" class="font-weight-bolder"  >Type :</label><br>
        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Type</label>
        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
             <option selected>Choose...</option>

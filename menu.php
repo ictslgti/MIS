@@ -55,9 +55,22 @@
              </div>
          </div>
          <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Timetable" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-calendar-alt"></i> Timetable & Notice
+             </a>
+             <div class="dropdown-menu" aria-labelledby="Timetable">
+                 <a class="dropdown-item" href="Timetable">Timetable Info</a>
+                 <a class="dropdown-item" href="AddTimetable">Add a Timetable</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="Notice">Notice Info</a>
+                 <a class="dropdown-item" href="AddNotice">Add a Notice</a>
+             </div>
+         </div>
+         <div class="dropdown">
              <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Assessment" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 <i class="fas fa-chalkboard-teacher"></i> Examination
+                 <i class="fas fa-award"></i> Examination
              </a>
              <div class="dropdown-menu" aria-labelledby="Assessment">
                  <a class="dropdown-item" href="Assessment">Assessment Info</a>
@@ -70,11 +83,11 @@
              </div>
          </div>
          <div class="dropdown">
-             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Assessment" role="button"
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Attendance" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <i class="fas fa-chalkboard-teacher"></i> Attendance
              </a>
-             <div class="dropdown-menu" aria-labelledby="Assessment">
+             <div class="dropdown-menu" aria-labelledby="Attendance">
                  <a class="dropdown-item" href="Attendance">Attendance Info</a>
                  <a class="dropdown-item" href="AddAttendance">Add a Attendance</a>
                  <div class="dropdown-divider"></div>
@@ -101,27 +114,24 @@
              </div>
          </div>
          <div class="dropdown">
-             <a class="list-group-item list-group-item-action dropdown-toggle" href="hostel.php" id="hostel" role="button" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="hostel"
+                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <i class="far fa-building"></i> Hostel
              </a>
-
-
-        <div class="dropdown-menu" aria-labelledby="hostel">
-                 <a class="dropdown-item" href="hostel.php">Hostel registration</a>
-                 <a class="dropdown-item" href="hostel_allocation">hostel accomadation</a>
-                 <a class="dropdown-item" href="Admin view table">Admin</a>
-                 
+             <div class="dropdown-menu" aria-labelledby="hostel">
+                 <a class="dropdown-item" href="Hostel">Hostel Info</a>
+                 <a class="dropdown-item" href="AddHostel">Add a Hostel</a>
+                 <a class="dropdown-item" href="AddRoom">Add a Room</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">student hostel details</a>
+                 <a class="dropdown-item" href="RequestHostel">Request Hostel</a>
              </div>
-        </div>
+         </div>
          <div class="dropdown">
-             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="library" role="button"
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Feedback" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <i class="far fa-grin"></i> Feedback
              </a>
-             <div class="dropdown-menu" aria-labelledby="library">
+             <div class="dropdown-menu" aria-labelledby="Feedback">
                  <a class="dropdown-item" href="StudentFeedback">Student Feedback Info</a>
                  <a class="dropdown-item" href="AddStudentFeedback">Create a Student Feedback</a>
                  <div class="dropdown-divider"></div>
@@ -138,9 +148,9 @@
                  <i class="fas fa-file-alt"></i> Inventory
              </a>
              <div class="dropdown-menu" aria-labelledby="Inventory">
-                 <a class="dropdown-item" href="Inventory">Inventory Info</a>
-                 <a class="dropdown-item" href="AddInventory">Add a Inventory</a>
-                 <a class="dropdown-item" href="AddItem">Add a Item</a>
+                 <a class="dropdown-item" href="inventory_view table.php">Inventory Info</a>
+                 <a class="dropdown-item" href="add_Inventory.php">Add a Inventory</a>
+                 <a class="dropdown-item" href="add_item">Add a Item</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="InventoryReport">Inventory Report</a>
              </div>
@@ -161,16 +171,45 @@
                  <a class="dropdown-item" href="LibraryReport">Library Report</a>
              </div>
          </div>
-
-         <a class="list-group-item list-group-item-action" href="Foodorder"> <i class="fas fa-hamburger"></i>
-             Canteen</a>
-
-         <a class="list-group-item list-group-item-action" href="#"><i class="fab fa-amazon-pay"></i> Payment </a>
-        
-         <a class="list-group-item list-group-item-action" href="onpeak"><i class="fas fa-leaf"></i> Onpeak</a>
-
-         <a class="list-group-item list-group-item-action" href="notice"><i class="fas fa-"></i>Notice</a>
-
+         <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Canteen" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-hamburger"></i> Canteen
+             </a>
+             <div class="dropdown-menu" aria-labelledby="Canteen">
+                 <a class="dropdown-item" href="FoodItems">Food Items</a>
+                 <a class="dropdown-item" href="AddFoodItem">Add a Food Item</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="FoodOrders">Food Orders</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="CanteenReport">Daily Report</a>
+             </div>
+         </div>
+         <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Payment" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fab fa-amazon-pay"></i> Payment
+             </a>
+             <div class="dropdown-menu" aria-labelledby="Payment">
+                 <a class="dropdown-item" href="Payments">Payments Info</a>
+                 <a class="dropdown-item" href="Payment">Make a Payment</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="CanteenReport">Payments Report</a>
+             </div>
+         </div>
+         <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="OnPeakOffPeak " role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-door-open"></i> On-Peak & Off-Peak 
+             </a>
+             <div class="dropdown-menu" aria-labelledby="OnPeakOffPeak">
+                 <a class="dropdown-item" href="OnPeak">On-Peak Info</a>
+                 <a class="dropdown-item" href="RequestOnPeak">Request a On-Peak</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="OffPeak">Off-Peak Info</a>
+                 <a class="dropdown-item" href="RequestOffPeak">Request a Off-Peak</a>
+             </div>
+         </div>
      </div>
  </div>
  <!-- /#sidebar-wrapper -->

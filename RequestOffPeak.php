@@ -8,12 +8,10 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-
-
 <br><br>
     <form>
-      <div class="col form-group  container p-3 mb-2 bg-light text-dark border border-primary rounded" >
-    <h1 class="p-5 mb-5 bg-primary display-4 text-white rounded text-center  "><i class="fas fa-file-alt"></i>   Student Off-Peak Request</h1>
+      <div class="form-group   p-3 mb-2 bg-light text-dark border border-primary rounded" >
+    <h4 class="h4 p-5 mb-5 bg-primary text-white rounded text-center  "><i class="fas fa-file-alt"></i>   Student Off-Peak Request</h4>
     <hr class="my-1">
    
   
@@ -67,29 +65,27 @@ include_once("menu.php");
 
 
     <div class="row">
-    <div class="col-7">
+    <div class="col-9">
     <br>
     
-    <button type="button" class="btn btn-primary ">Request to approval</button>
+    <button type="button" class="btn btn-primary "><i class="fas fa-paper-plane"></i> Request to approval</button>
     </div>
     
    
     
     <div class="col-3">
     <br>
-    <button type="button" class="btn btn-info ">Clear</button>
+    <button type="button" class="btn btn-outline-dark btn-md ">Clear</button>
     </div>
-    <div class="col-2">
-    <br>
-    <button type="button" class="btn btn-secondary ">Cancel</button>
-    </div>
+   
     
+
+
+   
     </div>
  
-  </div>
+ 
 </form>
-
-    
 
 <!--END OF YOUR COD-->
 

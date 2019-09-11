@@ -60,8 +60,6 @@ $title = "Department Details | SLGTI";
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
               
           <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
-                        <button type="submit" class="btn btn-danger  ml-2 mt-3 float-right">delete</button>
-                        <button type="submit" class="btn btn-success ml-2 mt-3 float-right">update </button>
                         <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">Add </button>
                  
                  

@@ -132,7 +132,7 @@ include_once ("menu.php");
         </div>    
         
         <div class="form-group col-md-3">
-        <button type="button" class="btn btn-outline-danger btn-rounded waves-effect  "><i class=" fas fa-bolt  "></i>  Cancel</button>
+        <button type="reset" class="btn btn-outline-danger btn-rounded waves-effect  "><i class=" fas fa-bolt  "></i>  Cancel</button>
         
 
         </div>          
