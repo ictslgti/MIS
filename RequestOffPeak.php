@@ -10,7 +10,7 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 <br><br>
     <form>
-      <div class="form-group   p-3 mb-2 bg-light text-dark border border-primary rounded" >
+      <div class="form-group container   p-3 mb-2 bg-light text-dark border border-primary rounded" >
     <h4 class="h4 p-5 mb-5 bg-primary text-white rounded text-center  "><i class="fas fa-file-alt"></i>   Student Off-Peak Request</h4>
     <hr class="my-1">
    
@@ -77,6 +77,8 @@ include_once("menu.php");
     <br>
     <button type="button" class="btn btn-outline-dark btn-md ">Clear</button>
     </div>
+
+    
    
     
 
@@ -85,8 +87,74 @@ include_once("menu.php");
     </div>
     </div>
     </div>
+    
  
 </form>
+
+<br><br>
+
+<div class="form-group container   p-3 mb-2 bg-light text-dark border border-primary rounded" >
+    <h4 class="h4 p-5 mb-5 bg-primary text-white rounded text-center  "><i class="fas fa-folder-open"></i>  Off-Peak Request Archives</h4>
+    <div class="table-responsive-sm">
+    <table class="table table-responsive-sm w-100">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name of applicant</th>
+      <th scope="col">Registration No</th>
+      <th scope="col">Department</th>
+     <th colspan="3">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>????</td>
+      <td>????</td>
+      <td>????</td>
+      <td>?????</td>
+     
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>????</td>
+      <td>????</td>
+      <td>????</td>
+      <td>?????</td>
+     
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>????</td>
+      <td>????</td>
+      <td>????</td>
+      <td>?????</td>
+      
+    </tr>
+    
+    <tr>
+      <th scope="row">3</th>
+      <td>????</td>
+      <td>????</td>
+      <td>????</td>
+      <td>?????</td>
+      
+    </tr>
+    
+  </tbody>
+</table>
+</div>
+
+ 
+  </tbody>
+</table>
+
+
+    </div>
+
+
+
+
 
 <!--END OF YOUR COD-->
 
