@@ -15,7 +15,7 @@ include_once("menu.php");
 <div class="col container form-group   p-3 mb-2 bg-light text-dark border border-primary rounded">
   <h1 class="display-4 text-center p-3 mb-2 bg-primary text-white rounded"><i class="fas fa-inbox"></i> Off-peak Requests</h1>
   
-
+    <div class="table-responsive-sm">
     <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -79,10 +79,12 @@ include_once("menu.php");
     
   </tbody>
 </table>
+</div>
 
  
   </tbody>
 </table>
+
 </div>
    
 
