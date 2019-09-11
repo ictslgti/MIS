@@ -70,9 +70,7 @@ $title = "Department Details | SLGTI";
                             </table>
 
                         </div>
-                        <div>
 
-                        </div>
                         <div class="col py-3 px-lg-5 border bg-light">
                             <table class="table">
                                 <thead class="thead-dark">
