@@ -8,10 +8,11 @@ $title = "Home | SLGTI";
 <!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+
 <div class="row mt-5">
-<div class="w-100"></div>
     <div class="col-md-3 col-sm-12 form-group pl-3 pr-3 pt-2">
     </div>
+
     <div class="col-md-6 col-sm-12  form-group  container">
         <div class="card">
             <h5 class="card-header bg-info" style="color:white">Issued Book Details</h5>
@@ -31,9 +32,10 @@ $title = "Home | SLGTI";
             </div>
         </div>
     </div>
+
     <div class="col-md-3 col-sm-12 form-group pl-3 pr-3 pt-2">
     </div>
-
+</div>
 <!--END OF YOUR COD-->
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
