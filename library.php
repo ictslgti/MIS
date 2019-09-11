@@ -8,73 +8,79 @@ $title = "Home | SLGTI";
 <!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-<form>
-        <div> 
-            <div class="row">
-            <div class="col form-group  container" style="background-color:#0275d8">
-                <h2  class="pt-2" style="color:white"><b>Book info</b></h2>
-              </div>
-              <div class="w-100"></div>
-              <div class="col form-group ml-5 mr-5 mt-3 container">
-                      <label for="bookName">01. Book Name</label>
-                      <input type="text" class="form-control" id="bookName" aria-describedby="bookNameHelp" placeholder="Book Name">
-                      <small id="bookNameHelp" class="form-text text-muted">Name of the book appeared on front cover.</small>
-              </div>
-              <div class="col form-group ml-5 mr-5 mt-3 container">
-                      <label for="authorName">02. Author Name</label>
-                      <input type="text" class="form-control" id="authorName" aria-describedby="authorNameHelp" placeholder="Author Name">
-                      <small id="bookNameHelp" class="form-text text-muted">Name of the the person who written the book.</small>
-              </div>
-              <div class="w-100"></div>
-              <div class="col form-group ml-5 mr-5 container">
-                  <label for="pubName">03. Publisher Name</label>
-                  <input type="text" class="form-control" id="pubName" aria-describedby="pubNameHelp" placeholder="Publisher Name">
-                  <small id="pubNameHelp" class="form-text text-muted">Name of the publishing company or individual.</small>
-              </div>
-              <div class="col form-group ml-5 mr-5 container">
-                  <label for="isbn">04. ISBN</label>
-                  <input type="text" class="form-control" id="isbn" aria-describedby="isbnHelp" placeholder="ISBN">
-                  <small id="isbnHelp" class="form-text text-muted">ISBN Number of the book. If no ISBN let be empty</small>
-              </div>
-              <div class="w-100"></div>
-              <div class="col form-group ml-5 mr-5 container">
-                  <label for="category">05. Book Category</label>
-                  
-                  <select class="form-control" name="category">
-                      <option value="ict">ICT</option>
-                      <option value="construction">Construction</option>
-                      <option value="mechanical">Mechanical</option>
-                      <option value="autoMobile">Auto Mobile</option>
-                      <option value="food">Food Tech</option>
-                      <option value="electronic">Electronic</option>
-                      <option value="common">Common</option>
-                    </select>
-                  <small id="pubNameHelp" class="form-text text-muted">Chose acategory from dropdown menu.</small>
-              </div>
-              <div class="col form-group ml-5 mr-5 container">
-                  <label for="yearPub">06. Year of publication</label>
-                  <input type="text" class="form-control" id="yearPub" aria-describedby="yearPubHelp" placeholder="Year">
-                  <small id="yearPubHelp" class="form-text text-muted">Input the year of first publication</small>
-              </div>
-              <div class="w-100"></div>
-              <div class="col form-group ml-5 mr-5 container">
-                  <label for="cost">07. Book Cost</label>
-                  <input type="text" class="form-control" id="cost" aria-describedby="costHelp" placeholder="Book Cost">
-                  <small id="costHelp" class="form-text text-muted">Retail price of the book.</small>
-          </div>
-          <div class="col form-group ml-5 mr-5 container">
-                  <label for="datePic">08. Purchesed Date</label>
-                  <input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp">
-                  <small id="datePicHelp" class="form-text text-muted">Purchesed Date or donated date.</small>
+<div class="card-deck ml-5 mr-5 pt-4">
+  <div class="card">
+    <img src="img/library_23.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Books Listed</h5>
+      <p class="h1">2836</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <div class="card">
+    <img src="img/library_24.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Times Book Issued</h5>
+      <p class="h1">221</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <div class="card">
+    <img src="img/library_25.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Overtimed Borrows</h5>
+      <p class="h1">03</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+</div>
 
-                  <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
-                  <button type="submit" class="btn btn-primary mt-3 float-right">Add Book</button>
+<div class="card-deck pt-5 pl-3 pr-3">
+<a href="library.php" class="text-white" style ="text-decoration: none">
+  <div class="card text-white bg-primary" style="max-height: 14rem;">
+  <div class="card-header"><b>Add Book</b></div>
+    <div class="card-body">
+      <p class="card-text">By clicking here you can add new books and their copies to the libarary.</p>
+      <a class="btn btn-light mt-3" href="AddBook.php" role="button">Add Book</a>
+      
+    </div>
+</a>
+  </div>
+  <a href="url" class="text-white" style ="text-decoration: none">
+  <div class="card text-white bg-success" style="max-height: 14rem;">
+  <div class="card-header">Issue Book</div>
+    <div class="card-body">
+      <p class="card-text">You can Issue a book to a member here. But issue only one book per member at a time.</p>
+      <a class="btn btn-light mt-3" href="IssueBook.php" role="button">Issue Here</a>
+    </div>
+    </a>
+  </div>
+  <a href="url" class="text-white" style ="text-decoration: none">
+  <div class="card text-white bg-secondary" style="max-height: 14rem;">
+  <div class="card-header">Manage Issued books</div>
+    <div class="card-body">
+      <p class="card-text">Return borrowed books here and able to add fine also. able to extend the borrow period.</p>
+      <a class="btn btn-light mt-3" href="returnBook.php" role="button">Issued books</a>
+    </div>
+    </a>
+  </div>
 
-            </div>
-            </div>
-          </div>
-      </form>
-
+  <a href="url" class="text-white" style ="text-decoration: none">
+  <div class="card text-white bg-info" style="max-height: 14rem;">
+  <div class="card-header">Manage books</div>
+    <div class="card-body">
+      <p class="card-text">View all the books and their copies there are available in this library. And also able to edit.</p>
+      <a class="btn btn-light mt-3" href="#" role="button">Manage books</a>
+    </div>
+    </a>
+  </div>
+</div>
 <!--END OF YOUR COD-->
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
