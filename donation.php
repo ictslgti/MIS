@@ -11,7 +11,7 @@ include_once("menu.php");
 
 
 
-<h1 class="text-center">Donor Request Form</h1>
+<h1 class="text-center">Donor Details</h1>
 <br>
 
 <div class="row">
@@ -31,11 +31,51 @@ include_once("menu.php");
          <div class="row">   
          <div class="col-12">
          <form>
-         <p style="font-size:20px;"> Personal Info <hr color ="black" style="height:1px;"></p><br>
+         <p style="font-size:20px;"> Donor_Info <hr color ="black" style="height:1px;"></p><br>
          </form>
 </div>
 </div>
+<table class="table">
+  <thead class="thead-r">
+    <tr>
+      <th scope="col">D_id</th>
+      <th scope="col">Reference id</th>
+      <th scope="col">fullname</th>
+      <th scope="col">Address</th>
+      <th scope="col">Email</th>
+      <th scope="col">Blood group</th>
+      <th scope="col">dob</th>
+      <th scope="col">join date</th>
+      <th scope="col">Weight</th>
+      <th scope="col">Gender</th>
 
+    </tr>
+  </thead>
+  
+</table>
+
+<form>
+<fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Status</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+          <label class="form-check-label" for="gridRadios1">
+            Elligible
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+          <label class="form-check-label" for="gridRadios2">
+            inelligible
+          </label>
+        </div>
+        
+      </div>
+    </div>
+  </fieldset>
+    </form>
 
 
 
