@@ -132,7 +132,7 @@
                  <i class="far fa-grin"></i> Feedback
              </a>
              <div class="dropdown-menu" aria-labelledby="Feedback">
-                 <a class="dropdown-item" href="StudentFeedback">Student Feedback Info</a>
+                 <a class="dropdown-item" href="StudentFeedbackinfo.php">Student Feedback Info</a>
                  <a class="dropdown-item" href="AddStudentFeedback">Create a Student Feedback</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="TeacherFeedback">Teacher Feedback Info</a>
