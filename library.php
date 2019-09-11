@@ -10,7 +10,7 @@ $title = "Home | SLGTI";
 <!--BLOCK#2 START YOUR CODE HERE -->
 <div class="card-deck ml-5 mr-5 pt-4">
   <div class="card">
-    <img src="img/library_23.png" class="card-img-top" alt="...">
+    <img src="img/library_25.png" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Books Listed</h5>
       <p class="h1">2836</p>
@@ -20,7 +20,7 @@ $title = "Home | SLGTI";
     </div>
   </div>
   <div class="card">
-    <img src="img/library_24.png" class="card-img-top" alt="...">
+    <img src="img/library_25.png" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Times Book Issued</h5>
       <p class="h1">221</p>
