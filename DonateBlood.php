@@ -76,7 +76,10 @@ include_once("menu.php");
     </div>
   </fieldset>
     </form>
+<<<<<<< HEAD
     <button type="button" class="btn btn-secondary">Update details</button>
+=======
+>>>>>>> ed1e9718797f99135f70fff05a47868f073e8c8e
 
 
 
@@ -85,4 +88,8 @@ include_once("menu.php");
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
+<<<<<<< HEAD
 <!--END DON'T CHANGE THE ORDER-->
+=======
+<!--END DON'T CHANGE THE ORDER-->
+>>>>>>> ed1e9718797f99135f70fff05a47868f073e8c8e
