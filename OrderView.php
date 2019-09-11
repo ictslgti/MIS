@@ -12,7 +12,7 @@ include_once("menu.php");
 <!--block 2 start my code here-->  
 
    <div class= "row"> 
-   <div class ="col-3"><h1>"FOOD SHOULD BE FUN"</h1></div>
+   <div class ="col-3"><h1>"Perfect Food is Born of Perfect Order..."</h1></div>
    <div class ="col-4"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
 
 <div class ="col-3"><input type="search" class="form-control ds-input" id="search-input" placeholder="Search by Id..." aria-label="Search for..." 
