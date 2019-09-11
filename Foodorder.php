@@ -12,7 +12,7 @@ $title = "Home | SLGTI";
 
  <!-- FOOD MENU DESIGN    -->
 
-<div class="container-fluid"> 
+
         <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-3 container">
                 <div class="card" style="width:80%;Height:60% ;margin-top:3%;">
@@ -104,67 +104,71 @@ $title = "Home | SLGTI";
         </div>
  
 
-    <!-- ORDE CART DESIGN  -->
+        <!-- ORDE CART DESIGN  -->
   
     <div class="row ">
-        <div class="col-md-8"><h4 class="font-italic">
-            <div class="row">
-                <table class="table">
-                        <tr>
+        <div class="col-sm-12 col-md-4 col-lg-8 container"><h4 class="font-italic">     
+            <table class="table">
+                <thead>
+                    <tr>
                         <th scope="col">Item ID</th>
                         <th scope="col">Item Name</th>
                         <th scope="col">Qty</th>
                         <th scope="col">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-borderless">
-                        <tr>
+                    </tr>
+                 </thead>
+                <tbody class="table-borderless">
+                    <tr>
                         <td>1</td>
                         <td>Pittu</td>
                         <td></td>
                         <td>60</td>
-                        </tr>
-                        <tr>
+                    </tr>
+                    <tr>
                         <td>2</td>
                         <td>idiyapam</td>
                         <td></td>
                         <td>100</td>
-                        </tr>
-                    </tbody>
-                 </table>
-            </div>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <div class="col-md-1">
+        <div class="col-sm-12 col-md-4 col-lg-1 container">
         </div>
 
-        <div class="col-md-3">
-            <div class="row">
-                <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col">Order ID</th>
-                            <th scope="col">Total Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-borderless">
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>60</td>                        
-                            </tr>
-                            <tr>
-                            <th scope="row">2</th>
-                            <td>100</td>                    
-                            </tr>
-                        </tbody>
-                </table>
-            </div>
-            <div class="row">
-                <button type="button" class="btn btn-success w-100">Order</button>
-            </div>
+        <div class="col-sm-12 col-md-4 col-lg-3 container">
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Header</div>
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col">
+                            <p>Order ID</p>
+                        </div>
+                        <div class="col">
+                            <p>1</p>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <p>Total</p>
+                        </div>
+                        <div class="col">
+                            <p>1000</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button type="button" class="btn btn-success w-75">Order</button>
+                    </div>
+                    
+                </div>
+            </div>      
         </div>
     </div>
-</div>
+
 
    
 <!--END OF YOUR COD-->

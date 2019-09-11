@@ -11,15 +11,19 @@ include_once("menu.php");
     <!-- end dont change the order-->
 <!--block 2 start my code here-->  
 
+
    <div class= "row"> 
-   <div class ="col-8"><h3>Daily Canteen Report</h3></div>
-   <div class ="col-4"><div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
-    </div>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-</div>
+   <div class ="col-4"><h1>Daily Canteen Report</h1></div>
+   <div class ="col-4"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
+
+<div class ="col-1"></div>
+  <div class ="col-3"><select class="custom-select d-block w-100" id="Department" required="">
+                    <option value="">Type...</option>
+                    <option>Breakfast</option>
+                    <option>Lunch</option>
+                    <option>Dinner</option>
+  </div>
+</div></div>
 <table class="table table-borderless ">
   <thead class=" thead-dark">
     <tr>
@@ -54,13 +58,13 @@ include_once("menu.php");
       <td>3000</td>
     </tr>
     <tr>
-      <th scope="row" class="table-danger">TOTAL SALES</th>
-      <td class="table-danger">19500</td>
-      <td class="table-danger">26500</td>
+      <th scope="row" class="table-secondary">TOTAL SALES</th>
+      <td class="table-secondary">19500</td>
+      <td class="table-secondary">26500</td>
     </tr>
   </tbody>
 </table>
-<button type="button" class="btn btn-outline-info">Print</button>
+
 
 
 <table class="table table-borderless ">
@@ -92,14 +96,19 @@ include_once("menu.php");
 
    </div>
     
+  <div class="row">
   
+  <div class ="col-4"></div>
+  <div class ="col-4"></div>
+  <div class ="col-1"></div>
+  <div class ="col-3"><button type="button" class="btn btn-info">Print</button></div>
+
+
+  
+  </div>
 
     
-
-
-    
-
-    
+  
   
 <!--block 3 start dont change the order-->
 

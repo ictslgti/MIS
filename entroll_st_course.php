@@ -2,11 +2,11 @@
 <!---BLOCK 01--->
 <?php 
    
-include_once("CONFIG.PHP");
+include_once("config.php");
 
 $title ="STUDENT PROFILE | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
-include_once("HEAD.PHP");
-include_once("MENU.PHP");
+include_once("head.php");
+include_once("menu.php");
 
 ?>
 <!----END DON'T CHANGE THE ORDER---->
@@ -61,10 +61,44 @@ include_once("MENU.PHP");
         <button type="button" class="btn btn-success">UPDATE</button><br>
         <button type="button" class="btn btn-danger">DELETE</button><br>
     </div>
-</form>
+</form><br><br><br><br><br>
+
+ <div class="table-row">
+    <table class="table table-sm">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            </tr>
+            <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            </tr>
+            <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 
 
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->
-<?php include_once("FOOTER.PHP"); ?>
+<?php 
+include_once("FOOTER.PHP"); 
+?>

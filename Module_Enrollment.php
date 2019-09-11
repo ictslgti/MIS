@@ -11,17 +11,16 @@ include_once("menu.php");
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>staff</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.min.css">
-    <style>
-      
-    </style>
+   
 </head>
 <body>
-<h1 class="text-center">STAFF ENROLLMENT</h1><br>
+<br><br>
+    <form>
+      <div class="col form-group  container p-3 mb-2 " >
+    <h1 class=" text-center  "><i class="fas fa-file-alt"></i>  STAFF MODULE ENROLLMENT</h1>
+   
+    
+   <br><br>
 <form >
 <div  class="row">  
          <div class="col-4">
