@@ -15,17 +15,8 @@ include_once("menu.php");
    <div class ="col-3"><h1>"FOOD SHOULD BE FUN"</h1></div>
    <div class ="col-4"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
 
-<div class ="col-3"><input type="search" class="form-control ds-input" id="search-input" placeholder="Search by Id..." aria-label="Search for..." 
-autocomplete="off" data-docs-version="4.3" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" 
-aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
-
-
-
-
-
-
-</div>
-  <div class ="col-1"><button type="button" class="btn btn-success">Go</button> </div>
+<div class ="col-3"></div>
+  <div class ="col-1"> </div>
 </div></div>
 <table class="table table-borderless ">
   <thead class=" thead-dark">
