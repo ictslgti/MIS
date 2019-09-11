@@ -28,12 +28,12 @@ include_once ("menu.php");
         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
           Select Department
         </button>
+        
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
           <button class="dropdown-item" type="button">Mechnical</button>
           <button class="dropdown-item" type="button">Food Dept</button>
           <button class="dropdown-item" type="button">Automotive</button>
           <button class="dropdown-item" type="button">Construction</button>
-
         </div>
       </div>
       </div>
@@ -71,13 +71,10 @@ include_once ("menu.php");
                       <a href="#" class="btn btn-success btn-icon-split"><span class="text">View More</span></a>
                     </td>
                     </tr>
-                    
                   </tbody>
                 </table>
               </div>
-           
-
-
+              </div>
 <body>
 
 </body>
