@@ -34,7 +34,7 @@ $title = "Examinations | SLGTI";
 
         <div class="table container">
             <!-- <div class="shadow p-3 mb-5 bg-white rounded"> -->
-            <div class="card alert alert-primary">
+            <div class="card">
                 <br>
                 <div class="container">
                     <div class="intro">
@@ -129,7 +129,7 @@ $title = "Examinations | SLGTI";
 
      ?>
      
-            <div class="card alert alert-primary">
+            <div class="card">
                 <br>
                 <div class="container">
                     <div class="intro">
@@ -275,6 +275,7 @@ $title = "Examinations | SLGTI";
 
                 </div>
                 <div class="col-md-auto">
+                        <button type="button" class="btn btn-outline-primary">&nbsp;&nbsp;&nbsp;<i class="far fa-edit"></i>&nbsp;&nbsp;Update&nbsp;&nbsp;&nbsp;</button>
 
                 </div>
                 <div class="col col-lg-2">
