@@ -15,32 +15,33 @@ include_once("menu.php");
 </head>
 <body>
 <br><br>
-    <form>
+      <div class="row">
       <div class="col form-group  container p-3 mb-2 " >
-    <h1 class=" text-center  "><i class="fas fa-file-alt"></i>  STAFF MODULE ENROLLMENT</h1>
-   
-    
+    <h1 class=" text-center  "><i class="fas fa-file-alt"></i> MODULE ENROLLMENT</h1>
+    </div>
+   </div>
    <br><br>
+
 <form >
 <div  class="row">  
          <div class="col-4">
          <div class="form-row align-items-center">
-       <label for="inputFirstName">Staff_ID</label>
-       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Staff_ID</label>
+       <label for="inputFirstName">Staff_Name</label>
+       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Staff_Name</label>
        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
             <option selected>Choose...</option>
             <option ></option>
       </select>
      </div><br>
      <div class="form-row align-items-center">
-       <label for="inputFirstName">Module_ID</label>
+       <label for="inputFirstName">Module_Name</label>
        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Module_ID</label>
        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
             <option selected>Choose...</option>
       </select>
     </div><br>
     <div class="form-row align-items-center">
-       <label for="inputFirstName">Course_ID</label>
+       <label for="inputFirstName">Course_Name</label>
        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Course_ID</label>
        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
             <option selected>Choose...</option>
@@ -63,8 +64,9 @@ include_once("menu.php");
    
   
 </form>
-
+</div>
   </div>
+
 <!--END OF YOUR COD-->
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->

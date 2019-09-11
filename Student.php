@@ -18,7 +18,7 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <!-- form start---->
-<h1> Student_Profile </h1>
+<h1> STUDENT DETAILS </h1>
 
 
 

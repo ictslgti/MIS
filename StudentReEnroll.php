@@ -1,3 +1,4 @@
+
 <!------START DON'T CHANGE ORDER HEAD,MANU,FOOTER----->
 <!---BLOCK 01--->
 <?php 
@@ -18,7 +19,7 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <!-- form start---->
-<h1> Student_Profile </h1>
+<h1> StudentReEnroll </h1>
 
 
 

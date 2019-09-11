@@ -35,64 +35,73 @@ include_once("menu.php");
     </div> 
                       
     <div class="form-row">
-          <div class="col-md-12 mb-3">
-          Student_Id :
-          <input type="text"  id="id" placeholder="" aria-describedby="idPrepend" required>
-         </div>
-    </div>
+        <div class="col-md-12 mb-3">
 
-    <div class="form-row">
-          <div class="col-md-12 mb-3">
-          Course_Id :
-          <input type="text"  id="no" placeholder="" aria-describedby="noPrepend" required>
-         </div>
-    </div>
-
-    <div class="form-row">
-          <div class="col-md-12 mb-3">
-          Entroll Year :
-          <input type="text"  id="year" placeholder="" aria-describedby="fullnamePrepend" required>
-         </div>
-    </div>
-
+          <div class="form-row">
+          <label for="stid"> Student_Id : </label>
+          <input type="text" class="form-control" id="stid" placeholder="" aria-describedby="stidPrepend" required>
+          </div>
     
-    <div class="form-row">
-        <button type="button" class="btn btn-primary">ADD</button><br>
-        <button type="button" class="btn btn-success">UPDATE</button><br>
-        <button type="button" class="btn btn-danger">DELETE</button><br>
+
+          <div class="form-row">
+          <label for="coid"> Course_Id : </label>
+          <input type="text"  class="form-control" id="coid" placeholder="" aria-describedby="coidPrepend" required>
+          </div>
+
+          <div class="form-row">
+          <label for="eryear"> Entroll Year : </label>
+          <input type="text" class="form-control" id="eryear" placeholder="" aria-describedby="eryearPrepend" required>
+          </div>
+        </div>
+
+        <div class="col-md-03 mb-3">
+        <div class="col-md-03 mb-3">
+          <div class="form-row">
+          <button type="button" class="btn btn-primary">ADD</button>
+          </div>
+          <div class="form-row">
+          <button type="button" class="btn btn-success">UPDATE</button>
+          </div>
+          <div class="form-row">
+          <button type="button" class="btn btn-danger">DELETE</button>
+          </div>
+        </div>
     </div>
+    <div>
 </form><br><br><br><br><br>
 
  <div class="table-row">
+    <div class="col-md-09 mb-3">
     <table class="table table-sm">
         <thead>
             <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">No</th>
+            <th scope="col">student Id</th>
+            <th scope="col">Course Id</th>
+            <th scope="col">Accademic Year</th>
             </tr>
         </thead>
         <tbody>
             <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td></td>
+            <td></td>
+            <td></td>
             </tr>
             <tr>
             <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <td></td>
+            <td></td>
+            <td></td>
             </tr>
             <tr>
             <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+            <td colspan="2"></td>
+            <td></td>
             </tr>
         </tbody>
     </table>
+</div>
 </div>
 
 

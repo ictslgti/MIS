@@ -89,8 +89,7 @@ include_once("menu.php");
 
     <div class="form-group col-md-4">
       <label for="inputState">gender</label>
-      <label for="inputCity">join date</label>
-      <input type="date" class="form-control" id="date" disabled placeholder="disabled">
+      <input type="text" class="form-control" id="date" disabled placeholder="disabled">
     </div>
 
     <div class="form-group col-md-2">
