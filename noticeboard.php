@@ -12,11 +12,24 @@ include_once("menu.php");
 <!-- bLOCK#2 start your code here & u can change -->
 <table class="table table-bordered">
 <div class="row">
+<nav class="nav">
+  <a class="nav-link active" href="notice_home.php">Home</a>
+  <a class="nav-link" href="#">Exam</a>
+  <a class="nav-link" href="#">Event</a>
+  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Others</a>
+  <a class="nav-link" href="noticeboard.php">Notice & Updates</a>
+</nav>
     <div class="col-8"> <h3>Notice & Updates</h3> </div>
     <div class="col-4"><button type="button" class="btn btn-info"> ADD </button></div>
     </div>
 
   <thead>
+  <tr>
+    <th>User Name</th>
+    <td><input type="text" class="form-control" placeholder="User Name..."></td>
+    </tr>
+
+
     <tr>
       <th scope="col">Department Name:</th>
       <th>
@@ -37,10 +50,20 @@ include_once("menu.php");
 
   <tbody>
     <tr>
-      <th scope="row">Course ID:</th>
-      <td><input type="text" class="form-control" placeholder="Course ID">
+      <th scope="row">Course No:</th>
+  
+      <td>
+    <select class="form-control" id="academiyear">
+      <option selected>Select Your Course No...</option>
+      <option>Batch 01</option>
+      <option>Batch 02</option>
+      <option>Batch 03</option>
+      <option>Batch 04</option>
+    </select>
     </td>
     </tr>
+
+  
 
     <tr>
     <th>Academic Year:</th>
@@ -48,9 +71,9 @@ include_once("menu.php");
     <select class="form-control" id="academiyear">
       <option selected>Select Your Academic Year...</option>
       <option>Others</option>
+      <option>2016/2017</option>
       <option>2017/2018</option>
       <option>2018/2019</option>
-      <option>2019/2020</option>
     </select></td>
     </tr>
 
@@ -74,14 +97,17 @@ include_once("menu.php");
     <th>Editing Date:</th>
     <td><input type="text" class="form-control" placeholder="Editing Date"></td>
     </tr>
-  
-
-    <div class="row">
-    <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
-    </div>
     
   </tbody>
 </table>
+<div>
+  <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+    </div>
+    <br>
+    <div>
+    <button type="button" class="btn btn-secondary btn-lg btn-block">Edit</button>
+    </div>
+    
  <!-- end your code here-->
 
 
