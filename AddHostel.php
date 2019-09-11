@@ -81,6 +81,13 @@ include_once("menu.php");
             <input type="text" class="form-control" id="district" placeholder="" disabled required>
           </div>
 
+          <div class="col-md-2 mb-3">
+            <label for="dis">Distance
+             <label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;">Home to SLGTI </label>
+            </label>
+            <input type="text" class="form-control" id="dis" placeholder="in km" disabled required>
+          </div>
+
        </div>
 
 
