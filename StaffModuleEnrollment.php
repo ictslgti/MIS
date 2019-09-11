@@ -14,13 +14,7 @@ include_once("menu.php");
    
 </head>
 <body>
-<br><br>
-    <form>
-      <div class="col form-group  container p-3 mb-2 " >
-    <h1 class=" text-center  "><i class="fas fa-file-alt"></i>  STAFF MODULE ENROLLMENT</h1>
-   
-    
-   <br><br>
+<h1 class="text-center">STAFF ENROLLMENT</h1><br>
 <form >
 <div  class="row">  
          <div class="col-4">

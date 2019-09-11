@@ -132,7 +132,7 @@
                  <i class="far fa-grin"></i> Feedback
              </a>
              <div class="dropdown-menu" aria-labelledby="Feedback">
-                 <a class="dropdown-item" href="StudentFeedback">Student Feedback Info</a>
+                 <a class="dropdown-item" href="StudentFeedbackinfo.php">Student Feedback Info</a>
                  <a class="dropdown-item" href="AddStudentFeedback">Create a Student Feedback</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="TeacherFeedback">Teacher Feedback Info</a>
@@ -194,7 +194,7 @@
                  <a class="dropdown-item" href="Payments">Payments Info</a>
                  <a class="dropdown-item" href="Payment">Make a Payment</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="CanteenReport">Payments Report</a>
+                 <a class="dropdown-item" href="PaymentsReport">Payments Report</a>
              </div>
          </div>
          <div class="dropdown">
@@ -208,6 +208,18 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="OffPeak">Off-Peak Info</a>
                  <a class="dropdown-item" href="RequestOffPeak">Request a Off-Peak</a>
+             </div>
+         </div>
+         <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="OnPeakOffPeak " role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-tint"></i> Blood Donation 
+             </a>
+             <div class="dropdown-menu" aria-labelledby="OnPeakOffPeak">
+                 <a class="dropdown-item" href="BloodDonations">Blood Donations Info</a>
+                 <a class="dropdown-item" href="BloodDonors">Blood Donors</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="DonateBlood">Donate Blood</a>
              </div>
          </div>
      </div>

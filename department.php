@@ -9,15 +9,12 @@ include_once("menu.php");
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
-
-<h1>Department Details</h1>
+<div class="row">
+<h1 class="col text-center">Department Details</h1>
 <table class="table table-hover">
   <thead class="thead-dark">
  
     <tr >
-
-
-     
       <th scope="col">Department_ID</th>
       <th scope="col">Department Name</th>
       <th scope="col">Option</th>
