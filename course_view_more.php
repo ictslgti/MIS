@@ -12,35 +12,34 @@ include_once ("menu.php");
 <!-- Block#2 start your code -->
 
 <hr class="mb-8 mt-4">
-		<div class="card mt-12 ">
+		<div class="card mt-12">
 			<div class="card"><br>
-				<h4 align="center">Course Details</h4><br>
+				<h4 align="center">Course More Info</h4><br>
       </div>
     </div>
  <br>
  
- <div class="row">
-
-      <div class="col-6"></div>
-      <div class="col-3"></div>
-      <div class="col-2">
-      <div class="btn-group">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-          Select Department
-        </button>
-        
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-          <button class="dropdown-item" type="button">Mechnical</button>
-          <button class="dropdown-item" type="button">Food Dept</button>
-          <button class="dropdown-item" type="button">Automotive</button>
-          <button class="dropdown-item" type="button">Construction</button>
-        </div>
-      </div>
-      </div>
-
+  
+  <div class="row">
+            <div class="card-body">
+              <div class="col-md-6 mb-2">
+                <select class="custom-select d-block w-100" id="Department" required>
+                    <option value="">Choose Your Department </option>
+                    <option>ICT</option>
+                    <option>Construction</option>
+                    <option>Mechanical</option>
+                    <option>Electrical</option>
+                    <option>Automobile</option>
+                    <option>Food Dept</option>
+                </select>
+              <div class="invalid-feedback">
+                Please provide a Department.
+              </div>
+              </div>
+          </div>
   </div>
 
-  <div class="card-body">
+
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
@@ -48,19 +47,46 @@ include_once ("menu.php");
                       <th>Course ID</th>
                       <th>Course Name</th>
                       <th>NVQ Level</th>
-                      <th>Actions</th>
-                      
+                      <th>Institute-Learning Duration(Months)</th>
+                      <th>On-The-Job Training Duration(Months)</th>
+                      <th>Options</th>
                     </tr>
                   </thead>
+
                   <tbody>
                     <tr>
                       <td>K201</td>
                       <td>5IT</td>
                       <td>5</td>
+                      <td>18</td>
+                      <td>6</td>
                       <td>
-                      <a href="#" class="btn btn-info btn-icon-split"> <span class="text">View Module</span></a>
-                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">View More</span></a>
-                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">Batch</span></a>
+                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                     </td>
+                    </tr>
+
+                    <tr>
+                      <td>K202</td>
+                      <td>4TE</td>
+                      <td>4</td>
+                      <td>12</td>
+                      <td>6</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                    </td>
+                    </tr>
+
+                    <tr>
+                      <td>K202</td>
+                      <td>5IT</td>
+                      <td>5</td>
+                      <td>12</td>
+                      <td>6</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
 
@@ -68,16 +94,54 @@ include_once ("menu.php");
                       <td>K202</td>
                       <td>4TE</td>
                       <td>4</td>
+                      <td>12</td>
+                      <td>6</td>
                       <td>
-                      <a href="#" class="btn btn-info btn-icon-split"> <span class="text">View Module</span></a>
-                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">View More</span></a>
-                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">Batch</span></a>
+                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
+
+                    <tr>
+                      <td>K202</td>
+                      <td>4TE</td>
+                      <td>4</td>
+                      <td>12</td>
+                      <td>6</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                    </td>
+                    </tr>
+
+                    <tr>
+                      <td>K202</td>
+                      <td>5IT</td>
+                      <td>5</td>
+                      <td>12</td>
+                      <td>6</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                    </td>
+                    </tr>
+
+                    <tr>
+                      <td>K202</td>
+                      <td>4TE</td>
+                      <td>4</td>
+                      <td>12</td>
+                      <td>6</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                    </td>
+                    </tr>
+
                   </tbody>
                 </table>
-              </div>
-              </div>
+                </div>
+ </div>
 <body>
 
 </body>
