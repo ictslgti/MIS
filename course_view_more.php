@@ -1,7 +1,7 @@
 	
 <!--Block#1 start dont change the order-->
 <?php 
-$title="Course details | SLGTI";    
+$title="Course View More | SLGTI";    
 include_once ("config.php");
 include_once ("head.php");
 include_once ("menu.php");
@@ -59,16 +59,19 @@ include_once ("menu.php");
                       <td>5</td>
                       <td>
                       <a href="#" class="btn btn-info btn-icon-split"> <span class="text">View Module</span></a>
-                      <a href="#" class="btn btn-success btn-icon-split"><span class="text">View More</span></a>
+                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">View More</span></a>
+                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">Batch</span></a>
                     </td>
                     </tr>
+
                     <tr>
                       <td>K202</td>
                       <td>4TE</td>
                       <td>4</td>
                       <td>
                       <a href="#" class="btn btn-info btn-icon-split"> <span class="text">View Module</span></a>
-                      <a href="#" class="btn btn-success btn-icon-split"><span class="text">View More</span></a>
+                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">View More</span></a>
+                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">Batch</span></a>
                     </td>
                     </tr>
                   </tbody>
