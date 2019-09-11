@@ -7,3 +7,17 @@ $title = "Examinations | SLGTI";
 <!--END DON'T CHANGE THE ORDER-->
 
 
+
+
+
+
+
+
+<!-- END OF MY CODE -->
+
+
+
+
+
+<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
+<?php include_once("footer.php"); ?>
