@@ -1,53 +1,114 @@
+
 <!--block 1 start dont change the order-->
 
 <?php 
-$title="Daily report  | SLGTI";
+$title="Daily Report| SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
 ?>
+  
+    <!-- end dont change the order-->
+<!--block 2 start my code here-->  
 
-<table class="table table-hover">
-  <thead class="thead-dark">
-    <tr >
-      <th scope="col">#</th>
-      <th scope="col">Item Id</th>
-      <th scope="col">Item Name</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Total Price</th>
+   <div class= "row"> 
+   <div class ="col-4"><h1>Daily Report</h1></div>
+   <div class ="col-4"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
+
+<div class ="col-3"><select class="custom-select d-block w-100" id="Department" required="">
+                    <option>All</option>
+                    <option>Breakfast</option>
+                    <option>Lunch</option>
+                    <option>Dinner</option>
+               
+               
+                    
+                  
+                  </select>
+                  </div>
+  <div class ="col-1"><button type="button" class="btn btn-success">Go</button></div>
+</div>
+<table class="table table-borderless ">
+  <thead class=" thead-dark">
+    <tr>
+      <th scope="col" >SALES</th>
+      <th scope="col">Costs</th>
+      <th scope="col">Sales</th>
+
 
     </tr>
   </thead>
   <tbody>
-    <tr class= "table-light">
-      <th scope="row">1</th>
-      
-    </tr>
-    <tr class= "table-light">
-      <th scope="row">2</th>
+    <tr>
+      <th scope="row">Breakfast</th>
+      <td>6500</td>
+      <td>8000</td>
      
-      
     </tr>
-    <tr class= "table-light">
-      <th scope="row">3</th>
-      
-</tr>
-<tr class= "table-light">
-      <th scope="row">4</th>
-      
-  </tr>
-  
-    <tr class= "table-light">
-      <th scope="row">5</th>
-     
-     </tr>
-  
-  
+    <tr>
+      <th scope="row">lunch</th>
+      <td>7000</td>
+      <td>9000</td>
+   
+    </tr>
+    <tr>
+      <th scope="row">Dinner</th>
+      <td >4000</td>
+      <td>6500</td>
+    </tr>
+    <tr>
+      <th scope="row">Others</th>
+      <td >2000</td>
+      <td>3000</td>
+    </tr>
+    <tr>
+      <th scope="row" class="table-secondary">TOTAL SALES</th>
+      <td class="table-secondary">19500</td>
+      <td class="table-secondary">26500</td>
+    </tr>
   </tbody>
 </table>
 
-<button type ="button" class=" btn btn-primary"> Print</button>
 
+
+<table class="table table-borderless ">
+  <thead class=" thead-dark">
+    <tr>
+      <th scope="col">SHAREHOLDERS SCORES</th>
+      <th scope="col">END OF PERIOD</th>
+
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" class="text-dark">Sales</th>
+      <td class="text-danger">26500</td>
+    </tr>
+    <tr>
+      <th scope="row" class="text-dark">Costs</th>
+      <td class="text-danger">19500</td>
+    </tr>
+    <tr>
+      <th scope="row" class="text-dark">Net pfofit</th>
+      <td class="text-danger">7000</td>
+    </tr>
+  </tbody>
+</table>
+   
+
+
+   </div>
+    
+  
+
+    
+
+
+    
+
+    
+  
 <!--block 3 start dont change the order-->
 
     <?php include_once("footer.php"); ?>
