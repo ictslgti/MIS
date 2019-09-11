@@ -31,7 +31,9 @@ include_once ("menu.php");
 </div>
 <div class="col-sm-3 " > 
 <form class="form-inline md-form form-sm mt-4 ">
- 
+<div class="spinner-grow text-danger" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
   <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_Student_ID" aria-label="Search"id="search"> 
   <i class="fas fa-search ml-3" aria-hidden="true"></i> 
 </form>
@@ -59,11 +61,11 @@ include_once ("menu.php");
 
         <div class="form-group col-md-3 ">
         <label for="dob">Date of birth</label>
-        <input type="text" class="form-control " id="dob" placeholder="dd/mm/yyyy" disabled>
+        <input type="date" class="form-control" id="dob" disabled placeholder=""  required>
 
         </div>
         <div class="form-group col-md-3 ">
-        <label for="phone">phone</label>
+        <label for="phone">Phone</label>
         <input type="text" class="form-control " id="phone" placeholder="07" disabled>
 
         </div>
@@ -85,7 +87,7 @@ include_once ("menu.php");
         </div>
 
         <div class="form-group col-md-3 ">
-        <label for="ds">district</label>
+        <label for="ds">District</label>
         <input type="text" class="form-control " id="ds" placeholder="content disabled" disabled>
 
        
@@ -98,8 +100,14 @@ include_once ("menu.php");
 
 
         <div class="form-row">
+        <div class="form-group col-md-3">
+        <label for="address">Distance</label><label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;">Home to SLGTI </label>
+        <input type="text" class="form-control " id="address" placeholder="distances in Km">
+        </div>       
+
+
         <div class="form-group col-md-3 ">
-        <label for="gender">gender</label>
+        <label for="gender">Gender</label>
         <input type="text" class="form-control " id="gender" placeholder="content disabled" disabled>
         </div>
         
@@ -109,11 +117,11 @@ include_once ("menu.php");
         </div>
 
 
-
+<!-- 
         <div class="form-group col-md-3">
         <label for="address">distance</label>
         <input type="text" class="form-control " id="address" placeholder="distances in Km">
-        </div>       
+        </div>        -->
 
 
 
@@ -126,13 +134,20 @@ include_once ("menu.php");
         </div>       
         </div>
 
+
+
         <div class="form-row">
-        <div class="form-group col-md-3">
-        <button type="button" class="btn btn-outline-primary btn-rounded waves-effect btn-block"><i class="fa fa-paper-plane "></i> Request</button><br>
+        <div class="form-group col-md-12">
+        </div>   
+        </div>   
+
+        <div class="form-row">
+        <div class="form-group col-md-4">
+        <button type="button" class="btn btn-primary btn-rounded waves-effect btn-block"><i class="fa fa-paper-plane "></i> Request</button><br>
         </div>    
         
         <div class="form-group col-md-3">
-        <button type="reset" class="btn btn-outline-danger btn-rounded waves-effect  "><i class=" fas fa-bolt  "></i>  Cancel</button>
+        <button type="reset" class="btn btn-danger btn-rounded waves-effect   "><i class=" fas fa-bolt  "></i>  Cancel</button>
         
 
         </div>          
