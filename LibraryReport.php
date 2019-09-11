@@ -47,8 +47,7 @@ $title = "Home | SLGTI";
   <div class="card-header"><b>Add Book</b></div>
     <div class="card-body">
       <p class="card-text">By clicking here you can add new books and their copies to the libarary.</p>
-      <a class="btn btn-light mt-3" href="AddBook.php" role="button">Add Book</a>
-      
+      <button type="submit" class="btn btn-light">Add Book</button>
     </div>
 </a>
   </div>
@@ -57,7 +56,7 @@ $title = "Home | SLGTI";
   <div class="card-header">Issue Book</div>
     <div class="card-body">
       <p class="card-text">You can Issue a book to a member here. But issue only one book per member at a time.</p>
-      <a class="btn btn-light mt-3" href="IssueBook.php" role="button">Issue Here</a>
+      <button type="submit" class="btn btn-light">Issue Here</button>
     </div>
     </a>
   </div>
@@ -66,7 +65,7 @@ $title = "Home | SLGTI";
   <div class="card-header">Manage Issued books</div>
     <div class="card-body">
       <p class="card-text">Return borrowed books here and able to add fine also. able to extend the borrow period.</p>
-      <a class="btn btn-light mt-3" href="returnBook.php" role="button">Issued books</a>
+      <button type="submit" class="btn btn-light">Issued books</button>
     </div>
     </a>
   </div>
@@ -76,7 +75,7 @@ $title = "Home | SLGTI";
   <div class="card-header">Manage books</div>
     <div class="card-body">
       <p class="card-text">View all the books and their copies there are available in this library. And also able to edit.</p>
-      <a class="btn btn-light mt-3" href="#" role="button">Manage books</a>
+      <button type="submit" class="btn btn-light">Manage books</button>
     </div>
     </a>
   </div>
