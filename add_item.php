@@ -19,30 +19,31 @@ $title = "Department Details | SLGTI";
                       <input type="text" class="form-control" id="authorName" aria-describedby="authorNameHelp" placeholder="Author Name" required="required">
                       <small id="bookNameHelp" class="form-text text-muted"></small>
               </div>
-              <div class="w-100"></div>
+              
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="pubName">02.Name</label> <span style="color:red;">*</span></label>
                   <input type="text" class="form-control" id="pubName" aria-describedby="pubNameHelp" placeholder="Publisher Name" required="required">
                   <small id="pubNameHelp" class="form-text text-muted"></small>
               </div>
               
-              
+            
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="yearPub">03.supplier</label> <span style="color:red;">*</span></label>
                   <input type="text" class="form-control" id="yearPub" aria-describedby="yearPubHelp" placeholder="Year" required="required">
-                  <small id="yearPubHelp" class="form-text text-muted">Input the year of first publication</small>
+                  <small id="yearPubHelp" class="form-text text-muted"></small>
               </div>
-              <div class="w-100"></div>
+              
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="cost">04. supplier phone number</label> <span style="color:red;">*</span></label>
-                  <input type="text" class="form-control" id="cost" aria-describedby="costHelp" placeholder="Book Cost" required="required">
-                  <small id="costHelp" class="form-text text-muted"></small>
+                  <input type="text" class="form-control" id="" aria-describedby="costHelp" placeholder="" required="required">
+                  <small id="" class="form-text text-muted"></small>
           </div>
+          
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
-                  <label class="font-weight-bold" for="datePic">08. Date</label> <span style="color:red;">*</span></label>
+                  <label class="font-weight-bold" for="datePic">05. Date</label> <span style="color:red;">*</span></label>
                   <input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp" required="required">
                   <small id="datePicHelp" class="form-text text-muted"></small>
-
+                  
                   <input class="btn btn-dark ml-2 mt-2 float-right" type="reset" value="Reset">
                   <button type="submit" class="btn btn-info mt-2 float-right">Add </button>
 
