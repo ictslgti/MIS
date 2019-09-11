@@ -9,11 +9,43 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
+
+
+<div class="classic-tabs">
+
+<ul class="nav nav-tabs bg-info" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+      aria-selected="true">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+      aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+      aria-selected="false">Contact</a>
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
 <div style="margin-top:30px ">
   <div class="card ">
    <div class="card-header bg-info">
       <div class="row">
-        <div class="col-md-9" >student accomadation</div>
+        <div class="col-md-9" >
+       
+                <label style="font-family: 'Luckiest Guy', cursive; font-size: 20px; "> <i class="fas fa-user-graduate"></i> &nbsp; Student Accomadation</label>
+                <!-- <footer class="blockquote-footer" style=" padding-left: 650px">Hostel Allocation <cite title="Source Title"></cite></footer> -->
+            
+        </div>
         
       </div>
     </div>
@@ -130,6 +162,7 @@ include_once("menu.php");
 </div>
    </div>
   </div>
+</div>
 </div>
 
 
