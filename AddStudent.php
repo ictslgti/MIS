@@ -166,13 +166,13 @@ include_once("menu.php");
     </div> 
 
     <div class="form-row">
-      <div class class="col-md-6 mb-3">
+      
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col6">No.</th>
-              <th scope="col6">Subject</th>
-              <th scope="col6">Grade</th>
+              <th >No.</th>
+              <th >Subject</th>
+              <th >Grade</th>
             </tr>
           </thead>
           <tbody>
@@ -249,11 +249,11 @@ include_once("menu.php");
     </table>
     </div>
 
-    <div class class="col-md-6 mb-3">
+    <div class class="col-md-12 mb-3">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col6">No.</th>
+              <th scope="col12">No.</th>
               <th scope="col6">Subject</th>
               <th scope="col6">Grade</th>
             </tr>
