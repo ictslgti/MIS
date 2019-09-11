@@ -10,7 +10,7 @@ $title = "Home | SLGTI";
 <!--BLOCK#2 START YOUR CODE HERE -->
 <div class="card-deck ml-5 mr-5 pt-4">
   <div class="card">
-    <img src="img/library_23.png" class="card-img-top" alt="...">
+    <img src="img/library_25.png" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Books Listed</h5>
       <p class="h1">2836</p>
@@ -20,7 +20,7 @@ $title = "Home | SLGTI";
     </div>
   </div>
   <div class="card">
-    <img src="img/library_24.png" class="card-img-top" alt="...">
+    <img src="img/library_25.png" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Times Book Issued</h5>
       <p class="h1">221</p>
@@ -42,7 +42,7 @@ $title = "Home | SLGTI";
 </div>
 
 <div class="card-deck pt-5 pl-3 pr-3">
-<a href="library.php" class="text-white" style ="text-decoration: none">
+<a href="AddBook.php" class="text-white" style ="text-decoration: none">
   <div class="card text-white bg-primary" style="max-height: 14rem;">
   <div class="card-header"><b>Add Book</b></div>
     <div class="card-body">
@@ -52,7 +52,7 @@ $title = "Home | SLGTI";
     </div>
 </a>
   </div>
-  <a href="url" class="text-white" style ="text-decoration: none">
+  <a href="IssueBook.php" class="text-white" style ="text-decoration: none">
   <div class="card text-white bg-success" style="max-height: 14rem;">
   <div class="card-header">Issue Book</div>
     <div class="card-body">
@@ -61,7 +61,7 @@ $title = "Home | SLGTI";
     </div>
     </a>
   </div>
-  <a href="url" class="text-white" style ="text-decoration: none">
+  <a href="returnBook.php" class="text-white" style ="text-decoration: none">
   <div class="card text-white bg-secondary" style="max-height: 14rem;">
   <div class="card-header">Manage Issued books</div>
     <div class="card-body">
@@ -71,7 +71,7 @@ $title = "Home | SLGTI";
     </a>
   </div>
 
-  <a href="url" class="text-white" style ="text-decoration: none">
+  <a href="#" class="text-white" style ="text-decoration: none">
   <div class="card text-white bg-info" style="max-height: 14rem;">
   <div class="card-header">Manage books</div>
     <div class="card-body">

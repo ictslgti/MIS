@@ -53,31 +53,14 @@ include_once("menu.php");
   </thead>
   
 </table>
-
-<form>
-<fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Status</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-          <label class="form-check-label" for="gridRadios1">
-            Elligible
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-          <label class="form-check-label" for="gridRadios2">
-            inelligible
-          </label>
-        </div>
-        
-      </div>
+<div class="row">
+<div class="col-6"></div>
+<div class="col-3"></div>
+<div class="col-2"></div>
+<div class="col-1">
+    <button type="button" class="btn btn-secondary"><button onclick="location.href='donor.php'">Join Donor</button>
     </div>
-  </fieldset>
-    </form>
-
-
+</div>
 
 
 <!--END OF YOUR COD-->
