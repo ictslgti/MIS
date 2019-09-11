@@ -65,22 +65,19 @@ include_once("menu.php");
 
 
     <div class="row">
-    <div class="col-7">
+    <div class="col-9">
     <br>
     
-    <button type="button" class="btn btn-primary btn-sm "><i class="fas fa-paper-plane"></i> Request to approval</button>
+    <button type="button" class="btn btn-primary "><i class="fas fa-paper-plane"></i> Request to approval</button>
     </div>
     
    
     
     <div class="col-3">
     <br>
-    <button type="button" class="btn btn-info btn-sm">Clear</button>
+    <button type="button" class="btn btn-outline-dark btn-md ">Clear</button>
     </div>
-    <div class="col-2">
-    <br>
-    <button type="button" class="btn btn-secondary btn-sm">Cancel</button>
-    </div>
+   
     
 
 
