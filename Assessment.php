@@ -17,13 +17,27 @@ $title = "Examinations | SLGTI";
         </div>
     </div>
 
-    <table class="table shadow p-3 mb-5 bg-white rounded">
+    <!-- <div class="container"> -->
+  <!-- <div class="row">
+    <div class="col-sm-10">col-sm-10</div>
+    <div class="col-sm-2">
+            <button type="button" class="btn btn-outline-success">Success</button>
+    </div>
+  </div> -->
+<!-- </div> -->
+
+    <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+        <div class="col-sm-10">
+      <th scope="col"><i class="fab fa-discourse"></i>&nbsp;&nbsp;Course</th>
+      <th scope="col"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;Academy Year</th>
+      <th scope="col"><i class="fas fa-book-open"></i>&nbsp;&nbsp;Module</th>
+      <th scope="col"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Asessment</th>
+    </div>
+      <div class="col-sm-2">
+      <th><i class="fas fa-angle-down"></i>&nbsp;&nbsp;Actions</th>
+    </div>
     </tr>
   </thead>
   <tbody>
@@ -32,6 +46,9 @@ $title = "Examinations | SLGTI";
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
+      <td><button type="button" class="btn btn-outline-success"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add marks</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+    </td>
     </tr>
     <tr>
       <th scope="row">2</th>
