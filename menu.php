@@ -206,8 +206,8 @@
                  <a class="dropdown-item" href="OnPeak">On-Peak Info</a>
                  <a class="dropdown-item" href="RequestOnPeak">Request a On-Peak</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="warden_approval_page.php">Off-Peak Info</a>
-                 <a class="dropdown-item" href="off_peak_request.php">Request a Off-Peak</a>
+                 <a class="dropdown-item" href="OffPeak">Off-Peak Info</a>
+                 <a class="dropdown-item" href="RequestOffPeak">Request a Off-Peak</a>
              </div>
          </div>
      </div>
