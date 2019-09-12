@@ -80,15 +80,15 @@ $title = "Home | SLGTI";
         </div>
 
         <div class="row pt-3 pl-2">
-            <h4 class="display-"><em>Afternoon Foods</em></h4>
+            <h4 class="display-"><em>Lunch Foods</em></h4>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 container">
                 <div class="card">
                     <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Rotti  1 Pc<br>
-                         20/=</h5>
+                        <h5 class="card-title">Egg Rice  1 Pk<br>
+                         80/=</h5>
                         <a href="#" class="btn btn-primary">Add</a>
                     </div>
                 </div>
@@ -97,8 +97,8 @@ $title = "Home | SLGTI";
                 <div class="card">
                     <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Dosa  1 Pc<br>
-                        20/=</h5>
+                        <h5 class="card-title">Veg Rice  1 Pk<br>
+                        60/=</h5>
                         <a href="#" class="btn btn-primary">Add</a>
                     </div>
                 </div>
@@ -107,19 +107,17 @@ $title = "Home | SLGTI";
                 <div class="card">
                     <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Idiyapam  10 Pc<br>
-                        40/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
-                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Noodles
-                        1 Pk<br>
+                        <h5 class="card-title">Fish Rice  1Pk<br>
                         80/=</h5>
+                        <a href="#" class="btn btn-primary">Add</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">DAY SPL FOOD</h4>
                         <a href="#" class="btn btn-primary">Add</a>
                     </div>
                 </div>
@@ -128,7 +126,7 @@ $title = "Home | SLGTI";
 
 
         <div class="row pt-3 pl-2">
-            <h4 class="display-"><em>Night Foods</em></h4>
+            <h4 class="display-"><em>Dinner Foods</em></h4>
         </div>
         
         <div class="row">
@@ -136,8 +134,8 @@ $title = "Home | SLGTI";
                 <div class="card">
                     <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Rotti  1 Pc<br>
-                         20/=</h5>
+                        <h5 class="card-title">Kotthu  1 Pk<br>
+                         100/=</h5>
                         <a href="#" class="btn btn-primary">Add</a>
                     </div>
                 </div>
@@ -146,8 +144,8 @@ $title = "Home | SLGTI";
                 <div class="card">
                     <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Dosa  1 Pc<br>
-                        20/=</h5>
+                        <h5 class="card-title">Fired Rice  1 Pk<br>
+                        100/=</h5>
                         <a href="#" class="btn btn-primary">Add</a>
                     </div>
                 </div>
@@ -156,13 +154,13 @@ $title = "Home | SLGTI";
                 <div class="card">
                     <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Idiyapam  10 Pc<br>
-                        40/=</h5>
+                        <h5 class="card-title">Pittu  1 Pk<br>
+                        80/=</h5>
                         <a href="#" class="btn btn-primary">Add</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
+            <div class="col container invisible">
                 <div class="card">
                     <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
