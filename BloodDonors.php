@@ -19,12 +19,16 @@ include_once("menu.php");
 <div class="col-sm-6 " ></div>
 <div class="col-sm-3 " > 
 <form class="form-inline md-form form-sm mt-4">
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_ID" aria-label="Search"id="search"> 
+  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search D_ID" aria-label="Search"id="search"> 
   <i class="fas fa-search ml-3" aria-hidden="true"></i>
 </form>
 </div>
 </div>
 
+<button type="button" class="btn btn-light" ><div class="spinner-grow" role="status">
+  <span class="sr-only">Loading...</span>
+</div> </button>
+  
 
 
 
@@ -57,8 +61,10 @@ include_once("menu.php");
 <div class="col-6"></div>
 <div class="col-3"></div>
 <div class="col-2"></div>
+
 <div class="col-1">
-    <button type="button" class="btn btn-secondary"><button onclick="location.href='donor.php'">Join Donor</button>
+    <button type="button" class="btn btn-secondary" onclick="location.href='donor.php'"> Join Donor</button>
+    
     </div>
 </div>
 
