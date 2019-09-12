@@ -13,21 +13,27 @@ include_once("menu.php");
 
 <div class ="row">
 
-<div class ="col-5  border border-primary">
-<div class="card border-light mb-3" style="max-width: 18rem;">
-  <div class="card-header"><h4>Chat</h4></div>
-  <div class="card-body">
-    <h5 class="card-title">                                       </h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
+<div class ="col-5 border border-dark "><h5>CHAT</h5>
+</div>
+
+
+
+
+
+<div class ="col-5 border border-dark "><h5>USER</h5>
+<div class ="row">
+<div class="col-12"> <label for="inputAddress">Address</label>
+<textarea name="message" class="rounded  form-control bg-light text-black"  type="text" id="disabledTextInput" placeholder="Disabled input"  disabled ></textarea>  </div>
 </div>
 </div>
 
-<div class ="col-5 border border-primary"><h5>Uer</h5></div>
-<div class ="col-2 "><h4>Group Chat</h4></div>
 
 
-<div class="row">
+
+<div class ="col-2 p-3 mb-2 bg-secondary text-white "><h4>GROUP CHAT</h4>
+
+
+
 <div class="border-right" id="sidebar-wrapper">
 <div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Gafoor Sahan</a>
 </div>
@@ -66,6 +72,12 @@ include_once("menu.php");
 
 <div class="border-right" id="sidebar-wrapper">
 <div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Thanuja</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
