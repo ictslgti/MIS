@@ -123,17 +123,15 @@ include_once("menu.php");
             <option value="Permanent Staff">Permanent Staff</option>
             <option value="Temporary  Staff">Temporary  Staff</option>
       </select>
-    </div><br>
-  
-    
-    
-  
-    
-      
-       
+    </div><br> 
     </div>
-    </div>
-    <button type="submit" class="btn btn-primary"  style="width:100%">ADD STAFF DETAILS</button>
+    </div><br><br>
+    <button type="submit" class="btn btn-outline-primary">ADD STAFF </button>
+    <button type="button" class="btn btn-outline-primary">UPDATE STAFF</button>
+    <button type="button" class="btn btn-outline-primary">DELETE STAFF</button>
+    <button type="button" class="btn btn-outline-primary">EDIT STAFF</button>
+    <button type="button" class="btn btn-outline-primary">REFRESH STAFF</button>
+    
 <!--END OF YOUR COD-->
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
