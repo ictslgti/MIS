@@ -24,7 +24,7 @@ include_once("menu.php");
     
     <div class="col-md-12 col-sm-12 pl-3 pr-3 pt-2">
             <div class="form-group">
-            <a href="StaffDetails.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">ENROLL</a>
+            <a href="StaffDetails.php" class="btn btn-outline-primary" role="button" aria-pressed="true">ENROLL</a>
             
             </div>                              
         </div>
@@ -72,7 +72,7 @@ include_once("menu.php");
       <td>@fat</td>
       <td>@fat</td>
       <td>@fat</td>
-      <td><a href="ModuleEnrollment.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">ENROLL</a></td>
+      <td><a href="ModuleEnrollment.php" class="btn btn-outline-primary" role="button" aria-pressed="true">VIEW</a></td>
      
     </tr>
     <tr>
@@ -88,7 +88,7 @@ include_once("menu.php");
       <td>@fat</td>
       <td>@fat</td>
       <td>@fat</td>
-      <td><a href="ModuleEnrollment.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">ENROLL</a></td>
+      <td><a href="ModuleEnrollment.php" class="btn btn-outline-primary" role="button" aria-pressed="true">VIEW</a></td>
   
     </tr>
     <tr>
@@ -104,11 +104,13 @@ include_once("menu.php");
       <td>@fat</td>
       <td>@fat</td>
       <td>@fat</td>
-      <td><a href="ModuleEnrollment.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">ENROLL</a></td>
-     
+      <td><a href="ModuleEnrollment.php" class="btn btn-outline-primary" role="button" aria-pressed="true">VIEW</a></td>
     </tr>
   </tbody>
 </table>
+<button type="button" class="btn btn-outline-primary">DELETE STAFF</button>
+    <button type="button" class="btn btn-outline-primary">EDIT STAFF</button>
+    <button type="button" class="btn btn-outline-primary">REFRESH STAFF</button>
 <!--END OF YOUR COD-->
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
