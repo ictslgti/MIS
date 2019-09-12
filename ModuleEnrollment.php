@@ -59,13 +59,15 @@ include_once("menu.php");
             <option >2017/2018</option>
             <option >2018/2019</option>
       </select>
-    </div><br>
-    <button type="submit" class="btn btn-primary"  style="width:100%">ADD STAFF INFORMATION</button>
-   
-  
+    </div><br> 
 </form>
 </div>
   </div>
+  <button type="submit" class="btn btn-outline-primary">ADD STAFF </button>
+    <button type="button" class="btn btn-outline-primary">UPDATE STAFF</button>
+    <button type="button" class="btn btn-outline-primary">DELETE STAFF</button>
+    <button type="button" class="btn btn-outline-primary">EDIT STAFF</button>
+    <button type="button" class="btn btn-outline-primary">REFRESH STAFF</button>
 
 <!--END OF YOUR COD-->
 
