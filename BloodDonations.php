@@ -36,6 +36,17 @@ include_once("menu.php");
 </div>
 </div>
 
+<table class="table">
+  <thead class="thead-r">
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Programme</th>
+      
+    </tr>
+  </thead>
+  </table>
+
+
     <button type="button" class="btn btn-secondary">cancel</button>
 
 
