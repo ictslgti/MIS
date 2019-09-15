@@ -22,8 +22,4 @@ $title = "Sign in to MIS";
       
     </form>
   </div>
-<!--END OF YOUR COD-->
 
-<!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
-<?php include_once("footer.php"); ?>
-<!--END DON'T CHANGE THE ORDER-->  
