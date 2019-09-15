@@ -4,8 +4,11 @@
                  class="d-inline-block align-top" alt=""></a>
      </div>
      <div class="list-group list-group-flush">
+         <a class="list-group-item list-group-item-action" href="Administration"> <i class="fas fa-wrench "></i>
+             Administration <span class="badge badge-dark">A</span> <span class="sr-only">(current)</span></a>
+
          <a class="list-group-item list-group-item-action" href="index"> <i class="fas fa-home"></i>
-             Dashboard <span class="sr-only">(current)</span></a>
+             Dashboard</a>
 
          <div class="dropdown">
              <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Department" role="button"
@@ -14,7 +17,8 @@
              </a>
              <div class="dropdown-menu " aria-labelledby="Department">
                  <a class="dropdown-item" href="Department">Department Info</a>
-                 <a class="dropdown-item" href="AddDepartment">Add a Department</a>
+                 <a class="dropdown-item" href="AddDepartment">Add a Department <span class="badge badge-dark">A</span>
+                 </a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="AcademicYear">Academic Year Info</a>
                  <a class="dropdown-item" href="AddAcademicYear">Add a Academic Year</a>
@@ -114,8 +118,8 @@
              </div>
          </div>
          <div class="dropdown">
-             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="hostel"
-                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="hostel" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <i class="far fa-building"></i> Hostel
              </a>
              <div class="dropdown-menu" aria-labelledby="hostel">
@@ -198,9 +202,9 @@
              </div>
          </div>
          <div class="dropdown">
-             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="OnPeakOffPeak " role="button"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 <i class="fas fa-door-open"></i> On-Peak & Off-Peak 
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="OnPeakOffPeak "
+                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-door-open"></i> On-Peak & Off-Peak
              </a>
              <div class="dropdown-menu" aria-labelledby="OnPeakOffPeak">
                  <a class="dropdown-item" href="OnPeak">On-Peak Info</a>
@@ -211,9 +215,9 @@
              </div>
          </div>
          <div class="dropdown">
-             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="OnPeakOffPeak " role="button"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 <i class="fas fa-tint"></i> Blood Donation 
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="OnPeakOffPeak "
+                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-tint"></i> Blood Donation
              </a>
              <div class="dropdown-menu" aria-labelledby="OnPeakOffPeak">
                  <a class="dropdown-item" href="BloodDonations">Blood Donations Info</a>
