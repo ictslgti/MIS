@@ -232,8 +232,8 @@
  <!-- Page Content -->
  <div id="page-content-wrapper">
 
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
-         <button class="btn btn-dark" id="menu-toggle"><i class="fas fa-bars"></i> </button>
+     <nav class="navbar navbar-expand-lg border-bottom sticky-top navbar-light bg-light">
+         <button class="btn btn-light" id="menu-toggle"><i class="fas fa-bars"></i> </button>
 
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
