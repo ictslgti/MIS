@@ -360,8 +360,6 @@ include_once("menu.php");
           </div>  
 </div> 
 
-
-
                 <div class="row pippin_form">
                     <div class="form-group">
                         <p class="note" style="font-size: 16px; font-weight: 700; border-bottom: 2px solid #aaa;">ICT Education  -  Diplomas/Degrees or Equivalents/Training obtained including the current programme.</p>
