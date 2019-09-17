@@ -20,6 +20,12 @@ include_once("menu.php");
 <!-- form start---->
 <h1> Student_Profile </h1>
 
+<img src="..." alt="..." class="img-thumbnail">
+
+​<picture>
+  <source srcset="..." type="image/svg+xml">
+  <img src="..." class="img-fluid img-thumbnail" alt="...">
+</picture>
 
 
 <!---BLOCK 03--->

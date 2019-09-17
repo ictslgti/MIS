@@ -24,7 +24,7 @@ include_once("menu.php");
     
     <div class="col-md-12 col-sm-12 pl-3 pr-3 pt-2">
             <div class="form-group">
-            <a href="ModuleEnrollment.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">ENROLL</a>
+            <a href="ModuleEnrollment.php" class="btn btn-outline-primary" role="button" aria-pressed="true">ENROLL</a>
             
             </div>                              
         </div>
@@ -40,11 +40,11 @@ include_once("menu.php");
    </div>
   </div>
   <form>
-<div class="form-row">
+<div class="form-row pl-3">
     <div class="col-3" >
     <div class="form-row align-items-center">
       
-       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+       <select class="custom-select  mr-sm-2" id="inlineFormCustomSelect">
             <option selected>Staff_Name</option>
       </select>
     </div><br></div>
@@ -76,9 +76,9 @@ include_once("menu.php");
     <div class="col-1" >
     <div class="form-row align-items-center">
     <button type="button" class="btn btn-outline-primary align= right">GO</button>
-    </div><br></div>
-    <table class="table table-bordered ">
-  <thead>
+    </div><br></div></div>
+    <table class="table table-bordered">
+  <thead >
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Staff_Name</th>
@@ -113,14 +113,9 @@ include_once("menu.php");
     </tr>
   </tbody>
 </table>
-</div>
-
-
-
- 
-
-
-
+    <button type="button" class="btn btn-outline-primary">DELETE STAFF</button>
+    <button type="button" class="btn btn-outline-primary">EDIT STAFF</button>
+    <button type="button" class="btn btn-outline-primary">REFRESH STAFF</button>
 <!--END OF YOUR COD-->
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->

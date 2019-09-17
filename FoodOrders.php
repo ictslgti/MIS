@@ -214,7 +214,7 @@ $title = "Home | SLGTI";
 
         <div class="col-sm-12 col-md-4 col-lg-3 container">
         <div class="card bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">FOOD CART</div>
+            <div class="card-header"><p class="h2">FOOD CART</p><img src="img/FOOD.png" height="35" class="float-right" alt="Error"></div>
                 <div class="card-body">
 
                     <div class="row">
