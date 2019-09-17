@@ -13,83 +13,97 @@ include_once("menu.php");
 
 <div class ="row">
 
-<div class ="col-5 border border-dark "><h5>CHAT</h5>
+                <div class ="col-5  "><h5>Chat</h5>
+                <textarea dir="auto" data-region="send-message-txt" class="form-control bg-white" rows="3" data-auto-rows="" data-min-rows="3" data-max-rows="7" role="textbox" aria-label="Write a message..." placeholder="Write a message..." style="resize: none"></textarea>
+                            <button class="btn btn-link btn-icon icon-size-3 ml-1 mt-auto" aria-label="Send message" data-action="send-message">
+                            <span data-region="send-icon-container"><i class="icon fa fa-paper-plane fa-fw " aria-hidden="true"></i></span>
+                            <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " title="Loading" aria-label="Loading"></i></span></span>
+                            </button>
+
+                
+                
+                 </div>
+                <div class ="col-5 "><h5>User</h5> 
+
+                <textarea dir="auto" data-region="send-message-txt" class="form-control bg-white" rows="3" data-auto-rows="" data-min-rows="3" data-max-rows="7" role="textbox" aria-label="Write a message..." placeholder="Write a message..." style="resize: none"></textarea>
+                            <button class="btn btn-link btn-icon icon-size-3 ml-1 mt-auto" aria-label="Send message" data-action="send-message">
+                            <span data-region="send-icon-container"><i class="icon fa fa-paper-plane fa-fw " aria-hidden="true"></i></span>
+                            <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " title="Loading" aria-label="Loading"></i></span></span>
+                            </button>
+</div>
+
+
+
+                <div class ="col-2 p-3 p-3 mb-2 bg-dark text-white "><h5 class="text-center lg"  alt="50px"><i class="fas fa-users "></i></h5>
+                <div class ="row">
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Gafoor Sahan</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Abdullah</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Faheem</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Nifras</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Kajan</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Thilogini</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Hanusiya</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Janani</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Jureesan</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Sanjeevan</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Keethijan</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Sarujan</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Mithusan</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Thurgisan</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Newsika</a>
+
+                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
+                Thuvarahan</a>
+
+                </div>
+                </div>   
+                </div>
+                </div>
+
+
 </div>
 
 
 
 
 
-<div class ="col-5 border border-dark "><h5>USER</h5>
-<div class ="row">
-<div class="col-12"> <label for="inputAddress">Address</label>
-<textarea name="message" class="rounded  form-control bg-light text-black"  type="text" id="disabledTextInput" placeholder="Disabled input"  disabled ></textarea>  </div>
-</div>
-</div>
-
-
-
-
-<div class ="col-2 p-3 mb-2 bg-secondary text-white "><h4>GROUP CHAT</h4>
-
-
-
-<div class="border-right" id="sidebar-wrapper">
-<div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Gafoor Sahan</a>
-</div>
-
-<div class="border-right" id="sidebar-wrapper">
-<div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Faheem</a>
-</div>
-
-<div class="border-right" id="sidebar-wrapper">
-<div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Abdullah</a>
-</div>
-
-<div class="border-right" id="sidebar-wrapper">
-<div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Nifras</a>
-</div>
-
-<div class="border-right" id="sidebar-wrapper">
-<div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Keerthijan</a>
-</div>
-
-<div class="border-right" id="sidebar-wrapper">
-<div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Hanusiya</a>
-</div>
-
-<div class="border-right" id="sidebar-wrapper">
-<div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Aswini</a>
-</div>
-
-<div class="border-right" id="sidebar-wrapper">
-<div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Sarujan</a>
-</div>
-
-<div class="border-right" id="sidebar-wrapper">
-<div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Newsika</a>
-</div>
-
-<div class="border-right" id="sidebar-wrapper">
-<div class="sidebar-heading"> <a href="index"> <img src="img/user.png" height="30" class="d-inline-block align-top" alt="">Thanuja</a></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
 
  <!-- /#sidebar-wrapper -->
  <!-- Page Content -->
  
 
-    
-
+ 
 
 <!-- END YOUR CODER HERE -->
 
