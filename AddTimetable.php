@@ -45,22 +45,6 @@ include_once("menu.php");
 
 
 
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Time table type</label>
-    <div class="col-sm-10"> 
-    <select id="inputState" class="form-control">
-        <option selected>choose</option>
-        <option>Class Time Table</option>
-		<option>Exam Time Table</option>
-		<option>Electrical & Electronic Technology Department</option>
-		<option>Food Technology Department</option>
-    <option>Automotive & Agricultural Technology Department</option>
-    <option>Construction Technology Department </option>
-
-      </select>
-    </div>
-  </div>
-
 
 
 
@@ -128,9 +112,19 @@ include_once("menu.php");
     </div>
   </div>
 
-
+  <h1 class="text-right">
+ 
+         <div class="row"> 
+		
+         <div class="col-12">
+         <a href="classtimetable.php" button type="button" class="btn btn-success"  aria-pressed="true" >Back</button>
+         <a href="AddTimetable.php" button type="button" class="btn btn-success"  aria-pressed="true" >Save</button>
+  </a>
+         
+  </h1>
   
-
+  </div>
+</div>
     </div>
   </div>
 
