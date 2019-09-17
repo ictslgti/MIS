@@ -10,30 +10,34 @@ $title = "Home | SLGTI";
 <!--BLOCK#2 START YOUR CODE HERE -->
 <div class="row">
     <div class="col-sm-12 col-md-4 col-lg-8 container">
-        <h1 class="display-3"><em>EAT GOOD FEEL GOOD</em></h1>
+        <h3>
+        EAT GOOD FEEL GOOD
+  <small class="text-muted"></small>
+</h3>
 
         
-        <div class="btn-group dropright">
-            <button type="button" class="btn btn-secondary">Split dropright</button>
-            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropright</span>
-            </button>
-            <div class="dropdown-menu">
-                <button class="dropdown-item" type="button">MONDAY</button>
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+    <div class="dropdown-menu">
+    <button class="dropdown-item" type="button">MONDAY</button>
                 <button class="dropdown-item" type="button">TUESDAY</button>
                 <button class="dropdown-item" type="button">WEDNESDAY</button>
                 <button class="dropdown-item" type="button">THURSDAY</button>
                 <button class="dropdown-item" type="button">FRIDAY</button>
                 <button class="dropdown-item" type="button">SATURDAY</button>
                 <button class="dropdown-item" type="button">SUNDAY</button>
-            </div>
-        </div>
     </div>
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with dropdown button">
+</div>
+</div>
 </div>
 
  <!-- FOOD MENU DESIGN    -->
         <div class="row pl-2 pt-3">
-            <h4 class="display-"><em>Morning Foods</em></h4>
+            <h4 >
+            <p class="text-xl-left">Morning Foods.</p> </h4>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 container">
@@ -80,7 +84,8 @@ $title = "Home | SLGTI";
         </div>
 
         <div class="row pt-3 pl-2">
-            <h4 class="display-"><em>Lunch Foods</em></h4>
+            <h4>
+            <p class="text-xl-left">Lunch Foods.</p></h4>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 container">
@@ -126,7 +131,8 @@ $title = "Home | SLGTI";
 
 
         <div class="row pt-3 pl-2">
-            <h4 class="display-"><em>Dinner Foods</em></h4>
+            <h4 >
+            <p class="text-xl-left">Dinner Foods.</p></h4>
         </div>
         
         <div class="row">
