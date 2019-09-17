@@ -15,7 +15,7 @@ include_once("menu.php");
 		
          <div class="col-12">
          <form>
-         <p style="font-size:20px;"> Time table  Info <hr color ="black" style="height:1px;"></p><br>
+         <p style="font-size:20px;"> Time table   <hr color ="black" style="height:1px;"></p><br>
          </form>
 </div>
 </div>
