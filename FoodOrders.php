@@ -9,33 +9,30 @@ $title = "Home | SLGTI";
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <div class="row">
-    <div class="col-sm-12 col-md-4 col-lg-8 container">
-        <h3>
-        EAT GOOD FEEL GOOD
-  <small class="text-muted"></small>
-</h3>
-
-        
-        <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-    <div class="dropdown-menu">
-    <button class="dropdown-item" type="button">MONDAY</button>
-                <button class="dropdown-item" type="button">TUESDAY</button>
-                <button class="dropdown-item" type="button">WEDNESDAY</button>
-                <button class="dropdown-item" type="button">THURSDAY</button>
-                <button class="dropdown-item" type="button">FRIDAY</button>
-                <button class="dropdown-item" type="button">SATURDAY</button>
-                <button class="dropdown-item" type="button">SUNDAY</button>
+    <div class="col-sm-12 col-md-4 col-lg-8">
+    <h1 class="text-center">EAT GOOD FEEL GOOD</h1>
     </div>
-  </div>
-  <input type="text" class="form-control" aria-label="Text input with dropdown button">
-</div>
-</div>
+
+    <div class="col-sm-12 col-md-4 col-lg-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                <div class="dropdown-menu">
+                <button class="dropdown-item" type="button">MONDAY</button>
+                            <button class="dropdown-item" type="button">TUESDAY</button>
+                            <button class="dropdown-item" type="button">WEDNESDAY</button>
+                            <button class="dropdown-item" type="button">THURSDAY</button>
+                            <button class="dropdown-item" type="button">FRIDAY</button>
+                            <button class="dropdown-item" type="button">SATURDAY</button>
+                            <button class="dropdown-item" type="button">SUNDAY</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
  <!-- FOOD MENU DESIGN    -->
-        <div class="row pl-2 pt-3">
+        <div class="row pl-3 pt-5">
             <h4 >
             <p class="text-xl-left">Morning Foods.</p> </h4>
         </div>
@@ -83,7 +80,7 @@ $title = "Home | SLGTI";
             </div>
         </div>
 
-        <div class="row pt-3 pl-2">
+        <div class="row pt-3 pl-3">
             <h4>
             <p class="text-xl-left">Lunch Foods.</p></h4>
         </div>
@@ -130,7 +127,7 @@ $title = "Home | SLGTI";
         </div>
 
 
-        <div class="row pt-3 pl-2">
+        <div class="row pt-3 pl-3">
             <h4 >
             <p class="text-xl-left">Dinner Foods.</p></h4>
         </div>
@@ -166,7 +163,7 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
-            <div class="col container invisible">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
                 <div class="card">
                     <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
@@ -182,14 +179,14 @@ $title = "Home | SLGTI";
 <!-- ORDE CART DESIGN  -->
   
     <div class="row pt-5">
-        <div class="col-sm-12 col-md-4 col-lg-8 container"><h4 class="font-italic">     
+        <div class="col-sm-12 col-md-4 col-lg-8 container">  
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Item ID</th>
-                        <th scope="col">Item Name</th>
-                        <th scope="col">Qty</th>
-                        <th scope="col">Amount</th>
+                        <th>Item ID</th>
+                        <th>Item Name</th>
+                        <th>Qty</th>
+                        <th>Amount</th>
                     </tr>
                  </thead>
                 <tbody class="table-borderless">
@@ -214,7 +211,16 @@ $title = "Home | SLGTI";
 
         <div class="col-sm-12 col-md-4 col-lg-3 container">
         <div class="card bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header"><p class="h2">FOOD CART</p><img src="img/FOOD.png" height="35" class="float-right" alt="Error"></div>
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-6 col-md-10 col-lg-10 container">
+                        <p class="h2">FOOD CART</p>
+                    </div>
+                    <div class="col-sm-4 col-md-2 col-lg-2 container">
+                        <img src="img/FOOD.png" height="35" class="float-right" alt="Error">
+                    </div>
+                </div>
+            </div>
                 <div class="card-body">
 
                     <div class="row">
