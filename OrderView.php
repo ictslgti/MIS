@@ -26,7 +26,7 @@ include_once("menu.php");
       <th scope="col">Item Name</th>
       <th scope="col">Qty</th>
       <th scope="col">Total</th>
->>>>>>> dcb158ad186279aa4453fc6732176e6f631f575f
+
 
 <div class ="row">
 <div class="col-4"><h1>Order Information</h1></div>
