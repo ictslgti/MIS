@@ -207,8 +207,8 @@
                  <i class="fas fa-door-open"></i> On-Peak & Off-Peak
              </a>
              <div class="dropdown-menu" aria-labelledby="OnPeakOffPeak">
-                 <a class="dropdown-item" href="OnPeak">On-Peak Info</a>
-                 <a class="dropdown-item" href="RequestOnPeak">Request a On-Peak</a>
+                 <a class="dropdown-item" href="onpeak.php">On-Peak Info</a>
+                 <a class="dropdown-item" href="onpeak_request.php">Request a On-Peak</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="OffPeak">Off-Peak Info</a>
                  <a class="dropdown-item" href="RequestOffPeak">Request a Off-Peak</a>
