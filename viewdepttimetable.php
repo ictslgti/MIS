@@ -8,7 +8,7 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-<h1 class="text-center">department time table</h1>
+<h1 class="text-center">Time table info </h1>
 <br>
 
 <div class="row">
@@ -28,7 +28,7 @@ include_once("menu.php");
          <div class="row">   
          <div class="col-12">
          <form>
-         <p style="font-size:20px;">dept_Info <hr color ="black" style="height:1px;"></p><br>
+         <p style="font-size:20px;">T-TInfo <hr color ="black" style="height:1px;"></p><br>
          </form>
 </div>
 </div>
