@@ -32,9 +32,9 @@ include_once("menu.php");
         <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01"> 
-                            <i class="fas fa-user"> </i>&nbsp;&nbsp; Full Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <i class="fas fa-user"> </i>&nbsp;&nbsp;Full Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" type="text" placeholder="Name with Surname">
+                    <input class="form-control" type="text" placeholder="Nirthika Ravienthiran">
         </div>
 
 <br>
@@ -42,9 +42,9 @@ include_once("menu.php");
         <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01"> 
-                            <i class="fas fa-fingerprint"> </i>&nbsp;&nbsp; Registration No &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <i class="fas fa-fingerprint"> </i>&nbsp;&nbsp;Registration No&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" type="text" placeholder="Name with Surname">
+                    <input class="form-control" type="text" placeholder="2018/SLGTI/5IT/04">
         </div>
 
 <br>       
@@ -52,7 +52,7 @@ include_once("menu.php");
         <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">
-                            <i class="fas fa-school"></i>&nbsp;&nbsp;Department &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <i class="fas fa-school"></i>&nbsp;&nbsp;Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
                     <select class="custom-select" id="inputGroupSelect01">
                         <option selected>Choose...</option>
@@ -70,7 +70,7 @@ include_once("menu.php");
         <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01"> 
-                            <i class="fas fa-phone-alt"> </i>&nbsp;&nbsp; Contact No &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <i class="fas fa-phone-alt"> </i>&nbsp;&nbsp;Contact no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
                     <input class="form-control" type="text" placeholder="Mobile or Home number">
         </div>
@@ -80,7 +80,7 @@ include_once("menu.php");
         <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">
-                            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Reason for Exit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Reason for Exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
                     <select class="custom-select" id="inputGroupSelect01">
                         <option selected>Choose...</option>
@@ -96,9 +96,9 @@ include_once("menu.php");
         <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01"> 
-                            <i class="far fa-clock"> </i>&nbsp;&nbsp; Exit Date & Time &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <i class="far fa-clock"> </i>&nbsp;&nbsp;Exit Date and Time&nbsp;</label>
                     </div>
-                    <input class="form-control" type="text" placeholder="Exit Date and Time">
+                    <input class="form-control" type="text" placeholder="2019.02.06 - 10.00 pm">
         </div>
 
 <br>
@@ -106,9 +106,9 @@ include_once("menu.php");
         <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01"> 
-                            <i class="fas fa-history"> </i>&nbsp;&nbsp; Return Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <i class="fas fa-history"> </i>&nbsp;&nbsp;Return Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" type="text" placeholder="Return Time">
+                    <input class="form-control" type="text" placeholder="12.00 noon">
         </div>
 
 <br>
@@ -133,19 +133,16 @@ include_once("menu.php");
         <div class="row">
             <div class="col">
                 <div class="mx-auto" style="width: 200px;">
-                    <input class="btn btn-primary" type="submit" value="Request Submit">
+                <button type="button" class="btn btn-primary "><i class="fab fa-telegram"></i>&nbsp;&nbsp;&nbsp;Request to approval</button>
+                   
                 </div>
             </div>
         </div>
        
-
-
-
-
-
+       
                
-        </div>
-    </div>
+</div>
+</div>
 </div>
 </div>
 
@@ -160,6 +157,60 @@ include_once("menu.php");
         </blockquote> 
     </div>
 </div>
+
+
+
+<div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
+      <div class="col">
+        <div class=row>
+            <div class="col">
+                <br>
+                <br>
+                <div class="pr-5 pl-2 ml-auto text-info">History</div>
+                <br>
+                <br>
+            </div>
+        </div>
+        
+        
+
+      <div class=row >
+        <table class="table">
+            <thead>
+                  <tr>
+                    <th scope="col">EXIT DATE & TIME</th>
+                    <th scope="col">RETURN DATE & TIME</th>
+                    <th scope="col">REASON FOR EXIT</th>
+                    <th scope="col">REFERENCE</th>
+                    </tr>
+            </thead>
+            <tbody>
+                  <tr>
+                    <td> 25.2.2019/ 10.00 am</td>
+                    <td> 25.2.2019/ 1.00 pm</td>
+                    <td> Hospital </td>
+                    <td> approved </td>
+                  </tr>
+
+                  <tr>
+                    <td>20.6.2019/ 9.00 am</td>
+                    <td> 20.6.2019/ 2.00 pm</td>
+                    <td> Other Reason </td>
+                    <td> disapproved</td>
+                  </tr>
+
+                  <tr>
+                    <td>21.7.2019/ 10.30 am</td>
+                    <td> 21.7.2019/ 12.00 noon</td>
+                    <td> Family issues</td>
+                    <td> approved </td>
+                  </tr>
+            </tbody>
+        </table> 
+      </div>
+    </div>
+  </div>
+    
 
 
 
