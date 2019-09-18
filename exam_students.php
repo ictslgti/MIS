@@ -95,6 +95,7 @@ include_once ("menu.php");
   <table class="table">
   <thead class="thead-dark">
     <tr>
+    <th scope="col">Module-Id</th>
       <th scope="col">Assessment-Id</th>
       <th scope="col">Assessment-Date</th>
       <th scope="col">Assessment-Marks</th>

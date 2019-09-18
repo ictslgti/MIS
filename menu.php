@@ -4,8 +4,11 @@
                  class="d-inline-block align-top" alt=""></a>
      </div>
      <div class="list-group list-group-flush">
+         <a class="list-group-item list-group-item-action" href="Administration"> <i class="fas fa-wrench "></i>
+             Administration <span class="badge badge-dark">A</span> <span class="sr-only">(current)</span></a>
+
          <a class="list-group-item list-group-item-action" href="index"> <i class="fas fa-home"></i>
-             Dashboard <span class="sr-only">(current)</span></a>
+             Dashboard</a>
 
          <div class="dropdown">
              <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="Department" role="button"
@@ -14,7 +17,8 @@
              </a>
              <div class="dropdown-menu " aria-labelledby="Department">
                  <a class="dropdown-item" href="Department">Department Info</a>
-                 <a class="dropdown-item" href="AddDepartment">Add a Department</a>
+                 <a class="dropdown-item" href="AddDepartment">Add a Department <span class="badge badge-dark">A</span>
+                 </a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="AcademicYear">Academic Year Info</a>
                  <a class="dropdown-item" href="AddAcademicYear">Add a Academic Year</a>
@@ -114,8 +118,8 @@
              </div>
          </div>
          <div class="dropdown">
-             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="hostel"
-                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="hostel" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <i class="far fa-building"></i> Hostel
              </a>
              <div class="dropdown-menu" aria-labelledby="hostel">
@@ -132,7 +136,7 @@
                  <i class="far fa-grin"></i> Feedback
              </a>
              <div class="dropdown-menu" aria-labelledby="Feedback">
-                 <a class="dropdown-item" href="StudentFeedback">Student Feedback Info</a>
+                 <a class="dropdown-item" href="StudentFeedbackinfo.php">Student Feedback Info</a>
                  <a class="dropdown-item" href="AddStudentFeedback">Create a Student Feedback</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="TeacherFeedback">Teacher Feedback Info</a>
@@ -194,20 +198,32 @@
                  <a class="dropdown-item" href="Payments">Payments Info</a>
                  <a class="dropdown-item" href="Payment">Make a Payment</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="CanteenReport">Payments Report</a>
+                 <a class="dropdown-item" href="PaymentsReport">Payments Report</a>
              </div>
          </div>
          <div class="dropdown">
-             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="OnPeakOffPeak " role="button"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 <i class="fas fa-door-open"></i> On-Peak & Off-Peak 
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="OnPeakOffPeak "
+                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-door-open"></i> On-Peak & Off-Peak
              </a>
              <div class="dropdown-menu" aria-labelledby="OnPeakOffPeak">
-                 <a class="dropdown-item" href="OnPeak">On-Peak Info</a>
-                 <a class="dropdown-item" href="RequestOnPeak">Request a On-Peak</a>
+                 <a class="dropdown-item" href="onpeak.php">On-Peak Info</a>
+                 <a class="dropdown-item" href="onpeak_request.php">Request a On-Peak</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="OffPeak">Off-Peak Info</a>
                  <a class="dropdown-item" href="RequestOffPeak">Request a Off-Peak</a>
+             </div>
+         </div>
+         <div class="dropdown">
+             <a class="list-group-item list-group-item-action dropdown-toggle" href="#" id="OnPeakOffPeak "
+                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-tint"></i> Blood Donation
+             </a>
+             <div class="dropdown-menu" aria-labelledby="OnPeakOffPeak">
+                 <a class="dropdown-item" href="BloodDonations">Blood Donations Info</a>
+                 <a class="dropdown-item" href="BloodDonors">Blood Donors</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="DonateBlood">Donate Blood</a>
              </div>
          </div>
      </div>
@@ -228,11 +244,11 @@
              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                  <li class="nav-item">
                      <a class="nav-link" href="chat"><i class="fab fa-facebook-messenger"></i> <span
-                             class="badge badge-primary badge-pill">109</span></a>
+                             class="badge badge-primary badge-pill" id="messengerx">109</span></a>
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="notifications"><i class="fas fa-bell"></i> <span
-                             class="badge badge-warning badge-pill">14</span></a>
+                             class="badge badge-warning badge-pill" id="notificationx">14</span></a>
                  </li>
                  <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"

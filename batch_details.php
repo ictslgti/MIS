@@ -8,9 +8,23 @@ include_once("menu.php");
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
-<h1>Batch Details of ICT Department</h1>
-<button type="button" class="btn btn-success">+ New Batch</button>
+<div class="shadow p-3 mb-5 bg-white rounded">
 
+        <div class="highlight-blue">
+            <div class="container">
+                <div class="intro">
+                    <h1 class="display-3 text-center">Batch Details</h1>
+                    <h3 class="display-10 text-center">Department Of Information & Communication Technology</h3>
+                    <!-- <p class="text-center"></p> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- <h1>Batch Details of ICT Department</h1> -->
+<button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add New Batch</button> 
+<!-- <button type="button" class="btn btn-success">+ Add New Batch</button> -->
+<br><br>
 <table class="table table-hover">
   <thead class="thead-dark">
  

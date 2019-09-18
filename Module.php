@@ -1,7 +1,7 @@
 	
 <!--Block#1 start dont change the order-->
 <?php 
-$title="Add Module details | SLGTI";    
+$title="Module details | SLGTI";    
 include_once ("config.php");
 include_once ("head.php");
 include_once ("menu.php");

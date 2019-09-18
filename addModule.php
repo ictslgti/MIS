@@ -49,7 +49,7 @@ include_once ("menu.php");
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
               </div>
-                <input type="text" class="form-control" id="National" placeholder="Hours in Digits" required>
+                <input type="text" class="form-control" id="Notional" placeholder="Hours in Digits" required>
               <div class="invalid-feedback" style="width: 50%;">
                 Duration is required.
               </div>

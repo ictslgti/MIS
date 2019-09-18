@@ -24,7 +24,7 @@ include_once("menu.php");
     
     <div class="col-md-12 col-sm-12 pl-3 pr-3 pt-2">
             <div class="form-group">
-            <a href="StaffDetails.php" class="btn btn-outline-primary" role="button" aria-pressed="true">ENROLL</a>
+            <a href="ModuleEnrollment.php" class="btn btn-outline-primary" role="button" aria-pressed="true">ENROLL</a>
             
             </div>                              
         </div>
@@ -40,22 +40,51 @@ include_once("menu.php");
    </div>
   </div>
   <form>
-   <table class="table table-bordered">
-  <thead>
+<div class="form-row pl-3">
+    <div class="col-3" >
+    <div class="form-row align-items-center">
+      
+       <select class="custom-select  mr-sm-2" id="inlineFormCustomSelect">
+            <option selected>Staff_Name</option>
+      </select>
+    </div><br></div>
+
+    <div class="col-3" >
+    <div class="form-row align-items-center">
+      
+       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <option selected>Module_Name</option>
+      </select>
+    </div><br></div>
+
+    <div class="col-3" >
+    <div class="form-row align-items-center">
+      
+       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <option selected>Course_Name</option>
+      </select>
+    </div><br></div>
+
+    <div class="col-2" >
+    <div class="form-row align-items-center">
+       
+       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <option selected>Academic_Year</option>
+      </select>
+    </div></div><br><br><br>
+
+    <div class="col-1" >
+    <div class="form-row align-items-center">
+    <button type="button" class="btn btn-outline-primary align= right">GO</button>
+    </div><br></div></div>
+    <table class="table table-bordered">
+  <thead >
     <tr>
-      <th scope="col">Staff_ID</th>
-      <th scope="col">EPF NO</th>
-      <th scope="col">NIC</th>
+      <th scope="col">ID</th>
       <th scope="col">Staff_Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Email</th>
-      <th scope="col">Gender</th>
-      <th scope="col">Date_of_birth</th>
-      <th scope="col">Telephone no</th>
-      <th scope="col">Date_of_Join</th>
-      <th scope="col">Position</th>
-      <th scope="col">Type</th>
-      <th scope="col">Profile</th>
+      <th scope="col">Module_Name</th>
+      <th scope="col">Course_Name</th>
+      <th scope="col">Academic_Year</th>
     </tr>
   </thead>
   <tbody>
@@ -64,16 +93,8 @@ include_once("menu.php");
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td><a href="ModuleEnrollment.php" class="btn btn-outline-primary" role="button" aria-pressed="true">VIEW</a></td>
-     
+      <td>@mdo</td>
+      
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -81,34 +102,18 @@ include_once("menu.php");
       <td>Thornton</td>
       <td>@fat</td>
       <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td><a href="ModuleEnrollment.php" class="btn btn-outline-primary" role="button" aria-pressed="true">VIEW</a></td>
   
     </tr>
     <tr>
       <th scope="row">3</th>
       <td >Larry the Bird</td>
-      <td>Jacob</td>
       <td>@twitter</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td>@fat</td>
-      <td><a href="ModuleEnrollment.php" class="btn btn-outline-primary" role="button" aria-pressed="true">VIEW</a></td>
+      <td>@twitter</td>
+      <td>@twitter</td>
     </tr>
   </tbody>
 </table>
-<button type="button" class="btn btn-outline-primary">DELETE STAFF</button>
+    <button type="button" class="btn btn-outline-primary">DELETE STAFF</button>
     <button type="button" class="btn btn-outline-primary">EDIT STAFF</button>
     <button type="button" class="btn btn-outline-primary">REFRESH STAFF</button>
 <!--END OF YOUR COD-->

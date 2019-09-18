@@ -8,10 +8,7 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-
-
-
-<h1 class="text-center">Donor Request Form</h1>
+<h1 class="text-center">Time table info </h1>
 <br>
 
 <div class="row">
@@ -31,17 +28,39 @@ include_once("menu.php");
          <div class="row">   
          <div class="col-12">
          <form>
-         <p style="font-size:20px;"> Personal Info <hr color ="black" style="height:1px;"></p><br>
+         <p style="font-size:20px;">T-TInfo <hr color ="black" style="height:1px;"></p><br>
          </form>
 </div>
 </div>
 
+<table class="table">
+  <thead class="thead-r">
+    <tr>
+    <th scope="col">Dept_id</th>
+      <th scope="col">Day</th>
+      <th scope="col">Time Start</th>
+      <th scope="col">Time end</th>
+      <th scope="col"> date</th>
+      <th scope="col">Department</th>
+      <th scope="col">Year of study</th>
+      <th scope="col">batch</th>
+    </tr>
+  </thead>
+</table>
 
-
-
-
+<div class="row">
+<div class="col-6"></div>
+<div class="col-3"></div>
+<div class="col-2"></div>
+<div class="col-1">
+    <button type="button" class="btn btn-secondary" onclick="location.href='AddTimetable.php'"> Add New</button>
+    </div>
+</div>
 <!--END OF YOUR COD-->
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
+
+<!--END DON'T CHANGE THE ORDER-->
+
 <!--END DON'T CHANGE THE ORDER-->

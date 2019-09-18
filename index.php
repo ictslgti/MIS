@@ -8,6 +8,65 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+<form onsubmit="showTeacher(this.value)">
+<div class="row p-3">
+    <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="form-group">
+            <select class="form-control custom-select" id="Departmentx" name="Department"
+                onchange="showCouese(this.value)" required>
+                <option value="null"  selected disabled>--Select Department--</option>
+                <?php 
+                      $row=1;
+                            while($row<=5) {
+                                
+                               echo '<option  value="'.$row.'" required>Department '.$row.'</option>';
+                               $row++;
+                            }
+                        ?>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="form-group">
+            <select class="form-control custom-select" id="Course" name="Course" onchange="showModule(this.value)"
+                required>
+                <option value="null" selected disabled>--Select Department--</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="form-group">
+            <select class="form-control custom-select" id="Module" name="module" required>
+                <option value="null" selected disabled>--Select Course--</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3">
+        <button type="button" id="submit" class="btn btn-primary btn-block"  onclick="showTeacher()"><i class="fa fa-user-tie text-light"></i> Searach
+            Teachers</button>
+    </div>
+</div>
+</form>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody id="Teacher">
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
 <div class="row">
     <div class="col-md-3 col-sm-12">
         <div class="card text-light bg-dark text-center">
@@ -35,24 +94,49 @@ include_once("menu.php");
     <div class="col-md-3 col-sm-12">
     </div>
 </div>
-<div class="row py-4">
-<div class="col-md-12 col-sm-12">
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">A</div>
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">B</div>
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">C</div>
-</div>
-</div>
-</div>
-<!--END OF YOUR COD-->
 
+<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
+<?php include_once("footer.php"); ?>
+<!--END DON'T CHANGE THE ORDER-->
+<script>
+function showCouese(val) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("Course").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST", "controller/getCourse", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("department=" + val);
+}
+
+function showModule(val) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("Module").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST", "controller/getModule", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("course=" + val);
+}
+
+function showTeacher() {
+    var did = document.getElementById("Departmentx").value;
+    var cid = document.getElementById("Course").value;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("Teacher").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST", "controller/getTeacher", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("Department=" + did + "&Course="+ cid );
+}
+</script>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->

@@ -9,8 +9,21 @@ include_once("menu.php");
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
+<div class="shadow p-3 mb-5 bg-white rounded">
+
+        <div class="highlight-blue">
+            <div class="container">
+                <div class="intro">
+                    <h1 class="display-8 text-center">SLGTI Department Details</h1>
+                    
+                    <p class="text-center">Welcome to department page. This section to view course & batch details.&nbsp;</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
 <div class="row">
-<h1 class="col text-center">Department Details</h1>
+<!-- <h1 class="col text-center">Department Details</h1> -->
 <table class="table table-hover">
   <thead class="thead-dark">
  
@@ -116,7 +129,7 @@ include_once("menu.php");
   </tbody>
   </form>
 </table>
-
+</div>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->

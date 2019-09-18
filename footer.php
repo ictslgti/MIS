@@ -26,7 +26,10 @@ $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 });
+//call dropdown 
+$('.dropdown-toggle').dropdown();
 
+//
 var timeDisplay = document.getElementById("timestamp");
 
 function refreshTime() {
@@ -53,6 +56,15 @@ setInterval(refreshTime, 1000);
 //         xmlhttp.open("GET", "controller/timestamp.php", true);
 //         xmlhttp.send();
 // }
+
+//notification sample number
+var x = document.getElementById("notificationx")
+x.innerHTML = Math.floor((Math.random() * 1000) + 1);
+
+//message sample number
+var x = document.getElementById("messengerx")
+x.innerHTML = Math.floor((Math.random() * 2000) + 1);
+
   </script>
 
 

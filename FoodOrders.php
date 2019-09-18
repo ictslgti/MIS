@@ -9,33 +9,37 @@ $title = "Home | SLGTI";
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <div class="row">
-    <div class="col-sm-12 col-md-4 col-lg-8 container">
-        <h1 class="display-3"><em>EAT GOOD FEEL GOOD</em></h1>
+    <div class="col-sm-12 col-md-4 col-lg-8">
+    <h1 class="text-center">EAT GOOD FEEL GOOD</h1>
     </div>
 
-    <div class="col-sm-12 col-md-4 col-lg-2 container">     
-        <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">WEEK DAYS</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">MONDAY</a>
-                <a class="dropdown-item" href="#">TUESDAY</a>
-                <a class="dropdown-item" href="#">WEDNESDAY</a>
-                <a class="dropdown-item" href="#">THURSDAY</a>
-                <a class="dropdown-item" href="#">FRIDAY</a>
-                <a class="dropdown-item" href="#">SATURDAY</a>
-                <a class="dropdown-item" href="#">SUNDAY</a>
+    <div class="col-sm-12 col-md-4 col-lg-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                <div class="dropdown-menu">
+                <button class="dropdown-item" type="button">MONDAY</button>
+                            <button class="dropdown-item" type="button">TUESDAY</button>
+                            <button class="dropdown-item" type="button">WEDNESDAY</button>
+                            <button class="dropdown-item" type="button">THURSDAY</button>
+                            <button class="dropdown-item" type="button">FRIDAY</button>
+                            <button class="dropdown-item" type="button">SATURDAY</button>
+                            <button class="dropdown-item" type="button">SUNDAY</button>
+                </div>
             </div>
-         </div>
+        </div>
     </div>
 </div>
 
  <!-- FOOD MENU DESIGN    -->
- <!-- MORNING FOODS     -->
- <h4 class="display-"><em>Morning Foods</em></h4>
+        <div class="row pl-3 pt-5">
+            <h4 >
+            <p class="text-xl-left">Morning Foods.</p> </h4>
+        </div>
         <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-3 container">
-                <div class="card" style="width:80%;Height:60% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Rotti  1 Pc<br>
                          20/=</h5>
@@ -43,9 +47,9 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-3 container">
-                <div class="card" style="width:80%;Height:60%;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Dosa  1 Pc<br>
                         20/=</h5>
@@ -53,9 +57,9 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-3 container">
-                <div class="card" style="width:80%;Height:60%;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Idiyapam  10 Pc<br>
                         40/=</h5>
@@ -63,9 +67,9 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-3 container">
-                <div class="card" style="width:80%;Height:60%; margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Noodles
                         1 Pk<br>
@@ -74,16 +78,16 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
+        </div>
 
-
-     <!-- LUNCH FOODS    -->
-
-    <h4 class="display-"><em>Lunch Foods</em></h4>
-            <div class="container-fluid"> 
+        <div class="row pt-3 pl-3">
+            <h4>
+            <p class="text-xl-left">Lunch Foods.</p></h4>
+        </div>
         <div class="row">
-        <div class="col-sm-12 col-md-4 col-lg-3 container">
-                <div class="card" style="width:80%;Height:60% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Egg Rice  1 Pk<br>
                          80/=</h5>
@@ -91,9 +95,9 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-3 container">
-                <div class="card" style="width:80%;Height:60%;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Veg Rice  1 Pk<br>
                         60/=</h5>
@@ -101,9 +105,9 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-3 container">
-                <div class="card" style="width:80%;Height:60%;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Fish Rice  1Pk<br>
                         80/=</h5>
@@ -111,28 +115,27 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-3 container">
-                <div class="card" style="width:80%;Height:60%; margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="card-title">TODAY SPL</h4>
+                        <h4 class="card-title">DAY SPL FOOD</h4>
                         <a href="#" class="btn btn-primary">Add</a>
                     </div>
                 </div>
             </div>
- 
+        </div>
 
 
-
-
- <!-- DINNER FOODS    -->
-
- <h4 class="display-"><em>Dinner Foods</em></h4>
-            <div class="container-fluid"> 
+        <div class="row pt-3 pl-3">
+            <h4 >
+            <p class="text-xl-left">Dinner Foods.</p></h4>
+        </div>
+        
         <div class="row">
-        <div class="col-sm-12 col-md-4 col-lg-3 container">
-                <div class="card" style="width:80%;Height:60% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Kotthu  1 Pk<br>
                          100/=</h5>
@@ -140,9 +143,9 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-3 container">
-                <div class="card" style="width:80%;Height:60%;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Fired Rice  1 Pk<br>
                         100/=</h5>
@@ -150,9 +153,9 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-3 container">
-                <div class="card" style="width:80%;Height:60%;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Pittu  1 Pk<br>
                         80/=</h5>
@@ -160,28 +163,30 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
-            <div class="col container invisible">
-                <div class="card" style="width:80%;Height:60%; margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
+            <div class="col-sm-12 col-md-3 col-lg-3 container">
+                <div class="card">
+                    <img class="card-img-top" src="img/logo-1.png" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="card-title">TODAY SPL</h4>
+                        <h5 class="card-title">Noodles
+                        1 Pk<br>
+                        80/=</h5>
                         <a href="#" class="btn btn-primary">Add</a>
                     </div>
                 </div>
             </div>
- 
+        </div>
 
-        <!-- ORDE CART DESIGN  -->
+<!-- ORDE CART DESIGN  -->
   
-    <div class="row ">
-        <div class="col-sm-12 col-md-4 col-lg-8 container"><h4 class="font-italic">     
+    <div class="row pt-5">
+        <div class="col-sm-12 col-md-4 col-lg-8 container">  
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Item ID</th>
-                        <th scope="col">Item Name</th>
-                        <th scope="col">Qty</th>
-                        <th scope="col">Amount</th>
+                        <th>Item ID</th>
+                        <th>Item Name</th>
+                        <th>Qty</th>
+                        <th>Amount</th>
                     </tr>
                  </thead>
                 <tbody class="table-borderless">
@@ -206,7 +211,16 @@ $title = "Home | SLGTI";
 
         <div class="col-sm-12 col-md-4 col-lg-3 container">
         <div class="card bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-6 col-md-10 col-lg-10 container">
+                        <p class="h2">FOOD CART</p>
+                    </div>
+                    <div class="col-sm-4 col-md-2 col-lg-2 container">
+                        <img src="img/FOOD.png" height="35" class="float-right" alt="Error">
+                    </div>
+                </div>
+            </div>
                 <div class="card-body">
 
                     <div class="row">
@@ -228,7 +242,7 @@ $title = "Home | SLGTI";
                     </div>
 
                     <div class="row">
-                        <button type="button" class="btn btn-success w-75">Order</button>
+                        <a href="OrderView" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" >Order</button></a>
                     </div>
                     
                 </div>

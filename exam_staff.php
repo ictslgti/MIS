@@ -11,6 +11,7 @@ include_once ("menu.php");
 
 <!-- Block#2 start your code -->
 
+<!-- Heading  -->
 <div class="row">
     <div class="col">
     <hr>
@@ -29,23 +30,6 @@ include_once ("menu.php");
     </div>
     </div>
 
-
-    <div class="row">
-    <div class="col">
-    <hr>
-    </div>
-    </div>
-<br>
-
-    <div class="row ">
-    <div class="col-4"></div>
-    <div class="col-4"></div>
-    <div class="col-sm-3 " > 
-<form class="form-inline md-form form-sm mt-4">
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search-Module_Id" aria-label="Search"id="search"> 
-  <i class="fas fa-search ml-3" aria-hidden="true"></i>
-</form>
-</div>
     
     </div>
 
@@ -55,6 +39,9 @@ include_once ("menu.php");
     </div>
     </div> 
 
+<!-- Heading end -->
+
+<!-- Dropdown start -->
 
     <div class="row">
     <div class="col-3 text-center">
@@ -66,7 +53,7 @@ include_once ("menu.php");
             </select>
     </div>
 
-    <div class="col-5 text-center">
+    <div class="col-3 text-center">
     <label class="input-group-text" for="inputGroupSelect036">Choose Module</label>
             <select class="custom-select" id="inputGroupSelect01">
                 <option selected>Choose Module</option>
@@ -75,14 +62,6 @@ include_once ("menu.php");
             </select>
     </div>
 
-    <div class="col-3 text-center">
-    <label class="input-group-text" for="inputGroupSelect036">Assessment Type</label>
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose..</option>
-                <option value="1">Written</option>
-                <option value="2">Practical</option>
-            </select>
-    </div>
 
     <div class="col-1 text-center">
     <button type="button" class="btn btn-outline-success">submit</button>
@@ -91,14 +70,56 @@ include_once ("menu.php");
 <br>
 <br>
 
-  <div class="row">
+<!-- Dropdown End -->
+
+<!-- Assessments start -->
+  <div class="row"><!-- Table start -->
+  <div class="col-3">
+  <h3 class="display-6 text-center">Assessments</h3>
+  <hr color ="black" style="height:1px;">
+  <div class="col">
+  
+  </div>
   <table class="table">
+    <tr>
+      <td scope="col-8">Assessment</td>
+      <td scope="col-4"><i class="fas fa-eye"></i>
+    <button type="button" class="btn btn-secondary">VIEW</button></td>
+        
+    </tr>
+    <tr>
+      <td scope="col-8">Assessment 2</td>
+    </tr>
+    <tr>
+      <td scope="col-8">Assessment 3</td>  
+    </tr>
+
+    <tr>
+      <td scope="col-8">Assessment 4</td>  
+    </tr> 
+    <tr>
+      <td scope="col-8">Assessment 4</td>  
+    </tr>
+</table>
+  <hr color ="black" style="height:1px;">
+</div>
+
+<!-- Assessments End -->
+
+<!-- Table start -->
+<div class="col-9">
+<table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Assessment-Id</th>
+
+    <th scope="col">Students_id</th>
+      <th scope="col">Assessment</th>
       <th scope="col">Assessment-Date</th>
       <th scope="col">Assessment-Marks</th>
-      <th scope="col">Percentage</th>
+      <th scope="col">Assessment-Marks</th>
+      
+
+      
     </tr>
   </thead>
   <tbody>
@@ -107,22 +128,17 @@ include_once ("menu.php");
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
+      <td>@mdo</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    
   </tbody>
 </table>
-  </div>
+</div>
+
+<!-- Table End -->
+
+  </div><!-- Table row end -->
+
 
 <!-- end your code -->
 
