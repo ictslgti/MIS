@@ -8,31 +8,32 @@ $title = "Home | SLGTI";
 <!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-<div class="row">
-    <div class="col-sm-12 col-md-4 col-lg-8">
-    <h1 class="text-center">EAT GOOD FEEL GOOD</h1>
+<div class="row shadow p-3 mt-1 bg-info text-white">
+    <div class="col-sm-12 col-md-4 col-lg-9">
+        <h1 class="text-center">EAT GOOD FEEL GOOD</h1>
     </div>
 
-    <div class="col-sm-12 col-md-4 col-lg-4">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-                <div class="dropdown-menu">
+    <div class="col-sm-12 col-md-4 col-lg-3">
+        <div class="btn-group dropright">
+            <button class="btn btn-info btn-lg" type="button">DAYS</button>
+            <button type="button" class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
                 <button class="dropdown-item" type="button">MONDAY</button>
-                            <button class="dropdown-item" type="button">TUESDAY</button>
-                            <button class="dropdown-item" type="button">WEDNESDAY</button>
-                            <button class="dropdown-item" type="button">THURSDAY</button>
-                            <button class="dropdown-item" type="button">FRIDAY</button>
-                            <button class="dropdown-item" type="button">SATURDAY</button>
-                            <button class="dropdown-item" type="button">SUNDAY</button>
-                </div>
+                <button class="dropdown-item" type="button">TUESDAY</button>
+                <button class="dropdown-item" type="button">WEDNESDAY</button>
+                <button class="dropdown-item" type="button">THURSDAY</button>
+                <button class="dropdown-item" type="button">FRIDAY</button>
+                <button class="dropdown-item" type="button">SATURDAY</button>
+                <button class="dropdown-item" type="button">SUNDAY</button>
             </div>
         </div>
     </div>
 </div>
 
  <!-- FOOD MENU DESIGN    -->
-        <div class="row pl-3 pt-5">
+        <div class="row pl-3 pt-3">
             <h4 >
             <p class="text-xl-left">Morning Foods.</p> </h4>
         </div>
