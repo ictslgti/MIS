@@ -39,7 +39,7 @@ $title = "Home | SLGTI";
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 container">
                 <div class="card">
-                    <img class="card-img-top" src="154.png" alt="Card image cap">
+                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Rotti  1 Pc<br>
                          20/=</h5>
