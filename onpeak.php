@@ -25,33 +25,25 @@ include_once("menu.php");
         </div>
 
 
-        <div class="row float-right">
-          <div class="col ">
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Registration" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
+
 
 <br>
-<br>
-<br>
+
     <div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
-    <div class="col">
+      <div class="col">
         <div class=row>
-          <div class="col">
+            <div class="col">
                 <br>
                 <br>
-                Today Date
+                <div id="timestamp" class="pr-5 pl-2 ml-auto text-info">9/18/2019 - 2:07:56 PM</div>
                 <br>
                 <br>
-          </div>
+            </div>
         </div>
         
-
-        <div class=row >
         
+
+      <div class=row >
         <table class="table table-hover">
             <thead>
                   <tr>
@@ -61,7 +53,7 @@ include_once("menu.php");
                     <th scope="col">EXIT DATE & TIME</th>
                     <th scope="col">RETURN DATE & TIME</th>
                     <th scope="col"> CONTACT NO </th>
-                    <th scope="col">REFERENCES</th>
+                    <th scope="col">ACTION</th>
                     
                   </tr>
             </thead>
@@ -106,14 +98,101 @@ include_once("menu.php");
                   </tr>
             </tbody>
         </table> 
+      </div>
+    </div>
+  </div>
+ 
+
+  <div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
+      <div class="col">
+        <div class=row>
+            <div class="col">
+                <br>
+                <br>
+                 <nav class="navbar navbar-light bg-light">
+                        <form class="form-inline">
+                        <div class="pr-5 pl-2 ml-auto text-info">History</div>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="form-control mr-sm-2" type="search" placeholder="Registration No" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> </button>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="form-control mr-sm-2" type="search" placeholder="Date" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="form-control mr-sm-2" type="search" placeholder="Reference" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                </nav>
+                <br>
+                <br>
+            </div>
         </div>
-</div>
-</div>
+        
+        
+
+      <div class=row >
+        <table class="table">
+            <thead>
+                  <tr>
+                    <th scope="col">NAME</th>
+                    <th scope="col">REGISTRATION NO </th>
+                    <th scope="col">REASON FOR EXIT</th>
+                    <th scope="col">EXIT DATE & TIME</th>
+                    <th scope="col">RETURN DATE & TIME</th>
+                    <th scope="col"> CONTACT NO </th>
+                    <th scope="col">REFERENCE</th>
+                    
+                  </tr>
+            </thead>
+            <tbody>
+                  <tr>
+                    <th scope="row">Nirthika Ravinthiran</th>
+                    <td> 24586</td>
+                    <td> Hospital </td>
+                    <td> 25.2.2019/ 10.00 am</td>
+                    <td> 25.2.2019/ 1.00 pm</td>
+                    <td> 077896542</td>
+                    <td> approved </td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Piruntha Jeyananthan</th>
+                    <td> 24586</td>
+                    <td> Other Reason </td>
+                    <td>20.6.2019/ 9.00 am</td>
+                    <td> 20.6.2019/ 2.00 pm</td>
+                    <td> 077856542</td>
+                    <td> disapproved</td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Hephzibha Pathmanathan</th>
+                    <td> 24586</td>
+                    <td> Family issues</td>
+                    <td>21.7.2019/ 10.30 am</td>
+                    <td> 21.7.2019/ 12.00 noon</td>
+                    <td> 077456542</td>
+                    <td> approved </td>
+                  </tr>
+            </tbody>
+        </table> 
+      </div>
+    </div>
+  </div>
+    
 
 <br>
 <br>
-<br>
-<br>
+
 
 
        <div class="row ">
@@ -153,9 +232,10 @@ include_once("menu.php");
               </div>
               </div>
           </div>
+      </div>
 
-         
-        </div>
+ 
+  
         
 
          
