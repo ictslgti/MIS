@@ -42,25 +42,25 @@ include_once("menu.php");
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="text" class="font-weight-bolder"  >Contact No :</label><br>
-    <input type="text" class="form-control" placeholder="">
+    <input type="tel"  pattern="[0-9]{10}" class="form-control" placeholder="" required >
     </div>
     
 
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="date" class="font-weight-bolder"  >Date :</label><br>
-    <input type="date" class="form-control" placeholder="">
+    <input type="date" class="form-control" placeholder="" required>
     </div>
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="date" class="font-weight-bolder"  >Time :</label><br>
-    <input type="time" class="form-control" placeholder="">
+    <input type="time" class="form-control" placeholder="" required>
     </div>
    
     <div class="col-12" >
     <br>
     <label for="exampleFormControlTextarea1" class="font-weight-bolder" >Reason for exit :</label><br>
-    <textarea class="form-control form-control-lg " id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea class="form-control form-control-lg " id="exampleFormControlTextarea1" rows="3" required></textarea>
     </div>
 
 
