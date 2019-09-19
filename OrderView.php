@@ -96,7 +96,7 @@ include_once("menu.php");
 </div>
     <div class="row">
     
-    <div class="col"><button type="button" class="btn btn-outline-primary">Back</button></div>
+    <div class="col"><a href="FoodOrders" button type="button" class="btn btn-outline-primary" role="button" aria-pressed="true">Back</button></div>
     
     
     
