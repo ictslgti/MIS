@@ -8,57 +8,62 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+<!--border border-primary rounded
 
-<div class="border border-primary rounded">
-    
+bg-primary text-warning
+-->
+<div class=" mr-5 ml-5 mt-5 mb-5">
+            <div class="card  shadow  p-3 mb-5 bg-white rounded border-primary">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="bg-primary text-warning">
-                        <h1  style="color:white;"> <i class="fas fa-chart-line"></i> Feedback  info list</h1>
+                        <div class="">
+                        <h2 class="display-5 text-center text-primary"> <i class="fas fa-chart-line"></i> Feedback  info list</h2>
                         </div>
                     </div> 
                 </div>
+            </div>
 
                 <div class="row">
                     <div class="col-sm-12">
                         
-                        <h4> Department of Infromation & communication Techonology</h3>
-                        
-                    </div> 
-                </div>
+                        <div class="card border-secondary ">
+                                <h3 class="card-header display-5 text-center text-secondary">   Department of Infromation & communication Techonology</h3>
+                                <div class="card-body">
+                                 
+                                  
+                                <div class="row border-bottom">
+                                    <div class="col-1"><h6>#</h6></div>
+                                    <div class="col-3"><h6>Staff Name</h6></div>
+                                    <div class="col-3"><h6>Modules</h6></div>
+                                    <div class="col-2"><h6>Course</h6></div>
+                                    <div class="col-3"><h6>Academin Year</h6></div>
+                                </div>   
 
-                <div class="row">
-                    <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-1">1</div>
+                                    <div class="col-3">Y.achchuthan</div>
+                                    <div class="col-3">B03/K72C001M05</div>
+                                    <div class="col-2">ICT</div>
+                                    <div class="col-3">2018/2019</div>
+                                </div> 
 
-                            <table class="table table-bordered table-hover mr-5">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Staff Name</th>
-                                    <th scope="col">Modules</th>
-                                    <th scope="col">Course</th>
-                                    <th scope="col">Academin Year</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <th scope="row">1</th>
-                                <td>Y.achchuthan</td>
-                                <td>B03/K72C001M05</td>
-                                <td>ICT</td>
-                                <td>2018/2019</td>
-                                </tr>
-                            </tbody>
-                            </table>
-                            <a class="btn btn-light" href="feedbacksummery.php" role="button">create</a>
-                            <a class="btn btn-primary btn-sm" href="#" role="button">view</a>
-                            <a class="btn btn-success btn-sm" href="#" role="button">Student summery</a>
+                                        <a class="btn btn-outline-primary" href="feedbacksummery.php" role="button">create</a>
+                                        <a class="btn btn-outline-success" href="#" role="button">view</a>
+                                
+                               
+    
+                                </div>
+                        </div>
+
                         
                     </div>
                 </div>
         
     </div>
 
+
+ 
+  
 
 <!--END OF YOUR COD-->
 
