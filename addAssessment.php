@@ -29,71 +29,92 @@ $title = "Examinations | SLGTI";
                 </div>
             </div>
         </div>
+<div class="container">
+        <div class="row">
+                <div class="col">
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01"><i
+                                            class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
+                                        Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Semister 1</option>
+                                    <option value="2">Semister 2</option>
+                                </select>
+                            </div>
+                </div>
+                <div class="col">
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01"><i
+                                            class="fas fa-book-open"></i>&nbsp;&nbsp;Select
+                                        Module&nbsp;</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option selected>Graphic Design</option>
+                                    <option value="1">Programming</option>
+                                    <option value="2">Database 1</option>
+                                    <option value="3">System Analysis and Design</option>
+                                    <option value="3">Manage Workplace</option>
+                                    <option value="3">Manage Workplace & Communication</option>
+                                </select>
+                            </div>
+                </div>
+              </div>
+
+
+
+             
+              <div class="row">
+                  <div class="col">
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01"><i
+                                            class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Asignments Type</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option selected>Choose...</option>
+                                    <option value="1">A1</option>
+                                    <option value="2">A2</option>
+                                </select>
+                            </div>
+
+
+
+                  </div>
+
+                  <div class="col">
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i
+                                            class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment
+                                        Name&nbsp;</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                                    aria-describedby="basic-addon1">
+                            </div>
+
+
+
+
+                  </div>
+
+
+
+
+              </div>
+
+
+
+
+</div>
+
+        
 
         <!-- main div -->
-        <div class="table container">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01"><i
-                            class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
-                        Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">Semister 1</option>
-                    <option value="2">Semister 2</option>
-                </select>
-            </div>
-
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01"><i
-                            class="fas fa-book-open"></i>&nbsp;&nbsp;Select
-                        Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>Graphic Design</option>
-                    <option value="1">Programming</option>
-                    <option value="2">Database 1</option>
-                    <option value="3">System Analysis and Design</option>
-                    <option value="3">Manage Workplace</option>
-                    <option value="3">Manage Workplace & Communication</option>
-                </select>
-            </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01"><i
-                            class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Asignments Type</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">A1</option>
-                    <option value="2">A2</option>
-                </select>
-            </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><i
-                            class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment
-                        Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                </div>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                    aria-describedby="basic-addon1">
-            </div>
-
-
-
-
-
-
-
-        </div>
-
-        </div>
-
+        
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col col-lg-2">
