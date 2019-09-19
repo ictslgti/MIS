@@ -10,9 +10,24 @@ include_once("menu.php");
   
     <!-- end dont change the order-->
 <!--block 2 start my code here-->  
+<div class="shadow p-3 mb-5 bg-white rounded">
 
+        <div class="highlight-blue">
+            <div class="container">
+                <div class="intro">
+                    <h1 class="display-8 text-center">Daily Report</h1>
+                    
+                 
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form>
+<div class="form-group container p-3 mb-2 bg-light text-dark border border-primary rounded">
    <div class= "row"> 
-   <div class ="col-4"><h1>Daily Report</h1></div>
+   <div class="col-4"></div>
    <div class ="col-4"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
 
 <div class ="col-3"><select class="custom-select d-block w-100" id="Department" required="">
@@ -26,8 +41,8 @@ include_once("menu.php");
                   
                   </select>
                   </div>
-  <div class ="col-1"><button type="button" class="btn btn-success">Go</button></div>
-</div>
+  <div class ="col-1"><button type="button" class="btn btn-success">Go</button></div></div>
+  <br><br>
 <table class="table table-borderless ">
   <thead class=" thead-dark">
     <tr>
@@ -100,8 +115,8 @@ include_once("menu.php");
 
    </div>
     
-  
-
+  </form>
+</div>
     
 
 
