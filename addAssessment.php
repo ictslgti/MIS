@@ -36,7 +36,7 @@ $title = "Examinations | SLGTI";
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01"><i
                             class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
-                        Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01">
                     <option selected>Choose...</option>
@@ -50,7 +50,7 @@ $title = "Examinations | SLGTI";
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01"><i
                             class="fas fa-book-open"></i>&nbsp;&nbsp;Select
-                        Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01">
                     <option selected>Graphic Design</option>
@@ -65,7 +65,7 @@ $title = "Examinations | SLGTI";
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01"><i
-                            class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Asignments</label>
+                            class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Asignments Type</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01">
                     <option selected>Choose...</option>
@@ -74,10 +74,57 @@ $title = "Examinations | SLGTI";
                 </select>
             </div>
 
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i
+                            class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment
+                        Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div>
+
+
+
+
 
 
 
         </div>
+
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-2">
+
+                </div>
+                <div class="col-md-auto">
+                    <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Add
+                        Asessments</button>
+                </div>
+                <div class="col col-lg-2">
+
+                </div>
+            </div>
+
+        </div>
+        <br>                                        
+
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead>
+                        <th><center>Module</center></th>
+                        <th><center>Module</center></th>
+                        <th><center>Module</center></th>
+
+
+
+                </thead>
+              
+            </table>
+          </div>
+
 
 
     </body>
