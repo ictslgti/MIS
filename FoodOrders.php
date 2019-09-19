@@ -40,7 +40,7 @@ $title = "Home | SLGTI";
             <div class="col-sm-12 col-md-3 col-lg-3 container">
             <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="">
-                    <div class="card-body">  <h5 class="card-title">Rotti  1 Pc<br> 20/=</h5>
+                    <div class="card-body">  <h6 class="display-4">Rotti  1 Pc<br> 20/=</h6>
                         <a href="#" class="btn btn-primary">Add</a>
                     </div>
                 </div>
