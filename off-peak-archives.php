@@ -22,6 +22,8 @@ include_once("menu.php");
       <th scope="col">Name of applicant</th>
       <th scope="col">Registration No</th>
       <th scope="col">Department</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
      <th colspan="3">Status</th>
     </tr>
   </thead>
@@ -32,6 +34,8 @@ include_once("menu.php");
       <td>????</td>
       <td>????</td>
       <td>?????</td>
+      <td>?????</td>
+      <td>?????</td>
      
     </tr>
     <tr>
@@ -40,6 +44,8 @@ include_once("menu.php");
       <td>????</td>
       <td>????</td>
       <td>?????</td>
+      <td>?????</td>
+      <td>?????</td>
      
     </tr>
     <tr>
@@ -47,6 +53,8 @@ include_once("menu.php");
       <td>????</td>
       <td>????</td>
       <td>????</td>
+      <td>?????</td>
+      <td>?????</td>
       <td>?????</td>
       
     </tr>
@@ -56,6 +64,8 @@ include_once("menu.php");
       <td>????</td>
       <td>????</td>
       <td>????</td>
+      <td>?????</td>
+      <td>?????</td>
       <td>?????</td>
       
     </tr>
