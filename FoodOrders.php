@@ -37,42 +37,66 @@ $title = "Home | SLGTI";
             <h1 class="display-5">Morning Fare</h1>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="">
-                    <div class="card-body">  <h6 class="display-4">Rotti  1 Pc<br> 20/=</h6>
-                        <a href="#" class="btn btn-primary">Add</a>
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Dosa  1 Pc<br>
-                        20/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
+
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Idiyapam  10 Pc<br>
-                        40/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
+
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Noodles
-                        1 Pk<br>
-                        80/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
+
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
