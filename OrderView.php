@@ -12,16 +12,24 @@ include_once("menu.php");
 <!--block 2 start my code here-->  
 
 
+<div class="shadow p-3 mb-5 bg-white rounded">
 
+        <div class="highlight-blue">
+            <div class="container">
+                <div class="intro">
+                    <h1 class="display-8 text-center">Order Information</h1>
+                    
+                 
 
+                </div>
+            </div>
+        </div>
+    </div>
+<form>
+<div class="form-group container p-3 mb-2 bg-light text-dark border border-primary rounded">
 <div class ="row">
-<div class="col-4"><h1>Order Information</h1></div>
-<div class="col-4"><input type="search" class="form-control ds-input" id="search-input" placeholder="Search..."
- aria-label="Search for..." autocomplete="off" data-docs-version="4.3" 
-spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0"
- dir="auto" style="position: relative; vertical-align: top;"></div>
- <div class="col-4"><button type="button" class="btn btn-success">Go</button></div>
- <table class="table table-borderless">
+<div class ="col"   >
+<table class="table table-borderless">
   <thead>
     <tr>
     
@@ -42,7 +50,15 @@ spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false
     
   </tbody>
 </table>
-<table class="table table-borderless">
+ </div >
+</div>
+
+
+
+<div class="row">
+
+<div class="col">
+ <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">Item Name</th>
@@ -66,8 +82,8 @@ spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false
     </tr>
     <tr>
       <th scope="row"></th>
-      <td colspan="1" class="text-white bg-dark"><h5>Total Amount<h5></td>
-      <td  class="text-white bg-dark"><h5>1020<h5></td>
+      <td colspan="1"><h5>Total Amount<h5></td>
+      <td ><h5>1020<h5></td>
     </tr>
   </tbody>
 </table>
@@ -76,24 +92,19 @@ spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
-
+</div>
+    <div class="row">
     
+    <div class="col"><button type="button" class="btn btn-outline-primary">Back</button></div>
+    
+    
+    
+    </div>
+ </div>
+</form>
+
+
   
 <!--block 3 start dont change the order-->
 
