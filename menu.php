@@ -107,7 +107,7 @@
              </a>
              <div class="dropdown-menu" aria-labelledby="ojt">
                  <a class="dropdown-item" href="OJT">On-the-job Training Info</a>
-                 <a class="dropdown-item" href="AddOJT">Add a Training Place</a>
+                 <a class="dropdown-item" href="addojt">Add a Training Place</a>
                  <a class="dropdown-item" href="OJTRequest">Students Request</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="PlacementRequest">Student Placement Request</a>
