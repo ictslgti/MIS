@@ -102,101 +102,145 @@ $title = "Home | SLGTI";
             </div>
         </div>
 
-        <div class="row pt-4 pl-3">
-             <h1 class="display-5">Lunch Fare</h1>
+        
+        <div class="row pl-3 pt-4">
+            <h1 class="display-5">Lunch Fare</h1>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Egg Rice  1 Pk<br>
-                         80/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Veg Rice  1 Pk<br>
-                        60/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Fish Rice  1Pk<br>
-                        80/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">DAY SPL FOOD<br>
-                    100/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="row pt-4 pl-3">
-            <h1 class="display-5">Night Foods</h1>
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
+
+        <div class="row pl-3 pt-4">
+            <h1 class="display-5">Night Fare</h1>
+        </div>
         <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Kotthu  1 Pk<br>
-                         100/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Fired Rice  1 Pk<br>
-                        100/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
+
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Pittu  1 Pk<br>
-                        80/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
+
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 container">
-            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Noodles
-                        1 Pk<br>
-                        80/=</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
+
+            <div class="col-sm-12 col-md-3 col-lg-3 container">           
+                <div class="card" style="max-width: 30rem; height: 13rem;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top"src="img/154.png" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h5>  
+                                <a href="#" class="btn btn-primary">Add</a>                                   
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
 <!-- ORDE CART DESIGN  -->
   
     <div class="row pt-5">
