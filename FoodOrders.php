@@ -38,15 +38,15 @@ $title = "Home | SLGTI";
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 30rem; height: 13rem;">
+                <div class="card" style="max-width: 40rem; height: 9rem;">
                     <div class="row">
-                        <div class="col-md-6">
-                            <img class="card-img-top ml-3" src="img/154.png" alt="">
+                        <div class="col-md-7">
+                            <img class="card-img-top pl-3" src="img/154.png" alt="">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
-                                <a href="#" class="btn btn-info w-75">Add</a>                                   
+                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
+                                <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
                     </div>
@@ -54,15 +54,15 @@ $title = "Home | SLGTI";
             </div>
 
             <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 30rem; height: 13rem;">
+                <div class="card" style="max-width: 40rem; height: 9rem;">
                     <div class="row">
-                        <div class="col-md-6">
-                            <img class="card-img-top ml-3"src="img/154.png" alt="">
+                        <div class="col-md-7">
+                            <img class="card-img-top pl-3" src="img/154.png" alt="">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="card-body">
-                            <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
-                                <a href="#" class="btn btn-info w-75">Add</a>                                   
+                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
+                                <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
                     </div>
@@ -70,15 +70,15 @@ $title = "Home | SLGTI";
             </div>
 
             <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 30rem; height: 13rem;">
+                <div class="card" style="max-width: 40rem; height: 9rem;">
                     <div class="row">
-                        <div class="col-md-6">
-                            <img class="card-img-top ml-3"src="img/154.png" alt="">
+                        <div class="col-md-7">
+                            <img class="card-img-top pl-3" src="img/154.png" alt="">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="card-body">
-                            <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
-                                <a href="#" class="btn btn-info w-75">Add</a>                                   
+                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
+                                <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
                     </div>
@@ -86,20 +86,24 @@ $title = "Home | SLGTI";
             </div>
 
             <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 30rem; height: 13rem;">
+                <div class="card" style="max-width: 40rem; height: 9rem;">
                     <div class="row">
-                        <div class="col-md-6">
-                            <img class="card-img-top ml-3"src="img/154.png" alt="">
+                        <div class="col-md-7">
+                            <img class="card-img-top pl-3" src="img/154.png" alt="">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="card-body">
-                            <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
-                                <a href="#" class="btn btn-info w-75">Add</a>                                   
+                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
+                                <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            
+
+            
         </div>
 
         
