@@ -52,20 +52,59 @@ include_once("menu.php");
       <th scope="col">join date</th>
       <th scope="col">Weight</th>
       <th scope="col">Gender</th>
-
     </tr>
   </thead>
-  
+  <tr>
+
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+      <td>
+           
+            <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+      </td>
+    </tr>
+
+    <tr>
+
+<td>Mark</td>
+<td>Otto</td>
+<td>@mdo</td>
+<td>Mark</td>
+<td>Otto</td>
+<td>@mdo</td>
+<td>Mark</td>
+<td>Otto</td>
+<td>@mdo</td>
+<td>@mdo</td>
+<td>
+     
+      <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+</td>
+</tr>
+ 
 </table>
+
+
+
+
+
 <div class="row">
 <div class="col-6"></div>
 <div class="col-3"></div>
 <div class="col-2"></div>
 
-<div class="col-1">
-    <button type="button" class="btn btn-secondary" onclick="location.href='donor.php'"> Join Donor</button>
+ <div class="col-1"> 
+    <button type="button" class="btn btn-secondary" onclick="location.href='donor.php'"> Join Donor</button> 
     
-    </div>
+     </div> 
 </div>
 
 
