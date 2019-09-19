@@ -65,22 +65,22 @@ include_once("menu.php");
 
 
     <div class="row">
-    <div class="col-md-7 col-sm-12">
-    <br>
-    
-    <button type="button" class="btn btn-primary btn-sm "><i class="fas fa-paper-plane"></i> Request to approval</button>
+    <div class="col-md-7 col-sm-12 ">
+    <br> <br>
+   
+    <button type="button" class="btn btn-primary btn-md"><i class="fas fa-paper-plane"></i> Request to approval</button>
     </div>
     
    
     
     <div class="col-md-3 col-sm-12">
-    <br>
-    <button type="button" class="btn btn-secondary btn-sm " onclick="document.getElementById('rfe').value = '';document.getElementById('tel').value = '';document.getElementById('date').value = '';document.getElementById('time').value = ''">Clear</button>
+    <br><br>
+    <button type="button" class="btn btn-secondary btn-md " onclick="document.getElementById('rfe').value = '';document.getElementById('tel').value = '';document.getElementById('date').value = '';document.getElementById('time').value = ''">Clear</button>
 
 </div>
     <div class="col-md-1 col-sm-12">
-    <br>
-    <button type="button" class="btn btn-info btn-sm" onclick="window.location.href='off-peak-archives.php'">Archives</button>
+    <br><br>
+    <button type="button" class="btn btn-info btn-md " onclick="window.location.href='off-peak-archives.php'">Archives</button>
     </div>
 
    
