@@ -107,7 +107,7 @@ $title = "Home | SLGTI";
 <!-- ORDE CART DESIGN  -->
   
     <div class="row pt-5">
-        <div class="col-sm-12 col-md-4 col-lg-8 container">  
+        <div class="col-sm-12 col-md-4 col-lg-9 container">  
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
