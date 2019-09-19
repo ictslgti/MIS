@@ -39,17 +39,15 @@ $title = "Home | SLGTI";
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
-                    <img class="card-img-top" src="img/154.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Rotti  1 Pc<br>
-                         20/=</h5>
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
+                    <img class="card-img-top" src="img/154.png" alt="">
+                    <div class="card-body">  <h5 class="card-title">Rotti  1 Pc<br> 20/=</h5>
                         <a href="#" class="btn btn-primary">Add</a>
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Dosa  1 Pc<br>
@@ -59,7 +57,7 @@ $title = "Home | SLGTI";
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Idiyapam  10 Pc<br>
@@ -69,7 +67,7 @@ $title = "Home | SLGTI";
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Noodles
@@ -87,7 +85,7 @@ $title = "Home | SLGTI";
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Egg Rice  1 Pk<br>
@@ -97,7 +95,7 @@ $title = "Home | SLGTI";
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Veg Rice  1 Pk<br>
@@ -107,7 +105,7 @@ $title = "Home | SLGTI";
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Fish Rice  1Pk<br>
@@ -117,7 +115,7 @@ $title = "Home | SLGTI";
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">DAY SPL FOOD<br>
@@ -136,7 +134,7 @@ $title = "Home | SLGTI";
         
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Kotthu  1 Pk<br>
@@ -146,7 +144,7 @@ $title = "Home | SLGTI";
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Fired Rice  1 Pk<br>
@@ -156,7 +154,7 @@ $title = "Home | SLGTI";
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Pittu  1 Pk<br>
@@ -166,7 +164,7 @@ $title = "Home | SLGTI";
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 col-lg-3 container">
-                <div class="card">
+            <div class="card" style="width:80%;Height:50% ;margin-top:3%;">
                     <img class="card-img-top" src="img/154.png" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Noodles
