@@ -33,7 +33,7 @@ $title = "Home | SLGTI";
 </div>
 
  <!-- FOOD MENU DESIGN    -->
-        <div class="row pl-3 pt-4">
+        <div class="row pl-3 pt-4 ">
             <em><h2 class="display-5">Morning Fare</h2></em>
         </div>
         <div class="row">
