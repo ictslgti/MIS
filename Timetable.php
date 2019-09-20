@@ -8,68 +8,118 @@ include_once("head.php");
 include_once("menu.php");
 ?>
 
-
-
-
-
-
-
-        <div class="col-xl-3 col-sm-6 mb-3">
-
-        <div class="card text-white bg-primary o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body">
-                <i class="fa fa-fw fa-building"></i>
-              </div>
-              <div class="mr-5">Timetable Info</div>
+<div class="row">
+<div class="row w-100">
+        <div class="col-md-2">
+            <div class="card border-info mx-sm-1 p-3">
+                <div class="card border-info shadow text-info p-3 my-card" ><span class="fa fa-car" aria-hidden="true"></span></div>
+                <div class="text-info text-center mt-3"><h4>Cars</h4></div>
+                <div class="text-info text-center mt-2"><h1>234</h1></div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="viewdepttimetable.php">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card border-success mx-sm-1 p-3">
+                <div class="card border-success shadow text-success p-3 my-card"><span class="fa fa-eye" aria-hidden="true"></span></div>
+                <div class="text-success text-center mt-3"><h4>Eyes</h4></div>
+                <div class="text-success text-center mt-2"><h1>9332</h1></div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card border-danger mx-sm-1 p-3">
+                <div class="card border-danger shadow text-danger p-3 my-card" ><span class="fa fa-heart" aria-hidden="true"></span></div>
+                <div class="text-danger text-center mt-3"><h4>Hearts</h4></div>
+                <div class="text-danger text-center mt-2"><h1>346</h1></div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card border-warning mx-sm-1 p-3">
+                <div class="card border-warning shadow text-warning p-3 my-card" ><span class="fa fa-inbox" aria-hidden="true"></span></div>
+                <div class="text-warning text-center mt-3"><h4>Inbox</h4></div>
+                <div class="text-warning text-center mt-2"><h1>346</h1></div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="card border-warning mx-sm-1 p-3">
+                <div class="card border-warning shadow text-warning p-3 my-card" ><span class="fa fa-inbox" aria-hidden="true"></span></div>
+                <div class="text-warning text-center mt-3"><h4>Inbox</h4></div>
+                <div class="text-warning text-center mt-2"><h1>346</h1></div>
+     </div>
+
+     
+  
+
+
+
+
+        </div>
+
+        </div>
+        <div class="col-md-2">
+            <div class="card border-info mx-sm-1 p-3">
+                <div class="card border-info shadow text-info p-3 my-card" ><span class="fa fa-car" aria-hidden="true"></span></div>
+                <div class="text-info text-center mt-3"><h4>Cars</h4></div>
+                <div class="text-info text-center mt-2"><h1>234</h1></div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card border-success mx-sm-1 p-3">
+                <div class="card border-success shadow text-success p-3 my-card"><span class="fa fa-eye" aria-hidden="true"></span></div>
+                <div class="text-success text-center mt-3"><h4>Eyes</h4></div>
+                <div class="text-success text-center mt-2"><h1>9332</h1></div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card border-danger mx-sm-1 p-3">
+                <div class="card border-danger shadow text-danger p-3 my-card" ><span class="fa fa-heart" aria-hidden="true"></span></div>
+                <div class="text-danger text-center mt-3"><h4>Hearts</h4></div>
+                <div class="text-danger text-center mt-2"><h1>346</h1></div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card border-warning mx-sm-1 p-3">
+                <div class="card border-warning shadow text-warning p-3 my-card" ><span class="fa fa-inbox" aria-hidden="true"></span></div>
+                <div class="text-warning text-center mt-3"><h4>Inbox</h4></div>
+                <div class="text-warning text-center mt-2"><h1>346</h1></div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="card border-warning mx-sm-1 p-3">
+                <div class="card border-warning shadow text-warning p-3 my-card" ><span class="fa fa-inbox" aria-hidden="true"></span></div>
+                <div class="text-warning text-center mt-3"><h4>Inbox</h4></div>
+                <div class="text-warning text-center mt-2"><h1>346</h1></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
         </div>
 
 
-          <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-success o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-users"></i>
-              </div>
-              <div class="mr-5">Add Class Time table</div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="classtimetable.php">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-
-
-
-        <div class="col-xl-3 col-sm-6 mb-3">
-          <div class="card text-white bg-success o-hidden h-100">
-            <div class="card-body">
-              <div class="card-body-icon">
-                <i class="fa fa-fw fa-users"></i>
-              </div>
-              <div class="mr-5">Add Exam Time table </div>
-            </div>
-            <a class="card-footer text-white clearfix small z-1" href="examtimetable.php">
-              <span class="float-left">View Details</span>
-              <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
         
 
+</div>
+
+
+      
+</div>
 
 
 
