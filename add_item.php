@@ -38,12 +38,16 @@ $title = "Department Details | SLGTI";
                   <input type="text" class="form-control" id="" aria-describedby="costHelp" placeholder="" required="required">
                   <small id="" class="form-text text-muted"></small>
           </div>
-          
+
+          <div class="w-100"></div>
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="datePic">05. Date</label> <span style="color:red;">*</span></label>
                   <input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp" required="required">
                   <small id="datePicHelp" class="form-text text-muted"></small>
                   
+                  </div>
+          <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
+              
                   <input class="btn btn-dark ml-2 mt-2 float-right" type="reset" value="Reset">
                   <button type="submit" class="btn btn-info mt-2 float-right">Add </button>
 
