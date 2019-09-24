@@ -67,7 +67,12 @@ include_once("menu.php");
             <div class="card border-info mx-sm-1 p-3">
             
             <div class="footer">
-                            <a href="#" class="Cbtn Cbtn-primary">View</a>
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
+
+                            <a href="AddTimetable.php" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
             </div>
@@ -75,6 +80,10 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-success mx-sm-1 p-3">
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -85,6 +94,10 @@ include_once("menu.php");
             <div class="card border-danger mx-sm-1 p-3">
                 
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -94,6 +107,10 @@ include_once("menu.php");
             <div class="card border-warning mx-sm-1 p-3">
                 
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -103,6 +120,10 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-warning mx-sm-1 p-3">
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -124,6 +145,11 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-info mx-sm-1 p-3">
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -133,6 +159,10 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-success mx-sm-1 p-3">
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -143,6 +173,11 @@ include_once("menu.php");
             <div class="card border-danger mx-sm-1 p-3">
                 
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -152,6 +187,11 @@ include_once("menu.php");
             <div class="card border-warning mx-sm-1 p-3">
                 
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -161,6 +201,11 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-warning mx-sm-1 p-3">
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -183,6 +228,10 @@ include_once("menu.php");
             <div class="card border-info mx-sm-1 p-3">
             
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -191,6 +240,10 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-success mx-sm-1 p-3">
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -201,6 +254,10 @@ include_once("menu.php");
             <div class="card border-danger mx-sm-1 p-3">
                 
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -209,6 +266,10 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-warning mx-sm-1 p-3">
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -219,6 +280,10 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-warning mx-sm-1 p-3">
             <div class="footer">
+            <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -239,6 +304,10 @@ include_once("menu.php");
              <div class="card border-info mx-sm-1 p-3">
     
              <div class="footer">
+             <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -248,6 +317,10 @@ include_once("menu.php");
                <div class="card border-success mx-sm-1 p-3">
        
                    <div class="footer">
+                   <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -257,6 +330,11 @@ include_once("menu.php");
                  <div class="card border-danger mx-sm-1 p-3">
         
                 <div class="footer">
+                <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -266,6 +344,10 @@ include_once("menu.php");
                           <div class="card border-warning mx-sm-1 p-3">
         
                   <div class="footer">
+                  <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
@@ -274,7 +356,15 @@ include_once("menu.php");
 
               <div class="col-md-2">
                  <div class="card border-warning mx-sm-1 p-3">
+                     
                  <div class="footer">
+
+
+               
+                 <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <br>
                             <a href="#" class="Cbtn Cbtn-primary">View</a>
                             <a href="#" class="Cbtn Cbtn-danger">Delete</a>
                         </div>
