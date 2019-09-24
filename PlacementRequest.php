@@ -42,6 +42,11 @@ include_once("menu.php");
                     </div>
 
                     <div class="form-group">
+                        <label for="pno">Phone Number</label>
+                        <input type="pno" class="form-control" id="pno" placeholder="enter Phone-no">
+                    </div>
+
+                    <div class="form-group">
                         <label for="email">E-mail</label>
                         <input type="email" class="form-control" id="email" placeholder="enter E-mail">
                     </div>
@@ -60,8 +65,9 @@ include_once("menu.php");
                         <label for="com">Comments</label>
                         <input type="com" class="form-control" id="com" placeholder="Write your any other comments">
                     </div>
-
+                    
                     <button type="submit" class="btn btn-primary">Requesting...</button>
+                    
                 </form>
 
             </div>

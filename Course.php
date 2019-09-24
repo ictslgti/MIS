@@ -55,9 +55,9 @@ include_once ("menu.php");
                       <td>5IT</td>
                       <td>5</td>
                       <td>
-                      <a href="#" class="btn btn-info btn-icon-split"> <span class="text">View Module</span></a>
-                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">View More</span></a>
-                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">Batch</span></a>
+                      <a href="module" class="btn btn-primary btn-icon-split"> <span class="text">View Module</span></a>
+                      <a href="course_view_more" class="btn btn-primary btn-icon-split"><span class="text">View More</span></a>
+                      <a href="#" class="btn btn-primary btn-icon-split"><span class="text">Batch</span></a>
                     </td>
                     </tr>
                     <tr>
@@ -65,9 +65,9 @@ include_once ("menu.php");
                       <td>4TE</td>
                       <td>4</td>
                       <td>
-                      <a href="#" class="btn btn-info btn-icon-split"> <span class="text">View Module</span></a>
-                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">View More</span></a>
-                      <a href="#" class="btn btn-info btn-icon-split"><span class="text">Batch</span></a>
+                      <a href="#" class="btn btn-primary btn-icon-split"> <span class="text">View Module</span></a>
+                      <a href="#" class="btn btn-primary btn-icon-split"><span class="text">View More</span></a>
+                      <a href="#" class="btn btn-primary btn-icon-split"><span class="text">Batch</span></a>
                     </td>
                     </tr>
                   </tbody>

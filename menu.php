@@ -107,7 +107,7 @@
              </a>
              <div class="dropdown-menu" aria-labelledby="ojt">
                  <a class="dropdown-item" href="OJT">On-the-job Training Info</a>
-                 <a class="dropdown-item" href="AddOJT">Add a Training Place</a>
+                 <a class="dropdown-item" href="addojt">Add a Training Place</a>
                  <a class="dropdown-item" href="OJTRequest">Students Request</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="PlacementRequest">Student Placement Request</a>
@@ -207,8 +207,8 @@
                  <i class="fas fa-door-open"></i> On-Peak & Off-Peak
              </a>
              <div class="dropdown-menu" aria-labelledby="OnPeakOffPeak">
-                 <a class="dropdown-item" href="OnPeak">On-Peak Info</a>
-                 <a class="dropdown-item" href="RequestOnPeak">Request a On-Peak</a>
+                 <a class="dropdown-item" href="onpeak.php">On-Peak Info</a>
+                 <a class="dropdown-item" href="onpeak_request.php">Request a On-Peak</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="OffPeak">Off-Peak Info</a>
                  <a class="dropdown-item" href="RequestOffPeak">Request a Off-Peak</a>

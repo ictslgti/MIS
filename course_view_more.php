@@ -61,7 +61,7 @@ include_once ("menu.php");
                       <td>18</td>
                       <td>6</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                      </td>
                     </tr>
@@ -73,7 +73,7 @@ include_once ("menu.php");
                       <td>12</td>
                       <td>6</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
@@ -85,7 +85,7 @@ include_once ("menu.php");
                       <td>12</td>
                       <td>6</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
@@ -97,7 +97,7 @@ include_once ("menu.php");
                       <td>12</td>
                       <td>6</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
@@ -109,7 +109,7 @@ include_once ("menu.php");
                       <td>12</td>
                       <td>6</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
@@ -121,7 +121,7 @@ include_once ("menu.php");
                       <td>12</td>
                       <td>6</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
@@ -133,7 +133,7 @@ include_once ("menu.php");
                       <td>12</td>
                       <td>6</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>

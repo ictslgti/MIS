@@ -12,24 +12,19 @@ include_once("menu.php");
 
 
 <div class ="row">
+<div class ="col-10  ">
+<ul class="nav justify-content-last">
+  <li class="nav-item">
+    <a class="nav-link create group text-secondary" href="#"><i class="fas fa-user-plus"></i>Create group</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link join group text-secondary" href="#"><i class="fas fa-users text-secondary"></i>Join group</a>
+  </li>
 
-                <div class ="col-5  "><h5>Chat</h5>
-                <textarea dir="auto" data-region="send-message-txt" class="form-control bg-white" rows="3" data-auto-rows="" data-min-rows="3" data-max-rows="7" role="textbox" aria-label="Write a message..." placeholder="Write a message..." style="resize: none"></textarea>
-                            <button class="btn btn-link btn-icon icon-size-3 ml-1 mt-auto" aria-label="Send message" data-action="send-message">
-                            <span data-region="send-icon-container"><i class="icon fa fa-paper-plane fa-fw " aria-hidden="true"></i></span>
-                            <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " title="Loading" aria-label="Loading"></i></span></span>
-                            </button>
+</ul>
 
-                
-                
-                 </div>
-                <div class ="col-5 "><h5>User</h5> 
 
-                <textarea dir="auto" data-region="send-message-txt" class="form-control bg-white" rows="3" data-auto-rows="" data-min-rows="3" data-max-rows="7" role="textbox" aria-label="Write a message..." placeholder="Write a message..." style="resize: none"></textarea>
-                            <button class="btn btn-link btn-icon icon-size-3 ml-1 mt-auto" aria-label="Send message" data-action="send-message">
-                            <span data-region="send-icon-container"><i class="icon fa fa-paper-plane fa-fw " aria-hidden="true"></i></span>
-                            <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " title="Loading" aria-label="Loading"></i></span></span>
-                            </button>
+   
 </div>
 
 
@@ -104,6 +99,13 @@ include_once("menu.php");
  
 
  
+
+ 
+                
+
+                
+                
+                
 
 <!-- END YOUR CODER HERE -->
 

@@ -4,20 +4,23 @@ $title = "Department Details | SLGTI";
  include_once("head.php"); 
  include_once("menu.php"); 
  ?>
-<form class="form-inline">
-    <div class="form-group mb-2">
-        <label for="staticEmail2" class="sr-only">Student ID</label>
-        <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Student ID">
+<br>
+<br>
+<br>
+<div class="input-group mb-3 table container">
+    <input type="text" class="form-control" placeholder="Studend ID" aria-label="Recipient's username"
+        aria-describedby="button-addon2">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">View</button>
     </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <label for="inputPassword2" class="sr-only">Password</label>
-        <input type="password" class="form-control" id="inputPassword2" placeholder="Student ID">
-    </div>
-    <button type="submit" class="btn btn-primary mb-2">View</button>
-</form>
+</div>
+<br>
+<br>
+<br>
+
 <form>
 
-    <div class="row border border-dark" id="printableArea">
+    <div class="table container border border-dark" id="printableArea" style="width: 270mm">
         <div class="col form-group container p-3 mb-2">
             <div class="px-lg-5 container">
                 <div>

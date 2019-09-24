@@ -42,7 +42,7 @@ include_once("menu.php");
 <div class="row">   
          <div class="col-12">
       <label for="inputEmail4">D_id</label>
-      <input type="text" class="form-control" id="Email" placeholder="D_id">
+      <input type="text" class="form-control" id="Email" placeholder="D_id" required>
          </div>
 
     <div class="col-6">
@@ -66,7 +66,7 @@ include_once("menu.php");
   </div>
   <div class="col-2">
     <label for="inputAddress2">Blood group</label>
-    <input type="text" class="form-control" id="inputAddress2" disabled placeholder="disabled">
+    <input type="text" class="form-control" id="inputAddress2" disabled placeholder="disabled" >
   </div>
 
   <div class="form-group col-md-12">
@@ -84,22 +84,22 @@ include_once("menu.php");
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">join date</label>
-      <input type="date" class="form-control" id="date" >
+      <input type="date" class="form-control" id="date" required>
     </div>
 
     <div class="form-group col-md-4">
       <label for="inputState">gender</label>
-      <input type="text" class="form-control" id="date" disabled placeholder="disabled">
+      <input type="text" class="form-control" id="date" disabled placeholder="disabled" >
     </div>
 
     <div class="form-group col-md-2">
       <label for="inputZip">weight</label>
-      <input type="text" class="form-control" id="inputZip" >
+      <input type="text" class="form-control" id="inputZip" required>
     </div>
   </div>
 
-  <button type="button" class="btn btn-secondary">Add Donor..</button>
-
+  <button type="submit" class="btn btn-secondary" >Add Donor..</button>
+  <button type="submit" class="btn btn-secondary" onclick="location.href='BloodDonors.php'" >cancel</button>
 </form>
 
 <!--END OF YOUR COD-->

@@ -9,8 +9,21 @@ include_once("menu.php");
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
+<div class="shadow  p-3 mb-5 bg-white rounded">
+
+        <div class="highlight-blue">
+            <div class="container">
+                <div class="intro">
+                    <h1 class="display-4 text-center">SLGTI Department Details</h1>
+                    
+                    <p class="text-center">Welcome to department page. This section to view course & batch details.&nbsp;</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
 <div class="row">
-<h1 class="col text-center">Department Details</h1>
+<!-- <h1 class="col text-center">Department Details</h1> -->
 <table class="table table-hover">
   <thead class="thead-dark">
  
@@ -24,15 +37,16 @@ include_once("menu.php");
  
   <tr class="table-light">
       
-     
+  
       <td>ICT/001</td>
       <td>Information & Communications Technology Department</td>
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
   <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Courses</button>
+  <a href="Course" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Courses</a>
     <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Batches</button></td>
+    <a href="Batch_Details" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Batches</a>
+    </td>
      
   
   
@@ -53,9 +67,13 @@ include_once("menu.php");
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
   <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Courses</button>
+  <a href="Course" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Courses</a>
     <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Batches</button></td>
+    <a href="Batch_Details" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Batches</a>
+    </td>
+    <!-- <button type="button" class="btn btn-secondary">Courses</button> -->
+    <!-- <div class="input-group-text" ><i class="fas fa-eye"></i></div> -->
+    <!-- <button type="button" class="btn btn-secondary">Batches</button></td> -->
       
 
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
@@ -68,9 +86,13 @@ include_once("menu.php");
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
   <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Courses</button>
+  <a href="Course" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Courses</a>
     <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Batches</button></td>
+    <a href="Batch_Details" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Batches</a>
+    </td>
+    <!-- <button type="button" class="btn btn-secondary">Courses</button> -->
+    <!-- <div class="input-group-text" ><i class="fas fa-eye"></i></div> -->
+    <!-- <button type="button" class="btn btn-secondary">Batches</button></td> -->
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     </tr>
     <tr class="table-light ">
@@ -81,9 +103,13 @@ include_once("menu.php");
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
   <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Courses</button>
+  <a href="Course" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Courses</a>
     <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Batches</button></td>
+    <a href="Batch_Details" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Batches</a>
+    </td>
+    <!-- <button type="button" class="btn btn-secondary">Courses</button> -->
+    <!-- <div class="input-group-text" ><i class="fas fa-eye"></i></div> -->
+    <!-- <button type="button" class="btn btn-secondary">Batches</button></td> -->
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     </tr>
     <tr class="table-light">
@@ -94,9 +120,13 @@ include_once("menu.php");
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
   <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Courses</button>
+  <a href="Course" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Courses</a>
     <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Batches</button></td>
+    <a href="Batch_Details" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Batches</a>
+    </td>
+    <!-- <button type="button" class="btn btn-secondary">Courses</button> -->
+    <!-- <div class="input-group-text" ><i class="fas fa-eye"></i></div> -->
+    <!-- <button type="button" class="btn btn-secondary">Batches</button></td> -->
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     </tr>
     <tr class="table-light">
@@ -107,16 +137,20 @@ include_once("menu.php");
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
   <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Courses</button>
+  <a href="Course" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Courses</a>
     <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn btn-secondary">Batches</button></td>
+    <a href="Batch_Details" button="" type="button" class="btn btn-secondary w-100" role="button" aria-pressed="true">Batches</a>
+    </td>
+    <!-- <button type="button" class="btn btn-secondary">Courses</button> -->
+    <!-- <div class="input-group-text" ><i class="fas fa-eye"></i></div> -->
+    <!-- <button type="button" class="btn btn-secondary">Batches</button></td> -->
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
     </tr>
    
   </tbody>
   </form>
 </table>
-
+</div>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->
