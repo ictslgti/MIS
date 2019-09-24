@@ -67,7 +67,7 @@ include_once("menu.php");
             <div class="card border-info mx-sm-1 p-3">
             
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -80,7 +80,7 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-success mx-sm-1 p-3">
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -94,7 +94,7 @@ include_once("menu.php");
             <div class="card border-danger mx-sm-1 p-3">
                 
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -107,7 +107,7 @@ include_once("menu.php");
             <div class="card border-warning mx-sm-1 p-3">
                 
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -120,7 +120,7 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-warning mx-sm-1 p-3">
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -145,7 +145,7 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-info mx-sm-1 p-3">
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
 
@@ -159,7 +159,7 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-success mx-sm-1 p-3">
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -173,7 +173,7 @@ include_once("menu.php");
             <div class="card border-danger mx-sm-1 p-3">
                 
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
 
@@ -187,7 +187,7 @@ include_once("menu.php");
             <div class="card border-warning mx-sm-1 p-3">
                 
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
 
@@ -201,7 +201,7 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-warning mx-sm-1 p-3">
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
 
@@ -228,7 +228,7 @@ include_once("menu.php");
             <div class="card border-info mx-sm-1 p-3">
             
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -240,7 +240,7 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-success mx-sm-1 p-3">
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -254,7 +254,7 @@ include_once("menu.php");
             <div class="card border-danger mx-sm-1 p-3">
                 
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -266,7 +266,7 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-warning mx-sm-1 p-3">
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -280,7 +280,7 @@ include_once("menu.php");
         <div class="col-md-2">
             <div class="card border-warning mx-sm-1 p-3">
             <div class="footer">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -304,7 +304,7 @@ include_once("menu.php");
              <div class="card border-info mx-sm-1 p-3">
     
              <div class="footer">
-             <h5 class="card-title">Special title treatment</h5>
+             <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -317,7 +317,7 @@ include_once("menu.php");
                <div class="card border-success mx-sm-1 p-3">
        
                    <div class="footer">
-                   <h5 class="card-title">Special title treatment</h5>
+                   <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -330,7 +330,7 @@ include_once("menu.php");
                  <div class="card border-danger mx-sm-1 p-3">
         
                 <div class="footer">
-                <h5 class="card-title">Special title treatment</h5>
+                <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
 
@@ -344,7 +344,7 @@ include_once("menu.php");
                           <div class="card border-warning mx-sm-1 p-3">
         
                   <div class="footer">
-                  <h5 class="card-title">Special title treatment</h5>
+                  <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
@@ -361,7 +361,7 @@ include_once("menu.php");
 
 
                
-                 <h5 class="card-title">Special title treatment</h5>
+                 <h5 class="card-title">Special title </h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
     <br>
