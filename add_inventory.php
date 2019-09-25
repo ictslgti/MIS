@@ -61,6 +61,7 @@ $title = "Department Details | SLGTI";
               
           <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
                         <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">Add </button>
+                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">view </button>
                  
                  
 
