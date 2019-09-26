@@ -37,15 +37,15 @@ $title = "Home | SLGTI";
             <em><h2 class="display-5">Morning Fare</h2></em>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 40rem; height: 9rem;">
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card" style="max-height: 9rem;" >
                     <div class="row">
-                        <div class="col-md-7">
-                            <img class="card-img-top pl-3" src="img/154.png" alt="">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
                         </div>
-                        <div class="col-md-5">
+                        <div class="col">
                             <div class="card-body">
-                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
+                                <h4 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h4>  
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -53,15 +53,15 @@ $title = "Home | SLGTI";
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 40rem; height: 9rem;">
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card" style="max-height: 9rem;" >
                     <div class="row">
-                        <div class="col-md-7">
-                            <img class="card-img-top pl-3" src="img/154.png" alt="">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
                         </div>
-                        <div class="col-md-5">
+                        <div class="col">
                             <div class="card-body">
-                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
+                                <h4 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h4>  
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -69,15 +69,15 @@ $title = "Home | SLGTI";
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 40rem; height: 9rem;">
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card"  style="max-height: 9rem;">
                     <div class="row">
-                        <div class="col-md-7">
-                            <img class="card-img-top pl-3" src="img/154.png" alt="">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
                         </div>
-                        <div class="col-md-5">
+                        <div class="col">
                             <div class="card-body">
-                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
+                                <h4 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h4>  
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -85,16 +85,16 @@ $title = "Home | SLGTI";
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 40rem; height: 9rem;">
+            <div class="col-sm-12 col-md-6 col-lg-3 pb-5 container">           
+                <div class="card" style="max-height: 9rem;">
                     <div class="row">
-                        <div class="col-md-7">
-                            <img class="card-img-top pl-3" src="img/154.png" alt="">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
                         </div>
-                        <div class="col-md-5">
+                        <div class="col">
                             <div class="card-body">
-                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
-                                <a href="#" class="btn btn-info">Add</a>                                   
+                                <h4 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
                             </div>
                         </div>
                     </div>
