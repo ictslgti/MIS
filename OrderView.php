@@ -17,7 +17,7 @@ include_once("menu.php");
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-8 text-center">Order Information</h1>
+                    <h1 class="display-3 text-center">Order Information</h1>
                     
                  
 
@@ -25,39 +25,35 @@ include_once("menu.php");
             </div>
         </div>
     </div>
-<form>
-<div class="form-group container p-3 mb-2 bg-light text-dark border border-primary rounded">
+
+
+    <div class="mx-auto" >
+ 
+  
+<form  >
+<div class="form-group p-3 mb-2 bg-light text-dark au_size  rounded">
 <div class ="row">
-<div class ="col"   >
-<table class="table table-borderless">
-  <thead>
-    <tr>
-    
-     
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Order Number</th>
-      <td>15</td>
-      
-    </tr>
-    <tr>
-      <th scope="row">User Name</th>
-      <td>ABDULLAh</td>
-      
-    </tr>
-    
-  </tbody>
-</table>
- </div >
+  <div class ="col-3" >
+    <p><h4>Order ID</h4></p>
+  </div>
+  <div class ="col-3" >
+      <p><h4>15</h4></p>
+  </div>
+</div>
+<div class ="row">
+  <div class ="col-3" >
+    <p><h4>User name</h4></p>
+  </div>
+  <div class ="col-3" >
+      <p><h4>Abdullah</h4></p>
+  </div>
 </div>
 
 
 
 <div class="row">
 
-<div class="col">
+<div class="col-9">
  <table class="table table-bordered">
   <thead>
     <tr>
@@ -96,7 +92,7 @@ include_once("menu.php");
 </div>
     <div class="row">
     
-    <div class="col"><button type="button" class="btn btn-outline-primary">Back</button></div>
+    <div class="col"><a href="FoodOrders" button type="button" class="btn btn-outline-primary">Back</button></a></div>
     
     
     
@@ -104,7 +100,7 @@ include_once("menu.php");
  </div>
 </form>
 
-
+</div>
   
 <!--block 3 start dont change the order-->
 

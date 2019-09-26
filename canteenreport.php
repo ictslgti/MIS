@@ -15,7 +15,7 @@ include_once("menu.php");
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-8 text-center">Daily Report</h1>
+                    <h1 class="display-3 text-center">Daily Report</h1>
                     
                  
 
@@ -23,9 +23,10 @@ include_once("menu.php");
             </div>
         </div>
     </div>
+    <div class="mx-auto " >
 
     <form>
-<div class="form-group container p-3 mb-2 bg-light text-dark border border-primary rounded">
+<div class="form-group  p-3 mb-2 bg-light text-dark border border-primary rounded">
    <div class= "row"> 
    <div class="col-4"></div>
    <div class ="col-4"><input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp"></div>
@@ -116,6 +117,8 @@ include_once("menu.php");
    </div>
     
   </form>
+
+</div>
 </div>
     
 
