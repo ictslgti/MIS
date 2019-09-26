@@ -27,11 +27,11 @@ include_once("menu.php");
     <div class="card text-white bg-dark mb-3">
     <div class="card-header"><h1>Events</h1></div>
         <div class="card-body">
-        <div class="alert alert-dark"><a href class="#">Certificate Awarding Ceremony and Anniversary</a></div>
-        <div class="alert alert-dark" role="alert"><a href class="#">Christmas Day Celebration 2018</a></div>
-        <div class="alert alert-dark" role="alert"><a href class="#">Hon Minister's Visit</a></div>
-        <div class="alert alert-dark" role="alert"><a href class="#">Blood Donation and Helth Awareness Programme at SLGTI</a></div>
-        <div class="alert alert-dark" role="alert"><a href class="#">Other</a></div>
+        <div class="alert alert-dark"><a href class="CACevent.php">Certificate Awarding Ceremony and Anniversary</a></div>
+        <div class="alert alert-dark" role="alert"><a href class="CDCevent.php">Christmas Day Celebration</a></div>
+        <div class="alert alert-dark" role="alert"><a href class="HMVevent.php">Hon Minister's Visit</a></div>
+        <div class="alert alert-dark" role="alert"><a href class="BDevent.php">Blood Donation and Helth Awareness Programme</a></div>
+        <div class="alert alert-dark" role="alert"><a href class="Otherevent.php">Other</a></div>
       </div>
     
     </div>
