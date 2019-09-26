@@ -41,7 +41,7 @@ $title = "Home | SLGTI";
                 <div class="card" style="max-height: 9rem;" >
                     <div class="row">
                         <div class="col pl-5">
-                            <img class="card-img-top" src="img/fish.png" alt="">
+                            <img class="card-img-top responsive" src="img/fish.png" alt="">
                         </div>
                         <div class="col">
                             <div class="card-body">
