@@ -152,7 +152,7 @@ $title = "Home | SLGTI";
                             <p>Order ID</p>
                         </div>
                         <div class="col">
-                            <p>1</p>
+                            <p></p>
                         </div>
                     </div>
                     
@@ -161,7 +161,7 @@ $title = "Home | SLGTI";
                             <p>Total</p>
                         </div>
                         <div class="col">
-                            <p>1000</p>
+                            <p></p>
                         </div>
                     </div>
 
