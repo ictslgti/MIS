@@ -11,7 +11,7 @@ include_once("menu.php");
 <form>
             <div class="row border rounded-lg border-info mr-5 ml-5 mt-5 mb-5">
             <div class="col-md-12 col-sm-12  form-group  container bg-info">
-                <h2  class="pt-2" style="color:white">Timetable Info</h2>
+                <h2  class="pt-2" style="color:white"> <i class="fas fa-newspaper"></i>Timetable Info</h2>
               </div>
               <div class="w-100"></div>
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3">
