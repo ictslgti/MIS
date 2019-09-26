@@ -16,7 +16,7 @@ $title ="Home | SLGTI";
           <br>
           <br>
           </div>
-          </div>
+  </div>
         <div class=row>
         <div class="col">
  <table class="table table-hover table-light">
@@ -60,11 +60,15 @@ $title ="Home | SLGTI";
     </tr>
   </tbody>
 </table>
+</div>
+</div>
 
-<div class="float-left">
-<button type="button" class="btn btn-primary">Save</button>
-<button type="button" class="btn btn-danger">Delete</button>
-<button type="button" class="btn btn-info">Update</button>
+<div class="row float-right ml-5">
+<div class="col">
+<button type="button" class="btn btn-outline-primary">Save</button>
+<button type="button" class="btn btn-outline-danger">Delete</button>
+<button type="button" class="btn btn-outline-info">Update</button>
+</div>
 </div><br>
 
 
