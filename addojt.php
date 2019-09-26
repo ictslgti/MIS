@@ -37,8 +37,15 @@ $title ="Home | SLGTI";
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
+      <td><select class="form-control" id="exampleFormControlSelect1">
+                    <option></option>
+                    <option>Information & Communication Technology</option>
+                    <option>Food Technology</option>
+                    <option>Automotive Technology</option>
+                    <option>Electrical & Electronics</option>
+                    <option>Mechanical</option>
+                    </select></td>
+      <td>colombo</td>
       <td>@mdo</td>
     </tr>
     <tr>
@@ -46,16 +53,33 @@ $title ="Home | SLGTI";
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-      <td>Mark</td>
+      <td><select class="form-control" id="exampleFormControlSelect1">
+                    <option></option>
+                    <option>Information & Communication Technology</option>
+                    <option>Food Technology</option>
+                    <option>Automotive Technology</option>
+                    <option>Electrical & Electronics</option>
+                    <option>Mechanical</option>
+                    </select>
+      </td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
+      <td>Larry the Bird</td>
       <td>@twitter</td>
       <td>Mark</td>
-      <td>Otto</td>
+      <td><select class="form-control" id="exampleFormControlSelect1">
+                    <option></option>
+                    <option>Information & Communication Technology</option>
+                    <option>Food Technology</option>
+                    <option>Automotive Technology</option>
+                    <option>Electrical & Electronics</option>
+                    <option>Mechanical</option>
+                    </select>
+      </td>
+      <td>@mdo</td>
       <td>@mdo</td>
     </tr>
   </tbody>
