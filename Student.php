@@ -30,8 +30,8 @@ include_once("menu.php");
       <th scope="col"> Student Full Name </th>
       <th scope="col">Email</th>
       <th scope="col">NIC</th>
-      <th scope="col">Address</th>
       <th scope="col">Phone No</th>
+      <th scope="col">Address</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
