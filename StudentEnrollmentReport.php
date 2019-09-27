@@ -18,7 +18,7 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <!-- form start---->
-<h1> Entroll Ment Report </h1>
+<h1> EntrollMent Report </h1>
 
 <div class="table-row">
     <div class="col-md-09 mb-3">
@@ -34,7 +34,7 @@ include_once("menu.php");
         </thead>
         <tbody>
             <tr>
-            <th scope="row">1</th>
+            <th></th>
             <td></td>
             <td></td>
             <td></td>
