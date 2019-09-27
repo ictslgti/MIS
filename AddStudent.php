@@ -21,7 +21,7 @@ include_once("menu.php");
 
 <div class="ROW">
      <div class="col text-center">
-         <h1>STUDENT'S REGISTRATION REQUEST FORM</h1>   
+         <h1 style="text-align:center"> SLGTI STUDENTS' REGISTRATION FORM</h1>   
      </div>
 </div><br><br>
 
