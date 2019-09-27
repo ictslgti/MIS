@@ -25,9 +25,7 @@ include_once("menu.php");
 </div>
 </div>
 
-<button type="button" class="btn btn-light" ><div class="spinner-grow" role="status">
-  <span class="sr-only">Loading...</span>
-</div> </button>
+
   
 
 
