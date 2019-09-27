@@ -47,6 +47,7 @@ include_once("menu.php");
       <th scope="col">supplier</th>
       <th scope="col">supplier phone number</th>
       <th scope="col">date</th>
+      <th scope="col">action</th>
       
     </tr>
   </thead>
