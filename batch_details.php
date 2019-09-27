@@ -44,10 +44,8 @@ include_once("menu.php");
       
      
       <td>5IT01</td>
-      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">NVQ Level - 05
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-  <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button"  class="btn-group btn-group-sm">View</button></td>  
+      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"><div class="btn-group mr-2" role="group" aria-label="First group">
+  <a href="module" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;NVQ Level - 05</i></a> 
       <td>2018/2019 <span class="badge badge-success">Active </span> </td> 
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
@@ -58,10 +56,8 @@ include_once("menu.php");
    
     <tr class="table-light">
       <td>5IT01</td>
-      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">NVQ Level - 04
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-  <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn-group btn-group-sm">View</button></td>  
+      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"><div class="btn-group mr-2" role="group" aria-label="First group">
+  <a href="module" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;NVQ Level - 04</i></a> 
       <td>2018/2019 <span class="badge badge-success">Active </span></td> 
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
@@ -72,10 +68,8 @@ include_once("menu.php");
 
     <tr class="table-light">
       <td>5IT02</td>
-      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">NVQ Level - 05
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-  <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn-group btn-group-sm">View</button></td>  
+      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"><div class="btn-group mr-2" role="group" aria-label="First group">
+  <a href="module" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;NVQ Level - 05</i></a>
       <td>2019/2020 <span class="badge badge-success">New </span></td> 
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
@@ -85,10 +79,8 @@ include_once("menu.php");
 
     <tr class="table-light">
       <td>5IT02</td>
-      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">NVQ Level - 04
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-  <div class="input-group-text" ><i class="fas fa-eye"></i></div>
-    <button type="button" class="btn-group btn-group-sm">View</button></td>  
+      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"><div class="btn-group mr-2" role="group" aria-label="First group">
+  <a href="module" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;NVQ Level - 04</i></a>  
       <td>2019/2020 <span class="badge badge-success">New </span></td> 
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
@@ -100,7 +92,7 @@ include_once("menu.php");
   </tbody>
   </form>
 </table>
-
+<a href="Department" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->

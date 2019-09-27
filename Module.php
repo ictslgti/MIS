@@ -15,127 +15,161 @@ include_once ("menu.php");
   
 		<div class="card mt-12 ">
 			<div class="card"><br>
-				<h4 align="center">ADD Module Details</h4><br>
+				<h4 align="center">Module Details</h4><br>
       </div>
     </div>
 <br>
 <br>
-            <div class="row">
-
-              <div class="col-md-6 mb-3">
-                <label for="ID">Module ID</label>
-                <input type="text" class="form-control" id="ID" placeholder="" value="" required>
+<div class="row">
+            <div class="card-body">
+              <div class="col-md-6 mb-2">
+                <select class="custom-select d-block w-100" id="Department" required>
+                    <option value="">Choose Your Semester </option>
+                    <option>Semister 1</option>
+                    <option>Semister 2</option>
+                </select>
               <div class="invalid-feedback">
-                  Valid Module ID is required.
+                Please provide a Department.
               </div>
               </div>
-
-              <div class="col-md-6 mb-3">
-                <label for="Name">Module Name</label>
-                <input type="text" class="form-control" id="Name" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Valid Module Name is required.
-              </div>
-              </div>
-
-            </div>
+          </div>
+  </div>
 
 
-            <div class="row">
-              <div class="col-md-6 mb-3"> 
-                <label for="National">National Hours</label>
-              <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Hrs</span>
-              </div>
-                <input type="text" class="form-control" id="National" placeholder="Hours in Digits" required>
-              <div class="invalid-feedback" style="width: 50%;">
-                Duration is required.
-              </div>
-              </div>
-              </div>
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Module ID</th>
+                      <th>Module Name</th>
+                      <th>Module Aim</th>
+                      <th>Learning Hours</th>
+                      <th>Learning Outcomes</th>
+                      <th>Relative Unit</th>
+                      <th>Resources</th>
+                      <th>References</th>
+                      <th>Notional Hours</th>
+                      <th>Option</th>
+                    </tr>
+                  </thead>
 
-              <div class="col-md-6 mb-3"> 
-                <label for="Learning">Learning Hours</label>
-                <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Hrs</span>
+                  <tbody>
+                    <tr>
+                      <td>K201</td>
+                      <td>Database 1</td>
+                      <td>Text Here</td>
+                      <td>25</td>
+                      <td>18</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                     </td>
+                    </tr>
+
+                    <tr>
+                      <td>K202</td>
+                      <td>Database 2</td>
+                      <td>Text Here</td>
+                      <td>25</td>
+                      <td>18</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                    </td>
+                    </tr>
+
+                    <tr>
+                      <td>K202</td>
+                      <td>Graphic Design</td>
+                      <td>Text Here</td>
+                      <td>25</td>
+                      <td>18</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                    </td>
+                    </tr>
+
+                    <tr>
+                      <td>K202</td>
+                      <td>Software Testing</td>
+                      <td>Text Here</td>
+                      <td>25</td>
+                      <td>18</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                    </td>
+                    </tr>
+
+                    <tr>
+                      <td>K202</td>
+                      <td>Web Programming</td>
+                      <td>Text Here</td>
+                      <td>25</td>
+                      <td>18</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                    </td>
+                    </tr>
+
+                    <tr>
+                      <td>K202</td>
+                      <td>Software Programming</td>
+                      <td>Text Here</td>
+                      <td>25</td>
+                      <td>18</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                    </td>
+                    </tr>
+
+                    <tr>
+                      <td>K202</td>
+                      <td>Communication</td>
+                      <td>Text Here</td>
+                      <td>25</td>
+                      <td>18</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>Text Here</td>
+                      <td>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
+                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
+                    </td>
+                    </tr>
+
+                  </tbody>
+                </table>
                 </div>
-                <input type="text" class="form-control" id="Learning" placeholder="Hours in Digits" required>
-                <div class="invalid-feedback" style="width: 50%;">
-                  Duration is required.
-                </div>
-                </div>
-                </div>
-
-            </div>
-
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="semister">Semister</label>
-                <input type="text" class="form-control" id="semister" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Valid semister is required.
-              </div>
-              </div>
-
-              <div class="col-md-6 mb-3">
-                <label for="unit">Relative Unit</label>
-                <input type="text" class="form-control" id="unit" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid Relative Unit is required.
-                </div>
-                <div class="invalid-feedback">
-                  Please provide a Relative Unit name
-                </div>
-              </div>
-
-            </div>
-               
-                
-            <div class="row">
-              <div class="col-md-3 mb-3">
-                <label for="aim">Module aim</label>
-                <textarea class="form-control" id="Module aim" rows="3"></textarea>
-              <div class="invalid-feedback">
-                Module is required.
-              </div>
-              </div>
-              
-              <div class="col-md-3 mb-3">
-                <label for="unit">Learning Outcomes</label>
-                <textarea class="form-control" id="Outcomes" rows="3"></textarea>
-              <div class="invalid-feedback">
-                Learning Outcomes is required.
-              </div>
-              <div class="invalid-feedback">
-                Please provide a Relative Unit name
-              </div>
-              </div>
-
-              <div class="col-md-3 mb-3">
-                <label for="resources">Resources</label>
-                <textarea class="form-control" id="resources" rows="3"></textarea>
-              <div class="invalid-feedback">
-                Resources is required.
-              </div>
-              </div>
-
-              <div class="col-md-3 mb-3">
-                <label for="references">References</label>
-                <textarea class="form-control" id="References" rows="3"></textarea>
-              <div class="invalid-feedback">
-                References is required.
-              </div>
-              <div class="invalid-feedback">
-                Please provide References name
-              </div>
-              </div>
-            
-            </div>
-<br>
-<button class="btn btn-primary btn-lg btn-block" type="submit">Continue to Add Module Details</button>
-
+ </div>
 <body>
 
 </body>

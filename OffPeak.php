@@ -76,7 +76,17 @@ include_once("menu.php");
       <td>??????</td>
       <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
-    
+    <tr>
+      <th scope="row">3</th>
+      <td>????</td>
+      <td>????</td>
+      <td>????</td>
+      <td>?????</td>
+      <td>?????</td>
+      <td>????</td>
+      <td>??????</td>
+      <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -84,7 +94,9 @@ include_once("menu.php");
  
   </tbody>
 </table>
-
+<div class="col-1">
+<input type="button" class="btn btn-info " onclick="window.location.href='off_peak_info.php'" id="btn" name="off-peak info" value="off-peak info">
+</div>
 </div>
    
 
