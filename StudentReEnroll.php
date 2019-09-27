@@ -23,7 +23,7 @@ include_once("menu.php");
 
 <div class="ROW">
         <div class="col text-center">
-            <h2>StudentReEnroll</h2>   
+            <h2>StudentReEnrollment</h2>   
         </div>
     </div><BR>
 
