@@ -18,36 +18,25 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <!-- form start---->
-<h1> STUDENT DETAILS </h1>
-
+<br>
+<h1 style="text-align:center"> SLGTI STUDENTS' INFORMATION </h1>
+<br><br>
 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">No</th>
+      <th scope="col">Student Id</th>
+      <th scope="col"> Student Full Name </th>
+      <th scope="col">Email</th>
+      <th scope="col">NIC</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone No</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
     </tr>
   </tbody>
 </table>
