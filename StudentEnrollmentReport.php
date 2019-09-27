@@ -29,6 +29,7 @@ include_once("menu.php");
             <th scope="col">student Id</th>
             <th scope="col">Course Id</th>
             <th scope="col">Accademic Year</th>
+            <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -36,17 +37,6 @@ include_once("menu.php");
             <th scope="row">1</th>
             <td></td>
             <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <th scope="row">2</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-            <td colspan="2"></td>
             <td></td>
             </tr>
         </tbody>

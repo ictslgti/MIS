@@ -80,30 +80,17 @@ include_once("menu.php");
     <table class="table table-bordered">
   <thead >
     <tr>
+      <th scope="col">NO.</th>
       <th scope="col">ID</th>
       <th scope="col">Staff_Name</th>
       <th scope="col">Module_Name</th>
       <th scope="col">Course_Name</th>
       <th scope="col">Academic_Year</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@fat</td>
-  
-    </tr>
+    
     <tr>
       <th scope="row">3</th>
       <td >Larry the Bird</td>
