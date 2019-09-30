@@ -355,7 +355,15 @@ include_once("menu.php");
     <button class="btn btn-primary" type="Submit" onclick="AddStudent(0);">Add</button>
     </div>
 
-</div>
+</div><br>
+
+    <div class="form-row">
+          <div class class="col-md-1">
+          </div>
+          <div class="col">
+          <h2 style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">Emergency Contact Information</h2>
+          </div>  
+    </div><br>
                             
 <div class="form-row">
     <button class="btn btn-primary" type="submit">Submit form</button>
