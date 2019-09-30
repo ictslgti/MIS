@@ -8,90 +8,58 @@ include_once("menu.php");
 <!-- END DON'T CHANGE THE ORDER -->
 <!-- Sidebar -->
 
+<div class="row">
 
-
-
-<div class ="row">
-<div class ="col-10  ">
-<ul class="nav justify-content-last">
+<div class="col-10 ">
+<ul class="nav nav-tabs " id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link create group text-secondary" href="#"><i class="fas fa-user-plus"></i>Create group</a>
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">CHAT</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link join group text-secondary" href="#"><i class="fas fa-users text-secondary"></i>Join group</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">GROP CHAT</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">FEED BACK</a>
   </li>
 
-</ul>
+</div>
 
 
+
+<div class="col-2 ">
+<div class="card p-3 mb-2 bg-dark text-white" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><h1><i class="fas fa-users float-center"></h1></i></h5>
+    <p class="card-text"><h5>Group Contact</h5></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"> <i class="fas fa-user-circle"></i> Gafoor Sahan</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Abdullah</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Faheem</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Nifras</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Kajan</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Thilogini</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Janani</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Jureesan</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Newsika</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Sanjeevan </li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Keethijan</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Sarujan</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Mithusan</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Thurgisan</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Hanusiya</li>
+    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Thuvarahan</li>
    
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Create group</a>
+    <a href="#" class="card-link">Join group</a>
+  </div>
 </div>
-
-
-
-                <div class ="col-2 p-3 p-3 mb-2 bg-dark text-white "><h5 class="text-center lg"  alt="50px"><i class="fas fa-users "></i></h5>
-                <div class ="row">
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Gafoor Sahan</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Abdullah</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Faheem</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Nifras</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Kajan</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Thilogini</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Hanusiya</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Janani</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Jureesan</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Sanjeevan</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Keethijan</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Sarujan</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Mithusan</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Thurgisan</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Newsika</a>
-
-                <a class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white" href=""> <i class="fas fa-user-circle"></i>
-                Thuvarahan</a>
-
-                </div>
-                </div>   
-                </div>
-                </div>
-
-
 </div>
-
-
-
-
-
+</div>
+</div>
+</div>
 
 
  <!-- /#sidebar-wrapper -->
