@@ -22,6 +22,13 @@ include_once("menu.php");
 <h1 style="text-align:center"> SLGTI STUDENTS' INFORMATION </h1>
 <br><br>
 
+<div class="form-row">
+    <div class="col-md-5 mb-3" style="padding-right:200px">
+    <i class="fas fa-search ml-3" aria-hidden="true"></i>
+    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_date" aria-label="Search"id="search">
+    </div>
+</div><br>
+
 <table class="table">
   <thead>
     <tr>

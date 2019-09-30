@@ -177,12 +177,13 @@ include_once("menu.php");
     </div><br>
 
     <div class="form-row">
-          <div class ="col-md-0"></div>
+          <div class class="col-md-1">
+          </div>
           <div class="col">
-          <p style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;"> Educational Qalification </p>
-          </div>     
-    </div> 
-
+          <h2 style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">Educational Qalification</h2>
+          </div>  
+    </div><br>
+    
     
     <div class="form-row">
           <div class="col-md-12">
@@ -364,6 +365,34 @@ include_once("menu.php");
           <h2 style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">Emergency Contact Information</h2>
           </div>  
     </div><br>
+
+    <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <label for="Ename">Name :</label>
+          <input type="text" class="form-control" id="Ename" placeholder="" value="" required>
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <label for="addressE">Address :</label>
+          <input type="text" class="form-control" id="addressE" placeholder="" value="" required>
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="Ephone">Phone No :</label>
+          <input type="text" class="form-control" id="Ephon" placeholder="" value="" required>
+        </div>
+    
+        <div class="col-md-6 mb-3">
+          <label for="relation">Relationship :</label>
+          <input type="text" class="form-control" id="relation" placeholder="" value="" required>
+        </div>
+    </div>
+
+
                             
 <div class="form-row">
     <button class="btn btn-primary" type="submit">Submit form</button>
