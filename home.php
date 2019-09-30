@@ -10,13 +10,13 @@ include_once("menu.php");
 
 <div class="row">
 
-<div class="col-10 ">
+<div class="col-10">
 <ul class="nav nav-tabs " id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">CHAT</a>
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="single_chat.php" role="tab" aria-controls="single_chat" aria-selected="true">CHAT</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">GROP CHAT</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="single_chat.php" role="tab" aria-controls="profile" aria-selected="false">GROP CHAT</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">FEED BACK</a>
@@ -26,8 +26,8 @@ include_once("menu.php");
 
 
 
-<div class="col-2 ">
-<div class="card p-3 mb-2 bg-dark text-white" style="width: 18rem;">
+<div class="col-2">
+<div class="card p-3 mb-2 bg-dark text-white" style="width: 50rem;">
   <div class="card-body">
     <h5 class="card-title"><h1><i class="fas fa-users float-center"></h1></i></h5>
     <p class="card-text"><h5>Group Contact</h5></p>
@@ -52,8 +52,8 @@ include_once("menu.php");
    
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Create group</a>
-    <a href="#" class="card-link">Join group</a>
+    <a href="create_group" role="button"  aria-disabled="true">Create group</a>
+    <a href="join_group" role="button"  aria-disabled="true">Join group</a>
   </div>
 </div>
 </div>
