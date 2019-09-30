@@ -34,7 +34,7 @@ $title = "Home | SLGTI";
 
  <!-- FOOD MENU DESIGN    -->
         <div class="row pl-3 pt-4 ">
-            <em><h2 class="display-5">Morning Fare</h2></em>
+            <em><h1 class="display-5">Morning Fare</h1></em>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
@@ -103,7 +103,8 @@ $title = "Home | SLGTI";
         </div>
 
         <div class="row pl-3 pt-4 ">
-            <em><h2 class="display-5">Afternoon Fare</h2></em>
+            <em><h1 class="display-5">Afternoon Fare</h1></em>
+            
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
@@ -173,7 +174,7 @@ $title = "Home | SLGTI";
 
 
         <div class="row pl-3 pt-4 ">
-            <em><h2 class="display-5">Night Fare</h2></em>
+            <em><h1 class="display-5">Night Fare</h1></em>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
