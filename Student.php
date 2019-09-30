@@ -25,7 +25,7 @@ include_once("menu.php");
 <div class="form-row">
     <div class="col-md-5 mb-3" style="padding-right:200px">
     <i class="fas fa-search ml-3" aria-hidden="true"></i>
-    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_date" aria-label="Search"id="search">
+    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search......." id="search">
     </div>
 </div><br>
 
