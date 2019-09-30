@@ -11,6 +11,10 @@ include_once("menu.php");
 
 <!-- bLOCK#2 start your code here & u can change -->
 <br>
+<div class="alert bg-dark text-white" role="alert">
+  <h1>Add New Result</h1>
+</div>
+<hr>
 <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Type</label>
     <div class="col-sm-10">
@@ -84,7 +88,7 @@ include_once("menu.php");
 <button type="button" class="btn btn-primary btn-lg">Add</button>
 <button type="button" class="btn btn-secondary btn-lg">Edit</button>
 <button type="button" class="btn btn-secondary btn-lg">Delete</button>
-
+<button type="button" class="btn btn-outline-danger btn-lg"><a href="AddNotice.php">Back</a></button>
 </div>
 </div>
 
