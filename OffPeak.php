@@ -32,7 +32,7 @@ include_once("menu.php");
       <th scope="col">Date</th>
       <th scope="col">Time</th>
       <th scope="col">Reason for exit</th>
-      <th scope="col">warden comment</th>
+      <th scope="col">warden's comment</th>
       <th colspan="3">Action</th>
     </tr>
   </thead>
