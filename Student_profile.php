@@ -18,15 +18,11 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <!-- form start---->
-<h1> Student_Profile </h1>
+<h1> SLGTI Student Profile  </h1>
 
-<img src="..." alt="..." class="img-thumbnail">
 
-​<picture>
-  <source srcset="..." type="image/svg+xml">
-  <img src="..." class="img-fluid img-thumbnail" alt="...">
-</picture>
 
+​
 
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->

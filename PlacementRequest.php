@@ -37,8 +37,15 @@ include_once("menu.php");
                     </div>
 
                     <div class="form-group">
-                        <label for="deptname">Department Name</label>
-                        <input type="SID" class="form-control" id="deptname" placeholder="Enter your Department">
+                    <label for="exampleFormControlSelect1">Department</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                    <option Readonly>Select Your Department </option>
+                    <option>Information & Communication Technology</option>
+                    <option>Food Technology</option>
+                    <option>Automotive Technology</option>
+                    <option>Electrical & Electronics</option>
+                    <option>Mechanical</option>
+                    </select>
                     </div>
 
                     <div class="form-group">

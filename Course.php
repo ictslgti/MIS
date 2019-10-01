@@ -21,19 +21,19 @@ include_once ("menu.php");
  
  
 
-    <div class="col-3">
-      <div class="btn-group dropright">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Select Your Deparement
-        </button>
-        <div class="dropdown-menu">
-       <button class="dropdown-item" type="button">Mechnical</button>
-              <button class="dropdown-item" type="button">Food Dept</button>
-              <button class="dropdown-item" type="button">Automotive</button>
-              <button class="dropdown-item" type="button">Construction</button>
-        </div>
-      </div>
-    </div>
+ <div class="card-body">
+              <div class="col-md-6">
+                <select class="custom-select d-block w-100" id="Department" required>
+                    <option value="">Choose Your Department </option>
+                    <option>Food</option>
+                    <option>Machanical</option>
+                    <option>ICT</option>
+                </select>
+              <div class="invalid-feedback">
+                Please provide a Department.
+              </div>
+              </div>
+          </div>
 
 
 
@@ -55,7 +55,7 @@ include_once ("menu.php");
                       <td>5IT</td>
                       <td>5</td>
                       <td>
-                      <a href="module" class="btn btn-primary btn-icon-split"> <span class="text">View Module</span></a>
+                      <a href="Module" class="btn btn-primary btn-icon-split"> <span class="text">View Module</span></a>
                       <a href="course_view_more" class="btn btn-primary btn-icon-split"><span class="text">View More</span></a>
                       <a href="#" class="btn btn-primary btn-icon-split"><span class="text">Batch</span></a>
                     </td>

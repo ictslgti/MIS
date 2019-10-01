@@ -30,7 +30,7 @@ $title = "Department Details | SLGTI";
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
                       <label class="font-weight-bold" for="authorName">02.INVENTORY</label> <span style="color:red;">*</span></label>
                       <input type="text" class="form-control" id="inventory" aria-describedby="inventory" placeholder="inventory" required="required">
-                      <small id="bookNameHelp" class="form-text text-muted">Name of the the person who written the book.</small>
+                      <small id="bookNameHelp" class="form-text text-muted"></small>
               </div>
               <div class="w-100"></div>
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
@@ -45,22 +45,23 @@ $title = "Department Details | SLGTI";
                   
                   <select class="form-control" name="category">
                       <option value="working">working</option>
-                      <option value="dmage">dmage</option>
+                      <option value="dmage">damage</option>
             
                     </select>
-                  <small id="pubNameHelp" class="form-text text-muted">Chose acategory from dropdown menu.</small>
+                  <small id="pubNameHelp" class="form-text text-muted"></small>
               </div>
               
               <div class="w-100"></div>
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="cost">05. quantity</label> <span style="color:red;">*</span></label>
                   <input type="text" class="form-control" id="quantity" aria-describedby="quantity" placeholder="quantity" required="required">
-                  <small id="quantity" class="form-text text-muted">Retail price of the book.</small>
+                  <small id="quantity" class="form-text text-muted"></small>
           </div>
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
               
           <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
                         <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">Add </button>
+                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='inventory_view.php'">view </button>
                  
                  
 

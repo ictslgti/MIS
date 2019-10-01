@@ -34,18 +34,37 @@ $title = "Home | SLGTI";
 
  <!-- FOOD MENU DESIGN    -->
         <div class="row pl-3 pt-4 ">
-            <em><h2 class="display-5">Morning Fare</h2></em>
+            <em><h1 class="display-5">Morning Fare</h1></em>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 40rem; height: 9rem;">
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card" >
                     <div class="row">
-                        <div class="col-md-7">
-                            <img class="card-img-top pl-3" src="img/154.png" alt="">
+                        <div class="col pl-5">
+                            <img class="card-img-top responsive" src="img/fish.png" alt="">
                         </div>
-                        <div class="col-md-5">
+                        <div class="col">
                             <div class="card-body">
-                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>   
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
+                                <a href="#" class="btn btn-info">Add</a>                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -53,15 +72,15 @@ $title = "Home | SLGTI";
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 40rem; height: 9rem;">
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
                     <div class="row">
-                        <div class="col-md-7">
-                            <img class="card-img-top pl-3" src="img/154.png" alt="">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
                         </div>
-                        <div class="col-md-5">
+                        <div class="col">
                             <div class="card-body">
-                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -69,41 +88,161 @@ $title = "Home | SLGTI";
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 40rem; height: 9rem;">
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
                     <div class="row">
-                        <div class="col-md-7">
-                            <img class="card-img-top pl-3" src="img/154.png" alt="">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
                         </div>
-                        <div class="col-md-5">
+                        <div class="col">
                             <div class="card-body">
-                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
-                                <a href="#" class="btn btn-info">Add</a>                                   
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>   
+        </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 container">           
-                <div class="card" style="max-width: 40rem; height: 9rem;">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <img class="card-img-top pl-3" src="img/154.png" alt="">
-                        </div>
-                        <div class="col-md-5">
-                            <div class="card-body">
-                                <h6 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h6>  
-                                <a href="#" class="btn btn-info">Add</a>                                   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="row pl-3 pt-4 ">
+            <em><h1 class="display-5">Afternoon Fare</h1></em>
             
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card" >
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top responsive" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3  container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+
+
+        <div class="row pl-3 pt-4 ">
+            <em><h1 class="display-5">Night Fare</h1></em>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card" >
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top responsive" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3 pb-5 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
         </div>
 
         
@@ -118,7 +257,7 @@ $title = "Home | SLGTI";
                         <th><p class="h5">ITEM ID</p></th>
                         <th><p class="h5">ITEM NAME</p></th>
                         <th><p class="h5">QTY</p></th>
-                        <th><p class="h5">AMOUNT</p></th>
+                        <th><p class="h5">PER AMOUNT</p></th>
                     </tr>
                  </thead>
                 <tbody class="table-borderless">
@@ -152,7 +291,7 @@ $title = "Home | SLGTI";
                             <p>Order ID</p>
                         </div>
                         <div class="col">
-                            <p>1</p>
+                            <p></p>
                         </div>
                     </div>
                     
@@ -161,7 +300,7 @@ $title = "Home | SLGTI";
                             <p>Total</p>
                         </div>
                         <div class="col">
-                            <p>1000</p>
+                            <p></p>
                         </div>
                     </div>
 

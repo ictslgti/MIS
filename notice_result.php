@@ -15,7 +15,7 @@ include_once("menu.php");
         <div class="row ">
             <div class="col-sm-12">
                 <div class="bg-primary text-warning">
-                <h1  style="color:white;"> <i class="fas fa-chart-line"></i> View Result </h1>
+                <h1  style="color:white;"> <i class="fas fa-graduation-cap"></i> View Result </h1>
                 </div>
             </div> 
         </div>
