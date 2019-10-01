@@ -23,81 +23,89 @@ include_once("menu.php");
   <tbody>
     <tr>
       <th scope="row">
-          
       
-      <div class="card border-info mx-sm-3 p-2"></th>
+      <div class="row equal">
+    
+      
+    <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
+      </th>
+</div>
 
 
       <td>
           
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
       <td> 
           
       
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
+
+
+      </td>
+      <td> 
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
+
+
+      </td>
+      <td> 
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </td>
       <td> 
           
-      <div class="card border-info mx-sm-3 p-2">
-
-
-      </td>
-      <td> 
-          
-      <div class="card border-info mx-sm-3 p-2">
-
-
-      </td>
-      <td> 
-          
-      <div class="card border-info mx-sm-3 p-2">
-
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
       
     </tr>
     <tr>
       <th scope="row">
-          
-      <div class="card border-info mx-sm-3 p-2">
-
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
       </th>
 
       <td>
 
-
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </td>
 
 
       <td>
-          
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </td>
 
       <td>
-          <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
 
           </td>
       <td>
           
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
           
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </td>
@@ -108,43 +116,46 @@ include_once("menu.php");
     <tr>
       <th scope="row">
           
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </th>
 
       <td>
           
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
+
+      <a href="#" class="btn btn-outline-light">Add</a>
+
+      </td>
+
+      <td>
+          
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </td>
 
       <td>
           
-      <div class="card border-info mx-sm-3 p-2">
-
-
-      </td>
-
-      <td>
-          
-      <div class="card border-info mx-sm-3 p-2">
-
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
           
       
-      <div class="card border-info mx-sm-3 p-2">
-
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
-          
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </td>
@@ -153,7 +164,8 @@ include_once("menu.php");
     <tr>
       <th scope="row">
           
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
 
 
@@ -161,36 +173,39 @@ include_once("menu.php");
 
       <td>
           
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
 
-
-      </td>
-
-      <td>
-          
-      <div class="card border-info mx-sm-3 p-2">
-
+      <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
           
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
 
+      <a href="#" class="btn btn-outline-light">Add</a>
+
+      </td>
+
+      <td>
+      <div class="row equal">
+
+      <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
           
-      <div class="card border-info mx-sm-3 p-2">
+      <div class="row equal">
 
+      <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
           
-      <div class="card border-info mx-sm-3 p-2">
-
+      <div class="row equal">
+      <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </td>
