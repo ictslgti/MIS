@@ -22,7 +22,7 @@ include_once("menu.php");
     <br>
      
       <label for="text" class="font-weight-bolder" >Name of applicant :</label><br>
-      <input type="text" class="form-control" placeholder="" disabled>
+      <input type="text" class="form-control" id="noa" placeholder="" disabled>
      
     </div>
     
