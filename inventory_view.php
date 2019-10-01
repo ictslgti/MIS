@@ -45,6 +45,7 @@ include_once("menu.php");
       <th scope="col">Item</th>
       <th scope="col">Notice</th>
       <th scope="col">Quantity</th>
+      <th scope="col">action</th>
       
     </tr>
   </thead>
