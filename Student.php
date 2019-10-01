@@ -51,7 +51,7 @@ include_once("menu.php");
     <td></td>
     <td></td>
     <td></td>
-    <td><a href="Students' info.php?Student_Id='.$row["student_id"].'"> View Modules</td>
+    <td><a href="Students' info.php?Student_Id='..'"> View More</td>
     </tr>
   </tbody>
 </table>
