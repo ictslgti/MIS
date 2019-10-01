@@ -93,19 +93,13 @@ include_once("homenav.php");
 </form>
   </div>
   <ul class="list-group list-group-flush ">
-    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> Gafoor Sahan  <i class="fas fa-phone float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hi how are you. I'm sahan and what about you</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Abdullah <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> Hello boss you.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Faheem  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> feeling love.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Nifras  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> how are you.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Kajan   <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> So what.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Thilogini  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> Hmmmmmmm.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Janani  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center">Tommorow will you come.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Hanusiya  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> I'm Mokku Hanu.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Newsika  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> i call HOd.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Sanjeevan  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> Java is the best language.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Keethijan  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> what's going on.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Sarujan  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> What about you.</small></li>
-
+    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> ICT graphic  <i class="fas fa-phone float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hi how are you. I'm sahan and what about you</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Examination <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> Hello boss you.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Assembly information  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> weekly order by paryer the number of person.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Old Students  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> how are you.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> SLGTi Family   <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> So what.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> ICT Students  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> I'm Mokku Hanu.</small></li>
+   
    
   </ul>
 </div>
