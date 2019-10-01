@@ -30,7 +30,7 @@ include_once("menu.php");
     <br>
     
     <label for="text" class="font-weight-bolder" >Registration No :</label><br>
-    <input type="text" class="form-control" placeholder="" disabled>
+    <input type="text" class="form-control" id="rno" placeholder="" disabled>
     </div>
     
     <div class="col-md-4 col-sm-12" >
