@@ -93,9 +93,11 @@ include_once("menu.php");
    
     </div>
     </div>
+    <br>
+    <a href="index.php"><<< Back to home </a>
     </div>
     
-    <a href="index.php"><<< Back to home </a>
+   
 </form>
 
 
