@@ -169,13 +169,6 @@ include_once("menu.php");
 
     </div>
 
-    <div class="form-row"> 
-          <div class="col-md-12 mb-3">
-            <label for="address"> Address (Temporary) </label>
-            <input type="address" class="form-control" id="address" placeholder="House-No, Street, Hometown,District."  required>
-          </div>
-    </div><br>
-
     <div class="form-row">
           <div class class="col-md-1">
           </div>
