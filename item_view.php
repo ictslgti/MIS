@@ -88,10 +88,12 @@ include_once("menu.php");
 <div class="col-3"></div>
 <div class="col-2"></div>
 
- <div class="col-1"> 
-    <button type="button" class="btn btn-secondary" > ..save..</button> 
-    
-     </div> 
+<div class="col-md- col-sm- form-group pl- pr-container">
+<button type="submit" class="btn btn-primary ml-2 mt-3 float-right">back </button>
+                          
+                          <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">save </button>
+              </div>
+      
 </div>
 
 
