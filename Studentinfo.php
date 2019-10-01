@@ -44,14 +44,6 @@ include_once("menu.php");
   </thead>
   <tbody>
     <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><a href="Students' info.php?Student_Id='..'"> View More</td>
     </tr>
   </tbody>
 </table>

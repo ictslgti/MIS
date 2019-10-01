@@ -9,7 +9,7 @@ $title = "Department Details | SLGTI";
 
 <!-- start my code -->
 <form>
-            <div class="row border rounded-lg border-info mr-5 ml-5 mt-5 mb-5">
+            <div class="row ">
             <div class="col-md-12 col-sm-12  form-group  container bg-info">
                 <h2  class="pt-2" style="color:white">ADD ITEM</h2>
               </div>
