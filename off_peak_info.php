@@ -29,7 +29,7 @@ include_once("menu.php");
 
 <div class="tab-content">
   <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  <table class="table table-responsive">
+  <table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
        <th scope="col">#</th>
@@ -72,7 +72,7 @@ include_once("menu.php");
 
 
   </div>
-  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab"><table class="table table-responsive">
+  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab"><table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
     <th scope="col">#</th>
@@ -118,7 +118,7 @@ include_once("menu.php");
   </tbody>
 </table>
 </div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab"><table class="table table-responsive">
+  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab"><table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
     <th scope="col">#</th>
