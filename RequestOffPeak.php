@@ -37,7 +37,7 @@ include_once("menu.php");
     <br>
     
     <label for="text" class="font-weight-bolder"  >Department :</label><br>
-    <input type="text" class="form-control" placeholder="" disabled>
+    <input type="text" class="form-control" id="dept" placeholder="" disabled>
     </div>
     </div>
     <div class="form-row">
