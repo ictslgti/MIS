@@ -26,6 +26,7 @@ include_once("menu.php");
       <th scope="col">Department</th>
       <th scope="col">Date</th>
       <th scope="col">Time</th>
+      <th scope="col">Warden comment</th>
      <th colspan="3">Status</th>
     </tr>
   </thead>
