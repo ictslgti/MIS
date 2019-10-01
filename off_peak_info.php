@@ -12,7 +12,7 @@ include_once("menu.php");
 <br><br>
 
 
-<div class="intro">
+<div class="intro p-5 mb-5 border border-dark rounded">
 <div class="shadow p-3 mb-5 bg-white rounded"> 
 <h1 class="display-4 text-center "><i class="fas fa-file-alt"></i>   Off-peak Info</h1>
 <br>
