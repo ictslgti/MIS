@@ -17,11 +17,15 @@
              </a>
              <div class="dropdown-menu " aria-labelledby="Department">
                  <a class="dropdown-item" href="Department">Department Info</a>
-                 <a class="dropdown-item" href="AddDepartment">Add a Department <span class="badge badge-dark">A</span>
-                 </a>
+            <?php if($_SESSION['user_type']=='ADM')
+                echo '<a class="dropdown-item" href="AddDepartment">Add a Department <span class="badge badge-dark">A</span>
+                 </a>';
+            ?>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="AcademicYear">Academic Year Info</a>
-                 <a class="dropdown-item" href="AddAcademicYear">Add a Academic Year</a>
+            <?php if($_SESSION['user_type']=='ADM' || $_SESSION['user_type']=='HOD')
+                echo' <a class="dropdown-item" href="AddAcademicYear">Add a Academic Year</a>';    
+            ?>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="Course">Course Info</a>
                  <a class="dropdown-item" href="AddCourse">Add a Course</a>
@@ -240,6 +244,8 @@
              <span class="navbar-toggler-icon"></span>
          </button>
          <div id="timestamp" class="pr-5 pl-2 ml-auto text-info"></div>
+         <span class="badge badge-dark"><?php echo $_SESSION['user_type'];?></span>
+         <span class="badge badge-dark"><?php echo $_SESSION['department_code'];?></span>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                  <li class="nav-item">
@@ -253,13 +259,13 @@
                  <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         John Smith
+                         <?php echo $_SESSION['user_name'];?>
                          <img src="img/user.png" class="userpicture" role="presentation" aria-hidden="true" width="35"
                              height="35">
                      </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                          <a class="dropdown-item" href="#">Profile</a>
-                         <a class="dropdown-item" href="signin">Signout</a>
+                         <a class="dropdown-item" href="signin?signout">Signout</a>
                      </div>
                  </li>
              </ul>
