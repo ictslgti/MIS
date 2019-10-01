@@ -38,6 +38,8 @@ include_once("menu.php");
       <th scope="col">Email</th>
       <th scope="col">NIC</th>
       <th scope="col">Phone No</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Date of Birth</th>
       <th scope="col">Address</th>
       <th scope="col">Action</th>
     </tr>
@@ -51,7 +53,9 @@ include_once("menu.php");
     <td></td>
     <td></td>
     <td></td>
-    <td><a href="Students' info.php?Student_Id='..'"> View More</td>
+    <td></td>
+    <td></td>
+    <td><a href="Studentinfo.php?Student_Id='..'"> View More</td>
     </tr>
   </tbody>
 </table>
