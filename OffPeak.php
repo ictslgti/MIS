@@ -12,9 +12,14 @@ include_once("menu.php");
 <br><br>
 
 
-<div class="col container form-group   p-3 mb-2 bg-light text-dark border border-primary rounded">
-  <h1 class="display-4 text-center p-3 mb-2 bg-primary text-white rounded"><i class="fas fa-inbox"></i> Off-peak Requests</h1>
-  
+<div class="intro">
+<div class="shadow p-3 mb-5 bg-white rounded"> 
+  <h1 class="display-4 text-center  "><i class="fas fa-inbox"></i> Off-peak Requests</h1>
+  </div>
+  <div class="col-1 float-right">
+<input type="button" class="btn btn-info " onclick="window.location.href='off_peak_info.php'" id="btn" name="off-peak info" value="off-peak info">
+</div>
+<br><br>
     <div class="table-responsive-sm">
     <table class="table table-responsive-sm w-100">
   <thead class="thead-dark">
@@ -94,9 +99,7 @@ include_once("menu.php");
  
   </tbody>
 </table>
-<div class="col-1">
-<input type="button" class="btn btn-info " onclick="window.location.href='off_peak_info.php'" id="btn" name="off-peak info" value="off-peak info">
-</div>
+
 </div>
    
 

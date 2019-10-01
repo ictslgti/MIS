@@ -12,8 +12,10 @@ include_once("menu.php");
 
 <br><br>
 
-<div class="form-group container   p-3 mb-2 bg-light text-dark border border-primary rounded" >
-    <h4 class="h4 p-5 mb-5 bg-primary text-white rounded text-center  "><i class="fas fa-folder-open"></i>  Off-Peak Request Archives</h4>
+<div class="intro" >
+<div class="shadow p-3 mb-5 bg-white "> 
+    <h4 class="display-4 text-center  "><i class="fas fa-folder-open"></i>  Off-Peak Request Archives</h4>
+    </div>
     <div class="table-responsive-sm">
     <table class="table table-responsive-sm w-100">
   <thead class="thead-dark">

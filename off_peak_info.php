@@ -12,8 +12,11 @@ include_once("menu.php");
 <br><br>
 
 
-<div class="col container form-group   p-3 mb-2 bg-light text-dark border border-primary rounded">
-<h1 class="h3 p-4 mb-4 bg-primary text-white rounded text-center "><i class="fas fa-file-alt"></i>   Off-peak Info</h1>
+<div class="intro">
+<div class="shadow p-3 mb-5 bg-white rounded"> 
+<h1 class="display-4 text-center "><i class="fas fa-file-alt"></i>   Off-peak Info</h1>
+<br>
+</div>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-thumbs-up"></i> Approved Off-peaks</a>
