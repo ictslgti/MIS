@@ -10,7 +10,7 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 <br><br>
     <form>
-      <div class="intro container" >
+      <div class="intro container p-5 mb-5 border border-dark rounded" >
       <div class="shadow p-3 mb-5 bg-white rounded"> 
     <h4 class="display-4 text-center  "><i class="fas fa-file-alt"></i>   Student Off-Peak Request</h4>
     </div>
