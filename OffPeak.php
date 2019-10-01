@@ -107,6 +107,7 @@ include_once("menu.php");
 </table>
 
 </div>
+<a href="index.php"><<< Back to home </a>
    
 
 <!--END OF YOUR COD-->
