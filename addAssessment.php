@@ -1,3 +1,25 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@Midhushan 
+4
+41ictslgti/mis
+ Code Issues 3 Pull requests 0 Projects 1 Wiki Security Insights Settings
+mis/AddAssessment.php / 
+@Midhushan Midhushan updated
+204bf2d 17 minutes ago
+246 lines (160 sloc)  7.47 KB
+  
+Jump to definition is available!Beta
+Navigate your code with ease. In select public repositories, you can now click on function and method calls to jump to their definitions in the same repository. Learn more
+
+ You're using jump to definition to discover and navigate code.  Beta
+Learn more or give us feedback
 <?php
 $title = "Examinations | SLGTI";
  include_once("config.php"); 
@@ -31,92 +53,118 @@ $title = "Examinations | SLGTI";
                 </div>
             </div>
         </div>
-<div class="container">
-        <div class="row">
-                <div class="col">
+
+        <!--  -->
+        <form onsubmit="showAssessment(this.value)">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
                         <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01"><i
-                                            class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
-                                        Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Choose...</option>
-                                    <option value="1">Semister 1</option>
-                                    <option value="2">Semister 2</option>
-                                </select>
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01"><i
+                                        class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
+                                    Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
+                            <select class="custom-select" id="semisterx" name="semister"
+                                onchange="showModule(this.value)" required>
+                                <option value="null" selected disabled>--Select Semister--</option>
+                                <?php 
+                                          $row=1;
+                                                while($row<=2) {
+                                                    
+                                                   echo '<option  value="'.$row.'" required>L5 Semister '.$row.'</option>';
+                                                   $row++;
+                                                   
+                                                }
+                                            ?>
+
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01"><i
+                                        class="fas fa-book-open"></i>&nbsp;&nbsp;Select
+                                    Module&nbsp;</label>
+                            </div>
+                            <select class="custom-select" id="Module" name="Module" required>
+                                <option value="null" selected disabled>--Select Module--</option>
+                                <!-- <option selected>Graphic Design</option>
+                                <option value="1">Programming</option>
+                                <option value="2">Database 1</option>
+                                <option value="3">System Analysis and Design</option>
+                                <option value="3">Manage Workplace</option>
+                                <option value="3">Manage Workplace & Communication</option> -->
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="col">
+
+
+
+
+                <div class="row">
+                    <div class="col">
                         <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01"><i
-                                            class="fas fa-book-open"></i>&nbsp;&nbsp;Select
-                                        Module&nbsp;</label>
-                                </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Graphic Design</option>
-                                    <option value="1">Programming</option>
-                                    <option value="2">Database 1</option>
-                                    <option value="3">System Analysis and Design</option>
-                                    <option value="3">Manage Workplace</option>
-                                    <option value="3">Manage Workplace & Communication</option>
-                                </select>
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01"><i
+                                        class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Asignments Type</label>
                             </div>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <option value="1">A1</option>
+                                <option value="2">A2</option>
+                            </select>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment
+                                    Name&nbsp;</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Assessment Name" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+
+
+
+
+                    </div>
+
+
+
+
                 </div>
-              </div>
-
-
-
-             
-              <div class="row">
-                  <div class="col">
-                        <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01"><i
-                                            class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Asignments Type</label>
-                                </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Choose...</option>
-                                    <option value="1">A1</option>
-                                    <option value="2">A2</option>
-                                </select>
-                            </div>
-
-
-
-                  </div>
-
-                  <div class="col">
-                        <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1"><i
-                                            class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment
-                                        Name&nbsp;</span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                                    aria-describedby="basic-addon1">
-                            </div>
 
 
 
 
-                  </div>
+            </div>
+        </form>
+
+        <!--  -->
 
 
-
-
-              </div>
-
-
-
-
-</div>
-
-        
 
         <!-- main div -->
-        
+
+
+
+
+
+
+        <!-- main div -->
+
+
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col col-lg-2">
@@ -132,21 +180,49 @@ $title = "Examinations | SLGTI";
             </div>
 
         </div>
-        <br>                                        
+
+        <br>
+
+        <br>
+
 
         <div class="table-responsive-sm">
             <table class="table">
                 <thead>
-                        <th><center>Module</center></th>
-                        <th><center>Module</center></th>
-                        <th><center>Module</center></th>
+
+                    <th>
+                        <center>Module</center>
+                    </th>
+                    <th>
+                        <center>Module</center>
+                    </th>
+                    <th>
+                        <center>Module</center>
+                    </th>
+
+                    <th>
+                        <center>Module</center>
+                    </th>
+                    <th>
+                        <center>Module</center>
+                    </th>
+                    <th>
+                        <center>Module</center>
+                    </th>
+
 
 
 
                 </thead>
-              
+
+
             </table>
-          </div>
+        </div>
+
+
+        </table>
+        </div>
+
 
 
 
@@ -165,4 +241,34 @@ $title = "Examinations | SLGTI";
 
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
+
 <?php include_once("footer.php"); ?>
+<!-- END -->
+
+<script>
+    function showModule(val) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("Module").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("POST", "controller/getModule", true);
+        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.send("semister=" + val);
+    }
+</script>
+
+<?php include_once("footer.php"); ?>
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
