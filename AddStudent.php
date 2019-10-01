@@ -126,7 +126,7 @@ include_once("menu.php");
 
     <div class="form-row"> 
           <div class="col-md-12 mb-3">
-            <label for="address"> Address (Permanent) </label>
+            <label for="address"> Address: </label>
             <input type="text" class="form-control" id="address" placeholder="House-No, Street, Hometown."  required>
           </div>
     </div>
