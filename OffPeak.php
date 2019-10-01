@@ -16,7 +16,7 @@ include_once("menu.php");
 <div class="shadow p-3 mb-5 bg-white rounded"> 
   <h1 class="display-4 text-center  "><i class="fas fa-inbox"></i> Off-peak Requests</h1>
   </div>
-  <div class="col-1 float-right">
+  <div class="col-md-1 col-sm-12   float-right ">
 <input type="button" class="btn btn-info " onclick="window.location.href='off_peak_info.php'" id="btn" name="off-peak info" value="off-peak info">
 </div>
 <br><br>
