@@ -32,6 +32,7 @@ include_once("menu.php");
       <th scope="col">Date</th>
       <th scope="col">Time</th>
       <th scope="col">Reason for exit</th>
+      <th scope="col">warden comment</th>
       <th colspan="3">Action</th>
     </tr>
   </thead>
@@ -45,6 +46,7 @@ include_once("menu.php");
       <td>?????</td>
       <td>????</td>
       <td>??????</td>
+      <td><input type="text" id="cmt"> </td>
       <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
     <tr>
@@ -56,6 +58,7 @@ include_once("menu.php");
       <td>?????</td>
       <td>????</td>
       <td>??????</td>
+      <td><input type="text" id="cmt"> </td>
       <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
     <tr>
@@ -67,6 +70,7 @@ include_once("menu.php");
       <td>?????</td>
       <td>????</td>
       <td>??????</td>
+      <td><input type="text" id="cmt"> </td>
       <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
     
@@ -79,6 +83,7 @@ include_once("menu.php");
       <td>?????</td>
       <td>????</td>
       <td>??????</td>
+      <td><input type="text" id="cmt"> </td>
       <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
     <tr>
@@ -90,6 +95,7 @@ include_once("menu.php");
       <td>?????</td>
       <td>????</td>
       <td>??????</td>
+      <td><input type="text" id="cmt"> </td>
       <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
   </tbody>
