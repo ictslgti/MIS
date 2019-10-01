@@ -254,7 +254,7 @@ $title = "Home | SLGTI";
                         <th><p class="h5">ITEM ID</p></th>
                         <th><p class="h5">ITEM NAME</p></th>
                         <th><p class="h5">QTY</p></th>
-                        <th><p class="h5">AMOUNT</p></th>
+                        <th><p class="h5">PER AMOUNT</p></th>
                     </tr>
                  </thead>
                 <tbody class="table-borderless">
