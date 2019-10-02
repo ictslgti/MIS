@@ -57,34 +57,51 @@ include_once ("menu.php");
 
 
     <div class="row">
-    <div class="col-3 text-center">
-    <label class="input-group-text" for="inputGroupSelect036">Select Semister</label>
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose Semister </option>
-                <option value="1">Semister 1</option>
-                <option value="2">Semister 2</option>
-            </select>
+    <div class="col text-center">
+    <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
+                                        Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">Semister 1</option>
+                                    <option value="2">Semister 2</option>
+                                </select>
+                            </div>
     </div>
 
-    <div class="col-5 text-center">
-    <label class="input-group-text" for="inputGroupSelect036">Choose Module</label>
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose Module</option>
-                <option value="1">M07</option>
-                <option value="2">M01</option>
-            </select>
+
+
+    <div class="col text-center">
+    <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
+                                        Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">Semister 1</option>
+                                    <option value="2">Semister 2</option>
+                                </select>
+                            </div>
     </div>
 
-    <div class="col-3 text-center">
-    <label class="input-group-text" for="inputGroupSelect036">Assessment Type</label>
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose..</option>
-                <option value="1">Written</option>
-                <option value="2">Practical</option>
-            </select>
+    <div class="col text-center">
+    <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
+                                        Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">Semister 1</option>
+                                    <option value="2">Semister 2</option>
+                                </select>
+                            </div>
     </div>
 
-    <div class="col-1 text-center">
+    <div class="col-2 text-left">
     <button type="button" class="btn btn-outline-success">submit</button>
     </div>
     </div>
