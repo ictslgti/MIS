@@ -34,28 +34,20 @@ include_once("menu.php");
     <tr>
       <th scope="col">No</th>
       <th scope="col">Student Id</th>
-      <th scope="col"> Student Full Name </th>
-      <th scope="col">Email</th>
-      <th scope="col">NIC</th>
-      <th scope="col">Phone No</th>
+      <th scope="col">Title</th>
+      <th scope="col">Name with Inisials</th>
       <th scope="col">Gender</th>
+      <th scope="col">Civil Status</th>
       <th scope="col">Date of Birth</th>
-      <th scope="col">Address</th>
+      <th scope="col">Zip-Code</th>
+      <th scope="col">District</th>
+      <th scope="col">Divisional Secretariat</th>
+      <th scope="col">Blood Group</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><a href="Studentinfo.php?Student_Id='..'"> View More</td>
     </tr>
   </tbody>
 </table>

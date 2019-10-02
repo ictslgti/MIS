@@ -42,14 +42,13 @@ include_once ("menu.php");
                     <tr>
                       <th>Module ID</th>
                       <th>Module Name</th>
-                      <th>Semester</th>
                       <th>Module Aim</th>
-                      <th>National Hours</th>
                       <th>Learning Hours</th>
                       <th>Learning Outcomes</th>
                       <th>Relative Unit</th>
                       <th>Resources</th>
                       <th>References</th>
+                      <th>Notional Hours</th>
                       <th>Option</th>
                     </tr>
                   </thead>
@@ -58,7 +57,6 @@ include_once ("menu.php");
                     <tr>
                       <td>K201</td>
                       <td>Database 1</td>
-                      <td>1</td>
                       <td>Text Here</td>
                       <td>25</td>
                       <td>18</td>
@@ -67,7 +65,7 @@ include_once ("menu.php");
                       <td>Text Here</td>
                       <td>Text Here</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                      </td>
                     </tr>
@@ -75,7 +73,6 @@ include_once ("menu.php");
                     <tr>
                       <td>K202</td>
                       <td>Database 2</td>
-                      <td>2</td>
                       <td>Text Here</td>
                       <td>25</td>
                       <td>18</td>
@@ -84,7 +81,7 @@ include_once ("menu.php");
                       <td>Text Here</td>
                       <td>Text Here</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
@@ -92,7 +89,6 @@ include_once ("menu.php");
                     <tr>
                       <td>K202</td>
                       <td>Graphic Design</td>
-                      <td>1</td>
                       <td>Text Here</td>
                       <td>25</td>
                       <td>18</td>
@@ -101,7 +97,7 @@ include_once ("menu.php");
                       <td>Text Here</td>
                       <td>Text Here</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
@@ -109,7 +105,6 @@ include_once ("menu.php");
                     <tr>
                       <td>K202</td>
                       <td>Software Testing</td>
-                      <td>2</td>
                       <td>Text Here</td>
                       <td>25</td>
                       <td>18</td>
@@ -118,7 +113,7 @@ include_once ("menu.php");
                       <td>Text Here</td>
                       <td>Text Here</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
@@ -126,7 +121,6 @@ include_once ("menu.php");
                     <tr>
                       <td>K202</td>
                       <td>Web Programming</td>
-                      <td>2</td>
                       <td>Text Here</td>
                       <td>25</td>
                       <td>18</td>
@@ -135,7 +129,7 @@ include_once ("menu.php");
                       <td>Text Here</td>
                       <td>Text Here</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
@@ -143,7 +137,6 @@ include_once ("menu.php");
                     <tr>
                       <td>K202</td>
                       <td>Software Programming</td>
-                      <td>1</td>
                       <td>Text Here</td>
                       <td>25</td>
                       <td>18</td>
@@ -152,7 +145,7 @@ include_once ("menu.php");
                       <td>Text Here</td>
                       <td>Text Here</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
@@ -160,7 +153,6 @@ include_once ("menu.php");
                     <tr>
                       <td>K202</td>
                       <td>Communication</td>
-                      <td>1</td>
                       <td>Text Here</td>
                       <td>25</td>
                       <td>18</td>
@@ -169,7 +161,7 @@ include_once ("menu.php");
                       <td>Text Here</td>
                       <td>Text Here</td>
                       <td>
-                      <button type="button" class="btn btn-outline-warning"><i class="fas fa-exclamation-triangle">-Edit-</i></button>
+                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
                       <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
@@ -185,7 +177,7 @@ include_once ("menu.php");
 
 
 <!--Block#3 start dont change the order-->
-<?php include_once ("menu.php"); ?>  
+<?php include_once ("footer.php"); ?>  
 <!--  end dont change the order-->
     
     

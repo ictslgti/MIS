@@ -35,8 +35,15 @@ $title ="Home | SLGTI";
                         <input type="name" class="form-control" id="stuname" aria-describedby="nameHelp">  
                     </div>
                     <div class="form-group">
-                        <label for="deptname">Department Name</label>
-                        <input type="SID" class="form-control" id="deptname" >
+                    <label for="exampleFormControlSelect1">Department</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                    <option></option>
+                    <option>Information & Communication Technology</option>
+                    <option>Food Technology</option>
+                    <option>Automotive Technology</option>
+                    <option>Electrical & Electronics</option>
+                    <option>Mechanical</option>
+                    </select>
                     </div>
                     <div class="form-group">
                         <label for="Rplace">Your Training Place</label>

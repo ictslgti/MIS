@@ -2,7 +2,7 @@
 <!--block 1 start dont change the order-->
 
 <?php 
-$title="View order | SLGTI";
+$title="SEARCH CUSTOMER| SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
@@ -17,7 +17,7 @@ include_once("menu.php");
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-3 text-center">Order Information</h1>
+                    <h1 class="display-3 text-center"></h1>
                     
                  
 
@@ -25,12 +25,20 @@ include_once("menu.php");
             </div>
         </div>
     </div>
+    <form class="form-inline">
+  
+  
+  <div class="form-group mx-sm-3 mb-2">
+  <label for="inputPassword2" class="sr-only">Search</label>
+    <input type="text" class="form-control" id="inputPassword2" placeholder="Search by name">
+  </div>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> </button>
 
+  
+</form>
 
     <div class="mx-auto" >
- 
-  
-<form  >
+    <form  >
 <div class="form-group p-3 mb-2 bg-light text-dark au_size  rounded">
 <div class ="row">
   <div class ="col-3" >
@@ -90,13 +98,7 @@ include_once("menu.php");
 
 </div>
 </div>
-    <div class="row">
-    
-    <div class="col"><a href="FoodOrders" button type="button" class="btn btn-info">Back</button></a></div>
-    
-    
-    
-    </div>
+
  </div>
 </form>
 

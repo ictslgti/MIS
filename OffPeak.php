@@ -12,9 +12,14 @@ include_once("menu.php");
 <br><br>
 
 
-<div class="col container form-group   p-3 mb-2 bg-light text-dark border border-primary rounded">
-  <h1 class="display-4 text-center p-3 mb-2 bg-primary text-white rounded"><i class="fas fa-inbox"></i> Off-peak Requests</h1>
-  
+<div class="intro p-5 mb-5 border border-dark rounded">
+<div class="shadow p-3 mb-5 bg-white rounded"> 
+  <h1 class="display-4 text-center  "><i class="fas fa-inbox"></i> Off-peak Requests</h1>
+  </div>
+  <div class="col-md-1 col-sm-12   float-right ">
+<input type="button" class="btn btn-info " onclick="window.location.href='off_peak_info.php'" id="btn" name="off-peak info" value="off-peak info">
+</div>
+<br><br>
     <div class="table-responsive-sm">
     <table class="table table-responsive-sm w-100">
   <thead class="thead-dark">
@@ -27,6 +32,7 @@ include_once("menu.php");
       <th scope="col">Date</th>
       <th scope="col">Time</th>
       <th scope="col">Reason for exit</th>
+      <th scope="col">warden's comment</th>
       <th colspan="3">Action</th>
     </tr>
   </thead>
@@ -40,6 +46,7 @@ include_once("menu.php");
       <td>?????</td>
       <td>????</td>
       <td>??????</td>
+      <td><input type="text" id="cmt"> </td>
       <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
     <tr>
@@ -51,6 +58,7 @@ include_once("menu.php");
       <td>?????</td>
       <td>????</td>
       <td>??????</td>
+      <td><input type="text" id="cmt"> </td>
       <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
     <tr>
@@ -62,6 +70,7 @@ include_once("menu.php");
       <td>?????</td>
       <td>????</td>
       <td>??????</td>
+      <td><input type="text" id="cmt"> </td>
       <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
     
@@ -74,9 +83,21 @@ include_once("menu.php");
       <td>?????</td>
       <td>????</td>
       <td>??????</td>
+      <td><input type="text" id="cmt"> </td>
       <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
-    
+    <tr>
+      <th scope="row">3</th>
+      <td>????</td>
+      <td>????</td>
+      <td>????</td>
+      <td>?????</td>
+      <td>?????</td>
+      <td>????</td>
+      <td>??????</td>
+      <td><input type="text" id="cmt"> </td>
+      <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -86,6 +107,7 @@ include_once("menu.php");
 </table>
 
 </div>
+<a href="index.php"><<< Back to home </a>
    
 
 <!--END OF YOUR COD-->

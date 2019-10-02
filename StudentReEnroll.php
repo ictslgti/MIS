@@ -23,7 +23,7 @@ include_once("menu.php");
 
 <div class="ROW">
         <div class="col text-center">
-            <h2>StudentReEnroll</h2>   
+            <h2>StudentReEnrollment</h2>   
         </div>
     </div><BR>
 
@@ -63,18 +63,6 @@ include_once("menu.php");
         </div>
         
         <div class="col-md-3 mb-3"></div>
-
-        <div class="col-md-4 mb-3">
-          <div class="form-row">
-          <button type="button" class="btn btn-outline-primary">Add</button>
-          </div><br>
-          <div class="form-row">
-          <button type="button" class="btn btn-outline-success">UPDATE</button>
-          </div><br>
-          <div class="form-row">
-          <button type="button" class="btn btn-outline-danger">DELETE</button>
-          </div>
-        </div>
     </div><BR><BR><BR>
 
 
@@ -88,6 +76,7 @@ include_once("menu.php");
             <th scope="col">student Id</th>
             <th scope="col">Course Id</th>
             <th scope="col">Accademic Year</th>
+            <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -95,17 +84,6 @@ include_once("menu.php");
             <th scope="row">1</th>
             <td></td>
             <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <th scope="row">2</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-            <td colspan="2"></td>
             <td></td>
             </tr>
         </tbody>
