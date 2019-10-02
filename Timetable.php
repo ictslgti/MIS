@@ -23,8 +23,8 @@ include_once("menu.php");
   <tbody>
     <tr>
       <th scope="row">
-      
-      <div class="row equal">
+    
+      <div class="card" class="row equal">
     
       
     <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
@@ -32,35 +32,38 @@ include_once("menu.php");
 </div>
 
 
+
       <td>
           
-      <div class="row equal">
+      <div class="card" class="row equal">
+
+
       <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
       <td> 
           
       
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </td>
       <td> 
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </td>
       <td> 
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </td>
       <td> 
           
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
@@ -68,14 +71,14 @@ include_once("menu.php");
     </tr>
     <tr>
       <th scope="row">
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
       </th>
 
       <td>
 
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
@@ -83,28 +86,28 @@ include_once("menu.php");
 
 
       <td>
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
       </td>
 
       <td>
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
           </td>
       <td>
           
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
           
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
@@ -116,7 +119,7 @@ include_once("menu.php");
     <tr>
       <th scope="row">
           
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
@@ -124,7 +127,7 @@ include_once("menu.php");
 
       <td>
           
-      <div class="row equal">
+      <div class="card" class="row equal">
 
       <a href="#" class="btn btn-outline-light">Add</a>
 
@@ -132,7 +135,7 @@ include_once("menu.php");
 
       <td>
           
-      <div class="row equal">
+      <div  class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
@@ -140,7 +143,7 @@ include_once("menu.php");
 
       <td>
           
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
@@ -148,13 +151,13 @@ include_once("menu.php");
       <td>
           
       
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
@@ -164,7 +167,7 @@ include_once("menu.php");
     <tr>
       <th scope="row">
           
-      <div class="row equal">
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
@@ -173,7 +176,7 @@ include_once("menu.php");
 
       <td>
           
-      <div class="row equal">
+      <div class="card" class="row equal">
 
       <a href="#" class="btn btn-outline-light">Add</a>
 
@@ -181,22 +184,14 @@ include_once("menu.php");
 
       <td>
           
-      <div class="row equal">
+      <div class="card" class="row equal">
 
       <a href="#" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
-      <div class="row equal">
-
-      <a href="#" class="btn btn-outline-light">Add</a>
-
-      </td>
-
-      <td>
-          
-      <div class="row equal">
+      <div class="card" class="row equal">
 
       <a href="#" class="btn btn-outline-light">Add</a>
 
@@ -204,7 +199,15 @@ include_once("menu.php");
 
       <td>
           
-      <div class="row equal">
+      <div class="card" class="row equal">
+
+      <a href="#" class="btn btn-outline-light">Add</a>
+
+      </td>
+
+      <td>
+          
+      <div class="card" class="row equal">
       <a href="#" class="btn btn-outline-light">Add</a>
 
 
