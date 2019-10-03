@@ -69,6 +69,7 @@ include_once("menu.php");
       <td>
            
             <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
       </td>
     </tr>
 
@@ -87,6 +88,7 @@ include_once("menu.php");
 <td>
      
       <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+      <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
 </td>
 </tr>
  
