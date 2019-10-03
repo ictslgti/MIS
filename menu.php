@@ -192,6 +192,7 @@
                  <a class="dropdown-item" href="FoodOrders">Food Orders</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="CanteenReport">Daily Report</a>
+                 <a class="dropdown-item" href="dailyorder">Daily Orders</a>
              </div>
          </div>
          <div class="dropdown">

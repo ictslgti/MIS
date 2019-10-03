@@ -15,33 +15,41 @@ $title = "Department Details | SLGTI";
               </div>
               <div class="w-100"></div>
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
-                      <label class="font-weight-bold" for="">01.item</label> <span style="color:red;">*</span></label>
-                      <input type="text" class="form-control" id="" aria-describedby="" placeholder="item" required="required">
+                      <label class="font-weight-bold" for="">01.ITEM ID</label> <span style="color:red;">*</span></label>
+                      <input type="text" class="form-control" id="" aria-describedby="" placeholder="ITEM ID" required="required">
                       <small id="" class="form-text text-muted"></small>
               </div>
               
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
-                  <label class="font-weight-bold" for="">02.Name</label> <span style="color:red;">*</span></label>
-                  <input type="text" class="form-control" id="" aria-describedby="" placeholder=" Name" required="required">
+                  <label class="font-weight-bold" for="">02.SUPPLIER ID</label> <span style="color:red;">*</span></label>
+                  <input type="text" class="form-control" id="" aria-describedby="" placeholder=" SUPPLIER ID" required="required">
                   <small id="" class="form-text text-muted"></small>
               </div>
               
             
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
-                  <label class="font-weight-bold" for="">03.supplier</label> <span style="color:red;">*</span></label>
-                  <input type="text" class="form-control" id="" aria-describedby="" placeholder="supplier" required="required">
+                  <label class="font-weight-bold" for="">03.ITEM PURCHASE</label> <span style="color:red;">*</span></label>
+                  <input type="text" class="form-control" id="" aria-describedby="" placeholder="ITEM PURCHASE" required="required">
                   <small id="" class="form-text text-muted"></small>
               </div>
               
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
-                  <label class="font-weight-bold" for="cost">04. supplier phone number</label> <span style="color:red;">*</span></label>
-                  <input type="text" class="form-control" id="" aria-describedby="costHelp" placeholder="supplier phone number" required="required">
+                  <label class="font-weight-bold" for="cost">04.ITEM DESCRIPTION</label> <span style="color:red;">*</span></label>
+                  <input type="text" class="form-control" id="" aria-describedby="costHelp" placeholder="ITEM DESCRIPTION" required="required">
                   <small id="" class="form-text text-muted"></small>
           </div>
 
-          <div class="w-100"></div>
+
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
-                  <label class="font-weight-bold" for="datePic">05. Date</label> <span style="color:red;">*</span></label>
+                  <label class="font-weight-bold" for="cost">05.ITEM CODE</label> <span style="color:red;">*</span></label>
+                  <input type="text" class="form-control" id="" aria-describedby="costHelp" placeholder="ITEM CODE" required="required">
+                  <small id="" class="form-text text-muted"></small>
+          </div>
+
+
+      
+          <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
+                  <label class="font-weight-bold" for="datePic">06.WARRENTY</label> <span style="color:red;">*</span></label>
                   <input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp" required="required">
                   <small id="datePicHelp" class="form-text text-muted"></small>
                   

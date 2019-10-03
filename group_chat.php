@@ -32,7 +32,7 @@ include_once("homenav.php");
     <a class="nav-link" href="group_chat.php">Group chat</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="feedback.php">Feed back</a>
+    <a class="nav-link" href="feedback.php">Feedback</a>
   </li>
 </ul>
 </nav>
@@ -93,12 +93,12 @@ include_once("homenav.php");
 </form>
   </div>
   <ul class="list-group list-group-flush ">
-    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> ICT graphic  <i class="fas fa-phone float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hi how are you. I'm sahan and what about you</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Examination <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> Hello boss you.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Assembly information  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> weekly order by paryer the number of person.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Old Students  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> how are you.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> SLGTi Family   <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> So what.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> ICT Students  <i class="fas fa-phone float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> I'm Mokku Hanu.</small></li>
+    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> ICT graphic  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> Hi how are you. I'm sahan and what about you</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Examination <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> Hello boss you.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Assembly information  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> weekly order by paryer the number of person.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Old Students  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> how are you.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> SLGTi Family   <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> So what.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> ICT Students  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> I'm Mokku Hanu.</small></li>
    
    
   </ul>

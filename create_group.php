@@ -7,10 +7,13 @@ include_once("menu.php");
  ?>
 <!-- END DON'T CHANGE THE ORDER -->
 <!-- Sidebar -->
-
 <div class="row">
+<div class="col-4">
 
-<div class="col-8">
+</div>
+
+
+<div class="col-5">
 <ul class="nav justify-content-last">
 <div class="container ">
     <h1 class="display-1 "><h4>New Group</h4>
@@ -27,59 +30,38 @@ include_once("menu.php");
     <small id="emailHelp" class="form-text text-muted">We'll never share your information with anyone else.</small>
   </div>
 </ul>
-<button type="button" class="btn btn-outline-secondary float-right">Add</button>
+<button type="button" class="btn btn-outline-dark float-right">Add</button>
   </div> 
-</div>
-</div>
-</div>
 
 
-
-
-
-
-
-
-
-
-
-
-<div class="col-54">
-<div class="card p-3 mb-2 bg-dark text-white" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><h1><i class="fas fa-users float-center"></h1></i></h5>
-    <p class="card-text"><h5>Group Contact</h5></p>
+<div class="col-3">
+<div class="card-body p-3 mb-2 bg-dark text-white ">
+  <p class="card-text "><h1><i class="fas fa-users float-right"></h1></i><h5 class="text-center">Student Contact </h5></p> 
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"> <i class="fas fa-user-circle"></i> Gafoor Sahan</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Abdullah</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Faheem</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Nifras</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Kajan</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Thilogini</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Janani</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Jureesan</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Newsika</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Sanjeevan </li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Keethijan</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Sarujan</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Mithusan</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Thurgisan</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Hanusiya</li>
-    <li class="list-group-item list-group-item-action p-3 mb-2 bg-dark text-white"><i class="fas fa-user-circle"></i> Thuvarahan</li>
+  <ul class="list-group list-group-flush ">
+    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> Gafoor Sahan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hi how are you. I'm sahan and what about you</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Abdullah <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hello boss you.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Faheem <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> feeling love.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Nifras <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> how are you.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Kajan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> So what.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Thilogini <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hmmmmmmm.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Janani <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center">Tommorow will you come.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Sarujan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> I'm Sleeping.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Newsika <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> i call HOd.</small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Sanjeevan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Java is the best language.</small></li>
+    
+
    
-  </ul>
+ </ul>
 </div>
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
+</div>
+</div>
+ccccc
+</div>
+</div>
 
  <!-- /#sidebar-wrapper -->
  <!-- Page Content -->
