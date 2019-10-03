@@ -23,11 +23,11 @@ include_once("menu.php");
     <div class="col-sm-10">
 	<select id="inputState" class="form-control">
       <option selected>Select the Event...</option>
-      <option>Certificate Awarding Ceremony and Anniversary</option>
-      <option>Christmas Day Celebration</option>
-      <option>Hon Minister's Visit</option>
-      <option>Blood Donation and Helth Awareness Programme</option>
-      <option>Other</option>
+      <option>Certificate Awarding Ceremony</option>
+      <option>Celebration</option>
+      <option>Visitor's Visit</option>
+      <option>Volunteer</option>
+      <option>Other Events</option>
     </select>
   </div>
   </div>
