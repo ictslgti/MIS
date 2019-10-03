@@ -71,7 +71,7 @@ include_once("menu.php");
 <div class="row">
 
 <div class="col-9">
- <table class="table table-bordered">
+ <table class="table table-borderless">
   <thead>
     <tr>
       <th scope="col">Item Name</th>
