@@ -35,7 +35,7 @@ include_once("menu.php");
         <div class="alert alert-light" role="alert"><a href ="Event.php">Christmas Day Celebration</a></div>
         <div class="alert alert-light" role="alert"><a href ="Event.php">Hon Minister's Visit</a></div>
         <div class="alert alert-light" role="alert"><a href ="Event.php">Blood Donation and Helth Awareness Programme</a></div>
-        <div class="alert alert-light" role="alert"><a href ="Event.php">Other</a></div>
+        <div class="alert alert-light" role="alert"><a href ="Event.php">Other Events</a></div>
       </div>
     
     </div>
