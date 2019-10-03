@@ -35,8 +35,8 @@ include_once("menu.php");
           <input type="text" class="form-control" id="id" placeholder="" aria-describedby="idPrepend" required>
         </div>
      
-        <div class="col-md-3 mb-3">
-          <label for="cid">Course ID:</label>
+        <div class="col-md-6 mb-3">
+          <label for="cid">Course Name:</label>
           <input type="text" class="form-control" id="cid" placeholder="" aria-describedby="cidPrepend" required>
         </div>
 
@@ -103,7 +103,7 @@ include_once("menu.php");
             <label for="email">Email</label>
             <div class="input-group-prepend">
             <div class="input-group-text">@</div>
-            <input type="email" class="form-control" id="email" placeholder=""  required>
+            <input type="email" class="form-control" id="email" placeholder="nimal89@gmail.com"  required>
             </div>
             
           </div>
@@ -126,8 +126,8 @@ include_once("menu.php");
 
     <div class="form-row"> 
           <div class="col-md-12 mb-3">
-            <label for="address"> Address (Permanent) </label>
-            <input type="text" class="form-control" id="address" placeholder="House-No, Street, Hometown."  required>
+            <label for="address"> Address: </label>
+            <input type="text" class="form-control" id="address" placeholder="No, Street, Hometown."  required>
           </div>
     </div>
  
@@ -139,7 +139,34 @@ include_once("menu.php");
           
           <div class="col-md-2 mb-3">
             <label for="district">District</label>
-            <input type="text" class="form-control" id="district" placeholder=""  required>
+            <select name="district" id="district" class="form-control" >
+                <option value="">Select</option>
+                <option value="2"> Ampara </option>
+                <option value="2"> Batticalo </option>
+                <option value="2"> Trincomalee </option>
+                <option value="1"> Jaffna </option>
+                <option value="1"> Vavuniya </option>
+                <option value="1"> Killinochchi  </option>
+                <option value="1"> Mullaitivu </option>
+                <option value="1"> Mannar </option>
+                <option value="6"> Puttalam </option>
+                <option value="6"> Kurunegala </option>
+                <option value="3"> Gampaha </option>
+                <option value="3"> Colombo </option>
+                <option value="3"> Kalutara </option>
+                <option value="8"> Anuradhapura </option>
+                <option value="8"> Polonnaruwa </option>
+                <option value="5"> Matale	 </option>
+                <option value="5"> Kandy </option>
+                <option value="5"> Nuwara Eliya </option>
+                <option value="9"> Kegalle </option>
+                <option value="9"> Ratnapura </option>
+                <option value="7"> Badulla </option>
+                <option value="7"> Monaragala </option>
+                <option value="4"> Hambantota </option>
+                <option value="4"> Matara </option>
+                <option value="4"> Galle </option>
+            </select>
           </div>
 
           <div class="col-md-2 mb-3">
@@ -149,7 +176,18 @@ include_once("menu.php");
           
           <div class="col-md-2 mb-3">
             <label for="province">Province</label>
-            <input type="text" class="form-control" id="provice" placeholder=""  required>
+            <select name="province" id="province" class="form-control" >
+                <option value="">Select</option>
+                <option value="1"> Northen </option>
+                <option value="2"> Eastern </option>
+                <option value="3"> Western </option>
+                <option value="4"> Southern </option>
+                <option value="5"> Central </option>
+                <option value="6"> North Western  </option>
+                <option value="7"> Uva </option>
+                <option value="8"> North Central </option>
+                <option value="9"> Sabaragamuwa </option>
+            </select>
           </div>
 
           <div class="col-md-2 mb-3">
@@ -168,13 +206,6 @@ include_once("menu.php");
         </div>
 
     </div>
-
-    <div class="form-row"> 
-          <div class="col-md-12 mb-3">
-            <label for="address"> Address (Temporary) </label>
-            <input type="address" class="form-control" id="address" placeholder="House-No, Street, Hometown,District."  required>
-          </div>
-    </div><br>
 
     <div class="form-row">
           <div class class="col-md-1">

@@ -45,6 +45,7 @@ include_once("menu.php");
       <th scope="col">Item</th>
       <th scope="col">Notice</th>
       <th scope="col">Quantity</th>
+      <th scope="col">action</th>
       
     </tr>
   </thead>
@@ -87,8 +88,11 @@ include_once("menu.php");
 <div class="col-3"></div>
 <div class="col-2"></div>
 
- <div class="col-1"> 
-    <button type="button" class="btn btn-secondary" > ..save..</button> 
+<div class="col-md- col-sm- form-group pl- pr-container">
+<button type="submit" class="btn btn-primary ml-2 mt-3 float-right">back </button>
+                          
+                          <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">save </button>
+              </div>
     
      </div> 
 </div>

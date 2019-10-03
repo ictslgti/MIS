@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION['user_name'])){
+    header('Location: signin.php');
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>

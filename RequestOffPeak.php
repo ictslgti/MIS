@@ -10,8 +10,10 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 <br><br>
     <form>
-      <div class="form-group container   p-3 mb-2 bg-light text-dark border border-primary rounded" >
-    <h4 class="h2 p-5 mb-5 bg-primary text-white rounded text-center  "><i class="fas fa-file-alt"></i>   Student Off-Peak Request</h4>
+      <div class="intro container p-5 mb-5 border border-dark rounded" >
+      <div class="shadow p-3 mb-5 bg-white rounded"> 
+    <h4 class="display-4 text-center "><i class="fas fa-file-alt"></i>   Student Off-Peak Request</h4>
+    </div>
     <hr class="my-1">
    
   
@@ -20,7 +22,7 @@ include_once("menu.php");
     <br>
      
       <label for="text" class="font-weight-bolder" >Name of applicant :</label><br>
-      <input type="text" class="form-control" placeholder="" disabled>
+      <input type="text" class="form-control" id="noa" placeholder="" disabled>
      
     </div>
     
@@ -28,14 +30,14 @@ include_once("menu.php");
     <br>
     
     <label for="text" class="font-weight-bolder" >Registration No :</label><br>
-    <input type="text" class="form-control" placeholder="" disabled>
+    <input type="text" class="form-control" id="rno" placeholder="" disabled>
     </div>
     
     <div class="col-md-4 col-sm-12" >
     <br>
     
     <label for="text" class="font-weight-bolder"  >Department :</label><br>
-    <input type="text" class="form-control" placeholder="" disabled>
+    <input type="text" class="form-control" id="dept" placeholder="" disabled>
     </div>
     </div>
     <div class="form-row">
@@ -68,7 +70,7 @@ include_once("menu.php");
     <div class="col-md-7 col-sm-12 ">
     <br> <br>
    
-    <button type="button" class="btn btn-primary btn-md"><i class="fas fa-paper-plane"></i> Request to approval</button>
+    <button type="button" id="rta" class="btn btn-primary btn-md"><i class="fas fa-paper-plane"></i> Request to approval</button>
     </div>
     
    
@@ -91,10 +93,13 @@ include_once("menu.php");
    
     </div>
     </div>
+    <br>
+    <a href="index.php"><<< Back to home </a>
     </div>
     
- 
+   
 </form>
+
 
 
 

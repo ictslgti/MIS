@@ -45,8 +45,11 @@ $title = "Home | SLGTI";
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
-                                <a href="#" class="btn btn-info">Add</a>                                   
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>   
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
+                                <a href="#" class="btn btn-info">Add</a>                                    
                             </div>
                         </div>
                     </div>
@@ -254,7 +257,7 @@ $title = "Home | SLGTI";
                         <th><p class="h5">ITEM ID</p></th>
                         <th><p class="h5">ITEM NAME</p></th>
                         <th><p class="h5">QTY</p></th>
-                        <th><p class="h5">AMOUNT</p></th>
+                        <th><p class="h5">PER AMOUNT</p></th>
                     </tr>
                  </thead>
                 <tbody class="table-borderless">

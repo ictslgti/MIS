@@ -14,7 +14,7 @@ include_once("menu.php");
 
 <div class="intro p-5 mb-5 border border-dark rounded" >
 <div class="shadow p-3 mb-5 bg-white "> 
-    <h4 class="display-4 text-center  "><i class="fas fa-folder-open"></i>  Off-Peak Request Archives</h4>
+    <h4 class="display-4 text-center  "><i class="fas fa-shield-alt"></i>  Security Portal</h4>
     </div>
     <div class="table-responsive-sm">
     <table class="table table-responsive-sm w-100">
@@ -87,7 +87,7 @@ include_once("menu.php");
 
 
     </div>
-    <a href="Requestoffpeak.php"><<< Back to off-peak request </a>
+    <!-- <a href="index.php"><<< Back to off-peak request </a> -->
 
 
 
