@@ -32,7 +32,7 @@ include_once("homenav.php");
     <a class="nav-link" href="group_chat.php">Group chat</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="feedback.php">Feed back</a>
+    <a class="nav-link" href="feedback.php">Feedback</a>
   </li>
 </ul>
 </nav>
