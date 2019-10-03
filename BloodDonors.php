@@ -42,16 +42,18 @@ include_once("menu.php");
 <table class="table">
   <thead class="thead-r">
     <tr>
-      <th scope="col">D_id</th>
-      <th scope="col">Reference id</th>
-      <th scope="col">fullname</th>
-      <th scope="col">Address</th>
+      <th scope="col"><i class="far fa-id-card"></i>&nbsp;D_id</th>
+      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Reference id</th>
+      <th scope="col"><i class="fas fa-users"></i>&nbsp;fullname</th>
+      <th scope="col"><i class="far fa-address-card"></i>&nbsp;Address</th>
       <th scope="col">Email</th>
-      <th scope="col">Blood group</th>
-      <th scope="col">dob</th>
-      <th scope="col">join date</th>
-      <th scope="col">Weight</th>
-      <th scope="col">Gender</th>
+      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;dob</th>
+      <th scope="col"><i class="fas fa-map-marker"></i>&nbsp;Blood group</th>
+      <th scope="col"><i class="fas fa-chalkboard-teacher"></i>&nbsp;designation</th>
+      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;join date</th>
+      <th scope="col"><i class="fas fa-transgender"></i>&nbsp;Gender</th>
+      <th scope="col"><i class="fas fa-weight-hanging"></i>&nbsp;Weight</th>
+      
     </tr>
   </thead>
   <tr>
@@ -66,11 +68,7 @@ include_once("menu.php");
       <td>Otto</td>
       <td>@mdo</td>
       <td>@mdo</td>
-      <td>
-           
-            <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
-      </td>
+      <td>18kg </td>
     </tr>
 
     <tr>
@@ -85,11 +83,7 @@ include_once("menu.php");
 <td>Otto</td>
 <td>@mdo</td>
 <td>@mdo</td>
-<td>
-     
-      <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-      <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
-</td>
+<td>18kg </td>
 </tr>
  
 </table>
