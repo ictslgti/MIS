@@ -222,7 +222,7 @@ $title = "Examinations | SLGTI";
             </div>
             <!-- end card -->
             <br>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col">
                     1 of 2
                 </div>
@@ -237,7 +237,7 @@ $title = "Examinations | SLGTI";
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- small view table start  -->
             <table class="table table-sm">
                 <thead>
@@ -283,10 +283,42 @@ $title = "Examinations | SLGTI";
                             class="fas fa-print"></i>&nbsp;&nbsp;Print&nbsp;&nbsp;&nbsp;</button>
                 </div>
             </div>
+            <br>
+
+<!-- sinna table -->
+            <div class="card">
+                <br>
+                <div class="container">
+                    <div class="intro">
+                        <!-- <h3 class="display-5 text-center">Overall Module Marks</h3> -->
+                        <div class="row">
+                            <div class="col">
+                                <h3 class="display-5 text-center">Overall Module Marks</h3>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Student's Index Number"
+                                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            id="button-addon2">&nbsp;&nbsp;&nbsp;<i
+                                                class="fas fa-search"></i>&nbsp;&nbsp;&nbsp;Search&nbsp;&nbsp;&nbsp;</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
 
             <!-- main table container end below -->
         </div>
         <!-- end mode  -->
+
+
+        
+        
 
 
 
