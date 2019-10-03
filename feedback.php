@@ -17,6 +17,10 @@ include_once("homenav.php");
 
 
 <div class="col-4">
+</div>
+
+
+<div class="col-4">
 <ul class="nav nav-tabs">
 <li class="nav-item">
     <a class="nav-link " href="home.php">Status</a>
@@ -82,9 +86,6 @@ include_once("homenav.php");
 
                     <button type="button" class="btn btn-dark btn-lg btn-block">Send a Feedback</button>
 
-
-
-<div class="col-4">
 </div>
 
 
