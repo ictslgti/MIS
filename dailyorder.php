@@ -29,19 +29,9 @@ include_once("menu.php");
   
   
   <div class="form-group mx-sm-3 mb-2">
-  <label for="inputPassword2" class="sr-only">Search</label>
-   
-<div class ="col"><select class="custom-select d-block w-100" id="Department" required="">
-                    <option >Search By name or Id</option>
-                    <option>name</option>
-                    <option>id</option>
-               
-               
-               
-                    
-                  
-                  </select>
-                  </div>
+  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> </button>
     
     
