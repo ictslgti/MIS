@@ -57,30 +57,30 @@ include_once("menu.php");
   <tbody>
     <tr>
       <th scope="row">Breakfast</th>
-      <td>6500</td>
-      <td>8000</td>
+      <td></td>
+      <td></td>
      
     </tr>
     <tr>
       <th scope="row">lunch</th>
-      <td>7000</td>
-      <td>9000</td>
+      <td></td>
+      <td></td>
    
     </tr>
     <tr>
       <th scope="row">Dinner</th>
-      <td >4000</td>
-      <td>6500</td>
+      <td ></td>
+      <td></td>
     </tr>
     <tr>
       <th scope="row">Others</th>
-      <td >2000</td>
-      <td>3000</td>
+      <td ></td>
+      <td></td>
     </tr>
     <tr>
       <th scope="row" class="table-secondary">TOTAL SALES</th>
-      <td class="table-secondary">19500</td>
-      <td class="table-secondary">26500</td>
+      <td class="table-secondary"></td>
+      <td class="table-secondary"></td>
     </tr>
   </tbody>
 </table>
@@ -99,15 +99,15 @@ include_once("menu.php");
   <tbody>
     <tr>
       <th scope="row" class="text-dark">Sales</th>
-      <td class="text-danger">26500</td>
+      <td class="text-danger"></td>
     </tr>
     <tr>
       <th scope="row" class="text-dark">Costs</th>
-      <td class="text-danger">19500</td>
+      <td class="text-danger"></td>
     </tr>
     <tr>
       <th scope="row" class="text-dark">Net pfofit</th>
-      <td class="text-danger">7000</td>
+      <td class="text-danger"></td>
     </tr>
   </tbody>
 </table>
