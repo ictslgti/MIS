@@ -132,7 +132,7 @@ include_once("menu.php");
       <th scope="col">Date</th>
       <th scope="col">Time</th>
       <th scope="col">Reason for exit</th>
-      <th colspan="3">Status</th>
+      
     </tr>
   </thead>
   <tbody>
@@ -145,7 +145,7 @@ include_once("menu.php");
       <td>?????</td>
       <td>????</td>
       <td>??????</td>
-      <td>??????</td>
+      
     </tr>
     <tr>
       <th scope="row">2</th>
