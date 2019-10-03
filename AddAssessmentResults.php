@@ -104,8 +104,8 @@ $title = "Examinations | SLGTI";
                     <div class="row justify-content-md-center">
                         <div class="col-md-auto">
                             <!-- main button  -->
-                            <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus"></i>&nbsp;Add
-                                Results</button>
+                            <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus"></i>&nbsp;Ok
+                                </button>
                         </div>
                     </div>
                 </div>
@@ -160,8 +160,8 @@ $title = "Examinations | SLGTI";
                                     aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                         </td>
-                        <td scope="row"><span
-                                class="badge badge-success">&nbsp;&nbsp;&nbsp;&nbsp;Pass&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <td scope="row">
+                            <h3 class="text-success">Pass</h3>
                         </td>
                     </tr>
                     <tr>
@@ -208,6 +208,8 @@ $title = "Examinations | SLGTI";
                 </div>
             </div>
             <!-- save button end -->
+            <br>
+            <br>
             <br>
             <br>
             <!-- card start -->
@@ -284,6 +286,10 @@ $title = "Examinations | SLGTI";
                 </div>
             </div>
             <br>
+            <br>
+            <br>
+            <br>
+
 
 <!-- sinna table -->
             <div class="card">
