@@ -17,7 +17,7 @@ include_once("menu.php");
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-3 text-center">QTY</h1>
+                    <h1 class="display-3 text-center">Daliy orders</h1>
                     
                  
 
@@ -56,7 +56,7 @@ include_once("menu.php");
     <div class="mx-auto" >
 
 <div class ="row">
-<div class="col-7">
+<div class="col-9">
     <form  >
 <div class="form-group p-3 mb-2 bg-light text-dark au_size  rounded">
 <div class ="row">
@@ -121,12 +121,12 @@ include_once("menu.php");
  </div>
 </form>
 </div>
-<div class="col-5">
+<div class="col-3">
 
 <table class="table table-borderless">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col"></th>
       <th scope="col">Item name</th>
       <th scope="col">Item QTY</th>
 
@@ -134,28 +134,80 @@ include_once("menu.php");
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
+      <th scope="row"></th>
+      <td>rotti</td>
+      <td>Otto</td>
+  
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>pittu</td>
+      <td>Thornton</td>
+     
+    </tr>
+    <tr>
+      <th scope="row"></th>
+   <td>noodles</td>
+   <td>@gmail</td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
       <td>Mark</td>
       <td>Otto</td>
   
     </tr>
     <tr>
-      <th scope="row">2</th>
+      <th scope="row"></th>
+      <td>Mark</td>
+      <td>Otto</td>
+  
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>Mark</td>
+      <td>Otto</td>
+  
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>Mark</td>
+      <td>Otto</td>
+  
+    </tr>
+    <tr>
+      <th scope="row"></th>
       <td>Jacob</td>
       <td>Thornton</td>
      
     </tr>
     <tr>
-      <th scope="row">3</th>
+      <th scope="row"></th>
    <td>@twitter</td>
    <td>@gmail</td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>Mark</td>
+      <td>Otto</td>
+  
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>Mark</td>
+      <td>Otto</td>
+  
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>Mark</td>
+      <td>Otto</td>
+  
     </tr>
   </tbody>
 </table>
 <div class="btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-secondary active">
-    <input type="checkbox" checked autocomplete="off"> Checked
-  </label>
+  <label class="btn btn-primary active">
+    <input type="checkbox" checked autocomplete="off"> Check</label>
 </div>
 </div>
 </div>
