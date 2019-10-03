@@ -272,19 +272,7 @@ $title = "Examinations | SLGTI";
             </table>
             <!-- small view table end -->
             <!-- print mode start -->
-            <div class="row">
-                <div class="col">
-
-                </div>
-                <div class="col-md-auto">
-                        <button type="button" class="btn btn-outline-primary">&nbsp;&nbsp;&nbsp;<i class="far fa-edit"></i>&nbsp;&nbsp;Update&nbsp;&nbsp;&nbsp;</button>
-
-                </div>
-                <div class="col col-lg-2">
-                    <button type="button" class="btn btn-outline-primary">&nbsp;&nbsp;&nbsp;<i
-                            class="fas fa-print"></i>&nbsp;&nbsp;Print&nbsp;&nbsp;&nbsp;</button>
-                </div>
-            </div>
+         
             <br>
             <br>
             <br>
@@ -317,6 +305,54 @@ $title = "Examinations | SLGTI";
                 </div>
                 <br>
             </div>
+            <br>
+
+            <!-- sinna table thodakkam -->
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Student Index Number</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Module Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div class="row">
+                <div class="col">
+
+                </div>
+                <div class="col-md-auto">
+                        <button type="button" class="btn btn-outline-primary">&nbsp;&nbsp;&nbsp;<i class="far fa-edit"></i>&nbsp;&nbsp;Update&nbsp;&nbsp;&nbsp;</button>
+
+                </div>
+                <div class="col col-lg-2">
+                    <button type="button" class="btn btn-outline-primary">&nbsp;&nbsp;&nbsp;<i
+                            class="fas fa-print"></i>&nbsp;&nbsp;Print&nbsp;&nbsp;&nbsp;</button>
+                </div>
+            </div>
+            <!-- small view table end -->
 
             <!-- main table container end below -->
         </div>
