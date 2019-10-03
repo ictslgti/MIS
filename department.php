@@ -22,8 +22,12 @@ include_once("menu.php");
             </div>
         </div>
     </div>
-<div class="row">
+    <a href="Add_department" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add New Department </a>
+
+
+
 <!-- <h1 class="col text-center">Department Details</h1> -->
+<br><br>
 <table class="table table-hover">
   <thead class="thead-dark">
  
