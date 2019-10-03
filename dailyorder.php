@@ -17,7 +17,7 @@ include_once("menu.php");
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-3 text-center">Daliy orders</h1>
+                    <h1 class="display-3 text-center">Daily orders</h1>
                     
                  
 
