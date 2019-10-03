@@ -30,104 +30,101 @@ include_once ("menu.php");
     </div>
     </div>
 
-    
-    </div>
 
    <div class="row">
     <div class="col">
     <hr color ="black" style="height:1px;">
     </div>
     </div> 
+    <br>
+    <br>
 
 <!-- Heading end -->
 
 <!-- Dropdown start -->
 
-    <div class="row">
-    <div class="col-3 text-center">
-    <label class="input-group-text" for="inputGroupSelect036">Select Semister</label>
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose Semister </option>
-                <option value="1">Semister 1</option>
-                <option value="2">Semister 2</option>
-            </select>
-    </div>
+    <div class="row text-center">
 
-    <div class="col-3 text-center">
-    <label class="input-group-text" for="inputGroupSelect036">Choose Module</label>
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Choose Module</option>
-                <option value="1">M07</option>
-                <option value="2">M01</option>
-            </select>
-    </div>
+<div class="col">
 
-
-    <div class="col-1 text-center">
-    <button type="button" class="btn btn-outline-success">submit</button>
-    </div>
-    </div>
-<br>
-<br>
-
-<!-- Dropdown End -->
-
-<!-- Assessments start -->
-  <div class="row"><!-- Table start -->
-  <div class="col-3">
-  <h3 class="display-6 text-center">Assessments</h3>
-  <hr color ="black" style="height:1px;">
-  <div class="col">
-  
-  </div>
-  <table class="table">
-    <tr>
-      <td scope="col-8">Assessment</td>
-      <td scope="col-4"><i class="fas fa-eye"></i>
-    <button type="button" class="btn btn-secondary">VIEW</button></td>
-        
-    </tr>
-    <tr>
-      <td scope="col-8">Assessment 2</td>
-    </tr>
-    <tr>
-      <td scope="col-8">Assessment 3</td>  
-    </tr>
-
-    <tr>
-      <td scope="col-8">Assessment 4</td>  
-    </tr> 
-    <tr>
-      <td scope="col-8">Assessment 4</td>  
-    </tr>
-</table>
-  <hr color ="black" style="height:1px;">
 </div>
 
-<!-- Assessments End -->
+<div class="col">
+<div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01"><i
+                                        class="fas fa-dice-d6"></i>&nbsp;&nbsp;Select Semister</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <option value="1">A1</option>
+                                <option value="2">A2</option>
+                            </select>
+                        </div>
+</div>
 
-<!-- Table start -->
-<div class="col-9">
-<table class="table">
+<div class="col">
+<div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01"><i
+                                        class="fas fa-book-open"></i>&nbsp;&nbsp;Select Module</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <option value="1">A1</option>
+                                <option value="2">A2</option>
+                            </select>
+                        </div>
+</div>
+
+<div class="col text-left">
+<button type="button" class="btn btn-outline-success rounded-pill">submit</button>
+</div>
+
+    </div>
+<br>
+<br>
+
+<div class="row">
+
+<div class="col">
+</div>
+
+<div class="col">
+<div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto">
+                    <button type="button" class="btn btn-outline-primary"><i class="fas fa-clipboard-list"></i>&nbsp;&nbsp; View Assessments</button>
+                </div>
+            </div>
+
+        </div>
+</div>
+
+<div class="col">
+</div>
+
+</div>
+
+<br>
+<br>
+
+<div class="col">
+<table class="table text-center">
   <thead class="thead-dark">
     <tr>
-
-    <th scope="col">Students_id</th>
-      <th scope="col">Assessment</th>
+      <th scope="col">Assessment Name</th>
       <th scope="col">Assessment-Date</th>
-      <th scope="col">Assessment-Marks</th>
-      <th scope="col">Assessment-Marks</th>
-      
-
-      
+      <th scope="col">Assessment-Type</th>
+      <th scope="col">Student Attend Assessment</th>
+          
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
+      <th scope="row"><a href="view_assessment.php"><button type="button" class="btn btn-outline-primary"><i class="fas fa-eye"></i>&nbsp;&nbsp; Assessments 1</button></a></th>
       <td>Mark</td>
       <td>Otto</td>
-      <td>@mdo</td>
       <td>@mdo</td>
     </tr>
     
@@ -135,14 +132,14 @@ include_once ("menu.php");
 </table>
 </div>
 
-<!-- Table End -->
 
-  </div><!-- Table row end -->
 
+<!-- Dropdown End -->
+
+<!-- Assessments start -->
+  
 
 <!-- end your code -->
-
-
 <!--Block#3 start dont change the order-->
 <?php include_once ("footer.php"); ?>  
 <!--  end dont change the order-->
