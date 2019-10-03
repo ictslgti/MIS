@@ -11,14 +11,15 @@ include_once("menu.php");
 
 <!-- bLOCK#2 start your code here & u can change -->
 <br>
-<div class="alert bg-dark text-white" role="alert">
-  <h1>Add New Notice</h1>
-</div>
+<hr>
+<div class="alert bg-dark text-white text-center" role="alert"><h1>Add New Notice</h1>
 
+</div>
+<hr>
 <div class="card-deck">
 <br>
 <br>
-    <div class="card text-white bg-dark mb-3">
+    <div class="card bg-dark text-white">
     <div class="card-header"><h1>Result</h1></div>
         <div class="card-body">
         <p class="card-text">
@@ -27,19 +28,19 @@ include_once("menu.php");
         </div>
     </div>
   
-    <div class="card text-white bg-dark mb-3">
-    <div class="card-header"><h1>Events</h1></div>
+    <div class="card bg-dark">
+    <div class="card-header text-white"><h1>Events</h1></div>
         <div class="card-body">
-        <div class="alert alert-dark"><a href ="Event.php">Certificate Awarding Ceremony and Anniversary</a></div>
-        <div class="alert alert-dark" role="alert"><a href ="Event.php">Christmas Day Celebration</a></div>
-        <div class="alert alert-dark" role="alert"><a href ="Event.php">Hon Minister's Visit</a></div>
-        <div class="alert alert-dark" role="alert"><a href ="Event.php">Blood Donation and Helth Awareness Programme</a></div>
-        <div class="alert alert-dark" role="alert"><a href ="Event.php">Other</a></div>
+        <div class="alert alert-light"><a href ="Event.php">Certificate Awarding Ceremony and Anniversary</a></div>
+        <div class="alert alert-light" role="alert"><a href ="Event.php">Christmas Day Celebration</a></div>
+        <div class="alert alert-light" role="alert"><a href ="Event.php">Hon Minister's Visit</a></div>
+        <div class="alert alert-light" role="alert"><a href ="Event.php">Blood Donation and Helth Awareness Programme</a></div>
+        <div class="alert alert-light" role="alert"><a href ="Event.php">Other</a></div>
       </div>
     
     </div>
 </div>
-
+<hr>
    <!-- end your code here-->
 
 
