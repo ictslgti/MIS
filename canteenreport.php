@@ -87,30 +87,6 @@ include_once("menu.php");
 
 
 
-<table class="table table-borderless ">
-  <thead class=" thead-dark">
-    <tr>
-      <th scope="col">SHAREHOLDERS SCORES</th>
-      <th scope="col">END OF PERIOD</th>
-
-      
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row" class="text-dark">Sales</th>
-      <td class="text-danger">26500</td>
-    </tr>
-    <tr>
-      <th scope="row" class="text-dark">Costs</th>
-      <td class="text-danger">19500</td>
-    </tr>
-    <tr>
-      <th scope="row" class="text-dark">Net pfofit</th>
-      <td class="text-danger">7000</td>
-    </tr>
-  </tbody>
-</table>
    
 
 
