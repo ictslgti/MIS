@@ -104,8 +104,8 @@ $title = "Examinations | SLGTI";
                     <div class="row justify-content-md-center">
                         <div class="col-md-auto">
                             <!-- main button  -->
-                            <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus"></i>&nbsp;Add
-                                Results</button>
+                            <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus"></i>&nbsp;Ok
+                                </button>
                         </div>
                     </div>
                 </div>
@@ -160,8 +160,8 @@ $title = "Examinations | SLGTI";
                                     aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                         </td>
-                        <td scope="row"><span
-                                class="badge badge-success">&nbsp;&nbsp;&nbsp;&nbsp;Pass&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <td scope="row">
+                            <h3 class="text-success">Pass</h3>
                         </td>
                     </tr>
                     <tr>
@@ -210,6 +210,8 @@ $title = "Examinations | SLGTI";
             <!-- save button end -->
             <br>
             <br>
+            <br>
+            <br>
             <!-- card start -->
             <div class="card">
                 <br>
@@ -222,7 +224,7 @@ $title = "Examinations | SLGTI";
             </div>
             <!-- end card -->
             <br>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col">
                     1 of 2
                 </div>
@@ -237,7 +239,7 @@ $title = "Examinations | SLGTI";
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- small view table start  -->
             <table class="table table-sm">
                 <thead>
@@ -270,6 +272,73 @@ $title = "Examinations | SLGTI";
             </table>
             <!-- small view table end -->
             <!-- print mode start -->
+         
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+<!-- sinna table -->
+            <div class="card">
+                <br>
+                <div class="container">
+                    <div class="intro">
+                        <!-- <h3 class="display-5 text-center">Overall Module Marks</h3> -->
+                        <div class="row">
+                            <div class="col">
+                                <h3 class="display-5 text-center">Overall Module Marks</h3>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Student's Index Number"
+                                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button"
+                                            id="button-addon2">&nbsp;&nbsp;&nbsp;<i
+                                                class="fas fa-search"></i>&nbsp;&nbsp;&nbsp;Search&nbsp;&nbsp;&nbsp;</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <br>
+
+            <!-- sinna table thodakkam -->
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Student Index Number</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Module Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
             <div class="row">
                 <div class="col">
 
@@ -283,10 +352,15 @@ $title = "Examinations | SLGTI";
                             class="fas fa-print"></i>&nbsp;&nbsp;Print&nbsp;&nbsp;&nbsp;</button>
                 </div>
             </div>
+            <!-- small view table end -->
 
             <!-- main table container end below -->
         </div>
         <!-- end mode  -->
+
+
+        
+        
 
 
 

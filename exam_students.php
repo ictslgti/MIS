@@ -42,8 +42,14 @@ include_once ("menu.php");
     <div class="col-4"></div>
     <div class="col-sm-3 " > 
 <form class="form-inline md-form form-sm mt-4">
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search-Module_Id" aria-label="Search"id="search"> 
-  <i class="fas fa-search ml-3" aria-hidden="true"></i>
+  
+ <input type="text"  class="form-control form-control-sm ml-3 w-75 rounded-pill" placeholder="Search-Module_Id" aria-label="Search"id="search"
+        aria-describedby="button-addon2">
+    <div class="input-group-append">
+        <button class="fas fa-search btn btn-outline-success sm ml-3 w-75 rounded-pill" aria-hidden="true" type="button" id="button-addon2"></button>
+    </div>
+
+
 </form>
 </div>
     
@@ -76,13 +82,12 @@ include_once ("menu.php");
     <div class="col text-center">
     <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
-                                        Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 </div>
                                 <select class="custom-select" id="inputGroupSelect01">
                                     <option selected="">Choose...</option>
-                                    <option value="1">Semister 1</option>
-                                    <option value="2">Semister 2</option>
+                                    <option value="1">Grapphic Design</option>
+                                    <option value="2">Networking</option>
                                 </select>
                             </div>
     </div>
@@ -90,19 +95,18 @@ include_once ("menu.php");
     <div class="col text-center">
     <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
-                                        Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select Assessment Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 </div>
                                 <select class="custom-select" id="inputGroupSelect01">
                                     <option selected="">Choose...</option>
-                                    <option value="1">Semister 1</option>
-                                    <option value="2">Semister 2</option>
+                                    <option value="1">Written</option>
+                                    <option value="2">Practical</option>
                                 </select>
                             </div>
     </div>
 
     <div class="col-2 text-left">
-    <button type="button" class="btn btn-outline-success">submit</button>
+    <button type="button" class="btn btn-outline-success rounded-pill">submit</button>
     </div>
     </div>
 <br>

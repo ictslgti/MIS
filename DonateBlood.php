@@ -48,7 +48,7 @@ include_once("menu.php");
       <th scope="col">join date</th>
       <th scope="col">Weight</th>
       <th scope="col">Gender</th>
-
+      <th scope="col">Action</th>
     </tr>
   </thead>
   
@@ -67,6 +67,7 @@ include_once("menu.php");
       <td>
            
             <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
       </td>
     </tr
     
@@ -85,6 +86,7 @@ include_once("menu.php");
       <td>
            
             <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
       </td>
     </tr>
     <tr>
@@ -102,6 +104,7 @@ include_once("menu.php");
       <td>
            
             <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
       </td>
     </tr>
     <tr>
@@ -119,6 +122,7 @@ include_once("menu.php");
       <td>
            
             <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
       </td>
     </tr>
     
