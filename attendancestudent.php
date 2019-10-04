@@ -17,7 +17,7 @@ include_once ("attendancenav.php");
       <div class="row">
         <div class="col-md-9">Student List</div>
         <div class="col-md-3" align="right">
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Add</button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal">
