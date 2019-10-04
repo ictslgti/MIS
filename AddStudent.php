@@ -57,7 +57,7 @@ include_once("menu.php");
 
         <div class="col-md-3 mb-3">
           <label for="exitdate">Exit Date:</label>
-          <input type="text" class="exitdate" id="exitdate" placeholder="" aria-describedby="exitdatePrepend" required>
+          <input type="text" class="form-control" id="exitdate" placeholder="" aria-describedby="exitdatePrepend" required>
         </div>
 
         <div class="col-md-3 mb-3">
