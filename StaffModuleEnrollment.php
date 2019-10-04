@@ -8,13 +8,7 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-<html>
 
-<head>
-   
-</head>
-<body>
-<br><br>
       <div class="row">
       <div class="col form-group  container p-3 mb-2 col-4 " >
     <h1 ><i class="fas fa-file-alt"></i>STAFF MODULE ENROLLMENT</h1></div>
