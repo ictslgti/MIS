@@ -22,7 +22,7 @@ include_once ("attendancenav.php");
         <div class="col-md-3" align="right">
         
 
-          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">Add</button>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
          </div>
 
          
