@@ -98,7 +98,7 @@ include_once("menu.php");
 <div class="col-2"></div>
 
  <div class="col-1"> 
-    <button type="button" class="btn btn-secondary" onclick="location.href='donor.php'"> Join Donor</button> 
+    <button type="button" class="btn btn-primary" onclick="location.href='donor.php'"><i class="fas fa-sign-in-alt"></i> &nbsp;Join</button> 
     
      </div> 
 </div>
