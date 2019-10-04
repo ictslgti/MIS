@@ -52,7 +52,7 @@ include_once ("menu.php");
     <a class="nav-link" href="attendancestudent.php">Student</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="adminattendance">Attendance</a>
+    <a class="nav-link" href="addattendance.php">Attendance</a>
   </li>
 </ul>
 
