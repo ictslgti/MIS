@@ -29,13 +29,15 @@ include_once ("menu.php");
     </div>
     </div>
 
-
-    <div class="row">
-    <div class="col">
-    <hr>
-    </div>
-    </div>
 <br>
+
+
+<div class="row">
+    <div class="col">
+    <hr color ="black" style="height:1px;">
+    </div>
+    </div> 
+    
 
     <div class="row ">
     <div class="col-4"></div>
@@ -55,12 +57,8 @@ include_once ("menu.php");
     
     </div>
 
-   <div class="row">
-    <div class="col">
-    <hr color ="black" style="height:1px;">
-    </div>
-    </div> 
-
+    <br>
+    <br>
 
     <div class="row">
     <div class="col text-center">
