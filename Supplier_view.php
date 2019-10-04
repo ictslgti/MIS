@@ -11,7 +11,7 @@ include_once("menu.php");
 
 
 
-<h1 class="text-center">Inventory Details</h1>
+<h1 class="text-center">SUPPLIER_DETAILS</h1>
 <br>
 
 <div class="row">
@@ -33,19 +33,19 @@ include_once("menu.php");
          <div class="row">   
          <div class="col-12">
          <form>
-         <p style="font-size:20px;"> Inventory_Info <hr color ="black" style="height:1px;"></p><br>
+         <p style="font-size:20px;"> SUPPLIER_INFO <hr color ="black" style="height:1px;"></p><br>
          </form>
 </div>
 </div>
 <table class="table">
   <thead class="thead-r">
     <tr>
-      <th scope="col">DEPARTMENT ID</th>
-      <th scope="col">INVENTORY ID</th>
-      <th scope="col">ITEM ID</th>
-      <th scope="col">STATAUS</th>
-      <th scope="col">QUANTITY</th>
+      <th scope="col">SUPPLIER ID</th>
+      <th scope="col">SUPPLIER NAME</th>
+      <th scope="col">SUPPLIER PHONE NUMBER</th>
+      <th scope="col">SUPPLIER EMAIL</th>
       <th scope="col">ACTION</th>
+      
       
     </tr>
   </thead>
@@ -55,7 +55,7 @@ include_once("menu.php");
       <td>Otto</td>
       <td>@mdo</td>
       <td>Mark</td>
-      <td>Otto</td>
+      
       
       <td>
            
@@ -69,7 +69,7 @@ include_once("menu.php");
 <td>Otto</td>
 <td>@mdo</td>
 <td>Mark</td>
-<td>Otto</td>
+
 
 <td>
      
@@ -93,8 +93,7 @@ include_once("menu.php");
                           
                           <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">save </button>
               </div>
-    
-     </div> 
+      
 </div>
 
 

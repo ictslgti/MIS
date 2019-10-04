@@ -40,12 +40,13 @@ include_once("menu.php");
 <table class="table">
   <thead class="thead-r">
     <tr>
-      <th scope="col">item</th>
-      <th scope="col">name</th>
-      <th scope="col">supplier</th>
-      <th scope="col">supplier phone number</th>
-      <th scope="col">date</th>
-      <th scope="col">action</th>
+      <th scope="col">ITEM ID</th>
+      <th scope="col">SUPPLIER ID</th>
+      <th scope="col">ITEM PURCHASE</th>
+      <th scope="col">ITEM DESCRIPTION</th>
+      <th scope="col">ITEM CODE</th>
+      <th scope="col">WARRENTY</th>
+      <th scope="col">ACTION</th>
       
     </tr>
   </thead>
@@ -56,6 +57,7 @@ include_once("menu.php");
       <td>@mdo</td>
       <td>Mark</td>
       <td>Otto</td>
+      <td>Ottadsado</td>
       
       <td>
            
@@ -70,6 +72,7 @@ include_once("menu.php");
 <td>@mdo</td>
 <td>Mark</td>
 <td>Otto</td>
+<td>Ottadsado</td>
 
 <td>
      
