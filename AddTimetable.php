@@ -20,6 +20,12 @@ include_once("menu.php");
 </div>
 </div>
 
+<div class="form-group row">
+    <label for="inputID" class="col-sm-2 col-form-label">ID</label>
+    <div class="col-sm-10">
+      <input type="ID" class="form-control" id="inputID"required >
+    </div>
+  </div>
 
 
 <form>
@@ -114,15 +120,15 @@ include_once("menu.php");
 
 
   <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">batch</label>
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Course</label>
     <div class="col-sm-10">
 	<select id="inputState" class="form-control">
         <option selected>choose</option>
-        <option>Monday</option>
-		<option>Tuesday</option>
-		<option>Wednesday</option>
-		<option>Thursday</option>
-		<option>Friday</option>
+        <option>Level-06</option>
+		<option>Level-05</option>
+		<option>Bridging-L5</option>
+		<option>Level-4</option>
+		<option>##</option>
 
       </select>
     </div>
