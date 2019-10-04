@@ -55,13 +55,9 @@ include_once("menu.php");
   </div>
 
   <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="upfile02">Upload Event Link</span>
-  </div>
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="upfile" aria-describedby="upfile02">
-    <label class="custom-file-label" for="upfile">Choose Your Link...</label>
-  </div>
+
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Upload  Your File and Link</label>
+      <input class="form-control" type="file" name="file" required/></td>
 </div>
 
 
