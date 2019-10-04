@@ -42,7 +42,7 @@ include_once ("attendancenav.php");
 
       <div class="form-group">
             <div class="row">
-              <label class="col-md-3 text-right">Grade <span class="text-danger">*</span></label>
+              <label class="col-md-3 text-right">Session<span class="text-danger">*</span></label>
               <div class="col-md-8">
                 
               </div>
@@ -155,14 +155,15 @@ include_once ("attendancenav.php");
             <td>puja</td>
             <td>2017/ict/bit/13</td>
             <td>Graphic Design</td>
-            <td><button type="button" class="btn btn-success btn-sm">Present</button></td>
+            <td> <span class="badge badge-success">Present</span></td>
+           
             <td>2019.05.12</td>
             </tr>
             <tr>
             <td>puja</td>
             <td>2017/ict/bit/13</td>
             <td>Graphic Design</td>
-            <td><button type="button" class="btn btn-danger btn-sm">Absent</button></td>
+            <td> <span class="badge badge-danger">Absent</span></td>
             <td>2019.05.12</td>
             </tr>
           </thead>

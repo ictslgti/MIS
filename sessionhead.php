@@ -171,16 +171,16 @@ include_once ("attendancenav.php");
   </div>
 </div>
 </td>
-            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit</button>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Edit</button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal">
+<div class="modal fade" id="myModal1">
   <div class="modal-dialog">
   
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-      <h4 class="modal-title">Add Session Head</h4>
+      <h4 class="modal-title">Edit Session Head</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">

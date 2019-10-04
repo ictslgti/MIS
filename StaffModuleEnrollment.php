@@ -8,13 +8,7 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-<html>
 
-<head>
-   
-</head>
-<body>
-<br><br>
       <div class="row">
       <div class="col form-group  container p-3 mb-2 col-4 " >
     <h1 ><i class="fas fa-file-alt"></i>STAFF MODULE ENROLLMENT</h1></div>
@@ -75,7 +69,7 @@ include_once("menu.php");
 
     <div class="col-1" >
     <div class="form-row align-items-center">
-    <button type="button" class="btn btn-outline-primary align= right">GO</button>
+    <button type="button" class="btn btn-outline-primary align= right">Search</button>
     </div><br></div></div>
     <table class="table table-bordered">
   <thead >
