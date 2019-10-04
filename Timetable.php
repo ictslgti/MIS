@@ -23,7 +23,7 @@ include_once("menu.php");
   <tbody>
     <tr>
       <th scope="row">
-    
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
     
       
@@ -34,81 +34,86 @@ include_once("menu.php");
 
 
       <td>
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
 
 
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
       </td>
       <td> 
           
-      
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
 
       </td>
       <td> 
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
 
       </td>
       <td> 
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
 
       </td>
       <td> 
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
       </td>
       
     </tr>
     <tr>
       <th scope="row">
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
       </th>
 
       <td>
-
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
 
       </td>
 
 
       <td>
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
 
       </td>
 
       <td>
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
 
           </td>
       <td>
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
 
       </td>
@@ -118,47 +123,48 @@ include_once("menu.php");
 
     <tr>
       <th scope="row">
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
 
       </th>
 
       <td>
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
 
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div  class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
+
+      </td>
+
+      <td>
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
+      <div class="card" class="row equal">
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
           
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
-          
-      
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
-
-      </td>
-
-      <td>
-      <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
 
       </td>
@@ -166,49 +172,55 @@ include_once("menu.php");
     </tr>
     <tr>
       <th scope="row">
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
 
 
       </th>
 
       <td>
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
 
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
 
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
 
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
       <div class="card" class="row equal">
 
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
 
       </td>
 
       <td>
-          
+      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
+      dfgd
+
+
       <div class="card" class="row equal">
-      <a href="#" class="btn btn-outline-light">Add</a>
+      <a href="AddTimetable.php" class="btn btn-outline-light"  >Add</a>
+</div>
+     
 
 
       </td>
