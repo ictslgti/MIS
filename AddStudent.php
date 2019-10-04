@@ -44,6 +44,21 @@ include_once("menu.php");
           <label for="ayear">Accademic Year:</label>
           <input type="text" class="form-control" id="ayear" placeholder="" aria-describedby="ayearPrepend" required>
         </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="enrolldate">Enroll Date:</label>
+          <input type="date" class="form-control" id="enrolldate" placeholder="" aria-describedby="enrolldatePrepend" required>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="status">Status:</label>
+          <select name="status" id="status" class="form-control" >
+            <option value="" >Select</option>
+            <option value="studying"> Studying </option>
+            <option value="completed"> Completed </option>
+            <option value="exit"> Exit </option>
+         </select>
+        </div>
     </div>
 
     <div class="form-row">
@@ -211,119 +226,61 @@ include_once("menu.php");
           <div class class="col-md-1">
           </div>
           <div class="col">
-          <h2 style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">Educational Qalification</h2>
+          <h2 style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">Educational Qualification</h2>
           </div>  
     </div><br>
-    
-    
-    <div class="form-row">
-          <div class="col-md-12">
-          <h5>G.C.E. Ordinary Level</h5>
-          </div>
-    </div>
 
-    <div class="form-row">
-          <div class="col-md-1">
-            year: 
-            <input type="text" class="form-control" id="year" placeholder=""  required>
-          </div>
-          
-          <div class="col-md-2 mb-3">
-            <label for="ino">Index No</label>
-            <input type="text" class="form-control" id="ino" placeholder=""  required>
-          </div>
-    </div>
-
-    <div class="form-row">
-
-    </div>
-
-    <div class="form-row">
-      <div class="col">
-           <table class="table">
+  <div class="form-row">
+    <div id="results-student_education" class="form-group table-responsive">               
+            <table class="table" width="100%">
               <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Subject</th>
-                  <th scope="col">Grade</th>
-                </tr>
+              <tr>
+              <th width="20%">Qualification Type</th>
+              <th width="20%">Index No</th>
+              <th width="25%">Year of Exam</th>
+              <th width="30%">Subject</th>
+              <th width="20%">Result</th>
+              </tr>
               </thead>
               <tbody>
-                <tr>
-                  
               </tbody>
-           </table>
+            </table>  
       </div>
+  </div>
 
-      <div class="col">
-           <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Subject</th>
-                  <th scope="col">Grade</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-              </tbody>
-           </table>
-      </div>
+<div class="form-row ">
+    <div class="col-md-2 mb-3 ">
+        <label for="qualification">Qualification Type: </label>
+        <select name="qualification" id="qualification" class="form-control" >
+               <option value="">Select</option>
+                    <option value="mr"> O/L </option>
+                    <option value="mrs"> A/L</option>
+        </select>
+    </div>
+    <div class="col-md-2 mb-3 ">
+        <label for="course">Index No: </label>
+        <input name="course" id="course" class="form-control" type="text" value="" >
+    </div>
+                        
+    <div class="col-md-2 mb-3">
+        <label  for="yoe">Year of Exam: </label>
+        <input name="yoe" id="yoe" class="form-control" type="text" value="" >
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <label  for="cofrom">Subject </label>
+        <input name="yoe" id="yoe" class="form-control" type="text" value="" >
+    </div>
+
+    <div class="col-md-2 mb-3">
+        <label  for="cofrom">Result </label>
+        <input type="text" class="form-control" id="from" placeholder=""  required>
+    </div>
+
+    <div class="col-md-1">
+    <button class="btn btn-primary" type="Submit" onclick="AddStudent(0)" flot="right;">Add</button>
+    </div>
 </div>
-
-<div class="form-row">
-          <div class="col-md-12">
-          <h5>G.C.E. Advanced Level</h5>
-          </div>
-    </div>
-<div class="form-row">
-          <div class="col-md-1 mb-3">
-            year
-          <input type="text" class="form-control" id="year1" placeholder=""  required>
-          </div>
-          
-          <div class="col-md-2 mb-3">
-            Index No
-            <input type="text" class="form-control" id="inno" placeholder=""  required>
-          </div>
-
-          <div class="col-md-2 mb-3">
-            Stream
-            <input type="text" class="form-control" id="stm" placeholder=""  required>
-          </div>
-</div>
-
-    <div class="form-row">
-      <div class="col">
-           <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Subject</th>
-                  <th scope="col">Grade</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-              </tbody>
-           </table>
-      </div>
-
-      <div class="col">
-           <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Subject</th>
-                  <th scope="col">Grade</th>
-                </tr>
-              </thead>
-              <tbody>
-               
-              </tbody>
-           </table>
-      </div>
-</div><br><br>
 
 <div class="form-row">
           <div class class="col-md-1 mb-3">
@@ -423,7 +380,8 @@ include_once("menu.php");
         </div>
     </div>
 
-
+<div>
+</div>
                             
 <div class="form-row">
     <button class="btn btn-primary" type="submit">Submit form</button>
