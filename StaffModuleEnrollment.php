@@ -75,7 +75,7 @@ include_once("menu.php");
 
     <div class="col-1" >
     <div class="form-row align-items-center">
-    <button type="button" class="btn btn-outline-primary align= right">GO</button>
+    <button type="button" class="btn btn-outline-primary align= right">Search</button>
     </div><br></div></div>
     <table class="table table-bordered">
   <thead >
