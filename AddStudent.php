@@ -45,7 +45,10 @@ include_once("menu.php");
 
         <div class="col-md-3 mb-3">
           <label for="ayear"> Accademic Year: </label>
-          <input type="text" class="form-control" id="ayear" placeholder="" aria-describedby="ayearPrepend" required>
+          <select name="ayear" id="ayear" class="form-control" >
+            <option value="" >Select</option>
+            <option value="">  </option>
+          </select>
         </div>
     </div>
 
@@ -151,7 +154,7 @@ include_once("menu.php");
     <div class="form-row"> 
           <div class="col-md-12 mb-3">
             <label for="address"> Address: </label>
-            <input type="text" class="form-control" id="address" placeholder="No, Street, Hometown."  required>
+            <input type="textarea" class="form-control" id="address" placeholder="No, Street, Hometown."  required>
           </div>
     </div>
  
