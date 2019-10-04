@@ -21,7 +21,7 @@ include_once("menu.php");
 
 <div class="ROW">
      <div class="col text-center">
-         <h1 style="text-align:center"> SLGTI STUDENTS' REGISTRATION FORM</h1>   
+         <h1 style="text-align:center"> SLGTI STUDENTS' REGISTRATION FORM </h1>   
      </div>
 </div><br><br>
 
@@ -31,23 +31,33 @@ include_once("menu.php");
 
     <div class="form-row">
         <div class="col-md-3 mb-3">
-          <label for="id">Student ID:</label>
-          <input type="text" class="form-control" id="id" placeholder="" aria-describedby="idPrepend" required>
+          <label for="sid">Student ID:</label>
+          <input type="text" class="form-control" id="sid" placeholder="" aria-describedby="idPrepend" required>
         </div>
      
         <div class="col-md-6 mb-3">
-          <label for="cid">Course Name:</label>
-          <input type="text" class="form-control" id="cid" placeholder="" aria-describedby="cidPrepend" required>
+          <label for="cid"> Course Name: </label>
+          <select name="cid" id="cid" class="form-control" >
+            <option value="" >Select</option>
+            <option value="">  </option>
+          </select>
         </div>
 
         <div class="col-md-3 mb-3">
-          <label for="ayear">Accademic Year:</label>
+          <label for="ayear"> Accademic Year: </label>
           <input type="text" class="form-control" id="ayear" placeholder="" aria-describedby="ayearPrepend" required>
         </div>
+    </div>
 
+    <div class="form-row">
         <div class="col-md-3 mb-3">
           <label for="enrolldate">Enroll Date:</label>
-          <input type="date" class="form-control" id="enrolldate" placeholder="" aria-describedby="enrolldatePrepend" required>
+          <input type="text" class="form-control" id="enrolldate" placeholder="" aria-describedby="enrolldatePrepend" required>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label for="exitdate">Exit Date:</label>
+          <input type="text" class="exitdate" id="exitdate" placeholder="" aria-describedby="exitdatePrepend" required>
         </div>
 
         <div class="col-md-3 mb-3">
@@ -57,7 +67,7 @@ include_once("menu.php");
             <option value="studying"> Studying </option>
             <option value="completed"> Completed </option>
             <option value="exit"> Exit </option>
-         </select>
+          </select>
         </div>
     </div>
 
@@ -70,8 +80,8 @@ include_once("menu.php");
     </div><br>
                       
     <div class="form-row">
-          <div class="col-md-1 mb-3">
-          <label for="title">Title</label>
+          <div class="col-md-2 mb-3">
+          <label for="title"> Title: </label>
           <select name="title" id="title" class="form-control" >
                <option value="">Select</option>
                     <option value="mr"> Mr </option>
@@ -80,8 +90,8 @@ include_once("menu.php");
          </select>
          </div>
 
-        <div class="col-md-11 mb-3">
-          <label for="fullname">Full Name</label>
+        <div class="col-md-10 mb-3">
+          <label for="fullname"> Full Name: </label>
           <input type="text" class="form-control" id="fullname" placeholder="" aria-describedby="fullnamePrepend" required>
         </div>
 
@@ -89,12 +99,12 @@ include_once("menu.php");
 
     <div class="form-row">
         <div class="col-md-7 mb-3">
-          <label for="ini_name">Name with Initials</label>
+          <label for="ini_name"> Name with Initials: </label>
           <input type="text" class="form-control" id="ini_name" placeholder="" value="" required>
         </div>
 
         <div class="col-md-2 mb-3">
-            <label for="gender">Gender</label>
+            <label for="gender"> Gender: </label>
             <select name="gender" id="gender" class="form-control" >
                 <option value="">Select</option>
                 <option value="male"> Male </option>
@@ -103,7 +113,7 @@ include_once("menu.php");
         </div>
 
         <div class="col-md-3 mb-3">
-            <label for="civilstatus">Civil Status</label>
+            <label for="civilstatus"> Civil Status: </label>
             <select name="civilstatus" id="civilstatus" class="form-control" >
                 <option value="">Select</option>
                 <option value="male"> Single </option>
@@ -115,26 +125,25 @@ include_once("menu.php");
     <div class="form-row">
           
           <div class="col-md-4 mb-3">
-            <label for="email">Email</label>
+            <label for="email"> Email: </label>
             <div class="input-group-prepend">
             <div class="input-group-text">@</div>
             <input type="email" class="form-control" id="email" placeholder="nimal89@gmail.com"  required>
-            </div>
-            
+            </div> 
           </div>
 
           <div class="col-md-3 mb-3">
-            <label for="nic">NIC</label>
+            <label for="nic"> NIC: </label>
             <input type="text" class="form-control" id="nic" placeholder=""  required>
           </div>
           
           <div class="col-md-2 mb-3">
-            <label for="dob">Date of Birth</label>
+            <label for="dob"> Date of Birth: </label>
             <input type="date" class="form-control" id="dob" placeholder=""  required>
           </div>
 
           <div class="col-md-3 mb-3">
-            <label for="phone">Phone No</label>
+            <label for="phone"> Phone No: </label>
             <input type="text" class="form-control" id="phone" placeholder=""  required>
           </div>
     </div>    
@@ -148,12 +157,12 @@ include_once("menu.php");
  
     <div class="form-row">
           <div class="col-md-1 mb-3">
-            <label for="zip">ZIP-Code</label>
+            <label for="zip"> ZIP-Code:</label>
             <input type="text" class="form-control" id="zip" placeholder=""  required>
           </div>
           
           <div class="col-md-2 mb-3">
-            <label for="district">District</label>
+            <label for="district"> District: </label>
             <select name="district" id="district" class="form-control" >
                 <option value="">Select</option>
                 <option value="2"> Ampara </option>
@@ -185,12 +194,12 @@ include_once("menu.php");
           </div>
 
           <div class="col-md-2 mb-3">
-            <label for="ds">Divisional Secretariat</label>
+            <label for="ds"> Divisional Secretariat: </label>
             <input type="text" class="form-control" id="ds" placeholder=""  required>
           </div>
           
           <div class="col-md-2 mb-3">
-            <label for="province">Province</label>
+            <label for="province"> Province: </label>
             <select name="province" id="province" class="form-control" >
                 <option value="">Select</option>
                 <option value="1"> Northen </option>
@@ -206,7 +215,7 @@ include_once("menu.php");
           </div>
 
           <div class="col-md-2 mb-3">
-            <label for="bloodgroup">Blood Group</label>
+            <label for="bloodgroup"> Blood Group: </label>
             <select name="bloodgroup" id="bloodgroup" class="form-control" >
                 <option value="">Select</option>
                 <option value="a+"> A+ </option>
@@ -226,7 +235,7 @@ include_once("menu.php");
           <div class class="col-md-1">
           </div>
           <div class="col">
-          <h2 style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">Educational Qualification</h2>
+          <h2 style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;"> Educational Qualification </h2>
           </div>  
     </div><br>
 
@@ -235,11 +244,11 @@ include_once("menu.php");
             <table class="table" width="100%">
               <thead>
               <tr>
-              <th width="20%">Qualification Type</th>
-              <th width="20%">Index No</th>
-              <th width="25%">Year of Exam</th>
-              <th width="30%">Subject</th>
-              <th width="20%">Result</th>
+              <th width="20%"> Qualification Type </th>
+              <th width="20%"> Index No </th>
+              <th width="25%"> Year of Exam </th>
+              <th width="30%"> Subject </th>
+              <th width="20%"> Result </th>
               </tr>
               </thead>
               <tbody>
@@ -250,35 +259,37 @@ include_once("menu.php");
 
 <div class="form-row ">
     <div class="col-md-2 mb-3 ">
-        <label for="qualification">Qualification Type: </label>
+        <label for="qualification"> Qualification Type: </label>
         <select name="qualification" id="qualification" class="form-control" >
                <option value="">Select</option>
                     <option value="mr"> O/L </option>
                     <option value="mrs"> A/L</option>
         </select>
     </div>
-    <div class="col-md-2 mb-3 ">
-        <label for="course">Index No: </label>
+    <div class="col-md-3 mb-3 ">
+        <label for="course"> Index No: </label>
         <input name="course" id="course" class="form-control" type="text" value="" >
     </div>
                         
     <div class="col-md-2 mb-3">
-        <label  for="yoe">Year of Exam: </label>
+        <label  for="yoe"> Year of Exam: </label>
         <input name="yoe" id="yoe" class="form-control" type="text" value="" >
     </div>
 
-    <div class="col-md-4 mb-3">
-        <label  for="cofrom">Subject </label>
+    <div class="col-md-5 mb-3">
+        <label  for="cofrom"> Subject: </label>
         <input name="yoe" id="yoe" class="form-control" type="text" value="" >
     </div>
 
     <div class="col-md-2 mb-3">
-        <label  for="cofrom">Result </label>
+        <label  for="cofrom"> Result: </label>
         <input type="text" class="form-control" id="from" placeholder=""  required>
+    </div>
+    <div class="col-md-2 mb-3">
     </div>
 
     <div class="col-md-1">
-    <button class="btn btn-primary" type="Submit" onclick="AddStudent(0)" flot="right;">Add</button>
+    <button class="btn btn-primary" type="Submit" onclick="AddStudent(0)" flot="center";> Add </button>
     </div>
 </div>
 
@@ -369,18 +380,24 @@ include_once("menu.php");
     </div>
     
     <div class="form-row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-3 mb-3">
           <label for="Ephone">Phone No :</label>
           <input type="text" class="form-control" id="Ephon" placeholder="" value="" required>
         </div>
     
-        <div class="col-md-6 mb-3">
+        <div class="col-md-3 mb-3">
           <label for="relation">Relationship :</label>
-          <input type="text" class="form-control" id="relation" placeholder="" value="" required>
+          <select name="relation" id="relation" class="form-control" >
+              <option value="">Select</option>
+              <option value="mother"> Mother </option>
+              <option value="father"> Father </option>
+              <option value="guardian"> Guardian </option>
+        </select>
         </div>
     </div>
 
 <div>
+<p> 
 </div>
                             
 <div class="form-row">
