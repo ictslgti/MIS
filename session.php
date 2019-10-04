@@ -44,7 +44,7 @@ include_once ("attendancenav.php");
             <div class="row">
               <label class="col-md-4 text-right">Time<span class="text-danger">*</span></label>
               <div class="col-md-8">
-                <input type="text" name="grade_name" id="grade_name" class="form-control" />
+                <input type="text"  id="grade_name" class="form-control" />
                 <span id="error_grade_name" class="text-danger"></span>
               </div>
             </div>
@@ -52,6 +52,10 @@ include_once ("attendancenav.php");
         </div>
         </div>
         
+
+
+
+
       
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
@@ -91,7 +95,42 @@ include_once ("attendancenav.php");
        </tr>
        <tr>
             <td>fjhfj</td>
-            <td><button type="button" class="btn btn-primary">Edit</button></td>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5">Edit</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal5">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title">Edit Session</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <div class="row">
+              <label class="col-md-4 text-right">Session Name <span class="text-danger">*</span></label>
+              <div class="col-md-8">
+                <input type="text" name="grade_name" id="grade_name" class="form-control" />
+                <span id="error_grade_name" class="text-danger"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-body">
+          <div class="form-group">
+            <div class="row">
+              <label class="col-md-4 text-right">Time<span class="text-danger">*</span></label>
+              <div class="col-md-8">
+                <input type="text"  id="grade_name" class="form-control" />
+                <span id="error_grade_name" class="text-danger"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </td>
             <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
   Delete
 </button>
@@ -160,11 +199,26 @@ include_once ("attendancenav.php");
   </script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
 </body>
 </html>
 
 
-
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
 
 <!-- end your code -->
 
