@@ -64,7 +64,10 @@ $title = "Home | SLGTI";
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4> 
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -81,6 +84,9 @@ $title = "Home | SLGTI";
                         <div class="col">
                             <div class="card-body">
                                 <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -97,6 +103,9 @@ $title = "Home | SLGTI";
                         <div class="col">
                             <div class="card-body">
                                 <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
                                 <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
                             </div>
                         </div>
@@ -119,6 +128,9 @@ $title = "Home | SLGTI";
                         <div class="col">
                             <div class="card-body">
                                 <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -134,7 +146,10 @@ $title = "Home | SLGTI";
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4> 
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>    
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -150,7 +165,10 @@ $title = "Home | SLGTI";
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4> 
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>    
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -167,6 +185,9 @@ $title = "Home | SLGTI";
                         <div class="col">
                             <div class="card-body">
                                 <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
                                 <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
                             </div>
                         </div>
@@ -189,6 +210,28 @@ $title = "Home | SLGTI";
                         <div class="col">
                             <div class="card-body">
                                 <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>     
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -205,22 +248,9 @@ $title = "Home | SLGTI";
                         <div class="col">
                             <div class="card-body">
                                 <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
-                                <a href="#" class="btn btn-info">Add</a>                                   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-6 col-lg-3 container">           
-                <div class="card">
-                    <div class="row">
-                        <div class="col pl-5">
-                            <img class="card-img-top" src="img/fish.png" alt="">
-                        </div>
-                        <div class="col">
-                            <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -237,6 +267,9 @@ $title = "Home | SLGTI";
                         <div class="col">
                             <div class="card-body">
                                 <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
                                 <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
                             </div>
                         </div>
