@@ -44,6 +44,7 @@ include_once("menu.php");
       <label for="inputEmail4"><i class="far fa-id-card"></i>&nbsp;D_id</label>
       <input type="text" class="form-control" id="Email" placeholder="D_id" required>
          </div>
+        
 
     <div class="col-6">
       <label for="inputEmail4"><i class="fas fa-users"></i>&nbsp;Fullname</label>
@@ -107,8 +108,8 @@ include_once("menu.php");
   </div>
   </div>
 
-  <button type="submit" class="btn btn-secondary" >Add Donor..</button>
-  <button type="submit" class="btn btn-secondary" onclick="location.href='BloodDonors.php'" >cancel</button>
+  <button type="submit" class="btn btn-primary" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Donor..</button>
+  <button type="submit" class="btn btn-danger" onclick="location.href='BloodDonors.php'" ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
 </form>
 
 <!--END OF YOUR COD-->
