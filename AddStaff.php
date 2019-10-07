@@ -127,10 +127,10 @@ include_once("menu.php");
 </form>
 
   <div class="btn-group-horizontal">
-    <button type="submit" class="btn btn-outline-primary">ADD</button> 
-    <button type="submit" class="btn btn-outline-primary">UPDATE</button> 
-    <button type="submit" class="btn btn-outline-primary">DELETE</button> 
-    <button type="submit" class="btn btn-outline-primary">REFRESH</button> 
+    <button type="submit" class="btn btn-outline-info"><i class="fas fa-user-plus"></i>   ADD</button> 
+    <button type="submit" class="btn btn-outline-info"><i class="fas fa-user-edit"></i>   UPDATE</button> 
+    <button type="submit" class="btn btn-outline-info"><i class="fas fa-user-slash"></i>   DELETE</button> 
+    <button type="submit" class="btn btn-outline-info"><i class="fas fa-redo"></i>   REFRESH</button> 
   </div>
 <!--END OF YOUR COD-->
 
