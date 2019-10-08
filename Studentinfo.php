@@ -31,16 +31,16 @@ include_once("menu.php");
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">Civil Status</th>
-      <th scope="col">Zip-Code</th>
-      <th scope="col">District</th>
-      <th scope="col">Divisional Secretariat</th>
-      <th scope="col">Blood Group</th>
-      <th scope="col">Emergency Contact Name</th>
-      <th scope="col">Emergency Contact Address</th>
-      <th scope="col">Emergency Contact Phone No</th>
-      <th scope="col">Emergency Contact Relationship</th>
-      <th scope="col">Action</th>
+      <th scope="col" width="">Civil Status</th>
+      <th scope="col" width="">Zip-Code</th>
+      <th scope="col" width="">District</th>
+      <th scope="col" width="">Divisional Secretariat</th>
+      <th scope="col" width="">Blood Group</th>
+      <th scope="col" width="">Emergency Contact Name</th>
+      <th scope="col" width="">Emergency Contact Address</th>
+      <th scope="col" width="">Emergency Contact Phone No</th>
+      <th scope="col" width="">Emergency Contact Relationship</th>
+      <th scope="col" width="">Action</th>
     </tr>
   </thead>
   <tbody>
