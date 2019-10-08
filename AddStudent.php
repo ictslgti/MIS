@@ -252,9 +252,16 @@ include_once("menu.php");
               <th width="25%"> Year of Exam </th>
               <th width="30%"> Subject </th>
               <th width="20%"> Result </th>
+              <th width="20%"> Action </th>
               </tr>
               </thead>
               <tbody>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th><button class="btn btn-danger" type="submit">Edit</button></th>
               </tbody>
             </table>  
       </div>
@@ -265,8 +272,11 @@ include_once("menu.php");
         <label for="qualification"> Qualification Type: </label>
         <select name="qualification" id="qualification" class="form-control" >
                <option value="">Select</option>
-                    <option value="mr"> O/L </option>
-                    <option value="mrs"> A/L</option>
+                    <option value=""> O/L </option>
+                    <option value=""> A/L</option>
+                    <option value=""> NVQ - 03 </option>
+                    <option value=""> NVQ - 04 </option>
+                    <option value=""> NVQ - 05 </option>
         </select>
     </div>
     <div class="col-md-3 mb-3 ">
@@ -280,85 +290,27 @@ include_once("menu.php");
     </div>
 
     <div class="col-md-5 mb-3">
-        <label  for="cofrom"> Subject: </label>
+        <label  for="cofrom"> Subject/Name of the Course: </label>
         <input name="yoe" id="yoe" class="form-control" type="text" value="" >
     </div>
 
     <div class="col-md-2 mb-3">
-        <label  for="cofrom"> Result: </label>
+        <label  for="cofrom"> Result/Status: </label>
         <input type="text" class="form-control" id="from" placeholder=""  required>
     </div>
-    <div class="col-md-2 mb-3">
+    <div class="col-md-1 mb-3">
     </div>
 
     <div class="col-md-1">
-    <button class="btn btn-primary" type="Submit" onclick="AddStudent(0)" flot="center";> Add </button>
-    </div>
-</div>
-
-<div class="form-row">
-          <div class class="col-md-1 mb-3">
-          </div>
-          <div class="col">
-          <p style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">National Vocational Qualification (NVQ)</p>
-          </div>  
-</div> 
-
-<div class="form-row">
-    <div id="results-student_education" class="form-group table-responsive">               
-            <table class="table" width="100%">
-              <thead>
-              <tr>
-              <th width="25%">Institution</th>
-              <th width="25%">Name of the Course</th>
-              <th width="10%">From</th>
-              <th width="10%">To</th>
-              <th width="20%">Status</th>
-              <th width="10%">Action</th>
-              </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>  
-      </div>
-</div>
-
-<div class="form-row ">
-    <div class="col-md-6 mb-3 ">
-        <label for="course">Institution </label>
-        <input name="course" id="course" class="form-control" type="text" value="" />
-    </div>
-                        
-    <div class="col-md-6 mb-3">
-        <label  for="coname">Name of the Course/Programme </label>
-        <input name="coname" id="coname" class="form-control" type="text" value="" />
-    </div>
-</div>
-
-<div class="form-row">
-    <div class="col-md-2 mb-3">
-    <label  for="cofrom">From: </label>
-    <input type="date" class="form-control" id="from" placeholder=""  required>
-    </div>
-
-    <div class="col-md-2 mb-3">
-    <label  for="cofrom">To: </label>
-    <input type="date" class="form-control" id="from" placeholder=""  required>
-    </div>
-
-    <div class="col-md-4 mb-3">
-    <label for="results">Results/Dates of qualification/Status </label>
-    <input name="results" id="results" class="form-control" type="text" value="" />
-    </div>
     
-    <div class="col-md-3 mb-3">
+    <button class="btn btn-info" type="Submit" onclick="AddStudent(0)"> Update </button><br><br>
+    <button class="btn btn-primary" type="Submit" onclick="AddStudent(0)"> Add </button>
     </div>
 
     <div class="col-md-1">
-    <button class="btn btn-primary" type="Submit" onclick="AddStudent(0);">Add</button>
+    
     </div>
-
-</div><br>
+</div>
 
     <div class="form-row">
           <div class class="col-md-1">

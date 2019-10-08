@@ -23,26 +23,22 @@ include_once("menu.php");
 <br><br>
 
 <div class="form-row">
-    <div class="col-md-5 mb-3" style="padding-right:200px">
-    <i class="fas fa-search ml-3" aria-hidden="true"></i>
-    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search......." id="search">
-    </div>
+    
 </div><br>
 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">No</th>
       <th scope="col">Student Id</th>
-      <th scope="col">Title</th>
-      <th scope="col">Name with Inisials</th>
-      <th scope="col">Gender</th>
       <th scope="col">Civil Status</th>
-      <th scope="col">Date of Birth</th>
       <th scope="col">Zip-Code</th>
       <th scope="col">District</th>
       <th scope="col">Divisional Secretariat</th>
       <th scope="col">Blood Group</th>
+      <th scope="col">Emergency Contact Name</th>
+      <th scope="col">Emergency Contact Address</th>
+      <th scope="col">Emergency Contact Phone No</th>
+      <th scope="col">Emergency Contact Relationship</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
