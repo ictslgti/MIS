@@ -23,13 +23,14 @@ include_once("menu.php");
 <br><br>
 
 <div class="form-row">
-    
+<a href="Student.php"> 
+<button class="btn btn-success" type="submit" > Back </button>
+</a>
 </div><br>
 
-<table class="table">
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">Student Id</th>
       <th scope="col">Civil Status</th>
       <th scope="col">Zip-Code</th>
       <th scope="col">District</th>
@@ -44,6 +45,16 @@ include_once("menu.php");
   </thead>
   <tbody>
     <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th> <a href="AddStudent.php"> <button class="btn btn-danger" type="submit">Edit</button> </a> </th>
     </tr>
   </tbody>
 </table>
