@@ -29,21 +29,21 @@ include_once("menu.php");
     </div>
 </div><br>
 
-<table class="table">
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">No</th>
-      <th scope="col"> Student Id </th>
-      <th scope="col"> Title </th>
-      <th scope="col"> Student Full Name </th>
-      <th scope="col"> Name with Inisials </th>
-      <th scope="col"> Email </th>
-      <th scope="col"> NIC </th>
-      <th scope="col"> Phone No </th>
-      <th scope="col"> Gender </th>
-      <th scope="col"> Date of Birth </th>
-      <th scope="col"> Address </th>
-      <th scope="col"> Action </th>
+      <th scope="col" width="2%"> No </th>
+      <th scope="col" width="10%"> Student Id </th>
+      <th scope="col" width="3%"> Title </th>
+      <th scope="col" width="30%"> Student Full Name </th>
+      <th scope="col" width="20"> Name with Inisials </th>
+      <th scope="col" width="15%"> Email </th>
+      <th scope="col" width="5%"> NIC </th>
+      <th scope="col" width="5%"> Phone No </th>
+      <th scope="col" width="3%"> Gender </th>
+      <th scope="col" width="5%"> Date of Birth </th>
+      <th scope="col" width="20%"> Address </th>
+      <th scope="col" width="3%"> Action </th>
     </tr>
   </thead>
   <tbody>
