@@ -357,6 +357,7 @@ include_once("menu.php");
                             
 <div class="form-row">
     <button class="btn btn-primary" type="submit">Submit form</button>
+    <button class="btn btn-success" type="submit">Update</button>
 </div>       
 
   
