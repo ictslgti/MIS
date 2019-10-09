@@ -11,7 +11,7 @@ include_once("menu.php");
 
 <div class="row">
     <div class="col form-group  container p-3 mb-2 " >
-        <h1 class=" text-center  "><i class="fas fa-file-alt"></i>STAFF MODULE</h1>
+        <h1 class=" text-center  "><i class="fas fa-file-alt"></i>  STAFF MODULE</h1>
     </div>
 </div>
 
