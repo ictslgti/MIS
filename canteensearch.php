@@ -31,16 +31,9 @@ include_once("menu.php");
   <div class="form-group mx-sm-3 mb-2">
   <label for="inputPassword2" class="sr-only">Search</label>
    
-<div class ="col"><select class="custom-select d-block w-100" id="Department" required="">
-                    <option >Search By name or Id</option>
-                    <option>name</option>
-                    <option>id</option>
-               
-               
-               
-                    
-                  
-                  </select>
+<div class ="col">
+<input type="search" class="form-control ds-input" id="search-input" placeholder="Search by username or id" aria-label="Search for..." autocomplete="off" data-docs-version="4.3" spellcheck="false" 
+role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
                   </div>
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> </button>
     
