@@ -8,6 +8,8 @@ $title = "Home | SLGTI";
 <!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+
+
 <div class="row shadow  p-3 mt-1 bg-info text-white">
     <div class="col-sm-12 col-md-4 col-lg-9">
         <h1 class="text-center">EAT GOOD FEEL GOOD</h1>
