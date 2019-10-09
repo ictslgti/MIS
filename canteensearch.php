@@ -126,7 +126,7 @@ include_once("menu.php");
 <table class="table table-borderless">
   <thead>
     <tr>
-      <th scope="col">#</th>
+
       <th scope="col">Item name</th>
       <th scope="col">Item QTY</th>
 
@@ -134,25 +134,26 @@ include_once("menu.php");
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
+
       <td>Mark</td>
       <td>Otto</td>
   
     </tr>
     <tr>
-      <th scope="row">2</th>
+  
       <td>Jacob</td>
       <td>Thornton</td>
      
     </tr>
     <tr>
-      <th scope="row">3</th>
+     
    <td>@twitter</td>
    <td>@gmail</td>
     </tr>
   </tbody>
+
 </table>
-<div class="btn-group-toggle" data-toggle="buttons">
+<div class="col-8">
 <button type="button" class="btn btn-primary btn-lg btn-block">Check</button>
 </div>
 </div>
