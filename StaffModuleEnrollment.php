@@ -9,18 +9,13 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
-<div class="row">
-    <div class="col form-group  container p-3 mb-2 " >
-        <h1 class=" text-center  "><i class="fas fa-file-alt"></i>  STAFF MODULE</h1>
-    </div>
-</div>
 
 <div class="row">
-    <div class=" col-sm-8">
-        <p style="font-size: 45px; font-weight: 700; ">Personal Information</p>
+    <div class=" col-sm-8 pt-1">
+        <p style="font-size: 45px; font-weight: 700; ">STAFF MODULE</p>
     </div>
 
-    <div class="col-sm-3"> 
+    <div class="col-sm-3 pt-4"> 
       <div class="form-group">
         <a href="ModuleEnrollment.php" class="btn btn-outline-primary" role="button" aria-pressed="true">ENROLL</a>
       </div>   
