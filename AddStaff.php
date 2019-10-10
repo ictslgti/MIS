@@ -9,6 +9,11 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
+<!-- ADD STAFF PHP CODNG -->
+<?PHP
+$StaffID=$StaffName=$Address=$DOB=$NIC=$Email=$PNO=$DOJ=$EPF=null;
+
+?>
 <!-- Add staff design  -->
 
 <div class="row">
