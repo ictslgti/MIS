@@ -2,7 +2,7 @@
 session_start();
 
 
-define('DB_HOST','mis.achchuthan.org');
+define('DB_HOST','192.248.81.3');
 define('DB_USER','misuser');
 define('DB_PASS','mIs@SlgT1');
 define('DB_NAME','mis');
