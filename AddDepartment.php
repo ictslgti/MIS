@@ -27,10 +27,11 @@ include_once("menu.php");
   <thead class="thead-dark">
  
     <tr >
-    <th scope="col">Department_ID</th>
-      <th scope="col">Department Name</th>
-    
-   
+    <label for="inputPassword5">Department ID</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+<label for="inputPassword5">Department Name</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+
      
       
     </tr>
@@ -43,6 +44,9 @@ include_once("menu.php");
   </tbody>
   </form>
 </table>
+
+
+<br>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Add</a>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Delete</a>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Edit</a>
