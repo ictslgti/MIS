@@ -33,14 +33,13 @@ include_once("menu.php");
       <!-- <th scope="col">Enroll Date</th> -->
       <!-- <th scope="col">Status</th> -->
       <label for="inputPassword5">Student ID</label>
-<input type="password" id="inputPassword5"  class="form-control" aria-describedby="passwordHelpBlock">
-<label for="inputPassword5">Student Name</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-<label for="inputPassword5">Enrill Date</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-<label for="inputPassword5">Status</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-
+      <input class="form-control" type="text" placeholder="">
+      <label for="inputPassword5">Student Name</label>
+      <input class="form-control" type="text" placeholder="">
+      <label for="inputPassword5">Enrill Date</label>
+      <input class="form-control" type="text" placeholder="">
+      <label for="inputPassword5">Status</label>
+      <input class="form-control" type="text" placeholder="">
 
      
       
