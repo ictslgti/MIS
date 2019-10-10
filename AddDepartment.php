@@ -28,10 +28,9 @@ include_once("menu.php");
  
     <tr >
     <label for="inputPassword5">Department ID</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-<label for="inputPassword5">Department Name</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-
+    <input class="form-control" type="text" placeholder=>
+    <label for="inputPassword5">Department Name</label>
+    <input class="form-control" type="text" placeholder=>
      
       
     </tr>
