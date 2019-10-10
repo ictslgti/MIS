@@ -74,7 +74,7 @@ include_once("menu.php");
     <button type="submit" class="btn btn-outline-info"><i class="fas fa-user-edit"></i>   UPDATE</button> 
     <button type="submit" class="btn btn-outline-info"><i class="fas fa-user-slash"></i>   DELETE</button> 
     <button type="submit" class="btn btn-outline-info"><i class="fas fa-redo"></i>   REFRESH</button> 
-    <a href="StaffModuleEnrollment.php" class="btn btn-outline-info" role="button" aria-pressed="true"><i class="fas fa-chevron-left">  Back</i></a>
+    <a href="StaffModuleEnrollment.php" class="btn btn-outline-info" role="button" aria-pressed="true"><i class="fas fa-chevron-left"></i> Back</i></a>
   </div>
  
 <!--END OF YOUR COD-->
