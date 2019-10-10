@@ -21,7 +21,7 @@ include_once("menu.php");
 </div>
 
 <div class="form-group row">
-    <label for="inputID" class="col-sm-2 col-form-label">ID</label>
+    <label for="inputID" class="col-sm-2 col-form-label">Id</label>
     <div class="col-sm-10">
       <input type="ID" class="form-control" id="inputID"required >
     </div>
