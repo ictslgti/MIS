@@ -81,20 +81,20 @@ include_once("menu.php");
 
 <div class="form-group col-md-6  ">
        <label for="ad"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</label> <br>
-       <textarea name="message" class="rounded  form-control bg-light text-black"  type="text" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3" disabled ></textarea>
+       <textarea name="message" class="rounded  form-control  text-black"  type="text" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3"  ></textarea>
         </div>
 
 
         <div class="col-md-4 mb-3">
             <label for="district"><i class="fas fa-map-marker-alt"></i>&nbsp;District</label>
-            <input type="text" class="form-control" id="district" placeholder="" disabled required>
+            <input type="text" class="form-control" id="district"  required>
           </div>
 
           <div class="col-md-2 mb-3">
             <label for="dis"><i class="fas fa-map-signs"></i>&nbsp;Distance
              <label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;">Home to SLGTI </label>
             </label>
-            <input type="text" class="form-control" id="dis" placeholder="in km" disabled required>
+            <input type="text" class="form-control" id="dis" placeholder="in km"  required>
           </div>
 
        </div>
@@ -119,23 +119,13 @@ include_once("menu.php");
          <div class="form-group col-md-3  ">
          <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Block No:</label>
         
-         <select name="hostel" id="block" class="form-control" >
-               <option value="">---Select---</option>
-                    <option value="block1">B12 </option>
-                    <option value="block2"> B14 </option>
-                    
-         </select>
+         <input type="text" class="form-control" id="block"  required>
 </div>
 
 <div class="form-group col-md-3  ">
          <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Room No:</label>
         
-         <select name="hostel" id="block" class="form-control" >
-               <option value="">---Select---</option>
-                    <option value="block1">Room-1 </option>
-                    <option value="block2"> Room-2</option>
-                    
-         </select>
+         <input type="text" class="form-control" id="room"  required>
 </div>
 </div>
 
