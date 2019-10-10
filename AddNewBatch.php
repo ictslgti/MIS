@@ -32,12 +32,11 @@ include_once("menu.php");
       <!-- <th scope="col">Academic Year</th> -->
    
       <label for="inputPassword5">Batch ID</label>
-<input type="password" id="inputPassword5"  class="form-control" aria-describedby="passwordHelpBlock">
-<label for="inputPassword5">Course Name</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-<label for="inputPassword5">Academic Year</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-
+      <input class="form-control" type="text" placeholder=>
+      <label for="inputPassword5">Course Name</label>
+      <input class="form-control" type="text" placeholder=>
+      <label for="inputPassword5">Academic Year</label>
+      <input class="form-control" type="text" placeholder=>
       
     </tr>
   </thead>
