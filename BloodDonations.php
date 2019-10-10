@@ -39,6 +39,7 @@ include_once("menu.php");
 <table class="table">
   <thead class="thead-r">
     <tr>
+    <th scope="col"><i class="far fa-id-card"></i>&nbsp;Donation_id</th>
       <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Date</th>
       <th scope="col"><i class="fas fa-tasks"></i>&nbsp;Programme</th>
       
