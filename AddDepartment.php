@@ -51,6 +51,7 @@ include_once("menu.php");
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Delete</a>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Edit</a>
 <a href="Department" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+<br>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->
