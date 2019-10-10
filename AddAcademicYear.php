@@ -27,17 +27,10 @@ include_once("menu.php");
   <thead class="thead-dark">
  
     <tr >
-      <th scope="col">Academic Year</th>
-      
-    </tr>
-  </thead>
-  <tbody>
- 
-  <tr class="table-light">
-      
-  
-  <td>2018/2019 <span class="badge badge-success">Active </span></td> 
-      
+    <label for="inputPassword5">Add Academic Year</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+
+     
   
     
     
