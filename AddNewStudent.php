@@ -28,11 +28,19 @@ include_once("menu.php");
   <thead class="thead-dark">
  
     <tr >
-    <th scope="col">Student_ID</th>
-      <th scope="col">Student Name</th>
-      <th scope="col">Enroll Date</th>
-      <th scope="col">Status</th>
-     
+    <!-- <th scope="col">Student_ID</th> -->
+      <!-- <th scope="col">Student Name</th> -->
+      <!-- <th scope="col">Enroll Date</th> -->
+      <!-- <th scope="col">Status</th> -->
+      <label for="inputPassword5">Student ID</label>
+<input type="password" id="inputPassword5"  class="form-control" aria-describedby="passwordHelpBlock">
+<label for="inputPassword5">Student Name</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+<label for="inputPassword5">Enrill Date</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+<label for="inputPassword5">Status</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+
 
      
       
@@ -43,10 +51,10 @@ include_once("menu.php");
   <tr class="table-light">
       
      
-      <td>2018/ICT/5IT/15</td>
-      <td>N.Abdullah</td>
-        <td>2018.10.15 </td> 
-        <td>Continue</td>
+      <!-- <td>2018/ICT/5IT/15</td> -->
+      <!-- <td>N.Abdullah</td> -->
+        <!-- <td>2018.10.15 </td>  -->
+        <!-- <td>Continue</td> -->
         
   
     </tr>
