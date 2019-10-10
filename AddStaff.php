@@ -36,34 +36,34 @@ include_once("menu.php");
   </div>
 </div>  
 
-<form>
+<form method="POST">
   <div class="form-row">
     <div class="form-group col-lg-4">
         <label for="text" class="font-weight-bolder pl-1" >Staff_ID :</label>
-        <input type="text" class="form-control" placeholder="Staff_ID" >
+        <input type="text" name="StaffID" value="" class="form-control" placeholder="Staff ID" >
     </div>
     <div class="form-group col-lg-4">
         <label for="text" class="font-weight-bolder pl-1"  >Staff_Name :</label>
-        <input type="text" class="form-control" placeholder="Full Name">
+        <input type="text" name="StaffName" value="" class="form-control" placeholder="Full Name">
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1" >Address :</label><br>
-      <input type="text" class="form-control" placeholder="Address" ><br>
+      <input type="text" name="Address" value="" class="form-control" placeholder="Address" ><br>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Date_of_birth</label><br>
-      <input type="text" class="form-control" placeholder="DOB"><br>
+      <input type="text" name="DOB" value="" class="form-control" placeholder="DOB"><br>
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">NIC :</label><br>
-      <input type="text" class="form-control" placeholder="NIC" ><br>
+      <input type="text" name="NIC" value="" class="form-control" placeholder="NIC" ><br>
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Email :</label><br>
-      <input type="text" class="form-control" placeholder="Email " ><br>
+      <input type="text" name="Email" value="" class="form-control" placeholder="Email " ><br>
     </div>
     
   </div>
@@ -71,16 +71,16 @@ include_once("menu.php");
   <div class="form-row">
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Telephone no :</label><br>
-      <input type="text" class="form-control" placeholder="Telephone no"><br>
+      <input type="text" name="PNO" value="" class="form-control" placeholder="Telephone no"><br>
     </div>
     <div class="form-group col-lg-4">        
       <label for="text" class="font-weight-bolder pl-1">Date_of_Join :</label><br>
-      <input type="text" class="form-control" placeholder="Date_of_Join"><br> 
+      <input type="text" name="DOJ" value="" class="form-control" placeholder="Date of Join"><br> 
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Gender</label><br>
-        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-              <option selected>Choose...</option>
+        <select class="custom-select mr-sm-2" id="Gender">
+              <option selected disabled>Choose Gender</option>
               <option value="Permanent Staff">Male</option>
               <option value="Temporary  Staff">Female</option>
               <option value="Temporary  Staff">Transgender</option>
@@ -91,12 +91,12 @@ include_once("menu.php");
   <div class="form-row">
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1" >EPF NO :</label>
-      <input type="text" class="form-control" placeholder="EPF NO" >
+      <input type="text" name="EPF" value="" class="form-control" placeholder="EPF NO" >
     </div>
     <div class="form-group col-lg-4">  
     <label class="font-weight-bolder" for="inlineFormCustomSelect">Position</label>
-          <select class="custom-select" id="inlineFormCustomSelect">
-              <option selected>Choose...</option>
+          <select class="custom-select" id="Position">
+              <option selected disabled>Choose Postition</option>
               <option value="Director">Director</option>
               <option value="Deputy Principal (Academics)">Deputy Principal (Academics)</option>
               <option value="Deputy Principal (Industrial)">Deputy Principal (Industrial)</option>
@@ -117,21 +117,22 @@ include_once("menu.php");
     <div class="form-group col-lg-4">
     <label for="text" class="font-weight-bolder pl-1">Type :</label><br>
        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Type</label>
-       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-            <option selected>Choose...</option>
+       <select class="custom-select mr-sm-2" id="Type">
+            <option selected disabled>Choose Type</option>
             <option value="Permanent Staff">Permanent Staff</option>
             <option value="Temporary  Staff">Temporary  Staff</option>
       </select>
     </div>
   </div>
 
-
-  <div class="btn-group-horizontal">
-    <button type="submit" class="btn btn-outline-info"><i class="fas fa-user-plus"></i>   ADD</button> 
-    <button type="submit" class="btn btn-outline-info"><i class="fas fa-user-edit"></i>   UPDATE</button> 
-    <button type="submit" class="btn btn-outline-info"><i class="fas fa-user-slash"></i>   DELETE</button> 
-    <button type="submit" class="btn btn-outline-info"><i class="fas fa-redo"></i>   REFRESH</button> 
-  </div>
+<?PHP 
+  echo '<div class="btn-group-horizontal">';
+  echo '<button type="submit" value="Add" name="Add" class="btn btn-outline-info"><i class="fas fa-user-plus"></i>   ADD</button>';
+  echo '<button type="submit" class="btn btn-outline-info"><i class="fas fa-user-edit"></i>   UPDATE</button>'; 
+  echo '<button type="submit" class="btn btn-outline-info"><i class="fas fa-user-slash"></i>   DELETE</button>';
+  echo'<button type="submit" class="btn btn-outline-info"><i class="fas fa-redo"></i>   REFRESH</button>';
+  echo '</div>';
+  ?>
 </form>
 <!--END OF YOUR COD-->
 
