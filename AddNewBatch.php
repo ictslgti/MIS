@@ -27,11 +27,17 @@ include_once("menu.php");
   <thead class="thead-dark">
  
     <tr >
-    <th scope="col">Batch_ID</th>
-      <th scope="col">Course Name</th>
-      <th scope="col">Academic Year</th>
+    <!-- <th scope="col">Batch_ID</th> -->
+      <!-- <th scope="col">Course Name</th> -->
+      <!-- <th scope="col">Academic Year</th> -->
    
-     
+      <label for="inputPassword5">Batch ID</label>
+<input type="password" id="inputPassword5"  class="form-control" aria-describedby="passwordHelpBlock">
+<label for="inputPassword5">Course Name</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+<label for="inputPassword5">Academic Year</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+
       
     </tr>
   </thead>
