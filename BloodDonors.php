@@ -8,11 +8,16 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+<div class="intro p-5 mb-5 border border-dark rounded">
+<div class="shadow  p-3 mb-5 bg-white rounded">
+        <div class="highlight-blue">          
+                <div class="intro">
 
-
-
-<h1 class="text-center">Donor Details</h1>
+<h1 class="text-center"><i class="fas fa-user-plus"></i>Donor Details</h1>
 <br>
+</div>
+  </div>
+  </div>
 
 <div class="row">
 
@@ -102,7 +107,7 @@ include_once("menu.php");
     
      </div> 
 </div>
-
+</div>
 
 <!--END OF YOUR COD-->
 
