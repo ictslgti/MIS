@@ -10,8 +10,14 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 
-
+<div class="shadow  p-3 mb-5 bg-white rounded">
+        <div class="highlight-blue">        
+                <div class="intro">
 <h1 class="text-center">Donor Details</h1>
+</div>
+</div>
+</div>
+
 <br>
 
 <div class="row">
@@ -111,7 +117,7 @@ include_once("menu.php");
 
 
     <button type="button" class="btn btn-success"><i class="far fa-save"></i>&nbsp;&nbsp;Save </button>
-
+    <button type="button" class="btn btn-outline-info" onclick="location.href='donationInfo.php'"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add donationInfo</button>&nbsp;&nbsp;
 
 
 
