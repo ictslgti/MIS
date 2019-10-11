@@ -11,6 +11,8 @@ include_once("menu.php");
 
 <!-- ADD STAFF PHP CODNG -->
 <?PHP
+
+// Add coding
 $StaffID=$Department_id=$StaffName=$Address=$DOB=$NIC=$Email=$PNO=$DOJ=$Gender=$EPF=$Position=$Type=null;
 
 if(isset($_POST['Add'])){
@@ -75,6 +77,13 @@ if(isset($_POST['Add'])){
 
 }
 
+// search coding
+$search=null;
+if(isset($_POST['Search'])){
+  if(!empty($_POST['code'])&&!empty($_POST['name']))    
+      
+  }
+
 ?>
 <!-- Add staff design  -->
 <div class="row">
@@ -85,7 +94,7 @@ if(isset($_POST['Add'])){
     <div class="col-sm-3 pt-4"> 
       <form class="form-inline" method="GET">
         <input class="form-control mr-2" type="search" name="search" placeholder="Staff ID" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="Search">Search</button>
       </form>
     </div>  
 </div>
@@ -204,12 +213,12 @@ if(isset($_POST['Add'])){
   echo '<div class="btn-group-horizontal">';
 
     if(isset($_GET['edit'])){
-      echo '<button type="submit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-      echo'<button type="submit" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+      echo '<button type="submit" name="Update" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo'<button type="submit" name"refresh" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 
     }if(isset($_GET['delete']))
     {
-      echo '<button type="submit" class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
+      echo '<button type="submit" name="Delete" class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
 
     }if(!isset($_GET['delete']) && !isset($_GET['edit'])){
       echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
