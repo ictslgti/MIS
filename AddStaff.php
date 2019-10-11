@@ -77,16 +77,9 @@ if(isset($_POST['Add'])){
 
 ?>
 <!-- Add staff design  -->
-
-<div class="row">
-    <div class="col form-group  container p-3 mb-2 " >
-        <h1 class=" text-center  "><i class="fas fa-file-alt"></i>   STAFF DETAILS</h1>
-    </div>
-</div>
-
 <div class="row">
     <div class=" col-sm-8">
-        <p style="font-size: 45px; font-weight: 700; ">Personal Information</p>
+        <p style="font-size: 45px; font-weight: 700; ">STAFF Personal Information</p>
     </div>
 
     <div class="col-sm-3"> 
