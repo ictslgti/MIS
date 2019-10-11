@@ -27,6 +27,7 @@ if(isset($_POST['Add'])){
     &&!empty($_POST['EPF'])
     &&!empty($_POST['Position'])
     &&!empty($_POST['Type'])){
+      
       $StaffID=$_POST['StaffID'];
       $Department_id=$_POST['Department_id'];
       $StaffName=$_POST['StaffName'];
@@ -48,7 +49,7 @@ if(isset($_POST['Add'])){
       {
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$StaffName.'</strong> You should check in on some of those fields below.
+          <strong>'.$StaffName.'</strong> Staff details inserted
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -110,57 +111,59 @@ if(isset($_POST['Add'])){
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Department</label><br>
-        <select class="custom-select mr-sm-2" id="Department_id">
-              <option selected disabled>Choose Department</option>
-              <option value="Permanent Staff">ICT</option>
-              <option value="Temporary  Staff">Mechanical</option>
-              <option value="Temporary  Staff">Electircal</option>
-              <option value="Permanent Staff">Food</option>
-              <option value="Permanent Staff">Automobile</option>
-              <option value="Permanent Staff">Construction</option>
-              <option value="Permanent Staff">Administration</option>
+        <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
+        <option value="null" selected disabled>--Select Department--</option>
+<?php          
+$sql = "SELECT * FROM `department`";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+    echo '<option  value="'.$row["department_id"].'" required>'.$row["department_name"].'</option>';
+    }
+}
+?>
         </select>
     </div>
     <div class="form-group col-lg-4">
         <label for="text" class="font-weight-bolder pl-1"  >Staff_Name :</label>
-        <input type="text" name="StaffName" value="" class="form-control " placeholder="Full Name">
+        <input type="text" name="StaffName" value="<?php echo $StaffName; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['StaffName'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffName'])){echo ' is-valid';} ?>"  placeholder="Full Name">
     </div>
   </div>
 
   <div class="form-row pt-3">
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1" >Address :</label><br>
-      <input type="text" name="Address" value="" class="form-control" placeholder="Address" ><br>
+      <input type="text" name="Address" value="<?php echo $Address; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Address'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffID'])){echo ' is-valid';} ?>"  placeholder="Address" ><br>
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Date_of_birth</label><br>
-      <input type="text" name="DOB" value="" class="form-control" placeholder="DOB"><br>
+      <input type="text" name="DOB" value="<?php echo $DOB; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['DOB'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['DOB'])){echo ' is-valid';} ?>"  placeholder="DOB"><br>
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">NIC :</label><br>
-      <input type="text" name="NIC" value="" class="form-control" placeholder="NIC" ><br>
+      <input type="text" name="NIC" value="<?php echo $NIC; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['NIC'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['NIC'])){echo ' is-valid';} ?>"  placeholder="NIC" ><br>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Email :</label><br>
-      <input type="text" name="Email" value="" class="form-control" placeholder="Email " ><br>
+      <input type="text" name="Email" value="<?php echo $Email; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Email'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Email'])){echo ' is-valid';} ?>"  placeholder="Email " ><br>
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Telephone no :</label><br>
-      <input type="text" name="PNO" value="" class="form-control" placeholder="Telephone no"><br>
+      <input type="text" name="PNO" value="<?php echo $PNO; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['PNO'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['PNO'])){echo ' is-valid';} ?>"  placeholder="Telephone no"><br>
     </div>
     <div class="form-group col-lg-4">        
       <label for="text" class="font-weight-bolder pl-1">Date_of_Join :</label><br>
-      <input type="text" name="DOJ" value="" class="form-control" placeholder="Date of Join"><br> 
+      <input type="text" name="DOJ" value="<?php echo $DOJ; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['DOJ'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['DOJ'])){echo ' is-valid';} ?>"  placeholder="Date of Join"><br> 
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Gender</label><br>
-        <select class="custom-select mr-sm-2" id="Gender">
+        <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Gender'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Gender'])){echo ' is-valid';} ?>"  id="Gender" name="Gender">
               <option selected disabled>Choose Gender</option>
               <option value="Permanent Staff">Male</option>
               <option value="Temporary  Staff">Female</option>
@@ -169,11 +172,11 @@ if(isset($_POST['Add'])){
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1" >EPF NO :</label>
-      <input type="text" name="EPF" value="" class="form-control" placeholder="EPF NO" >
+      <input type="text" name="EPF" value="<?php echo $EPF; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['EPF'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['EPF'])){echo ' is-valid';} ?>"  placeholder="EPF NO" >
     </div>
     <div class="form-group col-lg-4">  
     <label class="font-weight-bolder" for="inlineFormCustomSelect">Position</label>
-          <select class="custom-select" id="Position">
+          <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['Position'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Position'])){echo ' is-valid';} ?>"  id="Position" name="Position">
               <option selected disabled>Choose Postition</option>
               <option value="Director">Director</option>
               <option value="Deputy Principal (Academics)">Deputy Principal (Academics)</option>
@@ -195,7 +198,7 @@ if(isset($_POST['Add'])){
     <div class="form-group col-lg-4 pt-2">
       <label for="text" class="font-weight-bolder pl-1">Type :</label><br>
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Type</label>
-      <select class="custom-select mr-sm-2" id="Type">
+      <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Type'])){echo ' is-valid';} ?>"  id="Type" name="Type">
             <option selected disabled>Choose Type</option>
             <option value="Permanent Staff">Permanent Staff</option>
             <option value="Temporary  Staff">Temporary  Staff</option>
