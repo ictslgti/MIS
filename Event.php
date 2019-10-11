@@ -23,11 +23,11 @@ include_once("menu.php");
     <div class="col-sm-10">
 	<select id="inputState" class="form-control">
       <option selected>Select the Event...</option>
-      <option>Certificate Awarding Ceremony and Anniversary</option>
-      <option>Christmas Day Celebration</option>
-      <option>Hon Minister's Visit</option>
-      <option>Blood Donation and Helth Awareness Programme</option>
-      <option>Other</option>
+      <option>Certificate Awarding Ceremony</option>
+      <option>Celebration</option>
+      <option>Visitor's Visit</option>
+      <option>Volunteer</option>
+      <option>Other Events</option>
     </select>
   </div>
   </div>
@@ -55,13 +55,9 @@ include_once("menu.php");
   </div>
 
   <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="upfile02">Upload Event Link</span>
-  </div>
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="upfile" aria-describedby="upfile02">
-    <label class="custom-file-label" for="upfile">Choose Your Link...</label>
-  </div>
+
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Upload  Your File and Link</label>
+      <input class="form-control" type="file" name="file" required/></td>
 </div>
 
 

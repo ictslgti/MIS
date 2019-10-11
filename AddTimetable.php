@@ -20,6 +20,12 @@ include_once("menu.php");
 </div>
 </div>
 
+<div class="form-group row">
+    <label for="inputID" class="col-sm-2 col-form-label">Id</label>
+    <div class="col-sm-10">
+      <input type="ID" class="form-control" id="inputID"required >
+    </div>
+  </div>
 
 
 <form>
@@ -106,6 +112,29 @@ include_once("menu.php");
   </div>
 
   <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Class</label>
+    <div class="col-sm-10">
+	<select id="inputState" class="form-control">
+        <option selected>choose</option>
+        <option>Lab-01</option>
+		<option>Lab-02</option>
+		<option>Lab-03</option>
+		<option>Lab-04</option>
+		<option>##</option>
+
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Subject</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputEmail3"required >
+    </div>
+  </div>
+
+
+  <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Year of study</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="inputEmail3"required >
@@ -114,15 +143,15 @@ include_once("menu.php");
 
 
   <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">batch</label>
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Course</label>
     <div class="col-sm-10">
 	<select id="inputState" class="form-control">
         <option selected>choose</option>
-        <option>Monday</option>
-		<option>Tuesday</option>
-		<option>Wednesday</option>
-		<option>Thursday</option>
-		<option>Friday</option>
+        <option>Level-06</option>
+		<option>Level-05</option>
+		<option>Bridging-L5</option>
+		<option>Level-4</option>
+		<option>##</option>
 
       </select>
     </div>

@@ -4,49 +4,70 @@ $title = "Department Details | SLGTI" ;
 include_once("config.php"); 
 include_once("head.php"); 
 include_once("menu.php");
+
  ?>
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
-<div class="shadow p-3 mb-5 bg-white rounded">
+<div class="shadow  p-3 mb-5 bg-white rounded">
 
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-3 text-center">Add New Batch</h1>
+                    <h1 class="display-4 text-center">SLGTI Academic Year</h1>
                     
-
+                   
                 </div>
             </div>
         </div>
     </div>
+    <a href="AddAcademicYear" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add Academic Year </a>
 
 
 
+<!-- <h1 class="col text-center">Department Details</h1> -->
+<br><br>
 <table class="table table-hover">
   <thead class="thead-dark">
  
     <tr >
-    <th scope="col">Batch_ID</th>
-      <th scope="col">Course Name</th>
       <th scope="col">Academic Year</th>
-   
-     
       
     </tr>
   </thead>
   <tbody>
  
+  <tr class="table-light">
+      
   
-
-
+      <td>2018/2019</td>
+      
+  
+    </tr>
+    <tr class="table-light">
+     
+     
+      <td>2016/2017</td>
+     </tr>
+    <tr class="table-light">
+    
+     
+      <td>2014/2015</td>
+       </tr>
+    <tr class="table-light ">
+     
+     
+      <td>2013/2012</td>
+       </tr>
+    
+    
+    </tr>
+   
   </tbody>
   </form>
 </table>
-<a href="" class="btn btn-success" role="button" aria-pressed="true">Add</a>
-<a href="" class="btn btn-success" role="button" aria-pressed="true">Delete</a>
-<a href="" class="btn btn-success" role="button" aria-pressed="true">Edit</a>
-<a href="Batch_details" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+</div>
+<br>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->

@@ -23,7 +23,7 @@ include_once("menu.php");
     </div>
 <!-- <h1>Batch Details of ICT Department</h1> -->
 
-<a href="Add_new_batch" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add New Batch </a>
+<a href="AddNewBatch" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add New Batch </a>
 <!-- <button type="button" class="btn btn-success">+ Add New Batch</button> -->
 <br><br>
 <table class="table table-hover">
@@ -50,7 +50,7 @@ include_once("menu.php");
       <td>2018/2019 <span class="badge badge-success">Active </span> </td> 
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
-  <a href="Batch_Student" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
+  <a href="BatchStudent" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
     </tr>
     
    
@@ -61,7 +61,7 @@ include_once("menu.php");
       <td>2018/2019 <span class="badge badge-success">Active </span></td> 
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
-  <a href="Batch_Student" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
+  <a href="BatchStudent" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
     </tr>
    
 
@@ -72,7 +72,7 @@ include_once("menu.php");
       <td>2019/2020 <span class="badge badge-success">New </span></td> 
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
-  <a href="Batch_Student" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
+  <a href="BatchStudent" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
     </tr>
 
     <tr class="table-light">
@@ -82,7 +82,7 @@ include_once("menu.php");
       <td>2019/2020 <span class="badge badge-success">New </span></td> 
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
-  <a href="Batch_Student" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
+  <a href="BatchStudent" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
     </tr>
 
 
@@ -90,6 +90,7 @@ include_once("menu.php");
   </form>
 </table>
 <a href="Department" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+<br>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->

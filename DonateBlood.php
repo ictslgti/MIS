@@ -38,17 +38,19 @@ include_once("menu.php");
 <table class="table">
   <thead class="thead-r">
     <tr>
-      <th scope="col">D_id</th>
-      <th scope="col">Reference id</th>
-      <th scope="col">fullname</th>
-      <th scope="col">Address</th>
+    <th scope="col"><i class="far fa-id-card"></i>&nbsp;D_id</th>
+      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Reference id</th>
+      <th scope="col"><i class="fas fa-users"></i>&nbsp;fullname</th>
+      <th scope="col"><i class="far fa-address-card"></i>&nbsp;Address</th>
       <th scope="col">Email</th>
-      <th scope="col">Blood group</th>
-      <th scope="col">dob</th>
-      <th scope="col">join date</th>
-      <th scope="col">Weight</th>
-      <th scope="col">Gender</th>
-      <th scope="col">Action</th>
+      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;dob</th>
+      <th scope="col"><i class="fas fa-map-marker"></i>&nbsp;Blood group</th>
+      <th scope="col"><i class="fas fa-chalkboard-teacher"></i>&nbsp;designation</th>
+      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;join date</th>
+      <th scope="col"><i class="fas fa-transgender"></i>&nbsp;Gender</th>
+      <th scope="col"><i class="fas fa-weight-hanging"></i>&nbsp;Weight</th>
+      <th scope="col"><i class="far fa-caret-square-right"></i>&nbsp;Action</th>
+      <th scope="col"><i class="fas fa-outdent"></i>&nbsp;Status</th>
     </tr>
   </thead>
   
@@ -64,15 +66,20 @@ include_once("menu.php");
       <td>Otto</td>
       <td>@mdo</td>
       <td>@mdo</td>
+      <td>@mdo</td>
       <td>
            
-            <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-success" onclick="location.href='donor.php'"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-success"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
+            
       </td>
+      <td><div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-success"><i class="fas fa-arrow-alt-circle-right"></i></button>
+            <button type="button" class="btn btn-danger"><i class="far fa-arrow-alt-circle-right"></i></button></td>
     </tr
     
-    <tr>
 
+<tr>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
@@ -82,78 +89,28 @@ include_once("menu.php");
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
+      <td>@mdo</td>
+      
       <td>@mdo</td>
       <td>
            
-            <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-success" onclick="location.href='donor.php'"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-success"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
+            
       </td>
+      <td><div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-success"><i class="fas fa-arrow-alt-circle-right"></i></button>
+            <button type="button" class="btn btn-danger"><i class="far fa-arrow-alt-circle-right"></i></button></td>
     </tr>
-    <tr>
-
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>
-           
-            <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
-      </td>
-    </tr>
-    <tr>
-
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>
-           
-            <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-outline-success"><i class="fas fa-backspace"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
-      </td>
-    </tr>
+  
     
     
     
 </table>
 
-<form>
-<fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Status</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-          <label class="form-check-label" for="gridRadios1">
-            Elligible
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-          <label class="form-check-label" for="gridRadios2">
-            inelligible
-          </label>
-        </div>
-        
-      </div>
-    </div>
-  </fieldset>
-    </form>
 
-    <button type="button" class="btn btn-secondary">Save details</button>
+
+    <button type="button" class="btn btn-success"><i class="far fa-save"></i>&nbsp;&nbsp;Save </button>
 
 
 

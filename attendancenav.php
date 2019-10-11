@@ -40,7 +40,7 @@ include_once ("menu.php");
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link" href="attendancehome.php">Home</a>
+    <a class="nav-link" href="Attendance.php">Home</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="session.php">Session</a>
@@ -52,7 +52,7 @@ include_once ("menu.php");
     <a class="nav-link" href="attendancestudent.php">Student</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="attendance">Attendance</a>
+    <a class="nav-link" href="addattendance.php">Attendance</a>
   </li>
 </ul>
 

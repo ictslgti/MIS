@@ -28,11 +28,18 @@ include_once("menu.php");
   <thead class="thead-dark">
  
     <tr >
-    <th scope="col">Student_ID</th>
-      <th scope="col">Student Name</th>
-      <th scope="col">Enroll Date</th>
-      <th scope="col">Status</th>
-     
+    <!-- <th scope="col">Student_ID</th> -->
+      <!-- <th scope="col">Student Name</th> -->
+      <!-- <th scope="col">Enroll Date</th> -->
+      <!-- <th scope="col">Status</th> -->
+      <label for="inputPassword5">Student ID</label>
+      <input class="form-control" type="text" placeholder="">
+      <label for="inputPassword5">Student Name</label>
+      <input class="form-control" type="text" placeholder="">
+      <label for="inputPassword5">Enrill Date</label>
+      <input class="form-control" type="text" placeholder="">
+      <label for="inputPassword5">Status</label>
+      <input class="form-control" type="text" placeholder="">
 
      
       
@@ -43,10 +50,10 @@ include_once("menu.php");
   <tr class="table-light">
       
      
-      <td>2018/ICT/5IT/15</td>
-      <td>N.Abdullah</td>
-        <td>2018.10.15 </td> 
-        <td>Continue</td>
+      <!-- <td>2018/ICT/5IT/15</td> -->
+      <!-- <td>N.Abdullah</td> -->
+        <!-- <td>2018.10.15 </td>  -->
+        <!-- <td>Continue</td> -->
         
   
     </tr>
@@ -61,7 +68,8 @@ include_once("menu.php");
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Add</a>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Delete</a>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Edit</a>
-<a href="Batch_Student" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+<a href="BatchStudent" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+<br>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->

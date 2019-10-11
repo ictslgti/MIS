@@ -11,6 +11,7 @@ include_once("menu.php");
 
 <!-- bLOCK#2 start your code here & u can change -->
 <br>
+<hr>
 <div class="alert bg-dark text-white" role="alert">
   <h1>Add New Result</h1>
 </div>
@@ -27,8 +28,8 @@ include_once("menu.php");
     <label for="inputPassword3" class="col-sm-2 col-form-label">Department</label>
     <div class="col-sm-10">
 	<select id="inputState" class="form-control">
-      <option selected>Choose the Department...</option>
-      <option>Electrical & Electronic Technology Department Department</option>
+      <option selected>Select the Department...</option>
+      <option>Electrical & Electronic Technology Department</option>
       <option>Construction Technology Department</option>
       <option>Information & Communications Technology Department</option>
       <option>Mechanical Technology Department</option>
@@ -41,7 +42,7 @@ include_once("menu.php");
     <label for="inputEmail3" class="col-sm-2 col-form-label">Batch No</label>
     <div class="col-sm-10">
     <select id="inputState" class="form-control">
-      <option selected>Choose the Batch No...</option>
+      <option selected>Select the Batch No...</option>
       <option>Batch 01</option>
       <option>Batch 02</option>
       <option>Batch 03</option>
@@ -49,12 +50,23 @@ include_once("menu.php");
   </div>
   </div>
 
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Level</label>
+    <div class="col-sm-10">
+    <select id="inputState" class="form-control">
+      <option selected>Select Your Level...</option>
+      <option>Bridging</option>
+      <option>Level 05</option>
+      <option>Level 06</option>
+    </select>
+  </div>
+  </div>
  
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Modules</label>
     <div class="col-sm-10">
     <select id="inputState" class="form-control">
-      <option selected>Choose the Module...</option>
+      <option selected>Select the Module...</option>
       <option>Module 01</option>
       <option>Module 02</option>
       <option>Module 03</option>
@@ -64,7 +76,7 @@ include_once("menu.php");
       <option>Module 07</option>
       <option>Module 08</option>
       <option>Module 09(Manage Workplace Information)</option>
-      <option>Module 03(Manage Workplace Communication)</option>
+      <option>Module 10(Manage Workplace Communication)</option>
     </select>
   </div>
   </div>
@@ -72,16 +84,13 @@ include_once("menu.php");
  
   
 <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroupFileAddon01">Upload File</span>
-  </div>
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-  </div>
+
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Upload  Your File and Link</label>
+		<input class="form-control" type="file" name="file" required/></td>
 </div>
+
 <h1 class="text-right">
- 
+<hr>
  <div class="row"> 
 
  <div class="col-12">
@@ -91,7 +100,7 @@ include_once("menu.php");
 <button type="button" class="btn btn-outline-danger btn-lg"><a href="AddNotice.php">Back</a></button>
 </div>
 </div>
-
+<hr>
  <!-- end your code here-->
 
 

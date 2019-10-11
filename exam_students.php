@@ -29,13 +29,15 @@ include_once ("menu.php");
     </div>
     </div>
 
-
-    <div class="row">
-    <div class="col">
-    <hr>
-    </div>
-    </div>
 <br>
+
+
+<div class="row">
+    <div class="col">
+    <hr color ="black" style="height:1px;">
+    </div>
+    </div> 
+    
 
     <div class="row ">
     <div class="col-4"></div>
@@ -55,18 +57,14 @@ include_once ("menu.php");
     
     </div>
 
-   <div class="row">
-    <div class="col">
-    <hr color ="black" style="height:1px;">
-    </div>
-    </div> 
-
+    <br>
+    <br>
 
     <div class="row">
     <div class="col text-center">
     <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
+                                    <label class="input-group-text" for="inputGroupSelect01"><i class="	fas fa-dice-d6"></i>&nbsp;&nbsp;Select
                                         Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 </div>
                                 <select class="custom-select" id="inputGroupSelect01">
@@ -82,7 +80,7 @@ include_once ("menu.php");
     <div class="col text-center">
     <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-book-open"></i>&nbsp;&nbsp;Select Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 </div>
                                 <select class="custom-select" id="inputGroupSelect01">
                                     <option selected="">Choose...</option>
@@ -95,7 +93,7 @@ include_once ("menu.php");
     <div class="col text-center">
     <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select Assessment Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <label class="input-group-text" for="inputGroupSelect01"><i class="fas fa-edit"></i>&nbsp;&nbsp;Select Assessment Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                 </div>
                                 <select class="custom-select" id="inputGroupSelect01">
                                     <option selected="">Choose...</option>
@@ -116,7 +114,6 @@ include_once ("menu.php");
   <table class="table">
   <thead class="thead-dark">
     <tr>
-    <th scope="col">Module-Id</th>
       <th scope="col">Assessment-Id</th>
       <th scope="col">Assessment-Date</th>
       <th scope="col">Assessment-Marks</th>
@@ -125,19 +122,16 @@ include_once ("menu.php");
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
-      <th scope="row">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <th scope="row">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>

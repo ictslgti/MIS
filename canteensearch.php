@@ -17,7 +17,7 @@ include_once("menu.php");
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-3 text-center"></h1>
+                    <h1 class="display-3 text-center">QTY</h1>
                     
                  
 
@@ -30,14 +30,26 @@ include_once("menu.php");
   
   <div class="form-group mx-sm-3 mb-2">
   <label for="inputPassword2" class="sr-only">Search</label>
-    <input type="text" class="form-control" id="inputPassword2" placeholder="Search by name">
-  </div>
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> </button>
+   
+<div class ="col">
+<input type="search" class="form-control ds-input" id="search-input" placeholder="Search by username or id" aria-label="Search for..." autocomplete="off" data-docs-version="4.3" spellcheck="false" 
+role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+                  </div>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> </button>
+    
+    
+    
+    
+    </div>
 
   
+
 </form>
 
     <div class="mx-auto" >
+
+<div class ="row">
+<div class="col-7">
     <form  >
 <div class="form-group p-3 mb-2 bg-light text-dark au_size  rounded">
 <div class ="row">
@@ -45,7 +57,7 @@ include_once("menu.php");
     <p><h4>Order ID</h4></p>
   </div>
   <div class ="col-3" >
-      <p><h4>15</h4></p>
+      <p><h4></h4></p>
   </div>
 </div>
 <div class ="row">
@@ -53,7 +65,7 @@ include_once("menu.php");
     <p><h4>User name</h4></p>
   </div>
   <div class ="col-3" >
-      <p><h4>Abdullah</h4></p>
+      <p><h4></h4></p>
   </div>
 </div>
 
@@ -62,7 +74,7 @@ include_once("menu.php");
 <div class="row">
 
 <div class="col-9">
- <table class="table table-bordered">
+ <table class="table table-borderless">
   <thead>
     <tr>
       <th scope="col">Item Name</th>
@@ -73,21 +85,21 @@ include_once("menu.php");
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Pittu</th>
-      <td>10</td>
-      <td>600</td>
+      <th scope="row"></th>
+      <td></td>
+      <td></td>
    
     </tr>
     <tr>
-      <th scope="row">Idiyappam</th>
-      <td>7</td>
-      <td>420</td>
+      <th scope="row"></th>
+      <td></td>
+      <td></td>
      
     </tr>
     <tr>
       <th scope="row"></th>
-      <td colspan="1"><h5>Total Amount<h5></td>
-      <td ><h5>1020<h5></td>
+      <td colspan="1"><h5><h5></td>
+      <td ><h5><h5></td>
     </tr>
   </tbody>
 </table>
@@ -101,7 +113,44 @@ include_once("menu.php");
 
  </div>
 </form>
+</div>
+<div class="col-5">
 
+<table class="table table-borderless">
+  <thead>
+    <tr>
+
+      <th scope="col">Item name</th>
+      <th scope="col">Item QTY</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+      <td>Mark</td>
+      <td>Otto</td>
+  
+    </tr>
+    <tr>
+  
+      <td>Jacob</td>
+      <td>Thornton</td>
+     
+    </tr>
+    <tr>
+     
+   <td>@twitter</td>
+   <td>@gmail</td>
+    </tr>
+  </tbody>
+
+</table>
+<div class="col-8">
+<button type="button" class="btn btn-primary btn-lg btn-block">Check</button>
+</div>
+</div>
+</div>
 </div>
   
 <!--block 3 start dont change the order-->

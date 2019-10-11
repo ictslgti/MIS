@@ -13,7 +13,7 @@ include_once("menu.php");
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-3 text-center">Add New Department</h1>
+                    <h1 class="display-3 text-center">Add New Batch</h1>
                     
 
                 </div>
@@ -27,11 +27,16 @@ include_once("menu.php");
   <thead class="thead-dark">
  
     <tr >
-    <label for="inputPassword5">Department ID</label>
-    <input class="form-control" type="text" placeholder=>
-    <label for="inputPassword5">Department Name</label>
-    <input class="form-control" type="text" placeholder=>
-     
+    <!-- <th scope="col">Batch_ID</th> -->
+      <!-- <th scope="col">Course Name</th> -->
+      <!-- <th scope="col">Academic Year</th> -->
+   
+      <label for="inputPassword5">Batch ID</label>
+      <input class="form-control" type="text" placeholder=>
+      <label for="inputPassword5">Course Name</label>
+      <input class="form-control" type="text" placeholder=>
+      <label for="inputPassword5">Academic Year</label>
+      <input class="form-control" type="text" placeholder=>
       
     </tr>
   </thead>
@@ -43,13 +48,10 @@ include_once("menu.php");
   </tbody>
   </form>
 </table>
-
-
-<br>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Add</a>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Delete</a>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Edit</a>
-<a href="Department" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+<a href="BatchDetails" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
 <br>
 <!-- END YOUR CODER HERE -->
 

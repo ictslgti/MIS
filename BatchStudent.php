@@ -23,7 +23,7 @@ include_once("menu.php");
     </div>
 <!-- <h1>Batch Details of ICT Department</h1> -->
 
-<a href="Add_new_student" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add New Student </a>
+<a href="AddNewStudent" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add New Student </a>
 <!-- <button type="button" class="btn btn-success">+ Add New Batch</button> -->
 <br><br>
 <table class="table table-hover">
@@ -61,8 +61,8 @@ include_once("menu.php");
   </tbody>
   </form>
 </table>
-
-<a href="Department" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+<br>
+<a href="BatchDetails" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->
