@@ -27,7 +27,6 @@ if(isset($_POST['Add'])){
     &&!empty($_POST['EPF'])
     &&!empty($_POST['Position'])
     &&!empty($_POST['Type'])){
-
       $StaffID=$_POST['StaffID'];
       $Department_id=$_POST['Department_id'];
       $StaffName=$_POST['StaffName'];
@@ -42,15 +41,33 @@ if(isset($_POST['Add'])){
       $Position=$_POST['Position'];
       $Type=$_POST['Type'];
 
-      $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf_no`, `staff_position`, `staff_type`) 
+     echo  $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf_no`, `staff_position`, `staff_type`) 
       VALUES ('$StaffID','$Department_id','$StaffName','$Address','$DOB','$NIC','$Email','$PNO','$DOJ','$Gender','$EPF','$Position','$Type')";
 
       if(mysqli_query($con,$sql))
       {
-        echo "New record inserted";
+        echo '
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>'.$StaffName.'</strong> You should check in on some of those fields below.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>    
+        ';
       }
       else{
         echo "Error".$sql."<br>".mysqli_error($con);
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$StaffName.'</strong> You should check in on some of those fields below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
+
+
       }
 
     }
@@ -72,8 +89,8 @@ if(isset($_POST['Add'])){
     </div>
 
     <div class="col-sm-3"> 
-      <form class="form-inline">
-        <input class="form-control mr-2" type="search" placeholder="Staff ID" aria-label="Search">
+      <form class="form-inline" method="GET">
+        <input class="form-control mr-2" type="search" name="edit" placeholder="Staff ID" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>  
@@ -85,11 +102,11 @@ if(isset($_POST['Add'])){
   </div>
 </div>  
 
-<form method="POST">
+<form method="POST" action="#">
   <div class="form-row">
     <div class="form-group col-lg-4">
         <label for="text" class="font-weight-bolder pl-1" >Staff_ID :</label>
-        <input type="text" name="StaffID" value="" class="form-control" placeholder="Staff ID" >
+        <input type="text" name="StaffID" value="<?php echo $StaffID; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['StaffID'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffID'])){echo ' is-valid';} ?>" placeholder="Staff ID">
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Department</label><br>
@@ -106,7 +123,7 @@ if(isset($_POST['Add'])){
     </div>
     <div class="form-group col-lg-4">
         <label for="text" class="font-weight-bolder pl-1"  >Staff_Name :</label>
-        <input type="text" name="StaffName" value="" class="form-control" placeholder="Full Name">
+        <input type="text" name="StaffName" value="" class="form-control " placeholder="Full Name">
     </div>
   </div>
 
@@ -188,11 +205,21 @@ if(isset($_POST['Add'])){
 
   <div class="form-row pt-3">
     <?PHP 
-      echo '<div class="btn-group-horizontal">';
-      echo '<button type="submit" value="Add" name="Add" class="btn btn-outline-info"><i class="fas fa-user-plus"></i>   ADD</button>';
-      echo '<button type="submit" class="btn btn-outline-info"><i class="fas fa-user-edit"></i>   UPDATE</button>'; 
-      echo '<button type="submit" class="btn btn-outline-info"><i class="fas fa-user-slash"></i>   DELETE</button>';
-      echo'<button type="submit" class="btn btn-outline-info"><i class="fas fa-redo"></i>   REFRESH</button>';
+  echo '<div class="btn-group-horizontal">';
+
+    if(isset($_GET['edit'])){
+      echo '<button type="submit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo'<button type="submit" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+
+    }if(isset($_GET['delete']))
+    {
+      echo '<button type="submit" class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
+
+    }if(!isset($_GET['delete']) && !isset($_GET['edit'])){
+      echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
+
+    }
+      
       echo '</div>';
       ?>
   </div>
