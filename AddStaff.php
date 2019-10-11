@@ -98,7 +98,7 @@ if(isset($_POST['Add'])){
 
 <form method="POST" action="#">
   <div class="form-row">
-    <div class="form-group col-lg-4">
+    <div class="form-group col-lg-4 pt-3">
         <label for="text" class="font-weight-bolder pl-1" >Staff_ID :</label>
         <input type="text" name="StaffID" value="<?php echo $StaffID; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['StaffID'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffID'])){echo ' is-valid';} ?>" placeholder="Staff ID">
     </div>
