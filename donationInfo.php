@@ -10,10 +10,15 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 
-<div class="intro p-5 mb-5 border border-dark rounded">
-<div class="shadow p-3 mb-5 bg-white rounded"> 
-  <h1 class="display-4 text-center  "><i class="fas fa-hand-holding-usd"></i> Donation Info</h1>
+<div class="shadow  p-3 mb-5 bg-white rounded">
+        <div class="highlight-blue">         
+                <div class="intro">
+<h1 class="text-center">Donor Details</h1>
+<br>
+</div>
   </div>
+  </div>
+
 <div class="row">
 
 <div class="col-sm-6 " ></div>
@@ -36,22 +41,35 @@ include_once("menu.php");
 </div>
 </div>
 
-<table class="table table-responsive-sm w-100">
-  <thead class="thead-dark">
+<table class="table">
+  <thead class="thead-r">
     <tr>
     <th scope="col"><i class="far fa-id-card"></i>&nbsp;Donation_id</th>
       <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Date</th>
       <th scope="col"><i class="fas fa-tasks"></i>&nbsp;Programme</th>
-      
+      <th scope="col"><i class="far fa-caret-square-right"></i>&nbsp;Action</th>
     </tr>
   </thead>
-  </table>
+  
+  
+  <tr>
+
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      
+      <td>
+           
+            <button type="button" class="btn btn-outline-success" ><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-success"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
+            
+      </td>
+      </table>
+           <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add </button>
+           <button type="submit" class="btn btn-danger"  ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
 
 
-  <button type="submit" class="btn btn-danger"  ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
 
-
-</div>
 
 <!--END OF YOUR COD-->
 
