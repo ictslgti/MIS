@@ -1,12 +1,17 @@
 <?php
+include_once("../config.php");
 if(isset($_POST['department'])){
     $id = $_POST['department'];
     echo '<option value="null"   selected disabled>--Select Course--</option>';
-    echo '<option value="C1" >Department '.$id.' Course 1</option>';
-    echo '<option value="C2">Department '.$id.' Course 2</option>';
-    echo '<option value="C3">Department '.$id.' Course 3</option>';
-    echo '<option value="C4">Department '.$id.' Course 4</option>';
-    echo '<option value="C5">Department '.$id.' Course 5</option>';
+    $sql = "SELECT * FROM `course`  WHERE `department_id` = '$id'";
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+        echo '<option  value="'.$row["course_id"].'" required>'.$row["course_name"].'</option>';
+        }
+    }else{
+        echo '<option value="null"   selected disabled>-- No Courses --</option>';
+    }
 }
 
 ?>
