@@ -10,14 +10,13 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 
-<div class="shadow  p-3 mb-5 bg-white rounded">
-        <div class="highlight-blue">         
-                <div class="intro">
-<h1 class="text-center">Donor Details</h1>
-<br>
-</div>
+<div class="intro p-5 mb-5 border border-dark rounded">
+<div class="shadow p-3 mb-5 bg-white rounded"> 
+  <h1 class="display-4 text-center  "><i class="fas fa-hand-holding-usd"></i> Donation Info</h1>
   </div>
-  </div>
+
+
+  
 
 <div class="row">
 
@@ -41,9 +40,10 @@ include_once("menu.php");
 </div>
 </div>
 
-<table class="table">
-  <thead class="thead-r">
-    <tr>
+
+    <table class="table table-responsive-sm w-100">
+  <thead class="thead-dark">
+  <tr>
     <th scope="col"><i class="far fa-id-card"></i>&nbsp;Donation_id</th>
       <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Date</th>
       <th scope="col"><i class="fas fa-tasks"></i>&nbsp;Programme</th>
@@ -66,9 +66,9 @@ include_once("menu.php");
       </td>
       </table>
            <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add </button>
-           <button type="submit" class="btn btn-danger"  ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
+           <button type="submit" class="btn btn-danger"  onclick="location.href='DonateBlood.php'" ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
 
-
+</div>
 
 
 <!--END OF YOUR COD-->
