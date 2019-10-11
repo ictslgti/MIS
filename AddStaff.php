@@ -42,7 +42,7 @@ if(isset($_POST['Add'])){
       $Position=$_POST['Position'];
       $Type=$_POST['Type'];
 
-     echo  $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf_no`, `staff_position`, `staff_type`) 
+      $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf_no`, `staff_position`, `staff_type`) 
       VALUES ('$StaffID','$Department_id','$StaffName','$Address','$DOB','$NIC','$Email','$PNO','$DOJ','$Gender','$EPF','$Position','$Type')";
 
       if(mysqli_query($con,$sql))
@@ -91,7 +91,7 @@ if(isset($_POST['Add'])){
 
     <div class="col-sm-3"> 
       <form class="form-inline" method="GET">
-        <input class="form-control mr-2" type="search" name="edit" placeholder="Staff ID" aria-label="Search">
+        <input class="form-control mr-2" type="search" name="search" placeholder="Staff ID" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>  
@@ -113,15 +113,15 @@ if(isset($_POST['Add'])){
       <label for="text" class="font-weight-bolder pl-1">Department</label><br>
         <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
         <option value="null" selected disabled>--Select Department--</option>
-<?php          
-$sql = "SELECT * FROM `department`";
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-    echo '<option  value="'.$row["department_id"].'" required>'.$row["department_name"].'</option>';
-    }
-}
-?>
+            <?php          
+            $sql = "SELECT * FROM `department`";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                echo '<option  value="'.$row["department_id"].'" required>'.$row["department_name"].'</option>';
+                }
+            }
+            ?>
         </select>
     </div>
     <div class="form-group col-lg-4">
