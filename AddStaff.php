@@ -82,7 +82,7 @@ if(isset($_POST['Add'])){
         <p style="font-size: 45px; font-weight: 700; ">STAFF Personal Information</p>
     </div>
 
-    <div class="col-sm-3"> 
+    <div class="col-sm-3 pt-3"> 
       <form class="form-inline" method="GET">
         <input class="form-control mr-2" type="search" name="search" placeholder="Staff ID" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -98,7 +98,7 @@ if(isset($_POST['Add'])){
 
 <form method="POST" action="#">
   <div class="form-row">
-    <div class="form-group col-lg-4 pt-3">
+    <div class="form-group col-lg-4">
         <label for="text" class="font-weight-bolder pl-1" >Staff_ID :</label>
         <input type="text" name="StaffID" value="<?php echo $StaffID; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['StaffID'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffID'])){echo ' is-valid';} ?>" placeholder="Staff ID">
     </div>
