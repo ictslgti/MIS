@@ -78,40 +78,27 @@ if(isset($_POST['Add'])){
 }
 ?>
 
+<!-- search coding -->
 <?php
-// search coding
-  $search=null;
-  if(isset($_POST['Search'])){
-    if(!empty($_POST['search'])){
-      $id = $_POST['search'];
-      $sql="SELECT * FROM staff WHERE staff_id='$id'";
-      $result=mysqli_query($con,$sql);
-        if(mysqli_num_rows($result)>0){
-          while($row=mysqli_fetch_assoc($result)){
-            echo '
-              <div class="alert alert-success alert-dismissible fade show" role="alert">
-              <strong>'.$row["staff_name"].'</strong> Staff details inserted
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-              </div>    
-            ';
-          }
+  if(isset($_GET['Search'])){
+    if(!empty($_GET['search'])){
+        $id=$_GET['search'];
+        $sql="SELECT * FROM `staff` WHERE `staff_id`=$id";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+            $StaffID=$row['staff_id'];
+            $StaffName=$row['staff_name'];
+            $Address=$row['staff_address'];
+            $DOB=$row['staff_dob'];
+            $NIC=$row['staff_nic'];
+            $Email=$row['staff_email'];
+            $PNO=$row['staff_pno'];
+            $DOJ=$row['staff_date_of_join'];
+            $EPF=$row['staff_epf'];
         }
-        else{
-          echo '
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>'.$row["staff_name"].'</strong> echo "Error".$sql."<br>".mysqli_error($con);
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        
-        ';
-        }
-    }       
+    }
   }
-
 ?>
 
 
