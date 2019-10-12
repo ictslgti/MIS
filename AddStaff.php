@@ -78,27 +78,6 @@ if(isset($_POST['Add'])){
 }
 ?>
 
-<!-- search coding -->
-<?php
-  if(isset($_GET['Search'])){
-        $id=$_GET['edit'];
-        $sql="SELECT * FROM `staff` WHERE `staff_id`=$id";
-        $result=mysqli_query($con,$sql);
-        if(mysqli_num_rows($result)==1){
-            $row=mysqli_fetch_assoc($result);
-            $StaffID=$row['staff_id'];
-            $StaffName=$row['staff_name'];
-            $Address=$row['staff_address'];
-            $DOB=$row['staff_dob'];
-            $NIC=$row['staff_nic'];
-            $Email=$row['staff_email'];
-            $PNO=$row['staff_pno'];
-            $DOJ=$row['staff_date_of_join'];
-            $EPF=$row['staff_epf'];
-        }
-    }
-  
-?>
 
 
 <!-- Add staff design  -->
@@ -110,7 +89,7 @@ if(isset($_POST['Add'])){
     <div class="col-sm-3 pt-4"> 
       <form class="form-inline" method="GET">
         <input class="form-control mr-2" type="search" name="edit" placeholder="Staff ID">  
-        <button class="btn btn-outline-success my-2 my-sm-0"  value="Search" name="Search">Search</button>
+        <button class="btn btn-outline-success my-2 my-sm-0"  onclick="Search()">Search</button>
       </form>
     </div>  
 </div>
@@ -245,6 +224,34 @@ if(isset($_POST['Add'])){
       ?>
   </div>
 </form>
+
+
+
+
+<!-- search coding -->
+<script>
+         function Search(){
+        $id=$_GET['edit'];
+        $sql="SELECT * FROM `staff` WHERE `staff_id`=$id";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+            $StaffID=$row['staff_id'];
+            $StaffName=$row['staff_name'];
+            $Address=$row['staff_address'];
+            $DOB=$row['staff_dob'];
+            $NIC=$row['staff_nic'];
+            $Email=$row['staff_email'];
+            $PNO=$row['staff_pno'];
+            $DOJ=$row['staff_date_of_join'];
+            $EPF=$row['staff_epf'];
+        }
+        else{
+          echo "Error".$sql."<br>".mysqli_error($con);
+        }
+    }
+  </script>
+
 <!--END OF YOUR COD-->
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
