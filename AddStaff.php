@@ -79,6 +79,27 @@ if(isset($_POST['Add'])){
 ?>
 
 <!-- search coding -->
+<?php
+  if(isset($_GET['edit'])){
+    if(!empty($_GET['edit'])){
+        $id=$_GET['edit'];
+        $sql="SELECT * FROM `staff` WHERE `staff_id`=$id";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+            $StaffID=$row['staff_id'];
+            $StaffName=$row['staff_name'];
+            $Address=$row['staff_address'];
+            $DOB=$row['staff_dob'];
+            $NIC=$row['staff_nic'];
+            $Email=$row['staff_email'];
+            $PNO=$row['staff_pno'];
+            $DOJ=$row['staff_date_of_join'];
+            $EPF=$row['staff_epf'];
+        }
+    }
+  }
+?>
 
 
 <!-- Add staff design  -->
