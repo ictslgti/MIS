@@ -88,11 +88,26 @@ if(isset($_POST['Add'])){
       $result=mysqli_query($con,$sql);
         if(mysqli_num_rows($result)>0){
           while($row=mysqli_fetch_assoc($result)){
-            echo'
-              .$row["staff_name"].
+            echo '
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>'.$row["staff_name"].'</strong> Staff details inserted
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+              </div>    
             ';
-
           }
+        }
+        else{
+          echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$row["staff_name"].'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
         }
     }       
   }
