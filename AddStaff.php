@@ -80,7 +80,7 @@ if(isset($_POST['Add'])){
 
 <!-- search coding -->
 <?php
-  if(isset($_GET['edit'])){
+  if(isset($_GET['Search'])){
         $id=$_GET['edit'];
         $sql="SELECT * FROM `staff` WHERE `staff_id`=$id";
         $result=mysqli_query($con,$sql);
@@ -110,7 +110,7 @@ if(isset($_POST['Add'])){
     <div class="col-sm-3 pt-4"> 
       <form class="form-inline" method="GET">
         <input class="form-control mr-2" type="search" name="edit" placeholder="Staff ID">  
-        <button class="btn btn-outline-success my-2 my-sm-0"  name="GAjan">Search</button>
+        <button class="btn btn-outline-success my-2 my-sm-0"  value="Search" name="Search">Search</button>
       </form>
     </div>  
 </div>
