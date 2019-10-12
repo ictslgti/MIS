@@ -80,7 +80,7 @@ if(isset($_POST['Add'])){
 
 <!-- search coding -->
 <?php
-  if(isset($_GET['edit'])){
+  if(isset($_GET['Search'])){
     if(!empty($_GET['search'])){
         $id=$_GET['search'];
         $sql="SELECT * FROM `staff` WHERE `staff_id`=$id";
@@ -111,7 +111,7 @@ if(isset($_POST['Add'])){
     <div class="col-sm-3 pt-4"> 
       <form class="form-inline" method="POST">
         <input class="form-control mr-2" type="text" name="search" placeholder="Staff ID">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="edit">Search</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="Search">Search</button>
       </form>
     </div>  
 </div>
@@ -229,7 +229,7 @@ if(isset($_POST['Add'])){
     <?PHP 
   echo '<div class="btn-group-horizontal">';
 
-    if(isset($_GET['edit'])){
+    if(isset($_GET['search'])){
       echo '<button type="submit" name="Update" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
       echo'<button type="submit" name"refresh" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 
