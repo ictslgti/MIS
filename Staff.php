@@ -59,7 +59,28 @@ include_once("menu.php");
   </table>
 </div>
 
+<form method="POST" actioin="#">
+  <div class="form-row pt-3">
+      <?PHP 
+    echo '<div class="btn-group-horizontal">';
 
+      if(isset($_GET['edit'])){
+        echo '<button type="submit" name="Update" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+        echo'<button type="submit" name"refresh" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+
+      }if(isset($_GET['delete']))
+      {
+        echo '<button type="submit" name="Delete" class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
+
+      }if(!isset($_GET['delete']) && !isset($_GET['edit'])){
+        echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
+
+      }
+        
+        echo '</div>';
+        ?>
+    </div>
+</form>
 
 <!--END OF YOUR COD-->
 
