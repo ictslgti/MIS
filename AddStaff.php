@@ -76,15 +76,30 @@ if(isset($_POST['Add'])){
     }
 
 }
+?>
 
+<?php
 // search coding
-// $search=null;
-// if(isset($_POST['Search'])){
-//   if(!empty($_POST['code'])&&!empty($_POST['name']))    
-      
-//   }
+  $search=null;
+  if(isset($_POST['Search'])){
+    if(!empty($_POST['search'])){
+      $id = $_POST['search'];
+      $sql="SELECT * FROM staff WHERE staff_id='$id'";
+      $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)>0){
+          while($row=mysqli_fetch_assoc($result)){
+            echo'
+              .$row["staff_name"].
+            ';
+
+          }
+        }
+    }       
+  }
 
 ?>
+
+
 <!-- Add staff design  -->
 <div class="row">
     <div class=" col-sm-8">
