@@ -97,7 +97,7 @@ if(isset($_POST['Add'])){
             $EPF=$row['staff_epf'];
         }
     }
-  }
+  
 ?>
 
 
