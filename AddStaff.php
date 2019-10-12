@@ -88,7 +88,7 @@ if(isset($_POST['Add'])){
     </div>
 
     <div class="col-sm-3 pt-4"> 
-      <form class="form-inline" method="POST">
+      <form class="form-inline" method="GET">
         <input class="form-control mr-2" type="search" name="edit" placeholder="Staff ID" aria-label="Search">  
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
