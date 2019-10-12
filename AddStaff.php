@@ -78,11 +78,11 @@ if(isset($_POST['Add'])){
 }
 
 // search coding
-$search=null;
-if(isset($_POST['Search'])){
-  if(!empty($_POST['code'])&&!empty($_POST['name']))    
+// $search=null;
+// if(isset($_POST['Search'])){
+//   if(!empty($_POST['code'])&&!empty($_POST['name']))    
       
-  }
+//   }
 
 ?>
 <!-- Add staff design  -->
