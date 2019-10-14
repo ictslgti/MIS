@@ -47,8 +47,7 @@ if (isset($_POST['Add'])) {
                     <div class="intro">
                         <h1 class="display-4 text-center">Asignments Portal</h1>
                         <!-- <H3 class="display-5 text-center"><?php echo $ictDepartmentName ?></H3> -->
-                        <p class="text-center">Welcome to examinations portal for lectures or admin. This section to add
-                            examinations and assignments/asessments results&nbsp;</p>
+                        <p class="text-center">Add Assessment Type&nbsp;</p>
 
                     </div>
                 </div>
@@ -58,6 +57,45 @@ if (isset($_POST['Add'])) {
         <!--  -->
         <form onsubmit="showAssessment(this.value)">
             <div class="container">
+                <div class="row">
+                    <div class="col">
+
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01"><i
+                                                class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    </div>
+                                    <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['semester_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['semester_id'])){echo ' is-valid';} ?>" id="semister_id" name="semister_id" value="<?php echo $semester_id; ?>"
+                                        onchange="showModule(this.value)" required>
+                                        <option value="null" selected disabled>--Select Course--</option>
+                                       
+        
+                                        <?php
+                  $sql = "SELECT * FROM `course`";
+                  $result = mysqli_query($con, $sql);
+                  if (mysqli_num_rows($result) > 0) {
+                  while($row = mysqli_fetch_assoc($result)) {
+                    echo '<option  value="'.$row["course_id"].'" required>'.$row["course_name"].'</option>';
+                  }
+                  }else{
+                    echo '<option value="null"   selected disabled>-- No Course --</option>';
+                  }
+                  ?>
+        
+        
+                                    </select>
+                                </div>
+                    </div>
+                    <!--  -->
+                    <div class="input-group mb-3">
+
+
+
+                    </div>
+
+
+                </div>
+                <!--  -->
                 <div class="row">
                     <div class="col">
                         <div class="input-group mb-3">
