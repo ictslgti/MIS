@@ -54,7 +54,7 @@ include_once("menu.php");
 
 </div>
 
-<form action="" method="get">
+<form action="" method="post">
 
 <div class="form-row">
        
@@ -151,7 +151,7 @@ include_once("menu.php");
     <div class="col-md-3 col-sm-12 ">
     <br> <br>
    
-    <button type="submit" class="btn btn-primary rounded-pill btn-block waves-effect onclick='window.location.reload();'  ">
+    <button type="submit" value="allo" name="allo" class="btn btn-primary rounded-pill btn-block waves-effect">
         <i class="fa fa-paper-plane "></i> Allocated</button><br>
     </div>
     
