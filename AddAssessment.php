@@ -6,8 +6,12 @@ $title = "Examinations | SLGTI";
  ?>
 <!--END DON'T CHANGE THE ORDER-->
 
-<!-- added -->
-<!--  -->
+<!-- add assessment code -->
+<?php
+
+
+?>
+<!-- /add asssessment code -->
 
 <!-- start my code -->
 <html>
@@ -21,6 +25,7 @@ $title = "Examinations | SLGTI";
         <div class="shadow p-3 mb-5 bg-white rounded">
 
             <div class="highlight-blue">
+                
                 <div class="container">
                     <div class="intro">
                         <h1 class="display-4 text-center">Asignments Portal</h1>
@@ -47,7 +52,7 @@ $title = "Examinations | SLGTI";
                             <select class="custom-select" id="semisterx" name="semister"
                                 onchange="showModule(this.value)" required>
                                 <option value="null" selected disabled>--Select Semister--</option>
-                                <?php 
+                                <!-- <?php 
                                           $row=1;
                                                 while($row<=2) {
                                                     
@@ -56,7 +61,19 @@ $title = "Examinations | SLGTI";
 
                                                    
                                                 }
-                                            ?>
+                                            ?> -->
+
+                                <?php
+          $sql = "SELECT * FROM `module`";
+          $result = mysqli_query($con, $sql);
+          if (mysqli_num_rows($result) > 0) {
+          while($row = mysqli_fetch_assoc($result)) {
+            echo '<option  value="'.$row["semester_id"].'" required>'.$row["semester_name"].'</option>';
+          }
+          }else{
+            echo '<option value="null"   selected disabled>-- No Semester --</option>';
+          }
+          ?>
 
 
 
@@ -95,8 +112,8 @@ $title = "Examinations | SLGTI";
                             </div>
                             <select class="custom-select" id="inputGroupSelect01">
                                 <option selected>Choose...</option>
-                                <option value="1">A1</option>
-                                <option value="2">A2</option>
+                                <option value="1">Theory</option>
+                                <option value="2">Practical</option>
                             </select>
                         </div>
 
@@ -180,15 +197,7 @@ $title = "Examinations | SLGTI";
                         <center>Module</center>
                     </th>
 
-                    <th>
-                        <center>Module</center>
-                    </th>
-                    <th>
-                        <center>Module</center>
-                    </th>
-                    <th>
-                        <center>Module</center>
-                    </th>
+
 
 
 
@@ -226,21 +235,17 @@ $title = "Examinations | SLGTI";
 <!-- END -->
 
 <script>
-    function showModule(val) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("Module").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("POST", "controller/getModule", true);
-        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xmlhttp.send("semister=" + val);
-    }
-
-
-
-
+function showModule(val) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("Module").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST", "controller/getModule", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("semister=" + val);
+}
 </script>
 
 <?php include_once("footer.php"); ?>
