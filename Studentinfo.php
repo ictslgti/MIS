@@ -28,35 +28,70 @@ include_once("menu.php");
 </a>
 </div><br>
 
+<?php
+if(isset($_GET['delete']))
+{
+  $student_id = $_GET ['delete'];
+  $sql = "DELETE FROM `student` WHERE `student_id`= $student_id";
+  if(mysqli_query($con,$sql))
+  {
+    echo "Recorde Delete Successfully";
+  }
+  else
+  {
+    echo "Error Deleteing Record: ". mysqli_error($con);
+  }
+}
+?>
+
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col" width="">Civil Status</th>
-      <th scope="col" width="">Zip-Code</th>
-      <th scope="col" width="">District</th>
-      <th scope="col" width="">Divisional Secretariat</th>
-      <th scope="col" width="">Blood Group</th>
-      <th scope="col" width="">Emergency Contact Name</th>
-      <th scope="col" width="">Emergency Contact Address</th>
-      <th scope="col" width="">Emergency Contact Phone No</th>
-      <th scope="col" width="">Emergency Contact Relationship</th>
-      <th scope="col" width="">Action</th>
+      <th scope="col" width="5%">Civil Status</th>
+      <th scope="col" width="5%">Zip-Code</th>
+      <th scope="col" width="5%">District</th>
+      <th scope="col" width="10%">Divisional Secretariat</th>
+      <th scope="col" width="2%">Blood Group</th>
+      <th scope="col" width="15%">Emergency Contact Name</th>
+      <th scope="col" width="25%">Emergency Contact Address</th>
+      <th scope="col" width="5%">Emergency Contact Phone No</th>
+      <th scope="col" width="5%">Emergency Contact Relationship</th>
+      <th scope="col" width="10%">Action</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th> <a href="AddStudent.php"> <button class="btn btn-danger" type="submit">Edit</button> </a> </th>
-    </tr>
-  </tbody>
+    <?php
+   
+   $sql = "SELECT * FROM student";
+   if(isset($_GET['student_id']))
+   {
+     $st_id=$_GET['student_id'];
+   }
+   $result = mysqli_query ($con, $sql);
+   if (mysqli_num_rows($result)>0)
+   {
+     while($row = mysqli_fetch_assoc($result))
+     {
+       echo '
+          <tr style="text-align:center";>
+          <th>'. $row["student_status"] . "<br>" .'</th>
+          <th>'. $row["student_zip"] . "<br>" .'</th>
+          <th>'. $row["student_district"] . "<br>" .'</th>
+          <th>'. $row["student_divisions"] . "<br>" .'</th>
+          <th>'. $row["student_blood"] . "<br>" .'</th>
+          <th>'. $row["student_em_name"] . "<br>" .'</th>
+          <th>'. $row["student_em_address"] . "<br>" .'</th>
+          <th>'. $row["student_em_phone"] . "<br>" .'</th>
+          <th>'. $row["student_em_relation"] . "<br>" .'</th>
+          <th> 
+          <a href="AddStudent.php? edit='.$row["student_id"].'"> Edit </a> |
+          <a href="?delete='.$row["student_id"].'"> Delete </a> </th>
+          </tr>';
+      }
+   }
+   else
+   {
+    echo "0 results";
+   }
+?>
 </table>
 
 
