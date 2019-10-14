@@ -16,7 +16,7 @@ include_once("menu.php");
     </div>
     <hr class="my-1">
    
-  
+  <form method="post">
   <div class="form-row">
     <div class="col-md-4 col-sm-12" >
     <br>
@@ -97,7 +97,7 @@ include_once("menu.php");
     <a href="index.php"><<< Back to home </a>
     </div>
     
-   
+   </form>
 </form>
 
 

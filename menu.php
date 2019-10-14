@@ -117,7 +117,7 @@
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="PlacementRequest">Student Placement Request</a>
                  <a class="dropdown-item" href="OJTInfo">Training Place Info </a>
-                 <a class="dropdown-item" href="OJTChange">Placement Chage</a>
+                 <a class="dropdown-item" href="OJTChange">Placement Change</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="OJTReport">OJT Report</a>
              </div>
