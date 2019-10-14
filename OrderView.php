@@ -92,7 +92,7 @@ include_once("menu.php");
 </div>
     <div class="row">
     
-    <div class="col"><a href="FoodOrders" button type="button" class="btn btn-outline-primary">Back</button></a></div>
+    <div class="col"><a href="FoodOrders" button type="button" class="btn btn-info">Back</button></a></div>
     
     
     

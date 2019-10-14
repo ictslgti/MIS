@@ -33,6 +33,27 @@ $title = "Department Details | SLGTI";
                     <h1 class="text-center font-weight-bold">Sri Lanka German Training Institute</h1>
                 </div>
 
+                
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th style="width: 35mm">Name :</th>
+                                <td>Selvarajah Thurgesan</td>
+                            </tr>
+                            <tr>
+                                <th style="">Student No :</th>
+                                <td>2018/SLGTI/5IT/20</td>
+                            </tr>
+                            <tr>
+                                <th style="">Department :</th>
+                                <td>Information Communication Technology</td>
+                            </tr>
+                         
+                        </thead>
+                    </table>
+ 
+                
+
 
                 <div class="container px-lg-5">
                     <div class="row mx-lg-n5">

@@ -8,11 +8,16 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+<div class="intro p-5 mb-5 border border-dark rounded">
+<div class="shadow  p-3 mb-5 bg-white rounded">
+        <div class="highlight-blue">          
+                <div class="intro">
 
-
-
-<h1 class="text-center">Donor Details</h1>
+<h1 class="text-center"><i class="fas fa-user-plus"></i>Donor Details</h1>
 <br>
+</div>
+  </div>
+  </div>
 
 <div class="row">
 
@@ -42,16 +47,18 @@ include_once("menu.php");
 <table class="table">
   <thead class="thead-r">
     <tr>
-      <th scope="col">D_id</th>
-      <th scope="col">Reference id</th>
-      <th scope="col">fullname</th>
-      <th scope="col">Address</th>
+      <th scope="col"><i class="far fa-id-card"></i>&nbsp;D_id</th>
+      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Reference id</th>
+      <th scope="col"><i class="fas fa-users"></i>&nbsp;fullname</th>
+      <th scope="col"><i class="far fa-address-card"></i>&nbsp;Address</th>
       <th scope="col">Email</th>
-      <th scope="col">Blood group</th>
-      <th scope="col">dob</th>
-      <th scope="col">join date</th>
-      <th scope="col">Weight</th>
-      <th scope="col">Gender</th>
+      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;dob</th>
+      <th scope="col"><i class="fas fa-map-marker"></i>&nbsp;Blood group</th>
+      <th scope="col"><i class="fas fa-chalkboard-teacher"></i>&nbsp;designation</th>
+      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;join date</th>
+      <th scope="col"><i class="fas fa-transgender"></i>&nbsp;Gender</th>
+      <th scope="col"><i class="fas fa-weight-hanging"></i>&nbsp;Weight</th>
+      
     </tr>
   </thead>
   <tr>
@@ -66,10 +73,7 @@ include_once("menu.php");
       <td>Otto</td>
       <td>@mdo</td>
       <td>@mdo</td>
-      <td>
-           
-            <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-      </td>
+      <td>18kg </td>
     </tr>
 
     <tr>
@@ -84,10 +88,7 @@ include_once("menu.php");
 <td>Otto</td>
 <td>@mdo</td>
 <td>@mdo</td>
-<td>
-     
-      <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-</td>
+<td>18kg </td>
 </tr>
  
 </table>
@@ -102,11 +103,11 @@ include_once("menu.php");
 <div class="col-2"></div>
 
  <div class="col-1"> 
-    <button type="button" class="btn btn-secondary" onclick="location.href='donor.php'"> Join Donor</button> 
+    <button type="button" class="btn btn-primary" onclick="location.href='donor.php'"><i class="fas fa-sign-in-alt"></i> &nbsp;Join</button> 
     
      </div> 
 </div>
-
+</div>
 
 <!--END OF YOUR COD-->
 

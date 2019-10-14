@@ -8,6 +8,8 @@ $title = "Home | SLGTI";
 <!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+
+
 <div class="row shadow  p-3 mt-1 bg-info text-white">
     <div class="col-sm-12 col-md-4 col-lg-9">
         <h1 class="text-center">EAT GOOD FEEL GOOD</h1>
@@ -33,19 +35,58 @@ $title = "Home | SLGTI";
 </div>
 
  <!-- FOOD MENU DESIGN    -->
+ <?php
+$sql = "SELECT * FROM `food`";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+
+     echo '
+     <tr>
+        <td>'. $row["food_name"].'</td>
+        <td>'. $row["food_unit_qty"]. '</td>
+        <td>'. $row["food_unit_price"].'</td>
+        <td>'. $row["food_measurment"].'</td>
+        <td> 
+        </tr>
+        ';
+       }
+    }
         <div class="row pl-3 pt-4 ">
-            <em><h2 class="display-5">Morning Fare</h2></em>
+            <em><h1 class="display-5">Morning Fare</h1></em>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
-                <div class="card" style="max-height: 9rem;" >
+                <div class="card" >
                     <div class="row">
                         <div class="col pl-5">
-                            <img class="card-img-top" src="img/fish.png" alt="">
+                            <img class="card-img-top responsive" src="img/Itli.png" alt="">
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <h4 class="display-5 mt-3"><p>food_name<br>food_unit_qty<br>food_unit_price<br>food_measurment</p></h4>   
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
+                                <a href="#" class="btn btn-info">Add</a>                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/rotti.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4> 
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -54,14 +95,17 @@ $title = "Home | SLGTI";
             </div>
 
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
-                <div class="card" style="max-height: 9rem;" >
+                <div class="card">
                     <div class="row">
                         <div class="col pl-5">
-                            <img class="card-img-top" src="img/fish.png" alt="">
+                            <img class="card-img-top" src="img/idiappam.png" alt="">
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <h4 class="display-5 mt-3"><p>Idiapa 1 Pc<br> 5/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
                                 <a href="#" class="btn btn-info">Add</a>                                   
                             </div>
                         </div>
@@ -70,40 +114,187 @@ $title = "Home | SLGTI";
             </div>
 
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
-                <div class="card"  style="max-height: 9rem;">
+                <div class="card">
                     <div class="row">
                         <div class="col pl-5">
-                            <img class="card-img-top" src="img/fish.png" alt="">
+                            <img class="card-img-top" src="img/puri.png" alt="">
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h4>  
-                                <a href="#" class="btn btn-info">Add</a>                                   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-6 col-lg-3 pb-5 container">           
-                <div class="card" style="max-height: 9rem;">
-                    <div class="row">
-                        <div class="col pl-5">
-                            <img class="card-img-top" src="img/fish.png" alt="">
-                        </div>
-                        <div class="col">
-                            <div class="card-body">
-                                <h4 class="display-5"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <h4 class="display-5 mt-3"><p>Bread  1 Pc<br> 80/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
                                 <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>   
+        </div>
+
+        <div class="row pl-3 pt-4 ">
+            <em><h1 class="display-5">Afternoon Fare</h1></em>
+            
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card" >
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top responsive" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>F.Rice 1 Pt<br> 80/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4> 
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>    
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4> 
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>    
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3  container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/Spl.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Spl Fd 1 Pt<br> 100/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
+                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+
+
+        <div class="row pl-3 pt-4 ">
+            <em><h1 class="display-5">Night Fare</h1></em>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card" >
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top responsive" src="img/koththu.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Kothu 1 Pt<br>100/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/Pittu.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Pittu 1 Pt<br> 100/=</p></h4>
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>     
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-3 container">           
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
+                                <a href="#" class="btn btn-info">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col container invisible">       
+                <div class="card">
+                    <div class="row">
+                        <div class="col pl-5">
+                            <img class="card-img-top" src="img/fish.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                </div>   
+                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
         </div>
 
         
@@ -118,7 +309,7 @@ $title = "Home | SLGTI";
                         <th><p class="h5">ITEM ID</p></th>
                         <th><p class="h5">ITEM NAME</p></th>
                         <th><p class="h5">QTY</p></th>
-                        <th><p class="h5">AMOUNT</p></th>
+                        <th><p class="h5">PER AMOUNT</p></th>
                     </tr>
                  </thead>
                 <tbody class="table-borderless">

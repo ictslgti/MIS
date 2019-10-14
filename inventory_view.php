@@ -25,9 +25,7 @@ include_once("menu.php");
 </div>
 </div>
 
-<button type="button" class="btn btn-light" ><div class="spinner-grow" role="status">
-  <span class="sr-only">Loading...</span>
-</div> </button>
+
   
 
 
@@ -42,11 +40,12 @@ include_once("menu.php");
 <table class="table">
   <thead class="thead-r">
     <tr>
-      <th scope="col">Department</th>
-      <th scope="col">Inventory</th>
-      <th scope="col">Item</th>
-      <th scope="col">Notice</th>
-      <th scope="col">Quantity</th>
+      <th scope="col">DEPARTMENT ID</th>
+      <th scope="col">INVENTORY ID</th>
+      <th scope="col">ITEM ID</th>
+      <th scope="col">STATAUS</th>
+      <th scope="col">QUANTITY</th>
+      <th scope="col">ACTION</th>
       
     </tr>
   </thead>
@@ -89,8 +88,11 @@ include_once("menu.php");
 <div class="col-3"></div>
 <div class="col-2"></div>
 
- <div class="col-1"> 
-    <button type="button" class="btn btn-secondary" > ..save..</button> 
+<div class="col-md- col-sm- form-group pl- pr-container">
+<button type="submit" class="btn btn-primary ml-2 mt-3 float-right">back </button>
+                          
+                          <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">save </button>
+              </div>
     
      </div> 
 </div>

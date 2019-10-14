@@ -17,11 +17,15 @@
              </a>
              <div class="dropdown-menu " aria-labelledby="Department">
                  <a class="dropdown-item" href="Department">Department Info</a>
-                 <a class="dropdown-item" href="AddDepartment">Add a Department <span class="badge badge-dark">A</span>
-                 </a>
+            <?php if($_SESSION['user_type']=='ADM')
+                echo '<a class="dropdown-item" href="AddDepartment">Add a Department <span class="badge badge-dark">A</span>
+                 </a>';
+            ?>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="AcademicYear">Academic Year Info</a>
-                 <a class="dropdown-item" href="AddAcademicYear">Add a Academic Year</a>
+            <?php if($_SESSION['user_type']=='ADM' || $_SESSION['user_type']=='HOD')
+                echo' <a class="dropdown-item" href="AddAcademicYear">Add a Academic Year</a>';    
+            ?>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="Course">Course Info</a>
                  <a class="dropdown-item" href="AddCourse">Add a Course</a>
@@ -79,6 +83,7 @@
              <div class="dropdown-menu" aria-labelledby="Assessment">
                  <a class="dropdown-item" href="Assessment">Assessment Info</a>
                  <a class="dropdown-item" href="AddAssessment">Add a Assessment</a>
+                 <a class="dropdown-item" href="AddAssessmentResults">Add a Assessment Results</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="AssessmentReport">Assessment Report</a>
                  <div class="dropdown-divider"></div>
@@ -107,8 +112,8 @@
              </a>
              <div class="dropdown-menu" aria-labelledby="ojt">
                  <a class="dropdown-item" href="OJT">On-the-job Training Info</a>
-                 <a class="dropdown-item" href="addojt">Add a Training Place</a>
-                 <a class="dropdown-item" href="OJTRequest">Students Request</a>
+                 <a class="dropdown-item" href="AddTrainingPlace">Add a Training Place</a>
+                 <a class="dropdown-item" href="StudentsRequest">Students Request</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="PlacementRequest">Student Placement Request</a>
                  <a class="dropdown-item" href="OJTInfo">Training Place Info </a>
@@ -187,6 +192,7 @@
                  <a class="dropdown-item" href="FoodOrders">Food Orders</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="CanteenReport">Daily Report</a>
+                 <a class="dropdown-item" href="dailyorder">Daily Orders</a>
              </div>
          </div>
          <div class="dropdown">
@@ -232,14 +238,16 @@
  <!-- Page Content -->
  <div id="page-content-wrapper">
 
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
-         <button class="btn btn-dark" id="menu-toggle"><i class="fas fa-bars"></i> </button>
+     <nav class="navbar navbar-expand-lg border-bottom sticky-top navbar-light bg-light">
+         <button class="btn btn-light" id="menu-toggle"><i class="fas fa-bars"></i> </button>
 
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
          </button>
          <div id="timestamp" class="pr-5 pl-2 ml-auto text-info"></div>
+         <span class="badge badge-dark"><?php echo $_SESSION['user_type'];?></span>
+         <span class="badge badge-dark"><?php echo $_SESSION['department_code'];?></span>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                  <li class="nav-item">
@@ -253,13 +261,13 @@
                  <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         John Smith
+                         <?php echo $_SESSION['user_name'];?>
                          <img src="img/user.png" class="userpicture" role="presentation" aria-hidden="true" width="35"
                              height="35">
                      </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                         <a class="dropdown-item" href="#">Profile</a>
-                         <a class="dropdown-item" href="signin">Signout</a>
+                         <a class="dropdown-item" href="Profile">Profile</a>
+                         <a class="dropdown-item" href="signin?signout">Signout</a>
                      </div>
                  </li>
              </ul>

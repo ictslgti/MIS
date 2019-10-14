@@ -12,8 +12,11 @@ include_once("menu.php");
 <br><br>
 
 
-<div class="col container form-group   p-3 mb-2 bg-light text-dark border border-primary rounded">
-<h1 class="h3 p-4 mb-4 bg-primary text-white rounded text-center "><i class="fas fa-file-alt"></i>   Off-peak Info</h1>
+<div class="intro p-5 mb-5 border border-dark rounded">
+<div class="shadow p-3 mb-5 bg-white rounded"> 
+<h1 class="display-4 text-center "><i class="fas fa-file-alt"></i>   Off-peak Info</h1>
+<br>
+</div>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-thumbs-up"></i> Approved Off-peaks</a>
@@ -29,7 +32,7 @@ include_once("menu.php");
 
 <div class="tab-content">
   <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  <table class="table">
+  <table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
        <th scope="col">#</th>
@@ -72,7 +75,7 @@ include_once("menu.php");
 
 
   </div>
-  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab"><table class="table">
+  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab"><table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
     <th scope="col">#</th>
@@ -118,7 +121,7 @@ include_once("menu.php");
   </tbody>
 </table>
 </div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab"><table class="table">
+  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab"><table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
     <th scope="col">#</th>
@@ -129,7 +132,7 @@ include_once("menu.php");
       <th scope="col">Date</th>
       <th scope="col">Time</th>
       <th scope="col">Reason for exit</th>
-      <th colspan="3">Status</th>
+      
     </tr>
   </thead>
   <tbody>
@@ -142,7 +145,7 @@ include_once("menu.php");
       <td>?????</td>
       <td>????</td>
       <td>??????</td>
-      <td>??????</td>
+      
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -169,6 +172,7 @@ include_once("menu.php");
   
 </div>
 </div>
+<a href="offpeak.php"><<< Back to off-peak requests </a>
    
 
 <!--END OF YOUR COD-->

@@ -25,9 +25,7 @@ include_once("menu.php");
 </div>
 </div>
 
-<button type="button" class="btn btn-light" ><div class="spinner-grow" role="status">
-  <span class="sr-only">Loading...</span>
-</div> </button>
+
   
 
 
@@ -42,11 +40,13 @@ include_once("menu.php");
 <table class="table">
   <thead class="thead-r">
     <tr>
-      <th scope="col">item</th>
-      <th scope="col">name</th>
-      <th scope="col">supplier</th>
-      <th scope="col">supplier phone number</th>
-      <th scope="col">date</th>
+      <th scope="col">ITEM ID</th>
+      <th scope="col">SUPPLIER ID</th>
+      <th scope="col">ITEM PURCHASE</th>
+      <th scope="col">ITEM DESCRIPTION</th>
+      <th scope="col">ITEM CODE</th>
+      <th scope="col">WARRENTY</th>
+      <th scope="col">ACTION</th>
       
     </tr>
   </thead>
@@ -57,6 +57,7 @@ include_once("menu.php");
       <td>@mdo</td>
       <td>Mark</td>
       <td>Otto</td>
+      <td>Ottadsado</td>
       
       <td>
            
@@ -71,6 +72,7 @@ include_once("menu.php");
 <td>@mdo</td>
 <td>Mark</td>
 <td>Otto</td>
+<td>Ottadsado</td>
 
 <td>
      
@@ -89,10 +91,12 @@ include_once("menu.php");
 <div class="col-3"></div>
 <div class="col-2"></div>
 
- <div class="col-1"> 
-    <button type="button" class="btn btn-secondary" > ..save..</button> 
-    
-     </div> 
+<div class="col-md- col-sm- form-group pl- pr-container">
+<button type="submit" class="btn btn-primary ml-2 mt-3 float-right">back </button>
+                          
+                          <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">save </button>
+              </div>
+      
 </div>
 
 

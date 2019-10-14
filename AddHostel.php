@@ -16,19 +16,24 @@ include_once("menu.php");
 
 
           <!-- Content here -->
+
+
+
+          <br>
+          <div class="shadow p-3 mb-5 bg-white rounded">
         
             <blockquote class="blockquote ">
-                <p class=" ml-4" style="font-family: 'Luckiest Guy', cursive; font-size: 50px; padding-left: 450px;   ">Hostel Management System</p>
-                <footer class="blockquote-footer" style=" padding-left: 650px">Hostel Allocation <cite title="Source Title"></cite></footer>
+                <p class="display-4 text-center" >Hostel Management System</p>
+                <footer class="blockquote-footer text-center"">Hostel Allocation <cite title="Source Title"></cite></footer>
             </blockquote>
         
-
+</div>
         
      
 <div class="row">
 
 <div class=" col-sm-6 mt-4">
-<small class="display-4"   style="font-size:25px;">Hostel Accomadation </small>
+<small class="h5" >Hostel Accomadation </small>
 
 </div>
 <div class="col-sm-3 " > 
@@ -44,7 +49,7 @@ include_once("menu.php");
 
 <div class="col-sm-12" >
 
-<hr color ="black" style="height:1px;">
+<hr  >
 </div>
 
 </div>
@@ -53,17 +58,21 @@ include_once("menu.php");
 
 <div class="form-row">
        
-       <div class="form-group col-md-3 ">
-       <label for="id">Student ID&nbsp;<i class="far fa-smile-beam fa-spin"></i></label> <br>
-       <input type="text" class="form-control " id="id" disabled placeholder="ID disabled">
+       <div class="form-group col-md-4 ">
+       <label for="id"><i class="fas fa-user-graduate"></i> Student ID&nbsp;</label> <br>
+       <input type="text" class="form-control " id="id" >
        </div>
 
        
     
        
-       <div class="form-group col-md-9  ">
+       <div class="form-group col-md-4  ">
        <label for="name"><i class="far fa-id-card"></i>&nbsp;Full Name</label> <br>
-       <input type="text" class="form-control " id="name"disabled placeholder="Name disabled">
+       <input type="text" class="form-control " id="name">
+       </div>
+       <div class="form-group col-md-4  ">
+       <label for="name"><i class="fas fa-university"></i>&nbsp;Department</label> <br>
+       <input type="text" class="form-control " id="name">
        </div>
        </div>
 
@@ -72,20 +81,20 @@ include_once("menu.php");
 
 <div class="form-group col-md-6  ">
        <label for="ad"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</label> <br>
-       <textarea name="message" class="rounded  form-control bg-light text-black"  type="text" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3" disabled ></textarea>
+       <textarea name="message" class="rounded  form-control  text-black"  type="text" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3"  ></textarea>
         </div>
 
 
         <div class="col-md-4 mb-3">
             <label for="district"><i class="fas fa-map-marker-alt"></i>&nbsp;District</label>
-            <input type="text" class="form-control" id="district" placeholder="" disabled required>
+            <input type="text" class="form-control" id="district"  required>
           </div>
 
           <div class="col-md-2 mb-3">
             <label for="dis"><i class="fas fa-map-signs"></i>&nbsp;Distance
              <label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;">Home to SLGTI </label>
             </label>
-            <input type="text" class="form-control" id="dis" placeholder="in km" disabled required>
+            <input type="text" class="form-control" id="dis" placeholder="in km"  required>
           </div>
 
        </div>
@@ -95,7 +104,7 @@ include_once("menu.php");
 
 
 <div class="form-group col-md-3  ">
-<label for="hostel"><i class="fas fa-transgender"></i>&nbsp;select Hostel :</label>
+<label for="hostel"><i class="fas fa-transgender"></i>&nbsp;Gender :</label>
 <select name="title" id="gender" class="form-control" >
                <option value="">---Select---</option>
                
@@ -110,23 +119,13 @@ include_once("menu.php");
          <div class="form-group col-md-3  ">
          <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Block No:</label>
         
-         <select name="hostel" id="block" class="form-control" >
-               <option value="">---Select---</option>
-                    <option value="block1">B12 </option>
-                    <option value="block2"> B14 </option>
-                    
-         </select>
+         <input type="text" class="form-control" id="block"  required>
 </div>
 
 <div class="form-group col-md-3  ">
          <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Room No:</label>
         
-         <select name="hostel" id="block" class="form-control" >
-               <option value="">---Select---</option>
-                    <option value="block1">Room-1 </option>
-                    <option value="block2"> Room-2</option>
-                    
-         </select>
+         <input type="text" class="form-control" id="room"  required>
 </div>
 </div>
 
@@ -145,22 +144,34 @@ include_once("menu.php");
             <label for="leave"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Leaving</label>
             <input type="date" class="form-control" id="leave" placeholder=""  required>
           </div>
-
-         <div class="form-group col-md-2 mt-5 ml-5">
-        <button type="submit" class="btn btn-primary rounded-pill btn-block waves-effect onclick='window.location.reload();'  ">
-        <i class="fa fa-paper-plane "></i> Allocated</button><br>
-        </div>    
-        <div class="form-group col-md-2 mt-5 ml-1">
-        <button type="reset" class="btn btn-outline-danger rounded-pill btn-block waves-effect  ">
-        <i class=" fas fa-bolt  "></i> clear</button>
-        </div>
+          </form>
           </div>
+         
+        <div class="row">
+    <div class="col-md-3 col-sm-12 ">
+    <br> <br>
+   
+    <button type="submit" class="btn btn-primary rounded-pill btn-block waves-effect onclick='window.location.reload();'  ">
+        <i class="fa fa-paper-plane "></i> Allocated</button><br>
+    </div>
+    
+   
+    
+    <div class="col-md-3 col-sm-12">
+    <br><br>
+    <button type="reset" class="btn btn-outline-danger rounded-pill btn-block waves-effect  ">
+        <i class=" fas fa-bolt  "></i> clear</button>
+
+</div>
+</div>
+   
+
 
 
           
         
 
-</form>
+
 
 
 

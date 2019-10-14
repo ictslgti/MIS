@@ -15,7 +15,11 @@ include_once("menu.php");
 
           <div class="row">
           <div class="col">
-          <h1>Student Placement Request</h1>
+          <br>
+          <br>
+          <img src="img/SLGTI.png" class="img-fluid" alt="Responsive image">
+          <br>
+          <h1 class="text-primary">Student Placement Request</h1>
           <br>
           <br>
           </div>
@@ -24,21 +28,36 @@ include_once("menu.php");
         <div class="row">
             <div class="col">
                 <form>
-                    <div class="form-group">
-                        <label for="stuname">Student Name</label>
-                        <input type="name" class="form-control" id="stuname" aria-describedby="nameHelp"
-                            placeholder="Enter Full name">
-                        
+                   
+
+                    <div class="col-md-7 mb-4"> 
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bolder"><i class="fas fa-user-graduate"></i>Student Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    <input type="text" class="form-control" id="stu_name" placeholder="Enter Full name" required>
+                    <div class="invalid-feedback" style="width: 80%;">
+                    </div>
+                    </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="exampleInputSID">Student ID</label>
-                        <input type="SID" class="form-control" id="exampleInputSID" placeholder="Enter your Student ID">
+                    <div class="col-md-7 mb-4"> 
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bolder"><i class="fas fa-address-card"></i>Student ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    <input type="text" class="form-control" id="stu_id" placeholder="Enter your Student ID" required>
+                    <div class="invalid-feedback" style="width: 80%;">
+                    </div>
+                    </div>
                     </div>
 
-                    <div class="form-group">
-                    <label for="exampleFormControlSelect1">Department</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <div class="col-md-7 mb-4"> 
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bolder"><i class="far fa-building"></i>Department &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    <select class="form-control" id="Dept" required>
                     <option Readonly>Select Your Department </option>
                     <option>Information & Communication Technology</option>
                     <option>Food Technology</option>
@@ -46,39 +65,76 @@ include_once("menu.php");
                     <option>Electrical & Electronics</option>
                     <option>Mechanical</option>
                     </select>
+                    <div class="invalid-feedback" style="width: 80%;">
+                    </div>
+                    </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="pno">Phone Number</label>
-                        <input type="pno" class="form-control" id="pno" placeholder="enter Phone-no">
+                    <div class="col-md-7 mb-4"> 
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bolder"><i class="fas fa-phone-volume"></i>Phone Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    <input type="text" class="form-control" id="pno" placeholder="Enter Phone-No" required>
+                    <div class="invalid-feedback" style="width: 80%;">
+                    </div>
+                    </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" class="form-control" id="email" placeholder="enter E-mail">
+                    <div class="col-md-7 mb-4"> 
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bolder"><i class="far fa-envelope"></i>  E-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    <input type="text" class="form-control" id="email" placeholder="Enter Your Email" required>
+                    <div class="invalid-feedback" style="width: 80%;">
+                    </div>
+                    </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="Rplace">Request Place</label>
-                        <input type="Rplace" class="form-control" id="Rplace" placeholder="ABC Company">
+                    <div class="col-md-7 mb-4"> 
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bolder"><i class="fas fa-industry"></i>Request Place&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    <input type="text" class="form-control" id="req_place" required>
+                    <div class="invalid-feedback" style="width: 80%;">
+                    </div>
+                    </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="add">Address</label>
-                        <input type="add" class="form-control" id="add" placeholder="No-7,Green Road, Colombo-07">
+                    <div class="col-md-7 mb-4"> 
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bolder"><i class="fas fa-map-marker-alt"></i>Place Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    <input type="text" class="form-control" id="address" placeholder="Enter request place address" required>
+                    <div class="invalid-feedback" style="width: 80%;">
+                    </div>
+                    </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="com">Comments</label>
-                        <input type="com" class="form-control" id="com" placeholder="Write your any other comments">
+                    <div class="col-md-7 mb-4"> 
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bolder"><i class="fas fa-user-graduate"></i>Comments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary">Requesting...</button>
+                    <input type="text" class="form-control" id="cmts">
+                    <div class="invalid-feedback" style="width: 80%;">
+                    </div>
+                    </div>
+                    </div>
+
+                    <div>
+                    <button type="button" class="btn btn-outline-primary font-weight-bolder">Requesting...</button>
+                    </div>
+                   
                     
                 </form>
 
             </div>
         </div>
+        <br>
 
 <!--END OF YOUR COD-->
 
