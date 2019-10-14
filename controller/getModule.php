@@ -24,7 +24,7 @@ if(isset($_POST['semister'])){
         echo '<option  value="'.$row["module_id"].'" required>'.$row["module_name"].'</option>';
         }
     }else{
-        echo '<option value="null"   selected disabled>-- No Courses --</option>';
+        echo '<option value="null"   selected disabled>-- No Module --</option>';
     }
 
 }
