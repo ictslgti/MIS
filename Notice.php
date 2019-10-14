@@ -49,7 +49,7 @@ include_once("menu.php");
                  <div class="card-header"><h3>EVENTS</h3></div>
                 
                          <div class="list-group">
-                                <a href="notice_eventupload" class="list-group-item list-group-item-action list-group-item-primary">Awarding Ceremoney</a>
+                                <a href="notice_eventview" class="list-group-item list-group-item-action list-group-item-primary">Awarding Ceremoney</a>
                                  <a href="" class="list-group-item list-group-item-action list-group-item-danger">Celebration</a>
                                 <a href="" class="list-group-item list-group-item-action list-group-item-secondary">Visitor's Visit</a>
                                 <a href="" class="list-group-item list-group-item-action list-group-item-success">Volunteer</a>
