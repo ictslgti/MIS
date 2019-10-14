@@ -17,12 +17,12 @@ include_once("menu.php");
 
           <!-- Content here -->
 
-        <?php
+          <?php
         if(isset($_POST['allo'])){
-        if(!empty($_POST['id'])&&!empty($_POST['name']&&!empty($_POST['dept']&&!empty($_POST['address']&&!empty($_POST['dist']&&!empty($_POST['dis']
-        &&!empty($_POST['gender']&&!empty($_POST['block']&&!empty($_POST['room']&&!empty($_POST['date']&&!empty($_POST['leave'])){
+        if(!empty($_POST['id'])&&!empty($_POST['name'])&&!empty($_POST['dept'])&&!empty($_POST['address'])&&!empty($_POST['dist'])&&!empty($_POST['dis'])
+        &&!empty($_POST['gender'])&&!empty($_POST['block'])&&!empty($_POST['room'])&&!empty($_POST['date'])&&!empty($_POST['leave'])){
           
-          $id =$_POST['id'];
+          $id=$_POST['id'];
           $name =$_POST['name'];
           $dept =$_POST['dept'];
           $address =$_POST['address'];
@@ -33,8 +33,8 @@ include_once("menu.php");
           $room =$_POST['room'];
           $date =$_POST['date'];
           $leave =$_POST['leave'];
-          $sql=INSERT INTO `hostel` (`student_id`, `fullname`, `department_name`, `address`, `district`, `distance`, `gender`, `block_no`, 
-          `room_no`, `date_of_addmission`, `date_of_leaving`) VALUES ('$id', '$name', '$dept', '$address', '$dist', '$dis', '$gender', '$block', '$room', '$date', '$leave');
+          $sql= "INSERT INTO `hostel` (`student_id`, `fullname`, `department_name`, `address`, `district`, `distance`, `gender`, `block_no`, 
+          `room_no`, `date_of_addmission`, `date_of_leaving`) VALUES ('$id', '$name', '$dept', '$address', '$dist', '$dis', '$gender', '$block', '$room', '$date', '$leave')";
           if(mysqli_query($con,$sql)){
               echo "new record create sucessfully ";
           }else{
@@ -42,6 +42,7 @@ include_once("menu.php");
           }
         }
         }
+      
         ?>
 
           <br>
@@ -79,13 +80,15 @@ include_once("menu.php");
 
 </div>
 
-<form action="" method="post">
+
 
 <div class="form-row">
        
        <div class="form-group col-md-4 ">
+<form method="POST">
+
        <label for="id"><i class="fas fa-user-graduate"></i> Student ID&nbsp;</label> <br>
-       <input type="text" class="form-control " id="id" name="id" >
+       <input type="text" class="form-control " id="id" name="id" required  >
        </div>
 
        
@@ -93,11 +96,11 @@ include_once("menu.php");
        
        <div class="form-group col-md-4  ">
        <label for="name"><i class="far fa-id-card"></i>&nbsp;Full Name</label> <br>
-       <input type="text" class="form-control " id="name">
+       <input type="text" class="form-control " id="name" required >
        </div>
        <div class="form-group col-md-4  ">
        <label for="name"><i class="fas fa-university"></i>&nbsp;Department</label> <br>
-       <input type="text" class="form-control " id="name" name="dept">
+       <input type="text" class="form-control " id="name" name="dept" required >
        </div>
        </div>
 
@@ -106,7 +109,7 @@ include_once("menu.php");
 
 <div class="form-group col-md-6  ">
        <label for="ad"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</label> <br>
-       <textarea name="address" class="rounded  form-control  text-black"  type="text" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3"  ></textarea>
+       <textarea name="address" class="rounded  form-control  text-black"  type="text" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3" required  ></textarea>
         </div>
 
 
@@ -130,7 +133,7 @@ include_once("menu.php");
 
 <div class="form-group col-md-3  ">
 <label for="hostel"><i class="fas fa-transgender"></i>&nbsp;Gender :</label>
-<select name="title" id="gender" name="gender" class="form-control" >
+<select name="title" id="gender" name="gender" class="form-control" required >
                <option value="" selected disabled>---Select---</option>
                
                <option value="male">  Male </option>
@@ -170,21 +173,22 @@ include_once("menu.php");
             <input type="date" class="form-control" id="leave" name="leave" placeholder=""  required>
           </div>
           </form>
+          </form>
           </div>
          
         <div class="row">
     <div class="col-md-3 col-sm-12 ">
     <br> <br>
    
-    <button type="submit" value="allo" name="allo" class="btn btn-primary rounded-pill btn-block waves-effect">
-        <i class="fa fa-paper-plane "></i> Allocated</button><br>
+    <input type="submit" value="allocation" name="allo" class="btn btn-primary rounded-pill btn-block waves-effect">
+       
     </div>
     
    
     
     <div class="col-md-3 col-sm-12">
     <br><br>
-    <button type="reset" class="btn btn-outline-danger rounded-pill btn-block waves-effect  ">
+    <input type="reset" class="btn btn-outline-danger rounded-pill btn-block waves-effect  ">
         <i class=" fas fa-bolt  "></i> clear</button>
 
 </div>

@@ -8,50 +8,14 @@ $title = "Home | SLGTI";
 <!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-
-
 <div class="row shadow  p-3 mt-1 bg-info text-white">
     <div class="col-sm-12 col-md-4 col-lg-9">
         <h1 class="text-center">EAT GOOD FEEL GOOD</h1>
     </div>
-
-    <div class="col-sm-12 col-md-4 col-lg-3">
-        <div class="btn-group dropright">
-            <button class="btn btn-info btn-lg" type="button">DAYS</button>
-            <button type="button" class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-                <button class="dropdown-item" type="button">MONDAY</button>
-                <button class="dropdown-item" type="button">TUESDAY</button>
-                <button class="dropdown-item" type="button">WEDNESDAY</button>
-                <button class="dropdown-item" type="button">THURSDAY</button>
-                <button class="dropdown-item" type="button">FRIDAY</button>
-                <button class="dropdown-item" type="button">SATURDAY</button>
-                <button class="dropdown-item" type="button">SUNDAY</button>
-            </div>
-        </div>
-    </div>
 </div>
 
  <!-- FOOD MENU DESIGN    -->
- <?php
-$sql = "SELECT * FROM `food`";
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
 
-     echo '
-     <tr>
-        <td>'. $row["food_name"].'</td>
-        <td>'. $row["food_unit_qty"]. '</td>
-        <td>'. $row["food_unit_price"].'</td>
-        <td>'. $row["food_measurment"].'</td>
-        <td> 
-        </tr>
-        ';
-       }
-    }
         <div class="row pl-3 pt-4 ">
             <em><h1 class="display-5">Morning Fare</h1></em>
         </div>
@@ -64,16 +28,37 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>food_name<br>food_unit_qty<br>food_unit_price<br>food_measurment</p></h4>   
-                                <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
-                                </div>   
-                                <a href="#" class="btn btn-info">Add</a>                                    
+                                <h4 class="display-5 mt-3">  
+
+                        <?php
+                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd001'";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                echo'
+                                <tr>
+
+                                <td>' . $row ["food_name"].'</td>
+                                <td>' . $row ["food_unit_qty"].'</td>
+                                <td>' . $row ["food_measurements"].'</td>
+                                <td>' . $row ["food_unit_price"].'</td>
+                                </tr>';
+                            }
+                        }else{
+                        echo "0 results";
+                        }
+                        ?> </h4>   
+                                 <div class="pb-1" style="max-width: 4rem;">
+                                 <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                 </div>   
+                                 <a href="#" class="btn btn-info">Add</a>                                    
+                                 </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+
+
 
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
                 <div class="card">
@@ -83,7 +68,26 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4> 
+                            <h4 class="display-5 mt-3"> 
+                            
+                        <?php
+                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd002'";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                echo'
+                                <tr>
+                            
+                                <td>' . $row ["food_name"].'</td>
+                                <td>' . $row ["food_unit_qty"].'</td>
+                                <td>' . $row ["food_measurements"].'</td>
+                                <td>' . $row ["food_unit_price"].'</td>
+                                </tr>';
+                            }
+                        }else{
+                        echo "0 results";
+                        }
+                        ?> </h4> 
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
@@ -93,6 +97,8 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                 </div>
             </div>
+
+
 
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
                 <div class="card">
@@ -102,7 +108,26 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Idiapa 1 Pc<br> 5/=</p></h4>  
+                                <h4 class="display-5 mt-3"> 
+
+                        <?php
+                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd003'";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                echo'
+                                <tr>
+                            
+                                <td>' . $row ["food_name"].'</td>
+                                <td>' . $row ["food_unit_qty"].'</td>
+                                <td>' . $row ["food_measurements"].'</td>
+                                <td>' . $row ["food_unit_price"].'</td>
+                                </tr>';
+                            }
+                        }else{
+                        echo "0 results";
+                        }
+                        ?> </h4>
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
@@ -113,15 +138,36 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>
 
+
+
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
                 <div class="card">
                     <div class="row">
                         <div class="col pl-5">
-                            <img class="card-img-top" src="img/puri.png" alt="">
+                            <img class="card-img-top" src="img/bread.png" alt="">
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Bread  1 Pc<br> 80/=</p></h4>  
+                                <h4 class="display-5 mt-3">
+
+                        <?php
+                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd004'";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                echo'
+                                <tr>
+                            
+                                <td>' . $row ["food_name"].'</td>
+                                <td>' . $row ["food_unit_qty"].'</td>
+                                <td>' . $row ["food_measurements"].'</td>
+                                <td>' . $row ["food_unit_price"].'</td>
+                                </tr>';
+                            }
+                        }else{
+                        echo "0 results";
+                        }
+                        ?> </h4>  
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
@@ -132,6 +178,8 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>   
         </div>
+
+
 
         <div class="row pl-3 pt-4 ">
             <em><h1 class="display-5">Afternoon Fare</h1></em>
@@ -146,7 +194,26 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>F.Rice 1 Pt<br> 80/=</p></h4>  
+                                <h4 class="display-5 mt-3"><p>
+
+                        <?php
+                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd005'";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                echo'
+                                <tr>
+                            
+                                <td>' . $row ["food_name"].'</td>
+                                <td>' . $row ["food_unit_qty"].'</td>
+                                <td>' . $row ["food_measurements"].'</td>
+                                <td>' . $row ["food_unit_price"].'</td>
+                                </tr>';
+                            }
+                        }else{
+                        echo "0 results";
+                        }
+                        ?> </h4>  
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
@@ -157,15 +224,36 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>
 
+
+
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
                 <div class="card">
                     <div class="row">
                         <div class="col pl-5">
-                            <img class="card-img-top" src="img/fish.png" alt="">
+                            <img class="card-img-top" src="img/veg.rice.png" alt="">
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4> 
+                                <h4 class="display-5 mt-3">
+
+                        <?php
+                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd006'";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                echo'
+                                <tr>
+                            
+                                <td>' . $row ["food_name"].'</td>
+                                <td>' . $row ["food_unit_qty"].'</td>
+                                <td>' . $row ["food_measurements"].'</td>
+                                <td>' . $row ["food_unit_price"].'</td>
+                                </tr>';
+                            }
+                        }else{
+                        echo "0 results";
+                        }
+                        ?> </h4> 
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>    
@@ -176,15 +264,36 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>
 
+
+
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
                 <div class="card">
                     <div class="row">
                         <div class="col pl-5">
-                            <img class="card-img-top" src="img/fish.png" alt="">
+                            <img class="card-img-top" src="img/chi.rice.png" alt="">
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4> 
+                                <h4 class="display-5 mt-3">
+
+                        <?php
+                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd007'";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                echo'
+                                <tr>
+                            
+                                <td>' . $row ["food_name"].'</td>
+                                <td>' . $row ["food_unit_qty"].'</td>
+                                <td>' . $row ["food_measurements"].'</td>
+                                <td>' . $row ["food_unit_price"].'</td>
+                                </tr>';
+                            }
+                        }else{
+                        echo "0 results";
+                        }
+                        ?> </h4> 
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>    
@@ -194,6 +303,8 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                 </div>
             </div>
+
+
 
             <div class="col-sm-12 col-md-6 col-lg-3  container">           
                 <div class="card">
@@ -203,7 +314,25 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Spl Fd 1 Pt<br> 100/=</p></h4>  
+                                <h4 class="display-5 mt-3">
+
+                            <?php
+                            $sql = "SELECT * FROM `food` WHERE `food_id`='fd008'";
+                            $result = mysqli_query($con, $sql);
+                            if (mysqli_num_rows($result)>0){
+                                while ($row = mysqli_fetch_assoc($result)){
+                                    echo'
+                                    <tr>
+                                    <td>' . $row ["food_name"].'</td>
+                                    <td>' . $row ["food_unit_qty"].'</td>
+                                    <td>' . $row ["food_measurements"].'</td>
+                                    <td>' . $row ["food_unit_price"].'</td>
+                                    </tr>';
+                                }
+                            }else{
+                            echo "0 results";
+                            }
+                            ?> </h4>
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
@@ -214,6 +343,7 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>   
         </div>
+
 
 
         <div class="row pl-3 pt-4 ">
@@ -228,7 +358,26 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Kothu 1 Pt<br>100/=</p></h4>  
+                                <h4 class="display-5 mt-3">
+
+                        <?php
+                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd009'";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                echo'
+                                <tr>
+                            
+                                <td>' . $row ["food_name"].'</td>
+                                <td>' . $row ["food_unit_qty"].'</td>
+                                <td>' . $row ["food_measurements"].'</td>
+                                <td>' . $row ["food_unit_price"].'</td>
+                                </tr>';
+                            }
+                        }else{
+                        echo "0 results";
+                        }
+                        ?> </h4>  
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
@@ -239,6 +388,8 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>
 
+
+
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
                 <div class="card">
                     <div class="row">
@@ -247,7 +398,26 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Pittu 1 Pt<br> 100/=</p></h4>
+                                <h4 class="display-5 mt-3">
+
+                        <?php
+                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd010'";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                echo'
+                                <tr>
+                            
+                                <td>' . $row ["food_name"].'</td>
+                                <td>' . $row ["food_unit_qty"].'</td>
+                                <td>' . $row ["food_measurements"].'</td>
+                                <td>' . $row ["food_unit_price"].'</td>
+                                </tr>';
+                            }
+                        }else{
+                        echo "0 results";
+                        }
+                        ?> </h4>
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>     
@@ -258,15 +428,36 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>
 
+
+
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
                 <div class="card">
                     <div class="row">
                         <div class="col pl-5">
-                            <img class="card-img-top" src="img/fish.png" alt="">
+                            <img class="card-img-top" src="img/fri.rice.png" alt="">
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <h4 class="display-5 mt-3">
+
+                        <?php
+                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd011'";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                echo'
+                                <tr>
+                            
+                                <td>' . $row ["food_name"].'</td>
+                                <td>' . $row ["food_unit_qty"].'</td>
+                                <td>' . $row ["food_measurements"].'</td>
+                                <td>' . $row ["food_unit_price"].'</td>
+                                </tr>';
+                            }
+                        }else{
+                        echo "0 results";
+                        }
+                        ?> </h4>  
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
@@ -285,7 +476,26 @@ if (mysqli_num_rows($result) > 0) {
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3"><p>Rotti  1 Pc<br> 20/=</p></h4>  
+                                <h4 class="display-5 mt-3">
+
+                        <?php
+                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd012'";
+                        $result = mysqli_query($con, $sql);
+                        if (mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                echo'
+                                <tr>
+                            
+                                <td>' . $row ["food_name"].'</td>
+                                <td>' . $row ["food_unit_qty"].'</td>
+                                <td>' . $row ["food_measurements"].'</td>
+                                <td>' . $row ["food_unit_price"].'</td>
+                                </tr>';
+                            }
+                        }else{
+                        echo "0 results";
+                        }
+                        ?> </h4> 
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
@@ -296,7 +506,7 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>   
         </div>
-
+       
         
         
 <!-- ORDE CART DESIGN  -->

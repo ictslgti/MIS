@@ -16,7 +16,7 @@ include_once("menu.php");
     </div>
     <hr class="my-1">
    
-  <form method="post">
+  <form method="POST">
   <div class="form-row">
     <div class="col-md-4 col-sm-12" >
     <br>
@@ -70,7 +70,7 @@ include_once("menu.php");
     <div class="col-md-7 col-sm-12 ">
     <br> <br>
    
-    <button type="submit" id="rta" class="btn btn-primary btn-md"><i class="fas fa-paper-plane"></i> Request to approval</button>
+    <button type="submit" id="rta" class="btn btn-primary btn-md" <i class="fas fa-paper-plane"></i> Request to approval</button>
     </div>
     
    

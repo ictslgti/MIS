@@ -82,7 +82,8 @@
              </a>
              <div class="dropdown-menu" aria-labelledby="Assessment">
                  <a class="dropdown-item" href="Assessment">Assessment Info</a>
-                 <a class="dropdown-item" href="AddAssessment">Add a Assessment</a>
+                 <a class="dropdown-item" href="AddAssessment">Add Assessment</a>
+                 <a class="dropdown-item" href="AddAssessmentType">Add a Assessment Type</a>
                  <a class="dropdown-item" href="AddAssessmentResults">Add a Assessment Results</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="AssessmentReport">Assessment Report</a>
