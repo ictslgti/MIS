@@ -8,6 +8,11 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+
+
+
+
+
 <div class="row border border-light shadow p-3 mb-5 bg-white rounded">
           <div class="col">
           <br>
@@ -66,12 +71,33 @@ include_once("menu.php");
         <textarea class="form-control"  id="comment"  placeholder="comment"></textarea>
     </div>
 
+    
+    <div class="input-group mb-3 ">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01"> 
+            <i class="fas fa-plus"></i>  </i>&nbsp;&nbsp;Add File&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        </div>
+         <input class="form-control" type="file" name="file" required/></td>
+      
+    </div>
+
+
     <div class="row">
         <div class="col-3">
         </div>
         <div class="col-md-auto"> 
             <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus"></i> 
-            Add Details
+            Add 
+            </button>
+        </div>
+        <div class="col-md-auto"> 
+            <button type="button" class="btn btn-outline-primary">
+            Edit
+            </button>
+        </div>
+        <div class="col-md-auto"> 
+            <button type="button" class="btn btn-outline-primary">
+            Delete
             </button>
         </div>
         <div class="col-3">
