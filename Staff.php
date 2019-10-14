@@ -12,21 +12,21 @@ include_once("menu.php");
 <!-- STAFF info design  -->
 <div class="row">
     <div class="col container pt-3 col-4 " >
-      <h1 ><i class="fas fa-file-alt"></i>STAFF INFO</h1>
+      <h1 ><i class="fas fa-user"></i>   STAFF INFO</h1>
     </div>
-    <div class="col container  col-4 " ></div>
+    <div class="col container col-4"></div>
 </div>
 
-<div class="row">
+<div class="row pb-2">
    <div class="col-sm-12" >
       <hr color ="black" style="height:1px;">
    </div>
 </div>
 
-<div class="row pt-2">
+<div class="row">
   <table class="table">
-    <thead class="thead-light">
-      <tr>
+    <thead class="bg-info">
+      <tr class="text-white">
         <th>StaffID</th>
         <th>Name</th>
         <th>Position</th>
@@ -34,8 +34,28 @@ include_once("menu.php");
         <th>Phone Number</th>
       </tr>
     </thead>
-    <tbody>
-    </tbody>
+
+    <?php
+    $sql="SELECT * from staff";
+    $result=mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)>0)
+    {
+        while($row=mysqli_fetch_assoc($result))
+        {
+        echo '   
+        <tr>
+            <td>'.$row["staff_id"].'</td>
+            <td>'.$row["staff_name"].'</td>
+            <td>'.$row["staff_position"].'</td>
+            <td>'.$row["department_id"].'</td>
+            <td>'.$row["staff_pno"].'</td>
+        </tr>';
+        }
+    }
+    else {
+        echo "0 results";
+    }
+    ?>
   </table>
 </div>
 

@@ -27,30 +27,20 @@ include_once("menu.php");
   <thead class="thead-dark">
  
     <tr >
-      <th scope="col">Academic Year</th>
-      
-    </tr>
-  </thead>
-  <tbody>
- 
-  <tr class="table-light">
-      
-  
-  <td>2018/2019 <span class="badge badge-success">Active </span></td> 
-      
-  
-    
-    
+    <label for="inputPassword5">Add Academic Year</label>
+    <input class="form-control" type="text" placeholder="Academic Year">
     </tr>
    
   </tbody>
   </form>
 </table>
 </div>
+<div class="  p-3 mb-5">
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Add</a>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Delete</a>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Edit</a>
 <a href="AcademicYear" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+</div>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->

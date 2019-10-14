@@ -61,7 +61,7 @@ include_once("menu.php");
   </tbody>
   </form>
 </table>
-
+<br>
 <a href="BatchDetails" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
 <!-- END YOUR CODER HERE -->
 

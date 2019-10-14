@@ -9,43 +9,45 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <form onsubmit="showTeacher(this.value)">
-<div class="row p-3">
-    <div class="col-sm-12 col-md-6 col-lg-3">
-        <div class="form-group">
-            <select class="form-control custom-select" id="Departmentx" name="Department"
-                onchange="showCouese(this.value)" required>
-                <option value="null"  selected disabled>--Select Department--</option>
-                <?php 
-                      $row=1;
-                            while($row<=5) {
-                                
-                               echo '<option  value="'.$row.'" required>Department '.$row.'</option>';
-                               $row++;
-                            }
-                        ?>
-            </select>
+    <div class="row p-3">
+        <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="form-group">
+                <select class="form-control custom-select" id="Departmentx" name="Department"
+                    onchange="showCouese(this.value)" required>
+<option value="null" selected disabled>--Select Department--</option>
+<?php          
+$sql = "SELECT * FROM `department`";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+    echo '<option  value="'.$row["department_id"].'" required>'.$row["department_name"].'</option>';
+    }
+}
+?>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="form-group">
+                <select class="form-control custom-select" id="Course" name="Course" onchange="showModule(this.value)"
+                    required>
+                    <option value="null" selected disabled>--Select Department--</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="form-group">
+                <select class="form-control custom-select" id="Module" name="module" required>
+                    <option value="null" selected disabled>--Select Course--</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+            <button type="button" id="submit" class="btn btn-primary btn-block" onclick="showTeacher()"><i
+                    class="fa fa-user-tie text-light"></i> Searach
+                Teachers</button>
         </div>
     </div>
-    <div class="col-sm-12 col-md-6 col-lg-3">
-        <div class="form-group">
-            <select class="form-control custom-select" id="Course" name="Course" onchange="showModule(this.value)"
-                required>
-                <option value="null" selected disabled>--Select Department--</option>
-            </select>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-3">
-        <div class="form-group">
-            <select class="form-control custom-select" id="Module" name="module" required>
-                <option value="null" selected disabled>--Select Course--</option>
-            </select>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-3">
-        <button type="button" id="submit" class="btn btn-primary btn-block"  onclick="showTeacher()"><i class="fa fa-user-tie text-light"></i> Searach
-            Teachers</button>
-    </div>
-</div>
 </form>
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
@@ -59,7 +61,7 @@ include_once("menu.php");
                 </tr>
             </thead>
             <tbody id="Teacher">
-               
+
             </tbody>
         </table>
     </div>
@@ -134,7 +136,7 @@ function showTeacher() {
     };
     xmlhttp.open("POST", "controller/getTeacher", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("Department=" + did + "&Course="+ cid );
+    xmlhttp.send("Department=" + did + "&Course=" + cid);
 }
 </script>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->

@@ -70,7 +70,7 @@ include_once("menu.php");
     <div class="col-md-7 col-sm-12 ">
     <br> <br>
    
-    <button type="button" id="rta" class="btn btn-primary btn-md"><i class="fas fa-paper-plane"></i> Request to approval</button>
+    <button type="submit" id="rta" class="btn btn-primary btn-md"><i class="fas fa-paper-plane"></i> Request to approval</button>
     </div>
     
    

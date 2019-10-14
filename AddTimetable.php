@@ -21,9 +21,9 @@ include_once("menu.php");
 </div>
 
 <div class="form-group row">
-    <label for="inputID" class="col-sm-2 col-form-label">ID</label>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">period</label>
     <div class="col-sm-10">
-      <input type="ID" class="form-control" id="inputID"required >
+      <input type="text" class="form-control" id="inputEmail3"required >
     </div>
   </div>
 
@@ -62,7 +62,20 @@ include_once("menu.php");
 
 
 
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Course</label>
+    <div class="col-sm-10">
+	<select id="inputState" class="form-control">
+        <option selected>choose</option>
+        <option>Level-06</option>
+		<option>Level-05</option>
+		<option>Bridging-L5</option>
+		<option>Level-4</option>
+		<option>##</option>
 
+      </select>
+    </div>
+  </div>
 
 
 
@@ -87,29 +100,7 @@ include_once("menu.php");
     </div>
   </div>
 
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Time Start</label>
-    <div class="col-sm-10">
-      <input type="time" class="form-control" id="inputEmail3" required >
-    </div>
-  </div>
 
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Time End</label>
-    <div class="col-sm-10">
-      <input type="time" class="form-control" id="inputEmail3" required>
-    </div>
-  </div>
-
-
-
-
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">period</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputEmail3"required >
-    </div>
-  </div>
 
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Class</label>
@@ -127,6 +118,27 @@ include_once("menu.php");
   </div>
 
   <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Time Start</label>
+    <div class="col-sm-10">
+      <input type="time" class="form-control" id="inputEmail3" required >
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Time End</label>
+    <div class="col-sm-10">
+      <input type="time" class="form-control" id="inputEmail3" required>
+    </div>
+  </div>
+
+
+
+
+  
+
+ 
+
+  <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Subject</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="inputEmail3"required >
@@ -142,20 +154,7 @@ include_once("menu.php");
   </div>
 
 
-  <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Course</label>
-    <div class="col-sm-10">
-	<select id="inputState" class="form-control">
-        <option selected>choose</option>
-        <option>Level-06</option>
-		<option>Level-05</option>
-		<option>Bridging-L5</option>
-		<option>Level-4</option>
-		<option>##</option>
-
-      </select>
-    </div>
-  </div>
+ 
 
   <h1 class="text-right">
  

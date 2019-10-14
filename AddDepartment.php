@@ -27,10 +27,10 @@ include_once("menu.php");
   <thead class="thead-dark">
  
     <tr >
-    <th scope="col">Department_ID</th>
-      <th scope="col">Department Name</th>
-    
-   
+    <label for="inputPassword5">Department ID</label>
+    <input class="form-control" type="text" placeholder=>
+    <label for="inputPassword5">Department Name</label>
+    <input class="form-control" type="text" placeholder=>
      
       
     </tr>
@@ -43,10 +43,14 @@ include_once("menu.php");
   </tbody>
   </form>
 </table>
+
+
+<br>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Add</a>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Delete</a>
 <a href="" class="btn btn-success" role="button" aria-pressed="true">Edit</a>
 <a href="Department" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+<br>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->

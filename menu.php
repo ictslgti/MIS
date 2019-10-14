@@ -112,8 +112,8 @@
              </a>
              <div class="dropdown-menu" aria-labelledby="ojt">
                  <a class="dropdown-item" href="OJT">On-the-job Training Info</a>
-                 <a class="dropdown-item" href="addojt">Add a Training Place</a>
-                 <a class="dropdown-item" href="OJTRequest">Students Request</a>
+                 <a class="dropdown-item" href="AddTrainingPlace">Add a Training Place</a>
+                 <a class="dropdown-item" href="StudentsRequest">Students Request</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="PlacementRequest">Student Placement Request</a>
                  <a class="dropdown-item" href="OJTInfo">Training Place Info </a>
@@ -266,7 +266,7 @@
                              height="35">
                      </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                         <a class="dropdown-item" href="#">Profile</a>
+                         <a class="dropdown-item" href="Profile">Profile</a>
                          <a class="dropdown-item" href="signin?signout">Signout</a>
                      </div>
                  </li>

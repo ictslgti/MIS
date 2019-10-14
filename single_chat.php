@@ -93,7 +93,7 @@ include_once("homenav.php");
 </form>
   </div>
   <ul class="list-group list-group-flush ">
-    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> Gafoor Sahan  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> Hi how are you. I'm sahan and what about you</small></li>
+    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> Gafoor Sahan  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> lost my life!!!</small></li>
     <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Abdullah <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> Hello boss you.</small></li>
     <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Faheem  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> feeling love.</small></li>
     <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Nifras  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> how are you.</small></li>
@@ -113,6 +113,7 @@ include_once("homenav.php");
 </div>
 </div>
 </div>
+
 
 
 

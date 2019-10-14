@@ -10,10 +10,14 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 
-
-<h1 class="text-center">Donor Request Form</h1>
+<div class="shadow  p-3 mb-5 bg-white rounded">
+        <div class="highlight-blue">        
+                <div class="intro">
+<h1 class="text-center"><i class="fas fa-user-plus"></i>Donor Request Form</h1>
 <br>
-
+</div>
+  </div>
+  </div>
 <div class="row">
 
 <div class="col-sm-6 " ></div>
@@ -107,6 +111,7 @@ include_once("menu.php");
     </div>
   </div>
   </div>
+  
 
   <button type="submit" class="btn btn-primary" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Donor..</button>
   <button type="submit" class="btn btn-danger" onclick="location.href='BloodDonors.php'" ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>

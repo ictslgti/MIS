@@ -31,16 +31,9 @@ include_once("menu.php");
   <div class="form-group mx-sm-3 mb-2">
   <label for="inputPassword2" class="sr-only">Search</label>
    
-<div class ="col"><select class="custom-select d-block w-100" id="Department" required="">
-                    <option >Search By name or Id</option>
-                    <option>name</option>
-                    <option>id</option>
-               
-               
-               
-                    
-                  
-                  </select>
+<div class ="col">
+<input type="search" class="form-control ds-input" id="search-input" placeholder="Search by username or id" aria-label="Search for..." autocomplete="off" data-docs-version="4.3" spellcheck="false" 
+role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
                   </div>
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> </button>
     
@@ -126,7 +119,7 @@ include_once("menu.php");
 <table class="table table-borderless">
   <thead>
     <tr>
-      <th scope="col">#</th>
+
       <th scope="col">Item name</th>
       <th scope="col">Item QTY</th>
 
@@ -134,25 +127,26 @@ include_once("menu.php");
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
+
       <td>Mark</td>
       <td>Otto</td>
   
     </tr>
     <tr>
-      <th scope="row">2</th>
+  
       <td>Jacob</td>
       <td>Thornton</td>
      
     </tr>
     <tr>
-      <th scope="row">3</th>
+     
    <td>@twitter</td>
    <td>@gmail</td>
     </tr>
   </tbody>
+
 </table>
-<div class="btn-group-toggle" data-toggle="buttons">
+<div class="col-8">
 <button type="button" class="btn btn-primary btn-lg btn-block">Check</button>
 </div>
 </div>
