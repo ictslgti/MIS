@@ -22,7 +22,7 @@ include_once("menu.php");
                         </div>
                             <div class="card-body">
                                 <h6 class="card-title">use submit a form to register your interest at least two months before the exam date.You will be sent an exam entry form and candidate instructions by the end of Month. 
-                                         You will also be sent an exam entry form if you are re-sitting the exam.and you view the your class time tables also. </h6>
+                                         You will also be sent an exam entry form if you are re-sitting the exam.included student and department time table </h6>
                             
                             </div>
                     </div></a>
@@ -32,7 +32,7 @@ include_once("menu.php");
             <div class="card text-white bg-secondary mb-3 mt-5" style="max-width: 18rem;">
                  <div class="card-header">
                  <div class="row">
-                    <div class="col-6"><H5> RESULT</H5></div>
+                    <div class="col-6"><H3> RESULT</H3></div>
                     <div class="col-3"></div>
                     <div class="col-3"> <h2> <i class="fas fa-user-graduate"></i> </h2> </div>
                             </div>
@@ -46,26 +46,19 @@ include_once("menu.php");
         </div>
         <div class="col-md-4 col-sm-12 pl-5 ">
             <div class="card text-white bg-success mb-3 mt-5" style="max-width: 18rem;">
-            <div class="card-header">
-                 <div class="row">
-                    <div class="col-6"><H5> EVENTS</H5></div>
-                    <div class="col-3"></div>
-                    <div class="col-3"> <h2> <i class="fas fa-film"></i> </h2> </div>
-                            </div>
-                        </div>
-
-                
+                 <div class="card-header"><h3>EVENTS</h3></div>
                 
                          <div class="list-group">
-                                <a href="" class="list-group-item list-group-item-action list-group-item-primary">Awading Ceremoney</a>
-                                 <a href="" class="list-group-item list-group-item-action list-group-item-danger">Blood Donation</a>
-                                <a href="" class="list-group-item list-group-item-action list-group-item-secondary">Christmas Day</a>
-                                <a href="" class="list-group-item list-group-item-action list-group-item-success">Hons Minister Visit</a>
-                                <a href="notice_others.php" class="list-group-item list-group-item-action list-group-item-">Others</a>
+                                <a href="notice_eventview.php" class="list-group-item list-group-item-action list-group-item-primary">Awarding Ceremoney</a>
+                                 <a href="" class="list-group-item list-group-item-action list-group-item-danger">Celebration</a>
+                                <a href="" class="list-group-item list-group-item-action list-group-item-secondary">Visitor's Visit</a>
+                                <a href="" class="list-group-item list-group-item-action list-group-item-success">Volunteer</a>
+                                <a href="notice_others" class="list-group-item list-group-item-action list-group-item-">Other Events</a>
                                 
                          </div>
               </div>
               </div>
+              
     </div>
 <!--BLOCK#2 START YOUR CODE HERE -->
 
