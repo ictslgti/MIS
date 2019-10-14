@@ -59,12 +59,12 @@ if(isset($_GET['delete']))
       <th scope="col" width="10%">Action</th>
     </tr>
     <?php
-
-   $sql = "SELECT * FROM student limit 1";
-   if(isset($_GET['student_id']))
-   {
-     $st_id=$_GET['student_id'];
-   }
+   $st_id=$_GET["$student_id"];
+   $sql = "SELECT student_status,student_zip,student_district,student_divisions,
+    student_blood,student_em_name,student_em_address,student_em_phone,student_em_relation
+    FROM student where student_id=$st_id";
+  if(isset($_GET["student_id"]))
+  {
    $result = mysqli_query ($con, $sql);
    if (mysqli_num_rows($result)>0)
    {
@@ -91,6 +91,7 @@ if(isset($_GET['delete']))
    {
     echo "0 results";
    }
+  }
 ?>
 </table>
 
