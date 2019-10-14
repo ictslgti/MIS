@@ -21,9 +21,9 @@ include_once("menu.php");
 </div>
 
 <div class="form-group row">
-    <label for="inputID" class="col-sm-2 col-form-label">Id</label>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">period</label>
     <div class="col-sm-10">
-      <input type="ID" class="form-control" id="inputID"required >
+      <input type="text" class="form-control" id="inputEmail3"required >
     </div>
   </div>
 
@@ -104,12 +104,7 @@ include_once("menu.php");
 
 
 
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">period</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputEmail3"required >
-    </div>
-  </div>
+  
 
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Class</label>
