@@ -60,7 +60,7 @@ include_once("menu.php");
        
        <div class="form-group col-md-4 ">
        <label for="id"><i class="fas fa-user-graduate"></i> Student ID&nbsp;</label> <br>
-       <input type="text" class="form-control " id="id" >
+       <input type="text" class="form-control " id="id" name="id" >
        </div>
 
        
@@ -72,7 +72,7 @@ include_once("menu.php");
        </div>
        <div class="form-group col-md-4  ">
        <label for="name"><i class="fas fa-university"></i>&nbsp;Department</label> <br>
-       <input type="text" class="form-control " id="name">
+       <input type="text" class="form-control " id="name" name="name">
        </div>
        </div>
 
@@ -81,20 +81,20 @@ include_once("menu.php");
 
 <div class="form-group col-md-6  ">
        <label for="ad"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</label> <br>
-       <textarea name="message" class="rounded  form-control  text-black"  type="text" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3"  ></textarea>
+       <textarea name="address" class="rounded  form-control  text-black"  type="text" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3"  ></textarea>
         </div>
 
 
         <div class="col-md-4 mb-3">
             <label for="district"><i class="fas fa-map-marker-alt"></i>&nbsp;District</label>
-            <input type="text" class="form-control" id="district"  required>
+            <input type="text" class="form-control" id="district" name="district"  required>
           </div>
 
           <div class="col-md-2 mb-3">
             <label for="dis"><i class="fas fa-map-signs"></i>&nbsp;Distance
              <label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;">Home to SLGTI </label>
             </label>
-            <input type="text" class="form-control" id="dis" placeholder="in km"  required>
+            <input type="text" class="form-control" id="dis" name="dis" placeholder="in km"  required>
           </div>
 
        </div>
@@ -105,7 +105,7 @@ include_once("menu.php");
 
 <div class="form-group col-md-3  ">
 <label for="hostel"><i class="fas fa-transgender"></i>&nbsp;Gender :</label>
-<select name="title" id="gender" class="form-control" >
+<select name="title" id="gender" name="gender" class="form-control" >
                <option value="" selected disabled>---Select---</option>
                
                <option value="male">  Male </option>
@@ -119,13 +119,13 @@ include_once("menu.php");
          <div class="form-group col-md-3  ">
          <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Block No:</label>
         
-         <input type="text" class="form-control" id="block"  required>
+         <input type="text" class="form-control" id="block" name="block"  required>
 </div>
 
 <div class="form-group col-md-3  ">
          <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Room No:</label>
         
-         <input type="text" class="form-control" id="room"  required>
+         <input type="text" class="form-control" id="room" name="room"  required>
 </div>
 </div>
 
@@ -137,12 +137,12 @@ include_once("menu.php");
 <div class="form-row">
 <div class="col-md-3 mb-3">
             <label for="add"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Addmission</label>
-            <input type="date" class="form-control" id="add" placeholder=""  required>
+            <input type="date" class="form-control" id="add" name="date" placeholder=""  required>
           </div>
 
           <div class="col-md-3 mb-3">
             <label for="leave"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Leaving</label>
-            <input type="date" class="form-control" id="leave" placeholder=""  required>
+            <input type="date" class="form-control" id="leave" name="leave" placeholder=""  required>
           </div>
           </form>
           </div>
