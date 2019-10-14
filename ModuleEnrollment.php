@@ -1,6 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
 <?php
-$title = "Home | SLGTI";
+$title = "Module Enrollment | SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
@@ -10,17 +10,16 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 <div class="shadow p-3 mb-5 bg-white rounded">
-            <div class="highlight-blue">
-                <div class="container">
-                    <div class="intro">
-                        <h1 class="display-4 text-center">Module Enrollment</h1>
-                        <!-- <H3 class="display-5 text-center">Department Of Information & Communication Technology</H3> -->
-                        <p class="text-center">Enroll a module to teacher</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="highlight-blue">
+      <div class="container">
+          <div class="intro">
+              <h1 class="display-4 text-center">Module Enrollment</h1>
+              <!-- <H3 class="display-5 text-center">Department Of Information & Communication Technology</H3> -->
+              <p class="text-center">Enroll a module to teacher in academic year</p>
+          </div>
+      </div>
+  </div>
+  </div>
 
 <form method="GET">
   <div  class="row pb-3">  
@@ -78,12 +77,21 @@ include_once("menu.php");
  
     <div class="col-6">
       <div class="form-row align-items-center">
-        <label for="inputFirstName">Academic Year</label>
-        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Staff_Name</label>
-          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-            <option selected>Choose...</option>
-            <option ></option>
-          </select>
+        <label for="academic_year">Academic Year</label>
+        <select class="custom-select mr-sm-2" id="academic_year" name="academic_year">
+                    <option value="null" selected disabled>-- Select a Academic Year --</option>
+                    <?php
+          $sql = "SELECT * FROM `academic` ORDER BY `academic_year` DESC";
+          $result = mysqli_query($con, $sql);
+          if (mysqli_num_rows($result) > 0) {
+          while($row = mysqli_fetch_assoc($result)) {
+            echo '<option  value="'.$row["academic_year"].'" required>'.$row["academic_year"].'</option>';
+          }
+          }else{
+            echo '<option value="null"   selected disabled>-- No Teacher --</option>';
+          }
+          ?>
+      </select>
       </div>
     </div>
   </div>

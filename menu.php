@@ -266,7 +266,7 @@
                              height="35">
                      </a>
                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                         <a class="dropdown-item" href="#">Profile</a>
+                         <a class="dropdown-item" href="Profile">Profile</a>
                          <a class="dropdown-item" href="signin?signout">Signout</a>
                      </div>
                  </li>
