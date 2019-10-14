@@ -157,9 +157,9 @@
                  <i class="fas fa-file-alt"></i> Inventory
              </a>
              <div class="dropdown-menu" aria-labelledby="Inventory">
-                 <a class="dropdown-item" href="inventory_view table.php">Inventory Info</a>
-                 <a class="dropdown-item" href="add_Inventory.php">Add a Inventory</a>
-                 <a class="dropdown-item" href="add_item">Add a Item</a>
+                 <a class="dropdown-item" href="InventoryInfo">Inventory Info</a>
+                 <a class="dropdown-item" href="AddInventory">Add a Inventory</a>
+                 <a class="dropdown-item" href="AddItem">Add a Item</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="InventoryReport">Inventory Report</a>
              </div>
