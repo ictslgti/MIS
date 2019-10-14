@@ -22,7 +22,7 @@ include_once ("menu.php");
  
 
  <div class="card-body">
-              <div class="col-md-6">
+              <div class="col-Nmd-6">
                 <select class="custom-select d-block w-100" id="Department" required>
                     <option value="">Choose Your Department </option>
                     <option>Food</option>

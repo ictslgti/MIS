@@ -20,21 +20,6 @@ include_once ("menu.php");
     </div>
 <br>
 <br>
-<div class="row">
-            <div class="card-body">
-              <div class="col-md-6 mb-2">
-                <select class="custom-select d-block w-100" id="Department" required>
-                    <option value="">Choose Your Semester </option>
-                    <option>Semister 1</option>
-                    <option>Semister 2</option>
-                </select>
-              <div class="invalid-feedback">
-                Please provide a Department.
-              </div>
-              </div>
-          </div>
-  </div>
-
 
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -52,6 +37,28 @@ include_once ("menu.php");
                       <th>Option</th>
                     </tr>
                   </thead>
+
+                  <?php
+
+                
+
+                if(isset($_GET['dlt']))
+                {
+                    
+                    $m_id = $_GET['dlt'];
+
+                    $sql = "DELETE from module where module_id = $m_id ";
+
+                    if(mysqli_query($con,$sql))
+                    {
+                        echo"Record has been Deleted Succesfully";
+                    }
+                    else
+                    {
+                        echo"Error in Deleting" . mysqli_error($con);
+                    }
+                }
+                ?>
 
                   <tbody>
                     <tr>
