@@ -163,7 +163,7 @@ if (isset($_POST['Add'])) {
                                 <label class="input-group-text" for="inputGroupSelect01"><i
                                         class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Asignments Type</label>
                             </div>
-                            <select class="custom-select" id="inputGroupSelect01" name="assessment_type" value="<?php echo $assessment_type; ?>">
+                            <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['assessment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_type'])){echo ' is-valid';} ?>"" id="inputGroupSelect01" name="assessment_type" value="<?php echo $assessment_type; ?>">
                                 <option selected>Choose...</option>
                                 <option value="1">Theory</option>
                                 <option value="2">Practical</option>
@@ -178,10 +178,9 @@ if (isset($_POST['Add'])) {
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i
-                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment
-                                    Name&nbsp;</span>
+                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Name&nbsp;</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Assessment Name" aria-label="Username"
+                            <input type="text" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_name'])){echo ' is-valid';} ?>"" placeholder="Assessment Name" aria-label="Username"
                                 aria-describedby="basic-addon1" name="assessment_name" value="<?php echo $assessment_name; ?>">
                         </div>
 
@@ -199,6 +198,17 @@ if (isset($_POST['Add'])) {
 
 
             </div>
+            <div class="row justify-content-md-center">
+                    <div class="col col-lg-2">
+    
+                    </div>
+                    <div class="col-md-auto">
+                        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus" value="Add" id="Add"></i> Add Asessments</button>
+                    </div>
+                    <div class="col col-lg-2">
+    
+                    </div>
+                </div>
         </form>
 
         <!--  -->
@@ -216,17 +226,7 @@ if (isset($_POST['Add'])) {
 
 
         <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="col col-lg-2">
-
-                </div>
-                <div class="col-md-auto">
-                    <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus" value="Add" id="Add"></i> Add Asessments</button>
-                </div>
-                <div class="col col-lg-2">
-
-                </div>
-            </div>
+            
 
         </div>
 
