@@ -25,7 +25,7 @@ include_once ("menu.php");
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                    <tr>
+                    <tr style="text-align:center">
                       <th>Course ID</th>
                       <th>Course Name</th>
                       <th>NVQ Level</th>
@@ -82,13 +82,14 @@ include_once ("menu.php");
                                     <td>'. $row["department_name"] .  "<br>" .'</td>
                                     
                                     <td> 
-                                    <a href=" module.php ?course_id='.$row["course_id"].' "> View module </a>  |
+                                    <a href=" Module.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-icon-split"> <span class="text">View Module</span>  </a>  
 
-                                    <a href=" Addcourse.php ?course_id='.$row["course_id"].' "> View Edit </a>    
-                                    |   
-                                    <a href=" ?dlt='.$row["course_id"].' "> Delete </a>  |
+                                    <a href=" BatchDetails.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-icon-split"> <span class="text">Batch</span> </a>
 
-                                    <a href=" BatchDetails.php ?course_id='.$row["course_id"].' "> Batch </a> 
+                                    <a href=" AddCourse.php ?course_id='.$row["course_id"].' " class="btn btn-outline-success"><i class="far fa-edit">View Edit</i> </a>
+
+                                       
+                                    <a href=" ?dlt='.$row["course_id"].' " class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i> </a>  
 
                                     </td> 
                                 </tr>';
