@@ -12,7 +12,7 @@ $title ="Home | SLGTI";
         <div class="col">
           <br>
           <br>
-          <h1>Find your Training Place</h1>
+          <h1 class="text-primary">Find your Training Place</h1>
           <br>
           <br>
           </div>
@@ -21,20 +21,23 @@ $title ="Home | SLGTI";
         <div class="col">
         <form>
                     <div class="form-group">
+                        <i class="fas fa-address-card"></i>
                         <label for="stuid">Student ID</label>
                         <input type="id" class="form-control" id="stuid" aria-describedby="nameHelp" placeholder="Enter your student ID"> 
                     </div>
                     <br>
-                    <button type="button" class="btn btn-outline-info">Find Us</button>
+                    <button type="button" class="btn btn-outline-primary">Find Us</button>
                     <br>
                     <br>
-                    <h4>Your Training Place</h4>
+                    <h4 class="text-primary">Your Training Place</h4>
                     <br>
                     <div class="form-group">
+                        <i class="fas fa-user-graduate"></i>
                         <label for="stuname">Student Name</label>
                         <input type="name" class="form-control" id="stuname" aria-describedby="nameHelp">  
                     </div>
                     <div class="form-group">
+                    <i class="far fa-building"></i>
                     <label for="exampleFormControlSelect1">Department</label>
                     <select class="form-control" id="exampleFormControlSelect1">
                     <option></option>
@@ -46,7 +49,7 @@ $title ="Home | SLGTI";
                     </select>
                     </div>
                     <div class="form-group">
-                        <label for="Rplace">Your Training Place</label>
+                        <label for="Rplace"><i class="fas fa-industry"></i>Your Training Place</label>
                         <input type="Rplace" class="form-control" id="Rplace" >
                     </div>
 

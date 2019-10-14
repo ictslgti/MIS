@@ -80,9 +80,9 @@ if(isset($_POST['Add'])){
 
 <!-- search coding -->
 <?php
-  if(isset($_GET['Search'])){
+  if(isset($_GET['edit'])){
         $id=$_GET['edit'];
-        $sql="SELECT * FROM `staff` WHERE `staff_id`=$id";
+        $sql="SELECT * FROM `staff` WHERE `staff_id`='$id'";
         $result=mysqli_query($con,$sql);
         if(mysqli_num_rows($result)==1){
             $row=mysqli_fetch_assoc($result);
@@ -95,6 +95,7 @@ if(isset($_POST['Add'])){
             $PNO=$row['staff_pno'];
             $DOJ=$row['staff_date_of_join'];
             $EPF=$row['staff_epf'];
+            $Department_id = $row['department_id'];
         }
         else{
           echo "Error".$sql."<br>".mysqli_error($con);
@@ -113,7 +114,7 @@ if(isset($_POST['Add'])){
     <div class="col-sm-3 pt-4"> 
       <form class="form-inline" method="GET">
         <input class="form-control mr-2" type="search" name="edit" placeholder="Staff ID">  
-        <button type="button" class="btn btn-outline-success my-2 my-sm-0"  value="Search" name="Search">Search</button>
+        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
       </form>
     </div>  
 </div>
@@ -139,7 +140,9 @@ if(isset($_POST['Add'])){
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
-                echo '<option  value="'.$row["department_id"].'" required>'.$row["department_name"].'</option>';
+                echo '<option  value="'.$row["department_id"].'" required';
+                if($row["department_id"]==$Department_id) echo ' selected';
+                echo '>'.$row["department_name"].'</option>';
                 }
             }
             ?>
@@ -221,8 +224,8 @@ if(isset($_POST['Add'])){
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Type</label>
       <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Type'])){echo ' is-valid';} ?>"  id="Type" name="Type">
             <option selected disabled>Choose Type</option>
-            <option value="Permanent Staff">Permanent Staff</option>
-            <option value="Temporary  Staff">Temporary  Staff</option>
+            <option value="Permanent">Permanent Staff</option>
+            <option value="Temporary">Temporary  Staff</option>
       </select>
     </div>
   </div>

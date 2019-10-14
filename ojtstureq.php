@@ -19,7 +19,7 @@ include_once("menu.php");
           <br>
           <img src="img/SLGTI.png" class="img-fluid" alt="Responsive image">
           <br>
-          <h1 class="text-primary">Student Placement Request</h1>
+          <h1 class="text-primary">Student OJT Request</h1>
           <br>
           <br>
           </div>
@@ -73,9 +73,9 @@ include_once("menu.php");
                     <div class="col-md-7 mb-4"> 
                     <div class="input-group">
                     <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bolder"><i class="fas fa-phone-volume"></i>Phone Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="input-group-text font-weight-bolder"><i class="fas fa-map-marker-alt"></i>District 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     </div>
-                    <input type="text" class="form-control" id="pno" placeholder="Enter Phone-No" required>
+                    <input type="text" class="form-control" id="dst1" placeholder="Enter your wanted district" required>
                     <div class="invalid-feedback" style="width: 80%;">
                     </div>
                     </div>
@@ -84,9 +84,9 @@ include_once("menu.php");
                     <div class="col-md-7 mb-4"> 
                     <div class="input-group">
                     <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bolder"><i class="far fa-envelope"></i>  E-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="input-group-text font-weight-bolder"><i class="fas fa-map-marker-alt"></i>  District 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     </div>
-                    <input type="text" class="form-control" id="email" placeholder="Enter Your Email" required>
+                    <input type="text" class="form-control" id="dst2" placeholder="Enter your wanted other district" required>
                     <div class="invalid-feedback" style="width: 80%;">
                     </div>
                     </div>
@@ -95,20 +95,11 @@ include_once("menu.php");
                     <div class="col-md-7 mb-4"> 
                     <div class="input-group">
                     <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bolder"><i class="fas fa-industry"></i>Request Place&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="input-group-text font-weight-bolder">Do you want Salary&nbsp;</span>
                     </div>
-                    <input type="text" class="form-control" id="req_place" required>
-                    <div class="invalid-feedback" style="width: 80%;">
-                    </div>
-                    </div>
-                    </div>
-
-                    <div class="col-md-7 mb-4"> 
-                    <div class="input-group">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bolder"><i class="fas fa-map-marker-alt"></i>Place Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    </div>
-                    <input type="text" class="form-control" id="address" placeholder="Enter request place address" required>
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" aria-label="Checkbox for following text input" id="address" placeholder="Enter request place address" required> &nbsp;&nbsp;YES&nbsp;&nbsp;
+                    <input type="checkbox" aria-label="Checkbox for following text input" id="address" placeholder="Enter request place address" required> &nbsp;&nbsp;NO&nbsp;&nbsp;
                     <div class="invalid-feedback" style="width: 80%;">
                     </div>
                     </div>

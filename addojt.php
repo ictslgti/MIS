@@ -23,12 +23,12 @@ $title ="Home | SLGTI";
   <thead>
     <tr>
       <th scope="col" class="bg-primary">No</th>
-      <th scope="col" class="bg-primary">Student ID</th>
-      <th scope="col" class="bg-primary">Phone number</th>
-      <th scope="col" class="bg-primary">E-mail</th>
-      <th scope="col" class="bg-primary">Department</th>
-      <th scope="col" class="bg-primary">Place / company</th>
-      <th scope="col" class="bg-primary">Place Address</th>
+      <th scope="col" class="bg-primary"><i class="fas fa-address-card">..</i>Student ID</th>
+      <th scope="col" class="bg-primary"><i class="fas fa-phone-volume"></i>..Phone number</th>
+      <th scope="col" class="bg-primary"><i class="far fa-envelope">..</i>E-mail</th>
+      <th scope="col" class="bg-primary"><i class="far fa-building">..</i>Department</th>
+      <th scope="col" class="bg-primary"><i class="fas fa-industry">..</i>..Place / company</th>
+      <th scope="col" class="bg-primary"><i class="fas fa-map-marker-alt">..</i>Place Address</th>
     </tr>
   </thead>
   <tbody>
