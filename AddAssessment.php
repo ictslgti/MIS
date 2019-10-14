@@ -8,6 +8,23 @@ $title = "Examinations | SLGTI";
 
 <!-- add assessment code -->
 <?php
+$semester_id=$module_id=$assessment_type=$assessment_name=null;
+
+if (isset($_POST['Add'])) {
+    if (!empty($_POST['semester_id'])
+    &&!empty($_POST['module_id'])
+    &&!empty($_POST['assessment_type'])
+    &&!empty($_POST['assessment_name'])
+    ){
+        $semester_id=$_POST['semester_id'];
+        $module_id=$_POST['module_id'];
+        $assessment_type=$_POST['assessment_type'];
+        $assessment_name=$_POST['assessment_name'];
+
+        # code...
+    }
+    # code...
+}
 
 
 ?>
@@ -25,7 +42,7 @@ $title = "Examinations | SLGTI";
         <div class="shadow p-3 mb-5 bg-white rounded">
 
             <div class="highlight-blue">
-                
+
                 <div class="container">
                     <div class="intro">
                         <h1 class="display-4 text-center">Asignments Portal</h1>
@@ -46,10 +63,9 @@ $title = "Examinations | SLGTI";
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01"><i
-                                        class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
-                                    Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
-                            <select class="custom-select" id="semisterx" name="semister"
+                            <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['semester_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['semester_id'])){echo ' is-valid';} ?>" id="semister_id" name="semister_id" value="<?php echo $semester_id; ?>"
                                 onchange="showModule(this.value)" required>
                                 <option value="null" selected disabled>--Select Semister--</option>
                                 <!-- <?php 
@@ -84,10 +100,9 @@ $title = "Examinations | SLGTI";
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01"><i
-                                        class="fas fa-book-open"></i>&nbsp;&nbsp;Select
-                                    Module&nbsp;</label>
+                                        class="fas fa-book-open"></i>&nbsp;&nbsp;Select Module&nbsp;</label>
                             </div>
-                            <select class="custom-select" id="Module" name="Module" required>
+                            <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>" id="Module" name="module_name" value="<?php echo $module_id; ?>" required>
                                 <option value="null" selected disabled>--Select Module--</option>
                                 <!-- <option selected>Graphic Design</option>
                                 <option value="1">Programming</option>
@@ -110,7 +125,7 @@ $title = "Examinations | SLGTI";
                                 <label class="input-group-text" for="inputGroupSelect01"><i
                                         class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Asignments Type</label>
                             </div>
-                            <select class="custom-select" id="inputGroupSelect01">
+                            <select class="custom-select" id="inputGroupSelect01" name="assessment_type" value="<?php echo $assessment_type; ?>">
                                 <option selected>Choose...</option>
                                 <option value="1">Theory</option>
                                 <option value="2">Practical</option>
@@ -129,7 +144,7 @@ $title = "Examinations | SLGTI";
                                     Name&nbsp;</span>
                             </div>
                             <input type="text" class="form-control" placeholder="Assessment Name" aria-label="Username"
-                                aria-describedby="basic-addon1">
+                                aria-describedby="basic-addon1" name="assessment_name" value="<?php echo $assessment_name; ?>">
                         </div>
 
 
@@ -168,8 +183,7 @@ $title = "Examinations | SLGTI";
 
                 </div>
                 <div class="col-md-auto">
-                    <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Add
-                        Asessments</button>
+                    <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus" value="Add" id="Add"></i> Add Asessments</button>
                 </div>
                 <div class="col col-lg-2">
 
