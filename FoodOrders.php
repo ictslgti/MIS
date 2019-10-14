@@ -12,24 +12,6 @@ $title = "Home | SLGTI";
     <div class="col-sm-12 col-md-4 col-lg-9">
         <h1 class="text-center">EAT GOOD FEEL GOOD</h1>
     </div>
-
-    <div class="col-sm-12 col-md-4 col-lg-3">
-        <div class="btn-group dropright">
-            <button class="btn btn-info btn-lg" type="button">DAYS</button>
-            <button type="button" class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-                <button class="dropdown-item" type="button">MONDAY</button>
-                <button class="dropdown-item" type="button">TUESDAY</button>
-                <button class="dropdown-item" type="button">WEDNESDAY</button>
-                <button class="dropdown-item" type="button">THURSDAY</button>
-                <button class="dropdown-item" type="button">FRIDAY</button>
-                <button class="dropdown-item" type="button">SATURDAY</button>
-                <button class="dropdown-item" type="button">SUNDAY</button>
-            </div>
-        </div>
-    </div>
 </div>
 
  <!-- FOOD MENU DESIGN    -->
@@ -55,7 +37,7 @@ $title = "Home | SLGTI";
                             while ($row = mysqli_fetch_assoc($result)){
                                 echo'
                                 <tr>
-                                
+
                                 <td>' . $row ["food_name"].'</td>
                                 <td>' . $row ["food_unit_qty"].'</td>
                                 <td>' . $row ["food_measurements"].'</td>
