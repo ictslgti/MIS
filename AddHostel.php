@@ -104,7 +104,7 @@ include_once("menu.php");
 
 
 <div class="form-group col-md-3  ">
-<label for="hostel"><i class="fas fa-transgender"></i>&nbsp;select Hostel :</label>
+<label for="hostel"><i class="fas fa-transgender"></i>&nbsp;Gender :</label>
 <select name="title" id="gender" class="form-control" >
                <option value="">---Select---</option>
                
