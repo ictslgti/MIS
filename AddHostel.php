@@ -17,7 +17,32 @@ include_once("menu.php");
 
           <!-- Content here -->
 
-
+        <?php
+        if(isset($_POST['allo'])){
+        if(!empty($_POST['id'])&&!empty($_POST['name']&&!empty($_POST['dept']&&!empty($_POST['address']&&!empty($_POST['dist']&&!empty($_POST['dis']
+        &&!empty($_POST['gender']&&!empty($_POST['block']&&!empty($_POST['room']&&!empty($_POST['date']&&!empty($_POST['leave'])){
+          
+          $id =$_POST['id'];
+          $name =$_POST['name'];
+          $dept =$_POST['dept'];
+          $address =$_POST['address'];
+          $dist =$_POST['dist'];
+          $dis =$_POST['dis'];
+          $gender =$_POST['gender'];
+          $block =$_POST['block'];
+          $room =$_POST['room'];
+          $date =$_POST['date'];
+          $leave =$_POST['leave'];
+          $sql=INSERT INTO `hostel` (`student_id`, `fullname`, `department_name`, `address`, `district`, `distance`, `gender`, `block_no`, 
+          `room_no`, `date_of_addmission`, `date_of_leaving`) VALUES ('$id', '$name', '$dept', '$address', '$dist', '$dis', '$gender', '$block', '$room', '$date', '$leave');
+          if(mysqli_query($con,$sql)){
+              echo "new record create sucessfully ";
+          }else{
+              echo "error :".$sql."<br>".mysqli_error($con);
+          }
+        }
+        }
+        ?>
 
           <br>
           <div class="shadow p-3 mb-5 bg-white rounded">
@@ -72,7 +97,7 @@ include_once("menu.php");
        </div>
        <div class="form-group col-md-4  ">
        <label for="name"><i class="fas fa-university"></i>&nbsp;Department</label> <br>
-       <input type="text" class="form-control " id="name" name="name">
+       <input type="text" class="form-control " id="name" name="dept">
        </div>
        </div>
 
@@ -87,7 +112,7 @@ include_once("menu.php");
 
         <div class="col-md-4 mb-3">
             <label for="district"><i class="fas fa-map-marker-alt"></i>&nbsp;District</label>
-            <input type="text" class="form-control" id="district" name="district"  required>
+            <input type="text" class="form-control" id="district" name="dist"  required>
           </div>
 
           <div class="col-md-2 mb-3">
