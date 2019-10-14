@@ -59,8 +59,8 @@ if(isset($_GET['delete']))
       <th scope="col" width="10%">Action</th>
     </tr>
     <?php
-   
-   $sql = "SELECT * FROM student";
+
+   $sql = "SELECT * FROM student limit 1";
    if(isset($_GET['student_id']))
    {
      $st_id=$_GET['student_id'];
