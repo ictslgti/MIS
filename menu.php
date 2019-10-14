@@ -112,12 +112,12 @@
              </a>
              <div class="dropdown-menu" aria-labelledby="ojt">
                  <a class="dropdown-item" href="OJT">On-the-job Training Info</a>
-                 <a class="dropdown-item" href="addojt">Add a Training Place</a>
-                 <a class="dropdown-item" href="addstureq">Students Request</a>
+                 <a class="dropdown-item" href="AddTrainingPlace">Add a Training Place</a>
+                 <a class="dropdown-item" href="StudentsRequest">Students Request</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="PlacementRequest">Student Placement Request</a>
                  <a class="dropdown-item" href="OJTInfo">Training Place Info </a>
-                 <a class="dropdown-item" href="OJTChange">Placement Chage</a>
+                 <a class="dropdown-item" href="OJTChange">Placement Change</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="OJTReport">OJT Report</a>
              </div>

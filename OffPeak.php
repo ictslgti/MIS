@@ -47,7 +47,7 @@ include_once("menu.php");
       <td>????</td>
       <td>??????</td>
       <td><input type="text" id="cmt"> </td>
-      <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
+      <td><button type="submit" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
     <tr>
       <th scope="row">2</th>
