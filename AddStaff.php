@@ -10,12 +10,13 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 <!-- ADD STAFF PHP CODNG -->
-<?PHP
 
+<?PHP
 // Add coding
 $StaffID=$Department_id=$StaffName=$Address=$DOB=$NIC=$Email=$PNO=$DOJ=$Gender=$EPF=$Position=$Type=null;
 
 if(isset($_POST['Add'])){
+ 
   if(!empty($_POST['StaffID'])
     &&!empty($_POST['Department_id'])
     &&!empty($_POST['StaffName'])
@@ -29,7 +30,7 @@ if(isset($_POST['Add'])){
     &&!empty($_POST['EPF'])
     &&!empty($_POST['Position'])
     &&!empty($_POST['Type'])){
-      
+     
       $StaffID=$_POST['StaffID'];
       $Department_id=$_POST['Department_id'];
       $StaffName=$_POST['StaffName'];
@@ -43,8 +44,8 @@ if(isset($_POST['Add'])){
       $EPF=$_POST['EPF'];
       $Position=$_POST['Position'];
       $Type=$_POST['Type'];
-
-      $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf_no`, `staff_position`, `staff_type`) 
+      echo "gajan";
+       echo $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf`, `staff_position`, `staff_type`) 
       VALUES ('$StaffID','$Department_id','$StaffName','$Address','$DOB','$NIC','$Email','$PNO','$DOJ','$Gender','$EPF','$Position','$Type')";
 
       if(mysqli_query($con,$sql))
@@ -69,8 +70,6 @@ if(isset($_POST['Add'])){
         </div>
         
         ';
-
-
       }
 
     }
@@ -80,9 +79,9 @@ if(isset($_POST['Add'])){
 
 <!-- search coding -->
 <?php
-  if(isset($_GET['Search'])){
+  if(isset($_GET['edit'])){
         $id=$_GET['edit'];
-        $sql="SELECT * FROM `staff` WHERE `staff_id`=$id";
+        $sql="SELECT * FROM `staff` WHERE `staff_id`='$id'";
         $result=mysqli_query($con,$sql);
         if(mysqli_num_rows($result)==1){
             $row=mysqli_fetch_assoc($result);
@@ -95,6 +94,10 @@ if(isset($_POST['Add'])){
             $PNO=$row['staff_pno'];
             $DOJ=$row['staff_date_of_join'];
             $EPF=$row['staff_epf'];
+            $Department_id = $row['department_id'];
+            $Gender= $row['staff_gender'];
+            $Position= $row['staff_position'];
+            $Type= $row['staff_type'];
         }
         else{
           echo "Error".$sql."<br>".mysqli_error($con);
@@ -113,7 +116,7 @@ if(isset($_POST['Add'])){
     <div class="col-sm-3 pt-4"> 
       <form class="form-inline" method="GET">
         <input class="form-control mr-2" type="search" name="edit" placeholder="Staff ID">  
-        <button type="button" class="btn btn-outline-success my-2 my-sm-0"  value="Search" name="Search">Search</button>
+        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
       </form>
     </div>  
 </div>
@@ -139,7 +142,9 @@ if(isset($_POST['Add'])){
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
-                echo '<option  value="'.$row["department_id"].'" required>'.$row["department_name"].'</option>';
+                echo '<option  value="'.$row["department_id"].'" required';
+                if($row["department_id"]==$Department_id) echo ' selected';
+                echo '>'.$row["department_name"].'</option>';
                 }
             }
             ?>
@@ -186,9 +191,17 @@ if(isset($_POST['Add'])){
       <label for="text" class="font-weight-bolder pl-1">Gender</label><br>
         <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Gender'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Gender'])){echo ' is-valid';} ?>"  id="Gender" name="Gender">
               <option selected disabled>Choose Gender</option>
-              <option value="Permanent Staff">Male</option>
-              <option value="Temporary  Staff">Female</option>
-              <option value="Temporary  Staff">Transgender</option>
+              <option value="Male"
+               <?php if($Gender=="Male")  echo 'selected';?>
+               >Male</option>
+               
+              <option value="Female"
+              <?php if($Gender=='Female') echo ' selected';?> 
+              >Female</option>
+
+              <option value="Transgender"
+              <?php if($Gender=='Transgender') echo ' selected';?> 
+              >Transgender</option>
         </select>
     </div>
     <div class="form-group col-lg-4">
@@ -198,22 +211,18 @@ if(isset($_POST['Add'])){
     <div class="form-group col-lg-4">  
     <label class="font-weight-bolder" for="inlineFormCustomSelect">Position</label>
           <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['Position'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Position'])){echo ' is-valid';} ?>"  id="Position" name="Position">
-              <option selected disabled>Choose Postition</option>
-              <option value="Director">Director</option>
-              <option value="Deputy Principal (Academics)">Deputy Principal (Academics)</option>
-              <option value="Deputy Principal (Industrial)">Deputy Principal (Industrial)</option>
-              <option value="Registrar">Registrar</option>
-              <option value="Accountant">Accountant</option>
-              <option value="Head of Department">Head of Department</option>
-              <option value="Lectures">Lectures</option>
-              <option value="HoD Industrial Relations">HoD Industrial Relations</option>
-              <option value="Management Assistants">Management Assistants</option>
-              <option value="Human Resource Officer">Human Resource Officer</option>
-              <option value="IT System Analyst">IT System Analyst</option>
-              <option value="Premises Officer">Premises Officer</option>
-              <option value="Quality Management">Quality Management</option>
-              <option value="Student Affairs Officer">Student Affairs Officer</option>
-              <option value="Warden">Warden</option>
+          <option value="null" selected disabled>--Select Position--</option>
+            <?php          
+              $sql = "SELECT * FROM `staff_position_type` ORDER BY `staff_position`";
+              $result = mysqli_query($con, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                  while($row = mysqli_fetch_assoc($result)) {
+                  echo '<option  value="'.$row["staff_position_type_id"].'" required';
+                  if($row["staff_position_type_name"]==$Position) echo ' selected';
+                  echo '>'.$row["staff_position_type_name"].'</option>';
+                  }
+              }
+              ?>
             </select>
     </div>
     <div class="form-group col-lg-4 pt-2">
@@ -221,8 +230,17 @@ if(isset($_POST['Add'])){
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Type</label>
       <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Type'])){echo ' is-valid';} ?>"  id="Type" name="Type">
             <option selected disabled>Choose Type</option>
-            <option value="Permanent Staff">Permanent Staff</option>
-            <option value="Temporary  Staff">Temporary  Staff</option>
+            <option value="Permanent"
+            <?php if($Type=="Permanent")  echo 'selected';?>
+            >Permanent Staff</option>
+
+            <option value="On Contract"
+            <?php if($Type=="On Contract")  echo 'selected';?>
+            >On Contract</option>
+
+            <option value="Visiting Lecturer"
+            <?php if($Type=="Visiting Lecturer")  echo 'selected';?>
+            >Visiting Lecturer</option>
       </select>
     </div>
   </div>
