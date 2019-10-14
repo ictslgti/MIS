@@ -19,10 +19,10 @@ include_once("menu.php");
 
         <?php
         if(isset($_POST['allo'])){
-        if(!empty($_POST['id'])&&!empty($_POST['name']&&!empty($_POST['dept']&&!empty($_POST['address']&&!empty($_POST['dist']&&!empty($_POST['dis']
-        &&!empty($_POST['gender']&&!empty($_POST['block']&&!empty($_POST['room']&&!empty($_POST['date']&&!empty($_POST['leave'])){
+        if(!empty($_POST['id'])&&!empty($_POST['name'])&&!empty($_POST['dept'])&&!empty($_POST['address'])&&!empty($_POST['dist'])&&!empty($_POST['dis'])
+        &&!empty($_POST['gender'])&&!empty($_POST['block'])&&!empty($_POST['room'])&&!empty($_POST['date'])&&!empty($_POST['leave'])){
           
-          $id =$_POST['id'];
+          $id=$_POST['id'];
           $name =$_POST['name'];
           $dept =$_POST['dept'];
           $address =$_POST['address'];
@@ -33,8 +33,8 @@ include_once("menu.php");
           $room =$_POST['room'];
           $date =$_POST['date'];
           $leave =$_POST['leave'];
-          $sql=INSERT INTO `hostel` (`student_id`, `fullname`, `department_name`, `address`, `district`, `distance`, `gender`, `block_no`, 
-          `room_no`, `date_of_addmission`, `date_of_leaving`) VALUES ('$id', '$name', '$dept', '$address', '$dist', '$dis', '$gender', '$block', '$room', '$date', '$leave');
+          $sql= "INSERT INTO `hostel` (`student_id`, `fullname`, `department_name`, `address`, `district`, `distance`, `gender`, `block_no`, 
+          `room_no`, `date_of_addmission`, `date_of_leaving`) VALUES ('$id', '$name', '$dept', '$address', '$dist', '$dis', '$gender', '$block', '$room', '$date', '$leave')";
           if(mysqli_query($con,$sql)){
               echo "new record create sucessfully ";
           }else{
@@ -42,6 +42,7 @@ include_once("menu.php");
           }
         }
         }
+      
         ?>
 
           <br>
@@ -79,13 +80,13 @@ include_once("menu.php");
 
 </div>
 
-<form action="" method="post">
+<form action="" method="POST">
 
 <div class="form-row">
        
        <div class="form-group col-md-4 ">
        <label for="id"><i class="fas fa-user-graduate"></i> Student ID&nbsp;</label> <br>
-       <input type="text" class="form-control " id="id" name="id" >
+       <input type="text" class="form-control " id="id" name="id"  >
        </div>
 
        

@@ -16,7 +16,7 @@ include_once("menu.php");
     </div>
     <hr class="my-1">
    
-  <form method="post">
+  <form method="POST">
   <div class="form-row">
     <div class="col-md-4 col-sm-12" >
     <br>
