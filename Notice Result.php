@@ -15,7 +15,7 @@ include_once("menu.php");
         <div class="row ">
             <div class="col-sm-12">
                 <div class="bg-primary text-warning">
-                <h1  style="color:white;"> <i class="fas fa-graduation-cap"></i> View Result </h1>
+                <h1  style="color:white;"> <i class="fas fa-chart-line"></i> View Result </h1>
                 </div>
             </div> 
         </div>
@@ -23,16 +23,11 @@ include_once("menu.php");
         
                   <div class="row ml-2 mr-2 mb-2">
 
-                      <div class="col-12">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Type</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
-                          </div>
-                      </div>
+                     
 
                                                         
 
-                      <div class="w-100"></div>
+                      
 
                       <div class="col-6">
                         <div class="form-group">
@@ -73,6 +68,17 @@ include_once("menu.php");
                           </div>   
                       </div>
                      
+                      <div class="col-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Semister</label>
+                            <select class="browser-default custom-select">
+                                <option selected>Open this select menu</option>
+                                <option value="1">Semi I </option>
+                                <option value="2">Semi II</option>
+                              
+                              </select>
+                          </div>   
+                      </div>
 
                     <div class="w-100"></div>
 

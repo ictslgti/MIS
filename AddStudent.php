@@ -30,11 +30,6 @@ include_once("menu.php");
 <form class="needs-validation" novalidate action="">
 
     <div class="form-row">
-        <div class="col-md-3 mb-3">
-          <label for="sid">Student ID:</label>
-          <input type="text" class="form-control" id="sid" placeholder="" aria-describedby="idPrepend" required>
-        </div>
-     
         <div class="col-md-6 mb-3">
           <label for="cid"> Course Name: </label>
           <select name="cid" id="cid" class="form-control" >
@@ -53,6 +48,22 @@ include_once("menu.php");
     </div>
 
     <div class="form-row">
+
+        <div class="col-md-4 mb-3">
+          <label for="sid">Student ID:</label>
+          <input type="text" class="form-control" id="sid" placeholder="" aria-describedby="idPrepend" required>
+        </div>
+
+        <div class="col-md-2 mb-3">
+          <label for="status">Status:</label>
+          <select name="status" id="status" class="form-control" >
+            <option value="" >Select</option>
+            <option value="studying"> Studying </option>
+            <option value="completed"> Completed </option>
+            <option value="exit"> Exit </option>
+          </select>
+        </div>
+
         <div class="col-md-3 mb-3">
           <label for="enrolldate">Enroll Date:</label>
           <input type="text" class="form-control" id="enrolldate" placeholder="" aria-describedby="enrolldatePrepend" required>
@@ -61,16 +72,6 @@ include_once("menu.php");
         <div class="col-md-3 mb-3">
           <label for="exitdate">Exit Date:</label>
           <input type="text" class="form-control" id="exitdate" placeholder="" aria-describedby="exitdatePrepend" required>
-        </div>
-
-        <div class="col-md-3 mb-3">
-          <label for="status">Status:</label>
-          <select name="status" id="status" class="form-control" >
-            <option value="" >Select</option>
-            <option value="studying"> Studying </option>
-            <option value="completed"> Completed </option>
-            <option value="exit"> Exit </option>
-          </select>
         </div>
     </div>
 
@@ -354,16 +355,21 @@ include_once("menu.php");
 <div>
 <p> 
 </div>
-                            
-<div class="form-row">
-    <button class="btn btn-primary" type="submit">Submit form</button>
-    <button class="btn btn-success" type="submit">Update</button>
-</div>       
 
-  
-  
+<?php
+if(isset($_GET['edit']))
+{
+  echo '<input type="submit" name ="Edit" value ="Edit">';
+}
+else
+{
+  echo '<input type="submit" name ="Submit" value ="Submit">';
+}
+?>        
 </form>
 </div>
+
+
 
 
 <!---BLOCK 03--->
