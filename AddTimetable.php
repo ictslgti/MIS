@@ -354,26 +354,49 @@ if(isset($_POST['Add'])){
  
 
   <h1 class="text-right">
- 
-         <div class="row"> 
-		
+
+        
+     
+
          <div class="col-12">
-         <a href="Timetable.php" button type="button" class="btn btn-success"  aria-pressed="true" >Back</button>
-         <a href="#" button type="button" class="btn btn-success"  aria-pressed="true" >Add</button>
-  </a>
+
+
+         <?PHP 
+  echo '<div class="btn-group-horizontal">';
+
+    if(isset($_GET['edit'])){
+      echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+
+    }if(!isset($_GET['delete']) && !isset($_GET['edit'])){
+      echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>ADD</button>';
+
+    }
+      
+      echo '</div>';
+      ?>
          
-  </h1>
+         
   
-  </div>
- </div>
+              
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   </div>
 
  </form>
-
-
-
-  
 
           
  <?php include_once("footer.php"); ?>
