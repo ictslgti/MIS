@@ -10,7 +10,6 @@ include_once("homenav.php");
 <!-- Sidebar -->
 
 
-
 <div class="row">
 <div class="col-4">
 </div>
@@ -34,8 +33,29 @@ include_once("homenav.php");
   <li class="nav-item">
     <a class="nav-link" href="feedback.php">Feedback</a>
   </li>
+  <li class="nav-item">
+  <a class="nav-link" href="create_group.php">Create group</a>
+  </li>
 </ul>
 </nav>
+<?php
+
+$sql = "SELECT * FROM `chat_group` where `chat_group_id`=''";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result)>0){
+    while ($row = mysqli_fetch_assoc($result)){
+        echo'
+        <tr>
+        <td>' . $row ["chat_group_id"].'</td>
+        <td>' . $row ["chat_group_name"].'</td>
+       
+        </tr>';
+    }
+}else{
+echo "0 results";
+}
+
+?>
 
 <div class="card border-light mb-3" style="max-width:900px;">
   <div class="card-header"></div>
