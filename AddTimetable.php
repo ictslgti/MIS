@@ -303,20 +303,20 @@ if(isset($_POST['Add'])){
     <select id="inputState" class="form-control  <?php  if(isset($_POST['Add']) && empty($_POST['ClassRoom'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['ClassRoom'])){echo ' is-valid';} ?>"  id="ClassRoom" name="ClassRoom">
         <option selected>Class  Room</option>
 
-        <option
+        <option  value="LAP-01"
 
         <?php if($ClassRoom=="LAP-01")  echo 'selected';?>
         
         >LAP-01</option>
 
-    <option
+    <option value="LAP-02"
     <?php if($ClassRoom=="LAP-02")  echo 'selected';?>
     >LAP-02</option>
 
-    <option
+    <option  value="LAP-03"
     <?php if($ClassRoom=="LAP-03")  echo 'selected';?>
     >LAP-03</option>
-    <option
+    <option  value="LAP-04"
     <?php if($ClassRoom=="LAP-04")  echo 'selected';?>
     
     >LAP-04</option>
@@ -370,10 +370,7 @@ if(isset($_POST['Add'])){
 
 
 
- <div class="form-row pt-3">
-   
   
-  </div>
 
           
  <?php include_once("footer.php"); ?>
