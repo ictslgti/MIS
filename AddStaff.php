@@ -251,7 +251,7 @@ if(isset($_POST['Add'])){
 
     if(isset($_GET['edit'])){
       echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-      echo'<button type="submit" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 
     }if(isset($_GET['delete']))
     {
