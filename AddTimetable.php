@@ -221,31 +221,33 @@ if(isset($_POST['Add'])){
     <div class="col-sm-10"> 
     <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['WeekDays'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['WeekDays'])){echo ' is-valid';} ?>"  id="WeekDays" name="WeekDays">
         <option selected>Days</option>
-        <option 
+
+
+        <option  value="Monday"
         <?php if($WeekDays=="Monday")  echo 'selected';?>
 
         >Monday</option>
 
-    <option
+    <option value="Tuesday"
 
     <?php if($WeekDays=="Tuesday")  echo 'selected';?>
 
     >Tuesday</option>
 
-    <option
+    <option value="Wednesday"
 
     <?php if($WeekDays=="Wednesday")  echo 'selected';?>
 
     >Wednesday</option>
 
-    <option
+    <option value="Thursday"
 
     <?php if($WeekDays=="Thursday")  echo 'selected';?>
 
     >Thursday</option>
 
 
-    <option
+    <option value="Friday"
 
      <?php if($WeekDays=="Friday")  echo 'selected';?>
     
@@ -263,27 +265,28 @@ if(isset($_POST['Add'])){
     <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['Time'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Time'])){echo ' is-valid';} ?>"  id="Time" name="Time">
         <option selected>Time</option>
 
-        <option
+        <option value="P1-8.30-10.00"
 
         <?php if($Time=="P1-8.30-10.00")  echo 'selected';?>
 
         >P1-8.30-10.00</option>
 
-    <option
+    <option value="P2-10.30-12.00"
 
     <?php if($Time=="P2-10.30-12.00")  echo 'selected';?>
     
     >P2-10.30-12.00</option>
 
 
-    <option
+    <option value="P3-13.00-14.30"
 
 
     <?php if($Time=="P3-13.00-14.30")  echo 'selected';?>
 
     >P3-13.00-14.30</option>
 
-    <option
+    <option value="P4-14.45-16.15"
+
     <?php if($Time=="P4-14.45-16.15")  echo 'selected';?>
     >P4-14.45-16.15</option>
 	
