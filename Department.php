@@ -9,6 +9,13 @@ include_once("menu.php");
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
+
+
+
+
+
+
+
 <div class="shadow  p-3 mb-5 bg-white rounded">
 
         <div class="highlight-blue">
@@ -42,15 +49,15 @@ include_once("menu.php");
   <tr class="table-light">
       
   
-      <td>ICT/001</td>
-      <td>Information & Communications Technology Department</td>
-      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-2" role="group" aria-label="First group">
+      <!-- <td>ICT/001</td> -->
+      <!-- <td>Information & Communications Technology Department</td> -->
+      <!-- <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"> -->
+  <!-- <div class="btn-group mr-2" role="group" aria-label="First group"> -->
   <!-- <button type="button" class="btn btn-outline-success"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></button> -->
   <!-- <div class="input-group-text" ><i class="fas fa-eye"></i></div> -->
-  <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a>
-    <a href="BatchDetails" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a>
-    </td>
+  <!-- <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a> -->
+    <!-- <a href="BatchDetails" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a> -->
+    <!-- </td> -->
      
   
   
@@ -63,16 +70,41 @@ include_once("menu.php");
     <!-- </div> -->
     <!-- <button type="submit" formaction="academic.php" value="Add" name="Add"  class="btn btn-link">Add</button> </td>                            -->
     </tr>
-    <tr class="table-light">
+    <?php
+
+$sql = "SELECT * FROM `department`";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result)>0){
+    while ($row = mysqli_fetch_assoc($result)){
+        echo'
+        <tr>
+        <td>' . $row ["department_id"].'</td>
+        <td>' . $row ["department_name"].'</td>
+        <td>
+        <a href="Course.php?id='.$row["department_id"].'" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a>
+    <a href="BatchDetails" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a>
+    <a href= "AddDepartment.php?edit='.$row["department_id"].'"class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Edit</i></a>
+    <a href= "?delete='.$row["department_id"].'"class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Delete</i></a>
+      
+        </tr>';
+    }
+}else{
+echo "0 results";
+}
+
+
+?>
+
+    <!-- <tr class="table-light"> -->
      
      
-      <td>MT/002</td>
-      <td>Mechanical Technology Department</td>
-      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-  <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a>
-    <a href="BatchDetails"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a>
-    </td>
+      <!-- <td>MT/002</td>
+      <td>Mechanical Technology Department</td> -->
+      <!-- <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"> -->
+  <!-- <div class="btn-group mr-2" role="group" aria-label="First group"> -->
+  <!-- <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a> -->
+    <!-- <a href="BatchDetails"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a> -->
+    <!-- </td> -->
     
     <!-- <button type="button" class="btn btn-secondary">Courses</button> -->
     <!-- <div class="input-group-text" ><i class="fas fa-eye"></i></div> -->
@@ -80,73 +112,89 @@ include_once("menu.php");
       
 
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
-    </tr>
-    <tr class="table-light">
+    <!-- </tr> -->
+    <!-- <tr class="table-light"> -->
     
      
-      <td>EET/003</td>
-      <td>Electrical & Electronic Technology Department</td>
-      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-  <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a>
-    <a href="BatchDetails"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a>
-    </td>
+      <!-- <td>EET/003</td> -->
+      <!-- <td>Electrical & Electronic Technology Department</td> -->
+      <!-- <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"> -->
+  <!-- <div class="btn-group mr-2" role="group" aria-label="First group"> -->
+  <!-- <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a> -->
+    <!-- <a href="BatchDetails"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a> -->
+    <!-- </td> -->
     <!-- <button type="button" class="btn btn-secondary">Courses</button> -->
     <!-- <div class="input-group-text" ><i class="fas fa-eye"></i></div> -->
     <!-- <button type="button" class="btn btn-secondary">Batches</button></td> -->
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
-    </tr>
-    <tr class="table-light ">
+    <!-- </tr> -->
+    <!-- <tr class="table-light "> -->
      
      
-      <td>FT/004</td>
-      <td>Food Technology Department</td>
-      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-  <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a>
-    <a href="BatchDetails" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a>
-    </td>
+      <!-- <td>FT/004</td> -->
+      <!-- <td>Food Technology Department</td> -->
+      <!-- <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"> -->
+  <!-- <div class="btn-group mr-2" role="group" aria-label="First group"> -->
+  <!-- <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a> -->
+    <!-- <a href="BatchDetails" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a> -->
+    <!-- </td> -->
     <!-- <button type="button" class="btn btn-secondary">Courses</button> -->
     <!-- <div class="input-group-text" ><i class="fas fa-eye"></i></div> -->
     <!-- <button type="button" class="btn btn-secondary">Batches</button></td> -->
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
-    </tr>
-    <tr class="table-light">
+    <!-- </tr> -->
+    <!-- <tr class="table-light"> -->
     
      
-      <td>AAT/005</td>
-      <td>Automotive & Agricultural Technology Department</td>
-      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-  <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a>
-    <a href="BatchDetails"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a>
-    </td>
+      <!-- <td>AAT/005</td> -->
+      <!-- <td>Automotive & Agricultural Technology Department</td> -->
+      <!-- <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"> -->
+  <!-- <div class="btn-group mr-2" role="group" aria-label="First group"> -->
+  <!-- <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a> -->
+    <!-- <a href="BatchDetails"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a> -->
+    <!-- </td> -->
     <!-- <button type="button" class="btn btn-secondary">Courses</button> -->
     <!-- <div class="input-group-text" ><i class="fas fa-eye"></i></div> -->
     <!-- <button type="button" class="btn btn-secondary">Batches</button></td> -->
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
-    </tr>
-    <tr class="table-light">
+    <!-- </tr> -->
+    <!-- <tr class="table-light"> -->
      
      
-      <td>CT/006</td>
-      <td>Construction Technology Department</td>
-      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-  <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a>
-    <a href="BatchDetails" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a>
-    </td>
+      <!-- <td>CT/006</td> -->
+      <!-- <td>  </td> -->
+      <!-- <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"> -->
+  <!-- <div class="btn-group mr-2" role="group" aria-label="First group"> -->
+  <!-- <a href="Course"  class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a> -->
+    <!-- <a href="BatchDetails" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a> -->
+    <!-- </td> -->
     <!-- <button type="button" class="btn btn-secondary">Courses</button> -->
     <!-- <div class="input-group-text" ><i class="fas fa-eye"></i></div> -->
     <!-- <button type="button" class="btn btn-secondary">Batches</button></td> -->
       <!-- <td><button type="button" class="btn btn-link">Add</button> </td>  -->
-    </tr>
+    <!-- </tr> -->
    
   </tbody>
   </form>
 </table>
 </div>
-<br>
+
+<?php
+
+if(isset($_GET['delete'])){
+    $department_id = $_GET['delete'];
+    $sql = "DELETE FROM `department` WHERE `department_id` = '$department_id'";
+    
+    if (mysqli_query($con, $sql)){
+        echo '<div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%">Delete Success</div>
+      </div>';
+    }else{
+        echo "Error deleting record:" . mysqli_error($con);
+    }
+}
+
+?>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->

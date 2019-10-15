@@ -219,13 +219,39 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">WeekDays</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control">
+    <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['WeekDays'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['WeekDays'])){echo ' is-valid';} ?>"  id="WeekDays" name="WeekDays">
         <option selected>Days</option>
-        <option>Monday</option>
-		<option>Tuesday</option>
-		<option>Wednesday</option>
-		<option>Thursday</option>
-		<option>Friday</option>
+
+
+        <option  value="Monday"
+        <?php if($WeekDays=="Monday")  echo 'selected';?>
+
+        >Monday</option>
+
+    <option value="Tuesday"
+
+    <?php if($WeekDays=="Tuesday")  echo 'selected';?>
+
+    >Tuesday</option>
+
+    <option value="Wednesday"
+
+    <?php if($WeekDays=="Wednesday")  echo 'selected';?>
+
+    >Wednesday</option>
+
+    <option value="Thursday"
+
+    <?php if($WeekDays=="Thursday")  echo 'selected';?>
+
+    >Thursday</option>
+
+
+    <option value="Friday"
+
+     <?php if($WeekDays=="Friday")  echo 'selected';?>
+    
+    >Friday</option>
 
       </select>
     </div>
@@ -236,13 +262,33 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Time</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control">
+    <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['Time'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Time'])){echo ' is-valid';} ?>"  id="Time" name="Time">
         <option selected>Time</option>
 
-        <option>P1-8.30-10.00</option>
-		<option>P2-10.30-12.00</option>
-		<option>P3-13.00-14.30</option>
-		<option>P4-14.45-16.15</option>
+        <option value="P1-8.30-10.00"
+
+        <?php if($Time=="P1-8.30-10.00")  echo 'selected';?>
+
+        >P1-8.30-10.00</option>
+
+    <option value="P2-10.30-12.00"
+
+    <?php if($Time=="P2-10.30-12.00")  echo 'selected';?>
+    
+    >P2-10.30-12.00</option>
+
+
+    <option value="P3-13.00-14.30"
+
+
+    <?php if($Time=="P3-13.00-14.30")  echo 'selected';?>
+
+    >P3-13.00-14.30</option>
+
+    <option value="P4-14.45-16.15"
+
+    <?php if($Time=="P4-14.45-16.15")  echo 'selected';?>
+    >P4-14.45-16.15</option>
 	
       
 
@@ -255,15 +301,28 @@ if(isset($_POST['Add'])){
 
 
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Class Room</label>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">ClassRoom</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control">
+    <select id="inputState" class="form-control  <?php  if(isset($_POST['Add']) && empty($_POST['ClassRoom'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['ClassRoom'])){echo ' is-valid';} ?>"  id="ClassRoom" name="ClassRoom">
         <option selected>Class  Room</option>
 
-        <option>LAP-01</option>
-		<option>LAP-02</option>
-		<option>LAP-03</option>
-		<option>LAP-04</option>
+        <option  value="LAP-01"
+
+        <?php if($ClassRoom=="LAP-01")  echo 'selected';?>
+        
+        >LAP-01</option>
+
+    <option value="LAP-02"
+    <?php if($ClassRoom=="LAP-02")  echo 'selected';?>
+    >LAP-02</option>
+
+    <option  value="LAP-03"
+    <?php if($ClassRoom=="LAP-03")  echo 'selected';?>
+    >LAP-03</option>
+    <option  value="LAP-04"
+    <?php if($ClassRoom=="LAP-04")  echo 'selected';?>
+    
+    >LAP-04</option>
 	
       
 
@@ -295,29 +354,49 @@ if(isset($_POST['Add'])){
  
 
   <h1 class="text-right">
- 
-         <div class="row"> 
-		
+
+        
+     
+
          <div class="col-12">
-         <a href="Timetable.php" button type="button" class="btn btn-success"  aria-pressed="true" >Back</button>
-         <a href="#" button type="button" class="btn btn-success"  aria-pressed="true" >Add</button>
-  </a>
+
+
+         <?PHP 
+  echo '<div class="btn-group-horizontal">';
+
+    if(isset($_GET['edit'])){
+      echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+
+    }if(!isset($_GET['delete']) && !isset($_GET['edit'])){
+      echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>ADD</button>';
+
+    }
+      
+      echo '</div>';
+      ?>
          
-  </h1>
+         
   
-  </div>
- </div>
+              
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   </div>
 
  </form>
-
-
-
- <div class="form-row pt-3">
-   
-  
-  </div>
 
           
  <?php include_once("footer.php"); ?>
