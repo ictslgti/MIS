@@ -30,27 +30,27 @@ if(isset($_GET['edit']))
   if(mysqli_num_rows($result)==1)
   {
     $row =mysqli_fetch_assoc($result);
-    $stid = $row['student_id']
-    $title = $row['student_title']
-    $fname = $row['student_fullname']
-    $ininame = $row['student_ininame']
-    $gender = $row['student_gender']
-    $civil = $row['student_civil']
-    $email = $row['student_email']
-    $nic = $row['student_nic']
-    $dob = $row['student_dob']
-    $phone = $row['student_phone']
-    $address = $row['student_address']
-    $zip = $row['student_zip']
-    $district = $row['student_district']
-    $division = $row['student_divisions']
-    $province = $row['student_provice']
-    $blood = $row['student_blood']
-    $ename = $row['student_em_name']
-    $eaddress = $row['student_em_address']
-    $ephone = $row['student_em_phone']
-    $erelation = $row['student_em_relation']
-    $status =$row['student_status']
+    $stid = $row['student_id'];
+    $title = $row['student_title'];
+    $fname = $row['student_fullname'];
+    $ininame = $row['student_ininame'];
+    $gender = $row['student_gender'];
+    $civil = $row['student_civil'];
+    $email = $row['student_email'];
+    $nic = $row['student_nic'];
+    $dob = $row['student_dob'];
+    $phone = $row['student_phone'];
+    $address = $row['student_address'];
+    $zip = $row['student_zip'];
+    $district = $row['student_district'];
+    $division = $row['student_divisions'];
+    $province = $row['student_provice'];
+    $blood = $row['student_blood'];
+    $ename = $row['student_em_name'];
+    $eaddress = $row['student_em_address'];
+    $ephone = $row['student_em_phone'];
+    $erelation = $row['student_em_relation'];
+    $status =$row['student_status'];
   }
 }
 ?>
@@ -86,13 +86,13 @@ if(isset($_GET['edit']))
 
         <div class="col-md-4 mb-3">
           <label for="sid">Student ID:</label>
-          <input type="text" class="form-control" id="sid" value="<?php echo $sid ?>" placeholder="" aria-describedby="idPrepend" required>
+          <input type="text" class="form-control" id="sid" value="<?php echo $stid ?>" placeholder="" aria-describedby="idPrepend" required>
         </div>
 
         <div class="col-md-2 mb-3">
           <label for="status">Status:</label>
-          <select name="status" id="status" class="form-control" value="<?php// echo $civil ?>">
-            <option value="" disabled selected>Select</option>
+          <select name="status" id="status" class="form-control" >
+            <option  disabled selected></option>
             <option value="studying"> Studying </option>
             <option value="completed"> Completed </option>
             <option value="exit"> Exit </option>
@@ -121,8 +121,14 @@ if(isset($_GET['edit']))
     <div class="form-row">
           <div class="col-md-2 mb-3">
           <label for="title"> Title: </label>
-          <select name="title" id="title" class="form-control" value="<?php echo $title ?>">
-               <option value="">Select</option>
+          <select name="title" id="title" class="form-control">
+              <?php
+               if ($row["student_title"]==$title)
+               {
+                 echo 'selected'; 
+               }
+              ?>
+               <option>select</option>
                     <option value="mr"> Mr </option>
                     <option value="mrs"> Mrs </option>
                     <option value="miss"> Miss </option>
@@ -144,7 +150,7 @@ if(isset($_GET['edit']))
 
         <div class="col-md-2 mb-3">
             <label for="gender"> Gender: </label>
-            <select name="gender" id="gender" class="form-control" value="<?php echo $gender ?>" >
+            <select name="gender" id="gender" class="form-control">
                 <option value="">Select</option>
                 <option value="male"> Male </option>
                 <option value="female"> Female </option>
@@ -153,7 +159,7 @@ if(isset($_GET['edit']))
 
         <div class="col-md-3 mb-3">
             <label for="civilstatus"> Civil Status: </label>
-            <select name="civilstatus" id="civilstatus" class="form-control" value="<?php echo $civil ?>">
+            <select name="civilstatus" id="civilstatus" class="form-control">
                 <option value="">Select</option>
                 <option value="male"> Single </option>
                 <option value="female"> Maried </option>
@@ -202,7 +208,7 @@ if(isset($_GET['edit']))
           
           <div class="col-md-2 mb-3">
             <label for="district"> District: </label>
-            <select name="district" id="district" class="form-control" value="<?php echo $district ?>" >
+            <select name="district" id="district" class="form-control" >
                 <option value="">Select</option>
                 <option value="2"> Ampara </option>
                 <option value="2"> Batticalo </option>
@@ -239,7 +245,7 @@ if(isset($_GET['edit']))
           
           <div class="col-md-2 mb-3">
             <label for="province"> Province: </label>
-            <select name="province" id="province" value="<?php echo $province ?>" class="form-control" >
+            <select name="province" id="province" class="form-control" >
                 <option value="">Select</option>
                 <option value="1"> Northen </option>
                 <option value="2"> Eastern </option>
@@ -255,7 +261,7 @@ if(isset($_GET['edit']))
 
           <div class="col-md-2 mb-3">
             <label for="bloodgroup"> Blood Group: </label>
-            <select name="bloodgroup" id="bloodgroup" value="<?php echo $blood ?>" class="form-control" >
+            <select name="bloodgroup" id="bloodgroup" class="form-control" >
                 <option value="">Select</option>
                 <option value="a+"> A+ </option>
                 <option value="a-"> A- </option>
