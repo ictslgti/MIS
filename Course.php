@@ -21,55 +21,86 @@ include_once ("menu.php");
  
  
 
- <div class="card-body">
-              <div class="col-md-6">
-                <select class="custom-select d-block w-100" id="Department" required>
-                    <option value="">Choose Your Department </option>
-                    <option>Food</option>
-                    <option>Machanical</option>
-                    <option>ICT</option>
-                </select>
-              <div class="invalid-feedback">
-                Please provide a Department.
-              </div>
-              </div>
-          </div>
-
-
-
   <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                    <tr>
+                    <tr style="text-align:center">
                       <th>Course ID</th>
                       <th>Course Name</th>
                       <th>NVQ Level</th>
+                      <th>Department Name</th>
                       <th>Actions</th>
                       
                     </tr>
                   </thead>
+
+                  <?php
+
+                    if(isset($_GET['dlt']))
+                    {
+                        
+                        $c_id = $_GET['dlt'];
+
+                        $sql = "DELETE from course where course_id = '$c_id' ";
+
+                        if(mysqli_query($con,$sql))
+                        {
+                            echo"Record has been Deleted Succesfully";
+                        }
+                        else
+                        {
+                            echo"Error in Deleting" . mysqli_error($con);
+                        }
+                    }
+                    ?>
+
                   <tbody>
-                    <tr>
-                      <td>K201</td>
-                      <td>5IT</td>
-                      <td>5</td>
-                      <td>
-                      <a href="Module" class="btn btn-primary btn-icon-split"> <span class="text">View Module</span></a>
-                      <a href="course_view_more" class="btn btn-primary btn-icon-split"><span class="text">View More</span></a>
-                      <a href="#" class="btn btn-primary btn-icon-split"><span class="text">Batch</span></a>
-                    </td>
-                    </tr>
-                    <tr>
-                      <td>K202</td>
-                      <td>4TE</td>
-                      <td>4</td>
-                      <td>
-                      <a href="#" class="btn btn-primary btn-icon-split"> <span class="text">View Module</span></a>
-                      <a href="#" class="btn btn-primary btn-icon-split"><span class="text">View More</span></a>
-                      <a href="#" class="btn btn-primary btn-icon-split"><span class="text">Batch</span></a>
-                    </td>
-                    </tr>
+                  <?php 
+
+
+                    $sql = "SELECT course.course_id AS course_id, 
+                    course.course_name as course_name, 
+                    course.course_nvq_level as course_nvq_level,
+                    department.department_name as department_name
+                    from `course` 
+                    left JOIN `department` 
+                    ON course.department_id = department.department_id";
+                    
+                    $result = mysqli_query($con,$sql);
+
+                    if(mysqli_num_rows($result)>0)
+                        { 
+                          //output data of each row
+                            while($row = mysqli_fetch_assoc($result))
+                            {
+                                echo '
+                                <tr style="text-align:center">
+                                    <td>'. $row["course_id"] . "<br>" .'</td>
+                                    <td>'. $row["course_name"] .  "<br>" .'</td>
+                                    <td>'. $row["course_nvq_level"] .  "<br>" .'</td>
+                                    <td>'. $row["department_name"] .  "<br>" .'</td>
+                                    
+                                    <td> 
+                                    <a href=" Module.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-icon-split"> <span class="text">View Module</span>  </a>  
+
+                                    <a href=" BatchDetails.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-icon-split"> <span class="text">Batch</span> </a>
+
+                                    <a href=" AddCourse.php ?course_id='.$row["course_id"].' " class="btn btn-outline-success"><i class="far fa-edit">View Edit</i> </a>
+
+                                       
+                                    <a href=" ?dlt='.$row["course_id"].' " class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i> </a>  
+
+                                    </td> 
+                                </tr>';
+                            }
+                        }
+                        else
+                        {
+                            echo "0 results";
+                        }
+                    ?>
+                   
                   </tbody>
                 </table>
                 

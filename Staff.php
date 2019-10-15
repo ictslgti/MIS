@@ -34,6 +34,28 @@ include_once("menu.php");
         <th>Phone Number</th>
       </tr>
     </thead>
+
+    <?php
+    $sql="SELECT * from staff";
+    $result=mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)>0)
+    {
+        while($row=mysqli_fetch_assoc($result))
+        {
+        echo '   
+        <tr>
+            <td>'.$row["staff_id"].'</td>
+            <td>'.$row["staff_name"].'</td>
+            <td>'.$row["staff_position"].'</td>
+            <td>'.$row["department_id"].'</td>
+            <td>'.$row["staff_pno"].'</td>
+        </tr>';
+        }
+    }
+    else {
+        echo "0 results";
+    }
+    ?>
   </table>
 </div>
 

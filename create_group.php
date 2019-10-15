@@ -39,16 +39,16 @@ include_once("menu.php");
   <p class="card-text "><h1><i class="fas fa-users float-right"></h1></i><h5 class="text-center">Student Contact </h5></p> 
   </div>
   <ul class="list-group list-group-flush ">
-    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> Gafoor Sahan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hi how are you. I'm sahan and what about you</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Abdullah <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hello boss you.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Faheem <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> feeling love.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Nifras <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> how are you.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Kajan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> So what.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Thilogini <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hmmmmmmm.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Janani <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center">Tommorow will you come.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Sarujan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> I'm Sleeping.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Newsika <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> i call HOd.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Sanjeevan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Java is the best language.</small></li>
+    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> Gafoor Sahan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> </li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Abdullah <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Faheem <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Nifras <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> </li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Kajan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> </li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Thilogini <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Janani <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Sarujan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Newsika <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Sanjeevan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"></li>
     
 
    
@@ -59,7 +59,7 @@ include_once("menu.php");
 </div>
 </div>
 </div>
-ccccc
+
 </div>
 </div>
 
@@ -80,6 +80,6 @@ ccccc
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->
     <?php 
-    include_once("footer.php");
+    include_once("footer.php");                                                          
     ?>
     <!-- END DON'T CHANGE THE ORDER -->
