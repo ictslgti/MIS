@@ -229,7 +229,7 @@ if(isset($_POST['Add'])){
 
         <option>P1-8.30-10.00</option>
 		<option>P2-10.30-12.00</option>
-		<option>P3-13.00-14.300</option>
+		<option>P3-13.00-14.30</option>
 		<option>P4-14.45-16.15</option>
 	
       
