@@ -219,13 +219,37 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">WeekDays</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control">
+    <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['WeekDays'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['WeekDays'])){echo ' is-valid';} ?>"  id="WeekDays" name="WeekDays">
         <option selected>Days</option>
-        <option>Monday</option>
-		<option>Tuesday</option>
-		<option>Wednesday</option>
-		<option>Thursday</option>
-		<option>Friday</option>
+        <option 
+        <?php if($WeekDays=="Monday")  echo 'selected';?>
+
+        >Monday</option>
+
+    <option
+
+    <?php if($WeekDays=="Tuesday")  echo 'selected';?>
+
+    >Tuesday</option>
+
+    <option
+
+    <?php if($WeekDays=="Wednesday")  echo 'selected';?>
+
+    >Wednesday</option>
+
+    <option
+
+    <?php if($WeekDays=="Thursday")  echo 'selected';?>
+
+    >Thursday</option>
+
+
+    <option
+
+     <?php if($WeekDays=="Friday")  echo 'selected';?>
+    
+    >Friday</option>
 
       </select>
     </div>
@@ -236,13 +260,32 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Time</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control">
+    <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['Time'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Time'])){echo ' is-valid';} ?>"  id="Time" name="Time">
         <option selected>Time</option>
 
-        <option>P1-8.30-10.00</option>
-		<option>P2-10.30-12.00</option>
-		<option>P3-13.00-14.30</option>
-		<option>P4-14.45-16.15</option>
+        <option
+
+        <?php if($Time=="P1-8.30-10.00")  echo 'selected';?>
+
+        >P1-8.30-10.00</option>
+
+    <option
+
+    <?php if($Time=="P2-10.30-12.00")  echo 'selected';?>
+    
+    >P2-10.30-12.00</option>
+
+
+    <option
+
+
+    <?php if($Time=="P3-13.00-14.30")  echo 'selected';?>
+
+    >P3-13.00-14.30</option>
+
+    <option
+    <?php if($Time=="P4-14.45-16.15")  echo 'selected';?>
+    >P4-14.45-16.15</option>
 	
       
 
@@ -255,15 +298,28 @@ if(isset($_POST['Add'])){
 
 
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Class Room</label>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">ClassRoom</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control">
+    <select id="inputState" class="form-control  <?php  if(isset($_POST['Add']) && empty($_POST['ClassRoom'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['ClassRoom'])){echo ' is-valid';} ?>"  id="ClassRoom" name="ClassRoom">
         <option selected>Class  Room</option>
 
-        <option>LAP-01</option>
-		<option>LAP-02</option>
-		<option>LAP-03</option>
-		<option>LAP-04</option>
+        <option
+
+        <?php if($ClassRoom=="LAP-01")  echo 'selected';?>
+        
+        >LAP-01</option>
+
+    <option
+    <?php if($ClassRoom=="LAP-02")  echo 'selected';?>
+    >LAP-02</option>
+
+    <option
+    <?php if($ClassRoom=="LAP-03")  echo 'selected';?>
+    >LAP-03</option>
+    <option
+    <?php if($ClassRoom=="LAP-04")  echo 'selected';?>
+    
+    >LAP-04</option>
 	
       
 
