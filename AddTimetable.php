@@ -196,9 +196,21 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Lecture</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control">
+    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['staff_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['staff_id'])){echo ' is-valid';} ?>"  id="staff_id" name="staff_id">
         <option selected>Lecture</option>
-      
+
+        <?php          
+            $sql = "SELECT * FROM `staff`";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                echo '<option  value="'.$row["staff_id"].'" required';
+                if($row["staff_id"]==$Lecture) echo ' selected';
+                echo '>'.$row["staff_name"].'</option>';
+                }
+            }
+            ?>
+
 
       </select>
     </div>
