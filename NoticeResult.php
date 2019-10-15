@@ -83,7 +83,7 @@ include_once("menu.php");
                     <div class="w-100"></div>
 
                         <div class="col-6">
-                          <button type="button" class="btn btn-outline-primary"><a href="notice_result_view">View</button> </a>
+                          <button type="button" class="btn btn-outline-primary"><a href="NoticeResultView.php">View</button> </a>
           
                         </div>  
                   </div>

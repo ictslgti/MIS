@@ -49,6 +49,9 @@ include_once("homenav.php");
   <li class="nav-item">
     <a class="nav-link" href="feedback.php">Feedback</a>
   </li>
+  <li class="nav-item">
+  <a class="nav-link" href="create_group.php">Create group</a>
+  </li>
 </ul>
 </nav>
 
@@ -70,9 +73,6 @@ include_once("homenav.php");
 
    
   </ul>
-  <div class="card-body">
-    <a href="create_group" role="button"  aria-disabled="true">Create group</a>
-  </div>
 </div>
 </div>
 </div>
