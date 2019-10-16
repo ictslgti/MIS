@@ -8,55 +8,23 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-<div class="row py-4">
-    <div class="col-sm-4">
-        <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="badge badge-dark">A</span>
-                Administrator
+<div class="row">
+<?php
+$sql = "SELECT * FROM `staff_position_type` ORDER BY `staff_position_type`.`staff_position` ASC";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result) > 0) {
+while($row = mysqli_fetch_assoc($result)){
+echo    '<div class="list-group col-sm-4 p-1">
+            <li class="list-group-item d-flex justify-content-between align-items-center ">
+                <span class="badge badge-dark">'.$row['staff_position_type_id'].'</span>
+                '.$row['staff_position_type_name'].'
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="badge badge-dark">D</span>
-                Director
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="badge badge-dark">DA</span>
-                Deputy Principal (Academics)
-            </li>
-        </ul>
-    </div>
-    <div class="col-sm-4">
-        <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="badge badge-dark">A</span>
-                Administrator
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="badge badge-dark">D</span>
-                Director
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="badge badge-dark">DA</span>
-                Deputy Principal (Academics)
-            </li>
-        </ul>
-    </div>
-    <div class="col-sm-4">
-        <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="badge badge-dark">A</span>
-                Administrator
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="badge badge-dark">D</span>
-                Director
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="badge badge-dark">DA</span>
-                Deputy Principal (Academics)
-            </li>
-        </ul>
-    </div>
+        </div>';
+}
+}
+?>
+</div>
+
 </div>
 
 <div class="row py-4">
