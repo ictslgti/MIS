@@ -66,6 +66,7 @@ include_once("menu.php");
               $date = $row['date_of_addmission'];
               $leave = $row['date_of_leaving'];
               
+              
           }
       }
 
@@ -137,7 +138,7 @@ include_once("menu.php");
 
 <div class="form-group col-md-6  ">
        <label for="ad"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</label> <br>
-       <textarea name="address" class="rounded  form-control  text-black"  type="text" value="<?php echo $addr; ?>" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3" required  ></textarea>
+       <textarea name="address" class="rounded  form-control  text-black"  type="text"  id="add" value="<?php echo $addr; ?>" placeholder="House-No, Street, Hometown." cols="15" rows="3" required  ></textarea>
         </div>
 
 
@@ -208,8 +209,16 @@ include_once("menu.php");
     <div class="col-md-3 col-sm-12 ">
     <br> <br>
    
-    <input type="submit" value="allocation" name="allo" class="btn btn-primary rounded-pill btn-block waves-effect">
-       
+    <?php
+ if(isset($_GET['edit'])){
+  
+      echo'<input type="submit" value="update" name="upt" class="btn btn-primary rounded-pill btn-block waves-effect">';
+
+ }else{
+  echo'<input type="submit" value="allocation" name="allo" class="btn btn-primary rounded-pill btn-block waves-effect">';
+ }
+ 
+?>
     </div>
     
    
@@ -225,6 +234,7 @@ include_once("menu.php");
 </form>
 
 </form>
+
           
         
 
