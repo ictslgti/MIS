@@ -99,7 +99,7 @@ echo '<tr>
     <td>
     <a href="?delete='.$row["student_id"].'">
     <button type="button" name="delete" class="btn btn-outline-info rounded-pill  waves-effect  ">
-    <i class="fas fa-minus-circle"></i>
+    <i class="fas fa-minus-circle"></i><br>
     </button></a>
 
     <a href="AddHostel.php ?edit='.$row["student_id"].'">
