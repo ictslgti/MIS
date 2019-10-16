@@ -68,7 +68,7 @@ include_once("menu.php");
             <label class="input-group-text" for="inputGroupSelect01"> 
             <i class="fab fa-audible"></i> </i>&nbsp;&nbsp;Comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <textarea class="form-control"  id="comment"  placeholder="event_comment"></textarea>
+        <textarea class="form-control"  id="comment"  placeholder="event_comment" name="event_comment"></textarea>
     </div>
 
     
@@ -85,10 +85,10 @@ include_once("menu.php");
         <div class="col-3">
         </div>
         <div class="col-md-auto"> 
-            <button type="button" class="btn btn-outline-primary" name="add"><i class="fas fa-plus"></i> 
+            <!-- <button type="button" class="btn btn-outline-primary" name="add"><i class="fas fa-plus"></i> 
             Add 
-            </button>
-          
+            </button> -->
+          <input type="submit" value="ADD" name="add" class="btn btn-outline-primary">
         </div>
         <div class="col-md-auto"> 
             <button type="button" class="btn btn-outline-primary">

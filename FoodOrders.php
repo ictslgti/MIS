@@ -35,13 +35,19 @@ $title = "Home | SLGTI";
                         $result = mysqli_query($con, $sql);
                         if (mysqli_num_rows($result)>0){
                             while ($row = mysqli_fetch_assoc($result)){
+
+                                $idly=$row ["food_name"];
+                                $uqty=$row ["food_unit_qty"];
+                                $mea=$row ["food_measurements"];
+                                $pri=$row ["food_unit_price"];
+
                                 echo'
                                 <tr>
 
-                                <td>' . $row ["food_name"].'</td>
-                                <td>' . $row ["food_unit_qty"].'</td>
-                                <td>' . $row ["food_measurements"].'</td>
-                                <td>' . $row ["food_unit_price"].'</td>
+                                <td>' . $idly.'</td>
+                                <td>' . $uqty.'</td>
+                                <td>' . $mea.'</td>
+                                <td>' . $pri.'</td>
                                 </tr>';
                             }
                         }else{
@@ -49,7 +55,7 @@ $title = "Home | SLGTI";
                         }
                         ?> </h4>   
                                  <div class="pb-1" style="max-width: 4rem;">
-                                 <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                 <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                  </div>   
                                  <a href="#" class="btn btn-info">Add</a>                                    
                                  </div>
@@ -75,6 +81,8 @@ $title = "Home | SLGTI";
                         $result = mysqli_query($con, $sql);
                         if (mysqli_num_rows($result)>0){
                             while ($row = mysqli_fetch_assoc($result)){
+
+        
                                 echo'
                                 <tr>
                             
