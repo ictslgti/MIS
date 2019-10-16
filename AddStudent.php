@@ -20,37 +20,44 @@ include_once("menu.php");
 <!-- form start---->
 <?php
 $stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $ename = $eaddress = $ephone = $erelation = $status = null;
-
+$coid = $year = $enroll = $exit = null;
 if(isset($_GET['edit']))
 {
   $stid =$_GET['edit'];
-  $sql = "SELECT * FROM `student` WHERE `student_id`= '$stid'";
+  $sql = "SELECT s.`student_id`,`student_title`,`student_fullname`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,
+  `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,
+  `student_em_name`,`student_em_address`,`student_em_phone`,`student_em_relation`,`student_status`,`course_id`, academic_year FROM `student` AS s, student_enroll as e  WHERE s.student_id=e.student_id and s.`student_id`= '$stid'";
   $result = mysqli_query($con,$sql);
 
   if(mysqli_num_rows($result)==1)
   {
     $row =mysqli_fetch_assoc($result);
-    $stid = $row['student_id']
-    $title = $row['student_title']
-    $fname = $row['student_fullname']
-    $ininame = $row['student_ininame']
-    $gender = $row['student_gender']
-    $civil = $row['student_civil']
-    $email = $row['student_email']
-    $nic = $row['student_nic']
-    $dob = $row['student_dob']
-    $phone = $row['student_phone']
-    $address = $row['student_address']
-    $zip = $row['student_zip']
-    $district = $row['student_district']
-    $division = $row['student_divisions']
-    $province = $row['student_provice']
-    $blood = $row['student_blood']
-    $ename = $row['student_em_name']
-    $eaddress = $row['student_em_address']
-    $ephone = $row['student_em_phone']
-    $erelation = $row['student_em_relation']
-    $status =$row['student_status']
+    $coid = $row['course_id'];
+    $year = $row['academic_year'];
+    $stid = $row['student_id'];
+    //$status =$row['student_status'];
+    //$enroll = $row['start_date'];
+    //$exit = $row['exit_date'];
+    $title = $row['student_title'];
+    $fname = $row['student_fullname'];
+    $ininame = $row['student_ininame'];
+    $gender = $row['student_gender'];
+    $civil = $row['student_civil'];
+    $email = $row['student_email'];
+    $nic = $row['student_nic'];
+    $dob = $row['student_dob'];
+    $phone = $row['student_phone'];
+    $address = $row['student_address'];
+    $zip = $row['student_zip'];
+    $district = $row['student_district'];
+    $division = $row['student_divisions'];
+    $province = $row['student_provice'];
+    $blood = $row['student_blood'];
+    $ename = $row['student_em_name'];
+    $eaddress = $row['student_em_address'];
+    $ephone = $row['student_em_phone'];
+    $erelation = $row['student_em_relation'];
+    
   }
 }
 ?>
@@ -68,16 +75,42 @@ if(isset($_GET['edit']))
         <div class="col-md-6 mb-3">
           <label for="cid"> Course Name: </label>
           <select name="cid" id="cid" class="form-control" >
-            <option value="" >Select</option>
-            <option value="">  </option>
+          <option selected disabled> ........select the Course .......</option>
+              <?php 
+              $sql="SELECT * from course";
+              $result = mysqli_query($con,$sql);
+              if(mysqli_num_rows($result)>0)
+              while($row = mysqli_fetch_assoc($result)) 
+              {
+              echo '<option value="'.$row['course_id'].'"';
+              if ($row["course_id"]==$coid)
+              {
+                echo 'selected'; 
+              }
+              echo '>'.$row['course_name'].'</option>';
+              }
+              ?> 
           </select>
         </div>
 
         <div class="col-md-3 mb-3">
           <label for="ayear"> Accademic Year: </label>
           <select name="ayear" id="ayear" class="form-control" >
-            <option value="" >Select</option>
-            <option value="">  </option>
+          <option selected disabled> ........select Academic Year .......</option>
+              <?php 
+              $sql="SELECT academic_year from academic";
+              $result = mysqli_query($con,$sql);
+              if(mysqli_num_rows($result)>0)
+              while($row = mysqli_fetch_assoc($result)) 
+              {
+              echo '<option value="'.$row['academic_year'].'"';
+              if ($row["academic_year"]==$year)
+              {
+                echo 'selected'; 
+              }
+              echo '>'.$row['academic_year'].'</option>';
+              }
+              ?> >
           </select>
         </div>
     </div>
@@ -86,13 +119,13 @@ if(isset($_GET['edit']))
 
         <div class="col-md-4 mb-3">
           <label for="sid">Student ID:</label>
-          <input type="text" class="form-control" id="sid" value="<?php echo $sid ?>" placeholder="" aria-describedby="idPrepend" required>
+          <input type="text" class="form-control" id="sid" value="<?php echo $stid ?>" placeholder="" aria-describedby="idPrepend" required>
         </div>
 
         <div class="col-md-2 mb-3">
           <label for="status">Status:</label>
-          <select name="status" id="status" class="form-control" value="<?php// echo $civil ?>">
-            <option value="" disabled selected>Select</option>
+          <select name="status" id="status" class="form-control" >
+            <option  disabled selected></option>
             <option value="studying"> Studying </option>
             <option value="completed"> Completed </option>
             <option value="exit"> Exit </option>
@@ -121,8 +154,14 @@ if(isset($_GET['edit']))
     <div class="form-row">
           <div class="col-md-2 mb-3">
           <label for="title"> Title: </label>
-          <select name="title" id="title" class="form-control" value="<?php echo $title ?>">
-               <option value="">Select</option>
+          <select name="title" id="title" class="form-control">
+              <?php
+               if ($row["student_title"]==$title)
+               {
+                 echo 'selected'; 
+               }
+              ?>
+               <option>select</option>
                     <option value="mr"> Mr </option>
                     <option value="mrs"> Mrs </option>
                     <option value="miss"> Miss </option>
@@ -144,7 +183,7 @@ if(isset($_GET['edit']))
 
         <div class="col-md-2 mb-3">
             <label for="gender"> Gender: </label>
-            <select name="gender" id="gender" class="form-control" value="<?php echo $gender ?>" >
+            <select name="gender" id="gender" class="form-control">
                 <option value="">Select</option>
                 <option value="male"> Male </option>
                 <option value="female"> Female </option>
@@ -153,7 +192,7 @@ if(isset($_GET['edit']))
 
         <div class="col-md-3 mb-3">
             <label for="civilstatus"> Civil Status: </label>
-            <select name="civilstatus" id="civilstatus" class="form-control" value="<?php echo $civil ?>">
+            <select name="civilstatus" id="civilstatus" class="form-control">
                 <option value="">Select</option>
                 <option value="male"> Single </option>
                 <option value="female"> Maried </option>
@@ -202,7 +241,7 @@ if(isset($_GET['edit']))
           
           <div class="col-md-2 mb-3">
             <label for="district"> District: </label>
-            <select name="district" id="district" class="form-control" value="<?php echo $district ?>" >
+            <select name="district" id="district" class="form-control" >
                 <option value="">Select</option>
                 <option value="2"> Ampara </option>
                 <option value="2"> Batticalo </option>
@@ -239,7 +278,7 @@ if(isset($_GET['edit']))
           
           <div class="col-md-2 mb-3">
             <label for="province"> Province: </label>
-            <select name="province" id="province" value="<?php echo $province ?>" class="form-control" >
+            <select name="province" id="province" class="form-control" >
                 <option value="">Select</option>
                 <option value="1"> Northen </option>
                 <option value="2"> Eastern </option>
@@ -255,7 +294,7 @@ if(isset($_GET['edit']))
 
           <div class="col-md-2 mb-3">
             <label for="bloodgroup"> Blood Group: </label>
-            <select name="bloodgroup" id="bloodgroup" value="<?php echo $blood ?>" class="form-control" >
+            <select name="bloodgroup" id="bloodgroup" class="form-control" >
                 <option value="">Select</option>
                 <option value="a+"> A+ </option>
                 <option value="a-"> A- </option>
