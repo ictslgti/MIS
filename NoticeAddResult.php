@@ -97,7 +97,7 @@ include_once("menu.php");
 <button type="button" class="btn btn-primary btn-lg">Add</button>
 <button type="button" class="btn btn-secondary btn-lg">Edit</button>
 <button type="button" class="btn btn-secondary btn-lg">Delete</button>
-<button type="button" class="btn btn-outline-danger btn-lg"><a href="AddNotice.php">Back</a></button>
+<button type="button" class="btn btn-outline-primary btn-lg"><a href="AddNotice.php">Back</a></button>
 </div>
 </div>
 <hr>
