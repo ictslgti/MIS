@@ -16,24 +16,24 @@ if(isset($_POST['Add'])){
   if(!empty($_POST['Department'])
     &&!empty($_POST['Course'])
     &&!empty($_POST['Module'])
-    &&!empty($_POST['Academic Year'])
+    &&!empty($_POST['AcademicYear'])
     &&!empty($_POST['Lecture'])
     &&!empty($_POST['WeekDays'])
     &&!empty($_POST['Time'])
-    &&!empty($_POST['Class Room'])
-    &&!empty($_POST['Start date'])
-    &&!empty($_POST['End Date'])){
+    &&!empty($_POST['ClassRoom'])
+    &&!empty($_POST['Startdate'])
+    &&!empty($_POST['EndDate'])){
    
-     $Department_id=$_POST['Department_id'];
+     $Department_id=$_POST['Department'];
       $cours=$_POST['course'];
       $Module=$_POST['Module'];
       $AcademicYear=$_POST['AcademicYear'];
       $Lecture=$_POST['Lecture'];
       $WeekDays=$_POST['Weekdays'];
       $Time=$_POST['Time'];
-      $ClassRoom=$_POST['Class Room'];
-      $Startdate=$_POST['Start date'];
-      $EndDate=$_POST['End Date'];
+      $ClassRoom=$_POST['ClassRoom'];
+      $Startdate=$_POST['Startdate'];
+      $EndDate=$_POST['EndDate'];
     
 
       $sql="INSERT INTO `timetable`(`department_id`, `course_id`, `module_id`, `academic_year`, `weekdays`, `time`, `classroom`, `startdate`, `enddate`) 
@@ -327,13 +327,18 @@ if(isset($_POST['Add'])){
   </div>
   
   
-
+  <form method="POST" action="#">
 
 
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">ClassRoom</label>
     <div class="col-sm-10"> 
-    <select name="classroom" required class="form-control  <?php  if(isset($_POST['Add']) && empty($_POST['ClassRoom'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['ClassRoom'])){echo ' is-valid';} ?>"  id="ClassRoom" name="ClassRoom">
+    <select name="classroom"  class="form-control  
+    <?php 
+     if(isset($_POST['Add']) && empty($_POST['classroom']))
+    {echo ' is-invalid';}
+    if(isset($_POST['Add']) && !empty($_POST['classroom']))
+    {echo ' is-valid';} ?>"  id="classroom" name="classroom">
         <option selected disabled required >ClassRoom</option>
 
         <option  value="LAP-01"
