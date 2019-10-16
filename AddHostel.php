@@ -57,10 +57,10 @@ include_once("menu.php");
               $student_id = $row['student_id'];
               $name = $row['fullname'];
               $dept = $row['department_name'];
-              $add = $row['address'];
+              $addr = $row['address'];
               $dist = $row['district'];
               $dis = $row['distance'];
-              $gender = $row['gender'];
+              $title = $row['gender'];
               $block = $row['block_no'];
               $room = $row['room_no'];
               $date = $row['date_of_addmission'];
@@ -137,7 +137,7 @@ include_once("menu.php");
 
 <div class="form-group col-md-6  ">
        <label for="ad"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</label> <br>
-       <textarea name="address" class="rounded  form-control  text-black"  type="text" value="<?php echo $add; ?>" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3" required  ></textarea>
+       <textarea name="address" class="rounded  form-control  text-black"  type="text" value="<?php echo $addr; ?>" id="add" placeholder="House-No, Street, Hometown." cols="15" rows="3" required  ></textarea>
         </div>
 
 
