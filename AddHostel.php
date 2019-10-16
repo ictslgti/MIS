@@ -216,7 +216,7 @@ include_once("menu.php");
       echo'<input type="submit" value="update" name="upt" class="btn btn-primary rounded-pill btn-block waves-effect">';
 
  }else{
-  echo'<input type="submit" value="allocation" name="allo" class="btn btn-primary rounded-pill btn-block waves-effect">';
+  echo'<input type="submit" value="Allocation" name="allo" class="btn btn-primary rounded-pill btn-block waves-effect">';
  }
  
 ?>
