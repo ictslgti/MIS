@@ -76,7 +76,11 @@ include_once ("menu.php");
                       course.course_name FROM `module`,
                       `course` WHERE module.course_id = course.course_id";
 
-                     
+                        if(isset($_GET['course_id']))
+                        {
+                            $gcourse_id=$_GET['course_id'];
+                            $sql.=" AND `module`.`course_id`= '$gcourse_id'";
+                        }
                       
                       $result = mysqli_query($con,$sql);
                       
