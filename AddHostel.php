@@ -19,8 +19,9 @@ include_once("menu.php");
 
           <?php
         if(isset($_POST['allo'])){
-        if(!empty($_POST['id'])&&!empty($_POST['name'])&&!empty($_POST['dept'])&&!empty($_POST['address'])&&!empty($_POST['dist'])&&!empty($_POST['dis'])
-        &&!empty($_POST['gender'])&&!empty($_POST['block'])&&!empty($_POST['room'])&&!empty($_POST['date'])&&!empty($_POST['leave'])){
+         
+         
+        
           
           $id=$_POST['id'];
           $name =$_POST['name'];
@@ -28,7 +29,7 @@ include_once("menu.php");
           $address =$_POST['address'];
           $dist =$_POST['dist'];
           $dis =$_POST['dis'];
-          $gender =$_POST['gender'];
+          $gender =$_POST['title'];
           $block =$_POST['block'];
           $room =$_POST['room'];
           $date =$_POST['date'];
@@ -41,7 +42,8 @@ include_once("menu.php");
               echo "error :".$sql."<br>".mysqli_error($con);
           }
         }
-        }
+  
+        
       
         ?>
 
@@ -85,6 +87,7 @@ include_once("menu.php");
 <div class="form-row">
        
        <div class="form-group col-md-4 ">
+
 <form method="POST">
 
        <label for="id"><i class="fas fa-user-graduate"></i> Student ID&nbsp;</label> <br>
@@ -96,7 +99,7 @@ include_once("menu.php");
        
        <div class="form-group col-md-4  ">
        <label for="name"><i class="far fa-id-card"></i>&nbsp;Full Name</label> <br>
-       <input type="text" class="form-control " id="name" required >
+       <input type="text" class="form-control " name="name" id="name" required >
        </div>
        <div class="form-group col-md-4  ">
        <label for="name"><i class="fas fa-university"></i>&nbsp;Department</label> <br>
@@ -133,7 +136,7 @@ include_once("menu.php");
 
 <div class="form-group col-md-3  ">
 <label for="hostel"><i class="fas fa-transgender"></i>&nbsp;Gender :</label>
-<select name="title" id="gender" name="gender" class="form-control" required >
+<select name="title" id="gender"  class="form-control" required >
                <option value="" selected disabled>---Select---</option>
                
                <option value="male">  Male </option>
@@ -172,8 +175,8 @@ include_once("menu.php");
             <label for="leave"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Leaving</label>
             <input type="date" class="form-control" id="leave" name="leave" placeholder=""  required>
           </div>
-          </form>
-          </form>
+          
+        
           </div>
          
         <div class="row">
@@ -189,14 +192,14 @@ include_once("menu.php");
     <div class="col-md-3 col-sm-12">
     <br><br>
     <input type="reset" class="btn btn-outline-danger rounded-pill btn-block waves-effect  ">
-        <i class=" fas fa-bolt  "></i> clear</button>
+        
 
 </div>
 </div>
    
+</form>
 
-
-
+</form>
           
         
 
