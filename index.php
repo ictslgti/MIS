@@ -14,8 +14,8 @@ include_once("menu.php");
             <div class="form-group">
                 <select class="form-control custom-select" id="Departmentx" name="Department"
                     onchange="showCouese(this.value)" required>
-<option value="null" selected disabled>--Select Department--</option>
-<?php          
+                    <option value="null" selected disabled>--Select Department--</option>
+                    <?php          
 $sql = "SELECT * FROM `department`";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -55,9 +55,11 @@ if (mysqli_num_rows($result) > 0) {
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Staff ID</th>
+                    <th scope="col">Course ID</th>
+                    <th scope="col">Module ID</th>
+                    <th scope="col">Academic Year</th>
+                    <th scope="col">Options</th>
                 </tr>
             </thead>
             <tbody id="Teacher">
@@ -70,30 +72,60 @@ if (mysqli_num_rows($result) > 0) {
 
 
 <div class="row">
-    <div class="col-md-3 col-sm-12">
-        <div class="card text-light bg-dark text-center">
-            <div class="card-header text-center"> Registered Students <a href="" class="btn btn-primary btn-sm">View</a>
-            </div>
+    <div class="col-md-2 col-sm-12">
+    <div class="card mb-3">
             <div class="card-body">
-                <h1 class="display-4 "><i class="fa fa-user-graduate text-light"></i>1235</h1>
+                <h5 class="card-title">Departments</h5>
+                <p class="card-text display-2 ">6</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-sm-12">
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                aria-valuemax="100">25%</div>
+    <div class="col-md-2 col-sm-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Courses</h5>
+                <p class="card-text display-2 ">25</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
         </div>
     </div>
-    <div class="col-md-3 col-sm-12">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+    <div class="col-md-2 col-sm-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Modules</h5>
+                <p class="card-text display-2 ">352</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
         </div>
     </div>
-    <div class="col-md-3 col-sm-12">
+    <div class="col-md-2 col-sm-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Academic Years</h5>
+                <p class="card-text display-2 ">3</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2 col-sm-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Teachers</h5>
+                <p class="card-text display-2 ">65</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-sm-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Students</h5>
+                <p class="card-text display-2 ">6995</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -140,7 +172,8 @@ function showTeacher() {
     };
     xmlhttp.open("POST", "controller/getTeacher", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("StaffModuleEnrollment=1&staff_id=" + tid + "&course_id=" + cid+ "&module_id=" + mid+ "&academic_year=" + aid);
+    xmlhttp.send("StaffModuleEnrollment=1&staff_id=" + tid + "&course_id=" + cid + "&module_id=" + mid +
+        "&academic_year=" + aid);
 }
 </script>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
