@@ -20,17 +20,24 @@ include_once("menu.php");
 <!-- form start---->
 <?php
 $stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $ename = $eaddress = $ephone = $erelation = $status = null;
-
+$coid = $year = $enroll = $exit = null;
 if(isset($_GET['edit']))
 {
   $stid =$_GET['edit'];
-  $sql = "SELECT * FROM `student` WHERE `student_id`= '$stid'";
+  $sql = "SELECT s.`student_id`,`student_title`,`student_fullname`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,
+  `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,
+  `student_em_name`,`student_em_address`,`student_em_phone`,`student_em_relation`,`student_status`,`course_id`, academic_year FROM `student` AS s, student_enroll as e  WHERE s.student_id=e.student_id and s.`student_id`= '$stid'";
   $result = mysqli_query($con,$sql);
 
   if(mysqli_num_rows($result)==1)
   {
     $row =mysqli_fetch_assoc($result);
+    $coid = $row['course_id'];
+    $year = $row['academic_year'];
     $stid = $row['student_id'];
+    //$status =$row['student_status'];
+    //$enroll = $row['start_date'];
+    //$exit = $row['exit_date'];
     $title = $row['student_title'];
     $fname = $row['student_fullname'];
     $ininame = $row['student_ininame'];
@@ -50,7 +57,7 @@ if(isset($_GET['edit']))
     $eaddress = $row['student_em_address'];
     $ephone = $row['student_em_phone'];
     $erelation = $row['student_em_relation'];
-    $status =$row['student_status'];
+    
   }
 }
 ?>
@@ -68,16 +75,42 @@ if(isset($_GET['edit']))
         <div class="col-md-6 mb-3">
           <label for="cid"> Course Name: </label>
           <select name="cid" id="cid" class="form-control" >
-            <option value="" >Select</option>
-            <option value="">  </option>
+          <option selected disabled> ........select the Course .......</option>
+              <?php 
+              $sql="SELECT * from course";
+              $result = mysqli_query($con,$sql);
+              if(mysqli_num_rows($result)>0)
+              while($row = mysqli_fetch_assoc($result)) 
+              {
+              echo '<option value="'.$row['course_id'].'"';
+              if ($row["course_id"]==$coid)
+              {
+                echo 'selected'; 
+              }
+              echo '>'.$row['course_name'].'</option>';
+              }
+              ?> 
           </select>
         </div>
 
         <div class="col-md-3 mb-3">
           <label for="ayear"> Accademic Year: </label>
           <select name="ayear" id="ayear" class="form-control" >
-            <option value="" >Select</option>
-            <option value="">  </option>
+          <option selected disabled> ........select Academic Year .......</option>
+              <?php 
+              $sql="SELECT academic_year from academic";
+              $result = mysqli_query($con,$sql);
+              if(mysqli_num_rows($result)>0)
+              while($row = mysqli_fetch_assoc($result)) 
+              {
+              echo '<option value="'.$row['academic_year'].'"';
+              if ($row["academic_year"]==$year)
+              {
+                echo 'selected'; 
+              }
+              echo '>'.$row['academic_year'].'</option>';
+              }
+              ?> >
           </select>
         </div>
     </div>
