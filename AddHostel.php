@@ -48,6 +48,7 @@ include_once("menu.php");
         ?>
 
         <?php
+        $student_id=$name=$dept=$addr =$dist =$dis =$title = $block =$room =$date =$leave =null;
         if(isset($_GET['edit'])){
           $student_id = $_GET['edit'];
           $sql ="SELECT * FROM `hostel` WHERE `student_id` = $student_id";
@@ -92,7 +93,11 @@ include_once("menu.php");
 </div>
 <div class="col-sm-3 " > 
 
-
+<form class="form-inline md-form form-sm mt-4 ">
+ 
+  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_Student_ID" aria-label="Search"id="search"> 
+  <i class="fas fa-search ml-3" aria-hidden="true"></i> 
+</form>
 </div>
 </div>
 <div class="row">
@@ -113,7 +118,7 @@ include_once("menu.php");
 <form method="POST">
 
        <label for="id"><i class="fas fa-user-graduate"></i> Student ID&nbsp;</label> <br>
-       <input type="text" class="form-control " id="id" value="" name="id" required  >
+       <input type="text" class="form-control " id="id" value="<?php echo $student_id; ?>" name="id" required  >
        </div>
 
        
@@ -121,11 +126,11 @@ include_once("menu.php");
        
        <div class="form-group col-md-4  ">
        <label for="name"><i class="far fa-id-card"></i>&nbsp;Full Name</label> <br>
-       <input type="text" class="form-control " name="name" value="" id="name" required >
+       <input type="text" class="form-control " name="name" value="<?php echo $name; ?>" id="name" required >
        </div>
        <div class="form-group col-md-4  ">
        <label for="name"><i class="fas fa-university"></i>&nbsp;Department</label> <br>
-       <input type="text" class="form-control " id="name" value="" name="dept" required >
+       <input type="text" class="form-control " id="name" value="<?php echo $dept; ?>" name="dept" required >
        </div>
        </div>
 
@@ -134,20 +139,20 @@ include_once("menu.php");
 
 <div class="form-group col-md-6  ">
        <label for="ad"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</label> <br>
-       <textarea name="address" class="rounded  form-control  text-black"  type="text"  id="add" value="" placeholder="House-No, Street, Hometown." cols="15" rows="3" required  ></textarea>
+       <textarea name="address" class="rounded  form-control  text-black"  type="text"  id="add" value="<?php echo $addr; ?>" placeholder="House-No, Street, Hometown." cols="15" rows="3" required  ></textarea>
         </div>
 
 
         <div class="col-md-4 mb-3">
             <label for="district"><i class="fas fa-map-marker-alt"></i>&nbsp;District</label>
-            <input type="text" class="form-control" id="district" value="" name="dist"  required>
+            <input type="text" class="form-control" id="district" value="<?php echo $dist; ?>" name="dist"  required>
           </div>
 
           <div class="col-md-2 mb-3">
             <label for="dis"><i class="fas fa-map-signs"></i>&nbsp;Distance
              <label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;">Home to SLGTI </label>
             </label>
-            <input type="text" class="form-control" id="dis" value="" name="dis" placeholder="in km"  required>
+            <input type="text" class="form-control" id="dis" value="<?php echo $dis; ?>" name="dis" placeholder="in km"  required>
           </div>
 
        </div>
@@ -158,7 +163,7 @@ include_once("menu.php");
 
 <div class="form-group col-md-3  ">
 <label for="hostel"><i class="fas fa-transgender"></i>&nbsp;Gender :</label>
-<select name="title" id="gender" value=""  class="form-control" required >
+<select name="title" id="gender" value="<?php echo $title; ?>"  class="form-control" required >
                <option value="" selected disabled>---Select---</option>
                
                <option value="male">  Male </option>
@@ -172,13 +177,13 @@ include_once("menu.php");
          <div class="form-group col-md-3  ">
          <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Block No:</label>
         
-         <input type="text" class="form-control" id="block"value="" name="block"  required>
+         <input type="text" class="form-control" id="block"value="<?php echo $block; ?>" name="block"  required>
 </div>
 
 <div class="form-group col-md-3  ">
          <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Room No:</label>
         
-         <input type="text" class="form-control" id="room" value="" name="room"  required>
+         <input type="text" class="form-control" id="room" value="<?php echo $room; ?>" name="room"  required>
 </div>
 </div>
 
@@ -190,12 +195,12 @@ include_once("menu.php");
 <div class="form-row">
 <div class="col-md-3 mb-3">
             <label for="add"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Addmission</label>
-            <input type="date" class="form-control" id="add" value="" name="date" placeholder=""  required>
+            <input type="date" class="form-control" id="add" value="<?php echo $date; ?>" name="date" placeholder=""  required>
           </div>
 
           <div class="col-md-3 mb-3">
             <label for="leave"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Leaving</label>
-            <input type="date" class="form-control" id="leave" value="" name="leave" placeholder=""  required>
+            <input type="date" class="form-control" id="leave" value="<?php echo $leave; ?>" name="leave" placeholder=""  required>
           </div>
           
         
