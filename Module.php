@@ -15,26 +15,27 @@ include_once ("menu.php");
   
 		<div class="card mt-12 ">
 			<div class="card"><br>
-				<h4 align="center">Module Details</h4><br>
+				<h4 style="text-align:center">Module Details</h4><br>
       </div>
     </div>
 <br>
 <br>
 
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered table-hover" id="dataTable" width="200%" cellspacing="0">
                   <thead>
                     <tr style="text-align:center">
                       <th>Module ID</th>
                       <th>Module Name</th>
-                      <th>Module Aim</th>
+                      <th>Course Name</th>
                       <th>Learning Hours</th>
-                      <th>Learning Outcomes</th>
+                      <th>Semester ID </th>
+                      <th>Semester name </th>
                       <th>Relative Unit</th>
-                      <th>Resources</th>
-                      <th>References</th>
-                      <th>Notional Hours</th>
-                      <th>Option</th>
+                      <th>Lecture Hours</th>
+                      <th>Pracical Hours</th>
+                      <th>Self Study Hours</th>
+                      <th>Options</th>
                     </tr>
                   </thead>
 
@@ -47,7 +48,7 @@ include_once ("menu.php");
                     
                     $m_id = $_GET['dlt'];
 
-                    $sql = "DELETE from module where module_id = $m_id ";
+                    $sql = "DELETE from module where module_id = '$m_id'";
 
                     if(mysqli_query($con,$sql))
                     {
@@ -61,25 +62,70 @@ include_once ("menu.php");
                 ?>
 
                   <tbody>
-                    <tr style="text-align:center">
-                      <td>K201</td>
-                      <td>Database 1</td>
-                      <td>Text Here</td>
-                      <td>25</td>
-                      <td>18</td>
-                      <td>Text Here</td>
-                      <td>Text Here</td>
-                      <td>Text Here</td>
-                      <td>Text Here</td>
-                      <td>
-                      <button type="button" class="btn btn-outline-success"><i class="far fa-edit">-Edit-</i></button>
-                      <a href="#" class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i></a>
-                     </td>
-                    </tr>
+                    
+                    <?php
+                      $sql = "SELECT `module_id`,
+                      `module_name`,
+                      `module_learning_hours`,
+                      `semester_id`,
+                      `semester_name`,
+                      `module_relative_unit`,
+                      `module_lecture_hours`,
+                      `module_practical_hours`,
+                      `module_self_study_hours`,
+                      course.course_name FROM `module`,
+                      `course` WHERE module.course_id = course.course_id";
+
+                        if(isset($_GET['course_id']))
+                        {
+                            $gcourse_id=$_GET['course_id'];
+                            $sql.=" AND `module`.`course_id`= '$gcourse_id'";
+                        }
+                      
+                      $result = mysqli_query($con,$sql);
+                      
+                      if(mysqli_num_rows($result)>0)
+                      {
+                        
+                        while($row = mysqli_fetch_assoc($result))
+                        { 
+                            echo'
+                            <tr style="text-align:center">
+                              <td>'. $row["module_id"] . "<br>" .' </td>
+                              <td>'. $row["module_name"] . "<br>" .' </td>
+                              <td>'. $row["course_name"] . "<br>" .'</td>
+                              <td>'. $row["module_learning_hours"] . "<br>" .'</td>
+                              <td>'. $row["semester_id"] . "<br>" .'</td>
+                              <td>'. $row["semester_name"] . "<br>" .'</td>
+                              <td>'. $row["module_relative_unit"] . "<br>" .'</td>
+                              <td>'. $row["module_lecture_hours"] . "<br>" .'</td>
+                              <td>'. $row["module_practical_hours"] . "<br>" .'</td>
+                              <td>'. $row["module_self_study_hours"] . "<br>" .'</td>
+
+                               
+                              <td> 
+                                    <a href=" AddModule.php ?module_id='.$row["module_id"].' " class="btn btn-outline-success" style="font-size:15px;><i class="far fa-edit">View Edit</i> </a>
+ 
+                                    <a href=" ?dlt='.$row["module_id"].' " style="font-size:25px;color:red;"> <i class="fas fa-trash"></i> </a>  
+
+                                    </td> 
+                            </tr>';
+                        }
+                      }
+                      else
+                      {
+                          echo "0 results";
+                      }
+                     
+                      
+                    ?>
+                     </tbody>
+                    </table>
+                    
+                      
 
                     
-                  </tbody>
-                </table>
+                 
 
                 <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-end">

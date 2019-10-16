@@ -32,19 +32,19 @@ if(isset($_POST['Add'])){
       $WeekDays=$_POST['Weekdays'];
       $Time=$_POST['Time'];
       $ClassRoom=$_POST['Class Room'];
-      $Subject=$_POST['Start date'];
+      $Startdate=$_POST['Start date'];
       $EndDate=$_POST['End Date'];
     
 
       $sql="INSERT INTO `timetable`(`department_id`, `course_id`, `module_id`, `academic_year`, `weekdays`, `time`, `classroom`, `startdate`, `enddate`) 
-      VALUES (`$department_id`, `$course_id`, `$module_id`, `$academic_year`,`$weekdays`, `$time`, `$classroom`, `$startdate`, `$enddate`)";
+      VALUES (`$department_id`, `$course`, `$module`, `$AcademicYear`,`$Lecture`, `$Weekdays`, `$Time`, `$ClassRoom'`, `$Startdate`,'$EndDate')";
 
       if(mysqli_query($con,$sql))
      
       {
         echo '
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>'.$selecttimetable.'</strong> Staff details inserted
+        <strong>'.$selecttimetable.'</strong> timetable details inserted
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -74,6 +74,36 @@ if(isset($_POST['Add'])){
 }
   ?>
 
+<?php
+  if(isset($_GET['edit'])){
+        $id=$_GET['edit'];
+        $sql="SELECT * FROM `timetable` WHERE `weekdays`='$id'";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+            $WeekDays=$row['weekdays'];
+            $Department=$row['department_id'];
+            $Course=$row['course_id'];
+            $module=$row['module_id'];
+            $academicyear=$row['academic_year'];
+            $Lecture=$row['staff_id'];
+            $Time=$row['time'];
+            $ClassRoom=$row['classroom'];
+            $Startdate=$row['startdate'];
+            $EndDate = $row['enddate'];
+            
+           
+        }
+        else{
+          echo "Error".$sql."<br>".mysqli_error($con);
+        }
+    }
+  
+?>
+
+
+
+<!-- Add timetable design  -->
 
 
  <h1 class="text-center">Add Time Table </h1>
@@ -88,14 +118,14 @@ if(isset($_POST['Add'])){
  </div>
 
 
-
+ <form method="POST" action="#">
 
   
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Department</label>
     <div class="col-sm-10"> 
     <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
-        <option selected>Department</option>
+        <option selected disabled required>Department</option>
         <?php          
             $sql = "SELECT * FROM `department`";
             $result = mysqli_query($con, $sql);
@@ -122,7 +152,7 @@ if(isset($_POST['Add'])){
     <label for="inputPassword3" class="col-sm-2 col-form-label">Course</label>
     <div class="col-sm-10">
 	<select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['course_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"  id="course_id" name="course_id">
-        <option selected>Course</option>
+        <option selected disabled required>Course</option>
         <?php          
             $sql = "SELECT * FROM `course`";
             $result = mysqli_query($con, $sql);
@@ -151,7 +181,7 @@ if(isset($_POST['Add'])){
     <label for="inputEmail3" class="col-sm-2 col-form-label">Module</label>
     <div class="col-sm-10"> 
     <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['module_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"  id="module_id" name="module_id">
-        <option selected>Module</option>
+        <option selected disabled required >Module</option>
         <?php          
             $sql = "SELECT * FROM `module`";
             $result = mysqli_query($con, $sql);
@@ -175,7 +205,7 @@ if(isset($_POST['Add'])){
     <label for="inputEmail3" class="col-sm-2 col-form-label">AcademicYear</label>
     <div class="col-sm-10"> 
     <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['academic_year'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>"  id="academic_year" name="academic_year">
-        <option selected>AcademicYear</option>
+        <option selected disabled required >AcademicYear</option>
 
         <?php          
             $sql = "SELECT * FROM `academic`";
@@ -197,7 +227,7 @@ if(isset($_POST['Add'])){
     <label for="inputEmail3" class="col-sm-2 col-form-label">Lecture</label>
     <div class="col-sm-10"> 
     <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['staff_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['staff_id'])){echo ' is-valid';} ?>"  id="staff_id" name="staff_id">
-        <option selected>Lecture</option>
+        <option selected disabled required >Lecture</option>
 
         <?php          
             $sql = "SELECT * FROM `staff`";
@@ -220,7 +250,7 @@ if(isset($_POST['Add'])){
     <label for="inputEmail3" class="col-sm-2 col-form-label">WeekDays</label>
     <div class="col-sm-10"> 
     <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['WeekDays'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['WeekDays'])){echo ' is-valid';} ?>"  id="WeekDays" name="WeekDays">
-        <option selected>Days</option>
+        <option selected disabled required >Days</option>
 
 
         <option  value="Monday"
@@ -263,7 +293,7 @@ if(isset($_POST['Add'])){
     <label for="inputEmail3" class="col-sm-2 col-form-label">Time</label>
     <div class="col-sm-10"> 
     <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['Time'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Time'])){echo ' is-valid';} ?>"  id="Time" name="Time">
-        <option selected>Time</option>
+        <option selected disabled required >Time</option>
 
         <option value="P1-8.30-10.00"
 
@@ -303,8 +333,8 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">ClassRoom</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control  <?php  if(isset($_POST['Add']) && empty($_POST['ClassRoom'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['ClassRoom'])){echo ' is-valid';} ?>"  id="ClassRoom" name="ClassRoom">
-        <option selected>Class  Room</option>
+    <select name="classroom" required class="form-control  <?php  if(isset($_POST['Add']) && empty($_POST['ClassRoom'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['ClassRoom'])){echo ' is-valid';} ?>"  id="ClassRoom" name="ClassRoom">
+        <option selected disabled required >ClassRoom</option>
 
         <option  value="LAP-01"
 
@@ -336,17 +366,17 @@ if(isset($_POST['Add'])){
  
 
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Start date</label>
+    <label class="col-sm-2 col-form-label">Startdate</label>
     <div class="col-sm-10">
-      <input type="date" class="form-control" id="inputEmail3"required >
+      <input type="date" class="form-control" id="" required >
     </div>
   </div>
 
 
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">End Date</label>
+    <label class="col-sm-2 col-form-label">EndDate</label>
     <div class="col-sm-10">
-      <input type="date" class="form-control" id="inputEmail3"required >
+      <input type="date" class="form-control" id=""required >
     </div>
   </div>
 
@@ -368,17 +398,17 @@ if(isset($_POST['Add'])){
       echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
       echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 
+    }if(isset($_GET['delete']))
+    {
+      echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
+
     }if(!isset($_GET['delete']) && !isset($_GET['edit'])){
-      echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>ADD</button>';
+      echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
 
     }
       
       echo '</div>';
       ?>
-         
-         
-  
-              
                     </div>
 
 
