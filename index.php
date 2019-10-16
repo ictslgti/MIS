@@ -50,8 +50,8 @@ if (mysqli_num_rows($result) > 0) {
     </div>
 </form>
 <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        <table class="table">
+    <div class="col-sm-12 col-md-12 col-lg-12 table-responsive">
+        <table class="table table-sm table-striped ">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -128,6 +128,10 @@ function showModule(val) {
 function showTeacher() {
     var did = document.getElementById("Departmentx").value;
     var cid = document.getElementById("Course").value;
+    var mid = document.getElementById("Module").value;
+    var aid = null;
+    var tid = null;
+
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -136,7 +140,7 @@ function showTeacher() {
     };
     xmlhttp.open("POST", "controller/getTeacher", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("Department=" + did + "&Course=" + cid);
+    xmlhttp.send("StaffModuleEnrollment=1&staff_id=" + tid + "&course_id=" + cid+ "&module_id=" + mid+ "&academic_year=" + aid);
 }
 </script>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->

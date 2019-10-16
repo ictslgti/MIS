@@ -11,7 +11,7 @@ include_once("menu.php");
        
 
             <div class="col-md-4 col-sm-12 pl-5 ">
-                <a  href="notice_timetable.php" style="text-decoration:none">
+                <a  href="NoticeTimetable.php" style="text-decoration:none">
                     <div class="card text-white bg-primary mb-3 mt-5" style="max-width: 18rem;">
                         <div class="card-header">
                             <div class="row">
@@ -28,7 +28,7 @@ include_once("menu.php");
                     </div></a>
             </div>
         <div class="col-md-4 col-sm-12 pl-5 ">
-        <a  href="notice_result.php" style="text-decoration:none">
+        <a  href="NoticeResult.php" style="text-decoration:none">
             <div class="card text-white bg-secondary mb-3 mt-5" style="max-width: 18rem;">
                  <div class="card-header">
                  <div class="row">
@@ -49,11 +49,11 @@ include_once("menu.php");
                  <div class="card-header"><h3>EVENTS</h3></div>
                 
                          <div class="list-group">
-                                <a href="notice_eventview.php" class="list-group-item list-group-item-action list-group-item-primary">Awarding Ceremoney</a>
+                                <a href="NoticeEventView.php" class="list-group-item list-group-item-action list-group-item-primary">Awarding Ceremoney</a>
                                  <a href="" class="list-group-item list-group-item-action list-group-item-danger">Celebration</a>
                                 <a href="" class="list-group-item list-group-item-action list-group-item-secondary">Visitor's Visit</a>
                                 <a href="" class="list-group-item list-group-item-action list-group-item-success">Volunteer</a>
-                                <a href="notice_others" class="list-group-item list-group-item-action list-group-item-">Other Events</a>
+                                <a href="NoticeOthers" class="list-group-item list-group-item-action list-group-item-">Other Events</a>
                                 
                          </div>
               </div>

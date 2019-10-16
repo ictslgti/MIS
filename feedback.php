@@ -6,6 +6,11 @@ include_once("head.php");
 include_once("menu.php");
 include_once("homenav.php");
  ?>
+
+
+
+
+ 
 <!-- END DON'T CHANGE THE ORDER -->
 <!-- Sidebar -->
 <div class="row">
@@ -33,6 +38,9 @@ include_once("homenav.php");
   </li>
   <li class="nav-item">
     <a class="nav-link" href="feedback.php">Feedback</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="create_group.php">Create group</a>
   </li>
 </ul>
 </nav>

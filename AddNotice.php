@@ -31,11 +31,11 @@ include_once("menu.php");
     <div class="card bg-dark">
     <div class="card-header text-white"><h1>Events</h1></div>
         <div class="card-body">
-        <div class="alert alert-light"><a href ="notice_eventupload.php">Certificate Awarding Ceremony</a></div>
-        <div class="alert alert-light" role="alert"><a href ="Event.php">Celebration</a></div>
-        <div class="alert alert-light" role="alert"><a href ="Event.php">Visitor's Visit</a></div>
-        <div class="alert alert-light" role="alert"><a href ="Event.php">Volunteer</a></div>
-        <div class="alert alert-light" role="alert"><a href ="Event.php">Other Events</a></div>
+        <div class="alert alert-light"><a href ="NoticeEventUpload.php">Certificate Awarding Ceremony</a></div>
+        <div class="alert alert-light" role="alert"><a href ="NoticeEventUpload.php">Celebration</a></div>
+        <div class="alert alert-light" role="alert"><a href ="NoticeEventUpload.php">Visitor's Visit</a></div>
+        <div class="alert alert-light" role="alert"><a href ="NoticeEventUpload.php">Volunteer</a></div>
+        <div class="alert alert-light" role="alert"><a href ="NoticeEventUpload.php">Other Events</a></div>
       </div>
     
     </div>

@@ -16,6 +16,7 @@ include_once("menu.php");
 $StaffID=$Department_id=$StaffName=$Address=$DOB=$NIC=$Email=$PNO=$DOJ=$Gender=$EPF=$Position=$Type=null;
 
 if(isset($_POST['Add'])){
+ 
   if(!empty($_POST['StaffID'])
     &&!empty($_POST['Department_id'])
     &&!empty($_POST['StaffName'])
@@ -29,7 +30,7 @@ if(isset($_POST['Add'])){
     &&!empty($_POST['EPF'])
     &&!empty($_POST['Position'])
     &&!empty($_POST['Type'])){
-      
+     
       $StaffID=$_POST['StaffID'];
       $Department_id=$_POST['Department_id'];
       $StaffName=$_POST['StaffName'];
@@ -43,8 +44,8 @@ if(isset($_POST['Add'])){
       $EPF=$_POST['EPF'];
       $Position=$_POST['Position'];
       $Type=$_POST['Type'];
-
-       $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf_no`, `staff_position`, `staff_type`) 
+    
+       $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf`, `staff_position`, `staff_type`) 
       VALUES ('$StaffID','$Department_id','$StaffName','$Address','$DOB','$NIC','$Email','$PNO','$DOJ','$Gender','$EPF','$Position','$Type')";
 
       if(mysqli_query($con,$sql))
@@ -69,8 +70,6 @@ if(isset($_POST['Add'])){
         </div>
         
         ';
-
-
       }
 
     }
@@ -214,7 +213,7 @@ if(isset($_POST['Add'])){
           <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['Position'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Position'])){echo ' is-valid';} ?>"  id="Position" name="Position">
           <option value="null" selected disabled>--Select Position--</option>
             <?php          
-              $sql = "SELECT * FROM `staff_position_type`";
+              $sql = "SELECT * FROM `staff_position_type` ORDER BY `staff_position`";
               $result = mysqli_query($con, $sql);
               if (mysqli_num_rows($result) > 0) {
                   while($row = mysqli_fetch_assoc($result)) {
@@ -237,11 +236,11 @@ if(isset($_POST['Add'])){
 
             <option value="On Contract"
             <?php if($Type=="On Contract")  echo 'selected';?>
-            >Temporary  Staff</option>
+            >On Contract</option>
 
             <option value="Visiting Lecturer"
             <?php if($Type=="Visiting Lecturer")  echo 'selected';?>
-            >Temporary  Staff</option>
+            >Visiting Lecturer</option>
       </select>
     </div>
   </div>
@@ -252,7 +251,7 @@ if(isset($_POST['Add'])){
 
     if(isset($_GET['edit'])){
       echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-      echo'<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 
     }if(isset($_GET['delete']))
     {

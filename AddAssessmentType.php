@@ -134,6 +134,7 @@ if (isset($_POST['Add'])) {
                             </select>
                         </div>
                     </div>
+
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -185,30 +186,53 @@ if (isset($_POST['Add'])) {
                         </div>
 
 
-
-
-                    </div>
-
-
-
-
+                        
                 </div>
-
-
-
-
             </div>
-            <div class="row justify-content-md-center">
-                    <div class="col col-lg-2">
-    
+
+            <div class="row">
+                    <div class="col">
+
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Percentage&nbsp;</span>
+                                    </div>
+                                    <input type="text" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_percentage'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_percentage'])){echo ' is-valid';} ?>"" placeholder="Assessment Percentage" aria-label="Username"
+                                        aria-describedby="basic-addon1" name="assessment_name" value="<?php echo $assessment_name; ?>">
+                                </div>
+
+
+
                     </div>
-                    <div class="col-md-auto">
-                        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus" value="Add" id="Add"></i> Add Asessments</button>
+                    <div class="col">
+
+                            <div class="row justify-content-md-center">
+                                    <div class="col col-lg-2">
+                    
+                                    </div>
+                                    <div class="col-md-auto">
+                                        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus" value="Add" id="Add"></i> Add Asessments</button>
+                                    </div>
+                                    <div class="col col-lg-2">
+                    
+                                    </div>
+                                </div>
+
+
+
+
+
                     </div>
-                    <div class="col col-lg-2">
-    
-                    </div>
+                        
+
+
+
+
+
                 </div>
+
+            
         </form>
 
         <!--  -->
