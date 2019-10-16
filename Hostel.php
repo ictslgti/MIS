@@ -8,6 +8,20 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+<?php 
+if(isset($_GET['delete'])){
+  $student_id = $_GET['delete'];
+  $sql = "DELETE FROM `hostel` WHERE `student_id`=$student_id";
+ if(mysqli_query($con ,$sql)){
+     echo "Record delete successfully";
+   
+ }else{
+   echo "error deleting record : ". mysqli_error($con);
+ }
+ }
+
+
+?>
 
 
 
@@ -62,6 +76,7 @@ include_once("menu.php");
 
       <th scope="col"><i class="far fa-id-card"></i>&nbsp;Student_id</th>
       <th scope="col"><i class="fas fa-file-signature"></i>&nbsp;Full Name</th>
+      <th scope="col"><i class="fas fa-file-signature"></i>&nbsp;Department</th>
       <th scope="col"><i class="fas fa-transgender"></i>&nbsp;Gender</th>
       <th scope="col"><i class="fas fa-list-ol"></i>&nbsp;Block no</th>
       <th scope="col"><i class="fas fa-list-ol"></i>&nbsp;Room no</th>
@@ -80,82 +95,46 @@ include_once("menu.php");
 </thead>
 
 <tbody>
-<tr>
-    <td>ict/bit/04  </td>
-    <td>Atputharsa.Rewathy  </td>
-    <td>Girl  </td>
-    <td>B-12  </td>
-    <td>Room-1  </td>   
-    <td>11/2/1996  </td>
-    <td>11/2/1996  </td>
-    <td>Puttur  </td>
-    <td>Jaffna  </td>
-    <td>
-    <form>
-    <a href="AddHostel.php">
-    <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
-    <i class="far fa-edit"></i>
-    </button></a>
+<?php 
+$sql = "SELECT * FROM `hostel`";
 
-    <a href="AddHostel.php">
-    <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
+$result = mysqli_query($con, $sql);
+if(mysqli_num_rows($result) > 0){
+  while($row = mysqli_fetch_assoc($result)){
+echo '<tr>
+    <td>'.$row["student_id"].'  </td>
+    <td>'.$row["fullname"].'  </td>
+    <td>'.$row["department_name"].' </td>
+    <td>'.$row["address"].'  </td>
+    <td>'.$row["district"].'  </td>
+    <td>'.$row["distance"].'  </td>
+    <td>'.$row["gender"].'  </td>
+    <td>'.$row["block_no"].'  </td>
+    <td>'.$row["room_no"].'  </td>
+    <td>'.$row["date_of_addmission"].'  </td>
+    <td>'.$row["date_of_leaving"].'  </td>
+    
+    <td>
+    <a href="?delete='.$row["student_id"].'">
+    <button type="button" name="delete" class="btn btn-outline-info rounded-pill  waves-effect  ">
     <i class="fas fa-minus-circle"></i>
     </button></a>
-    
+
+    <a href="AddHostel.php ?edit='.$row["student_id"].'">
+    <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
+    <i class="far fa-edit"></i>
+    </button></a></td>
     </form>
      </td>
-    </tr>
+    </tr>';
 
-<tr>
-    <td>ict/bit/04  </td>
-    <td>Atputharsa.Rewathy  </td>
-    <td>Girl  </td>
-    <td>B-12  </td>
-    <td>Room-1  </td>
-    <td>11/2/1996  </td>
-    <td>11/2/1996  </td>
-    <td>Puttur  </td>
-    <td>Jaffna  </td>
-    <td><form>
-    <a href="AddHostel.php">
-    <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
-    <i class="far fa-edit"></i>
-    </button></a>
+  }
+}
+else{
+  echo "0 result";
+}
 
-    <a href="AddHostel.php">
-    <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
-    <i class="fas fa-minus-circle"></i>
-    </button></a>
-    
-    </form></td>
-    
-    </tr>
-
-
-    <tr>
-    <td>ict/bit/04  </td>
-    <td>Atputharsa.Rewathy  </td>
-    <td>Girl  </td>
-    <td>B-12  </td>
-    <td>Room-1  </td>
-    <td>11/2/1996  </td>
-    <td>11/2/1996  </td>
-    <td>Puttur  </td>
-    <td>Jaffna  </td>
-     <td><form>
-    <a href="AddHostel.php">
-    <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
-    <i class="far fa-edit"></i>
-    </button></a>
-
-    <a href="AddHostel.php">
-    <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
-    <i class="fas fa-minus-circle"></i>
-    </button></a>
-    
-    </form></td>
-    
-    </tr>
+ ?>
 
 </tbody>
 </table>
