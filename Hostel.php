@@ -25,24 +25,6 @@ if(isset($_GET['delete'])){
 
 
 
-<div class="classic-tabs">
-
-<ul class="nav nav-tabs bg-info" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-      aria-selected="true">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-      aria-selected="false">Profile</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-      aria-selected="false">Contact</a>
-  </li>
-</ul>
-
-
 
 
 
@@ -117,7 +99,7 @@ echo '<tr>
     <td>
     <a href="?delete='.$row["student_id"].'">
     <button type="button" name="delete" class="btn btn-outline-info rounded-pill  waves-effect  ">
-    <i class="fas fa-minus-circle"></i>
+    <i class="fas fa-minus-circle"></i><br>
     </button></a>
 
     <a href="AddHostel.php ?edit='.$row["student_id"].'">
