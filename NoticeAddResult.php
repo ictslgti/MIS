@@ -10,14 +10,13 @@ include_once("menu.php");
 
 
 <!-- bLOCK#2 start your code here & u can change -->
-<br>
 <hr>
 <div class="alert bg-dark text-white" role="alert">
   <h1>Add New Result</h1>
 </div>
 <hr>
 <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Type</label>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Type</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="inputEmail3"required placeholder="Result...">
     </div>
@@ -25,7 +24,7 @@ include_once("menu.php");
 
 
   <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Department</label>
+    <label for="inputPassword3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Department</label>
     <div class="col-sm-10">
 	<select id="inputState" class="form-control">
       <option selected>Select the Department...</option>
@@ -39,22 +38,23 @@ include_once("menu.php");
   </div>
 </div>
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Batch No</label>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Academic Year</label>
     <div class="col-sm-10">
     <select id="inputState" class="form-control">
-      <option selected>Select the Batch No...</option>
-      <option>Batch 01</option>
-      <option>Batch 02</option>
-      <option>Batch 03</option>
+      <option selected>Select the Academic Year...</option>
+      <option>2016/2017</option>
+      <option>2017/2018</option>
+      <option>2018/2019</option>
     </select>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Level</label>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Course</label>
     <div class="col-sm-10">
     <select id="inputState" class="form-control">
-      <option selected>Select Your Level...</option>
+      <option selected>Select Your Course...</option>
+      <option>Level 04</option>
       <option>Bridging</option>
       <option>Level 05</option>
       <option>Level 06</option>
@@ -63,7 +63,7 @@ include_once("menu.php");
   </div>
  
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Modules</label>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Modules</label>
     <div class="col-sm-10">
     <select id="inputState" class="form-control">
       <option selected>Select the Module...</option>
@@ -97,10 +97,11 @@ include_once("menu.php");
 <button type="button" class="btn btn-primary btn-lg">Add</button>
 <button type="button" class="btn btn-secondary btn-lg">Edit</button>
 <button type="button" class="btn btn-secondary btn-lg">Delete</button>
-<button type="button" class="btn btn-outline-danger btn-lg"><a href="AddNotice.php">Back</a></button>
+<button type="button" class="btn btn-outline-primary btn-lg"><a href="AddNotice.php">Back</a></button>
 </div>
 </div>
 <hr>
+  
  <!-- end your code here-->
 
 
