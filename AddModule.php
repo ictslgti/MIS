@@ -15,7 +15,7 @@ include_once ("menu.php");
   
 		<div class="card mt-12 ">
 			<div class="card"><br>
-				<h4 align="center">ADD Module Details</h4><br>
+				<h4 style="text-align:center">ADD Module Details</h4><br>
       </div>
     </div>
 <br>
@@ -43,7 +43,43 @@ include_once ("menu.php");
 
             <div class="row">
 
-              <div class="col-md-3 mb-3"> 
+              
+              <div class="col-md-6 mb-3">
+                <label for="Self">Learning Hours</label>
+                <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Hrs</span>
+                </div>
+                  <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" required>
+                <div class="invalid-feedback" style="width: 50%;">
+                  Duration is required.
+                </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                  <label for="Department">Course Name</label>
+                    <select class="custom-select d-block w-100" id="Department" required>
+                        <option value=""  disabled selected >Choose...</option>
+                        <option>5IT</option>
+                        <option>5IT</option>
+                        <option>5IT</option>
+                        <option>5IT</option>
+                        <option>5IT</option>
+                        <option>5IT </option>
+                    </select>
+                  <div class="invalid-feedback">
+                    Please provide a Department.
+                  </div>
+                </div>
+
+            </div>
+
+            
+
+            <div class="row">
+
+            <div class="col-md-3 mb-3"> 
                 <label for="Notional">Notional Hours</label>
               <div class="input-group">
               <div class="input-group-prepend">
@@ -95,24 +131,6 @@ include_once ("menu.php");
               </div>
               </div>
 
-            </div>
-
-            
-
-            <div class="row">
-
-              <div class="col-md-12 mb-3">
-              <label for="Self">Learning Hours</label>
-              <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Hrs</span>
-              </div>
-                <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" required>
-              <div class="invalid-feedback" style="width: 50%;">
-                Duration is required.
-              </div>
-              </div>
-              </div>
 
             </div>
             
@@ -120,7 +138,7 @@ include_once ("menu.php");
             <div class="row">
 
               <div class="col-md-6 mb-3">
-              <label for="Department">Semister</label>
+              <label for="Department">Semester Name</label>
                 <select class="custom-select d-block w-100" id="Department" required>
                     <option value="">Choose...</option>
                     <option>1</option>

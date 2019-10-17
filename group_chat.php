@@ -38,24 +38,7 @@ include_once("homenav.php");
   </li>
 </ul>
 </nav>
-<?php
 
-$sql = "SELECT * FROM `chat_group` where `chat_group_id`=''";
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result)>0){
-    while ($row = mysqli_fetch_assoc($result)){
-        echo'
-        <tr>
-        <td>' . $row ["chat_group_id"].'</td>
-        <td>' . $row ["chat_group_name"].'</td>
-       
-        </tr>';
-    }
-}else{
-echo "0 results";
-}
-
-?>
 
 <div class="card border-light mb-3" style="max-width:900px;">
   <div class="card-header"></div>
@@ -113,12 +96,30 @@ echo "0 results";
 </form>
   </div>
   <ul class="list-group list-group-flush ">
-    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> ICT graphic  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> Hi how are you. I'm sahan and what about you</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Examination <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> Hello boss you.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Assembly information  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> weekly order by paryer the number of person.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Old Students  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> how are you.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> SLGTi Family   <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> So what.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> ICT Students  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> I'm Mokku Hanu.</small></li>
+    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> <?php
+
+$sql = "SELECT * FROM `chat_group` where `chat_group_id`=''";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result)>0){
+    while ($row = mysqli_fetch_assoc($result)){
+        echo'
+        <tr>
+        <td>' . $row ["chat_group_id"].'</td>
+        <td>' . $row ["chat_group_name"].'</td>
+       
+        </tr>';
+    }
+}else{
+echo "0 results";
+}
+
+?> 
+ <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"></small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"></small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"></small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>   <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> </small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>   <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> </small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> </small></li>
    
    
   </ul>

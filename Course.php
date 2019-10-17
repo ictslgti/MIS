@@ -14,7 +14,7 @@ include_once ("menu.php");
 <hr class="mb-8 mt-4">
 		<div class="card mt-12 ">
 			<div class="card"><br>
-				<h4 align="center">Course Details</h4><br>
+				<h4 style="text-align:center">Course Details</h4><br>
       </div>
     </div>
  <br>
@@ -23,13 +23,14 @@ include_once ("menu.php");
 
   <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <table class="table table-hover   mt-4 " id="Course Info">
                   <thead>
                     <tr style="text-align:center">
                       <th>Course ID</th>
                       <th>Course Name</th>
-                      <th>NVQ Level</th>
                       <th>Department Name</th>
+                      <th>NVQ Level</th>
+                     
                       <th>Actions</th>
                       
                     </tr>
@@ -78,8 +79,9 @@ include_once ("menu.php");
                                 <tr style="text-align:center">
                                     <td>'. $row["course_id"] . "<br>" .'</td>
                                     <td>'. $row["course_name"] .  "<br>" .'</td>
-                                    <td>'. $row["course_nvq_level"] .  "<br>" .'</td>
                                     <td>'. $row["department_name"] .  "<br>" .'</td>
+                                    <td>'. $row["course_nvq_level"] .  "<br>" .'</td>
+                                    
                                     
                                     <td> 
                                     <a href=" Module.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-icon-split"> <span class="text">View Module</span>  </a>  

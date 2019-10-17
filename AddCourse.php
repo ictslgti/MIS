@@ -14,7 +14,7 @@ include_once ("menu.php");
 <hr class="mb-8 mt-4">
 		<div class="card mt-12 ">
 			<div class="card"><br>
-				<h4 align="center">ADD Course Details</h4><br>
+				<h4 style="text-align:center">ADD Course Details</h4><br>
       </div>
     </div>
  <br>
@@ -75,7 +75,7 @@ include_once ("menu.php");
               <div class="col-md-6 mb-3">
                 <label for="Department">Department</label>
                 <select class="custom-select d-block w-100" id="Department" required>
-                    <option value="">Choose...</option>
+                    <option value=""  disabled selected>Choose...</option>
                     <option>ICT</option>
                     <option>Construction</option>
                     <option>Mechanical</option>
@@ -91,7 +91,7 @@ include_once ("menu.php");
               <div class="col-md-6 mb-3">
                 <label for="Level">NVQ Level</label>
                 <select class="custom-select d-block w-100" id="Level" required>
-                    <option value="">Choose...</option>
+                    <option value=""  disabled selected>Choose...</option>
                     <option>5</option>
                     <option>4</option>
                 </select>
