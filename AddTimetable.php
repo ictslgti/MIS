@@ -10,58 +10,42 @@ include_once("menu.php");
 <?PHP
 
 // Add coding
-$Department=$Course=$Module=$AcademicYear=$Lecture=$WeekDays=$Time=$ClassRoom=$Startdate=$EndDate=$Type=null;
+$department_id=$Course=$Module=$AcademicYear=$Lecture=$WeekDays=$Time=$ClassRoom=$Startdate=$EndDate=$Type=null;
+
+
 
 if(isset($_POST['Add'])){
-  if(!empty($_POST['Department'])
+  if(!empty($_POST['department_id'])
     &&!empty($_POST['Course'])
     &&!empty($_POST['Module'])
-    &&!empty($_POST['Academic Year'])
+    &&!empty($_POST['AcademicYear'])
     &&!empty($_POST['Lecture'])
     &&!empty($_POST['WeekDays'])
     &&!empty($_POST['Time'])
-    &&!empty($_POST['Class Room'])
-    &&!empty($_POST['Start date'])
-    &&!empty($_POST['End Date'])){
+    &&!empty($_POST['ClassRoom'])
+    &&!empty($_POST['Startdate'])
+    &&!empty($_POST['EndDate'])){
    
-     $Department_id=$_POST['Department_id'];
-      $cours=$_POST['course'];
-      $Module=$_POST['Module'];
-      $AcademicYear=$_POST['AcademicYear'];
+     $department_id=$_POST['department_id'];
+      $course_id=$_POST['course_id'];
+      $module_id=$_POST['module_id'];
+      $academic_year=$_POST['academic_year'];
       $Lecture=$_POST['Lecture'];
       $WeekDays=$_POST['Weekdays'];
       $Time=$_POST['Time'];
-      $ClassRoom=$_POST['Class Room'];
-      $Startdate=$_POST['Start date'];
-      $EndDate=$_POST['End Date'];
+      $ClassRoom=$_POST['ClassRoom'];
+      $Startdate=$_POST['Startdate'];
+      $EndDate=$_POST['EndDate'];
     
+      $sql="INSERT INTO `timetable`(`department_id`, `course_id`, `module_id`, `academic_year`,`staff_id`, `weekdays`, `time`, `classroom`, `startdate`, `enddate`) 
+      VALUES (`$department_id`, `$course_id`, `$module`, `$academic_year`,`$staff_id`, `$Weekdays`, `$Time`, `$ClassRoom'`, `$Startdate`,'$EndDate')";
 
-      $sql="INSERT INTO `timetable`(`department_id`, `course_id`, `module_id`, `academic_year`, `weekdays`, `time`, `classroom`, `startdate`, `enddate`) 
-      VALUES (`$department_id`, `$course`, `$module`, `$AcademicYear`,`$Lecture`, `$Weekdays`, `$Time`, `$ClassRoom'`, `$Startdate`,'$EndDate')";
-
-      if(mysqli_query($con,$sql))
-     
-      {
-        echo '
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>'.$selecttimetable.'</strong> timetable details inserted
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        </div>    
-      ';
-    }
-    else{
-      
-      echo '
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong>'.$selecttimetable.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-      </div>
-      
-      ';
+    
+      if (mysqli_query($con, $sql)) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql .
+        "<br>" . 	mysqli_error($con);
 
 
     }
@@ -82,7 +66,7 @@ if(isset($_POST['Add'])){
         if(mysqli_num_rows($result)==1){
             $row=mysqli_fetch_assoc($result);
             $WeekDays=$row['weekdays'];
-            $Department=$row['department_id'];
+            $department_id=$row['department_id'];
             $Course=$row['course_id'];
             $module=$row['module_id'];
             $academicyear=$row['academic_year'];
@@ -124,7 +108,9 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Department</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
+    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['department_id']))
+    
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['department_id'])){echo ' is-valid';} ?>"  id="department_id" name="department_id">
         <option selected disabled required>Department</option>
         <?php          
             $sql = "SELECT * FROM `department`";
@@ -132,7 +118,7 @@ if(isset($_POST['Add'])){
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                 echo '<option  value="'.$row["department_id"].'" required';
-                if($row["department_id"]==$Department) echo ' selected';
+                if($row["department_id"]==$department_id) echo ' selected';
                 echo '>'.$row["department_name"].'</option>';
                 }
             }
@@ -327,13 +313,18 @@ if(isset($_POST['Add'])){
   </div>
   
   
-
+  <form method="POST" action="#">
 
 
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">ClassRoom</label>
     <div class="col-sm-10"> 
-    <select name="classroom" required class="form-control  <?php  if(isset($_POST['Add']) && empty($_POST['ClassRoom'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['ClassRoom'])){echo ' is-valid';} ?>"  id="ClassRoom" name="ClassRoom">
+    <select name="classroom"  class="form-control  
+    <?php 
+     if(isset($_POST['Add']) && empty($_POST['classroom']))
+    {echo ' is-invalid';}
+    if(isset($_POST['Add']) && !empty($_POST['classroom']))
+    {echo ' is-valid';} ?>"  id="classroom" name="classroom">
         <option selected disabled required >ClassRoom</option>
 
         <option  value="LAP-01"

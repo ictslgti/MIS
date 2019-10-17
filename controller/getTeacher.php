@@ -64,4 +64,65 @@ if(isset($_POST['StaffModuleEnrollment'])){
     }
 }
 
+if(isset($_POST['Staff'])){
+  echo $did = $_POST['department_id'];
+  echo $spid = $_POST['staff_position_type_id'];
+  $sql="
+  SELECT 
+  `staff`.`staff_id`,
+  `staff`.`staff_name`,    
+  `staff`.`staff_pno`, 
+  `staff`.`staff_epf`,
+  `staff`.`staff_position`,
+  `staff`.`staff_type`,
+  `staff`.`staff_status`,
+  `department`.`department_name`, 
+  `staff_position_type`.`staff_position_type_name` 
+  FROM `staff` 
+  LEFT JOIN 
+      `department` 
+          ON `staff`.`department_id` = `department`.`department_id` 
+  LEFT JOIN 
+      `staff_position_type`
+          ON `staff`.`staff_position` = `staff_position_type`.`staff_position_type_id`";
+  if($did!=null && $spid == null){
+    // $sql.="  WHERE `staff`.`department_id` = '$did'";
+  }
+  if($did==null && $spid != null){
+    // $sql.="  WHERE `staff`.`department_id` = '$did'";
+  }
+  if($did!=null && $spid != null){
+    //  $sql.="  WHERE `staff`.`department_id` = '$did'";
+  }
+  $result=mysqli_query($con,$sql);
+  if(mysqli_num_rows($result)>0)
+  {
+      while($row=mysqli_fetch_assoc($result))
+      {
+      echo '   
+      <tr>
+          <td>'.$row["staff_name"].'<span class="badge ';
+          if($row["staff_status"]=='Working'){
+            echo ' badge-success';
+          }else{
+            echo ' badge-danger';
+          }
+          
+          echo '">'.$row["staff_status"].' </span></td>
+          <td>'.$row["department_name"].'</td>
+          <td>'.$row["staff_position_type_name"].'<span class="badge badge-primary">'.$row["staff_type"].' </span> </td>
+          <td>'.$row["staff_pno"].'</td>
+          <td> 
+          <a href="AddStaff?edit='.$row["staff_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+          <a href="?delete='.$row["staff_id"].'" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+          </td>
+      </tr>';
+      }
+  }
+  else {
+    echo '<tr>0 result</tr>';
+  }
+}
+
+
 ?>
