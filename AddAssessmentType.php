@@ -111,16 +111,24 @@ if (isset($_POST['Add'])) {
                                 class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"
                                 id="module" name="module_name" value="<?php echo $module_id; ?>" required>
                                 <option value="null" selected disabled>--Select Module--</option>
-                                <!-- <option selected>Graphic Design</option>
-                                <option value="1">Programming</option>
-                                <option value="2">Database 1</option>
-                                <option value="3">System Analysis and Design</option>
-                                <option value="3">Manage Workplace</option>
-                                <option value="3">Manage Workplace & Communication</option> -->
+                               <?php
+                                
+                                $sql = "SELECT * FROM `module`  WHERE `module.course_id` = `course.course_id`";
+                                $result = mysqli_query($con, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    while($row = mysqli_fetch_assoc($result)) {
+                                    echo '<option  value="'.$row["course_id"].'" required>'.$row["course_name"].'</option>';
+                                    }
+                                }else{
+                                    echo '<option value="null"   selected disabled>-- No Courses --</option>';
+                                }
+
+
+                               ?>
                             </select>
                         </div>
                     </div>
-                </div>
+                </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 
 
 
