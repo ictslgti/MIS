@@ -10,7 +10,9 @@ include_once ("menu.php");
 
 
 <!-- Block#2 start your code -->
-
+<?php
+$gcourse_id=null;
+?>
 <hr class="mb-8 mt-4">
   
 		<div class="card mt-12 ">
@@ -30,7 +32,6 @@ include_once ("menu.php");
                       <th>Course Name</th>
                       <th>Learning Hours</th>
                       <th>Semester ID </th>
-                      <th>Semester name </th>
                       <th>Relative Unit</th>
                       <th>Lecture Hours</th>
                       <th>Pracical Hours</th>
@@ -68,12 +69,11 @@ include_once ("menu.php");
                       `module_name`,
                       `module_learning_hours`,
                       `semester_id`,
-                      `semester_name`,
                       `module_relative_unit`,
                       `module_lecture_hours`,
                       `module_practical_hours`,
                       `module_self_study_hours`,
-                      course.course_name FROM `module`,
+                      course.course_name as course_name FROM `module`,
                       `course` WHERE module.course_id = course.course_id";
 
                         if(isset($_GET['course_id']))
@@ -96,7 +96,6 @@ include_once ("menu.php");
                               <td>'. $row["course_name"] . "<br>" .'</td>
                               <td>'. $row["module_learning_hours"] . "<br>" .'</td>
                               <td>'. $row["semester_id"] . "<br>" .'</td>
-                              <td>'. $row["semester_name"] . "<br>" .'</td>
                               <td>'. $row["module_relative_unit"] . "<br>" .'</td>
                               <td>'. $row["module_lecture_hours"] . "<br>" .'</td>
                               <td>'. $row["module_practical_hours"] . "<br>" .'</td>
