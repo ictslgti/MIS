@@ -17,7 +17,7 @@ include_once("menu.php");
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-3 text-center">Order Information</h1>
+                    <h1 class="display-3 text-center">Order Summary</h1>
                     
                  
 
@@ -34,10 +34,30 @@ include_once("menu.php");
 <div class="form-group p-3 mb-2 bg-light text-dark au_size  rounded">
 <div class ="row">
   <div class ="col-3" >
-    <p><h4>Order ID</h4></p>
+    <p><h4>OrderID</h4></p>
   </div>
   <div class ="col-3" >
-      <p><h4>15</h4></p>
+      <p><h4>
+
+      <?php
+    $sql="SELECT `food_order_details_food_order_id` FROM `food_order_details`";
+    $result=mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)>0)
+    {
+        while($row=mysqli_fetch_assoc($result))
+        {
+        echo '   
+        <tr>
+            <td>'.$row["food_order_details_food_order_id"].'</td>
+       ';
+        }
+    }
+    else {
+        echo "0 results";
+    }
+    ?>
+
+</h4></p>
   </div>
 </div>
 <div class ="row">
@@ -45,7 +65,24 @@ include_once("menu.php");
     <p><h4>User name</h4></p>
   </div>
   <div class ="col-3" >
-      <p><h4>Abdullah</h4></p>
+      <p><h4>
+      <?php
+    $sql="SELECT `user_name` FROM `user` WHERE user_id=1";
+    $result=mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)>0)
+    {
+        while($row=mysqli_fetch_assoc($result))
+        {
+        echo '   
+        <tr>
+            <td>'.$row["user_name"].'</td>
+          ';
+        }
+    }
+    else {
+        echo "0 results";
+    }
+    ?></h4></p>
   </div>
 </div>
 
@@ -65,26 +102,24 @@ include_once("menu.php");
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Pittu</th>
-      <td>10</td>
-      <td>600</td>
+      <th scope="row"></th>
+      <td></td>
+      <td></td>
    
     </tr>
     <tr>
-      <th scope="row">Idiyappam</th>
-      <td>7</td>
-      <td>420</td>
+      <th scope="row"></th>
+      <td></td>
+      <td></td>
      
     </tr>
     <tr>
       <th scope="row"></th>
-      <td colspan="1"><h5>Total Amount<h5></td>
-      <td ><h5>1020<h5></td>
+      <td colspan="1"><h5><h5></td>
+      <td ><h5><h5></td>
     </tr>
   </tbody>
 </table>
-
-
 
 
 
@@ -92,15 +127,19 @@ include_once("menu.php");
 </div>
     <div class="row">
     
-    <div class="col"><a href="FoodOrders" button type="button" class="btn btn-info">Back</button></a></div>
+    <div class="col"><a href="FoodOrders" button type="button" class="btn btn-info">Back to Order</button></a></div>
     
-    
+
+
     
     </div>
  </div>
 </form>
 
 </div>
+
+<!-- Button trigger modal -->
+
   
 <!--block 3 start dont change the order-->
 
