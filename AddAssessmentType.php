@@ -9,19 +9,22 @@ $title = "Examinations | SLGTI";
 <!-- add assessment code -->
 <?php
 echo $_SESSION["user_name"];
-$course_id=$semester_id=$module_id=$assessment_type=$assessment_name=null;
+$course_name=$module_name=$assessment_type=$assessment_name=$assessment_percentage=null;
 
 if (isset($_POST['Add'])) {
-    if (!empty($_POST['course_id'])
-        &&!empty($_POST['semester_id'])
-    &&!empty($_POST['module_id'])
+    if (!empty($_POST['course_name'])
+       
+    &&!empty($_POST['module_name'])
     &&!empty($_POST['assessment_type'])
     &&!empty($_POST['assessment_name'])
+    &&!empty($_POST['assessment_percentage'])
     ){
-        $semester_id=$_POST['semester_id'];
-        $module_id=$_POST['module_id'];
+
+        $course_name=$_POST['course_name'];
+        $module_name=$_POST['module_name'];
         $assessment_type=$_POST['assessment_type'];
         $assessment_name=$_POST['assessment_name'];
+        $assessment_percentage=$_POST['assessment_percentage']
 
         # code...
     }
@@ -68,7 +71,7 @@ if (isset($_POST['Add'])) {
                             </div>
                             <select
                                 class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['courser_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"
-                                id="course" name="course" value="<?php echo $course_id; ?>"
+                                id="course" name="course_name" value="<?php echo $course_id; ?>"
                                 onchange="showModule(this.value)" required>
                                 <option value="null" selected disabled>--Select Course--</option>
 
@@ -110,9 +113,9 @@ if (isset($_POST['Add'])) {
                             </div>
                             <select
                                 class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"
-                                id="Module" name="module" value="<?php echo $module_id; ?>" required>
+                                id="Module" name="module_name" value="<?php echo $module_id; ?>" required>
                                 <option value="null" selected disabled>--Select Module--</option>
-                               
+
                             </select>
                         </div>
                     </div>
