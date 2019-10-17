@@ -18,10 +18,13 @@ include_once("menu.php");
 </head>
 
 <body>
+<?php echo $_SESSION['user_name']?>
     <div class="shadow p-3 mb-s bg-white rounded">
-        <h1 class="text-center display-3">SLGTI Student Payment Portal</h1>
+        <h1 class="text-center display-3">SLGTI Student Payment Portal</h1> 
+        
     </div>
     <?php
+    
 
 $student_id=$student_name=$student_profile_img =$payment_id=$pays_reason=$payment_note=$pays_amount=$payment_id=$pays_date=null;
 
@@ -34,8 +37,7 @@ if(isset($_POST['Add'])){
     &&!empty($_POST['payment_reason'])
     &&!empty($_POST['payment_qty'])
     &&!empty($_POST['payment_note'])
-    &&!empty($_POST['payment_amount'])
-    ){
+    &&!empty($_POST['payment_amount'])){
     
 
 
@@ -43,6 +45,7 @@ if(isset($_POST['Add'])){
       $student_id=$_POST['student_id'];
       $pays_department=$_POST['pays_department'];
       $pays_reason=$_POST['payment_reason'];
+      $pays_type=$_POST['payment_type'];
       $pays_qty=$_POST['payment_qty'];
       $pays_note=$_POST['payment_note'];
       $pays_amount=$_POST['payment_amount'];
@@ -51,17 +54,17 @@ if(isset($_POST['Add'])){
      
   
 
-      echo  $sql="INSERT INTO `payment`(`payment_qty`, `payment_note`) 
-      VALUES (,'$pays_qty','$pays_note',)";
-      echo $sql.="INSERT INTO `pays`(`student_id`, `payment_id`, `pays_reason`, `pays_amount`,`pays_department`) 
-      VALUES ('$student_id','$payment_id','$pays_reason','$pays_amount','$pays_department')";
+    $sql="INSERT INTO `payment`(`payment_reason`) 
+      VALUES ('$pays_reason')";
+    // $sql.="INSERT INTO `pays`(`student_id`, `payment_id`, `pays_note`, `pays_amount`,`pays_department`) 
+    //   VALUES ('$student_id','$payment_id','$pays_note','$pays_amount','$pays_department')";
 
 
 if(mysqli_query($con,$sql))
       {
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$StaffName.'</strong> Staff details inserted
+          <strong>'.$student_name.'</strong> Staff details inserted
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -72,7 +75,7 @@ if(mysqli_query($con,$sql))
         
         echo '
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>'.$StaffName.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <strong>'.$student_name.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -84,9 +87,11 @@ if(mysqli_query($con,$sql))
       }
     }
 }
+?>
+<?php
 
-  if(isset($_GET['edit'])){
-        $id=$_GET['edit'];
+  if(isset($_POST['edit'])){
+        $id=$_POST['edit'];
         $sql="SELECT * FROM `student` WHERE `student_id`='$id'";
         $result=mysqli_query($con,$sql);
         if(mysqli_num_rows($result)==1){   
@@ -109,7 +114,7 @@ if(mysqli_query($con,$sql))
 
     <br>
     <div class="row">
-        <div class="col-sm-8"></div>
+        <div class="col-sm-8"> </div>
         <div class="col-sm-4  ">
 
             <form method="POST" action="#" class="form-inline">
@@ -152,7 +157,7 @@ if(mysqli_query($con,$sql))
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-building"></i>&nbsp;
                         <label for="inputEmail4">Department</label>
-                        <input type="Department"
+                        <input type="Department" 
                             class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['pays_department'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['pays_department'])){echo ' is-valid';} ?>"" id="
                             inputEmail4" placeholder="Department" name="pays_department">
                     </div>
@@ -178,9 +183,10 @@ if(mysqli_query($con,$sql))
                             class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_type'])){echo ' is-valid';} ?> "
                             id="inputGroupSelect01" name="payment_type">
                             <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="1">Exam</option>
+                            <option value="2">Stationery Items</option>
+                            <option value="3">Accessories</option>
+                            <option value="3">Other</option>
                         </select>
                     </div>
 
@@ -196,9 +202,14 @@ if(mysqli_query($con,$sql))
                             class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_reason'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_reason'])){echo ' is-valid';} ?>"
                             id="inputGroupSelect01" name="payment_reason">
                             <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="1">Hostal Fee</option>
+                            <option value="2">Cap</option>
+                            <option value="3">C.B.T Book</option>
+                            <option value="3">Re exam</option>
+                            <option value="3">Books</option>
+                            <option value="3">Re Correction</option>
+                            <option value="3">Other</option>
+                            
                         </select>
                     </div>
 
