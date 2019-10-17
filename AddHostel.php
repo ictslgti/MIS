@@ -70,32 +70,38 @@ include_once("menu.php");
               
           }
       }
-      if(isset($_POST['upt'])){
+      
        
-            $student_id = $_GET['edit'];
-            $name = $_POST['fullname'];
-            $dept = $_POST['department_name'];
-            $addr = $_POST['address'];
-            $dist = $_POST['district'];
-            $dis = $_POST['distance'];
-            $title = $_POST['gender'];
-            $block = $_POST['block_no'];
-            $room = $_POST['room_no'];
-            $date = $_POST['date_of_addmission'];
-            $leave = $_POST['date_of_leaving'];
-           
-            $sql = "UPDATE `hostel` 
-            SET `department_code` = '$code', 
-            `department_name` = '$name' 
-            WHERE `department`.`department_id` = $id";
+        if(isset($_POST['upt'])){
           
-            if(mysqli_query($con,$sql)){
-                echo "new record update sucessfully ";
-            }else{
-                echo "error :" .$sql."<br>".mysqli_error($con);
-            }
-        }
-     
+       
+           $student_id = $_GET['edit'];
+           $name =$_POST['name'];
+           $dept =$_POST['dept'];
+           $address =$_POST['address'];
+           $dist =$_POST['dist'];
+           $dis =$_POST['dis'];
+           $gender =$_POST['title'];
+           $block =$_POST['block'];
+           $room =$_POST['room'];
+           $date =$_POST['date'];
+           $leave =$_POST['leave'];
+         
+          $sql = "UPDATE `hostel` 
+          SET `fullname` = ' $name', 
+          `department_name` = '$dept',
+          `address` = ' $addr',`district` = ' $dist',`distance` = ' $dis',`gender` = ' $title',`block_no` = ' $block',`room_no` = ' $room',
+          `date_of_addmission` = ' $date',`date_of_leaving` = ' $leave'
+          WHERE `hostel`.`student_id` = $student_id";
+        
+          if(mysqli_query($con,$sql)){
+              echo "new record update sucessfully ";
+          }else{
+              echo "error :" .$sql."<br>".mysqli_error($con);
+          }
+      }
+   
+
 
         ?>
         
