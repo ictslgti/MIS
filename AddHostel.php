@@ -126,8 +126,7 @@ include_once("menu.php");
 
 <form class="form-inline md-form form-sm mt-4 ">
  
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_Student_ID" aria-label="Search"id="search"> 
-  <i class="fas fa-search ml-3" aria-hidden="true"></i> 
+ 
 </form>
 </div>
 </div>
