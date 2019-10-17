@@ -67,7 +67,7 @@ if (isset($_POST['Add'])) {
                             </div>
                             <select
                                 class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['courser_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"
-                                id="course_id" name="course_id" value="<?php echo $course_id; ?>"
+                                id="course" name="course" value="<?php echo $course_id; ?>"
                                 onchange="showModule(this.value)" required>
                                 <option value="null" selected disabled>--Select Course--</option>
 
@@ -99,7 +99,7 @@ if (isset($_POST['Add'])) {
                 </div>
                 <!--  -->
                 <div class="row">
-                    
+
 
                     <div class="col">
                         <div class="input-group mb-3">
@@ -109,26 +109,26 @@ if (isset($_POST['Add'])) {
                             </div>
                             <select
                                 class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"
-                                id="module" name="module_name" value="<?php echo $module_id; ?>" required>
-                                <option value="null" selected disabled>--Select Module--</option>
-                               <?php
+                                id="Module" name="module" value="<?php echo $module_id; ?>" required>
+                                <!-- <option value="null" selected disabled>--Select Module--</option> -->
+                                <!-- <?php
                                 
                                 $sql = "SELECT * FROM `module`";
                                 $result = mysqli_query($con, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while($row = mysqli_fetch_assoc($result)) {
-                                    echo '<option  value="'.$row["course_id"].'" required>'.$row["course_name"].'</option>';
+                                    echo '<option  value="'.$row["course_id"].'" required>'.$row["module_name"].'</option>';
                                     }
                                 }else{
-                                    echo '<option value="null"   selected disabled>-- No Courses --</option>';
+                                    echo '<option value="null"   selected disabled>-- No Modules --</option>';
                                 }
 
 
-                               ?>
+                               ?> -->
                             </select>
                         </div>
                     </div>
-                </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                </div>
 
 
 
@@ -294,16 +294,16 @@ if (isset($_POST['Add'])) {
 <!-- END -->
 
 <script>
-function showModule(val) {
+function showCouese(val) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("Module").innerHTML = this.responseText;
+            document.getElementById("Course").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("POST", "controller/getModule", true);
+    xmlhttp.open("POST", "controller/getCourse", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("semister=" + val);
+    xmlhttp.send("course=" + val);
 }
 </script>
 
