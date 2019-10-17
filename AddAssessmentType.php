@@ -8,10 +8,11 @@ $title = "Examinations | SLGTI";
 
 <!-- add assessment code -->
 <?php
-$semester_id=$module_id=$assessment_type=$assessment_name=null;
+$course_id=$semester_id=$module_id=$assessment_type=$assessment_name=null;
 
 if (isset($_POST['Add'])) {
-    if (!empty($_POST['semester_id'])
+    if (!empty($_POST['course_id'])
+        &&!empty($_POST['semester_id'])
     &&!empty($_POST['module_id'])
     &&!empty($_POST['assessment_type'])
     &&!empty($_POST['assessment_name'])
@@ -34,9 +35,7 @@ if (isset($_POST['Add'])) {
 <html>
 
     <body style="background-color: rgb(255,255,255);">
-        <?php
-            $ictDepartmentName = "Department Of Information & Communication Technology";
-            ?>
+
 
 
         <div class="shadow p-3 mb-5 bg-white rounded">
@@ -60,17 +59,20 @@ if (isset($_POST['Add'])) {
                 <div class="row">
                     <div class="col">
 
-                            <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01"><i
-                                                class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                    </div>
-                                    <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['semester_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['semester_id'])){echo ' is-valid';} ?>" id="semister_id" name="semister_id" value="<?php echo $semester_id; ?>"
-                                        onchange="showModule(this.value)" required>
-                                        <option value="null" selected disabled>--Select Course--</option>
-                                       
-        
-                                        <?php
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01"><i
+                                        class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
+                                    Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            </div>
+                            <select
+                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['semester_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['semester_id'])){echo ' is-valid';} ?>"
+                                id="semister_id" name="semister_id" value="<?php echo $semester_id; ?>"
+                                onchange="showModule(this.value)" required>
+                                <option value="null" selected disabled>--Select Course--</option>
+
+
+                                <?php
                   $sql = "SELECT * FROM `course`";
                   $result = mysqli_query($con, $sql);
                   if (mysqli_num_rows($result) > 0) {
@@ -81,10 +83,10 @@ if (isset($_POST['Add'])) {
                     echo '<option value="null"   selected disabled>-- No Course --</option>';
                   }
                   ?>
-        
-        
-                                    </select>
-                                </div>
+
+
+                            </select>
+                        </div>
                     </div>
                     <!--  -->
                     <div class="input-group mb-3">
@@ -97,43 +99,7 @@ if (isset($_POST['Add'])) {
                 </div>
                 <!--  -->
                 <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01"><i
-                                        class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            </div>
-                            <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['semester_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['semester_id'])){echo ' is-valid';} ?>" id="semister_id" name="semister_id" value="<?php echo $semester_id; ?>"
-                                onchange="showModule(this.value)" required>
-                                <option value="null" selected disabled>--Select Semister--</option>
-                                <!-- <?php 
-                                          $row=1;
-                                                while($row<=2) {
-                                                    
-                                                   echo '<option  value="'.$row.'" required>L5 Semister '.$row.'</option>';
-                                                   $row++;
-
-                                                   
-                                                }
-                                            ?> -->
-
-                                <?php
-          $sql = "SELECT * FROM `module`";
-          $result = mysqli_query($con, $sql);
-          if (mysqli_num_rows($result) > 0) {
-          while($row = mysqli_fetch_assoc($result)) {
-            echo '<option  value="'.$row["semester_id"].'" required>'.$row["semester_name"].'</option>';
-          }
-          }else{
-            echo '<option value="null"   selected disabled>-- No Semester --</option>';
-          }
-          ?>
-
-
-
-                            </select>
-                        </div>
-                    </div>
+                    
 
                     <div class="col">
                         <div class="input-group mb-3">
@@ -141,7 +107,9 @@ if (isset($_POST['Add'])) {
                                 <label class="input-group-text" for="inputGroupSelect01"><i
                                         class="fas fa-book-open"></i>&nbsp;&nbsp;Select Module&nbsp;</label>
                             </div>
-                            <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>" id="Module" name="module_name" value="<?php echo $module_id; ?>" required>
+                            <select
+                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"
+                                id="module" name="module_name" value="<?php echo $module_id; ?>" required>
                                 <option value="null" selected disabled>--Select Module--</option>
                                 <!-- <option selected>Graphic Design</option>
                                 <option value="1">Programming</option>
@@ -164,7 +132,9 @@ if (isset($_POST['Add'])) {
                                 <label class="input-group-text" for="inputGroupSelect01"><i
                                         class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Asignments Type</label>
                             </div>
-                            <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['assessment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_type'])){echo ' is-valid';} ?>"" id="inputGroupSelect01" name="assessment_type" value="<?php echo $assessment_type; ?>">
+                            <select
+                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['assessment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_type'])){echo ' is-valid';} ?>"" id="
+                                inputGroupSelect01" name="assessment_type" value="<?php echo $assessment_type; ?>">
                                 <option selected>Choose...</option>
                                 <option value="1">Theory</option>
                                 <option value="2">Practical</option>
@@ -181,50 +151,55 @@ if (isset($_POST['Add'])) {
                                 <span class="input-group-text" id="basic-addon1"><i
                                         class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Name&nbsp;</span>
                             </div>
-                            <input type="text" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_name'])){echo ' is-valid';} ?>"" placeholder="Assessment Name" aria-label="Username"
-                                aria-describedby="basic-addon1" name="assessment_name" value="<?php echo $assessment_name; ?>">
+                            <input type="text"
+                                class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_name'])){echo ' is-valid';} ?>"" placeholder="
+                                Assessment Name" aria-label="Username" aria-describedby="basic-addon1"
+                                name="assessment_name" value="<?php echo $assessment_name; ?>">
                         </div>
 
 
-                        
-                </div>
-            </div>
 
-            <div class="row">
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col">
 
-                            <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i
-                                                class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Percentage&nbsp;</span>
-                                    </div>
-                                    <input type="text" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_percentage'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_percentage'])){echo ' is-valid';} ?>"" placeholder="Assessment Percentage" aria-label="Username"
-                                        aria-describedby="basic-addon1" name="assessment_name" value="<?php echo $assessment_name; ?>">
-                                </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Percentage&nbsp;</span>
+                            </div>
+                            <input type="text"
+                                class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_percentage'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_percentage'])){echo ' is-valid';} ?>"" placeholder="
+                                Assessment Percentage" aria-label="Username" aria-describedby="basic-addon1"
+                                name="assessment_name" value="<?php echo $assessment_name; ?>">
+                        </div>
 
 
 
                     </div>
                     <div class="col">
 
-                            <div class="row justify-content-md-center">
-                                    <div class="col col-lg-2">
-                    
-                                    </div>
-                                    <div class="col-md-auto">
-                                        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus" value="Add" id="Add"></i> Add Asessments</button>
-                                    </div>
-                                    <div class="col col-lg-2">
-                    
-                                    </div>
-                                </div>
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-2">
+
+                            </div>
+                            <div class="col-md-auto">
+                                <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus" value="Add"
+                                        id="Add"></i> Add Asessments</button>
+                            </div>
+                            <div class="col col-lg-2">
+
+                            </div>
+                        </div>
 
 
 
 
 
                     </div>
-                        
+
 
 
 
@@ -232,7 +207,7 @@ if (isset($_POST['Add'])) {
 
                 </div>
 
-            
+
         </form>
 
         <!--  -->
@@ -250,7 +225,7 @@ if (isset($_POST['Add'])) {
 
 
         <div class="container">
-            
+
 
         </div>
 

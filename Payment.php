@@ -29,7 +29,7 @@ $student_id=$student_name=$student_profile_img =$payment_id=$pays_reason=$paymen
 if(isset($_POST['Add'])){
   if(!empty($_POST['student_id'])
   &&!empty($_POST['student_name'])
-  &&!empty($_POST['depatment'])
+  &&!empty($_POST['pays_depatment'])
     &&!empty($_POST['payment_type'])
     &&!empty($_POST['payment_reason'])
     &&!empty($_POST['payment_qty'])
@@ -51,10 +51,10 @@ if(isset($_POST['Add'])){
      
   
 
-      $sql="INSERT INTO `payment`( `payment_qty`, `payment_note`) 
-      VALUES ('$pays_qty','$pays_note',)";
-    //   $sql.="INSERT INTO `pays`(`student_id`, `payment_id`, `pays_reason`, `pays_amount`,`pays_department`) 
-    //   VALUES ('$student_id','$payment_id','$pays_reason','$pays_amount','$pays_department')";
+      echo  $sql="INSERT INTO `payment`(`payment_qty`, `payment_note`) 
+      VALUES (,'$pays_qty','$pays_note',)";
+      echo $sql.="INSERT INTO `pays`(`student_id`, `payment_id`, `pays_reason`, `pays_amount`,`pays_department`) 
+      VALUES ('$student_id','$payment_id','$pays_reason','$pays_amount','$pays_department')";
 
 
 if(mysqli_query($con,$sql))
@@ -112,7 +112,7 @@ if(mysqli_query($con,$sql))
         <div class="col-sm-8"></div>
         <div class="col-sm-4  ">
 
-            <form class="form-inline">
+            <form method="POST" action="#" class="form-inline">
                 <div class="input-group mb-2 mr-sm-2 ">
                     <div class="input-group-prepend , text-right">
                         <div class="input-group-text"><i class="fas fa-user"></i></div>
@@ -132,11 +132,12 @@ if(mysqli_query($con,$sql))
 
         </div>
     </div>
-    <div class="row">
+    <form method="POST" action="#">
+        <div class="row">
         <div class="col-sm-4"><?php if($student_profile_img!=null) { ?> <img src="<?php echo $student_profile_img; ?>"
                 alt="..." width="100px" height="100px"> <?php }?><br>
 
-            <form>
+            <form method="POST" action="#">
                 <div class="form-row">
                     <div class="form-group col-md-12"><i class="fas fa-id-card-alt"></i>&nbsp;
                         <label for="inputEmail4">ID</label>
@@ -146,12 +147,14 @@ if(mysqli_query($con,$sql))
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-user"></i>&nbsp;
                         <label for="inputEmail4">Name</label>
-                        <input type="text" value="<?php echo  $student_name; ?>" class="form-control" id="inputEmail4"
-                            placeholder="Name">
+                        <input type="text" value="<?php echo  $student_name; ?>" name="student_name"
+                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['student_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_name'])){echo ' is-valid';} ?>" id="inputEmail4" placeholder="Name">
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-building"></i>&nbsp;
                         <label for="inputEmail4">Department</label>
-                        <input type="Department" class="form-control" id="inputEmail4" placeholder="Department">
+                        <input type="Department"
+                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['pays_department'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['pays_department'])){echo ' is-valid';} ?>"" id="
+                            inputEmail4" placeholder="Department" name="pays_department">
                     </div>
                 </div>
 
@@ -160,7 +163,7 @@ if(mysqli_query($con,$sql))
         <div class="col-sm-4">
 
 
-            <form>
+            <form method="POST" action="#">
 
                 <div class="form-row">
 
@@ -171,7 +174,9 @@ if(mysqli_query($con,$sql))
                             <label class="input-group-text" for="inputGroupSelect01"><i class="fas
         fa-swatchbook"></i>&nbsp;Payment Type&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         </div>
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select
+                            class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_type'])){echo ' is-valid';} ?> "
+                            id="inputGroupSelect01" name="payment_type">
                             <option selected>Choose...</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
@@ -187,7 +192,9 @@ if(mysqli_query($con,$sql))
         fa-swatchbook"></i>&nbsp;Payment Reason</label>
                         </div>
                         <br>
-                        <select class="custom-select" id="inputGroupSelect01">
+                        <select
+                            class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_reason'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_reason'])){echo ' is-valid';} ?>"
+                            id="inputGroupSelect01" name="payment_reason">
                             <option selected>Choose...</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
@@ -198,16 +205,20 @@ if(mysqli_query($con,$sql))
                     <div class="form-group col-md-12"><i class="fas fa-th"></i>&nbsp;
                         <label for="inputEmail4">Qty</label>
                         <input type="Amount"
-                            class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['student_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_id'])){echo ' is-valid';} ?>"
-                            id="inputEmail4" placeholder="Qty">
+                            class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['payment_qty'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_qty'])){echo ' is-valid';} ?>"
+                            id="inputEmail4" placeholder="Qty" name="payment_qty">
                     </div>
                     <div class="form-group col-md-12 "><i class="fas fa-sticky-note"></i>&nbsp;
                         <label for="inputEmail4">Note</label>
-                        <input type="Amount" class="form-control" id="inputEmail4" placeholder="Note">
+                        <input type="Amount"
+                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['payment_note'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_note'])){echo ' is-valid';} ?>"" id="
+                            inputEmail4" placeholder="Note" name="payment_note">
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-coins"></i>&nbsp;
                         <label for="inputEmail4">Amount</label>
-                        <input type="Amount" class="form-control" id="inputEmail4" placeholder="Amount">
+                        <input type="Amount"
+                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['payment_amount'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_amount'])){echo ' is-valid';} ?>"" id="
+                            inputEmail4" placeholder="Amount" name="payment_amount">
                     </div>
                 </div>
             </form>
@@ -249,7 +260,7 @@ if(mysqli_query($con,$sql))
             </table>
             <br>
             <h2>
-                <button type="submit" name="Add" class="btn btn-primary btn-block">
+                <button type="submit" name="Add" value="Add" class="btn btn-primary btn-block">
                     <h1><i class="fab fa-amazon-pay"></i>&nbsp;
                 </button> </h1>
                 <button type="button" class="btn btn-secondary btn-sm"><i class="fas
@@ -258,7 +269,7 @@ if(mysqli_query($con,$sql))
         fa-times"></i>&nbsp;Close</button>
         </div>
         <br>
-        </form>
+    </form>
     </div>
     </div>
 
