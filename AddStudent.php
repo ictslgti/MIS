@@ -19,6 +19,7 @@ include_once("menu.php");
 <!-----END YOUR CODE----->
 <!-- form start---->
 <?php
+echo $_SESSION['user_name'];
 $stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $ename = $eaddress = $ephone = $erelation = $status = null;
 $coid = $year = $enroll = $exit = null;
 if(isset($_GET['edit']))
@@ -72,23 +73,23 @@ if(isset($_GET['edit']))
 <form class="needs-validation" novalidate action="">
 
     <div class="form-row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-7 mb-3">
           <label for="cid"> Course Name: </label>
           <select name="cid" id="cid" class="form-control" >
           <option selected disabled> ........select the Course .......</option>
               <?php 
-              $sql="SELECT * from course";
-              $result = mysqli_query($con,$sql);
-              if(mysqli_num_rows($result)>0)
-              while($row = mysqli_fetch_assoc($result)) 
-              {
-              echo '<option value="'.$row['course_id'].'"';
-              if ($row["course_id"]==$coid)
-              {
-                echo 'selected'; 
-              }
-              echo '>'.$row['course_name'].'</option>';
-              }
+                $sql="SELECT * from course";
+                $result = mysqli_query($con,$sql);
+                if(mysqli_num_rows($result)>0)
+                while($row = mysqli_fetch_assoc($result)) 
+                {
+                echo '<option value="'.$row['course_id'].'"';
+                if ($row["course_id"]==$coid)
+                {
+                  echo 'selected'; 
+                }
+                echo '>'.$row['course_name'].'</option>';
+                }
               ?> 
           </select>
         </div>
@@ -110,37 +111,23 @@ if(isset($_GET['edit']))
               }
               echo '>'.$row['academic_year'].'</option>';
               }
-              ?> >
+              ?> 
           </select>
         </div>
     </div>
 
     <div class="form-row">
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
           <label for="sid">Student ID:</label>
           <input type="text" class="form-control" id="sid" value="<?php echo $stid ?>" placeholder="" aria-describedby="idPrepend" required>
         </div>
 
-        <div class="col-md-2 mb-3">
+        <div class="col-md-3 mb-3">
           <label for="status">Status:</label>
           <select name="status" id="status" class="form-control" >
-            <option  disabled selected>........select Student Status .......</option>
-            <
-            <?php
-            while($row = mysqli_fetch_assoc($result)) 
-            {
-            echo 'option value="studying"> Studying </option>
-            <option value="completed"> Completed </option>
-            <option value="exit"> Exit </option>';
-            if ($row["student_enroll_status"]==$enstatus)
-            {
-              echo 'selected'; 
-            }
-            echo '>'.$row['student_enroll_status'].'</option>';
-          }
-            ?>
-            
+            <option  disabled selected>..select Student Status ..</option>
+
           </select>
         </div>
 
@@ -156,10 +143,9 @@ if(isset($_GET['edit']))
     </div>
 
     <div class="form-row">
-          <div class class="col-md-1">
-          </div>
+          <div class class="col-md-1"></div>
           <div class="col">
-          <h2 style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;">Personal Information</h2>
+          <h2 style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;"> Personal Information </h2>
           </div>  
     </div><br>
                       
@@ -167,19 +153,13 @@ if(isset($_GET['edit']))
           <div class="col-md-2 mb-3">
           <label for="title"> Title: </label>
           <select name="title" id="title" class="form-control">
-              <?php
-               if ($row["student_title"]==$title)
-               {
-                 echo 'selected'; 
-               }
-              ?>
-               <option>select</option>
-                    <option value="mr"> Mr </option>
-                    <option value="mrs"> Mrs </option>
-                    <option value="miss"> Miss </option>
+            <option disabled selected>select</option>
+            <option> Mr </option>
+            <option> Miss </option>
+            <option> Mrs </option>  
          </select>
          </div>
-
+              
         <div class="col-md-10 mb-3">
           <label for="fullname"> Full Name: </label>
           <input type="text" class="form-control" id="fullname" value="<?php echo $fname ?>" placeholder="" aria-describedby="fullnamePrepend" required>
@@ -205,8 +185,9 @@ if(isset($_GET['edit']))
         <div class="col-md-3 mb-3">
             <label for="civilstatus"> Civil Status: </label>
             <select name="civilstatus" id="civilstatus" class="form-control">
-                <option value="">Select</option>
-                <option value="male"> Single </option>
+                <option disabled selected>Select</option>
+                <option value="male"
+                > Single </option>
                 <option value="female"> Maried </option>
             </select>
         </div>
