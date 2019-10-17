@@ -15,9 +15,9 @@ if(isset($_POST['course'])){
 
 }
 
-if(isset($_POST['semister'])){
-    $id = $_POST['semister'];
-    $sql = "SELECT * FROM `module`  WHERE `semester_id` = '$id'";
+if(isset($_POST['module'])){
+    $id = $_POST['module'];
+    $sql = "SELECT * FROM `module`  WHERE `course_id` = '$id' ";
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0) {
         while($row = mysqli_fetch_assoc($result)) {
