@@ -17,14 +17,40 @@ if (isset($_POST['Add'])) {
     &&!empty($_POST['module_name'])
     &&!empty($_POST['assessment_type'])
     &&!empty($_POST['assessment_name'])
-    &&!empty($_POST['assessment_percentage'])
-    ){
+    &&!empty($_POST['assessment_percentage'])){
 
         $course_name=$_POST['course_name'];
         $module_name=$_POST['module_name'];
         $assessment_type=$_POST['assessment_type'];
         $assessment_name=$_POST['assessment_name'];
-        $assessment_percentage=$_POST['assessment_percentage']
+        $assessment_percentage=$_POST['assessment_percentage'];
+
+        $sql = "INSERT INTO `module`(`course_name`,`module_name`,`assessment_type`,`assesment_name`,`assessment_percentage`) 
+        VALUES(`$course_name`,`$module_name`,`$assessment_type`,`$assessment_name`,`$assessment_percentage`)";
+
+if(mysqli_query($con,$sql))
+{
+  echo '
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>'.$assessment_name.'</strong> Assessment Type details inserted!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>    
+  ';
+}
+else{
+  
+  echo '
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>'.$assessment_name.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  
+  ';
+}
 
         # code...
     }
@@ -285,17 +311,17 @@ if (isset($_POST['Add'])) {
 <!-- END -->
 
 <script>
-function showModule(val) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("Module").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("POST", "controller/getModule", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("course=" + val);
-}
+    function showModule(val) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("Module").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("POST", "controller/getModule", true);
+        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.send("course=" + val);
+    }
 </script>
 
 <?php include_once("footer.php"); ?>
