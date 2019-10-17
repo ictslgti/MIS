@@ -111,21 +111,8 @@ if (isset($_POST['Add'])) {
                             <select
                                 class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"
                                 id="Module" name="module" value="<?php echo $module_id; ?>" required>
-                                <!-- <option value="null" selected disabled>--Select Module--</option> -->
-                                <!-- <?php
-                                
-                                $sql = "SELECT * FROM `module`";
-                                $result = mysqli_query($con, $sql);
-                                if (mysqli_num_rows($result) > 0) {
-                                    while($row = mysqli_fetch_assoc($result)) {
-                                    echo '<option  value="'.$row["course_id"].'" required>'.$row["module_name"].'</option>';
-                                    }
-                                }else{
-                                    echo '<option value="null"   selected disabled>-- No Modules --</option>';
-                                }
-
-
-                               ?> -->
+                                <option value="null" selected disabled>--Select Module--</option>
+                               
                             </select>
                         </div>
                     </div>
