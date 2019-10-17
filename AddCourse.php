@@ -157,12 +157,20 @@ if(isset($_POST['Edit']))
                 <select class="custom-select d-block w-100" name="course_id" required>
                     <option selected  disabled selected>Choose NVQ Level</option>
                     <?php
-                      echo '<option value="'.$row['course_id'].'" ';
-                      if($row['course_id']==$cid)
+                    $sql = "SELECT course_nvq_level FROM course ";
+                    $result = mysqli_query($con, $sql);
+                    if(mysqli_num_rows($result)>0)
+                    {
+                      while($row = mysqli_fetch_assoc($result))
+                      {
+                      echo '<option value="'.$row['course_nvq_level'].'" ';
+                      if($row['course_nvq_level']==$nvq)
                       {
                         echo 'selected';
                       }
                       echo '>'.$row['course_nvq_level']. '</option>';
+                    }
+                  }
                     ?>
                 </select>
                 </form >
