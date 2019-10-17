@@ -66,8 +66,8 @@ if (isset($_POST['Add'])) {
                                     Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
                             <select
-                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['semester_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['semester_id'])){echo ' is-valid';} ?>"
-                                id="semister_id" name="semister_id" value="<?php echo $semester_id; ?>"
+                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['courser_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"
+                                id="course_id" name="course_id" value="<?php echo $course_id; ?>"
                                 onchange="showModule(this.value)" required>
                                 <option value="null" selected disabled>--Select Course--</option>
 
@@ -113,7 +113,7 @@ if (isset($_POST['Add'])) {
                                 <option value="null" selected disabled>--Select Module--</option>
                                <?php
                                 
-                                $sql = "SELECT * FROM `module`  WHERE `module.course_id` = `course.course_id`";
+                                $sql = "SELECT * FROM `module`";
                                 $result = mysqli_query($con, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while($row = mysqli_fetch_assoc($result)) {
