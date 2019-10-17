@@ -7,7 +7,12 @@ include_once("head.php");
 include_once("menu.php");
 ?>
 
+
+
+
 <?PHP
+
+
 
 // Add coding
 $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$time=$classroom=$startdate=$enddate=null;
@@ -37,25 +42,39 @@ if(isset($_POST['Add'])){
       $startdate  =  $_POST['startdate'];
       $enddate =  $_POST['enddate'];
     
-     $sql= "INSERT INTO `timetable` (`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `time`, `classroom`, `startdate`, `enddate`)
-     
-     VALUES (
-         NULL, 
-         '$department_id', 
-         '$course_id', 
-         '$module_id',
-         '$academic_year',
-         '$staff_id',
-         '$weekdays',
-         '$time',
-         '$classroom',
-         '$startdate',
-         '$enddate ')";
+     $sql= "INSERT INTO `timetable`(`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `time`, `classroom`, `startdate`, `enddate`)
+      VALUES ('$department_id','$course_id','$module_id','$academic_year','$staff_id','$weekdays','$time','$classroom','$startdate','$enddate ')";
+   
       if (mysqli_query($con, $sql)) {
-          echo "New record created successfully";
+        echo '
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>'.$timetable.'</strong> Staff details inserted
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>    
+      ';
+
+
+
+
+
+
+
+
+
+
       } else {
-          echo "Error: " . $sql .
-          "<br>" . 	mysqli_error($con);
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$timetable.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
+
       }
   }
 }
@@ -85,29 +104,32 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Department</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Department_id']))
-    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  
+    <select id="inputState" class="form-control"  
     id="Department_id" name="Department_id">
 
-        <option selected disabled required>Department</option>
+        <option selected disabled>Department</option>
         <?php          
-            $sql = "SELECT * FROM `department`";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                echo '<option  value="'.$row["department_id"].'" required';
-                if($row["department_id"]==$department_id) echo ' selected';
-                echo '>'.$row["department_name"].'</option>';
-                }
+            
+            $sql="SELECT department_name from department";
+            $result = mysqli_query($con,$sql);
+            if(mysqli_num_rows($result)>0)
+            while($row = mysqli_fetch_assoc($result)) 
+            {
+            echo '<option value="'.$row['department_id'].'"';
+            if ($row["department_id"]==$Department )
+            {
+              echo 'selected'; 
             }
-            ?>
+            echo '>'.$row['department_name'].'</option>';
+            }
+            ?> 
        
       </select>
     </div>
   </div>
 
 
-
+ 
 
 
   <form method="POST" action="#">
@@ -123,7 +145,7 @@ if(isset($_POST['Add'])){
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                 echo '<option  value="'.$row["course_id"].'" required';
-                if($row["course_id"]==$course_id) echo ' selected';
+                if($row["course_id"]==$Course) echo ' selected';
                 echo '>'.$row["course_name"].'</option>';
                 }
             }
@@ -349,22 +371,33 @@ if(isset($_POST['Add'])){
 
  --->
 
-  <h1 class="text-right">
+  
 
         
      
 
          <div class="col-12">
 
+         <h1 class="text-right">
 
-         <?php
-        if(isset($_GET['edit'])){
-            echo '<input type="submit" name="Update" value="Update">';
-        }
-        else{
-            echo '<input type="submit" name="Add" value="Add">';
-        }
-    ?>
+         <?PHP 
+  echo '<div class="btn-group-horizontal">';
+
+    if(isset($_GET['edit'])){
+      echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+
+    }if(isset($_GET['delete']))
+    {
+      echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
+
+    }if(!isset($_GET['delete']) && !isset($_GET['edit'])){
+      echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
+
+    }
+      
+      echo '</div>';
+      ?>
                     </div>
 
 
