@@ -105,7 +105,7 @@ include_once("menu.php");
 <div class="col-2"></div>
 
 <div class="col-md- col-sm- form-group pl- pr-container">
-<button type="submit" class="btn btn-primary ml-2 mt-3 float-right">back </button>
+<button type="submit" class="btn btn-primary ml-2 mt-3 float-right "  onclick="location.href='AddInventory.php'">back </button>
                           
                           <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">save </button>
               </div>
