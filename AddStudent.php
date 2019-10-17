@@ -19,7 +19,7 @@ include_once("menu.php");
 <!-----END YOUR CODE----->
 <!-- form start---->
 <?php
-echo $_SESSION['user_name'];
+echo $_SESSION['user_name'];  
 $stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $ename = $eaddress = $ephone = $erelation = $status = null;
 $coid = $year = $enroll = $exit = null;
 if(isset($_GET['edit']))
@@ -35,10 +35,10 @@ if(isset($_GET['edit']))
     $row =mysqli_fetch_assoc($result);
     $coid = $row['course_id'];
     $year = $row['academic_year'];
-    $stid = $row['student_id'];
+    //$stid = $row['student_id'];
     $enstatus =$row['student_enroll_status'];
-    //$enroll = $row['start_date'];
-    //$exit = $row['exit_date'];
+    $enroll = $row['start_date'];
+    $exit = $row['exit_date'];
     $title = $row['student_title'];
     $fname = $row['student_fullname'];
     $ininame = $row['student_ininame'];
@@ -175,10 +175,24 @@ if(isset($_GET['edit']))
 
         <div class="col-md-2 mb-3">
             <label for="gender"> Gender: </label>
-            <select name="gender" id="gender" class="form-control">
-                <option value="">Select</option>
-                <option value="male"> Male </option>
-                <option value="female"> Female </option>
+            <select name="gender" id="gender" class="form-control" value="<?php echo $gender ?>">
+                <option value="" disabled selected>Select</option>
+                <option value="M"
+                  <?php
+                  if($row["student_gender"]=="M")
+                  {
+                    echo 'selected';
+                  }
+                  ?>
+                > M </option>
+                <option value="F"
+                <?php
+                  if($row["student_gender"]==$gender)
+                  {
+                    echo 'selected';
+                  }
+                  ?>
+                > F </option>
             </select>
         </div>
 
