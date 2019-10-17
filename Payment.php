@@ -51,10 +51,10 @@ if(isset($_POST['Add'])){
      
   
 
-      $sql="INSERT INTO `payment`( `payment_id`,`payment_qty`, `payment_note`) 
-      VALUES ('2','10','hello',)";
-      //$sql.="INSERT INTO `pays`(`student_id`, `payment_id`, `pays_reason`, `pays_amount`,`pays_department`) 
-      //VALUES ('$student_id','$payment_id','$pays_reason','$pays_amount','$pays_department')";
+      echo  $sql="INSERT INTO `payment`(`payment_qty`, `payment_note`) 
+      VALUES (,'$pays_qty','$pays_note',)";
+      echo $sql.="INSERT INTO `pays`(`student_id`, `payment_id`, `pays_reason`, `pays_amount`,`pays_department`) 
+      VALUES ('$student_id','$payment_id','$pays_reason','$pays_amount','$pays_department')";
 
 
 if(mysqli_query($con,$sql))
@@ -112,7 +112,7 @@ if(mysqli_query($con,$sql))
         <div class="col-sm-8"></div>
         <div class="col-sm-4  ">
 
-            <form class="form-inline">
+            <form method="POST" action="#" class="form-inline">
                 <div class="input-group mb-2 mr-sm-2 ">
                     <div class="input-group-prepend , text-right">
                         <div class="input-group-text"><i class="fas fa-user"></i></div>
@@ -132,11 +132,12 @@ if(mysqli_query($con,$sql))
 
         </div>
     </div>
-    <div class="row">
+    <form method="POST" action="#">
+        <div class="row">
         <div class="col-sm-4"><?php if($student_profile_img!=null) { ?> <img src="<?php echo $student_profile_img; ?>"
                 alt="..." width="100px" height="100px"> <?php }?><br>
 
-            <form>
+            <form method="POST" action="#">
                 <div class="form-row">
                     <div class="form-group col-md-12"><i class="fas fa-id-card-alt"></i>&nbsp;
                         <label for="inputEmail4">ID</label>
@@ -147,7 +148,7 @@ if(mysqli_query($con,$sql))
                     <div class="form-group col-md-12"><i class="fas fa-user"></i>&nbsp;
                         <label for="inputEmail4">Name</label>
                         <input type="text" value="<?php echo  $student_name; ?>" name="student_name"
-                            class="form-control" id="inputEmail4" placeholder="Name">
+                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['student_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_name'])){echo ' is-valid';} ?>" id="inputEmail4" placeholder="Name">
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-building"></i>&nbsp;
                         <label for="inputEmail4">Department</label>
@@ -162,7 +163,7 @@ if(mysqli_query($con,$sql))
         <div class="col-sm-4">
 
 
-            <form>
+            <form method="POST" action="#">
 
                 <div class="form-row">
 
@@ -259,7 +260,7 @@ if(mysqli_query($con,$sql))
             </table>
             <br>
             <h2>
-                <button type="submit" name="Add" class="btn btn-primary btn-block">
+                <button type="submit" name="Add" value="Add" class="btn btn-primary btn-block">
                     <h1><i class="fab fa-amazon-pay"></i>&nbsp;
                 </button> </h1>
                 <button type="button" class="btn btn-secondary btn-sm"><i class="fas
@@ -268,7 +269,7 @@ if(mysqli_query($con,$sql))
         fa-times"></i>&nbsp;Close</button>
         </div>
         <br>
-        </form>
+    </form>
     </div>
     </div>
 
