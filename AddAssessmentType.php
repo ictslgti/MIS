@@ -295,14 +295,14 @@ if (isset($_POST['Add'])) {
 <!-- END -->
 
 <script>
-function showCouese(val) {
+function showModule(val) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("Course").innerHTML = this.responseText;
+            document.getElementById("Module").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("POST", "controller/getCourse", true);
+    xmlhttp.open("POST", "controller/getModule", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send("course=" + val);
 }
