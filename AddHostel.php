@@ -73,8 +73,7 @@ include_once("menu.php");
       
        
         if(isset($_POST['upt'])){
-          
-       
+           
            $student_id = $_GET['edit'];
            $name =$_POST['name'];
            $dept =$_POST['dept'];
