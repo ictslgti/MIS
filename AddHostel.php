@@ -16,8 +16,9 @@ include_once("menu.php");
 
 
           <!-- Content here -->
-
+          
           <?php
+          
         if(isset($_POST['allo'])){
          
          
