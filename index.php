@@ -195,7 +195,7 @@ $total_students = 0;
         <div class="card overflow-auto mh-20">
             <h5 class="card-header">Students Course Enrollment Distribution</h5>
             <div class="card-body">
-<?php
+                <?php
 $sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -221,19 +221,19 @@ while($row = mysqli_fetch_assoc($result)){
     ';
 }
 }
-?>            
+?>
             </div>
         </div>
 
     </div>
 
-<!-- COL-1 END -->
+    <!-- COL-1 END -->
 
     <div class="col-md-4 col-sm-12">
         <div class="card">
             <h5 class="card-header">Students Course Dropout Distribution</h5>
             <div class="card-body">
-<?php
+                <?php
 $sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -259,16 +259,16 @@ while($row = mysqli_fetch_assoc($result)){
     ';
 }
 }
-?>            
+?>
             </div>
         </div>
     </div>
     <!-- <col2-end -->
     <div class="col-md-4 col-sm-12">
         <div class="card">
-            <h5 class="card-header">Students Course Completion  Distribution</h5>
+            <h5 class="card-header">Students Course Completion Distribution</h5>
             <div class="card-body">
-<?php
+                <?php
 $sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -294,15 +294,24 @@ while($row = mysqli_fetch_assoc($result)){
     ';
 }
 }
-?>            
+?>
             </div>
         </div>
     </div>
 
 </div>
-<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
-<?php include_once("footer.php"); ?>
-<!--END DON'T CHANGE THE ORDER-->
+
+<div class="row">
+    <div class="col-md-6  ">
+        <canvas id="myChart"></canvas>
+    </div>
+    <div class="col-md-6">
+        <canvas id="myChart1"></canvas>
+    </div>
+</div>
+
+
+
 <script>
 function showCouese(val) {
     var xmlhttp = new XMLHttpRequest();
@@ -346,6 +355,91 @@ function showTeacher() {
     xmlhttp.send("StaffModuleEnrollment=1&staff_id=" + tid + "&course_id=" + cid + "&module_id=" + mid +
         "&academic_year=" + aid);
 }
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script>
+var labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+var data = [12, 19, 3, 5, 2, 3];
+var ctx = document.getElementById('myChart');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: '# of Votes',
+            data: data,
+            backgroundColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+var labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+var data = [12, 19, 3, 5, 2, 3];
+var ctx = document.getElementById('myChart1');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: '# of Votes',
+            data: data,
+            backgroundColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
 </script>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
