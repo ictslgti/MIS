@@ -88,7 +88,7 @@ include_once ("menu.php");
 
                                     <a href=" BatchDetails.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-icon-split"> <span class="text">Batch</span> </a>
 
-                                    <a href=" AddCourse.php ?course_id='.$row["course_id"].' " class="btn btn-outline-success"><i class="far fa-edit">View Edit</i> </a>
+                                    <a href=" AddCourse.php ?edits='.$row["course_id"].' " class="btn btn-outline-success"><i class="far fa-edit">View Edit</i> </a>
 
                                        
                                     <a href=" ?dlt='.$row["course_id"].' " class="btn btn-danger btn-circle"> <i class="fas fa-trash"></i> </a>  

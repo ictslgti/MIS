@@ -98,7 +98,7 @@ echo '<tr>
     
     <td>
     <a href="?delete='.$row["student_id"].'">
-    <button type="button" name="delete" class="btn btn-outline-info rounded-pill  waves-effect  ">
+    <button type="button" name="delete" class="btn btn-outline-danger rounded-pill  waves-effect text-danger  ">
     <i class="fas fa-minus-circle"></i><br>
     </button></a>
 

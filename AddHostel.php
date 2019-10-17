@@ -16,8 +16,9 @@ include_once("menu.php");
 
 
           <!-- Content here -->
-
+          
           <?php
+          
         if(isset($_POST['allo'])){
          
          
@@ -70,6 +71,37 @@ include_once("menu.php");
               
           }
       }
+      
+       
+        if(isset($_POST['upt'])){
+           
+           $student_id = $_GET['edit'];
+           $name =$_POST['name'];
+           $dept =$_POST['dept'];
+           $address =$_POST['address'];
+           $dist =$_POST['dist'];
+           $dis =$_POST['dis'];
+           $gender =$_POST['title'];
+           $block =$_POST['block'];
+           $room =$_POST['room'];
+           $date =$_POST['date'];
+           $leave =$_POST['leave'];
+         
+          $sql = "UPDATE `hostel` 
+          SET `fullname` = ' $name', 
+          `department_name` = '$dept',
+          `address` = ' $addr',`district` = ' $dist',`distance` = ' $dis',`gender` = ' $title',`block_no` = ' $block',`room_no` = ' $room',
+          `date_of_addmission` = ' $date',`date_of_leaving` = ' $leave'
+          WHERE `hostel`.`student_id` = $student_id";
+        
+          if(mysqli_query($con,$sql)){
+              echo "new record update sucessfully ";
+          }else{
+              echo "error :" .$sql."<br>".mysqli_error($con);
+          }
+      }
+   
+
 
         ?>
         
@@ -95,8 +127,7 @@ include_once("menu.php");
 
 <form class="form-inline md-form form-sm mt-4 ">
  
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_Student_ID" aria-label="Search"id="search"> 
-  <i class="fas fa-search ml-3" aria-hidden="true"></i> 
+ 
 </form>
 </div>
 </div>
@@ -114,11 +145,13 @@ include_once("menu.php");
 <div class="form-row">
        
        <div class="form-group col-md-4 ">
-
+      
 <form method="POST">
+<label for="id"><i class="fas fa-user-graduate"></i> Student ID&nbsp;</label> <br>
+  <input type="text" class="form-control " id="id" value="<?php echo $student_id; ?>" name="id" required <?php if(isset($_GET['edit'])) echo 'disabled'; ?>  >
 
-       <label for="id"><i class="fas fa-user-graduate"></i> Student ID&nbsp;</label> <br>
-       <input type="text" class="form-control " id="id" value="<?php echo $student_id; ?>" name="id" required  >
+
+      
        </div>
 
        
@@ -139,7 +172,7 @@ include_once("menu.php");
 
 <div class="form-group col-md-6  ">
        <label for="ad"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</label> <br>
-       <textarea name="address" class="rounded  form-control  text-black"  type="text"  id="add" value="<?php echo $addr; ?>" placeholder="House-No, Street, Hometown." cols="15" rows="3" required  ></textarea>
+       <textarea name="address" class="rounded  form-control  text-black"  type="text"  id="add" value="" placeholder="House-No, Street, Hometown." cols="15" rows="3" required > <?php echo $addr; ?> </textarea>
         </div>
 
 
@@ -166,8 +199,8 @@ include_once("menu.php");
 <select name="title" id="gender" value="<?php echo $title; ?>"  class="form-control" required >
                <option value="" selected disabled>---Select---</option>
                
-               <option value="male">  Male </option>
-                    <option value="female"> Female </option>
+               <option value="Male" <?php if($title=="Male") echo 'selected'; ?>>  Male </option>
+                    <option value="Female" <?php if($title=="Female") echo 'selected'; ?>> Female </option>
                     
          </select>
          </div>
