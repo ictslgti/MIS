@@ -8,7 +8,7 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-<form onsubmit="showTeacher()">
+<!-- <form onsubmit="showTeacher()">
     <div class="row p-3">
         <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="form-group">
@@ -66,14 +66,14 @@ if (mysqli_num_rows($result) > 0) {
             </tbody>
         </table>
     </div>
-</div>
+</div> -->
 
 <?php
 $total_course = 0;
 $total_students = 0;
 ?>
 
-<div class="row">
+<div class="row mt-3">
     <div class="col-md-2 col-sm-12">
         <div class="card mb-3">
             <div class="card-body">
@@ -170,7 +170,7 @@ $total_students = 0;
         <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title">Students</h5>
-                <p class="card-text display-2 ">
+                <p class="card-text display-2 font-weight-lighter">
                     <?php          
                     $sql = "SELECT COUNT(`student_id`) AS `d_count` FROM `student`";
                     $result = mysqli_query($con, $sql);
@@ -192,7 +192,7 @@ $total_students = 0;
 <div class="row">
 
     <div class="col-md-4 col-sm-12">
-        <div class="card">
+        <div class="card overflow-auto mh-20">
             <h5 class="card-header">Students Course Enrollment Distribution</h5>
             <div class="card-body">
 <?php
@@ -211,7 +211,7 @@ while($row = mysqli_fetch_assoc($result)){
     $student_percentage = round ( ($course_count/$total_students)*100); 
     // echo $total_students;
     echo '
-    <h5 class="card-title">'.$cname.'</h5>
+    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
     <p class="card-text">
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
@@ -241,7 +241,7 @@ while($row = mysqli_fetch_assoc($result)){
 
     $cid = $row['course_id'];
     $cname = $row['course_name'];
-    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' ";
+    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Dropout' ";
     $result_c = mysqli_query($con, $sql_c);
     $row_c = mysqli_fetch_assoc($result_c);
     $course_count =  $row_c['c_count'];
@@ -249,10 +249,10 @@ while($row = mysqli_fetch_assoc($result)){
     $student_percentage = round ( ($course_count/$total_students)*100); 
     // echo $total_students;
     echo '
-    <h5 class="card-title">'.$cname.'</h5>
+    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
     <p class="card-text">
         <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
                 aria-valuemin="0" aria-valuemax="100">'.$student_percentage.'%</div>
         </div>
     </p>
@@ -276,7 +276,7 @@ while($row = mysqli_fetch_assoc($result)){
 
     $cid = $row['course_id'];
     $cname = $row['course_name'];
-    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' ";
+    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Completed'";
     $result_c = mysqli_query($con, $sql_c);
     $row_c = mysqli_fetch_assoc($result_c);
     $course_count =  $row_c['c_count'];
@@ -284,7 +284,7 @@ while($row = mysqli_fetch_assoc($result)){
     $student_percentage = round ( ($course_count/$total_students)*100); 
     // echo $total_students;
     echo '
-    <h5 class="card-title">'.$cname.'</h5>
+    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
     <p class="card-text">
         <div class="progress">
             <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
