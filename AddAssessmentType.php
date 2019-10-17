@@ -8,6 +8,7 @@ $title = "Examinations | SLGTI";
 
 <!-- add assessment code -->
 <?php
+echo $_SESSION["user_name"];
 $course_id=$semester_id=$module_id=$assessment_type=$assessment_name=null;
 
 if (isset($_POST['Add'])) {
