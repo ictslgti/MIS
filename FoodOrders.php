@@ -1,5 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER-->  
 <?php
+
 $title = "Home | SLGTI";
  include_once("config.php"); 
  include_once("head.php"); 
@@ -16,7 +17,78 @@ $title = "Home | SLGTI";
 
  <!-- FOOD MENU DESIGN    -->
 
-        <div class="row pl-3 pt-4 ">
+
+
+
+ <?php 
+                  
+                    $connect=mysqli_connect("mis.achchuthan.org","misuser","mIs@SlgT1","mis");
+                    if(isset($_POST["Add"]))
+                    {
+                        if(isset($_SESSION["cart"]))
+                        {
+                        $item_array_id =array_column($_SESSION["cart"],"food_id");
+                        if(!in_array($_GET["id"],$item_array_id))
+                        {
+                            $count=count($_SESSION["cart"]);
+                            $item_array=array(
+                                'food_id' => $_GET["id"],
+                                'food_name' => $_GET["h_name"],
+                                'food_unit_qty' => $_GET["h_qty"],
+                                'food_unit_price' => $_GET["P_amount"],
+
+                            );
+                            $_SESSION["cart"][$count]=$item_array;
+                        }
+                else
+                {
+                    echo' "Already Added"';
+                }
+
+
+                        }
+                        else{
+                            $item_array=array(
+                                'food_id' => $_GET["id"],
+                                'food_name' => $_GET["h_name"],
+                                'food_unit_qty' => $_GET["h_qty"],
+                                'food_unit_price' => $_GET["P_amount"],
+                            );
+                            $_SESSION["cart"][0] =$item_array;
+                        }
+                    }
+                    
+                    if(isset($_GET["action"]))
+                    {
+                        if($_GET["action"]=="delete")
+                        {
+                            
+                            foreach($_SESSION["cart"] as $keys => $values)
+                            {
+                             if($values["food_id"]==$_GET["id"])  
+                             {
+                                unset($_SESSION["cart"][$keys]);
+                                echo '<script>alert("item Removed")</script>';
+                             }
+                            }
+                        }
+                    }
+                    
+                   
+                    
+                    
+                    ?>
+
+
+
+
+
+
+
+
+
+
+         < <div class="row pl-3 pt-4 ">
             <em><h1 class="display-5">Morning Fare</h1></em>
         </div>
         <div class="row">
@@ -28,32 +100,32 @@ $title = "Home | SLGTI";
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-3">  
+                                <h4 class="display-5 mt-3">   
+                                <?php
 
-                        <?php
-                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd001'";
-                        $result = mysqli_query($con, $sql);
-                        if (mysqli_num_rows($result)>0){
-                            while ($row = mysqli_fetch_assoc($result)){
+                         $sql = "SELECT * FROM `food` WHERE `food_id`='fd001'";
+                         $result = mysqli_query($con, $sql);
+                         if (mysqli_num_rows($result)>0){
+                             while ($row = mysqli_fetch_assoc($result)){
 
-                                $idly=$row ["food_name"];
-                                $uqty=$row ["food_unit_qty"];
-                                $mea=$row ["food_measurements"];
-                                $pri=$row ["food_unit_price"];
+                                 $idly=$row ["food_name"];
+                                 $uqty=$row ["food_unit_qty"];
+                                 $mea=$row ["food_measurements"];
+                                 $pri=$row ["food_unit_price"];
 
-                                echo'
+                                 echo'
                                 <tr>
-
-                                <td>' . $idly.'</td>
-                                <td>' . $uqty.'</td>
-                                <td>' . $mea.'</td>
-                                <td>' . $pri.'</td>
-                                </tr>';
-                            }
-                        }else{
-                        echo "0 results";
-                        }
-                        ?> </h4>   
+                                 <td>' . $idly.'</td>
+                                 <td>' . $uqty.'</td>
+                                 <td>' . $mea.'</td>
+                                 <td>' . $pri.'</td>
+                                 </tr>';
+                             }
+                     }else{
+                         echo "0 results";
+                         }
+                        ?>
+                         </h4>   
                                  <div class="pb-1" style="max-width: 4rem;">
                                  <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                  </div>   
@@ -62,7 +134,7 @@ $title = "Home | SLGTI";
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
 
 
 
@@ -271,7 +343,6 @@ $title = "Home | SLGTI";
                     </div>
                 </div>
             </div>
-
 
 
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
@@ -528,17 +599,51 @@ $title = "Home | SLGTI";
                         <th><p class="h5">ITEM NAME</p></th>
                         <th><p class="h5">QTY</p></th>
                         <th><p class="h5">PER AMOUNT</p></th>
+                        <th><p class="h5">ACTION</p></th>
                     </tr>
                  </thead>
                 <tbody class="table-borderless">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                 
                 </tbody>
+               
+                   
+                   
+                   
             </table>
+            <?php  
+              echo "loos";
+                   if(!empty($_SESSION["cart"]))
+                  
+                 
+                   {   
+                       $total =0;
+                      
+                       foreach($_SESSION["cart"]as $keys =>$values)
+                       {
+                      ?>
+                      <tr>
+                      <td><?php echo $values ["food_id"];?></td>
+                      <td><?php echo $values ["food_name"];?></td>
+                      <td><?php echo $values ["food_unit_qty"];?></td>
+                      <td>$<?php echo $values ["food_unit_price"];?></td>
+                      <td><?php echo number_format($values["food_unit_qty"]*$values["price"],2);?></td>
+                      <td><a href="index.php?action+=delete&id=<?php echo $values["food_id"];?>"><span  class ="tex-danger">remove</span> </td>
+                      </tr>
+                        <?php
+                        $total=$total+($values["food_unit_qty"]*$values["price"]);
+                       }
+                       ?>
+                       <tr> 
+                            <td colspan="3" align="right">Total</td>
+                            <td align ="right">$<?php echo number_format($total,2);?></td>
+                       
+                       </tr>
+                       <?php
+                   
+                   
+                }
+                   ?>
+                   
         </div>
 
         
@@ -589,4 +694,4 @@ $title = "Home | SLGTI";
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
-<!--END DON'T CHANGE THE ORDER-->  
+<!--END DON'T CHANGE THE ORDER--
