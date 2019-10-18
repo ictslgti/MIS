@@ -11,7 +11,7 @@ include_once("menu.php");
 <?php 
 if(isset($_GET['delete'])){
   $student_id = $_GET['delete'];
-  $sql = "DELETE FROM `hostel` WHERE `student_id`=$student_id";
+  $sql = "DELETE FROM `hostel_student_details` WHERE `student_id`=$student_id";
  if(mysqli_query($con ,$sql)){
      echo "Record delete successfully";
    
@@ -78,7 +78,7 @@ if(isset($_GET['delete'])){
 
 <tbody>
 <?php 
-$sql = "SELECT * FROM `hostel`";
+$sql = "SELECT * FROM `hostel_student_details`";
 
 $result = mysqli_query($con, $sql);
 if(mysqli_num_rows($result) > 0){
