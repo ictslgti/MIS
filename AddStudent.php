@@ -191,10 +191,10 @@ if(isset($_GET['edit']))
                   echo '> Male </option>';
                   echo '<option value="F"';
                   if ($year=="F")
-                    {
-                      echo 'selected'; 
-                    }
-                    echo '> Female </option>';
+                  {
+                  echo 'selected'; 
+                  }
+                  echo '> Female </option>';
               }
               ?> 
             </select>
@@ -204,9 +204,9 @@ if(isset($_GET['edit']))
             <label for="civilstatus"> Civil Status: </label>
             <select name="civilstatus" id="civilstatus" class="form-control">
                 <option disabled selected>Select</option>
-                <option value="male"
+                <option value="single"
                 > Single </option>
-                <option value="female"> Maried </option>
+                <option value="maried"> Maried </option>
             </select>
         </div>
     </div>
@@ -245,7 +245,7 @@ if(isset($_GET['edit']))
     </div>
  
     <div class="form-row">
-          <div class="col-md-1 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="zip"> ZIP-Code:</label>
             <input type="text" class="form-control" id="zip" value="<?php echo $zip ?>" placeholder=""  required>
           </div>
