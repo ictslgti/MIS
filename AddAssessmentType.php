@@ -8,10 +8,12 @@ $title = "Examinations | SLGTI";
 
 <!-- add assessment code -->
 <?php
-echo $_SESSION["user_name"];
+
+
 $course_name=$course_id=$module_name=$assessment_type=$assessment_name=$assessment_percentage=null;
 
 if (isset($_POST['Add'])) {
+    echo "sd";
     if (!empty($_POST['course_name'])
        
     &&!empty($_POST['module_name'])
@@ -19,14 +21,26 @@ if (isset($_POST['Add'])) {
     &&!empty($_POST['assessment_name'])
     &&!empty($_POST['assessment_percentage'])){
 
-        $course_name=$_POST['course_name'];
+     $course_name=$_POST['course_name'];
         $module_name=$_POST['module_name'];
         $assessment_type=$_POST['assessment_type'];
         $assessment_name=$_POST['assessment_name'];
         $assessment_percentage=$_POST['assessment_percentage'];
 
-        $sql = "INSERT INTO `module`(`course_name`,`module_name`,`assessment_type`,`assesment_name`,`assessment_percentage`) 
+        $sql = "INSERT INTO `module`(`course_name`,`module_name`,`assessment_type`,`assessment_name`,`assessment_percentage`) 
         VALUES(`$course_name`,`$module_name`,`$assessment_type`,`$assessment_name`,`$assessment_percentage`)";
+
+if (mysqli_query($con, $sql)) {
+    echo "record add";
+
+
+  } else {
+     echo "Error: " . $sql .
+    "<br>" . 	mysqli_error($con);
+  
+    
+
+  }
 
 if(mysqli_query($con,$sql))
 {
@@ -74,6 +88,7 @@ else{
 
                 <div class="container">
                     <div class="intro">
+                        <h2 class="display-5 text-center">Welcome <?php echo $_SESSION["user_name"];?> to</h2>
                         <h1 class="display-4 text-center">Asignments Portal</h1>
 
                         <p class="text-center">Add Assessment Type&nbsp;</p>
@@ -84,7 +99,7 @@ else{
         </div>
 
         <!--  -->
-        <form onsubmit="showAssessment(this.value)">
+        <form method="POST" action="#">
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -210,8 +225,8 @@ else{
 
                             </div>
                             <div class="col-md-auto">
-                                <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus" value="Add"
-                                        id="Add"></i> Add Asessments</button>
+                                <button type="submit" class="btn btn-outline-primary"> <i class="fas fa-plus" value="Add"
+                                             name="Add"></i> Add Asessments</button>
                             </div>
                             <div class="col col-lg-2">
 
