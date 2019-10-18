@@ -21,7 +21,7 @@ if (isset($_POST['Add'])) {
     &&!empty($_POST['assessment_name'])
     &&!empty($_POST['assessment_percentage'])){
 
-        $course_name=$_POST['course_name'];
+     $course_name=$_POST['course_name'];
         $module_name=$_POST['module_name'];
         $assessment_type=$_POST['assessment_type'];
         $assessment_name=$_POST['assessment_name'];
@@ -29,6 +29,18 @@ if (isset($_POST['Add'])) {
 
         $sql = "INSERT INTO `module`(`course_name`,`module_name`,`assessment_type`,`assessment_name`,`assessment_percentage`) 
         VALUES(`$course_name`,`$module_name`,`$assessment_type`,`$assessment_name`,`$assessment_percentage`)";
+
+if (mysqli_query($con, $sql)) {
+    echo "record add";
+
+
+  } else {
+     echo "Error: " . $sql .
+    "<br>" . 	mysqli_error($con);
+  
+    
+
+  }
 
 if(mysqli_query($con,$sql))
 {
