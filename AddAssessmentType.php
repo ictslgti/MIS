@@ -95,9 +95,10 @@ else{
                                         class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
                                     Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
-<select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['courser_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"
-id="course_name" name="course_name" value="<?php echo $course_id; ?>"
-onchange="showModule(this.value)" required>
+                            <select
+                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['courser_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"
+                                id="course_name" name="course_name" value="<?php echo $course_id; ?>"
+                                onchange="showModule(this.value)" required>
                                 <option value="null" selected disabled>--Select Course--</option>
 
 
@@ -142,7 +143,7 @@ onchange="showModule(this.value)" required>
                                 <option value="null" selected disabled>--Select Module--</option>
 
 
-                                
+
                             </select>
                         </div>
                     </div>
@@ -159,7 +160,8 @@ onchange="showModule(this.value)" required>
                                         class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Asignments Type</label>
                             </div>
                             <select
-                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['assessment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_type'])){echo ' is-valid';} ?>" id="inputGroupSelect01" name="assessment_type" value="<?php echo $assessment_type; ?>">
+                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['assessment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_type'])){echo ' is-valid';} ?>"
+                                id="inputGroupSelect01" name="assessment_type" value="<?php echo $assessment_type; ?>">
                                 <option selected>Choose...</option>
                                 <option value="1">Theory</option>
                                 <option value="2">Practical</option>
@@ -177,7 +179,8 @@ onchange="showModule(this.value)" required>
                                         class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Name&nbsp;</span>
                             </div>
                             <input type="text"
-                                class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_name'])){echo ' is-valid';} ?>" placeholder="
+                                class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_name'])){echo ' is-valid';} ?>"
+                                placeholder="
                                 Assessment Name" aria-label="Username" aria-describedby="basic-addon1"
                                 name="assessment_name" value="<?php echo $assessment_name; ?>">
                         </div>
@@ -196,7 +199,8 @@ onchange="showModule(this.value)" required>
                                         class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Percentage&nbsp;</span>
                             </div>
                             <input type="text"
-                                class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_percentage'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_percentage'])){echo ' is-valid';} ?>" placeholder="
+                                class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_percentage'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_percentage'])){echo ' is-valid';} ?>"
+                                placeholder="
                                 Assessment Percentage" aria-label="Username" aria-describedby="basic-addon1"
                                 name="assessment_name" value="<?php echo $assessment_name; ?>">
                         </div>
@@ -287,37 +291,36 @@ onchange="showModule(this.value)" required>
 
         </table>
         </div>
-<!-- end my code -->
+        <!-- end my code -->
 
-<script>
+        <script>
+        // function showCouese(val) {
+        //     var xmlhttp = new XMLHttpRequest();
+        //     xmlhttp.onreadystatechange = function() {
+        //         if (this.readyState == 4 && this.status == 200) {
+        //             document.getElementById("course_name").innerHTML = this.responseText;
+        //         }
+        //     };
+        //     xmlhttp.open("POST", "controller/getCourse", true);
+        //     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        //     xmlhttp.send("module=" + val);
+        // }
 
-// function showCouese(val) {
-//     var xmlhttp = new XMLHttpRequest();
-//     xmlhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             document.getElementById("course_name").innerHTML = this.responseText;
-//         }
-//     };
-//     xmlhttp.open("POST", "controller/getCourse", true);
-//     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-//     xmlhttp.send("module=" + val);
-// }
-
-    function showModule(val) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("Module").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("POST", "controller/getModule", true);
-        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xmlhttp.send("course=" + val);
-    }
-</script> 
+        function showModule(val) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("Module").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "controller/getModule", true);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send("course=" + val);
+        }
+        </script>
 
 
-<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
+        <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 
-<?php include_once("footer.php"); ?>
-<!-- END -->
+        <?php include_once("footer.php"); ?>
+        <!-- END -->
