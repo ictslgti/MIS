@@ -9,7 +9,35 @@ include_once ("attendancenav.php");
 
 ?>
 <!-- end dont change the order-->
+<?PHP
 
+// Add coding
+$module_id=null;
+
+
+if(isset($_POST['Add'])){
+
+  if(!empty($_POST['department_id'])
+  &&!empty($_POST['module_id'])){ 
+
+      $module_id  =   $_POST['module_id'];
+   
+    
+     $sql= "INSERT INTO `timetable` (`module_id`)
+     
+     VALUES (
+         NULL, '$module_id ')";
+      if (mysqli_query($con, $sql)) {
+          echo "New record created successfully";
+      } else {
+          echo "Error: " . $sql .
+          "<br>" . 	mysqli_error($con);
+      }
+  }
+}
+
+
+  ?>
 
 <!-- Block#2 start your code -->
 
@@ -39,15 +67,39 @@ include_once ("attendancenav.php");
       <h4 class="modal-title">Add Attendance</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
+      
+      
 
       <div class="form-group">
             <div class="row">
-              <label class="col-md-3 text-right">Session<span class="text-danger">*</span></label>
-              <div class="col-md-8">
-                
-              </div>
-            </div>
-          </div>
+            <label for="inputEmail3" class="col-sm-3  text-right col-form-label">Module<span class="text-danger">*</span></label>
+    <div class="col-sm-8"> 
+    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['module_id']))
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"  id="module_id" name="module_id">
+
+        <option selected disabled required >Module</option>
+
+
+        <?php          
+            $sql = "SELECT * FROM `module`";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                echo '<option  value="'.$row["module_id"].'" required';
+                if($row["module_id"]==$module_id) echo ' selected';
+                echo '>'.$row["module_name"].'</option>';
+                }
+            }
+            ?>
+
+
+
+
+        </select>
+    </div>
+  </div>
+</div>
+          
           <div class="form-group">
             <div class="row">
               <label class="col-md-3 text-right">Attend Date <span class="text-danger">*</span></label>
@@ -102,9 +154,9 @@ include_once ("attendancenav.php");
                   </td>
             </tr>
       </thead>
-      <tbody>
+      
 
-      </tbody>
+
      </table>
     </div>
    </div>
@@ -147,7 +199,7 @@ include_once ("attendancenav.php");
             <tr>
               <th>Student Name</th>
               <th>Roll Number</th>
-              <th>Session</th>
+              <th>Module</th>
               <th>Attendance Status</th>
               <th>Attendance Date</th>
             </tr>
