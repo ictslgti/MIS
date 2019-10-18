@@ -13,6 +13,7 @@ $title = "Examinations | SLGTI";
 $course_name=$course_id=$module_name=$assessment_type=$assessment_name=$assessment_percentage=null;
 
 if (isset($_POST['Add'])) {
+    echo "sd";
     if (!empty($_POST['course_name'])
        
     &&!empty($_POST['module_name'])
@@ -86,7 +87,7 @@ else{
         </div>
 
         <!--  -->
-        <form method="POST">
+        <form method="POST" action="#">
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -212,8 +213,8 @@ else{
 
                             </div>
                             <div class="col-md-auto">
-                                <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus" value="Add"
-                                        id="Add"></i> Add Asessments</button>
+                                <button type="submit" class="btn btn-outline-primary"> <i class="fas fa-plus" value="Add"
+                                             name="Add"></i> Add Asessments</button>
                             </div>
                             <div class="col col-lg-2">
 
