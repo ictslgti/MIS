@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 ?>
-                <!-- </select>
+                 </select>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -66,7 +66,7 @@ if (mysqli_num_rows($result) > 0) {
             </tbody>
         </table>
     </div>
-</div> --> -->
+</div> --> 
 
 <?php
 $total_course = 0;
