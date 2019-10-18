@@ -27,7 +27,7 @@ include_once("menu.php");
     <form class="form-inline">
    
    
-   
+   <?php echo $_SESSION['user_name'];?>
 
   
   <div class="form-group mx-sm-3 mb-2">
