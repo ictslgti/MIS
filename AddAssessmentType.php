@@ -93,7 +93,7 @@ else{
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01"><i
                                         class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
-                                    Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
                             <select
                                 class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['courser_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"
@@ -119,11 +119,7 @@ else{
                         </div>
                     </div>
                     <!--  -->
-                    <div class="input-group mb-3">
-
-
-
-                    </div>
+                    
 
 
                 </div>
@@ -135,7 +131,7 @@ else{
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01"><i
-                                        class="fas fa-book-open"></i>&nbsp;&nbsp;Select Module&nbsp;</label>
+                                        class="fas fa-book-open"></i>&nbsp;&nbsp;Select Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
                             <select
                                 class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"
@@ -171,17 +167,17 @@ else{
 
 
                     </div>
-
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i
-                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Name&nbsp;</span>
+                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             </div>
                             <input type="text"
                                 class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_name'])){echo ' is-valid';} ?>"
-                                placeholder="
-                                Assessment Name" aria-label="Username" aria-describedby="basic-addon1"
+                                placeholder="Assessment Name" aria-label="Username" aria-describedby="basic-addon1"
                                 name="assessment_name" value="<?php echo $assessment_name; ?>">
                         </div>
 
@@ -190,24 +186,23 @@ else{
                     </div>
                 </div>
 
+
                 <div class="row">
                     <div class="col">
 
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i
-                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Percentage&nbsp;</span>
+                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Percentage&nbsp;&nbsp;</span>
                             </div>
                             <input type="text"
                                 class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_percentage'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_percentage'])){echo ' is-valid';} ?>"
-                                placeholder="
-                                Assessment Percentage" aria-label="Username" aria-describedby="basic-addon1"
-                                name="assessment_name" value="<?php echo $assessment_name; ?>">
+                                placeholder="Assessment Percentage" aria-label="Username" aria-describedby="basic-addon1"
+                                name="assessment_name" value="<?php echo $assessment_name; ?>" onkeypress="IsInputNumber(event)">
                         </div>
-
-
-
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
 
                         <div class="row justify-content-md-center">
@@ -222,19 +217,15 @@ else{
 
                             </div>
                         </div>
-
-
-
-
-
                     </div>
-
-
-
-
-
-
                 </div>
+
+
+
+
+
+
+                
 
 
         </form>
@@ -294,29 +285,46 @@ else{
         <!-- end my code -->
 
         <script>
-        // function showCouese(val) {
-        //     var xmlhttp = new XMLHttpRequest();
-        //     xmlhttp.onreadystatechange = function() {
-        //         if (this.readyState == 4 && this.status == 200) {
-        //             document.getElementById("course_name").innerHTML = this.responseText;
-        //         }
-        //     };
-        //     xmlhttp.open("POST", "controller/getCourse", true);
-        //     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        //     xmlhttp.send("module=" + val);
-        // }
+            // function showCouese(val) {
+            //     var xmlhttp = new XMLHttpRequest();
+            //     xmlhttp.onreadystatechange = function() {
+            //         if (this.readyState == 4 && this.status == 200) {
+            //             document.getElementById("course_name").innerHTML = this.responseText;
+            //         }
+            //     };
+            //     xmlhttp.open("POST", "controller/getCourse", true);
+            //     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            //     xmlhttp.send("module=" + val);
+            // }
 
-        function showModule(val) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("Module").innerHTML = this.responseText;
+            function showModule(val) {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("Module").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("POST", "controller/getModule", true);
+                xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xmlhttp.send("course=" + val);
+            }
+
+
+
+            function IsInputNumber(evt) {
+                var ch = String.fromCharCode(evt.which);
+
+                if (!(/[0-9]/.test(ch))) {
+                    evt.preventDefault();
+                    alert("Please Enter Numbers Only For Assessment Percentage!");
                 }
-            };
-            xmlhttp.open("POST", "controller/getModule", true);
-            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xmlhttp.send("course=" + val);
-        }
+                else if ((/[0-9]/.test(ch))) {
+                    
+                    
+                    
+                }
+                
+            }
         </script>
 
 
