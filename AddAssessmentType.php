@@ -98,7 +98,7 @@ else{
 <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['courser_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"
 id="course_name" name="course_name" value="<?php echo $course_id; ?>"
 onchange="showModule(this.value)" required>
-                                <!-- <option value="null" selected disabled>--Select Course--</option> -->
+                                <option value="null" selected disabled>--Select Course--</option>
 
 
                                 <?php
