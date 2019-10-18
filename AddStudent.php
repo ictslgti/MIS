@@ -175,24 +175,28 @@ if(isset($_GET['edit']))
 
         <div class="col-md-2 mb-3">
             <label for="gender"> Gender: </label>
-            <select name="gender" id="gender" class="form-control" value="<?php echo $gender ?>">
-                <option value="" disabled selected>Select</option>
-                <option value="M"
-                  <?php
-                  if($row["student_gender"]=="M")
+            <select name="gender" id="gender" class="form-control" value="">
+                <option value="" selected disabled >Select</option>
+                <?php 
+              //$sql="SELECT academic_year from academic";
+              $result = mysqli_query($con);
+              if(mysqli_num_rows($result)>0)
+              while($row = mysqli_fetch_assoc($result)) 
+              {
+                  echo '<option value="M"';
+                  if ($year=="M")
                   {
-                    echo 'selected';
+                    echo 'selected'; 
                   }
-                  ?>
-                > M </option>
-                <option value="F"
-                <?php
-                  if($row["student_gender"]==$gender)
+                  echo '> Male </option>';
+                  echo '<option value="F"';
+                  if ($year=="F")
                   {
-                    echo 'selected';
+                  echo 'selected'; 
                   }
-                  ?>
-                > F </option>
+                  echo '> Female </option>';
+              }
+              ?> 
             </select>
         </div>
 
@@ -200,9 +204,9 @@ if(isset($_GET['edit']))
             <label for="civilstatus"> Civil Status: </label>
             <select name="civilstatus" id="civilstatus" class="form-control">
                 <option disabled selected>Select</option>
-                <option value="male"
+                <option value="single"
                 > Single </option>
-                <option value="female"> Maried </option>
+                <option value="maried"> Maried </option>
             </select>
         </div>
     </div>
@@ -241,7 +245,7 @@ if(isset($_GET['edit']))
     </div>
  
     <div class="form-row">
-          <div class="col-md-1 mb-3">
+          <div class="col-md-3 mb-3">
             <label for="zip"> ZIP-Code:</label>
             <input type="text" class="form-control" id="zip" value="<?php echo $zip ?>" placeholder=""  required>
           </div>
