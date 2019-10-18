@@ -1,12 +1,116 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER-->  
 <?php
+if(isset($_POST["add_to_cart"]))
+{
+  
+	if(isset($_COOKIE["shopping_cart"]))
+	{
+		$cookie_data = stripslashes($_COOKIE['shopping_cart']);
+
+		$cart_data = json_decode($cookie_data, true);
+	}
+	else
+	{
+		$cart_data = array();
+	}
+
+	$item_id_list = array_column($cart_data, 'item_id');
+
+	if(in_array($_POST["hidden_id"], $item_id_list))
+	{
+		foreach($cart_data as $keys => $values)
+		{
+			if($cart_data[$keys]["item_id"] == $_POST["hidden_id"])
+			{
+				$cart_data[$keys]["item_quantity"] = $cart_data[$keys]["item_quantity"] + $_POST["quantity"];
+			}
+		}
+	}
+	else
+	{
+		$item_array = array(
+			'item_id'			=>	$_POST["hidden_id"],
+			'item_name'			=>	$_POST["hidden_name"],
+			'item_price'		=>	$_POST["hidden_price"],
+			'item_quantity'		=>	$_POST["quantity"]
+		);
+		$cart_data[] = $item_array;
+	}
+
+	
+	$item_data = json_encode($cart_data);
+	setcookie('shopping_cart', $item_data, time() + (86400 * 30));
+	//header("location:index.php?success=1");
+}
+
+if(isset($_GET["action"]))
+{
+	if($_GET["action"] == "delete")
+	{
+		$cookie_data = stripslashes($_COOKIE['shopping_cart']);
+		$cart_data = json_decode($cookie_data, true);
+		foreach($cart_data as $keys => $values)
+		{
+			if($cart_data[$keys]['item_id'] == $_GET["id"])
+			{
+				unset($cart_data[$keys]);
+				$item_data = json_encode($cart_data);
+				setcookie("shopping_cart", $item_data, time() + (86400 * 30));
+				//header("location:index.php?remove=1");
+			}
+		}
+	}
+	if($_GET["action"] == "clear")
+	{
+		setcookie("shopping_cart", "", time() - 3600);
+		//header("location:index.php?clearall=1");
+	}
+}
+
+if(isset($_GET["success"]))
+{
+	$message = '
+	<div class="alert alert-success alert-dismissible">
+	  	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  	Item Added into Cart
+	</div>
+	';
+}
+
+if(isset($_GET["remove"]))
+{
+	$message = '
+	<div class="alert alert-success alert-dismissible">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		Item removed from Cart
+	</div>
+	';
+}
+if(isset($_GET["clearall"]))
+{
+	$message = '
+	<div class="alert alert-success alert-dismissible">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		Your Shopping Cart has been clear...
+	</div>
+	';
+}
+
+?>
+
+
+<?php
 
 $title = "Home | SLGTI";
+
  include_once("config.php"); 
  include_once("head.php"); 
  include_once("menu.php"); 
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
+
+
+
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <div class="row shadow  p-3 mt-1 bg-info text-white">
@@ -16,77 +120,6 @@ $title = "Home | SLGTI";
 </div>
 
  <!-- FOOD MENU DESIGN    -->
-
-
-
-
- <?php 
-                  
-                    $connect=mysqli_connect("mis.achchuthan.org","misuser","mIs@SlgT1","mis");
-                    if(isset($_POST["Add"]))
-                    {
-                        if(isset($_SESSION["cart"]))
-                        {
-                        $item_array_id =array_column($_SESSION["cart"],"food_id");
-                        if(!in_array($_GET["id"],$item_array_id))
-                        {
-                            $count=count($_SESSION["cart"]);
-                            $item_array=array(
-                                'food_id' => $_GET["id"],
-                                'food_name' => $_GET["h_name"],
-                                'food_unit_qty' => $_GET["h_qty"],
-                                'food_unit_price' => $_GET["P_amount"],
-
-                            );
-                            $_SESSION["cart"][$count]=$item_array;
-                        }
-                else
-                {
-                    echo' "Already Added"';
-                }
-
-
-                        }
-                        else{
-                            $item_array=array(
-                                'food_id' => $_GET["id"],
-                                'food_name' => $_GET["h_name"],
-                                'food_unit_qty' => $_GET["h_qty"],
-                                'food_unit_price' => $_GET["P_amount"],
-                            );
-                            $_SESSION["cart"][0] =$item_array;
-                        }
-                    }
-                    
-                    if(isset($_GET["action"]))
-                    {
-                        if($_GET["action"]=="delete")
-                        {
-                            
-                            foreach($_SESSION["cart"] as $keys => $values)
-                            {
-                             if($values["food_id"]==$_GET["id"])  
-                             {
-                                unset($_SESSION["cart"][$keys]);
-                                echo '<script>alert("item Removed")</script>';
-                             }
-                            }
-                        }
-                    }
-                    
-                   
-                    
-                    
-                    ?>
-
-
-
-
-
-
-
-
-
 
          < <div class="row pl-3 pt-4 ">
             <em><h1 class="display-5">Morning Fare</h1></em>
@@ -102,37 +135,37 @@ $title = "Home | SLGTI";
                             <div class="card-body">
                                 <h4 class="display-5 mt-3">   
                                 <?php
+                                $sql = "SELECT * FROM `food` WHERE `food_id`='fd001'";
+                                $result = mysqli_query($con, $sql);
+                                if (mysqli_num_rows($result)>0){
+                                    while ($row = mysqli_fetch_assoc($result)){
 
-                         $sql = "SELECT * FROM `food` WHERE `food_id`='fd001'";
-                         $result = mysqli_query($con, $sql);
-                         if (mysqli_num_rows($result)>0){
-                             while ($row = mysqli_fetch_assoc($result)){
-
-                                 $idly=$row ["food_name"];
-                                 $uqty=$row ["food_unit_qty"];
-                                 $mea=$row ["food_measurements"];
-                                 $pri=$row ["food_unit_price"];
-
-                                 echo'
-                                <tr>
-                                 <td>' . $idly.'</td>
-                                 <td>' . $uqty.'</td>
-                                 <td>' . $mea.'</td>
-                                 <td>' . $pri.'</td>
-                                 </tr>';
-                             }
-                     }else{
-                         echo "0 results";
-                         }
-                        ?>
-                         </h4>   
+                                        $idly=$row ["food_name"];
+                                        $uqty=$row ["food_unit_qty"];
+                                        $mea=$row ["food_measurements"];
+                                        $pri=$row ["food_unit_price"];
+                                        $id=$row ["food_id"];
+                                        }
+                                    }
+                                    else{
+                                        echo "0 results";
+                                        }
+                                ?>
+                                    </h4>
+                                <form method="POST" action="#">   
                                  <div class="pb-1" style="max-width: 4rem;">
-                                 <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
+                                    <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
+						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $idly ?>" />
+						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+						            <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
+                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="add_to_cart" />
                                  </div>   
-                                 <a href="#" class="btn btn-info">Add</a>                                    
-                                 </div>
+                                 
+                                    </div>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div> 
 
@@ -146,28 +179,29 @@ $title = "Home | SLGTI";
                         </div>
                         <div class="col">
                             <div class="card-body">
-                            <h4 class="display-5 mt-3"> 
-                            
-                        <?php
-                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd002'";
-                        $result = mysqli_query($con, $sql);
-                        if (mysqli_num_rows($result)>0){
-                            while ($row = mysqli_fetch_assoc($result)){
+                                <h4 class="display-5 mt-3"> 
+                                    
+                                            <?php
+                                            $sql = "SELECT * FROM `food` WHERE `food_id`='fd002'";
+                                            $result = mysqli_query($con, $sql);
+                                            if (mysqli_num_rows($result)>0){
+                                                while ($row = mysqli_fetch_assoc($result)){
 
-        
-                                echo'
-                                <tr>
                             
-                                <td>' . $row ["food_name"].'</td>
-                                <td>' . $row ["food_unit_qty"].'</td>
-                                <td>' . $row ["food_measurements"].'</td>
-                                <td>' . $row ["food_unit_price"].'</td>
-                                </tr>';
-                            }
-                        }else{
-                        echo "0 results";
-                        }
-                        ?> </h4> 
+                                                    echo'
+                                                    <tr>
+                                                
+                                                    <td>' . $row ["food_name"].'</td>
+                                                    <td>' . $row ["food_unit_qty"].'</td>
+                                                    <td>' . $row ["food_measurements"].'</td>
+                                                    <td>' . $row ["food_unit_price"].'</td>
+                                                    </tr>';
+                                                }
+                                            }else{
+                                            echo "0 results";
+                                            }
+                                            ?>
+                                </h4> 
                                 <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
@@ -595,54 +629,56 @@ $title = "Home | SLGTI";
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th><p class="h5">ITEM ID</p></th>
+                        
                         <th><p class="h5">ITEM NAME</p></th>
                         <th><p class="h5">QTY</p></th>
                         <th><p class="h5">PER AMOUNT</p></th>
+                        <th><p class="h5">TOTAL AMOUNT</p></th>
                         <th><p class="h5">ACTION</p></th>
                     </tr>
                  </thead>
-                <tbody class="table-borderless">
-                 
-                </tbody>
+                 <?php
+			if(isset($_COOKIE["shopping_cart"]))
+			{
+				$total = 0;
+				$cookie_data = stripslashes($_COOKIE['shopping_cart']);
+				$cart_data = json_decode($cookie_data, true);
+				foreach($cart_data as $keys => $values)
+				{
+			?>
+				<tr>
+					<td><?php echo $values["item_name"]; ?></td>
+					<td><?php echo $values["item_quantity"]; ?></td>
+					<td>$ <?php echo $values["item_price"]; ?></td>
+					<td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
+					<td><a href="index.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
+				</tr>
+			<?php	
+					$total = $total + ($values["item_quantity"] * $values["item_price"]);
+				}
+			?>
+				<tr>
+					<td colspan="3" align="right">Total</td>
+					<td align="right">$ <?php echo number_format($total, 2); ?></td>
+					<td></td>
+				</tr>
+			<?php
+			}
+			else
+			{
+				echo '
+				<tr>
+					<td colspan="5" align="center">No Item in Cart</td>
+				</tr>
+				';
+			}
+			?>
                
                    
                    
                    
             </table>
-            <?php  
-              echo "loos";
-                   if(!empty($_SESSION["cart"]))
-                  
-                 
-                   {   
-                       $total =0;
-                      
-                       foreach($_SESSION["cart"]as $keys =>$values)
-                       {
-                      ?>
-                      <tr>
-                      <td><?php echo $values ["food_id"];?></td>
-                      <td><?php echo $values ["food_name"];?></td>
-                      <td><?php echo $values ["food_unit_qty"];?></td>
-                      <td>$<?php echo $values ["food_unit_price"];?></td>
-                      <td><?php echo number_format($values["food_unit_qty"]*$values["price"],2);?></td>
-                      <td><a href="index.php?action+=delete&id=<?php echo $values["food_id"];?>"><span  class ="tex-danger">remove</span> </td>
-                      </tr>
-                        <?php
-                        $total=$total+($values["food_unit_qty"]*$values["price"]);
-                       }
-                       ?>
-                       <tr> 
-                            <td colspan="3" align="right">Total</td>
-                            <td align ="right">$<?php echo number_format($total,2);?></td>
-                       
-                       </tr>
-                       <?php
-                   
-                   
-                }
-                   ?>
+           
                    
         </div>
 
