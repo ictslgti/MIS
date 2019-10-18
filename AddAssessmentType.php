@@ -97,9 +97,9 @@ else{
                             </div>
                             <select
                                 class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['courser_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"
-                                id="course_name" name="course_name" value="<?php echo $course_id; ?>"
+                                id="course_name" name="course_name" onchange="showCouese(this.value)" value="<?php echo $course_id; ?>"
                                 onchange="showModule(this.value)" required>
-                                <option value="null" selected disabled>--Select Course--</option>
+                                <!-- <option value="null" selected disabled>--Select Course--</option> -->
 
 
                                 <?php
@@ -142,18 +142,7 @@ else{
                                  <option value="null" selected disabled>--Select Module--</option>
 
 
-                                <?php
-                  $sql = "SELECT * FROM `module` ";
-                  $result = mysqli_query($con, $sql);
-                  if (mysqli_num_rows($result) > 0) {
-                  while($row = mysqli_fetch_assoc($result)) {
-                    echo '<option  value="'.$row["module_id"].'" required>'.$row["module_name"].'</option>';
-                  }
-                  }else{
-                    echo '<option value="null"   selected disabled>-- No module --</option>';
-                  }
-                  ?>
-
+                                
                             </select>
                         </div>
                     </div>
@@ -321,19 +310,32 @@ else{
 
 <?php include_once("footer.php"); ?>
 <!-- END -->
-<!-- 
+ 
 <script>
-    function showModule(val) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("module_name").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("POST", "controller/getModule", true);
-        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xmlhttp.send("course=" + val);
-    }
-</script> -->
+
+// function showCouese(val) {
+//     var xmlhttp = new XMLHttpRequest();
+//     xmlhttp.onreadystatechange = function() {
+//         if (this.readyState == 4 && this.status == 200) {
+//             document.getElementById("course_name").innerHTML = this.responseText;
+//         }
+//     };
+//     xmlhttp.open("POST", "controller/getCourse", true);
+//     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//     xmlhttp.send("module=" + val);
+// }
+
+//     function showModule(val) {
+//         var xmlhttp = new XMLHttpRequest();
+//         xmlhttp.onreadystatechange = function () {
+//             if (this.readyState == 4 && this.status == 200) {
+//                 document.getElementById("module_name").innerHTML = this.responseText;
+//             }
+//         };
+//         xmlhttp.open("POST", "controller/getModule", true);
+//         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//         xmlhttp.send("course=" + val);
+//     }
+</script> 
 
 <?php include_once("footer.php"); ?>
