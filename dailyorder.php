@@ -25,14 +25,13 @@ include_once("menu.php");
         </div>
     </div>
     <form class="form-inline">
-   
-   
-   <?php echo $_SESSION['user_name'];?>
+
 
   
-  <div class="form-group mx-sm-3 mb-2">
-  <input class="form-control" type="text" placeholder="Search by order Id">   
-    </div>
+              <div class="form-group mx-sm-3 mb-2">
+              <input class="form-control" type="text" placeholder="Search by order Id">  
+              <input class="btn btn-primary" type="submit" value="Search"> 
+              </div>
 
   
 
