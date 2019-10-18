@@ -187,30 +187,34 @@ $title = "Home | SLGTI";
                                             if (mysqli_num_rows($result)>0){
                                                 while ($row = mysqli_fetch_assoc($result)){
 
-                            
-                                                    echo'
-                                                    <tr>
-                                                
-                                                    <td>' . $row ["food_name"].'</td>
-                                                    <td>' . $row ["food_unit_qty"].'</td>
-                                                    <td>' . $row ["food_measurements"].'</td>
-                                                    <td>' . $row ["food_unit_price"].'</td>
-                                                    </tr>';
+                                                    $rotti=$row ["food_name"];
+                                                    $uqty=$row ["food_unit_qty"];
+                                                    $mea=$row ["food_measurements"];
+                                                    $pri=$row ["food_unit_price"];
+                                                    $id=$row ["food_id"];
+                                                    }
                                                 }
-                                            }else{
+                                            else{
                                             echo "0 results";
                                             }
                                             ?>
                                 </h4> 
-                                <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
-                                </div>   
-                                <a href="#" class="btn btn-info">Add</a>                                   
-                            </div>
+                                <form method="POST" action="#">   
+                                 <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
+						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $rotti ?>" />
+						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+						            <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
+                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="add_to_cart" />
+                                 </div>   
+                                 </div>
+                                </div>
+                            </div>  
+                             </form>  
                         </div>
                     </div>
-                </div>
-            </div>
+        
 
 
 
@@ -229,29 +233,34 @@ $title = "Home | SLGTI";
                         $result = mysqli_query($con, $sql);
                         if (mysqli_num_rows($result)>0){
                             while ($row = mysqli_fetch_assoc($result)){
-                                echo'
-                                <tr>
-                            
-                                <td>' . $row ["food_name"].'</td>
-                                <td>' . $row ["food_unit_qty"].'</td>
-                                <td>' . $row ["food_measurements"].'</td>
-                                <td>' . $row ["food_unit_price"].'</td>
-                                </tr>';
+                                $stringhoppers=$row ["food_name"];
+                                $uqty=$row ["food_unit_qty"];
+                                $mea=$row ["food_measurements"];
+                                $pri=$row ["food_unit_price"];
+                                $id=$row ["food_id"];
+                                }
                             }
-                        }else{
+                        else{
                         echo "0 results";
                         }
-                        ?> </h4>
-                                <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
-                                </div>   
-                                <a href="#" class="btn btn-info">Add</a>                                   
-                            </div>
+                        ?>
+                        </h4>
+                        <form method="POST" action="#">   
+                                 <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
+						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $rotti ?>" />
+						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+						            <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
+                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="add_to_cart" />
+                                 </div>   
+                                 </div>
+                                </div>
+                            </div>  
+                             </form>  
                         </div>
                     </div>
-                </div>
-            </div>
-
+        
 
 
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
