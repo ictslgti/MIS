@@ -4,6 +4,25 @@ $title = "Home | SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
+
+$eid = $e_name = $e_venue=$e_date=$e_chief_guest=$e_comment = null;
+if(isset($_GET['edit'])){
+    $eid = $_GET['edit'];
+    $sql = "SELECT * FROM `notice_event` WHERE `event_id` = $eid";
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_assoc($result);
+        $e_name = $row['event_name'];
+        $e_venue = $row['event_venue'];
+        $e_date = $row['event_date'];
+        $e_chief_guest = $row['event_chief_guest'];
+        $e_comment = $row['event_comment'];
+        
+        
+    }
+
+}
+
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
@@ -35,7 +54,7 @@ include_once("menu.php");
             <label class="input-group-text" for="inputGroupSelect01"> 
             <i class="fas fa-award"></i> </i>&nbsp;&nbsp;Event Name&nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <input type="text" class="form-control" id="inputPassword2" name="event_name" placeholder="Event Name">
+        <input type="text" class="form-control" id="inputPassword2" name="event_name" placeholder="Event Name" value="<?php echo $e_name; ?>">
     </div>
 
     <div class="input-group mb-3 ">
@@ -43,7 +62,7 @@ include_once("menu.php");
             <label class="input-group-text" for="inputGroupSelect01"> 
             <i class="fas fa-map-marker-alt"></i>  </i>&nbsp;&nbsp;Venue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <input type="text" class="form-control" id="inputPassword2" name="event_venue" placeholder="Venue">
+        <input type="text" class="form-control" id="inputPassword2" name="event_venue" placeholder="Venue" value="<?php echo $e_venue; ?>">
     </div>
 
     <div class="input-group mb-3 ">
@@ -51,7 +70,7 @@ include_once("menu.php");
             <label class="input-group-text" for="inputGroupSelect01"> 
             <i class="far fa-calendar-alt"></i></i>&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <input type="date" class="form-control" id="inputPassword2"  name="event_date">
+        <input type="date" class="form-control" id="inputPassword2"  name="event_date" value="<?php echo $e_date; ?>">
     </div>
 
     <div class="input-group mb-3 ">
@@ -59,7 +78,7 @@ include_once("menu.php");
             <label class="input-group-text" for="inputGroupSelect01"> 
                 <i class="fas fa-user"> </i>&nbsp;&nbsp;cheif Guest&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <input type="text" class="form-control" id="inputPassword2" name="event_chief_guest" placeholder="cheif Guest">
+        <input type="text" class="form-control" id="inputPassword2" name="event_chief_guest" placeholder="cheif Guest" value="<?php echo $e_chief_guest; ?>">
     </div>
 
 
@@ -68,7 +87,7 @@ include_once("menu.php");
             <label class="input-group-text" for="inputGroupSelect01"> 
             <i class="fab fa-audible"></i> </i>&nbsp;&nbsp;Comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-        <textarea class="form-control"  id="comment"  placeholder="event_comment" name="event_comment"></textarea>
+        <textarea class="form-control"  id="comment"  placeholder="event_comment" name="event_comment" value="<?php echo $e_comment; ?>"></textarea>
     </div>
 
     
@@ -106,8 +125,10 @@ include_once("menu.php");
 </div>
 </form>
 
-<?php
 
+
+
+<?php
 
 if(isset($_POST['add'])){
     if(!empty($_POST['event_name'])&& !empty($_POST['event_venue'])&& !empty($_POST['event_date'])&& !empty($_POST['event_chief_guest'])&& !empty($_POST['event_comment'])){
@@ -125,6 +146,31 @@ if(isset($_POST['add'])){
         }
     }
 }
+
+
+
+if(isset($_POST['Update'])){
+    if(!empty($_POST['event_name'])&&!empty($_POST['event_venue'])&&!empty($_POST['event_date'])&&!empty($_POST['event_chief_guest'])&&!empty($_POST['event_comment'])){
+          $event_name = $_POST['event_name'];
+          $event_venue = $_POST['event_venue'];
+          $event_date = $_POST['event_date'];
+          $event_chief_guest = $_POST['event_chief_guest'];
+          $event_comment = $_POST['event_comment'];
+          $event_id = $_GET['edit'];
+          $sql = "UPDATE `notice_event` 
+          SET `event_id` = '$event_id', 
+          `event_name` = '$event_name' ,`event_venue` = '$event_venue',`event_date` = '$event_date',`event_chief_guest` = '$event_chief_guest',`event_comment` = '$event_comment',
+          WHERE `notice_event`.`event_id` = $event_id";
+  
+          if (mysqli_query($con, $sql)) {
+              echo "Record updated successfully";
+          } else {
+              echo "Error: " . $sql .
+              "<br>" . 	mysqli_error($con);
+          }
+      }
+  }
+
 ?>
 
 
