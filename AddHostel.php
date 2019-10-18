@@ -54,6 +54,7 @@ include_once("menu.php");
           $student_id = $_GET['edit'];
           $sql ="SELECT * FROM `hostel_student_details` WHERE `student_id` = $student_id";
           $result = mysqli_query($con ,$sql);
+
           if(mysqli_num_rows($result)== 1){
               $row = mysqli_fetch_assoc($result);
               $student_id = $row['student_id'];
@@ -71,7 +72,8 @@ include_once("menu.php");
               
           }
       }
-      
+      ?>
+      <?php
        
         if(isset($_POST['upt'])){
            
