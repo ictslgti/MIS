@@ -127,7 +127,7 @@ date_default_timezone_set("Asia/colombo");
     
     <div class="col-md-3 col-sm-12">
     <br><br>
-    <button type="button" class="btn btn-secondary btn-md " onclick="document.getElementById('rfe').value = '';document.getElementById('tel').value = '';document.getElementById('date').value = '';document.getElementById('time').value = ''">Clear</button>
+    <button type="button" class="btn btn-secondary btn-md " onclick="document.getElementById('rfe').value = '';document.getElementById('tel').value = '';">Clear</button>
 
 </div>
     <div class="col-md-1 col-sm-12">
