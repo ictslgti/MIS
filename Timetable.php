@@ -1,235 +1,77 @@
-
-
-
+<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
 <?php
 $title = "Home | SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
 ?>
+<!--END DON'T CHANGE THE ORDER-->
 
+<!--BLOCK#2 START YOUR CODE HERE -->
+
+<!-- STAFF info design  -->
+<div class="pt-2 bg-white ">
+    <h1 class="display-4 text-center">Time Table</h1>
+   
+</div>
 
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">period</th>
-      <th scope="col">Monday</th>
-      <th scope="col">Tuesday</th>
-      <th scope="col">Wednesday</th>
-      <th scope="col">Thursday</th>
-      <th scope="col">Friday</th>
+      <th scope="col" width="8%"> Department </th>
+      <th scope="col" width="18%"> Course </th>
+      <th scope="col" width="10%"> Module </th>
+      <th scope="col" width="5%"> AcademicYear</th>
+      <th scope="col" width="5%"> Lecture </th>
+      <th scope="col" width="20%"> WeekDays </th>
+      <th scope="col" width="5%"> ClassRoom </th>
+      <th scope="col" width="8%"> StartDate</th>
+      <th scope="col" width="8%"> EndDate</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-    
-      
-    <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-      </th>
-</div>
 
 
 
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
 
 
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-      </td>
-      <td> 
-          
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-
-      </td>
-      <td> 
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-
-      </td>
-      <td> 
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-
-      </td>
-      <td> 
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-      </td>
-      
-    </tr>
-    <tr>
-      <th scope="row">
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-      </th>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-
-      </td>
-
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-
-      </td>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-
+   
+<?php
+   $sql = "SELECT department_id,course_id,module_id,academic_year,staff_id,weekdays,classroom,startdate,enddate  FROM timetable";
+   $result = mysqli_query ($con, $sql);
+   if (mysqli_num_rows($result)>0)
+   {
+     while($row = mysqli_fetch_assoc($result))
+     {
+       echo '
+       <tr style="text-align:left";>
+          <td>'. $row["department_id"]."<br>".'</td>
+          <td>'. $row["course_id"]."<br>".'</td>
+          <td>'. $row["module_id"]."<br>".'</td>
+          <td>'. $row["academic_year"]."<br>".'</td>
+          <td>'. $row["staff_id"]."<br>".'</td>
+          <td>'. $row["weekdays"]."<br>".'</td>
+          <td>'. $row["classroom"]."<br>".'</td>
+          <td>'. $row["startdate"]."<br>".'</td>
+          <td>'. $row["enddate"]."<br>".'</td>   
+        
+          <td>
+          <a href="AddTimetable.php? edit='.$row["department_id"].'"> Edit </a> |
+          <a href="?Student_Id='.$row["department_id"].'"> View More
           </td>
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-      </td>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-
-      </td>
-
-    </tr>
-
-
-    <tr>
-      <th scope="row">
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-
-      </th>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-      </td>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div  class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-
-      </td>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-      </td>
-
-      <td>
-          
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-      </td>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-
-      </td>
+         
+       </tr> ';
+     }
+   }
+   else
+   {
+     echo "0 results";
+   }
     
-    </tr>
-    <tr>
-      <th scope="row">
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-
-
-      </th>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-      </td>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-      </td>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-      </td>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      <div class="card" class="row equal">
-
-      <a href="AddTimetable.php" class="btn btn-outline-light">Add</a>
-
-      </td>
-
-      <td>
-      <div class="card col-lg-2 col-md-3 col-sm-4 col-6" style="max-width: 12rem;">
-      dfgd
-
-
-      <div class="card" class="row equal">
-      <a href="AddTimetable.php" class="btn btn-outline-light"  >Add</a>
-</div>
-     
-
-
-      </td>
-    
-    </tr>
-  </tbody>
-</table>
-        <?php include_once("footer.php"); ?>
-
-
+  ?>
+ 
+ </table>
+<!--END OF YOUR COD-->
+<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
+<?php include_once("footer.php"); ?>
+<!--END DON'T CHANGE THE ORDER-->
 
 

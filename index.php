@@ -8,7 +8,7 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-<form onsubmit="showTeacher()">
+<!-- <form onsubmit="showTeacher()">
     <div class="row p-3">
         <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="form-group">
@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 ?>
-                </select>
+                 </select>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -66,14 +66,14 @@ if (mysqli_num_rows($result) > 0) {
             </tbody>
         </table>
     </div>
-</div>
+</div> --> 
 
 <?php
 $total_course = 0;
 $total_students = 0;
 ?>
 
-<div class="row">
+<div class="row mt-3">
     <div class="col-md-2 col-sm-12">
         <div class="card mb-3">
             <div class="card-body">
@@ -170,7 +170,7 @@ $total_students = 0;
         <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title">Students</h5>
-                <p class="card-text display-2 ">
+                <p class="card-text display-2 font-weight-lighter">
                     <?php          
                     $sql = "SELECT COUNT(`student_id`) AS `d_count` FROM `student`";
                     $result = mysqli_query($con, $sql);
@@ -192,10 +192,10 @@ $total_students = 0;
 <div class="row">
 
     <div class="col-md-4 col-sm-12">
-        <div class="card">
+        <div class="card overflow-auto mh-20">
             <h5 class="card-header">Students Course Enrollment Distribution</h5>
             <div class="card-body">
-<?php
+                <?php
 $sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -211,7 +211,7 @@ while($row = mysqli_fetch_assoc($result)){
     $student_percentage = round ( ($course_count/$total_students)*100); 
     // echo $total_students;
     echo '
-    <h5 class="card-title">'.$cname.'</h5>
+    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
     <p class="card-text">
         <div class="progress">
             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
@@ -221,19 +221,19 @@ while($row = mysqli_fetch_assoc($result)){
     ';
 }
 }
-?>            
+?>
             </div>
         </div>
 
     </div>
 
-<!-- COL-1 END -->
+    <!-- COL-1 END -->
 
     <div class="col-md-4 col-sm-12">
         <div class="card">
             <h5 class="card-header">Students Course Dropout Distribution</h5>
             <div class="card-body">
-<?php
+                <?php
 $sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -241,7 +241,7 @@ while($row = mysqli_fetch_assoc($result)){
 
     $cid = $row['course_id'];
     $cname = $row['course_name'];
-    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' ";
+    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Dropout' ";
     $result_c = mysqli_query($con, $sql_c);
     $row_c = mysqli_fetch_assoc($result_c);
     $course_count =  $row_c['c_count'];
@@ -249,26 +249,26 @@ while($row = mysqli_fetch_assoc($result)){
     $student_percentage = round ( ($course_count/$total_students)*100); 
     // echo $total_students;
     echo '
-    <h5 class="card-title">'.$cname.'</h5>
+    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
     <p class="card-text">
         <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
                 aria-valuemin="0" aria-valuemax="100">'.$student_percentage.'%</div>
         </div>
     </p>
     ';
 }
 }
-?>            
+?>
             </div>
         </div>
     </div>
     <!-- <col2-end -->
     <div class="col-md-4 col-sm-12">
         <div class="card">
-            <h5 class="card-header">Students Course Completion  Distribution</h5>
+            <h5 class="card-header">Students Course Completion Distribution</h5>
             <div class="card-body">
-<?php
+                <?php
 $sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -276,7 +276,7 @@ while($row = mysqli_fetch_assoc($result)){
 
     $cid = $row['course_id'];
     $cname = $row['course_name'];
-    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' ";
+    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Completed'";
     $result_c = mysqli_query($con, $sql_c);
     $row_c = mysqli_fetch_assoc($result_c);
     $course_count =  $row_c['c_count'];
@@ -284,7 +284,7 @@ while($row = mysqli_fetch_assoc($result)){
     $student_percentage = round ( ($course_count/$total_students)*100); 
     // echo $total_students;
     echo '
-    <h5 class="card-title">'.$cname.'</h5>
+    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
     <p class="card-text">
         <div class="progress">
             <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
@@ -294,15 +294,24 @@ while($row = mysqli_fetch_assoc($result)){
     ';
 }
 }
-?>            
+?>
             </div>
         </div>
     </div>
 
 </div>
-<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
-<?php include_once("footer.php"); ?>
-<!--END DON'T CHANGE THE ORDER-->
+
+<div class="row">
+    <div class="col-md-6  ">
+        <canvas id="myChart"></canvas>
+    </div>
+    <div class="col-md-6">
+        <canvas id="myChart1"></canvas>
+    </div>
+</div>
+
+
+
 <script>
 function showCouese(val) {
     var xmlhttp = new XMLHttpRequest();
@@ -346,6 +355,111 @@ function showTeacher() {
     xmlhttp.send("StaffModuleEnrollment=1&staff_id=" + tid + "&course_id=" + cid + "&module_id=" + mid +
         "&academic_year=" + aid);
 }
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script>
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = this.responseText;
+
+                console.log(data);
+                var labels = [];
+                var data = [];
+
+                for (var i in data) {
+                    labels.push(data[i].name);
+                    data.push(data[i].value);
+                }
+
+        }
+    };
+    xmlhttp.open("POST", "controller/getChartData", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("x=1");
+
+var labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+var data = [12, 19, 3, 5, 2, 3];
+var ctx = document.getElementById('myChart');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: '# of Votes',
+            data: data,
+            backgroundColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+var labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+var data = [12, 19, 3, 5, 2, 3];
+var ctx = document.getElementById('myChart1');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: '# of Votes',
+            data: data,
+            backgroundColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
 </script>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
