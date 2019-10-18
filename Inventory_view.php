@@ -18,7 +18,7 @@ include_once("menu.php");
         $result=mysqli_query($con,$sql);
         if(mysqli_num_rows($result)==1){
             $row=mysqli_fetch_assoc($result);
-            $inventoryid=$row['inventory_id'];
+            //$inventoryid=$row['inventory_id'];
             $Departmentid=$row['inventory_department_id'];
             $itemid=$row['item_id'];
             $inventorystatus=$row['inventory_status'];
@@ -56,48 +56,41 @@ include_once("menu.php");
 <table class="table">
   <thead class="thead-r">
     <tr>
-      <th scope="col">DEPARTMENT ID</th>
       <th scope="col">INVENTORY ID</th>
+      <th scope="col">DEPARTMENT ID</th>
       <th scope="col">ITEM ID</th>
       <th scope="col">STATAUS</th>
       <th scope="col">QUANTITY</th>
       <th scope="col">ACTION</th>
       
     </tr>
-  </thead>
-  <tr>
-
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-      <td>
-           
-            <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-      </td>
-    </tr>
-
-    <tr>
-
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-
-<td>
-     
-      <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-</td>
-</tr>
- 
+    <?php
+     $sql = "SELECT `inventory_id`, `inventory_department_id`, `item_id`, `inventory_status`, `inventory_quantity` FROM `inventory`";
+     $result = mysqli_query ($con, $sql);
+   if (mysqli_num_rows($result)>0)
+   {
+     while($row = mysqli_fetch_assoc($result))
+     {
+       echo '
+       <tr style="text-align:left";>
+          <td>'. $row["inventory_id"]."<br>".'</td>
+          <td>'. $row["inventory_department_id"]."<br>".'</td>
+          <td>'. $row["item_id"]."<br>".'</td>
+          <td>'. $row["inventory_status"]."<br>".'</td>
+          <td>'. $row["inventory_quantity"]."<br>".'</td>
+          <td>
+          <a href="AddInventory.php? edit='.$row["inventory_id"].'"> Edit </a> 
+          </td>
+       </tr> ';
+     }
+   }
+   else
+   {
+     echo "0 results";
+   }
+    
+  ?>
 </table>
-
-
-
-
 
 <div class="row">
 <div class="col-6"></div>
