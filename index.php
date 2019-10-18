@@ -186,24 +186,43 @@ $total_students = 0;
         </div>
     </div>
 </div>
-
 <hr>
+
+
+
+
 <div class="row">
-    <div class="col-md-4">
+<div class="col-md-2">
+    Academic Year is : 
+                </div>
+    <div class="col-md-3">
         <select class="custom-select custom-select-sm mb-2" required onchange="showStudent(this.value)">
-            <option value="ALL" selected>--- Select Academic Year ---</option>
+            <option value="ALL" selected>ALL</option>
             <?php
             $sql = "SELECT * FROM `academic` ORDER BY `academic_year` ASC ";
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)){
-            echo '<option value="'.$row ['academic_year'].'" > Academic Year '.$row ['academic_year'].'</option>';
+            echo '<option value="'.$row ['academic_year'].'" >'.$row ['academic_year'].'</option>';
             }
             }
             ?>
         </select>
     </div>
 </div>
+
+<div class="row m-2">
+    <div class="col-md-12">
+        <canvas id="myChart1"></canvas>
+    </div>
+</div>
+<hr>
+
+
+
+
+
+
 <div class="row">
     <div class="col-md-4 col-sm-12">
         <!-- <button type="button" class="btn btn-primary btn-sm btn-block mb-2">Small button</button> -->
@@ -317,14 +336,17 @@ while($row = mysqli_fetch_assoc($result)){
 
 </div>
 <hr>
+
+
+
+
+
+<!-- 
 <div class="row m-2">
     <div class="col-md-12  ">
         <canvas id="myChart"></canvas>
     </div>
-    <div class="col-md-12">
-        <canvas id="myChart1"></canvas>
-    </div>
-</div>
+</div> -->
 
 
 <!-- 
@@ -377,6 +399,7 @@ function showTeacher() {
 
 <script>
 showStudent('ALL');
+
 function showStudent(val) {
     var course_id_label = [];
     var course_total_count = [];
@@ -400,7 +423,7 @@ function showStudent(val) {
                 data: {
                     labels: course_id_label,
                     datasets: [{
-                        label: "Total Students " ,
+                        label: "Total Students ",
                         backgroundColor: "#007bff",
                         data: course_total_count
                     }, {
@@ -416,7 +439,13 @@ function showStudent(val) {
                 options: {
                     title: {
                         display: true,
-                        text: 'Students Course Enrollment Distribution'
+                        text: 'Course vs Students Enrollments Distribution'
+                    },
+                    legend: {
+                        display: true,
+                        labels: {
+                            fontColor: 'rgb(0, 0, 0)'
+                        }
                     }
                 }
             });
@@ -429,7 +458,7 @@ function showStudent(val) {
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-<script>
+<!-- <script>
 var course_id = [];
 var c_count = [];
 var xmlhttp = new XMLHttpRequest();
@@ -474,7 +503,7 @@ xmlhttp.onreadystatechange = function() {
 xmlhttp.open("POST", "controller/getChartData", true);
 xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 xmlhttp.send("x=1");
-</script>
+</script> -->
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->
