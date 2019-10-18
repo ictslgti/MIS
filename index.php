@@ -187,13 +187,29 @@ $total_students = 0;
     </div>
 </div>
 
-
-
+<hr>
 <div class="row">
-
+    <div class="col-md-4">
+        <select class="custom-select custom-select-sm mb-2" required onchange="showStudent(this.value)">
+            <option value="ALL" selected>--- Select Academic Year ---</option>
+            <?php
+            $sql = "SELECT * FROM `academic` ORDER BY `academic_year` ASC ";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)){
+            echo '<option value="'.$row ['academic_year'].'" > Academic Year '.$row ['academic_year'].'</option>';
+            }
+            }
+            ?>
+        </select>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-4 col-sm-12">
+        <!-- <button type="button" class="btn btn-primary btn-sm btn-block mb-2">Small button</button> -->
+
         <div class="card overflow-auto mh-20">
-            <h5 class="card-header">Students Course Enrollment Distribution</h5>
+            <h6 class="card-header font-weight-lighter">Students Course Enrollment Distribution</h6>
             <div class="card-body">
                 <?php
 $sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
@@ -231,7 +247,7 @@ while($row = mysqli_fetch_assoc($result)){
 
     <div class="col-md-4 col-sm-12">
         <div class="card">
-            <h5 class="card-header">Students Course Dropout Distribution</h5>
+            <h6 class="card-header font-weight-lighter">Students Course Dropout Distribution </h6>
             <div class="card-body">
                 <?php
 $sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
@@ -266,7 +282,7 @@ while($row = mysqli_fetch_assoc($result)){
     <!-- <col2-end -->
     <div class="col-md-4 col-sm-12">
         <div class="card">
-            <h5 class="card-header">Students Course Completion Distribution</h5>
+            <h6 class="card-header font-weight-lighter">Students Course Completion Distribution</h6>
             <div class="card-body">
                 <?php
 $sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
@@ -300,10 +316,13 @@ while($row = mysqli_fetch_assoc($result)){
     </div>
 
 </div>
-
+<hr>
 <div class="row m-2">
-    <div class="col-md-6  ">
+    <div class="col-md-12  ">
         <canvas id="myChart"></canvas>
+    </div>
+    <div class="col-md-12">
+        <canvas id="myChart1"></canvas>
     </div>
 </div>
 
@@ -356,6 +375,59 @@ function showTeacher() {
 
  -->
 
+<script>
+showStudent('ALL');
+function showStudent(val) {
+    var course_id_label = [];
+    var course_total_count = [];
+    var course_completed_count = [];
+    var course_droupout_count = [];
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data_students_count = JSON.parse(this.responseText);
+            for (var i in data_students_count) {
+                course_id_label.push(data_students_count[i].course_id);
+                course_total_count.push(data_students_count[i].t_count);
+                course_completed_count.push(data_students_count[i].c_count);
+                course_droupout_count.push(data_students_count[i].d_count);
+            }
+
+            var ctx = document.getElementById('myChart1');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: course_id_label,
+                    datasets: [{
+                        label: "Total Students " ,
+                        backgroundColor: "#007bff",
+                        data: course_total_count
+                    }, {
+                        label: "Dropout Students ",
+                        backgroundColor: "#dc3545",
+                        data: course_droupout_count
+                    }, {
+                        label: "Completed Students ",
+                        backgroundColor: "#28a745",
+                        data: course_completed_count
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Students Course Enrollment Distribution'
+                    }
+                }
+            });
+        }
+    };
+    xmlhttp.open("POST", "controller/StudentsCourseDistribution", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("AcademicYear=" + val);
+}
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <script>
 var course_id = [];
@@ -364,7 +436,6 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         var datax = JSON.parse(this.responseText);
-        console.log(datax);
         for (var i in datax) {
             c_count.push(parseInt(datax[i].c_count, 10));
             course_id.push(datax[i].course_id);

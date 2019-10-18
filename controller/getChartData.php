@@ -9,14 +9,13 @@ $row = mysqli_fetch_assoc($result);
     $total_students = $row['d_count'];
 }
 
-$sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
+$sql = "SELECT DISTINCT `course_id` FROM `student_enroll` ";
 $result = mysqli_query($con, $sql);
 $data = array();
 $i=0;
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)){
         $cid = $row['course_id'];
-        $cname = $row['course_name'];
         $sql_c = "SELECT COUNT(`student_id`) AS `c_count`,`course_id` 
         FROM `student_enroll` 
         WHERE `course_id` = '$cid'";
