@@ -66,7 +66,7 @@ if (mysqli_num_rows($result) > 0) {
             </tbody>
         </table>
     </div>
-</div> --> 
+</div> -->
 
 <?php
 $total_course = 0;
@@ -301,17 +301,14 @@ while($row = mysqli_fetch_assoc($result)){
 
 </div>
 
-<div class="row">
+<div class="row m-2">
     <div class="col-md-6  ">
         <canvas id="myChart"></canvas>
-    </div>
-    <div class="col-md-6">
-        <canvas id="myChart1"></canvas>
     </div>
 </div>
 
 
-
+<!-- 
 <script>
 function showCouese(val) {
     var xmlhttp = new XMLHttpRequest();
@@ -357,109 +354,55 @@ function showTeacher() {
 }
 </script>
 
-
+ -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <script>
+var course_id = [];
+var c_count = [];
 var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var data = this.responseText;
-
-                console.log(data);
-                var labels = [];
-                var data = [];
-
-                for (var i in data) {
-                    labels.push(data[i].name);
-                    data.push(data[i].value);
-                }
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var datax = JSON.parse(this.responseText);
+        console.log(datax);
+        for (var i in datax) {
+            c_count.push(parseInt(datax[i].c_count, 10));
+            course_id.push(datax[i].course_id);
 
         }
-    };
-    xmlhttp.open("POST", "controller/getChartData", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("x=1");
-
-var labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
-var data = [12, 19, 3, 5, 2, 3];
-var ctx = document.getElementById('myChart');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: '# of Votes',
-            data: data,
-            backgroundColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: course_id,
+                datasets: [{
+                    label: '# of Students',
+                    data: c_count,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
-            }]
-        }
+            }
+        });
     }
-});
-
-var labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
-var data = [12, 19, 3, 5, 2, 3];
-var ctx = document.getElementById('myChart1');
-var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: '# of Votes',
-            data: data,
-            backgroundColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+};
+xmlhttp.open("POST", "controller/getChartData", true);
+xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=1");
 </script>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
