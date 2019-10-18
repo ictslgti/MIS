@@ -35,7 +35,7 @@ include_once("menu.php");
           $room =$_POST['room'];
           $date =$_POST['date'];
           $leave =$_POST['leave'];
-          $sql= "INSERT INTO `hostel` (`student_id`, `fullname`, `department_name`, `address`, `district`, `distance`, `gender`, `block_no`, 
+          $sql= "INSERT INTO `hostel_student_details` (`student_id`, `fullname`, `department_name`, `address`, `district`, `distance`, `gender`, `block_no`, 
           `room_no`, `date_of_addmission`, `date_of_leaving`) VALUES ('$id', '$name', '$dept', '$address', '$dist', '$dis', '$gender', '$block', '$room', '$date', '$leave')";
           if(mysqli_query($con,$sql)){
               echo "new record create sucessfully ";
@@ -52,7 +52,7 @@ include_once("menu.php");
         $student_id=$name=$dept=$addr =$dist =$dis =$title = $block =$room =$date =$leave =null;
         if(isset($_GET['edit'])){
           $student_id = $_GET['edit'];
-          $sql ="SELECT * FROM `hostel` WHERE `student_id` = $student_id";
+          $sql ="SELECT * FROM `hostel_student_details` WHERE `student_id` = $student_id";
           $result = mysqli_query($con ,$sql);
           if(mysqli_num_rows($result)== 1){
               $row = mysqli_fetch_assoc($result);
@@ -87,12 +87,12 @@ include_once("menu.php");
            $date =$_POST['date'];
            $leave =$_POST['leave'];
          
-          $sql = "UPDATE `hostel` 
+          $sql = "UPDATE `hostel_student_details` 
           SET `fullname` = ' $name', 
           `department_name` = '$dept',
           `address` = ' $addr',`district` = ' $dist',`distance` = ' $dis',`gender` = ' $title',`block_no` = ' $block',`room_no` = ' $room',
           `date_of_addmission` = ' $date',`date_of_leaving` = ' $leave'
-          WHERE `hostel`.`student_id` = $student_id";
+          WHERE `hostel_student_details`.`student_id` = $student_id";
         
           if(mysqli_query($con,$sql)){
               echo "new record update sucessfully ";
