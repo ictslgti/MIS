@@ -10,16 +10,14 @@ include_once("menu.php");
 <?php
 //for add
 if(isset($_POST['Add'])){
-  if( !empty($_POST['result_id']) && !empty($_POST['department_id']) && !empty($_POST['academic_year']) )
+  if( !empty($_POST['result_id']) && !empty($_POST['Department']) && !empty($_POST['academic_year']) && !empty($_POST['Course']) && !empty($_POST['Module']))
   {
      $result_id= $_POST['result_id'];
      $Department = $_POST['Department'];
      $AcademicYear = $_POST['AcademicYear'];
      $Course = $_POST['Course'];
      $Module = $_POST['Module'];
-     $sql = "INSERT INTO `notice_result`(`result_id`, `department_id`, `academic_year`,`course_id`,`module_id`)
-     
-      VALUES ('$result_id','$Department',`$AcademicYear`,'$Course',`$Module`,)";  
+     $sql = "INSERT INTO `notice_result`(`result_id`, `department_id`, `academic_year`,`course_id`,`module_id`) VALUES ('$result_id','$Department',`$AcademicYear`,'$Course',`$Module`,)";  
      if(mysqli_query($con,$sql))
      {
          echo "Record has been Inserted succesfully";
@@ -29,21 +27,18 @@ if(isset($_POST['Add'])){
      }
    }
 }
-
-
-
 //for edit
 if(isset($_POST['Edit']))
 {  
    if(!empty($_POST['code'])&& !empty($_POST['name'])&& !empty($_GET['edit']))
    {   
-      $result_id= $_POST['result_id'];
       $Department = $_POST['Department'];
-      $AcademicYear = $_POST['AcademicYear'];
+      $AcademicYear = $_POST['Academic Year'];
       $Course = $_POST['Course'];
       $Module = $_POST['Module'];
-
-      $sql = "UPDATE `department` SET `department_code`='$code' , `department_name`= '$name'WHERE `department`.`department_id`= $id";
+      $id = $_GET['edit'];
+      $sql = "UPDATE `notice_result` SET `result_id`='$result_id' ,`department_id`= '$Department',`academic_year`='$AcademicYear',`course_id`='$Course',`module_id`='$Module'
+      WHERE `notice_result`.`result_id`= $result_id";
       if(mysqli_query($con,$sql))
       {
            echo"Record has been updated succesfully";
@@ -53,7 +48,6 @@ if(isset($_POST['Edit']))
      }
    }
 }
-
 ?>
 
 
@@ -66,7 +60,7 @@ $Department=$Course=$Module=$AcademicYear=$Type=null;
 
   if(isset($_GET['edit'])){
         $id=$_GET['edit'];
-        $sql="SELECT * FROM `notice_result` WHERE `result_id`='$id'";
+        $sql="SELECT * FROM `notice_result` WHERE `result_id`='$result_id'";
         $result=mysqli_query($con,$sql);
         if(mysqli_num_rows($result)==1){
             $row=mysqli_fetch_assoc($result);
