@@ -9,13 +9,16 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <?php
+date_default_timezone_set("Asia/colombo");
 
   $student_id =  $_SESSION['user_name'];
+
   
   if($_SESSION['user_type']=='STU'){
     $sql ="SELECT * FROM `hostel_student_details` WHERE `student_id` = '$student_id'";
     $result = mysqli_query($con ,$sql);
    if(mysqli_num_rows($result)== 1){
+     
 
    }
 
@@ -45,7 +48,7 @@ include_once("menu.php");
     <br>
     
     <label for="text" class="font-weight-bolder" >Registration No :</label><br>
-    <input type="text" class="form-control" value="<?php echo $student_id;?>" id="rno" name="rno" placeholder="Registration No." disabled>
+    <input type="text" class="form-control" value="<?php if($_SESSION['user_type']=='STU') echo $student_id;?>" id="rno" name="rno" placeholder="Registration No." disabled>
     </div>
     
     <div class="col-md-4 col-sm-12" >
@@ -61,7 +64,7 @@ include_once("menu.php");
    <label for="text" class="font-weight-bolder"  >Contact No :</label><br>
     <input type="tel" id="tel"  pattern="[0-9]{10}" class="form-control" name="tel" placeholder=""  required >
     </div>
-    <?php echo date("Y-m-d"); ?>
+    <!-- <?php echo date("Y-m-d"); ?> -->
     
     <div class="col-md-4 col-sm-12" >
     <br>

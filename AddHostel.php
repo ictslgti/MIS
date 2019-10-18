@@ -93,7 +93,7 @@ include_once("menu.php");
           `department_name` = '$dept',
           `address` = ' $addr',`district` = ' $dist',`distance` = ' $dis',`gender` = ' $title',`block_no` = ' $block',`room_no` = ' $room',
           `date_of_addmission` = ' $date',`date_of_leaving` = ' $leave'
-          WHERE `hostel_student_details`.`student_id` = $student_id";
+          WHERE `hostel_student_details`.`student_id` = '$student_id'";
         
           if(mysqli_query($con,$sql)){
               echo "new record update sucessfully ";
