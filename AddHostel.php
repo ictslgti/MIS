@@ -52,7 +52,7 @@ include_once("menu.php");
         $student_id=$name=$dept=$addr =$dist =$dis =$title = $block =$room =$date =$leave =null;
         if(isset($_GET['edit'])){
           $student_id = $_GET['edit'];
-          $sql ="SELECT * FROM `hostel_student_details` WHERE `student_id` = $student_id";
+          $sql ="SELECT * FROM `hostel_student_details` WHERE `student_id` = '$student_id'";
           $result = mysqli_query($con ,$sql);
          if(mysqli_num_rows($result)== 1){
               $row = mysqli_fetch_assoc($result);
