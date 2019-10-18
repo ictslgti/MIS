@@ -8,7 +8,8 @@ $title = "Examinations | SLGTI";
 
 <!-- add assessment code -->
 <?php
-echo $_SESSION["user_name"];
+
+
 $course_name=$course_id=$module_name=$assessment_type=$assessment_name=$assessment_percentage=null;
 
 if (isset($_POST['Add'])) {
@@ -74,6 +75,7 @@ else{
 
                 <div class="container">
                     <div class="intro">
+                        <h2 class="display-5 text-center">Welcome <?php echo $_SESSION["user_name"];?> to</h2>
                         <h1 class="display-4 text-center">Asignments Portal</h1>
 
                         <p class="text-center">Add Assessment Type&nbsp;</p>
