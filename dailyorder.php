@@ -27,7 +27,7 @@ include_once("menu.php");
     <form class="form-inline">
    
    
-   
+   <?php echo $_SESSION['user_name'];?>
 
   
   <div class="form-group mx-sm-3 mb-2">
@@ -51,8 +51,8 @@ include_once("menu.php");
   <div class ="col-3" >
       <p><h4>
       <?php 
-      $sql ="SELECT DISTINCT`food_order_details_food_order_id`,`user_name`, `food_name`,`food_order_details_food_qty`,`food_order_details_food_qty`*`food_order_details_unit_price`
- AS amount FROM `food`,`user`,`food_order_details` ,`food_order`WHERE `food_order_details_food_id`=`food_id` AND`food_order_id`=1
+      $sql ="SELECT DISTINCT `food_order_details_food_order_id`,`user_name`, `food_name`,`food_order_details_food_qty`,`food_order_details_food_qty`*`food_order_details_unit_price`
+      AS amount FROM `food`,`user`,`food_order_details`,`food_order` WHERE `food_order_details_food_id`=`food_id` and user_name =1 and `food_order_details_food_order_id`=1
 ";
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
@@ -78,9 +78,8 @@ echo '<tr>
   </div>
   <div class ="col-3" >
       <p><h4><?php 
-      $sql ="SELECT DISTINCT`food_order_details_food_order_id`,`user_name`, `food_name`,`food_order_details_food_qty`,`food_order_details_food_qty`*`food_order_details_unit_price`
- AS amount FROM `food`,`user`,`food_order_details`,`food_order` WHERE `food_order_details_food_id`=`food_id` AND`food_order_id`=2
-";
+      $sql ='SELECT DISTINCT `food_order_details_food_order_id`,`user_name`, `food_name`,`food_order_details_food_qty`,`food_order_details_food_qty`*`food_order_details_unit_price`
+      AS amount FROM `food`,`user`,`food_order_details`,`food_order` WHERE `food_order_details_food_id`=`food_id` and user_name ="achchuthan" and `food_order_details_food_order_id`=2';
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
  while($row=mysqli_fetch_assoc($result)){
@@ -116,8 +115,8 @@ echo '<tr>
   </thead>
   <tbody>
   <?php
-$sql ="SELECT DISTINCT`food_order_details_food_order_id`,`user_name`, `food_name`,`food_order_details_food_qty`,`food_order_details_food_qty`*`food_order_details_unit_price`
- AS amount FROM `food`,`user`,`food_order_details`,`food_order` WHERE `food_order_details_food_id`=`food_id` AND`food_order_id`=1
+$sql ="SELECT DISTINCT `food_name`,`food_order_details_food_qty`,`food_order_details_food_qty`*`food_order_details_unit_price`
+AS amount FROM `food`,`user`,`food_order_details`,`food_order` WHERE `food_order_details_food_id`=`food_id` and user_name =1 and `food_order_details_food_order_id`=1
 ";
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){

@@ -24,8 +24,8 @@ include_once("menu.php");
 <div class="col-sm-6 " ></div>
 <div class="col-sm-3 " > 
 <form class="form-inline md-form form-sm mt-4">
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search D_ID" aria-label="Search"id="search"> 
-  <i class="fas fa-search ml-3" aria-hidden="true"></i>
+  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search D_ID" name="edit aria-label="Search id="search"> 
+  <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button>
 </form>
 </div>
 </div>
@@ -48,54 +48,83 @@ include_once("menu.php");
   <thead class="thead-r">
     <tr>
       <th scope="col"><i class="far fa-id-card"></i>&nbsp;D_id</th>
-      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Reference id</th>
       <th scope="col"><i class="fas fa-users"></i>&nbsp;fullname</th>
+      
       <th scope="col"><i class="far fa-address-card"></i>&nbsp;Address</th>
-      <th scope="col">Email</th>
+      <th scope="col"><i class="fas fa-envelope-square"></i>&nbsp;Email</th>
       <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;dob</th>
       <th scope="col"><i class="fas fa-map-marker"></i>&nbsp;Blood group</th>
       <th scope="col"><i class="fas fa-chalkboard-teacher"></i>&nbsp;designation</th>
       <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;join date</th>
       <th scope="col"><i class="fas fa-transgender"></i>&nbsp;Gender</th>
       <th scope="col"><i class="fas fa-weight-hanging"></i>&nbsp;Weight</th>
+      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Reference id</th>
       
     </tr>
   </thead>
-  <tr>
-
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>18kg </td>
-    </tr>
-
-    <tr>
-
-<td>Mark</td>
-<td>Otto</td>
-<td>@mdo</td>
-<td>Mark</td>
-<td>Otto</td>
-<td>@mdo</td>
-<td>Mark</td>
-<td>Otto</td>
-<td>@mdo</td>
-<td>@mdo</td>
-<td>18kg </td>
-</tr>
- 
+  <?php
+    $sql="SELECT * from donor";
+    $result=mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)>0)
+    {
+        while($row=mysqli_fetch_assoc($result))
+        {
+        echo '   
+        <tr>
+            <td>'.$row["d_id"].'</td>
+            <td>'.$row["fullname"].'</td>
+            <td>'.$row["address"].'</td>
+            <td>'.$row["email"].'</td>
+            <td>'.$row["dob"].'</td>
+            <td>'.$row["blood_group"].'</td>
+            <td>'.$row["designation"].'</td>
+            <td>'.$row["joint_date"].'</td>
+            <td>'.$row["gender"].'</td>
+            <td>'.$row["weight"].'</td>
+            <td>'.$row["reference_id"].'</td>
+            
+        </tr>';
+        }
+    }
+    else {
+        echo "0 results";
+    }
+    ?>
 </table>
 
+<?php
 
 
+$d_id =  $fullname= $address = $email = $dob= $blood_group = $designation =$joint_date = $gender =$weight =$reference_id =null ;
+if(isset($_GET['edit']))
+{
+  echo"eer";
+    $id = $_GET['edit'];
+    $sql = " SELECT * from donor WHERE d_id= '$id'";
+    $result = mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)==1)                                               
+        {
+       
+          $row = mysqli_fetch_assoc($result);
+          $id = $row['d_id'];
+          $fullname = $row['fullname'];
+          $address =  $row['address'];
+          $email = $row['email'];
+          $dob = $row['dob'];
+          $blood_group = $row['blood_group'];
+          $designation = $row['designation'];
+          $joint_date = $row['joint_date'];
+          $gender = $row['gender'];
+          $weight = $row['weight'];
+          $reference_id= $row['reference_id'];
+        }
+        else{
+          echo "Error".$sql."<br>".mysqli_error($con);
+        }
+}
 
+
+?>
 
 <div class="row">
 <div class="col-6"></div>
