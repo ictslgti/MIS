@@ -16,7 +16,7 @@ $Department=$Course=$Module=$AcademicYear=$Lecture=$WeekDays=$Time=$ClassRoom=$s
 if(isset($_GET['edit']))
 {
   $id = $_GET['edit'];
-  $sql = "SELECT * FROM `timetable` WHERE `time_id` = '$tid'";
+  $sql = "SELECT * FROM `timetable` WHERE `Department_id` = '$id'";
   $result = mysqli_query($con, $sql);
   if (mysqli_num_rows($result)==1)
    {
@@ -28,9 +28,7 @@ if(isset($_GET['edit']))
       $staff_id = $row['staff_id'];
       $weekdays = $row['weekdays'];
       $classroom = $row['classroom'];
-      $startdate = $row['startdate`'];
-      $enddate= $row['enddate'];
-      $time= $row['time'];
+
   }
 
 }
