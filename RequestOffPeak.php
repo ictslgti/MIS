@@ -8,6 +8,11 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+<?php
+
+  echo $_SESSION['user_name'];
+
+?>
 <br><br>
     <form>
       <div class="intro container p-5 mb-5 border border-dark rounded" >
@@ -22,7 +27,7 @@ include_once("menu.php");
     <br>
      
       <label for="text" class="font-weight-bolder" >Name of applicant :</label><br>
-      <input type="text" class="form-control" id="noa" placeholder="" disabled>
+      <input type="text" class="form-control" id="noa" name="noa" placeholder="" disabled>
      
     </div>
     
@@ -30,39 +35,39 @@ include_once("menu.php");
     <br>
     
     <label for="text" class="font-weight-bolder" >Registration No :</label><br>
-    <input type="text" class="form-control" id="rno" placeholder="" disabled>
+    <input type="text" class="form-control" id="rno" name="rno" placeholder="" disabled>
     </div>
     
     <div class="col-md-4 col-sm-12" >
     <br>
     
     <label for="text" class="font-weight-bolder"  >Department :</label><br>
-    <input type="text" class="form-control" id="dept" placeholder="" disabled>
+    <input type="text" class="form-control" id="dept" name="dept" placeholder="" disabled>
     </div>
     </div>
     <div class="form-row">
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="text" class="font-weight-bolder"  >Contact No :</label><br>
-    <input type="tel" id="tel"  pattern="[0-9]{10}" class="form-control" placeholder=""  required >
+    <input type="tel" id="tel"  pattern="[0-9]{10}" class="form-control" name="tel" placeholder=""  required >
     </div>
     
 
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="date" class="font-weight-bolder"  >Date :</label><br>
-    <input type="date" class="form-control" placeholder="" id="date" required>
+    <input type="date" class="form-control" placeholder="" id="date" name="date" required>
     </div>
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="date" class="font-weight-bolder"  >Time :</label><br>
-    <input type="time" class="form-control" placeholder="" id="time" required>
+    <input type="time" class="form-control" placeholder="" id="time" name="date" required>
     </div>
    
     <div class="col-12" >
     <br>
     <label for="exampleFormControlTextarea1" class="font-weight-bolder" >Reason for exit :</label><br>
-    <textarea class="form-control form-control-lg " id="rfe" rows="3"  required></textarea>
+    <textarea class="form-control form-control-lg " id="rfe" rows="3" name="fre"  required></textarea>
     </div>
 
 

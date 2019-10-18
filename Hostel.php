@@ -55,7 +55,7 @@ if(isset($_GET['delete'])){
 <table class="table table-hover   mt-4 " id="Hostel accomadation">
 <thead>
 <tr>
-      
+      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Hosttler_id</th>
       <th scope="col"><i class="far fa-id-card"></i>&nbsp;Student_id</th>
       <th scope="col"><i class="fas fa-file-signature"></i>&nbsp;Full Name</th>
       <th scope="col"><i class="fas fa-file-signature"></i>&nbsp;Department</th>
@@ -85,6 +85,7 @@ $result = mysqli_query($con, $sql);
 if(mysqli_num_rows($result) > 0){
   while($row = mysqli_fetch_assoc($result)){
 echo '<tr>
+<td>'.$row["hosttler_id"].'  </td>
     <td>'.$row["student_id"].'  </td>
     <td>'.$row["fullname"].'  </td>
     <td>'.$row["department_name"].' </td>
