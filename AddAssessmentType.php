@@ -26,7 +26,7 @@ if (isset($_POST['Add'])) {
         $assessment_name=$_POST['assessment_name'];
         $assessment_percentage=$_POST['assessment_percentage'];
 
-        $sql = "INSERT INTO `module`(`course_name`,`module_name`,`assessment_type`,`assesment_name`,`assessment_percentage`) 
+        $sql = "INSERT INTO `module`(`course_name`,`module_name`,`assessment_type`,`assessment_name`,`assessment_percentage`) 
         VALUES(`$course_name`,`$module_name`,`$assessment_type`,`$assessment_name`,`$assessment_percentage`)";
 
 if(mysqli_query($con,$sql))
@@ -86,7 +86,7 @@ else{
         </div>
 
         <!--  -->
-        <form onsubmit="showAssessment(this.value)">
+        <form method="POST">
             <div class="container">
                 <div class="row">
                     <div class="col">
