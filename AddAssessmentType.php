@@ -139,7 +139,20 @@ else{
                             </div>
                             <select
                                 class="custom-select" id="module_name" name="module_name" value="<?php echo $module_id; ?>" onchange="showModule(this.value)" required>
-                                <!-- // <option value="null" selected disabled>--Select Module--</option> -->
+                                 <option value="null" selected disabled>--Select Module--</option>
+
+
+                                <?php
+                  $sql = "SELECT * FROM `module` ";
+                  $result = mysqli_query($con, $sql);
+                  if (mysqli_num_rows($result) > 0) {
+                  while($row = mysqli_fetch_assoc($result)) {
+                    echo '<option  value="'.$row["module_id"].'" required>'.$row["module_name"].'</option>';
+                  }
+                  }else{
+                    echo '<option value="null"   selected disabled>-- No module --</option>';
+                  }
+                  ?>
 
                             </select>
                         </div>
@@ -308,7 +321,7 @@ else{
 
 <?php include_once("footer.php"); ?>
 <!-- END -->
-
+<!-- 
 <script>
     function showModule(val) {
         var xmlhttp = new XMLHttpRequest();
@@ -321,6 +334,6 @@ else{
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xmlhttp.send("course=" + val);
     }
-</script>
+</script> -->
 
 <?php include_once("footer.php"); ?>
