@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 }
 ?>
-                </select>
+                 </select>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
@@ -66,7 +66,7 @@ if (mysqli_num_rows($result) > 0) {
             </tbody>
         </table>
     </div>
-</div> -->
+</div> --> 
 
 <?php
 $total_course = 0;
@@ -361,6 +361,26 @@ function showTeacher() {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <script>
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var data = this.responseText;
+
+                console.log(data);
+                var labels = [];
+                var data = [];
+
+                for (var i in data) {
+                    labels.push(data[i].name);
+                    data.push(data[i].value);
+                }
+
+        }
+    };
+    xmlhttp.open("POST", "controller/getChartData", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("x=1");
+
 var labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
 var data = [12, 19, 3, 5, 2, 3];
 var ctx = document.getElementById('myChart');

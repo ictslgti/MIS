@@ -37,8 +37,8 @@ if(isset($_GET['edit']))
     $year = $row['academic_year'];
     //$stid = $row['student_id'];
     $enstatus =$row['student_enroll_status'];
-    $enroll = $row['start_date'];
-    $exit = $row['exit_date'];
+    // $enroll = $row['start_date'];
+    // $exit = $row['exit_date'];
     $title = $row['student_title'];
     $fname = $row['student_fullname'];
     $ininame = $row['student_ininame'];
@@ -152,11 +152,12 @@ if(isset($_GET['edit']))
     <div class="form-row">
           <div class="col-md-2 mb-3">
           <label for="title"> Title: </label>
-          <select name="title" id="title" class="form-control">
+          <select name="title" id="title" class="form-control" value="<?php echo $title ?>">
             <option disabled selected>select</option>
-            <option> Mr </option>
-            <option> Miss </option>
-            <option> Mrs </option>  
+            <option selected disabled>Choose Title</option>
+              <option value="Mr" <?php if($title=="Mr")  echo 'selected';?>>Mr</option> 
+              <option value="Miss" <?php if($title == "Miss") echo ' selected';?>>Miss</option>
+              <option value="Mrs"<?php if($title=="Mrs") echo ' selected';?>>Mrs</option>
          </select>
          </div>
               
@@ -175,34 +176,19 @@ if(isset($_GET['edit']))
 
         <div class="col-md-2 mb-3">
             <label for="gender"> Gender: </label>
-            <select name="gender" id="gender" class="form-control" value="<?php echo $gender ?>">
-                <option value="" disabled selected>Select</option>
-                <option value="M"
-                  <?php
-                  if($row["student_gender"]=="M")
-                  {
-                    echo 'selected';
-                  }
-                  ?>
-                > M </option>
-                <option value="F"
-                <?php
-                  if($row["student_gender"]==$gender)
-                  {
-                    echo 'selected';
-                  }
-                  ?>
-                > F </option>
+            <select name="gender" id="gender" class="form-control" value="">
+              <option selected disabled>Choose Gender</option>
+              <option value="Male"<?php if($gender=="M")  echo 'selected';?>>Male</option>
+              <option value="Female"<?php if($gender=='F') echo ' selected';?>>Female</option>
             </select>
         </div>
 
         <div class="col-md-3 mb-3">
             <label for="civilstatus"> Civil Status: </label>
             <select name="civilstatus" id="civilstatus" class="form-control">
-                <option disabled selected>Select</option>
-                <option value="male"
-                > Single </option>
-                <option value="female"> Maried </option>
+            <option selected disabled>Choose Status</option>
+              <option value="Single"<?php if($civil=="Single")  echo 'selected';?>>Single</option> 
+              <option value="Married"<?php if($civil=="Married") echo ' selected';?> >Married</option>
             </select>
         </div>
     </div>
@@ -241,15 +227,16 @@ if(isset($_GET['edit']))
     </div>
  
     <div class="form-row">
-          <div class="col-md-1 mb-3">
+          <div class="col-md-2 mb-3">
             <label for="zip"> ZIP-Code:</label>
             <input type="text" class="form-control" id="zip" value="<?php echo $zip ?>" placeholder=""  required>
           </div>
           
           <div class="col-md-2 mb-3">
             <label for="district"> District: </label>
-            <select name="district" id="district" class="form-control" >
+            <select name="district" id="district" class="form-control" value="<?php echo $district ?>">
                 <option value="">Select</option>
+                <option value="ampara"<?php if($province=="ampara")  echo 'selected';?>> ampara </option>
                 <option value="2"> Ampara </option>
                 <option value="2"> Batticalo </option>
                 <option value="2"> Trincomalee </option>
@@ -285,32 +272,32 @@ if(isset($_GET['edit']))
           
           <div class="col-md-2 mb-3">
             <label for="province"> Province: </label>
-            <select name="province" id="province" class="form-control" >
+            <select name="province" id="province" class="form-control" value="<?php echo $province?>">
                 <option value="">Select</option>
-                <option value="1"> Northen </option>
-                <option value="2"> Eastern </option>
-                <option value="3"> Western </option>
-                <option value="4"> Southern </option>
-                <option value="5"> Central </option>
-                <option value="6"> North Western  </option>
-                <option value="7"> Uva </option>
-                <option value="8"> North Central </option>
-                <option value="9"> Sabaragamuwa </option>
+                <option value="1"<?php if($province=="1")  echo 'selected';?>> Northen </option>
+                <option value="2"<?php if($province=="2")  echo 'selected';?>> Eastern </option>
+                <option value="3"<?php if($province=="3")  echo 'selected';?>> Western </option>
+                <option value="4"<?php if($province=="4")  echo 'selected';?>> Southern </option>
+                <option value="5"<?php if($province=="5")  echo 'selected';?>> Central </option>
+                <option value="6"<?php if($province=="6")  echo 'selected';?>> North Western </option>
+                <option value="7"<?php if($province=="7")  echo 'selected';?>> Uva </option>
+                <option value="8"<?php if($province=="8")  echo 'selected';?>> North Central </option>
+                <option value="9"<?php if($province=="9")  echo 'selected';?>> Sabaragamuwa </option>
             </select>
           </div>
 
           <div class="col-md-2 mb-3">
             <label for="bloodgroup"> Blood Group: </label>
-            <select name="bloodgroup" id="bloodgroup" class="form-control" >
-                <option value="">Select</option>
-                <option value="a+"> A+ </option>
-                <option value="a-"> A- </option>
-                <option value="b+"> B+ </option>
-                <option value="b-"> B- </option>
-                <option value="o+"> O+ </option>
-                <option value="o-"> O- </option>
-                <option value="ab+"> AB+ </option>
-                <option value="ab-"> AB- </option>
+            <select name="bloodgroup" id="bloodgroup" class="form-control" value="<?php echo $blood?>">
+              <option selected disabled>Choose Blood Group </option>
+              <option value="A+"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
+              <option value="A-"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
+              <option value="B+"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
+              <option value="B-"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
+              <option value="C+"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
+              <option value="C-"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
+              <option value="AB+"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
+              <option value="AB-"<?php if($blood=="A+")  echo 'selected';?>> A+ </option> 
             </select>
         </div>
 
@@ -426,9 +413,9 @@ if(isset($_GET['edit']))
           <label for="relation">Relationship :</label>
           <select name="relation" id="relation" value="<?php echo $erelation ?>" class="form-control" >
               <option value="">Select</option>
-              <option value="mother"> Mother </option>
-              <option value="father"> Father </option>
-              <option value="guardian"> Guardian </option>
+              <option value="mother" <?php if($erelation=="mother") echo 'selected' ?>> Mother </option>
+              <option value="father" <?php if($erelation=="father") echo 'selected' ?>> Father </option>
+              <option value="guardian" <?php if($erelation=="guardian") echo 'selected' ?>> Guardian </option>
         </select>
         </div>
     </div>

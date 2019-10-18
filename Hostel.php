@@ -11,7 +11,7 @@ include_once("menu.php");
 <?php 
 if(isset($_GET['delete'])){
   $student_id = $_GET['delete'];
-  $sql = "DELETE FROM `hostel` WHERE `student_id`=$student_id";
+  $sql = "DELETE FROM `hostel_student_details` WHERE `student_id`=$student_id";
  if(mysqli_query($con ,$sql)){
      echo "Record delete successfully";
    
@@ -55,17 +55,18 @@ if(isset($_GET['delete'])){
 <table class="table table-hover   mt-4 " id="Hostel accomadation">
 <thead>
 <tr>
-
+      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Hosttler_id</th>
       <th scope="col"><i class="far fa-id-card"></i>&nbsp;Student_id</th>
       <th scope="col"><i class="fas fa-file-signature"></i>&nbsp;Full Name</th>
       <th scope="col"><i class="fas fa-file-signature"></i>&nbsp;Department</th>
       <th scope="col"><i class="fas fa-transgender"></i>&nbsp;Gender</th>
-      <th scope="col"><i class="fas fa-list-ol"></i>&nbsp;Block no</th>
+      <th scope="col"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</th>
+      <th scope="col"><i class="fas fa-map-marker-alt"></i>&nbsp;District</th>
+      <th scope="col"><i class="fas fa-map-marker-alt"></i>&nbsp;Distance</th>
+       <th scope="col"><i class="fas fa-list-ol"></i>&nbsp;Block no</th>
       <th scope="col"><i class="fas fa-list-ol"></i>&nbsp;Room no</th>
       <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Admission</th>
       <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Leaving date</th>
-      <th scope="col"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</th>
-      <th scope="col"><i class="fas fa-map-marker-alt"></i>&nbsp;District</th>
       <th scope="col"><i class="far fa-caret-square-right"></i>&nbsp;Action</th>
     </tr>
 
@@ -78,19 +79,20 @@ if(isset($_GET['delete'])){
 
 <tbody>
 <?php 
-$sql = "SELECT * FROM `hostel`";
+$sql = "SELECT * FROM `hostel_student_details`";
 
 $result = mysqli_query($con, $sql);
 if(mysqli_num_rows($result) > 0){
   while($row = mysqli_fetch_assoc($result)){
 echo '<tr>
+<td>'.$row["hosttler_id"].'  </td>
     <td>'.$row["student_id"].'  </td>
     <td>'.$row["fullname"].'  </td>
     <td>'.$row["department_name"].' </td>
+    <td>'.$row["gender"].'  </td>
     <td>'.$row["address"].'  </td>
     <td>'.$row["district"].'  </td>
     <td>'.$row["distance"].'  </td>
-    <td>'.$row["gender"].'  </td>
     <td>'.$row["block_no"].'  </td>
     <td>'.$row["room_no"].'  </td>
     <td>'.$row["date_of_addmission"].'  </td>
