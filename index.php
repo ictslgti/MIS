@@ -196,14 +196,14 @@ $total_students = 0;
     Academic Year is : 
                 </div>
     <div class="col-md-3">
-        <select class="custom-select custom-select-sm mb-2" required onchange="showStudent(this.value)">
+        <select class="mb-2 selectpicker show-tick custom-select-sm" required onchange="showStudent(this.value)" data-live-search="true" data-width="100%">
             <option value="ALL" selected>ALL</option>
             <?php
-            $sql = "SELECT * FROM `academic` ORDER BY `academic_year` ASC ";
+            $sql = "SELECT * FROM `academic` ORDER BY `academic_year`  DESC ";
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)){
-            echo '<option value="'.$row ['academic_year'].'" >'.$row ['academic_year'].'</option>';
+            echo '<option  value="'.$row ['academic_year'].'" data-subtext="'.$row ['academic_year_status'].'">'.$row ['academic_year'].'</option>';
             }
             }
             ?>
@@ -456,8 +456,6 @@ function showStudent(val) {
     xmlhttp.send("AcademicYear=" + val);
 }
 </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <!-- <script>
 var course_id = [];
 var c_count = [];
