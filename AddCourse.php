@@ -17,6 +17,7 @@ include_once ("menu.php");
 
   if(isset($_GET['edits']))
   {
+    echo"fg";
     $cid = $_GET['edits'];
     $sql = "SELECT * FROM course WHERE course_id = '$cid'";
     $result = mysqli_query($con,$sql);
