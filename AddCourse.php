@@ -96,7 +96,7 @@ if(isset($_POST['Adding']))
 			<div class="card"><br>
       <?php
        if(isset($_GET['edits']))
-       {echo' <h4 style="text-align:center">Edit Course Details</h4> <br>';}
+       {echo' <h4 style="text-align:center">Edddit Course Details</h4> <br>';}
        else
        {echo' <h4 style="text-align:center">Add Course Details</h4> <br>';}
       ?>
