@@ -81,7 +81,7 @@ if(isset($_GET['delete'])){
                                     <div class="col-2"></div>
                                     <div class="col-3"> 
                                         | <a href="NoticeEventView.php?id='. $row["event_id"].'" class="text-success"> View</a> | 
-                                        <a href="NoticeEventUpload.php?delete='. $row["event_id"].'"> Edit </a> </td> |
+                                        <a href="NoticeEventUploadedit.php?edit='. $row["event_id"].'"> Edit </a> </td> |
                                         <a href="?delete='. $row["event_id"].'"> Delete </a> </td> |
                                     </div>
                                 </div> 
