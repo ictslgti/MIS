@@ -1,4 +1,4 @@
-Options +FollowSymLinks -MultiViews
+Options +FollowSymLinks -MultiViews -Indexes
 # Turn mod_rewrite on
 RewriteEngine On
 RewriteBase /
