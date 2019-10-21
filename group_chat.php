@@ -8,10 +8,39 @@ include_once("homenav.php");
  ?>
 <!-- END DON'T CHANGE THE ORDER -->
 <!-- Sidebar -->
+<?php
+function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
 
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array(
+        'y' => 'year',
+        'm' => 'month',
+        'w' => 'week',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
+}
+?>
 
 <div class="row">
-<div class="col-4">
+<div class="col-8">
 </div>
 
 
@@ -19,13 +48,54 @@ include_once("homenav.php");
 
 
 
-<div class="col-5">
+<div class="col-8">
+
+
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Messages</h6>
+
+<?php
+
+$sql = "SELECT `message`,`message_time`,`chat_group_sender` FROM `chat_group_message`";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result)> 0){
+    while ($row = mysqli_fetch_assoc($result)){
+      
+      echo ' 
+      <div class="media text-muted pt-3">
+      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <strong class="text-gray-dark">' . $row ["chat_group_sender"].'</strong>
+          <i>' . time_elapsed_string($row ["message_time"]).'</i>
+        </div>
+        <span class="d-block">'.$row ["message"].'</span>
+      </div>
+    </div>
+    ';
+    }
+}
+
+
+?>
+
+
+   
+
+    <small class="d-block text-right mt-3">
+      <a href="#">All suggestions</a>
+    </small>
+  </div>
+
+
+
+
+
+
+
 <ul class="nav nav-tabs">
 <li class="nav-item">
     <a class="nav-link " href="home.php">Status</a>
-  </li>
-   <li class="nav-item">
-    <a class="nav-link " href="single_chat.php">Chat</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="group_chat.php">Group chat</a>
@@ -38,35 +108,6 @@ include_once("homenav.php");
   </li>
 </ul>
 </nav>
-
-
-<div class="card border-light mb-3" style="max-width:900px;">
-  <div class="card-header"></div>
-  <div class="card-body">
-    <p class="card-text">Hi I'm Faheem, How are you</p>
-    <p class="card-text">I'm fine and what about you"</p>
-    <p class="card-text">I'm fine</p>
-    <p class="card-text">Naleefa when you come  SLGTI</p>
-    <p class="card-text">I come to tommorow</p>
-    <p class="card-text">I'll feel my mahesi</p>
-    <p class="card-text">oh realy is it ture</p>
-    <p class="card-text">yes. But I love her and not you</p>
-    <p class="card-text">Thanks faheem</p>
-    <p class="card-text">Just comedy so dont worry ok.I thin about always Naleefa and mahesi</p>
-    <p class="card-text">Oh!! my God!!</p>
-    <p class="card-text">Faheem you pool and lie</p>
-    <p class="card-text">it's true </p>
-    <p class="card-text">No No No ha hah hahaha haha h ha.....</p>
-    <p class="card-text">Sorry it comedy not CDS ok </p>
-    <p class="card-text">I Now</p>
-    <p class="card-text">yes.But Hanusiya always watched BIG BOSS</p>
-    <p class="card-text">Ah next Call the HOD to complain so metter finish.</p>
-    <p class="card-text">Ah That's good idea</p>
-    
-    
-  </div>
-</div>
-
 <div class="card border-light mb-3" style="max-width:900px;">
   
   <div class="card-body">
@@ -88,40 +129,49 @@ include_once("homenav.php");
 
 
 
-<div class ="col-3">
+<div class ="col-4">
   <div class="card-body p-3 mb-2 bg-dark text-white">
   <p class="card-text "><form class="form-inline md-form form-sm mt-4">
   <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search" aria-label="Search"id="search"> 
   <i class="fas fa-search ml-3" aria-hidden="true"></i>
 </form>
   </div>
-  <ul class="list-group list-group-flush ">
-    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> <?php
+   <ul class="list-group list-group-flush ">
+    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> 
+     
+<?php
 
-$sql = "SELECT * FROM `chat_group` where `chat_group_id`=''";
+$sql = "SELECT * FROM `chat_group` ";
+
 $result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result)>0){
+if (mysqli_num_rows($result)> 0){
     while ($row = mysqli_fetch_assoc($result)){
-        echo'
+      
+        echo'<a href="?chat_group='.$row ["chat_group_id"].'">
         <tr>
-        <td>' . $row ["chat_group_id"].'</td>
         <td>' . $row ["chat_group_name"].'</td>
-       
-        </tr>';
+        
+        <a ><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center">
+        </small></li><li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i>  </a>
+        
+        </tr>
+        </a>';
     }
 }else{
 echo "0 results";
 }
 
 ?> 
- <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"></small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"></small></li>
+
+ <!-- <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"></small></li> -->
+ 
+        <!-- <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"></small></li>
     <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"></small></li>
     <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>   <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> </small></li>
     <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>   <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> </small></li>
     <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> </small></li>
    
-   
+    -->
   </ul>
 </div>
 </div>

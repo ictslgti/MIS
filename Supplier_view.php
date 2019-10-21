@@ -8,35 +8,50 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+<?php
+  if(isset($_GET['edit'])){
+        $supplier_id=$_GET['edit'];
+        $sql="SELECT * FROM ` inventory_item_supplier` WHERE `supplier_id`='$supplier_id'";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+            $supplier_name=$row['supplier_name'];
+            $supplier_phone_number=$row['supplier_phone_number'];
+            $supplier_email=$row['supplier_email'];
+            $supplier_address=$row['supplier_address'];
+           // $inventoryquantity=$row['inventory_quantity'];
+          
+        }
+        else{
+          echo "Error".$sql."<br>".mysqli_error($con);
+        }
+    }
+  
+?>
 
 
-
-<h1 class="text-center">SUPPLIER_DETAILS</h1>
-<br>
 
 <div class="row">
+    <div class=" col-sm-8">
+        <p style="font-size: 45px; font-weight: 700; "> Supplier Information</p>
+    </div>
 
-<div class="col-sm-6 " ></div>
-<div class="col-sm-3 " > 
-<form class="form-inline md-form form-sm mt-4">
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search D_ID" aria-label="Search"id="search"> 
-  <i class="fas fa-search ml-3" aria-hidden="true"></i>
-</form>
+    <div class="col-sm-3 pt-4"> 
+      <form class="form-inline" method="GET">
+        <input class="form-control mr-2" type="search" name="edit" placeholder="Supplier_id">  
+        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+      </form>
+    </div>  
 </div>
-</div>
+
+<div class="row">
+  <div class="col-sm-12" >
+    <hr color ="black" style="height:1px;">
+  </div>
+</div>  
 
 
-  
 
-
-
-         <div class="row">   
-         <div class="col-12">
-         <form>
-         <p style="font-size:20px;"> SUPPLIER_INFO <hr color ="black" style="height:1px;"></p><br>
-         </form>
-</div>
-</div>
 <table class="table">
   <thead class="thead-r">
     <tr>
@@ -44,39 +59,41 @@ include_once("menu.php");
       <th scope="col">SUPPLIER NAME</th>
       <th scope="col">SUPPLIER PHONE NUMBER</th>
       <th scope="col">SUPPLIER EMAIL</th>
+      <th scope="col">SUPPLIER ADDRESS</th>
+      
       <th scope="col">ACTION</th>
       
       
     </tr>
   </thead>
-  <tr>
+  <?php
+     $sql = "SELECT `supplier_id`, `supplier_name`, `supplier_phone_number`, `supplier_email`, `supplier_address` FROM `inventory_item_supplier`";
+     $result = mysqli_query ($con, $sql);
+   if (mysqli_num_rows($result)>0)
+   {
+     while($row = mysqli_fetch_assoc($result))
+     {
+       echo '
+       <tr style="text-align:left";>
+          <td>'. $row["supplier_id"]."<br>".'</td>
+          <td>'. $row["supplier_name"]."<br>".'</td>
+          <td>'. $row["supplier_phone_number"]."<br>".'</td>
+          <td>'. $row["supplier_email"]."<br>".'</td>
+          <td>'. $row["supplier_address"]."<br>".'</td>
+          
+          <td>
+          <a href="AddSupplier.php? edit='.$row["supplier_id"].'"> Edit </a> 
+          </td>
+       </tr> ';
+     }
+   }
+   else
+   {
+     echo "0 results";
+   }
+    
+  ?>
 
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      
-      
-      <td>
-           
-            <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-      </td>
-    </tr>
-
-    <tr>
-
-<td>Mark</td>
-<td>Otto</td>
-<td>@mdo</td>
-<td>Mark</td>
-
-
-<td>
-     
-      <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-</td>
-</tr>
- 
 </table>
 
 
@@ -89,9 +106,7 @@ include_once("menu.php");
 <div class="col-2"></div>
 
 <div class="col-md- col-sm- form-group pl- pr-container">
-<button type="submit" class="btn btn-primary ml-2 mt-3 float-right">back </button>
-                          
-                          <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">save </button>
+<button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='AddSupplier.php'">back </button>
               </div>
       
 </div>

@@ -5,6 +5,7 @@ $title="Add Course details | SLGTI";
 include_once ("config.php");
 include_once ("head.php");
 include_once ("menu.php");
+
 ?>
 <!-- end dont change the order-->
 
@@ -16,6 +17,7 @@ include_once ("menu.php");
 
   if(isset($_GET['edits']))
   {
+    echo"fg";
     $cid = $_GET['edits'];
     $sql = "SELECT * FROM course WHERE course_id = '$cid'";
     $result = mysqli_query($con,$sql);
@@ -93,7 +95,13 @@ if(isset($_POST['Adding']))
 <hr class="mb-8 mt-4">
 		<div class="card mt-12 ">
 			<div class="card"><br>
-				<h4 style="text-align:center">ADD Course Details</h4><br>
+      <?php
+       if(isset($_GET['edits']))
+       {echo' <h4 style="text-align:center">Edit Course Details</h4> <br>';}
+       else
+       {echo' <h4 style="text-align:center">Add Course Details</h4> <br>';}
+      ?>
+				
       </div>
     </div>
  <br>

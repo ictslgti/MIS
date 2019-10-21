@@ -32,7 +32,7 @@ include_once("menu.php");
     <div class="form-row pb-4">
         <div class="col-3">
             <div class="form-row align-items-center">
-                <select class="custom-select mr-sm-2" id="TeacherName" name="staff_id">
+                <select class="selectpicker mr-sm-2" id="TeacherName" name="staff_id" data-live-search="true" data-width="100%">
                     <option value="null" selected disabled>-- Select a Teacher --</option>
                     <?php
           $sql = "SELECT * FROM `staff`";
@@ -49,9 +49,9 @@ include_once("menu.php");
             </div>
         </div>
 
-        <div class="col-3">
+        <div class="col-md-3 col-sm-12">
             <div class="form-row align-items-center">
-                <select class="custom-select mr-sm-2" id="Course" onchange="showModule(this.value)" name="course_id">
+                <select class="selectpicker mr-sm-2" id="Course" onchange="showModule(this.value)" name="course_id" data-live-search="true" data-width="100%">
                     <option value="null" selected disabled>-- Select a Course --</option>
                     <?php
           $sql = "SELECT * FROM `course`";
@@ -68,7 +68,7 @@ include_once("menu.php");
             </div>
         </div>
 
-        <div class="col-3">
+        <div class="col-md-3 col-sm-12">
             <div class="form-row align-items-center">
                 <select class="custom-select mr-sm-2" id="Module" name="module_id">
                     <option value="null" selected disabled>-- Select a Course --</option>
@@ -76,9 +76,9 @@ include_once("menu.php");
             </div>
         </div>
 
-        <div class="col-2">
+        <div class="col-md-2 col-sm-12">
             <div class="form-row align-items-center">
-                <select class="custom-select mr-sm-2" id="academic_year" name="academic_year">
+                <select class="selectpicker mr-sm-2" id="academic_year" name="academic_year" data-live-search="true" data-width="100%">
                     <option value="null" selected disabled>-- Select a Academic Year --</option>
                     <?php
           $sql = "SELECT * FROM `academic` ORDER BY `academic_year` DESC";
@@ -95,7 +95,7 @@ include_once("menu.php");
             </div>
         </div>
 
-        <div class="col-1">
+        <div class="col-md-1 col-sm-12">
             <div class="form-row align-items-center">
                 <button type="button" class="btn btn-primary align= right" onclick="showTeacher()"><i class="fas fa-search"></i></button>
             </div>
