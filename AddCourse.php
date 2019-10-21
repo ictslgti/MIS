@@ -17,7 +17,6 @@ include_once ("menu.php");
 
   if(isset($_GET['edits']))
   {
-    echo"fg";
     $cid = $_GET['edits'];
     $sql = "SELECT * FROM course WHERE course_id = '$cid'";
     $result = mysqli_query($con,$sql);
@@ -111,7 +110,7 @@ if(isset($_POST['Adding']))
 
               <div class="col-md-6 mb-3">
                 <label for="Course ID">Course ID</label>
-                <input type="text" name="co_id" class="form-control"  placeholder=""  value="<?php echo $cid ?>" required>
+                <input type="text" name="co_id" class="form-control"  placeholder=""  value="<?php echo $cid ?>" required  disabled>
                
               </div>
 
@@ -180,28 +179,18 @@ if(isset($_POST['Adding']))
 
               <div class="col-md-6 mb-3">
                 <label for="Level">NVQ Level</label>
-                <select class="custom-select d-block w-100" name="n_level" required>
-                    <option selected  disabled selected>Choose NVQ Level</option>
-                    <?php
-                    $sql = "SELECT course_nvq_level FROM course ";
-                    $result = mysqli_query($con, $sql);
-                    if(mysqli_num_rows($result)>0)
-                    {
-                      while($row = mysqli_fetch_assoc($result))
-                      {
-                      echo '<option value="'.$row['course_nvq_level'].'" ';
-                      if($row['course_nvq_level']==$nvq)
-                      {
-                        echo 'selected';
-                      }
-                      echo '>'.$row['course_nvq_level']. '</option>';
-                    }
-                  }
-                    ?>
-                </select>
+              <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">NVQ Level</span>
+              </div>
+                <input type="text" class="form-control"  placeholder="Month in Digits" name="n_level" value="<?php echo $nvq?>"required>
+              </div>
+              </div>
+            
+                
                 </form >
               
-              </div>
+              
 <br><br>
 <?php
       if(isset($_GET['edits']))

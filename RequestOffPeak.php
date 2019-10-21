@@ -11,11 +11,11 @@ include_once("menu.php");
 <?php
 date_default_timezone_set("Asia/colombo");
 
-  $student_id =  $_SESSION['user_name'];
+  $s_id =  $_SESSION['user_name'];
 
-  
+  $student_id=$name= $dept=$tel=$date=$time=$ref=null;
   if($_SESSION['user_type']=='STU'){
-    $sql ="SELECT * FROM `hostel_student_details` WHERE `student_id` = '$student_id'";
+    $sql ="SELECT * FROM `hostel_student_details` WHERE `student_id` = '$s_id'";
     $result = mysqli_query($con ,$sql);
    if(mysqli_num_rows($result)== 1){
     $row = mysqli_fetch_assoc($result);
@@ -29,19 +29,15 @@ date_default_timezone_set("Asia/colombo");
 
   }
 
-
 ?>
 <?php
           
           if(isset($_GET['rta'])){
          
            
-         
-            
-            
             $tel =$_GET['tel'];
-            $date =$_GET['da'];
-            $time =$_GET['ti'];
+            $date =$_GET['date'];
+            $time =$_GET['time'];
             $ref =$_GET['rfe'];
             
             
@@ -72,7 +68,7 @@ date_default_timezone_set("Asia/colombo");
     <br>
      
       <label for="text" class="font-weight-bolder" >Name of applicant :</label><br>
-      <input type="text" class="form-control" id="noa" name="name" value="<?php if($_SESSION['user_type']=='STU') echo $name;?>" placeholder="" disabled>
+      <input type="text" class="form-control" id="noa" name="name" value="<?php if($_SESSION['user_type']=='STU') echo $name;?>" placeholder="You can't access this!" disabled>
      
     </div>
     
@@ -80,14 +76,14 @@ date_default_timezone_set("Asia/colombo");
     <br>
     
     <label for="text" class="font-weight-bolder" >Registration No :</label><br>
-    <input type="text" class="form-control" value="<?php if($_SESSION['user_type']=='STU') echo $student_id;?>" id="rno" name="rno" placeholder="Registration No." disabled>
+    <input type="text" class="form-control" value="<?php if($_SESSION['user_type']=='STU') echo $student_id;?>" id="rno" name="rno" placeholder="You can't access this!" disabled>
     </div>
     
     <div class="col-md-4 col-sm-12" >
     <br>
     
     <label for="text" class="font-weight-bolder"  >Department :</label><br>
-    <input type="text" class="form-control" id="dept" name="dept" value="<?php if($_SESSION['user_type']=='STU') echo $dept;?>" placeholder="" disabled>
+    <input type="text" class="form-control" id="dept" name="dept" value="<?php if($_SESSION['user_type']=='STU') echo $dept;?>" placeholder="You can't access this!" disabled>
     </div>
     </div>
     <div class="form-row">
@@ -101,12 +97,12 @@ date_default_timezone_set("Asia/colombo");
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="date" class="font-weight-bolder"  >Date :</label><br>
-    <input type="date" name="da" value ="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="" id="date"  required disabled>
+    <input type="date" name="date" value ="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="" id="date"  required disabled>
     </div>
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="date" class="font-weight-bolder"  >Time :</label><br>
-    <input type="time" name="ti" value ="<?php echo date("H:i"); ?>" class="form-control" placeholder="" id="time"  required disabled>
+    <input type="time" name="time" value ="<?php echo date("H:i"); ?>" class="form-control" placeholder="" id="time"  required disabled>
     </div>
    
     <div class="col-12" >

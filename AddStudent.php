@@ -302,7 +302,7 @@ if(isset($_GET['edit']))
         </div>
 
     </div>
-
+  
     <div class="form-row">
           <div class class="col-md-1">
           </div>
@@ -312,21 +312,51 @@ if(isset($_GET['edit']))
     </div><br>
 
   <div class="form-row">
-    <div id="results-student_education" class="form-group table-responsive">               
-            <table class="table" width="100%">
+
+      <div class="col-md-2 mb-3 ">
+            <label for="qualification"> Qualification Type: </label>
+            <input name="qualification" id="qualification" class="form-control" type="text" value="" >
+        </div>
+
+        <div class="col-md-2 mb-3 ">
+            <label for="indexno"> Index No: </label>
+            <input name="indexno" id="indexno" class="form-control" type="text" value="" >
+        </div>
+                            
+        <div class="col-md-2 mb-3">
+            <label  for="yoe"> Year of Exam: </label>
+            <input name="yoe" id="yoe" class="form-control" type="text" value="" >
+        </div>
+
+        <div class="col-md-5 mb-3">
+            <label  for="subject"> Subject/Name of the Course: </label>
+            <input name="subject" id="subject" class="form-control" type="text" value="" >
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label  for="result"> Result: </label>
+            <input type="text" class="form-control" id="result" name="result" placeholder=""  required>
+        </div>
+      </div>
+        
+        <div class="form-row">
+        <div id="results-student_education" class="form-group table-responsive">               
+            <table class="table table-hover" width="100%" id="table" >
               <thead>
               <tr>
-              <th width="20%"> Qualification Type </th>
+              <th width="15%"> Qualification Type </th>
               <th width="20%"> Index No </th>
               <th width="15%"> Year of Exam </th>
               <th width="30%"> Subject </th>
-              <th width="20%"> Result </th>
-              <th width="20%"> Action </th>
+              <th width="10%"> Result </th>
               </tr>
+              </head>
+              <tbody>
               <?php
                //if(isset($_GET['edit']))
                // {
                   //$stid =$_GET['edit'];WHERE `qualification_student_id`= '$stid'"
+                  //include_once("mysqli_connect.php");
                   $sql ="SELECT `qualification_type`,`qualification_index_no`,`qualification_year`,`qualification_description`,`qualification_results` 
                   FROM `student_qualification`";
                   $result = mysqli_query ($con, $sql);
@@ -336,12 +366,11 @@ if(isset($_GET['edit']))
                     {
                       echo '
                       <tr style="text-align:left";>
-                          <td>'. $row["qualification_type"]."<br>".'</td>
-                          <td>'. $row["qualification_index_no"]."<br>".'</td>
-                          <td>'. $row["qualification_year"]."<br>".'</td>
-                          <td>'. $row["qualification_description"]."<br>".'</td>
-                          <td>'. $row["qualification_results"]."<br>".'</td>
-                          <td edit='.$row["qualification_type"].'"> Edit </a> 
+                          <td>'. $row["qualification_type"].'</td>
+                          <td>'. $row["qualification_index_no"].'</td>
+                          <td>'. $row["qualification_year"].'</td>
+                          <td>'. $row["qualification_description"].'</td>
+                          <td>'. $row["qualification_results"].'</td>
                           </td>
                       </tr> ';
                     }
@@ -350,58 +379,31 @@ if(isset($_GET['edit']))
                   {
                     echo "0 results";
                   }
-                
-    
               ?>
-              <th><button class="btn btn-danger" type="submit">Edit</button></th>
+              </tbody>
             </table>  
       </div>
-  </div>
-
-<div class="form-row ">
-    <div class="col-md-2 mb-3 ">
-        <label for="qualification"> Qualification Type: </label>
-        <select name="qualification" id="qualification" class="form-control" >
-               <option value="">Select</option>
-                    <option value=""> O/L </option>
-                    <option value=""> A/L</option>
-                    <option value=""> NVQ - 03 </option>
-                    <option value=""> NVQ - 04 </option>
-                    <option value=""> NVQ - 05 </option>
-        </select>
-    </div>
-    <div class="col-md-3 mb-3 ">
-        <label for="course"> Index No: </label>
-        <input name="course" id="course" class="form-control" type="text" value="" >
-    </div>
-                        
-    <div class="col-md-2 mb-3">
-        <label  for="yoe"> Year of Exam: </label>
-        <input name="yoe" id="yoe" class="form-control" type="text" value="" >
-    </div>
-
-    <div class="col-md-5 mb-3">
-        <label  for="cofrom"> Subject/Name of the Course: </label>
-        <input name="yoe" id="yoe" class="form-control" type="text" value="" >
-    </div>
-
-    <div class="col-md-2 mb-3">
-        <label  for="cofrom"> Result/Status: </label>
-        <input type="text" class="form-control" id="from" placeholder=""  required>
-    </div>
-    <div class="col-md-1 mb-3">
-    </div>
-
-    <div class="col-md-1">
+      </div>
+        
+        <script>
     
-    <button class="btn btn-info" type="Submit" onclick="AddStudent(0)"> Update </button><br><br>
-    <button class="btn btn-primary" type="Submit" onclick="AddStudent(0)"> Add </button>
-    </div>
-
-    <div class="col-md-1">
+                var table = document.getElementById('table');
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                         //rIndex = this.rowIndex;
+                         document.getElementById("qualification").value = this.cells[0].innerHTML;
+                         document.getElementById("indexno").value = this.cells[1].innerHTML;
+                         document.getElementById("yoe").value = this.cells[2].innerHTML;
+                         document.getElementById("subject").value = this.cells[3].innerHTML;
+                         document.getElementById("result").value = this.cells[4].innerHTML;
+                    };
+                }
     
-    </div>
-</div>
+         </script>
+
 
     <div class="form-row">
           <div class class="col-md-1">
