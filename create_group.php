@@ -6,6 +6,7 @@ include_once("head.php");
 include_once("menu.php");
  ?>
 <!-- END DON'T CHANGE THE ORDER -->
+
 <!-- Sidebar -->
 <div class="row">
 <div class="col-4">
@@ -42,14 +43,14 @@ include_once("menu.php");
     <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i>
   <?php
 
-$sql = "SELECT `user_name` FROM `user` ";
+$sql = "SELECT`student_fullname` FROM `student` ";
 
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)> 0){
     while ($row = mysqli_fetch_assoc($result)){
         echo'
         <tr>
-        <td>' . $row ["user_name"].'</td>
+        <td>' . $row ["student_fullname"].'</td>
        
         <a ><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center">
         </small></li><li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i>  </a>
@@ -59,6 +60,8 @@ if (mysqli_num_rows($result)> 0){
 }else{
 echo "0 results";
 }
+
+
 
 ?> 
 
@@ -85,8 +88,12 @@ echo "0 results";
 </div>
 </div>
 <div>
-<button type="button" class="btn btn-outline-dark float-right">Create</button>
-</div>
+
+
+
+
+<button type="button" class="btn btn-outline-dark float-right"> Create </button>
+</div> 
 </form>
 </div>
 </div>

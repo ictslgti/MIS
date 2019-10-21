@@ -40,9 +40,6 @@ include_once("homenav.php");
 <li class="nav-item">
     <a class="nav-link " href="home.php">Status</a>
   </li>
-   <li class="nav-item">
-    <a class="nav-link " href="single_chat.php">Chat</a>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="group_chat.php">Group chat</a>
   </li>
