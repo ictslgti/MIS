@@ -210,7 +210,11 @@ $total_students = 0;
         </select>
     </div>
 </div>
-
+<div class="text-center loading">
+  <div class="spinner-border text-primary" role="completed">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
 <div class="row m-2">
     <div class="col-md-12">
         <canvas id="myChart1"></canvas>
@@ -416,7 +420,7 @@ function showStudent(val) {
                 course_completed_count.push(data_students_count[i].c_count);
                 course_droupout_count.push(data_students_count[i].d_count);
             }
-
+            
             var ctx = document.getElementById('myChart1');
             var myChart = new Chart(ctx, {
                 type: 'bar',
@@ -449,6 +453,8 @@ function showStudent(val) {
                     }
                 }
             });
+
+            document.getElementsByClassName('loading')[0].style.visibility = 'hidden';
         }
     };
     xmlhttp.open("POST", "controller/StudentsCourseDistribution", true);
