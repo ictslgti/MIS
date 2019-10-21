@@ -11,11 +11,11 @@ include_once("menu.php");
 <?php
 date_default_timezone_set("Asia/colombo");
 
-  $student_id =  $_SESSION['user_name'];
+  $s_id =  $_SESSION['user_name'];
 
-  
+  $student_id=$name= $dept=$tel=$date=$time=$ref=null;
   if($_SESSION['user_type']=='STU'){
-    $sql ="SELECT * FROM `hostel_student_details` WHERE `student_id` = '$student_id'";
+    $sql ="SELECT * FROM `hostel_student_details` WHERE `student_id` = '$s_id'";
     $result = mysqli_query($con ,$sql);
    if(mysqli_num_rows($result)== 1){
     $row = mysqli_fetch_assoc($result);
@@ -27,6 +27,8 @@ date_default_timezone_set("Asia/colombo");
 
    }
 
+  }else{
+    
   }
 
 
@@ -80,7 +82,7 @@ date_default_timezone_set("Asia/colombo");
     <br>
     
     <label for="text" class="font-weight-bolder" >Registration No :</label><br>
-    <input type="text" class="form-control" value="<?php if($_SESSION['user_type']=='STU') echo $student_id;?>" id="rno" name="rno" placeholder="Registration No." disabled>
+    <input type="text" class="form-control" value="<?php if($_SESSION['user_type']=='STU') echo $student_id;?>" id="rno" name="rno" placeholder="You can't access this!" disabled>
     </div>
     
     <div class="col-md-4 col-sm-12" >
