@@ -29,32 +29,62 @@ if(isset($_POST['StaffModuleEnrollment'])){
      $mid = $_POST['module_id'];
      $aid = $_POST['academic_year'];
 
-    $sql = "SELECT * FROM `staff_module_enrollment`";
-    if($tid!='null' || $cid!='null' || $mid!='null' || $aid!='null'){
-        $sql .=" WHERE ";
+    $sql = "SELECT `staff_module_enrollment`.`academic_year`,`module`.`module_name`,`staff`.`staff_name`,`staff`.`staff_status`,`academic`.`academic_year_status`,`staff_module_enrollment`.`staff_module_enrollment_id`,`staff_module_enrollment`.`course_id`,`staff_module_enrollment`.`staff_module_enrollment_date`
+    FROM `staff_module_enrollment`
+    LEFT JOIN `staff` ON `staff_module_enrollment`.`staff_id` = `staff`.`staff_id`
+    LEFT JOIN `module` ON `staff_module_enrollment`.`module_id` = `module`.`module_id`
+    LEFT JOIN `academic` ON `staff_module_enrollment`.`academic_year` = `academic`.`academic_year`";
+
+    if($tid=='null'){
+      if($cid=='null'){
+        if($mid == 'null'){
+          if($aid != 'null'){
+            $sql .=" WHERE staff_module_enrollment.academic_year = '$aid' ";
+          }
+        }else{
+          $sql .=" WHERE staff_module_enrollment.module_id = '$mid' ";
+          if($aid != 'null')
+              $sql .=" AND staff_module_enrollment.academic_year = '$aid' ";
+        }
+      }
+      else{
+        $sql .=" WHERE staff_module_enrollment.course_id = '$cid' ";
+        if($mid !='null' )  $sql .=" AND staff_module_enrollment.module_id = '$mid' ";
+        if($aid !='null' )  $sql .=" AND staff_module_enrollment.academic_year = '$aid' ";
+      }
+    }else{
+      $sql .=" WHERE staff_module_enrollment.staff_id = '$tid' ";
+      if($mid !='null' )  $sql .=" AND staff_module_enrollment.module_id = '$mid' ";
+      if($aid !='null' )  $sql .=" AND staff_module_enrollment.academic_year = '$aid' ";
+      if($cid !='null' )  $sql .=" AND staff_module_enrollment.course_id = '$cid' ";
     }
-    if($tid!='null'){$sql .=" staff_id = '$tid' ";}
-    if($tid==null && $aid!='null'){$sql .=" academic_year = '$aid' ";}
-    if($tid!=null && $aid!='null'){$sql .=" AND academic_year = '$aid' ";}
-
-    
-    if($tid!=null && $cid!='null'){ $sql .=" AND course_id = '$cid' ";}
-    if($tid!=null && $cid!='null' && $mid!='null'){$sql .=" AND module_id = '$mid' ";}
-    if($aid!='null'){}
-
     $result = mysqli_query($con, $sql) or die();
     if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
       echo '
       <tr>
       <td> '.$row['staff_module_enrollment_id'].'</td>
-      <td>'.$row['staff_id'].'</td>
+      <td>'.$row["staff_name"].'<span class="badge ';
+      if($row["staff_status"]=='Working'){
+        echo ' badge-success';
+      }else{
+        echo ' badge-danger';
+      } 
+      echo '">'.$row["staff_status"].' </span></td>
+
       <td>'.$row['course_id'].'</td>
-      <td>'.$row['module_id'].'</td>
-      <td>'.$row['academic_year'].'</td>
+      <td>'.$row['module_name'].'</td>
+      <td>'.$row["academic_year"].' <span class="badge ';
+      if($row["academic_year_status"]=='Active'){
+        echo ' badge-success';
+      }else{
+        echo ' badge-danger';
+      }
+      
+      echo '"> '.$row["academic_year_status"].' </span></td>
       <td> 
-          <a href="?edit=1" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-          <a href="?delete=1" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+          <a href="?edit='.$row['staff_module_enrollment_id'].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+          <a href="?delete='.$row['staff_module_enrollment_id'].'" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
       </td>        
     </tr>
       ';
@@ -108,7 +138,7 @@ if(isset($_POST['Staff'])){
             echo ' badge-danger';
           }
           
-          echo '">'.$row["staff_status"].' </span></td>
+          echo '"> '.$row["staff_status"].' </span></td>
           <td>'.$row["department_name"].'</td>
           <td>'.$row["staff_position_type_name"].'<span class="badge badge-primary">'.$row["staff_type"].' </span> </td>
           <td>'.$row["staff_pno"].'</td>
