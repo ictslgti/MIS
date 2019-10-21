@@ -42,7 +42,7 @@ if(isset($_POST['Editing']))
   $cname = $_POST['co_name'];
   $ctraining = $_POST['co_training'];
   $cojt = $_POST['co_ojt'];
-  $did = $_POST['d_id'];
+  $did = $_POST['d_name'];
   $nvq = $_POST['n_level'];
   $cid =$_GET['edits'];
 
@@ -65,13 +65,13 @@ if(isset($_POST['Adding']))
 {
   
   
-  if(!empty($_POST['co_training'])&& !empty($_POST['co_name'])&& !empty($_POST['co_ojt'])&& !empty($_POST['d_id'])&& !empty($_POST['n_level'])&&!empty($_POST['co_id']))
+  if(!empty($_POST['co_training'])&& !empty($_POST['co_name'])&& !empty($_POST['co_ojt'])&& !empty($_POST['d_name'])&& !empty($_POST['n_level'])&&!empty($_POST['co_id']))
   {
     $cid =$_POST['co_id'];
     $cname = $_POST['co_name'];
     $ctraining = $_POST['co_training'];
     $cojt = $_POST['co_ojt'];
-    $did = $_POST['d_id'];
+    $did = $_POST['d_name'];
     $nvq = $_POST['n_level'];
 
      $sql = "INSERT INTO course(course_id, course_name, course_nvq_level , department_id,course_ojt_duration,course_institute_training) VALUES ( '$cid' ,'$cname','$nvq', '$did' ,'$cojt','$ctraining' )";
@@ -153,7 +153,7 @@ if(isset($_POST['Adding']))
 
               <div class="col-md-6 mb-3">
                 <label for="Department">Department</label>
-                <select class="custom-select d-block w-100"  name="d_id" required>
+                <select class="custom-select d-block w-100"  name="d_name" required>
                     <option selected  disabled selected>Select Department Name...</option>
                     <?php
                      $sql = "SELECT * FROM department";
