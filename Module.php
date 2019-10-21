@@ -103,7 +103,7 @@ $gcourse_id=null;
 
                                
                               <td> 
-                                    <a href=" AddModule.php ?module_id='.$row["module_id"].' " class="btn btn-outline-success" style="font-size:15px;><i class="far fa-edit">View Edit</i> </a>
+                                    <a href=" AddModule.php ?edits='.$row["module_id"].' " class="btn btn-outline-success" style="font-size:15px;><i class="far fa-edit">View Edit</i> </a>
  
                                     <a href=" ?dlt='.$row["module_id"].' " style="font-size:25px;color:red;"> <i class="fas fa-trash"></i> </a>  
 

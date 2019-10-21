@@ -125,9 +125,11 @@ if(isset($_GET['edit']))
 
         <div class="col-md-3 mb-3">
           <label for="status">Status:</label>
-          <select name="status" id="status" class="form-control" >
-            <option  disabled selected>..select Student Status ..</option>
-
+          <select name="status" id="status" class="form-control" value="<?php echo $enstatus ?>" >
+            <option selected disabled>Choose Status</option>
+              <option value="Following" <?php if($enstatus=="Following")  echo 'selected';?>>Following</option> 
+              <option value="Completed" <?php if($enstatus == "Completed") echo ' selected';?>>Completed</option>
+              <option value="Exit"<?php if($enstatus=="Exit") echo 'selected';?>>Exit</option>
           </select>
         </div>
 
@@ -153,10 +155,9 @@ if(isset($_GET['edit']))
           <div class="col-md-2 mb-3">
           <label for="title"> Title: </label>
           <select name="title" id="title" class="form-control" value="<?php echo $title ?>">
-            <option disabled selected>select</option>
             <option selected disabled>Choose Title</option>
               <option value="Mr" <?php if($title=="Mr")  echo 'selected';?>>Mr</option> 
-              <option value="Miss" <?php if($title == "Miss") echo ' selected';?>>Miss</option>
+              <option value="Miss" <?php if($title == "Miss") echo 'selected';?>>Miss</option>
               <option value="Mrs"<?php if($title=="Mrs") echo ' selected';?>>Mrs</option>
          </select>
          </div>
@@ -236,32 +237,31 @@ if(isset($_GET['edit']))
             <label for="district"> District: </label>
             <select name="district" id="district" class="form-control" value="<?php echo $district ?>">
                 <option value="">Select</option>
-                <option value="ampara"<?php if($province=="ampara")  echo 'selected';?>> ampara </option>
-                <option value="2"> Ampara </option>
-                <option value="2"> Batticalo </option>
-                <option value="2"> Trincomalee </option>
-                <option value="1"> Jaffna </option>
-                <option value="1"> Vavuniya </option>
-                <option value="1"> Killinochchi  </option>
-                <option value="1"> Mullaitivu </option>
-                <option value="1"> Mannar </option>
-                <option value="6"> Puttalam </option>
-                <option value="6"> Kurunegala </option>
-                <option value="3"> Gampaha </option>
-                <option value="3"> Colombo </option>
-                <option value="3"> Kalutara </option>
-                <option value="8"> Anuradhapura </option>
-                <option value="8"> Polonnaruwa </option>
-                <option value="5"> Matale	 </option>
-                <option value="5"> Kandy </option>
-                <option value="5"> Nuwara Eliya </option>
-                <option value="9"> Kegalle </option>
-                <option value="9"> Ratnapura </option>
-                <option value="7"> Badulla </option>
-                <option value="7"> Monaragala </option>
-                <option value="4"> Hambantota </option>
-                <option value="4"> Matara </option>
-                <option value="4"> Galle </option>
+                <option value="Ampara"<?php if($district=="Ampara")  echo 'selected';?>> Ampara </option>
+                <option value="Batticalo"<?php if($district=="Batticalo")  echo 'selected';?>> Batticalo </option>
+                <option value="Trincomalee"<?php if($district=="Trincomalee")  echo 'selected';?>> Trincomalee </option>
+                <option value="Jaffna"<?php if($district=="Jaffna")  echo 'selected';?>> Jaffna </option>
+                <option value="Vavuniya"<?php if($district=="Vavuniya")  echo 'selected';?>> Vavuniya </option>
+                <option value="Killinochchi"<?php if($district=="Killinochchi")  echo 'selected';?>> Killinochchi  </option>
+                <option value="Mullaitivu"<?php if($district=="Mullaitivu")  echo 'selected';?>> Mullaitivu </option>
+                <option value="Mannar"<?php if($district=="Mannar")  echo 'selected';?>> Mannar </option>
+                <option value="Puttalam"<?php if($district=="Puttalam")  echo 'selected';?>> Puttalam </option>
+                <option value="Kurunegala"<?php if($district=="Kurunegala")  echo 'selected';?>> Kurunegala </option>
+                <option value="Gampaha"<?php if($district=="Gampaha")  echo 'selected';?>> Gampaha </option>
+                <option value="Colombo"<?php if($district=="Colombo")  echo 'selected';?>> Colombo </option>
+                <option value="Kalutara"<?php if($district=="Kalutara")  echo 'selected';?>> Kalutara </option>
+                <option value="Anuradhapura"<?php if($district=="Anuradhapura")  echo 'selected';?>> Anuradhapura </option>
+                <option value="Polonnaruwa"<?php if($district=="Polonnaruwa")  echo 'selected';?>> Polonnaruwa </option>
+                <option value="Matale"<?php if($district=="Matale")  echo 'selected';?>> Matale	 </option>
+                <option value="Kandy"<?php if($district=="Kandy")  echo 'selected';?>> Kandy </option>
+                <option value="Nuwara Eliya"<?php if($district=="Nuwara Eliya")  echo 'selected';?>> Nuwara Eliya </option>
+                <option value="Kegalle"<?php if($district=="Kegalle")  echo 'selected';?>> Kegalle </option>
+                <option value="Ratnapura"<?php if($district=="Ratnapura")  echo 'selected';?>> Ratnapura </option>
+                <option value="Badulla"<?php if($district=="Badulla")  echo 'selected';?>> Badulla </option>
+                <option value="Monaragala"<?php if($district=="Monaragala")  echo 'selected';?>> Monaragala </option>
+                <option value="Hambantota"<?php if($district=="Hambantota")  echo 'selected';?>> Hambantota </option>
+                <option value="Matara"<?php if($district=="Matara")  echo 'selected';?>> Matara </option>
+                <option value="Galle"<?php if($district=="Galle")  echo 'selected';?>> Galle </option>
             </select>
           </div>
 
@@ -289,20 +289,20 @@ if(isset($_GET['edit']))
           <div class="col-md-2 mb-3">
             <label for="bloodgroup"> Blood Group: </label>
             <select name="bloodgroup" id="bloodgroup" class="form-control" value="<?php echo $blood?>">
-              <option selected disabled>Choose Blood Group </option>
+              <option selected disabled> Blood Group </option>
               <option value="A+"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
-              <option value="A-"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
-              <option value="B+"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
-              <option value="B-"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
-              <option value="C+"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
-              <option value="C-"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
-              <option value="AB+"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
-              <option value="AB-"<?php if($blood=="A+")  echo 'selected';?>> A+ </option> 
+              <option value="A-"<?php if($blood=="A-")  echo 'selected';?>> A- </option>
+              <option value="B+"<?php if($blood=="B+")  echo 'selected';?>> B+ </option>
+              <option value="B-"<?php if($blood=="B-")  echo 'selected';?>> B- </option>
+              <option value="C+"<?php if($blood=="C+")  echo 'selected';?>> C+ </option>
+              <option value="C-"<?php if($blood=="C-")  echo 'selected';?>> C- </option>
+              <option value="AB+"<?php if($blood=="AB+")  echo 'selected';?>> AB+ </option>
+              <option value="AB-"<?php if($blood=="AB-")  echo 'selected';?>> AB- </option> 
             </select>
         </div>
 
     </div>
-
+  
     <div class="form-row">
           <div class class="col-md-1">
           </div>
@@ -312,74 +312,98 @@ if(isset($_GET['edit']))
     </div><br>
 
   <div class="form-row">
-    <div id="results-student_education" class="form-group table-responsive">               
-            <table class="table" width="100%">
+
+      <div class="col-md-2 mb-3 ">
+            <label for="qualification"> Qualification Type: </label>
+            <input name="qualification" id="qualification" class="form-control" type="text" value="" >
+        </div>
+
+        <div class="col-md-2 mb-3 ">
+            <label for="indexno"> Index No: </label>
+            <input name="indexno" id="indexno" class="form-control" type="text" value="" >
+        </div>
+                            
+        <div class="col-md-2 mb-3">
+            <label  for="yoe"> Year of Exam: </label>
+            <input name="yoe" id="yoe" class="form-control" type="text" value="" >
+        </div>
+
+        <div class="col-md-5 mb-3">
+            <label  for="subject"> Subject/Name of the Course: </label>
+            <input name="subject" id="subject" class="form-control" type="text" value="" >
+        </div>
+
+        <div class="col-md-2 mb-3">
+            <label  for="result"> Result: </label>
+            <input type="text" class="form-control" id="result" name="result" placeholder=""  required>
+        </div>
+      </div>
+        
+        <div class="form-row">
+        <div id="results-student_education" class="form-group table-responsive">               
+            <table class="table table-hover" width="100%" id="table" >
               <thead>
               <tr>
-              <th width="20%"> Qualification Type </th>
+              <th width="15%"> Qualification Type </th>
               <th width="20%"> Index No </th>
-              <th width="25%"> Year of Exam </th>
+              <th width="15%"> Year of Exam </th>
               <th width="30%"> Subject </th>
-              <th width="20%"> Result </th>
-              <th width="20%"> Action </th>
+              <th width="10%"> Result </th>
               </tr>
-              </thead>
+              </head>
               <tbody>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th><button class="btn btn-danger" type="submit">Edit</button></th>
+              <?php
+               //if(isset($_GET['edit']))
+               // {
+                  //$stid =$_GET['edit'];WHERE `qualification_student_id`= '$stid'"
+                  //include_once("mysqli_connect.php");
+                  $sql ="SELECT `qualification_type`,`qualification_index_no`,`qualification_year`,`qualification_description`,`qualification_results` 
+                  FROM `student_qualification`";
+                  $result = mysqli_query ($con, $sql);
+                  if (mysqli_num_rows($result)>0)
+                  {
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                      echo '
+                      <tr style="text-align:left";>
+                          <td>'. $row["qualification_type"].'</td>
+                          <td>'. $row["qualification_index_no"].'</td>
+                          <td>'. $row["qualification_year"].'</td>
+                          <td>'. $row["qualification_description"].'</td>
+                          <td>'. $row["qualification_results"].'</td>
+                          </td>
+                      </tr> ';
+                    }
+                  }
+                  else
+                  {
+                    echo "0 results";
+                  }
+              ?>
               </tbody>
             </table>  
       </div>
-  </div>
-
-<div class="form-row ">
-    <div class="col-md-2 mb-3 ">
-        <label for="qualification"> Qualification Type: </label>
-        <select name="qualification" id="qualification" class="form-control" >
-               <option value="">Select</option>
-                    <option value=""> O/L </option>
-                    <option value=""> A/L</option>
-                    <option value=""> NVQ - 03 </option>
-                    <option value=""> NVQ - 04 </option>
-                    <option value=""> NVQ - 05 </option>
-        </select>
-    </div>
-    <div class="col-md-3 mb-3 ">
-        <label for="course"> Index No: </label>
-        <input name="course" id="course" class="form-control" type="text" value="" >
-    </div>
-                        
-    <div class="col-md-2 mb-3">
-        <label  for="yoe"> Year of Exam: </label>
-        <input name="yoe" id="yoe" class="form-control" type="text" value="" >
-    </div>
-
-    <div class="col-md-5 mb-3">
-        <label  for="cofrom"> Subject/Name of the Course: </label>
-        <input name="yoe" id="yoe" class="form-control" type="text" value="" >
-    </div>
-
-    <div class="col-md-2 mb-3">
-        <label  for="cofrom"> Result/Status: </label>
-        <input type="text" class="form-control" id="from" placeholder=""  required>
-    </div>
-    <div class="col-md-1 mb-3">
-    </div>
-
-    <div class="col-md-1">
+      </div>
+        
+        <script>
     
-    <button class="btn btn-info" type="Submit" onclick="AddStudent(0)"> Update </button><br><br>
-    <button class="btn btn-primary" type="Submit" onclick="AddStudent(0)"> Add </button>
-    </div>
-
-    <div class="col-md-1">
+                var table = document.getElementById('table');
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                         //rIndex = this.rowIndex;
+                         document.getElementById("qualification").value = this.cells[0].innerHTML;
+                         document.getElementById("indexno").value = this.cells[1].innerHTML;
+                         document.getElementById("yoe").value = this.cells[2].innerHTML;
+                         document.getElementById("subject").value = this.cells[3].innerHTML;
+                         document.getElementById("result").value = this.cells[4].innerHTML;
+                    };
+                }
     
-    </div>
-</div>
+         </script>
+
 
     <div class="form-row">
           <div class class="col-md-1">
