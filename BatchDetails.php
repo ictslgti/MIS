@@ -31,7 +31,7 @@ include_once("menu.php");
  
     <tr >
     <th scope="col">Batch_ID</th>
-      <th scope="col">Course Name</th>
+      <th scope="col">Course_ID</th>
       <th scope="col">Academic Year</th>
       <th scope="col">Options</th>
 
@@ -43,18 +43,38 @@ include_once("menu.php");
  
   <tr class="table-light">
       
-     
+<!--      
       <td>5IT01</td>
-      <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"><div class="btn-group mr-2" role="group" aria-label="First group">
-  <a href="module" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;NVQ Level - 05</i></a> 
+<td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"><div class="btn-group mr-2" role="group" aria-label="First group">
+<a href="module" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;NVQ Level - 05</i></a> 
       <td>2018/2019 <span class="badge badge-success">Active </span> </td> 
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-  <a href="BatchStudent" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
+  <div class="btn-group mr-2" role="group" aria-label="First group"> -->
+  
     </tr>
-    
+    <?php
+    $sql = "SELECT * FROM `batch`";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result)>0){
+    while ($row = mysqli_fetch_assoc($result)){
+        echo'
+        <tr>
+        <td>' . $row ["batch_id"].'</td>
+        <td>' . $row ["course_id"].'</td>
+        <td>' .$row["academic_year"].'</td>
+        <td>
+        <a href="BatchStudent" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
+      
+        </tr>';
+    }
+}else{
+echo "0 results";
+}
+
+
+?>
    
-    <tr class="table-light">
+    <!-- <tr class="table-light">
       <td>5IT01</td>
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups"><div class="btn-group mr-2" role="group" aria-label="First group">
   <a href="module" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;NVQ Level - 04</i></a> 
@@ -83,7 +103,7 @@ include_once("menu.php");
       <td><div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
   <a href="BatchStudent" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
-    </tr>
+    </tr> -->
 
 
   </tbody>
