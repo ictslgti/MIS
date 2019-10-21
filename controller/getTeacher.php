@@ -84,7 +84,7 @@ if(isset($_POST['StaffModuleEnrollment'])){
       echo '"> '.$row["academic_year_status"].' </span></td>
       <td> 
           <a href="?edit='.$row['staff_module_enrollment_id'].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-          <a href="?delete='.$row['staff_module_enrollment_id'].'" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+          <a class="btn btn-sm btn-danger" data-href="?delete_id='.$row["staff_module_enrollment_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i></a>
       </td>        
     </tr>
       ';
@@ -144,7 +144,7 @@ if(isset($_POST['Staff'])){
           <td>'.$row["staff_pno"].'</td>
           <td> 
           <a href="AddStaff?edit='.$row["staff_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-          <a href="?delete='.$row["staff_id"].'" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+          <a  class="btn btn-sm btn-danger" data-href="?delete_id='.$row["staff_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="far fa-trash-alt"></i></a>
           </td>
       </tr>';
       }
