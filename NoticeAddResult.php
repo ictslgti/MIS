@@ -7,90 +7,220 @@ include_once("menu.php");
 ?>
 <!-- end don't change the order-->
 
+<?php
+//for add
+if(isset($_POST['Add'])){
+  if( !empty($_POST['result_id']) && !empty($_POST['department_id']) && !empty($_POST['academic_year']))
+  {
+     $result_id= $_POST['result_id'];
+     $Department = $_POST['Department'];
+     $AcademicYear = $_POST['AcademicYear'];
+     $Course = $_POST['Course'];
+     $Module = $_POST['Module'];
+     $sql = "INSERT INTO `notice_result`(`result_id`, `department_id`, `academic_year`,`course_id`,`module_id`)
+     
+      VALUES ('$result_id','$Department',`$AcademicYear`,'$Course',`$Module`,)";  
+     if(mysqli_query($con,$sql))
+     {
+         echo "Record has been Inserted succesfully";
+     }
+     else {
+    echo "Error in insert" . mysqli_error($con);
+     }
+   }
+}
+//for edit
+if(isset($_POST['Edit']))
+{  
+   if(!empty($_POST['code'])&& !empty($_POST['name'])&& !empty($_GET['edit']))
+   {   
+      $code = $_POST['code'];
+      $name = $_POST['name'];
+      $id = $_GET['edit'];
+      $sql = "UPDATE `notice_result` SET `result_id`='$result_id' ,`department_id`= '$Department',`academic_year`='$AcademicYear',`course_id`='$Course',`module_id`'$Module'WHERE `department`.`department_id`= $id";
+      if(mysqli_query($con,$sql))
+      {
+           echo"Record has been updated succesfully";
+      }
+      else{
+     echo "Error in update" . mysqli_error($con);
+     }
+   }
+}
+?>
+
+
+<?php
+
+
+$Department=$Course=$Module=$AcademicYear=$Type=null;
+
+
+
+  if(isset($_GET['edit'])){
+        $id=$_GET['edit'];
+        $sql="SELECT * FROM `notice_result` WHERE `result_id`='$result_id'";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+     $Department_id=$_POST['Department'];
+     $cours=$_POST['AcademicYear'];
+     $Module=$_POST['Course'];
+     $AcademicYear=$_POST['Modules'];
+    
+        }
+        else{
+          echo "Error".$sql."<br>".mysqli_error($con);
+        }
+    }
+  
+?>
+
+
+
+
 
 
 <!-- bLOCK#2 start your code here & u can change -->
-<hr>
+
+
+
+
+<br><br>
 <div class="alert bg-dark text-white" role="alert">
   <h1>Add New Result</h1>
 </div>
 <hr>
-<div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Type</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputEmail3"required placeholder="Result...">
-    </div>
-  </div>
 
-
+<form method="POST" action="#">
   <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Department</label>
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Result Id</label>
     <div class="col-sm-10">
-	<select id="inputState" class="form-control">
-      <option selected>Select the Department...</option>
-      <option>Electrical & Electronic Technology Department</option>
-      <option>Construction Technology Department</option>
-      <option>Information & Communications Technology Department</option>
-      <option>Mechanical Technology Department</option>
-      <option>Food Technology Department</option>
-      <option>Automotive & Agricultural Technology Department</option>
+	<select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
+ 
+  <option selected disabled required>Result Id</option>
+  <?php          
+            $sql = "SELECT * FROM `department`";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                echo '<option  value="'.$row["department_id"].'" required';
+                if($row["department_id"]==$Department) echo ' selected';
+                echo '>'.$row["department_name"].'</option>';
+                }
+            }
+            ?>
     </select>
   </div>
-</div>
+   </div>
+
+
+<form method="POST" action="#">
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Academic Year</label>
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Department</label>
     <div class="col-sm-10">
-    <select id="inputState" class="form-control">
-      <option selected>Select the Academic Year...</option>
-      <option>2016/2017</option>
-      <option>2017/2018</option>
-      <option>2018/2019</option>
+	<select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
+ 
+  <option selected disabled required>Department</option>
+  <?php          
+            $sql = "SELECT * FROM `department`";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                echo '<option  value="'.$row["department_id"].'" required';
+                if($row["department_id"]==$Department) echo ' selected';
+                echo '>'.$row["department_name"].'</option>';
+                }
+            }
+            ?>
+    </select>
+  </div>
+   </div>
+
+
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Academic Year</label>
+    <div class="col-sm-10">
+    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['academic_year'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>"  id="academic_year" name="academic_year">
+      <option selected disabled required >Select the Academic Year...</option>
+      <?php          
+            $sql = "SELECT * FROM `academic`";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                echo '<option  value="'.$row["academic_year"].'" required';
+                if($row["academic_year"]==$AcademicYear) echo ' selected';
+                echo '>'.$row["academic_year"].'</option>';
+                }
+            }
+            ?>
     </select>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Course</label>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Course</label>
     <div class="col-sm-10">
-    <select id="inputState" class="form-control">
-      <option selected>Select Your Course...</option>
-      <option>Level 04</option>
-      <option>Bridging</option>
-      <option>Level 05</option>
-      <option>Level 06</option>
+    <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['course_id']))
+    {echo ' is-invalid';
+    }if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>" 
+    
+     id="course_id" name="course_id">
+
+
+      <option selected disabled required  >Select Your Course...</option>
+
+      <?php          
+            $sql = "SELECT * FROM `course`";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                echo '<option  value="'.$row["course_id"].'" required';
+                if($row["course_id"]==$Course) echo ' selected';
+                echo '>'.$row["course_name"].'</option>';
+                }
+            }
+            ?>
+
     </select>
   </div>
   </div>
  
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Modules</label>
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Modules</label>
     <div class="col-sm-10">
-    <select id="inputState" class="form-control">
-      <option selected>Select the Module...</option>
-      <option>Module 01</option>
-      <option>Module 02</option>
-      <option>Module 03</option>
-      <option>Module 04</option>
-      <option>Module 05</option>
-      <option>Module 06</option>
-      <option>Module 07</option>
-      <option>Module 08</option>
-      <option>Module 09(Manage Workplace Information)</option>
-      <option>Module 10(Manage Workplace Communication)</option>
+    <select id="inputState" class="form-control<?php  if(isset($_POST['Add'])
+    && empty($_POST['module_id'])){echo ' is-invalid';
+    }if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>" 
+    
+     id="module_id" name="module_id">
+      <option selected disabled required >Select the Module...</option>
+
+      <?php          
+            $sql = "SELECT * FROM `module`";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                echo '<option  value="'.$row["module_id"].'" required';
+                if($row["module_id"]==$Module) echo ' selected';
+                echo '>'.$row["module_name"].'</option>';
+                }
+            }
+            ?>
     </select>
   </div>
   </div>
 
  
   
-<div class="input-group mb-3">
+<!--<div class="input-group mb-3">
 
     <label for="inputEmail3" class="col-sm-2 col-form-label">Upload  Your File and Link</label>
 		<input class="form-control" type="file" name="file" required/></td>
-</div>
+  </div>
 
-<h1 class="text-right">
-<hr>
+ <h1 class="text-right">
+ <hr>
  <div class="row"> 
 
  <div class="col-12">
@@ -102,10 +232,23 @@ include_once("menu.php");
 </div>
 <hr>
   
- <!-- end your code here-->
+end your code here-->
+ 
+ 
 
 
 
+
+
+<?php
+       if(isset($_GET['edit'])) {
+        echo'<input id="button" type="submit" name="Edit" value="Edit">';
+       }
+        else{
+        echo'<input id="button" type="submit" name="Add" value="Add">';
+       }  
+       ?>
+</form>
 
 <!--bLOCK#3  start don't change the order-->
     <?php include_once("footer.php");?>

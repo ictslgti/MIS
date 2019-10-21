@@ -61,6 +61,8 @@ if(isset($_POST['Add'])){
 ?>
 
 
+
+
 <form method="POST" action="#">
 <div class="row ">
             <div class="col-md-12 col-sm-12  form-group  container bg-info">
@@ -91,7 +93,7 @@ if(isset($_POST['Add'])){
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
                       <label class="font-weight-bold" for="authorName">02.INVENTORY ID</label> <span style="color:red;">*</span></label>
                       <input type="text" name="inventoryid" value="<?php echo $inventoryid;?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['inventoryid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['inventoryid'])&& !empty($_POST['inventoryid'])){echo '  is-valid';} ?>" id="inventory" aria-describedby="inventory" placeholder="inventory" required="required">
-                      <small id="bookNameHelp" class="form-text text-muted"></small>
+                      <small id="inventoryid" class="form-text text-muted"></small>
               </div>
               <div class="w-100"></div>
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
@@ -120,7 +122,7 @@ if(isset($_POST['Add'])){
           </div>
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
               
-                  <input type="reset" class="btn btn-primary ml-2 mt-3 float-right">
+          <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
                   <button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
                   <button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='inventory_view.php'">view </button>
                  

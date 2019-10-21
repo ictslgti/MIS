@@ -65,8 +65,8 @@ if(isset($_POST['StaffModuleEnrollment'])){
 }
 
 if(isset($_POST['Staff'])){
-  echo $did = $_POST['department_id'];
-  echo $spid = $_POST['staff_position_type_id'];
+   $did = $_POST['department_id'];
+   $spid = $_POST['staff_position_type_id'];
   $sql="
   SELECT 
   `staff`.`staff_id`,
@@ -85,14 +85,14 @@ if(isset($_POST['Staff'])){
   LEFT JOIN 
       `staff_position_type`
           ON `staff`.`staff_position` = `staff_position_type`.`staff_position_type_id`";
-  if($did!=null && $spid == null){
-    // $sql.="  WHERE `staff`.`department_id` = '$did'";
+  if($did!='null' && $spid == 'null'){
+    $sql .="  WHERE `staff`.`department_id` = '$did'";
   }
-  if($did==null && $spid != null){
-    // $sql.="  WHERE `staff`.`department_id` = '$did'";
+  if($did=='null' && $spid != 'null'){
+     $sql.="  WHERE `staff`.`staff_position` = '$spid'";
   }
-  if($did!=null && $spid != null){
-    //  $sql.="  WHERE `staff`.`department_id` = '$did'";
+  if($did!='null' && $spid != 'null'){
+      $sql.="  WHERE `staff`.`department_id` = '$did' AND `staff`.`staff_position` = '$spid'";
   }
   $result=mysqli_query($con,$sql);
   if(mysqli_num_rows($result)>0)

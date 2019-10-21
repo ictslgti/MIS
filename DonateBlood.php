@@ -26,7 +26,7 @@ include_once("menu.php");
 <div class="col-sm-3 " > 
 <form class="form-inline md-form form-sm mt-4">
   <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_ID" aria-label="Search"id="search"> 
-  <i class="fas fa-search ml-3" aria-hidden="true"></i>
+  <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button>
 </form>
 </div>
 </div>
@@ -45,69 +45,85 @@ include_once("menu.php");
   <thead class="thead-r">
     <tr>
     <th scope="col"><i class="far fa-id-card"></i>&nbsp;D_id</th>
-      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Reference id</th>
+
       <th scope="col"><i class="fas fa-users"></i>&nbsp;fullname</th>
       <th scope="col"><i class="far fa-address-card"></i>&nbsp;Address</th>
-      <th scope="col">Email</th>
+      <th scope="col"><i class="fas fa-envelope-square"></i>&nbsp;Email</th>
       <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;dob</th>
       <th scope="col"><i class="fas fa-map-marker"></i>&nbsp;Blood group</th>
       <th scope="col"><i class="fas fa-chalkboard-teacher"></i>&nbsp;designation</th>
       <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;join date</th>
       <th scope="col"><i class="fas fa-transgender"></i>&nbsp;Gender</th>
       <th scope="col"><i class="fas fa-weight-hanging"></i>&nbsp;Weight</th>
+      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Reference id</th>
       <th scope="col"><i class="far fa-caret-square-right"></i>&nbsp;Action</th>
-      <th scope="col"><i class="fas fa-outdent"></i>&nbsp;Status</th>
+      <!-- <th scope="col"><i class="fas fa-outdent"></i>&nbsp;Status</th> -->
     </tr>
   </thead>
   
-  <tr>
-
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>
+  <?php
+  
+  // $d_id = $fullname = $phone = $address = $email = $dob = $division = $blood_group = $designation = $joint_date = $gender = $weight = $reference_id =  null;
+  
+  // if(isset($_GET['edit']))
+  // {
+  //   $stid =$_GET['edit'];
+  //   $sql = "SELECT * FROM donor where`d_id`= '$stid'";
+  //   $result = mysqli_query($con,$sql);
+  
+    //if(mysqli_num_rows($result)==1)
+    $sql="SELECT * from donor";
+    $result=mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)>0)
+    {
+        while($row=mysqli_fetch_assoc($result))
+        {
+        echo '   
+        <tr>
+            <td>'.$row["d_id"].'</td>
+            <td>'.$row["fullname"].'</td>
+            <td>'.$row["address"].'</td>
+            <td>'.$row["email"].'</td>
+            <td>'.$row["dob"].'</td>
+            <td>'.$row["blood_group"].'</td>
+            <td>'.$row["designation"].'</td>
+            <td>'.$row["joint_date"].'</td>
+            <td>'.$row["gender"].'</td>
+            <td>'.$row["weight"].'</td>
+            <td>'.$row["reference_id"].'</td>
+            <td> 
            
-            <button type="button" class="btn btn-outline-success" onclick="location.href='donor.php'"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-outline-success"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
-            
-      </td>
-      <td><div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-success"><i class="fas fa-arrow-alt-circle-right"></i></button>
-            <button type="button" class="btn btn-danger"><i class="far fa-arrow-alt-circle-right"></i></button></td>
-    </tr
+            <a href=" donor.php ?edit='.$row["d_id"].' class="class="btn btn-outline-success btn-icon-split"""><i class="far fa-edit"></i>&nbsp;&nbsp;  </a>  
+            <a href=" ?delete='.$row["d_id"].' class="class="btn btn-outline-success btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a> 
+           
+            </td>
+        </tr>';
+        }
+    }
+    else {
+        echo "0 results";
+    }
+  
+    ?>
     
+    <?php
 
-<tr>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+if(isset($_GET['delete'])){
+    $id = $_GET['delete'];
+    $sql = "DELETE FROM `donor` WHERE`d_id`='$id'";
+    if (mysqli_query($con, $sql)){
+        echo "deleted successfully";
+    }else{
+        echo "Error deleting record:" . mysqli_error($con);
+    }
+}
+
+?>
       
-      <td>@mdo</td>
-      <td>
-           
-            <button type="button" class="btn btn-outline-success" onclick="location.href='donor.php'"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-outline-success"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;delete</button>&nbsp;&nbsp;
-            
-      </td>
-      <td><div class="btn-group" role="group" aria-label="Basic example">
+      <!-- <td><div class="btn-group" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-success"><i class="fas fa-arrow-alt-circle-right"></i></button>
-            <button type="button" class="btn btn-danger"><i class="far fa-arrow-alt-circle-right"></i></button></td>
-    </tr>
+            <button type="button" class="btn btn-danger"><i class="far fa-arrow-alt-circle-right"></i></button></td> -->
+    
   
     
     
