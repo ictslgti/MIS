@@ -20,7 +20,7 @@ include_once("menu.php");
     <div class="form-row">
         <div class="col-6">
             <div class="form-row align-items-center">
-                <select class="custom-select mr-sm-2" id="department_id" name="department_id">
+                <select class="selectpicker mr-sm-2" id="department_id" name="department_id" data-live-search="true" data-width="100%">
                     <option value="null" selected disabled>-- Select a department --</option>
                     <?php
           $sql = "SELECT * FROM `department`";
@@ -39,7 +39,7 @@ include_once("menu.php");
 
         <div class="col-5">
             <div class="form-row align-items-center">
-                <select class="custom-select mr-sm-2" id="staff_position_type_id"  name="staff_position_type_id">
+                <select class="selectpicker mr-sm-2" id="staff_position_type_id"  name="staff_position_type_id" data-live-search="true" data-width="100%">
                     <option value="null" selected disabled>-- Select a Position --</option>
                     <?php
           $sql = "SELECT * FROM `staff_position_type` ORDER BY `staff_position` ASC";

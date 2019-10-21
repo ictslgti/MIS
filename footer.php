@@ -19,7 +19,8 @@
   </script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
   <!-- Menu Toggle Script -->
   <script>
 $("#menu-toggle").click(function(e) {
@@ -40,7 +41,7 @@ function refreshTime() {
     timeDisplay.innerHTML = formattedString;
 }
 
-setInterval(refreshTime, 1000);
+// setInterval(refreshTime, 60000);
 
 // $(document).ready(function() {
 //     setInterval(timestamp, 1000);
@@ -64,7 +65,6 @@ x.innerHTML = Math.floor((Math.random() * 1000) + 1);
 //message sample number
 var x = document.getElementById("messengerx")
 x.innerHTML = Math.floor((Math.random() * 2000) + 1);
-
   </script>
 
 
