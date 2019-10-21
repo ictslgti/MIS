@@ -12,7 +12,7 @@ include_once ("menu.php");
 <!-- Block#2 start your code -->
 <?php
  
-  $sum=$mid = $m_name = $m_aim = $m_learning_h =  $m_resources = $m_l_outcomes =  $sid = $m_references= $m_r_unit= $m_lecture_h = $m_practical_h = $m_selfstudy_h = $cid= null;
+ $sum=$mid = $m_name = $m_aim = $m_learning_h =  $m_resources = $m_l_outcomes =  $sid = $m_references= $m_r_unit= $m_lecture_h = $m_practical_h = $m_selfstudy_h = $cid= null;
 
   if(isset($_GET['edits']))
   {
@@ -36,7 +36,7 @@ include_once ("menu.php");
     $m_selfstudy_h = $row['module_self_study_hours'];
     $cid = $row['course_id'];
 
-    echo $sum=$m_lecture_h+ $m_selfstudy_h +$m_practical_h ;
+    $sum=$m_lecture_h+ $m_selfstudy_h +$m_practical_h ;
     
 
     
