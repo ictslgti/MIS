@@ -136,32 +136,32 @@ include_once("menu.php");
     </tr>
   </thead>
   <tbody>
-    <tr>
-    <th scope="row">1</th>
-      <td>????</td>
-      <td>????</td>
-      <td>????</td>
-      <td>?????</td>
-      <td>?????</td>
-      <td>????</td>
-      <td>??????</td>
+  <?php
+  $sql = "SELECT * FROM `off_peak`";
+
+  $result = mysqli_query($con, $sql);
+  if(mysqli_num_rows($result) > 0){
+    while($row = mysqli_fetch_assoc($result)){
+    echo '<tr>
       
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+      <td>'.$row["registration_no"].'</td>
+      <td>'.$row["name_of_applicant"].'</td>
+      <td>'.$row["department"].'</td>
+      <td>'.$row["contact_no"].'</td>
+      <td>'.$row["date"].'</td>
+      <td>'.$row["time"].'</td>
+      <td>'.$row["reson_for_exit"].'</td>
+      
+    </tr>';
+
+  }
+}
+else{
+  echo "0 result";
+}
+
+    ?>
+    </tbody>
   
 
 <script>
