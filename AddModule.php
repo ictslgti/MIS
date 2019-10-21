@@ -11,7 +11,7 @@ include_once ("menu.php");
 
 <!-- Block#2 start your code -->
 <?php
- echo $_SESSION['user_name'];
+ 
   $sum=$mid = $m_name = $m_aim = $m_learning_h =  $m_resources = $m_l_outcomes =  $sid = $m_references= $m_r_unit= $m_lecture_h = $m_practical_h = $m_selfstudy_h = $cid= null;
 
   if(isset($_GET['edits']))
@@ -73,7 +73,6 @@ if(isset($_POST['Editing']))
   $m_practical_h = $_POST['practical'];
   $m_selfstudy_h = $_POST['selfstudy'];
   $cid = $_POST['cname'];
-  $cid = $_POST['cname'];
   $mid =$_GET['edits'];
 
   
@@ -123,7 +122,32 @@ if(isset($_POST['Adding']))
   $cid = $_POST['cname'];
   $mid =$_POST['mid'];
 
-     $sql = "INSERT INTO `module`(`module_id`, `module_name`, `module_aim`, `module_learning_hours`, `module_resources`, `module_learning_outcomes`, `semester_id`, `module_reference`, `module_relative_unit`, `module_lecture_hours`, `module_practical_hours`, `module_self_study_hours`, `course_id`) ( '$mid' ,'$m_name','$m_aim','$m_learning_h', '$m_resources' ,'$m_l_outcomes', '$sid','$m_references','$m_r_unit','$m_lecture_h','$m_practical_h','$m_selfstudy_h','$cid'  )";
+     $sql = "INSERT INTO `module`(`module_id`, 
+     `module_name`, 
+     `module_aim`, 
+     `module_learning_hours`, 
+     `module_resources`, 
+     `module_learning_outcomes`, 
+     `semester_id`, 
+     `module_reference`, 
+     `module_relative_unit`, 
+     `module_lecture_hours`, 
+     `module_practical_hours`, 
+     `module_self_study_hours`, 
+     `course_id`) values
+     ( '$mid' ,
+     '$m_name',
+     '$m_aim',
+     '$m_learning_h', 
+     '$m_resources' ,
+     '$m_l_outcomes',
+      '$sid',
+      '$m_references',
+      '$m_r_unit',
+      '$m_lecture_h',
+      '$m_practical_h',
+      '$m_selfstudy_h',
+      '$cid')";
      
      if(mysqli_query($con,$sql))
      {
@@ -153,6 +177,7 @@ if(isset($_POST['Adding']))
     </div>
 <br>
 <br>
+<form method="POST">
             <div class="row">
 
               <div class="col-md-6 mb-3">
@@ -230,7 +255,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
               </div>
-                <input type="text" class="form-control" id="Notional" placeholder="Hours in Digits"  name="notional" value="<?php echo $sum ?>" required>
+                <input type="text" class="form-control" id="Notional" placeholder="Hours in Digits"  name="notional" value="<?php echo $sum ?>" required disabled>
               <div class="invalid-feedback" style="width: 50%;">
                 Duration is required.
               </div>
@@ -285,7 +310,7 @@ if(isset($_POST['Adding']))
               <select class="custom-select d-block w-100"  name="semester" required>
                     <option selected  disabled selected>Select Semester Name...</option>
                     <?php
-                     $sql = "SELECT semester_id FROM module";
+                     $sql = "SELECT distinct semester_id FROM module";
                      $result = mysqli_query($con, $sql);
                      if(mysqli_num_rows($result)>0)
                      {
@@ -352,10 +377,8 @@ if(isset($_POST['Adding']))
                 References is required.
               </div>
               </div>
-            
-            </div>
-
-<?php
+              </form >
+              <?php
       if(isset($_GET['edits']))
       {
         echo '<input id="button" class="btn btn-primary btn-lg btn-block" type="submit" name="Editing" value ="Continue To Edit Module Details">';
@@ -365,6 +388,9 @@ if(isset($_POST['Adding']))
         echo '<input id="buttuon"  class="btn btn-primary btn-lg btn-block"type="submit" name="Adding" value ="Continue To Add Module Details">';
       }
       ?>
+       </div>
+            
+     
 <body>
 
 </body>
