@@ -12,7 +12,7 @@ include_once ("menu.php");
 <!-- Block#2 start your code -->
 <?php
  echo $_SESSION['user_name'];
-  $mid = $m_name = $m_aim = $m_learning_h =  $m_resources = $m_l_outcomes =  $sid = $m_references= $m_r_unit= $m_lecture_h = $m_practical_h = $m_selfstudy_h = $cid= null;
+  $sum=$mid = $m_name = $m_aim = $m_learning_h =  $m_resources = $m_l_outcomes =  $sid = $m_references= $m_r_unit= $m_lecture_h = $m_practical_h = $m_selfstudy_h = $cid= null;
 
   if(isset($_GET['edits']))
   {
@@ -35,6 +35,8 @@ include_once ("menu.php");
     $m_practical_h = $row['module_practical_hours'];
     $m_selfstudy_h = $row['module_self_study_hours'];
     $cid = $row['course_id'];
+
+    echo $sum=$m_lecture_h+ $m_selfstudy_h +$m_practical_h ;
     
 
     
@@ -155,7 +157,7 @@ if(isset($_POST['Adding']))
 
               <div class="col-md-6 mb-3">
                 <label for="ID">Module ID</label>
-                <input type="text" class="form-control" id="ID" placeholder="" value="<?php echo $mid ?>" name="mid" required disabled>
+                <input type="text" class="form-control" id="ID" placeholder="" value="<?php echo $mid ?>" name="mid" required>
               <div class="invalid-feedback">
                   Valid Module ID is required.
               </div>
@@ -228,7 +230,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
               </div>
-                <input type="text" class="form-control" id="Notional" placeholder="Hours in Digits"  name="notional"  required>
+                <input type="text" class="form-control" id="Notional" placeholder="Hours in Digits"  name="notional" value="<?php echo $sum ?>" required>
               <div class="invalid-feedback" style="width: 50%;">
                 Duration is required.
               </div>
