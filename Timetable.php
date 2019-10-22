@@ -25,8 +25,7 @@ include_once("menu.php");
       <th scope="col" width="5%"> Lecture </th>
       <th scope="col" width="20%"> WeekDays </th>
       <th scope="col" width="5%"> ClassRoom </th>
-      <th scope="col" width="8%"> StartDate</th>
-      <th scope="col" width="8%"> EndDate</th>
+    <th></th>
     </tr>
 
 
