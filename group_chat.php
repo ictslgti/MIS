@@ -164,7 +164,7 @@ if(isset($_GET['chat_group'])){
                 </form>
         </div>
         <ul class="list-group list-group-flush ">
-            <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i>
+            <li class="list-group-item list-group-item-action"> 
 
                 <?php
 
@@ -174,12 +174,12 @@ $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)> 0){
     while ($row = mysqli_fetch_assoc($result)){
       
-        echo'<a href="?chat_group='.$row ["chat_group_id"].'">
-        <tr>
+        echo'<i class="fas fa-user-circle"></i> <a href="?chat_group='.$row ["chat_group_id"].'">
+        <tr> 
         <td>' . $row ["chat_group_name"].'</td>
         
         <a ><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center">
-        </small></li><li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i>  </a>
+        </small></li><li class="list-group-item list-group-item-action"> </a>
         
         </tr>
         </a>';
