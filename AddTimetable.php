@@ -14,9 +14,10 @@ include_once("menu.php");
 $Department=$Course=$Module=$AcademicYear=$Lecture=$WeekDays=$Time=$ClassRoom=$startdate=$endeate= $tid=null;
 
 if(isset($_GET['edit']))
+
 {
   $id = $_GET['edit'];
-  $sql = "SELECT * FROM `timetable` WHERE `Department_id` = '$id'";
+  $sql = "SELECT * FROM `timetable` WHERE `time_id` = '$id'";
   $result = mysqli_query($con, $sql);
   if (mysqli_num_rows($result)==1)
    {
