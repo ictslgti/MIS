@@ -9,6 +9,27 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
+<?php
+if(isset($_GET['appr'])){
+  $reg = $row["registration_no"];
+  $sql ="SELECT * FROM `off_peak` WHERE `registration_no` = '$reg'";
+  $result = mysqli_query($con ,$sql);
+ if(mysqli_num_rows($result)== 1){
+      $row = mysqli_fetch_assoc($result);
+     
+       $reg=$row["registration_no"];
+      echo $noa=$row["name_of_applicant"];
+      $dept=$row["department"];
+      $cn=$row["contact_no"];
+      $da=$row["date"];
+      $ti=$row["time"];
+      $rfe=$row["reson_for_exit"];
+
+ }
+}
+
+?>
+
 <br><br>
 
 
@@ -24,9 +45,9 @@ include_once("menu.php");
     <table class="table table-responsive-sm w-100">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
+      
+    <th scope="col">Registration No</th>
       <th scope="col">Name of applicant</th>
-      <th scope="col">Registration No</th>
       <th scope="col">Department</th>
       <th scope="col">Contact No</th>
       <th scope="col">Date</th>
@@ -37,67 +58,34 @@ include_once("menu.php");
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>????</td>
-      <td>????</td>
-      <td>????</td>
-      <td>?????</td>
-      <td>?????</td>
-      <td>????</td>
-      <td>??????</td>
-      <td><input type="text" id="cmt"> </td>
-      <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>????</td>
-      <td>????</td>
-      <td>????</td>
-      <td>?????</td>
-      <td>?????</td>
-      <td>????</td>
-      <td>??????</td>
-      <td><input type="text" id="cmt"> </td>
-      <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>????</td>
-      <td>????</td>
-      <td>????</td>
-      <td>?????</td>
-      <td>?????</td>
-      <td>????</td>
-      <td>??????</td>
-      <td><input type="text" id="cmt"> </td>
-      <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
+  <?php
+  $sql = "SELECT * FROM `off_peak`";
+
+  $result = mysqli_query($con, $sql);
+  if(mysqli_num_rows($result) > 0){
+    while($row = mysqli_fetch_assoc($result)){
+    echo '<tr>
+      
+      <td>'.$row["registration_no"].'</td>
+      <td>'.$row["name_of_applicant"].'</td>
+      <td>'.$row["department"].'</td>
+      <td>'.$row["contact_no"].'</td>
+      <td>'.$row["date"].'</td>
+      <td>'.$row["time"].'</td>
+      <td>'.$row["reson_for_exit"].'</td>
+      <td><input type="text" id="cmt" name="cmt"> </td>
+      <td><button type="submit" class="btn btn-success btn-sm" name="appr"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="submit" class="btn btn-danger btn-sm" name="reje"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
     </tr>
     
-    <tr>
-      <th scope="row">3</th>
-      <td>????</td>
-      <td>????</td>
-      <td>????</td>
-      <td>?????</td>
-      <td>?????</td>
-      <td>????</td>
-      <td>??????</td>
-      <td><input type="text" id="cmt"> </td>
-      <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>????</td>
-      <td>????</td>
-      <td>????</td>
-      <td>?????</td>
-      <td>?????</td>
-      <td>????</td>
-      <td>??????</td>
-      <td><input type="text" id="cmt"> </td>
-      <td><button type="button" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
-    </tr>
+    </tr>';
+
+  }
+}
+else{
+  echo "0 result";
+}
+
+    ?>
   </tbody>
 </table>
 </div>
@@ -108,7 +96,7 @@ include_once("menu.php");
 
 </div>
 <a href="index.php"><<< Back to home </a>
-   
+  
 
 <!--END OF YOUR COD-->
 

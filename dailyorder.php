@@ -11,7 +11,6 @@ include_once("menu.php");
     <!-- end dont change the order-->
 <!--block 2 start my code here-->  
 
-
 <div class="shadow p-3 mb-5 bg-white rounded">
 
         <div class="highlight-blue">
@@ -26,17 +25,13 @@ include_once("menu.php");
         </div>
     </div>
     <form class="form-inline">
-  
-  
-  <div class="form-group mx-sm-3 mb-2">
-  <input class="form-control " type="text" placeholder="Search by name">
 
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> </button>
-    
-    
-    
-    
-    </div>
+
+  
+              <div class="form-group mx-sm-3 mb-2">
+              <input class="form-control" type="text" placeholder="Search by order Id">  
+              <input class="btn btn-primary" type="submit" value="Search"> 
+              </div>
 
   
 
@@ -53,7 +48,27 @@ include_once("menu.php");
     <p><h4>Order ID</h4></p>
   </div>
   <div class ="col-3" >
-      <p><h4></h4></p>
+      <p><h4>
+      <?php 
+      $sql ="SELECT DISTINCT `food_order_details_food_order_id`,`user_name`, `food_name`,`food_order_details_food_qty`,`food_order_details_food_qty`*`food_order_details_unit_price`
+      AS amount FROM `food`,`user`,`food_order_details`,`food_order` WHERE `food_order_details_food_id`=`food_id` and user_name =1 and `food_order_details_food_order_id`=1
+";
+$result = mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+ while($row=mysqli_fetch_assoc($result)){
+echo '<tr>
+
+    <td>' . $row["food_order_details_food_order_id"].'</td>
+  
+    
+    
+    </tr>';
+ }}
+ else{
+
+
+ }
+ ?></h4></p>
   </div>
 </div>
 <div class ="row">
@@ -61,7 +76,25 @@ include_once("menu.php");
     <p><h4>User name</h4></p>
   </div>
   <div class ="col-3" >
-      <p><h4></h4></p>
+      <p><h4><?php 
+      $sql ='SELECT DISTINCT `food_order_details_food_order_id`,`user_name`, `food_name`,`food_order_details_food_qty`,`food_order_details_food_qty`*`food_order_details_unit_price`
+      AS amount FROM `food`,`user`,`food_order_details`,`food_order` WHERE `food_order_details_food_id`=`food_id` and user_name ="achchuthan" and `food_order_details_food_order_id`=2';
+$result = mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+ while($row=mysqli_fetch_assoc($result)){
+echo '<tr>
+
+    <td>' . $row["user_name"].'</td>
+  
+    
+    
+    </tr>';
+ }}
+ else{
+
+
+ }
+ ?></h4></p></h4></p>
   </div>
 </div>
 
@@ -80,23 +113,26 @@ include_once("menu.php");
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-   
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-     
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td colspan="1"><h5><h5></td>
-      <td ><h5><h5></td>
-    </tr>
+  <?php
+$sql ="SELECT DISTINCT `food_name`,`food_order_details_food_qty`,`food_order_details_food_qty`*`food_order_details_unit_price`
+AS amount FROM `food`,`user`,`food_order_details`,`food_order` WHERE `food_order_details_food_id`=`food_id` and user_name =1 and `food_order_details_food_order_id`=1
+";
+$result = mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+ while($row=mysqli_fetch_assoc($result)){
+echo '<tr>
+
+    <td>' . $row["food_name"].'</td>
+    <td>' . $row["food_order_details_food_qty"].'</td>
+    <td>' . $row["amount"].'</td>
+    
+    </tr>';
+ }}
+ else{
+
+
+ }
+ ?>
   </tbody>
 </table>
 
@@ -108,6 +144,7 @@ include_once("menu.php");
 </div>
 
  </div>
+
 </form>
 </div>
 <div class="col-3">
@@ -115,89 +152,33 @@ include_once("menu.php");
 <table class="table table-borderless">
   <thead>
     <tr>
-      <th scope="col"></th>
-      <th scope="col">Item name</th>
-      <th scope="col">Item QTY</th>
+<th scope="col">Item name</th>
+<th scope="col">Item QTY</th>
+<?php
+$sql ="SELECT food_name ,(food_order_details_food_qty) as QTY FROM food,food_order_details WHERE food_order_details_food_id = food_id";
+$result = mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+ while($row=mysqli_fetch_assoc($result)){
+echo '<tr>
+    <td>' . $row["food_name"].'</td>
+    <td>' . $row["QTY"].'</td>
+    
+    </tr>';
+ }}
+ else{
 
+
+ }
+ ?>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row"></th>
-      <td>rotti</td>
-      <td>Otto</td>
-  
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>pittu</td>
-      <td>Thornton</td>
-     
-    </tr>
-    <tr>
-      <th scope="row"></th>
-   <td>noodles</td>
-   <td>@gmail</td>
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>Mark</td>
-      <td>Otto</td>
-  
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>Mark</td>
-      <td>Otto</td>
-  
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>Mark</td>
-      <td>Otto</td>
-  
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>Mark</td>
-      <td>Otto</td>
-  
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-     
-    </tr>
-    <tr>
-      <th scope="row"></th>
-   <td>@twitter</td>
-   <td>@gmail</td>
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>Mark</td>
-      <td>Otto</td>
-  
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>Mark</td>
-      <td>Otto</td>
-  
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>Mark</td>
-      <td>Otto</td>
-  
+    <tr class="table-light" >
+   
     </tr>
   </tbody>
 </table>
-<div class="btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-primary active">
-    <input type="checkbox" checked autocomplete="off"> Check</label>
-</div>
+
 </div>
 </div>
 </div>

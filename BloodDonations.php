@@ -4,6 +4,7 @@ $title = "Home | SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
+
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
@@ -19,8 +20,8 @@ include_once("menu.php");
 <div class="col-sm-6 " ></div>
 <div class="col-sm-3 " > 
 <form class="form-inline md-form form-sm mt-4">
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_date" aria-label="Search"id="search"> 
-  <i class="fas fa-search ml-3" aria-hidden="true"></i>
+  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="search" placeholder="Search_id" aria-label="Search"id="search"> 
+ <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button>
 </form>
 </div>
 </div>
@@ -37,7 +38,7 @@ include_once("menu.php");
 </div>
 
 <table class="table table-responsive-sm w-100">
-  <thead class="thead-dark">
+  <thead class="thead-light">
     <tr>
     <th scope="col"><i class="far fa-id-card"></i>&nbsp;Donation_id</th>
       <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Date</th>
@@ -45,10 +46,52 @@ include_once("menu.php");
       
     </tr>
   </thead>
+
+  <?php
+  
+    $sql="SELECT * from donation";
+    $result=mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)>0)
+    {
+        while($row=mysqli_fetch_assoc($result))
+        {
+        echo '   
+        <tr>
+            <td>'.$row["donation_id"].'</td>
+            <td>'.$row["date"].'</td>
+            <td>'.$row["programme"].'</td>
+            
+        </tr>';
+        }
+    }
+    else {
+        echo "0 results";
+    }
+    ?>
   </table>
+<!-- search  -->
+<?php
+  if(isset($_GET['edit'])){
+        $id=$_GET['edit'];
+        $sql="SELECT * FROM `donation` WHERE `donation_id`='$id'";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+            $donation=$row['donation_id'];
+            $date=$row['date'];
+            $programme=$row['programme'];
+           
+            
+        }
+        else{
+          echo "Error".$sql."<br>".mysqli_error($con);
+        }
+    }
+  
+?>
 
 
-  <button type="submit" class="btn btn-danger"  ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
+  <button type="submit" class="btn btn-danger" onclick="location.href='index.php'"   ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
 
 
 </div>
