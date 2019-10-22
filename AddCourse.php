@@ -180,7 +180,7 @@ if(isset($_POST['Adding']))
               <div class="col-md-6 mb-3">
                 <label for="Level">NVQ Level</label>
                 <select class="custom-select d-block w-100"  name="n_level" required>
-                <option disabled selected>Select NVQ Level...</option>
+                <option disabled selected>Select NVQ Level</option>
                     <?php
                      $sql = "SELECT distinct course_nvq_level FROM course";
                      $result = mysqli_query($con, $sql);
