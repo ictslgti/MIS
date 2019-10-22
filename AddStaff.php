@@ -220,7 +220,7 @@ if(isset($_POST['Add'])){
               if (mysqli_num_rows($result) > 0) {
                   while($row = mysqli_fetch_assoc($result)) {
                   echo '<option  value="'.$row["staff_position_type_id"].'" required';
-                  if($row["staff_position_type_name"]==$Position) echo ' selected';
+                  if($row["staff_position_type_id"]==$Position) echo ' selected';
                   echo '>'.$row["staff_position_type_name"].'</option>';
                   }
               }
@@ -248,19 +248,19 @@ if(isset($_POST['Add'])){
 
     <div class="form-group col-lg-4 pt-2">
       <label for="text" class="font-weight-bolder pl-1">Status :</label><br>
-      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Type</label>
+      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Status</label>
       <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['status'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['status'])){echo ' is-valid';} ?>"  id="status" name="status">
             <option selected disabled>Choose Status</option>
             <option value="Working"
-            <?php if($Type=="Working")  echo 'selected';?>
+            <?php if($status=="Working")  echo 'selected';?>
             >Working Staff</option>
 
             <option value="Terminated"
-            <?php if($Type=="Terminated")  echo 'selected';?>
+            <?php if($status=="Terminated")  echo 'selected';?>
             >Terminated</option>
 
             <option value="Resigned"
-            <?php if($Type=="Resigned")  echo 'selected';?>
+            <?php if($status=="Resigned")  echo 'selected';?>
             >Resigned</option>
       </select>
     </div>
