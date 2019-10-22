@@ -94,7 +94,7 @@ include_once("menu.php");
             <td> 
            
             <a href=" donor.php ?edit='.$row["d_id"].' class="class="btn btn-outline-success btn-icon-split"""><i class="far fa-edit"></i>&nbsp;&nbsp;  </a>  
-            <a href=" ?delete='.$row["d_id"].' class="class="btn btn-outline-success btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a> 
+            <button class="btn btn-outline-danger btn-icon-split" data-href="?delete_id='.$row["d_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
            
             </td>
         </tr>';
