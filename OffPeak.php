@@ -32,7 +32,7 @@ if(isset($_GET['approve'])){
           SET `name_of_applicant` = ' $noa', 
           `department` = '$dept',
           `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`= '$cmt',`status`='Approved'
-          WHERE `off_peak`.`registration_no` = '$reg'";
+          WHERE `off_peak`.`registration_no` = '$reg' and `off_peak`.  `date`='$da' ";
         
           if(mysqli_query($con,$sql)){
               echo "new record update sucessfully ";
@@ -69,7 +69,7 @@ if(isset($_GET['reject'])){
           SET `name_of_applicant` = ' $noa', 
           `department` = '$dept',
           `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`='$cmt',`status`='Rejected'
-          WHERE `off_peak`.`registration_no` = '$reg' and `off_peak`. `date`='$date' ";
+          WHERE `off_peak`.`registration_no` = '$reg' and `off_peak`. `date`='$da' ";
         
           if(mysqli_query($con,$sql)){
               echo "new record update sucessfully ";
