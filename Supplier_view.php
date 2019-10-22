@@ -82,7 +82,10 @@ include_once("menu.php");
           <td>'. $row["supplier_address"]."<br>".'</td>
           
           <td>
-          <a href="AddSupplier.php? edit='.$row["supplier_id"].'"> Edit </a> 
+          
+          <a href="AddSupplier.php ?edits='.$row["supplier_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                                    <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["supplier_id"].'" 
+                                    data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
           </td>
        </tr> ';
      }
