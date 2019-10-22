@@ -9,12 +9,8 @@ include_once("menu.php");
 
 <!-- Sidebar -->
 <div class="row">
-<div class="col-4">
 
-</div>
-
-
-<div class="col-5">
+<div class="col-7">
 <ul class="nav justify-content-last">
 <div class="container ">
     <h1 class="display-1 "><h4>New Group</h4>
@@ -35,7 +31,7 @@ include_once("menu.php");
   </div> 
 
 
-<div class="col-3">
+<div class="col-5">
 <div class="card-body p-3 mb-2 bg-dark text-white ">
   <p class="card-text "><h1><i class="fas fa-users float-right"></h1></i><h5 class="text-center">Student Contact </h5></p> 
   </div>
