@@ -25,8 +25,7 @@ include_once("menu.php");
       <th scope="col" width="5%"> Lecture </th>
       <th scope="col" width="20%"> WeekDays </th>
       <th scope="col" width="5%"> ClassRoom </th>
-      <th scope="col" width="8%"> StartDate</th>
-      <th scope="col" width="8%"> EndDate</th>
+    <th></th>
     </tr>
 
 
@@ -35,7 +34,7 @@ include_once("menu.php");
 
    
 <?php
-   $sql = "SELECT department_id,course_id,module_id,academic_year,staff_id,weekdays,classroom,startdate,enddate  FROM timetable";
+   $sql = "SELECT department_id,course_id,module_id,academic_year,staff_id,weekdays,classroom FROM timetable";
    $result = mysqli_query ($con, $sql);
    if (mysqli_num_rows($result)>0)
    {
@@ -50,8 +49,7 @@ include_once("menu.php");
           <td>'. $row["staff_id"]."<br>".'</td>
           <td>'. $row["weekdays"]."<br>".'</td>
           <td>'. $row["classroom"]."<br>".'</td>
-          <td>'. $row["startdate"]."<br>".'</td>
-          <td>'. $row["enddate"]."<br>".'</td>   
+           
         
           <td>
           <a href="AddTimetable.php? edit='.$row["department_id"].'"> Edit </a> |
