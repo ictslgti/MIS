@@ -11,7 +11,7 @@ include_once("menu.php");
 
 
 
-<form>
+<form method="post" action="">
 <div class=" border rounded-lg border-primary mr-5 ml-5 mt-5 mb-5">
     <div class="row">
                     <div class="col-12">
@@ -43,6 +43,61 @@ include_once("menu.php");
                           </div>
                       </div>
 
+                      <div class="row">
+                        <div class="col">
+                        <br>
+                        </div>
+                      </div>
+
+                      <div class="row ml-2">
+                        <div class="col" style="font-size:17px">
+                          
+                        
+
+                        <table class="table table-hover">
+                        <thead>
+                            <tr>
+
+                            <?php
+                            $sql="SELECT  `feedback_survey`.`survey_id` AS `survey_id`,`course`.`course_name` AS `course_name` ,
+                            `module`.`module_name` AS `module_name`,
+                            `staff`.`staff_name` AS  `staff_name`,
+                            `feedback_survey`.`end_date` AS  `end_date`
+                            from `feedback_survey`,`course`,`module`,`staff` ";
+                            
+                            if(isset($_GET['id'])){
+                                $get_survey_id=$_GET['id'];
+                                $sql.="WHERE `feedback_survey`.`course_id`=`course`.`course_id` and `feedback_survey`.`module_id`=`module`.`module_id` and `feedback_survey`.`staff_id`=`staff`.`staff_id` and `feedback_survey`.`survey_id`= $get_survey_id";
+                                
+                            }
+                            $result = mysqli_query($con, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $survey_id=$row["survey_id"];
+                               echo '
+                               <th scope="col" name="survey_id">' . $row["survey_id"]. '</th>
+                               <th scope="col" name="staff_name">' . $row["staff_name"]. '</th>
+                               <th scope="col" name="course_name">' . $row["course_name"]. '</th>
+                               <th scope="col" name="module_name">' . $row["module_name"]. '</th>
+                               <th scope="col" class="text-danger" name="end_date">' . $row["end_date"]. '</th>
+                               
+                               ';
+                               
+                            }
+                            } else {
+                            echo "0 results";
+                            }
+                            ?>
+                            </tr>
+                        </thead>
+                        </table>
+                        <tr>
+
+
+                        </div>
+                      </div>
+
 
                       <div class="row">
                         <div class="col">
@@ -55,6 +110,8 @@ include_once("menu.php");
 
                     </div>
     </div>
+
+
     <div class="row">
             <div class="col-12">
                         <div class="row border-bottom mb-4 mr-4 ml-4" >
@@ -71,27 +128,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" id="fb1a" name="q1">
+                                    <input type="radio" class="custom-control-input" id="fb1a" value="1" name="feedback_q1" />
                                     <label class="custom-control-label" for="fb1a">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="f1b2b" name="q1">
-                                          <label class="custom-control-label" for="f1b2b">2</label>
+                                     <input type="radio" class="custom-control-input" id="f1b2b" value="2" name="feedback_q1" />
+                                    <label class="custom-control-label" for="f1b2b">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb3c" name="q1">
-                                          <label class="custom-control-label" for="fb3c">3</label>
+                                    <input type="radio" class="custom-control-input" id="fb3c" value="3" name="feedback_q1" />
+                                    <label class="custom-control-label" for="fb3c">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb4d" name="q1">
+                                    <input type="radio" class="custom-control-input" id="fb4d" value="4" name="feedback_q1" />
                                           <label class="custom-control-label" for="fb4d">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5e" name="q1">
+                                    <input type="radio" class="custom-control-input" id="fb5e" value="5" name="feedback_q1" />
                                           <label class="custom-control-label" for="fb5e">5</label>
                                 </div>
                             </div>
@@ -104,27 +161,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb1f" name="q2">
+                                <input type="radio" class="custom-control-input" id="fb1f" value="1" name="feedback_q2" />
                                 <label class="custom-control-label" for="fb1f">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb2g" name="q2">
+                                <input type="radio" class="custom-control-input" id="fb2g" value="2" name="feedback_q2" />
                                           <label class="custom-control-label" for="fb2g">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb3h" name="q2">
+                                <input type="radio" class="custom-control-input" id="fb3h" value="3" name="feedback_q2" />
                                           <label class="custom-control-label" for="fb3h">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb4i" name="q2">
+                                <input type="radio" class="custom-control-input" id="fb4i" value="4" name="feedback_q2" />
                                           <label class="custom-control-label" for="fb4i">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5j" name="q2">
+                                <input type="radio" class="custom-control-input" id="fb5j" value="5" name="feedback_q2" />
                                           <label class="custom-control-label" for="fb5j">5</label>
                                 </div>
                             </div>
@@ -137,27 +194,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb1k" name="q3">
+                                <input type="radio" class="custom-control-input" id="fb1k" value="1" name="feedback_q3" />
                                           <label class="custom-control-label" for="fb1k">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb2l" name="q3">
+                                <input type="radio" class="custom-control-input" id="fb2l" value="2" name="feedback_q3" />
                                           <label class="custom-control-label" for="fb2l">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb3m" name="q3">
+                                <input type="radio" class="custom-control-input" id="fb3m" value="3" name="feedback_q3" />
                                           <label class="custom-control-label" for="fb3m">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb4n" name="q3">
+                                <input type="radio" class="custom-control-input" id="fb4n" value="4" name="feedback_q3" />
                                           <label class="custom-control-label" for="fb4n">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5o" name="q3">
+                                <input type="radio" class="custom-control-input" id="fb5o" value="5" name="feedback_q3" />
                                           <label class="custom-control-label" for="fb5o">5</label>
                                 </div>
                             </div>
@@ -170,27 +227,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5p" name="q4">
+                                <input type="radio" class="custom-control-input" id="fb5p" value="1" name="feedback_q4" />
                                           <label class="custom-control-label" for="fb5p">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5q" name="q4">
+                                <input type="radio" class="custom-control-input" id="fb5q" value="2" name="feedback_q4" />
                                           <label class="custom-control-label" for="fb5q">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5r" name="q4">
+                                <input type="radio" class="custom-control-input" id="fb5r" value="3" name="feedback_q4" />
                                           <label class="custom-control-label" for="fb5r">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5s" name="q4">
+                                <input type="radio" class="custom-control-input" id="fb5s" value="4" name="feedback_q4" />
                                           <label class="custom-control-label" for="fb5s">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5t" name="q4">
+                                <input type="radio" class="custom-control-input" id="fb5t" value="5" name="feedback_q4" />
                                           <label class="custom-control-label" for="fb5t">5</label>
                                 </div>
                             </div>
@@ -203,27 +260,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5u" name="q5">
+                                <input type="radio" class="custom-control-input" id="fb5u" value="1" name="feedback_q5" />
                                           <label class="custom-control-label" for="fb5u">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5x" name="q5">
+                                <input type="radio" class="custom-control-input" id="fb5x" value="2" name="feedback_q5" />
                                           <label class="custom-control-label" for="fb5x">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5y" name="q5">
+                                <input type="radio" class="custom-control-input" id="fb5y" value="3" name="feedback_q5" />
                                           <label class="custom-control-label" for="fb5y">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb5z" name="q5">
+                                <input type="radio" class="custom-control-input" id="fb5z" value="4" name="feedback_q5" />
                                           <label class="custom-control-label" for="fb5z">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51a" name="q5">
+                                <input type="radio" class="custom-control-input" id="fb51a" value="5" name="feedback_q5" />
                                           <label class="custom-control-label" for="fb51a">5</label>
                                 </div>
                             </div>
@@ -236,27 +293,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51b" name="q6">
+                                <input type="radio" class="custom-control-input" id="fb51b" value="1" name="feedback_q6" />
                                           <label class="custom-control-label" for="fb51b">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51c" name="q6">
+                                <input type="radio" class="custom-control-input" id="fb51c" value="2" name="feedback_q6" />
                                           <label class="custom-control-label" for="fb51c">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51d" name="q6">
+                                <input type="radio" class="custom-control-input" id="fb51d" value="3" name="feedback_q6" />
                                           <label class="custom-control-label" for="fb51d">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51e" name="q6">
+                                <input type="radio" class="custom-control-input" id="fb51e" value="4" name="feedback_q6" />
                                           <label class="custom-control-label" for="fb51e">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51f" name="q6">
+                                <input type="radio" class="custom-control-input" id="fb51f" value="5" name="feedback_q6" />
                                           <label class="custom-control-label" for="fb51f">5</label>
                                 </div>
                             </div>
@@ -269,27 +326,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51g" name="q7">
+                                <input type="radio" class="custom-control-input" id="fb51g" value="1" name="feedback_q7" />
                                           <label class="custom-control-label" for="fb51g">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51h" name="q7">
+                                <input type="radio" class="custom-control-input" id="fb51h" value="2" name="feedback_q7" />
                                           <label class="custom-control-label" for="fb51h">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51i" name="q7">
+                                <input type="radio" class="custom-control-input" id="fb51i"  value="3" name="feedback_q7" />
                                           <label class="custom-control-label" for="fb51i">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51j" name="q7">
+                                <input type="radio" class="custom-control-input" id="fb51j"  value="4" name="feedback_q7" />
                                           <label class="custom-control-label" for="fb51j">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51k" name="q7">
+                                <input type="radio" class="custom-control-input" id="fb51k" value="5" name="feedback_q7" />
                                           <label class="custom-control-label" for="fb51k">5</label>
                                 </div>
                             </div>
@@ -302,27 +359,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51l" name="q8">
+                                <input type="radio" class="custom-control-input" id="fb51l" value="1" name="feedback_q8" />
                                           <label class="custom-control-label" for="fb51l">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51m" name="q8">
+                                <input type="radio" class="custom-control-input" id="fb51m" value="2" name="feedback_q8" />
                                           <label class="custom-control-label" for="fb51m">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51n" name="q8">
+                                <input type="radio" class="custom-control-input" id="fb51n" value="3" name="feedback_q8" />
                                           <label class="custom-control-label" for="fb51n">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51o" name="q8">
+                                <input type="radio" class="custom-control-input" id="fb51o" value="4" name="feedback_q8" />
                                           <label class="custom-control-label" for="fb51o">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51p" name="q8">
+                                <input type="radio" class="custom-control-input" id="fb51p" value="5" name="feedback_q8" />
                                           <label class="custom-control-label" for="fb51p">5</label>
                                 </div>
                             </div>
@@ -335,27 +392,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51q" name="q9">
+                                <input type="radio" class="custom-control-input" id="fb51q" value="1" name="feedback_q9" />
                                           <label class="custom-control-label" for="fb51q">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51r" name="q9">
+                                <input type="radio" class="custom-control-input" id="fb51r" value="2" name="feedback_q9" />
                                           <label class="custom-control-label" for="fb51r">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51s" name="q9">
+                                <input type="radio" class="custom-control-input" id="fb51s" value="3" name="feedback_q9" />
                                           <label class="custom-control-label" for="fb51s">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51t" name="q9">
+                                <input type="radio" class="custom-control-input" id="fb51t" value="4" name="feedback_q9" />
                                           <label class="custom-control-label" for="fb51t">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb51u" name="q9">
+                                <input type="radio" class="custom-control-input" id="fb51u" value="5" name="feedback_q9" />
                                           <label class="custom-control-label" for="fb51u">5</label>
                                 </div>
                             </div>
@@ -380,27 +437,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" id="fa1a" name="q1">
+                                    <input type="radio" class="custom-control-input" id="fa1a" value="1" name="feedback_q10" />
                                     <label class="custom-control-label" for="fa1a">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fb2b" name="q1">
+                                <input type="radio" class="custom-control-input" id="fb2b" value="2" name="feedback_q10" />
                                           <label class="custom-control-label" for="fb2b">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fc3c" name="q1">
+                                <input type="radio" class="custom-control-input" id="fc3c" value="3" name="feedback_q10" />
                                           <label class="custom-control-label" for="fc3c">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fd4d" name="q1">
+                                <input type="radio" class="custom-control-input" id="fd4d" value="4" name="feedback_q10" />
                                           <label class="custom-control-label" for="fd4d">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fe5e" name="q1">
+                                <input type="radio" class="custom-control-input" id="fe5e" value="5" name="feedback_q10" />
                                           <label class="custom-control-label" for="fe5e">5</label>
                                 </div>
                             </div>
@@ -413,27 +470,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="ff1f" name="q2">
+                                <input type="radio" class="custom-control-input" id="ff1f" value="1" name="feedback_q11" />
                                 <label class="custom-control-label" for="ff1f">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fg2g" name="q2">
+                                <input type="radio" class="custom-control-input" id="fg2g" value="2" name="feedback_q11" />
                                           <label class="custom-control-label" for="fg2g">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fh3h" name="q2">
+                                <input type="radio" class="custom-control-input" id="fh3h" value="3" name="feedback_q11" />
                                           <label class="custom-control-label" for="fh3h">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fi4i" name="q2">
+                                <input type="radio" class="custom-control-input" id="fi4i" value="4" name="feedback_q11" />
                                           <label class="custom-control-label" for="fi4i">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fj5j" name="q2">
+                                <input type="radio" class="custom-control-input" id="fj5j" value="5" name="feedback_q11" />
                                           <label class="custom-control-label" for="fj5j">5</label>
                                 </div>
                             </div>
@@ -446,27 +503,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fk1k" name="q3">
+                                <input type="radio" class="custom-control-input" id="fk1k" value="1" name="feedback_q12" />
                                           <label class="custom-control-label" for="fk1k">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fl2l" name="q3">
+                                <input type="radio" class="custom-control-input" id="fl2l" value="2" name="feedback_q12" />
                                           <label class="custom-control-label" for="fl2l">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fm3m" name="q3">
+                                <input type="radio" class="custom-control-input" id="fm3m" value="3" name="feedback_q12" />
                                           <label class="custom-control-label" for="fm3m">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fn4n" name="q3">
+                                <input type="radio" class="custom-control-input" id="fn4n" value="4" name="feedback_q12" />
                                           <label class="custom-control-label" for="fn4n">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fo5o" name="q3">
+                                <input type="radio" class="custom-control-input" id="fo5o" value="5" name="feedback_q12" />
                                           <label class="custom-control-label" for="fo5o">5</label>
                                 </div>
                             </div>
@@ -479,27 +536,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fp5p" name="q4">
+                                <input type="radio" class="custom-control-input" id="fp5p" value="1" name="feedback_q13" />
                                           <label class="custom-control-label" for="fp5p">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fq5q" name="q4">
+                                <input type="radio" class="custom-control-input" id="fq5q"  value="2" name="feedback_q13" />
                                           <label class="custom-control-label" for="fq5q">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fr5r" name="q4">
+                                <input type="radio" class="custom-control-input" id="fr5r" value="3" name="feedback_q13" />
                                           <label class="custom-control-label" for="fr5r">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fs5s" name="q4">
+                                <input type="radio" class="custom-control-input" id="fs5s" value="4" name="feedback_q13" />
                                           <label class="custom-control-label" for="fs5s">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="ft5t" name="q4">
+                                <input type="radio" class="custom-control-input" id="ft5t" value="5" name="feedback_q13" />
                                           <label class="custom-control-label" for="ft5t">5</label>
                                 </div>
                             </div>
@@ -512,27 +569,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fu5u" name="q5">
+                                <input type="radio" class="custom-control-input" id="fu5u" value="1" name="feedback_q14" />
                                           <label class="custom-control-label" for="fu5u">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fx5x" name="q5">
+                                <input type="radio" class="custom-control-input" id="fx5x" value="2" name="feedback_q14" />
                                           <label class="custom-control-label" for="fx5x">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fy5y" name="q5">
+                                <input type="radio" class="custom-control-input" id="fy5y" value="3" name="feedback_q14" />
                                           <label class="custom-control-label" for="fy5y">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="fz5z" name="q5">
+                                <input type="radio" class="custom-control-input" id="fz5z" value="4" name="feedback_q14" />
                                           <label class="custom-control-label" for="fz5z">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="ab51a" name="q5">
+                                <input type="radio" class="custom-control-input" id="ab51a" value="5" name="feedback_q14" />
                                           <label class="custom-control-label" for="ab51a">5</label>
                                 </div>
                             </div>
@@ -545,27 +602,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="bb51b" name="q6">
+                                <input type="radio" class="custom-control-input" id="bb51b" value="1" name="feedback_q15" />
                                           <label class="custom-control-label" for="bb51b">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="cb51c" name="q6">
+                                <input type="radio" class="custom-control-input" id="cb51c" value="2" name="feedback_q15" />
                                           <label class="custom-control-label" for="cb51c">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="db51d" name="q6">
+                                <input type="radio" class="custom-control-input" id="db51d" value="3" name="feedback_q15" />
                                           <label class="custom-control-label" for="db51d">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="eb51e" name="q6">
+                                <input type="radio" class="custom-control-input" id="eb51e" value="4" name="feedback_q15" />
                                           <label class="custom-control-label" for="eb51e">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="ffb51f" name="q6">
+                                <input type="radio" class="custom-control-input" id="ffb51f" value="5" name="feedback_q15" />
                                           <label class="custom-control-label" for="ffb51f">5</label>
                                 </div>
                             </div>
@@ -578,27 +635,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="gb51g" name="q7">
+                                <input type="radio" class="custom-control-input" id="gb51g" value="1" name="feedback_q16" />
                                           <label class="custom-control-label" for="gb51g">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="hb51h" name="q7">
+                                <input type="radio" class="custom-control-input" id="hb51h" value="2" name="feedback_q16" />
                                           <label class="custom-control-label" for="hb51h">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="ib51i" name="q7">
+                                <input type="radio" class="custom-control-input" id="ib51i" value="3" name="feedback_q16" />
                                           <label class="custom-control-label" for="ib51i">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="jb51j" name="q7">
+                                <input type="radio" class="custom-control-input" id="jb51j" value="4" name="feedback_q16" />
                                           <label class="custom-control-label" for="jb51j">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="kb51k" name="q7">
+                                <input type="radio" class="custom-control-input" id="kb51k" value="5" name="feedback_q16" />
                                           <label class="custom-control-label" for="kb51k">5</label>
                                 </div>
                             </div>
@@ -611,27 +668,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="lb51l" name="q8">
+                                <input type="radio" class="custom-control-input" id="lb51l" value="1" name="feedback_q17" />
                                           <label class="custom-control-label" for="lb51l">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="mb51m" name="q8">
+                                <input type="radio" class="custom-control-input" id="mb51m" value="2" name="feedback_q17" />
                                           <label class="custom-control-label" for="mb51m">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="nb51n" name="q8">
+                                <input type="radio" class="custom-control-input" id="nb51n" value="3" name="feedback_q17" />
                                           <label class="custom-control-label" for="nb51n">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="ob51o" name="q8">
+                                <input type="radio" class="custom-control-input" id="ob51o" value="4" name="feedback_q17" />
                                           <label class="custom-control-label" for="ob51o">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="pb51p" name="q8">
+                                <input type="radio" class="custom-control-input" id="pb51p" value="5" name="feedback_q17" />
                                           <label class="custom-control-label" for="pb51p">5</label>
                                 </div>
                             </div>
@@ -644,27 +701,27 @@ include_once("menu.php");
 
                             <div class="col">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="qb51q" name="q9">
+                                <input type="radio" class="custom-control-input" id="qb51q" value="1" name="feedback_q18" />
                                           <label class="custom-control-label" for="qb51q">1</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="rb51r" name="q9">
+                                <input type="radio" class="custom-control-input" id="rb51r" value="2" name="feedback_q18" />
                                           <label class="custom-control-label" for="rb51r">2</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="sb51s" name="q9">
+                                <input type="radio" class="custom-control-input" id="sb51s" value="3" name="feedback_q18" />
                                           <label class="custom-control-label" for="sb51s">3</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="tb51t" name="q9">
+                                <input type="radio" class="custom-control-input" id="tb51t" value="4" name="feedback_q18" />
                                           <label class="custom-control-label" for="tb51t">4</label>
                                 </div>
 
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="ub51u" name="q9">
+                                <input type="radio" class="custom-control-input" id="ub51u" value="5" name="feedback_q18" />
                                           <label class="custom-control-label" for="ub51u">5</label>
                                 </div>
                             </div>
@@ -677,7 +734,7 @@ include_once("menu.php");
                     <div class="col">
                       <div class="form-group">
                         <label for="comment">Comment:</label>
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                        <textarea class="form-control" rows="5" id="comment" name="feedback_commond"></textarea>
                       </div>
                     </div>
                 </div>
@@ -685,13 +742,61 @@ include_once("menu.php");
                 <div class="row">
                     <div class="col">
                       <div class="form-group">
-                        <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+                        <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button> -->
+                        <input type="submit" value="Submit" name="add" class="btn btn-primary btn-lg btn-block">
                       </div>
                     </div>
                 </div>
 
 
 </div>
+</form>
+
+<?php
+if (isset($_POST['add'])) {
+    if (!empty($_POST['feedback_q1'])&&!empty($_POST['feedback_q2'])&&
+    !empty($_POST['feedback_q3'])&&!empty($_POST['feedback_q4'])&&
+    !empty($_POST['feedback_q5'])&&!empty($_POST['feedback_q6'])&&
+    !empty($_POST['feedback_q7'])&&!empty($_POST['feedback_q8'])&&
+    !empty($_POST['feedback_q9'])&&!empty($_POST['feedback_q10'])&&
+    !empty($_POST['feedback_q11'])&&!empty($_POST['feedback_q12'])&&
+    !empty($_POST['feedback_q13'])&&!empty($_POST['feedback_q14'])&&
+    !empty($_POST['feedback_q15'])&&!empty($_POST['feedback_q16'])&&
+    !empty($_POST['feedback_q17'])&&!empty($_POST['feedback_q18'])&&!empty($_POST['feedback_commond'])){
+        $feedback_q1 = $_POST['feedback_q1'];
+        $feedback_q2 = $_POST['feedback_q2'];
+        $feedback_q3 = $_POST['feedback_q3'];
+        $feedback_q4 = $_POST['feedback_q4'];
+        $feedback_q5 = $_POST['feedback_q5'];
+        $feedback_q6 = $_POST['feedback_q6'];
+        $feedback_q7 = $_POST['feedback_q7'];
+        $feedback_q8 = $_POST['feedback_q8'];
+        $feedback_q9 = $_POST['feedback_q9'];
+        $feedback_q10 = $_POST['feedback_q10'];
+        $feedback_q11 = $_POST['feedback_q11'];
+        $feedback_q12 = $_POST['feedback_q12'];
+        $feedback_q13 = $_POST['feedback_q13'];
+        $feedback_q14 = $_POST['feedback_q14'];
+        $feedback_q15 = $_POST['feedback_q15'];
+        $feedback_q16 = $_POST['feedback_q16'];
+        $feedback_q17 = $_POST['feedback_q17'];
+        $feedback_q18 = $_POST['feedback_q18'];
+        $feedback_commond = $_POST['feedback_commond'];
+
+        $sql="INSERT INTO `feedback` (`feedback_q1`, `feedback_q2`, `feedback_q3`, `feedback_q4`, `feedback_q5`, `feedback_q6`, `feedback_q7`, `feedback_q8`, `feedback_q9`, `feedback_q10`, `feedback_q11`, `feedback_q12`, `feedback_q13`, `feedback_q14`, `feedback_q15`, `feedback_q16`, `feedback_q17`, `feedback_q18`, `feedback_commond`, `survey_id`) VALUES('$feedback_q1','$feedback_q2','$feedback_q3','$feedback_q4','$feedback_q5','$feedback_q6','$feedback_q7','$feedback_q8','$feedback_q9','$feedback_q10','$feedback_q11','$feedback_q12','$feedback_q13','$feedback_q14','$feedback_q15','$feedback_q16','$feedback_q17','$feedback_q18','$feedback_commond','$survey_id')";
+        if(mysqli_query($con,$sql)){
+            $message ="New record created successfully";
+            echo "<script type='text/javascript'> alert('$message');</script>";
+        }else{
+            echo "Error :-".$sql.
+          "<br>"  .mysqli_error($con);
+        }
+       
+    }
+}
+    ?>
+
+     <!-- ,`staff_name`,`course_name`,`module_name`,`survey_id`,'$staff_name','$course_name','$module_name','$survey_id' -->
 <!--END OF YOUR COD-->
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
