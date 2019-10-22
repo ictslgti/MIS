@@ -166,12 +166,27 @@ if(isset($_POST['Add'])){
          
           
           <td align="center">
-          <input type="radio" name="attendance_status" value="Present" />
+          <div class="input-group">
+          <div class="input-group-prepend">
+            
+            <input type="radio" aria-label="Radio button for following text input">
+            </div>
         </td>
         <td align="center">
-        <input type="radio" name="attendance_status" checked value="Absent" />
-      </td>
-       </tr> ';
+        <div class="input-group">
+        <div class="input-group-prepend">
+    
+    <input type="radio" aria-label="Radio button for following text input">
+    </div>
+        </td>
+        </tr>     
+                
+         ';
+         
+         
+       
+
+       
      }
    }
    else
@@ -183,10 +198,11 @@ if(isset($_POST['Add'])){
 
 
 
+          
+ 
+ 
+ 
   
- 
- 
-                   
                
          
               </table>
@@ -288,6 +304,8 @@ if(isset($_POST['Add'])){
    </div>
   </div>
 </div>
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
   </script>
