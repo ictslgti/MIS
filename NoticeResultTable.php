@@ -57,8 +57,9 @@ if(mysqli_num_rows($result)>0)
             <td>'. $row["academic_year"] .  "<br>" .'</td>
             <td>'. $row["course_id"] .  "<br>" .'</td>
             <td>'. $row["module_id"] .  "<br>" .'</td>
-            <td>  <a href=" NoticeAddResult.php ?edit='.$row["result_id"].' "> Edit </a>      
-                  <a href=" ?delete='.$row["result_id"].' "> Delete </a> 
+            <td>   
+                    <a href="NoticeAddResult.php ?edit='.$row["result_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                    <button class="btn btn-sm btn-danger" data-href="?delete='.$row["result_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>     
             </td>     
         </tr>';
     }
