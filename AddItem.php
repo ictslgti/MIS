@@ -14,7 +14,8 @@ $title = "Department Details | SLGTI";
 // Add coding
 $itemid=$supplierid=$inventoryitempurchase=$inventoryitemwarranty=$inventoryitemdescription=$itemcode=null;
 
-if(isset($_POST['Add'])){
+if(isset($_POST['Add']))
+{
   if(!empty($_POST['itemid'])
     &&!empty($_POST['supplierid'])
     &&!empty($_POST['inventoryitempurchase'])
@@ -34,33 +35,17 @@ if(isset($_POST['Add'])){
         VALUES('$itemid','$supplierid','$inventoryitempurchase','$inventoryitemwarranty','$inventoryitemdescription','$itemcode')";
 
 
-      if(mysqli_query($con,$sql))
-      {
-        echo '
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$item_id.'</strong> Staff details inserted
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
-          </div>    
-        ';
-      }
-      else{
+        if(mysqli_query($con,$sql))
+        {
+          echo "Record has been Inserted succesfully";
+        }
+        else
+        {
+          echo "Error in insert" . mysqli_error($con);    
         
-        echo '
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>'.$item_id.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        
-        ';
-
+        }
 
       }
-
-    }
 
 }
 ?>
@@ -77,7 +62,9 @@ if(isset($_POST['Add'])){
               <div class="w-100"></div>
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
                       <label class="font-weight-bold" for="">01.ITEM ID</label> <span style="color:red;">*</span></label>
-                      <input type="text" name="itemid" value="<?php echo $itemid;?>"class="form-control <?php if(isset($_POST['Add']) && empty($_POST['itemid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['itemid'])&& !empty($_POST['itemid'])){echo '  is-valid';} ?>"  id="ITEM" aria-describedby="ITEM" placeholder="ITEM" required="required">
+                      <input type="text" name="itemid" value="<?php echo $itemid;?>"class="form-control 
+                      <?php if(isset($_POST['Add']) && empty($_POST['itemid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['itemid'])&& !empty($_POST['itemid'])){echo '  is-valid';} ?>"  
+                      id="ITEM" aria-describedby="ITEM" placeholder="ITEM" required="required">
                       <small id="" class="form-text text-muted"></small>
               </div>
               
@@ -90,7 +77,7 @@ if(isset($_POST['Add'])){
             
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="">03.ITEM PURCHASE</label> <span style="color:red;">*</span></label>
-                  <input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp" required="required">
+                  <input type="date" name="inventoryitempurchase" value="<?php echo $inventoryitempurchase;?>" class="form-control <?php if(isset($_POST['Add']) && empty($_POST['inventoryitempurchase'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['inventoryitempurchase'])&& !empty($_POST['inventoryitempurchase'])){echo '  is-valid';} ?>"  id="datePic" aria-describedby="datePicHelp" required="required">
                   <small id="" class="form-text text-muted"></small>
               </div>
               
@@ -111,15 +98,17 @@ if(isset($_POST['Add'])){
       
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="datePic">06.WARRENTY</label> <span style="color:red;">*</span></label>
-                  <input type="date" class="form-control" id="datePic" aria-describedby="datePicHelp" required="required">
+                  <input type="date"   name="inventoryitemwarranty" value="<?php echo $inventoryitemwarranty;?>" class="form-control <?php if(isset($_POST['Add']) && empty($_POST['inventoryitemwarranty'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['inventoryitemwarranty'])&& !empty($_POST['inventoryitemwarranty'])){echo '  is-valid';} ?>" id="datePic" aria-describedby="datePicHelp" required="required">
                   <small id="datePicHelp" class="form-text text-muted"></small>
                   
                   </div>
-          <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
+          <div class="col-md-12 col-sm-12 form-group pl-3 pr-3 container">
               
           <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
-          <button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
+                        
+                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">update </button>
                         <button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='item_view.php'">view </button>
+                        <button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
             </div>
             </div>
       </form>
