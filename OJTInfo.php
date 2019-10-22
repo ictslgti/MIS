@@ -8,6 +8,36 @@ $title ="Home | SLGTI";
  <!--END Don't CHANGE THE ORDER-->
 
  <!--START YOUR CODER HERE-->
+
+
+ <!-- search coding -->
+<?php
+$StudentID=$Department_id=$StudentName=$DepartmentName=$Finalplace=$Address=null;
+
+
+
+
+  if(isset($_GET['edit'])){
+        $StudentID=$_GET['edit'];
+        $sql="SELECT `student_name`, `department_name`, `final_place`, `final_address` FROM `ojt` WHERE `student_id`='$StudentID'";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+            $StudentName=$row['student_name']; 
+            $DepartmentName=$row['department_name'];
+            $Finalplace=$row['final_place'];
+            $Address=$row['final_address'];
+        }
+        else{
+          echo "Error".$sql."<br>".mysqli_error($con);
+        }
+    
+  }
+  
+?>
+
+
+<!--form-->
  <div class=row>
         <div class="col">
           <br>
@@ -20,43 +50,61 @@ $title ="Home | SLGTI";
         <div class=row>
         <div class="col">
         <form>
-                    <div class="form-group">
+        <div class="form-group">
                         <i class="fas fa-address-card"></i>
-                        <label for="stuid">Student ID</label>
-                        <input type="id" class="form-control" id="stuid" aria-describedby="nameHelp" placeholder="Enter your student ID"> 
+                        <label for="StudentID">Student ID</label>
+                        <form class="form-inline" method="GET">  
+                        <input class="form-control mr-2" type="search" name="edit" placeholder="Student ID"> 
+                        <br>
+                        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+                        </form>
                     </div>
-                    <br>
-                    <button type="button" class="btn btn-outline-primary">Find Us</button>
-                    <br>
-                    <br>
+                    </form>
+
+                    <form>
+                    <div class="form-group">
+                    
+                  
                     <h4 class="text-primary">Your Training Place</h4>
                     <br>
                     <div class="form-group">
                         <i class="fas fa-user-graduate"></i>
                         <label for="stuname">Student Name</label>
-                        <input type="name" class="form-control" id="stuname" aria-describedby="nameHelp">  
+                        <input type="text" name= "StudentName" value="<?php echo $StudentName; ?>" class="form-control" >  
                     </div>
+
+                    <br>
                     <div class="form-group">
                     <i class="far fa-building"></i>
-                    <label for="exampleFormControlSelect1">Department</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                    <option></option>
-                    <option>Information & Communication Technology</option>
-                    <option>Food Technology</option>
-                    <option>Automotive Technology</option>
-                    <option>Electrical & Electronics</option>
-                    <option>Mechanical</option>
-                    </select>
+                        <label for="stuname">Department Name</label>
+                        <input type="text" name= "DepartmentName" value="<?php echo $DepartmentName; ?>" class="form-control" >  
                     </div>
+
+  
                     <div class="form-group">
                         <label for="Rplace"><i class="fas fa-industry"></i>Your Training Place</label>
-                        <input type="Rplace" class="form-control" id="Rplace" >
+                        <input type="text" name= "Finalplace"  value="<?php echo $Finalplace; ?>" class="form-control"  >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Rplace"><i class="fas fa-map-marker-alt"></i>Training Place Address</label>
+                        <input type="text" name= "Finalplace" value="<?php echo $Finalplace; ?>" class="form-control"  >
                     </div>
 
                     <p> This is your final Traing Place. Approved by Student affair's, SLGTI.</p>
                     <br>
                     <button type="button" class="btn btn-outline-success">Okay</button>
                    
+
+                    <div class="form-row pt-3">
+                    <?PHP 
+                    echo '<div class="btn-group-horizontal">';
+  
+                    if(isset($_GET['edit'])){
+                   
+                    }
+                    ?>
+                    </div>
                         
 </form>
 </div>

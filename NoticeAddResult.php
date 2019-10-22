@@ -60,6 +60,12 @@ if(isset($_POST['Add'])){
 
 <!-- bLOCK#2 start your code here & u can change -->
 
+<br>
+<hr>
+<div class="alert bg-dark text-white text-center" role="alert"><h1>Notice Add Result</h1>
+</div>
+<hr>
+
 
   <form method="POST" action="#">
 
@@ -212,6 +218,9 @@ end your code here-->
       
       echo '</div>';
       ?>
+
+          <a href="NoticeResultTable.php">View</a></button>
+    
 </form>
 
 <!--bLOCK#3  start don't change the order-->

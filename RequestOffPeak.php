@@ -42,13 +42,13 @@ date_default_timezone_set("Asia/colombo");
                                                                               
             
             
-          //   $sql= "INSERT INTO `off_peak` (`registration_no`, `name_of_applicant`, `department`, `contact_no`, `date`, `time`, `reson_for_exit`, `warden's_comment`, `status`) 
-          //   VALUES (' $student_id', '$name', '$dept', '$tel', '', '', ' $ref', '', '');";
-          //   if(mysqli_query($con,$sql)){
-          //       echo "new record create sucessfully ";
-          //   }else{
-          //       echo "error :".$sql."<br>".mysqli_error($con);
-          //   }
+            $sql= "INSERT INTO `off_peak` (`registration_no`, `name_of_applicant`, `department`, `contact_no`, `date`, `time`, `reson_for_exit`, `warden's_comment`, `status`) 
+            VALUES (' $student_id', '$name', '$dept', '$tel', '', '', ' $ref', '', '');";
+            if(mysqli_query($con,$sql)){
+                echo "new record create sucessfully ";
+            }else{
+                echo "error :".$sql."<br>".mysqli_error($con);
+            }
            }
     
           

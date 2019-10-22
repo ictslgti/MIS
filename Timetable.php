@@ -48,14 +48,14 @@ include_once("menu.php");
     <tr>
       <th scope="col" width="8%"> ID</th>
       <th scope="col" width="8%"> Department </th>
-      <th scope="col" width="10%"> Course </th>
-      <th scope="col" width="10%"> Module </th>
+      <th scope="col" width="8%"> Course </th>
+      <th scope="col" width="8%"> Module </th>
       <th scope="col" width="5%"> AcademicYear</th>
       <th scope="col" width="5%"> Lecture </th>
       <th scope="col" width="5%"> WeekDays </th>
       <th scope="col" width="5%"> Time </th>
       <th scope="col" width="5%"> ClassRoom </th>
-    <th scope="col" width="5%"  ></th>
+    <th scope="col" width="8%"  ></th>
     </tr>
 
 
@@ -87,7 +87,7 @@ include_once("menu.php");
           <td>
          
           <a href="?Student_Id='.$row["time_id"].'"> View More
-          <a href="AddTimetable.php ?edits='.$row["time_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+          <a href="AddTimetable.php ?edit='.$row["time_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
 
                                        
           <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["time_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>      
