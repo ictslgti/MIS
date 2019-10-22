@@ -31,7 +31,7 @@ if(isset($_GET['approve'])){
       $sql = "UPDATE `off_peak` 
           SET `name_of_applicant` = ' $noa', 
           `department` = '$dept',
-          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`= '$cmt',`status`='approved'
+          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`= '$cmt',`status`='Approved'
           WHERE `off_peak`.`registration_no` = '$reg'";
         
           if(mysqli_query($con,$sql)){
@@ -67,7 +67,7 @@ if(isset($_GET['reject'])){
       $sql = "UPDATE `off_peak` 
           SET `name_of_applicant` = ' $noa', 
           `department` = '$dept',
-          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`='$cmt',`status`='Reject'
+          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`='$cmt',`status`='Rejected'
           WHERE `off_peak`.`registration_no` = '$reg'";
         
           if(mysqli_query($con,$sql)){
@@ -115,7 +115,7 @@ if(isset($_GET['reject'])){
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-      echo $reg = $row["registration_no"];
+     $reg = $row["registration_no"];
       
     echo '<tr>
       
