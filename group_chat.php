@@ -49,6 +49,22 @@ function time_elapsed_string($datetime, $full = false) {
 
 
 <div class="col-8">
+<ul class="nav nav-tabs">
+<li class="nav-item">
+    <a class="nav-link " href="home.php">Status</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="group_chat.php">Group chat</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="feedback.php">Feedback</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="create_group.php">Create group</a>
+  </li>
+</ul>
+</nav>
+<div class="card border-light mb-3" style="max-width:1500px;">
 
 
 <div class="my-3 p-3 bg-white rounded shadow-sm">
@@ -63,7 +79,7 @@ if (mysqli_num_rows($result)> 0){
       
       echo ' 
       <div class="media text-muted pt-3">
-      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+      <h3><i class="fas fa-envelope-open-text "></h3></i>
       <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
         <div class="d-flex justify-content-between align-items-center w-100">
           <strong class="text-gray-dark">' . $row ["chat_group_sender"].'</strong>
@@ -93,27 +109,13 @@ if (mysqli_num_rows($result)> 0){
 
 
 
-<ul class="nav nav-tabs">
-<li class="nav-item">
-    <a class="nav-link " href="home.php">Status</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="group_chat.php">Group chat</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="feedback.php">Feedback</a>
-  </li>
-  <li class="nav-item">
-  <a class="nav-link" href="create_group.php">Create group</a>
-  </li>
-</ul>
-</nav>
-<div class="card border-light mb-3" style="max-width:900px;">
+
   
   <div class="card-body">
   <div class="d-flex mt-1">
                     <textarea dir="auto" data-region="send-message-txt" class="form-control bg-light" rows="3" data-auto-rows="" data-min-rows="3" data-max-rows="5" role="textbox" aria-label="Write a message..." placeholder="Write a message..." style="resize: none"></textarea>
                     <button class="btn btn-link btn-icon icon-size-3 ml-1 mt-auto" aria-label="Send message" data-action="send-message">
+       
                         <span data-region="send-icon-container"><i class="icon fa fa-paper-plane fa-fw " aria-hidden="true"></i></span>
                         <span class="hidden" data-region="loading-icon-container"><span class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " title="Loading" aria-label="Loading"></i></span>
 </span>
