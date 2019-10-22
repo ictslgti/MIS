@@ -10,6 +10,43 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 
+
+
+<!-- delete coding -->
+<?php
+                    if(isset($_GET['delete_id']))
+                    {                
+                        $c_id = $_GET['delete_id'];
+
+                        $sql = "DELETE from inventory_item where item_id = '$c_id' ";
+
+                        if(mysqli_query($con,$sql))
+                        {
+                          echo '
+                          <div class="alert alert-sucess alert-dismissible fade show" role="alert">
+                          <strong> Succes </strong> Record has been Deleted Succesfully 
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>  ';
+                        }
+                        else
+                        {
+                          echo '
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <strong> Error </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>  ';               
+                         
+                        }
+                    }
+                    ?>
+
+
+
+
 <?php
   if(isset($_GET['edit'])){
         $item_id=$_GET['edit'];
@@ -80,7 +117,12 @@ include_once("menu.php");
           <td>'. $row["inventory_item_description"]."<br>".'</td>
           <td>'. $row["item_code"]."<br>".'</td>
           <td>
-          <a href="AddItem.php? edit='.$row["item_id"].'"> Edit </a> 
+     
+          <a href="AddItem.php ?edits='.$row["item_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+
+                                       
+                                    <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["item_id"].'" 
+                                    data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
           </td>
        </tr> ';
      }
@@ -92,9 +134,8 @@ include_once("menu.php");
     
   ?>
 
-   
-</table>
 
+</table>
 
 <div class="row">
 <div class="col-6"></div>
@@ -103,7 +144,7 @@ include_once("menu.php");
 
 <div class="col-md- col-sm- form-group pl- pr-container">
 <button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='AddItem.php'">back </button>         
- <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">save </button>
+ 
 </div>
 </div>
 
