@@ -154,7 +154,7 @@ if(isset($_POST['Adding']))
               <div class="col-md-6 mb-3">
                 <label for="Department">Department</label>
                 <select class="custom-select d-block w-100"  name="d_name" required>
-                    <option selected  disabled selected>Select Department Name...</option>
+                    <option disabled selected>Select Department Name...</option>
                     <?php
                      $sql = "SELECT * FROM department";
                      $result = mysqli_query($con, $sql);
@@ -179,12 +179,27 @@ if(isset($_POST['Adding']))
 
               <div class="col-md-6 mb-3">
                 <label for="Level">NVQ Level</label>
-              <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">NVQ Level</span>
-              </div>
-                <input type="text" class="form-control"  placeholder="Month in Digits" name="n_level" value="<?php echo $nvq?>"required>
-              </div>
+                <select class="custom-select d-block w-100"  name="n_level" required>
+                <option disabled selected>Select NVQ Level</option>
+                    <?php
+                     $sql = "SELECT distinct course_nvq_level FROM course";
+                     $result = mysqli_query($con, $sql);
+                     if(mysqli_num_rows($result)>0)
+                     {
+                       while($row = mysqli_fetch_assoc($result))
+                       {
+                         echo '<option value ="'.$row['course_nvq_level'].'" ';
+
+                         if($row['course_nvq_level']== $nvq)
+                         {
+                           echo 'selected';
+                         }
+                         echo '>' .$row['course_nvq_level'].'</option>';
+                       }
+                     }
+                    ?>
+                    
+                </select>
               </div>
             
                 

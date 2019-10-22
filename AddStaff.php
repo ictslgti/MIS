@@ -11,8 +11,9 @@ include_once("menu.php");
 
 <!-- ADD STAFF PHP CODNG -->
 
+
+<!-- Add coding -->
 <?PHP
-// Add coding
 $StaffID=$Department_id=$StaffName=$Address=$DOB=$NIC=$Email=$PNO=$DOJ=$Gender=$EPF=$Position=$Type=$status=null;
 
 if(isset($_POST['Add'])){
@@ -30,7 +31,7 @@ if(isset($_POST['Add'])){
     &&!empty($_POST['EPF'])
     &&!empty($_POST['Position'])
     &&!empty($_POST['Type'])){
-      echo "Af";
+
      
       $StaffID=$_POST['StaffID'];
       $Department_id=$_POST['Department_id'];
@@ -46,7 +47,7 @@ if(isset($_POST['Add'])){
       $Position=$_POST['Position'];
       $Type=$_POST['Type'];
     
-       echo $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf`, `staff_position`, `staff_type`) 
+       $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf`, `staff_position`, `staff_type`) 
       VALUES ('$StaffID','$Department_id','$StaffName','$Address','$DOB','$NIC','$Email','$PNO','$DOJ','$Gender','$EPF','$Position','$Type')";
 
       if(mysqli_query($con,$sql))
@@ -77,6 +78,76 @@ if(isset($_POST['Add'])){
 
 }
 ?>
+
+
+<!-- update coding -->
+<?PHP
+  if(isset($_POST['Update'])){
+   
+    if(!empty($_POST['StaffID'])
+    // &&!empty($_POST['Department_id'])
+    // &&!empty($_POST['StaffName'])
+    &&!empty($_POST['Address'])
+    // &&!empty($_POST['DOB'])
+    // &&!empty($_POST['NIC'])
+    // &&!empty($_POST['Email'])
+    // &&!empty($_POST['PNO'])
+    // &&!empty($_POST['DOJ'])
+    // &&!empty($_POST['Gender'])
+    // &&!empty($_POST['EPF'])
+    // &&!empty($_POST['Position'])
+    // &&!empty($_POST['Type'])
+    ){ 
+
+
+      $StaffID=$_POST['StaffID'];
+      // $Department_id=$_POST['Department_id'];
+      // $StaffName=$_POST['StaffName'];
+      $Address=$_POST['Address'];
+      // $DOB=$_POST['DOB'];
+      // $NIC=$_POST['NIC'];
+      // $Email=$_POST['Email'];
+      // $PNO=$_POST['PNO'];
+      // $DOJ=$_POST['DOJ'];
+      // $Gender=$_POST['Gender'];
+      // $EPF=$_POST['EPF'];
+      // $Position=$_POST['Position'];
+      // $Type=$_POST['Type'];
+
+      $sql="UPDATE `staff` SET `staff_address`='$Address' WHERE `staff_id`='$StaffID'";
+
+      if(mysqli_query($con,$sql))
+      {
+        echo '
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>'.$StaffID.'</strong> Staff details updated
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>    
+        ';
+      }
+      else{
+        
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$StaffID.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
+      }
+
+
+    }
+  }
+?>
+
+
+
+
 
 <!-- search coding -->
 <?php
@@ -273,7 +344,7 @@ if(isset($_POST['Add'])){
   echo '<div class="btn-group-horizontal">';
 
     if(isset($_GET['edit'])){
-      echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo '<button type="submit"  value="Update" name="Update" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
       echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 
     }if(isset($_GET['delete']))

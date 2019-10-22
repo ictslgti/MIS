@@ -18,16 +18,25 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <!-- form start---->
-<br>
-<h1 style="text-align:center"> SLGTI INVENTORY INFORMATION </h1>
-<br><br>
-
-<div class="form-row">
-    <div class="col-md-5 mb-3" style="padding-right:200px">
-    <i class="fas fa-search ml-3" aria-hidden="true"></i>
-    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search......." id="search">
+<div class="row">
+    <div class=" col-sm-8">
+        <p style="font-size: 45px; font-weight: 700; ">SLGTI INVENTORY INFORMATION</p>
     </div>
-</div><br>
+
+    <div class="col-sm-3 pt-4"> 
+      <form class="form-inline" method="GET">
+        <input class="form-control mr-2" type="search" name="edit" placeholder="Supplier_id">  
+        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+      </form>
+    </div>  
+</div>
+
+<div class="row">
+  <div class="col-sm-12" >
+    <hr color ="black" style="height:1px;">
+  </div>
+</div>  
+
 
 <table class="table">
   <thead>
@@ -47,7 +56,7 @@ include_once("menu.php");
       <th scope="col">Supplier Name</th>
       <th scope="col">Supplier Phone</th>
       <th scope="col">Supplier Email</th>
-      <th scope="col">Action</th>
+      
     </tr>
   </thead>
   <tbody>

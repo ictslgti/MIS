@@ -160,7 +160,9 @@
              <div class="dropdown-menu" aria-labelledby="Inventory">
                  <a class="dropdown-item" href="InventoryInfo">Inventory Info</a>
                  <a class="dropdown-item" href="AddInventory">Add a Inventory</a>
+                 <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="AddItem">Add a Item</a>
+                 <a class="dropdown-item" href="AddSupplier">Add a Supplier</a>
                  <div class="dropdown-divider"></div>
                  <a class="dropdown-item" href="InventoryReport">Inventory Report</a>
              </div>
