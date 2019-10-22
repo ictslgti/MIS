@@ -10,7 +10,6 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
-
 <div class="intro p-5 mb-5 border border-dark rounded">
 <div class="shadow p-3 mb-5 bg-white rounded"> 
   <h1 class="display-4 text-center  "><i class="fas fa-hand-holding-usd"></i> Donation Info</h1>
@@ -70,7 +69,7 @@ include_once("menu.php");
             <td> 
            
             <a href=" edit.php ?edit='.$row["donation_id"].' "class="btn btn-outline-success btn-icon-split"""><i class="far fa-edit"></i>&nbsp;&nbsp;  </a>  
-            <a href=" ?delete='.$row["donation_id"].'"class="btn btn-outline-success btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a> 
+            <a href=" ?delete='.$row["donation_id"].'"class="btn btn-outline-danger btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a> 
            
             </td>
         </tr>';
@@ -97,9 +96,10 @@ if(isset($_GET['delete'])){
 ?>
       
       </table>
-           <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add </button>
+           <!-- <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add </button> -->
+           <button type="submit" class="btn btn-primary"  onclick="location.href='edit.php'" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Add</button>
            <button type="submit" class="btn btn-danger"  onclick="location.href='DonateBlood.php'" ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
-
+           
 </div>
 
 

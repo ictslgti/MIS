@@ -1,3 +1,29 @@
+  
+	<!-- DELETE MODEL -->
+	<!-- Modal -->
+	<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog" >
+	        <div class="modal-content">
+	            <div class="modal-body text-center">
+	               <h1 class="display-4 text-danger"> <i class="fas fa-trash"></i> </h1>
+	                <h1 class="font-weight-lighter">Are you sure?</h1>
+	                <h4 class="font-weight-lighter"> Do you really want to delete these records? This process cannot be
+                      undone. </h4>       
+                <p class="debug-url"></p>
+	            </div>
+	            <div class="modal-footer">
+                  <button type="button btn-primary" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <a class="btn btn-danger btn-ok">Delete</a>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- END DELETE MODEL -->
+  <!-- Modal -->
+  
+
+  
+  
   </div>
   </div>
   <!-- /#page-content-wrapper -->
@@ -30,7 +56,12 @@ $("#menu-toggle").click(function(e) {
 //call dropdown 
 $('.dropdown-toggle').dropdown();
 
-//
+//delete model
+$('#confirm-delete').on('show.bs.modal', function(e) {
+$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+});
+
 var timeDisplay = document.getElementById("timestamp");
 
 function refreshTime() {
