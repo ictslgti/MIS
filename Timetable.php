@@ -18,8 +18,7 @@ include_once("menu.php");
                         if(mysqli_query($con,$sql))
                         {
                           echo '
-                          <div class="alert alert-sucess alert-dismissible fade show" role="alert">
-                          <strong> Succes </strong> Record has been Deleted Succesfully 
+                      
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -49,13 +48,14 @@ include_once("menu.php");
     <tr>
       <th scope="col" width="8%"> ID</th>
       <th scope="col" width="8%"> Department </th>
-      <th scope="col" width="18%"> Course </th>
+      <th scope="col" width="10%"> Course </th>
       <th scope="col" width="10%"> Module </th>
       <th scope="col" width="5%"> AcademicYear</th>
       <th scope="col" width="5%"> Lecture </th>
-      <th scope="col" width="20%"> WeekDays </th>
+      <th scope="col" width="5%"> WeekDays </th>
+      <th scope="col" width="5%"> Time </th>
       <th scope="col" width="5%"> ClassRoom </th>
-    <th></th>
+    <th scope="col" width="5%"  ></th>
     </tr>
 
 
@@ -64,7 +64,8 @@ include_once("menu.php");
 
    
 <?php
-   $sql = "SELECT time_id,department_id,course_id,module_id,academic_year,staff_id,weekdays,classroom FROM timetable";
+   $sql = "SELECT time_id,department_id,course_id,module_id,academic_year,staff_id,weekdays,time,classroom FROM timetable";
+   
    $result = mysqli_query ($con, $sql);
    if (mysqli_num_rows($result)>0)
    {
@@ -79,6 +80,7 @@ include_once("menu.php");
           <td>'. $row["academic_year"]."<br>".'</td>
           <td>'. $row["staff_id"]."<br>".'</td>
           <td>'. $row["weekdays"]."<br>".'</td>
+          <td>'. $row["time"]."<br>".'</td>
           <td>'. $row["classroom"]."<br>".'</td>
            
         

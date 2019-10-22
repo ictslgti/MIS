@@ -16,7 +16,7 @@ include_once("menu.php");
 $StaffID=$Department_id=$StaffName=$Address=$DOB=$NIC=$Email=$PNO=$DOJ=$Gender=$EPF=$Position=$Type=$status=null;
 
 if(isset($_POST['Add'])){
- 
+
   if(!empty($_POST['StaffID'])
     &&!empty($_POST['Department_id'])
     &&!empty($_POST['StaffName'])
@@ -30,6 +30,7 @@ if(isset($_POST['Add'])){
     &&!empty($_POST['EPF'])
     &&!empty($_POST['Position'])
     &&!empty($_POST['Type'])){
+      echo "Af";
      
       $StaffID=$_POST['StaffID'];
       $Department_id=$_POST['Department_id'];
@@ -45,7 +46,7 @@ if(isset($_POST['Add'])){
       $Position=$_POST['Position'];
       $Type=$_POST['Type'];
     
-       $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf`, `staff_position`, `staff_type`) 
+       echo $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf`, `staff_position`, `staff_type`) 
       VALUES ('$StaffID','$Department_id','$StaffName','$Address','$DOB','$NIC','$Email','$PNO','$DOJ','$Gender','$EPF','$Position','$Type')";
 
       if(mysqli_query($con,$sql))
@@ -246,6 +247,7 @@ if(isset($_POST['Add'])){
       </select>
     </div>
 
+    
     <div class="form-group col-lg-4 pt-2">
       <label for="text" class="font-weight-bolder pl-1">Status :</label><br>
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Status</label>
@@ -279,7 +281,7 @@ if(isset($_POST['Add'])){
       echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
 
     }if(!isset($_GET['delete']) && !isset($_GET['edit'])){
-      echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
+      echo '<button type="submit" value="Add" name="Add" onclick="disable()" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
 
     }
       
@@ -288,6 +290,14 @@ if(isset($_POST['Add'])){
   </div>
 </form>
 <!--END OF YOUR COD-->
+
+<!-- script  -->
+<script>
+  function disable() {
+  document.getElementById("name").disabled = false;
+  }
+</script>
+
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
