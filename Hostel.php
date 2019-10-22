@@ -11,7 +11,7 @@ include_once("menu.php");
 <?php 
 if(isset($_GET['delete'])){
   $student_id = $_GET['delete'];
-  $sql = "DELETE FROM `hostel_student_details` WHERE `student_id`=$student_id";
+  $sql = "DELETE FROM `hostel_student_details` WHERE `hosttler_id`=$student_id";
  if(mysqli_query($con ,$sql)){
      echo "Record delete successfully";
    
@@ -99,12 +99,12 @@ echo '<tr>
     <td>'.$row["date_of_leaving"].'  </td>
     
     <td>
-    <a href="?delete='.$row["student_id"].'">
-    <button type="button" name="delete" class="btn btn-outline-danger rounded-pill  waves-effect text-danger  ">
-    <i class="fas fa-minus-circle"></i><br>
+    <a data-href="?delete='.$row["hosttler_id"].'" data-toggle="modal" data-target="#confirm-delete">
+    <button type="button" name="delete" class="btn btn-danger btn-circle">
+    <i class="fas fa-trash"></i>
     </button></a>
 
-    <a href="AddHostel.php ?edit='.$row["student_id"].'">
+    <a href="AddHostel.php ?edit='.$row["student_id"].'" >
     <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
     <i class="far fa-edit"></i>
     </button></a></td>

@@ -10,23 +10,74 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 <?php
-if(isset($_GET['appr'])){
-  $reg = $row["registration_no"];
+if(isset($_GET['approve'])){
+  $reg = $_GET['approve'];
   $sql ="SELECT * FROM `off_peak` WHERE `registration_no` = '$reg'";
   $result = mysqli_query($con ,$sql);
  if(mysqli_num_rows($result)== 1){
       $row = mysqli_fetch_assoc($result);
      
-       $reg=$row["registration_no"];
-      echo $noa=$row["name_of_applicant"];
+      $reg=$row["registration_no"];
+      $noa=$row["name_of_applicant"];
       $dept=$row["department"];
       $cn=$row["contact_no"];
       $da=$row["date"];
       $ti=$row["time"];
       $rfe=$row["reson_for_exit"];
+      //$cmt=$_GET['cmt'];
+      // echo "approved";
+      // echo $dept;
 
+      $sql = "UPDATE `off_peak` 
+          SET `name_of_applicant` = ' $noa', 
+          `department` = '$dept',
+          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`=null,`status`='approved'
+          WHERE `off_peak`.`registration_no` = '$reg'";
+        
+          if(mysqli_query($con,$sql)){
+              echo "new record update sucessfully ";
+          }else{
+              echo "error :" .$sql."<br>".mysqli_error($con);
+          }
+      }
  }
-}
+
+
+?>
+
+<?php
+if(isset($_GET['reject'])){
+  $reg = $_GET['reject'];
+  $sql ="SELECT * FROM `off_peak` WHERE `registration_no` = '$reg'";
+  $result = mysqli_query($con ,$sql);
+ if(mysqli_num_rows($result)== 1){
+      $row = mysqli_fetch_assoc($result);
+     
+      $reg=$row["registration_no"];
+      $noa=$row["name_of_applicant"];
+      $dept=$row["department"];
+      $cn=$row["contact_no"];
+      $da=$row["date"];
+      $ti=$row["time"];
+      $rfe=$row["reson_for_exit"];
+      $cmt=$_GET['cmt'];
+      // echo "approved";
+      // echo $dept;
+
+      $sql = "UPDATE `off_peak` 
+          SET `name_of_applicant` = ' $noa', 
+          `department` = '$dept',
+          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`=$cmt,`status`='Reject'
+          WHERE `off_peak`.`registration_no` = '$reg'";
+        
+          if(mysqli_query($con,$sql)){
+              echo "new record update sucessfully ";
+          }else{
+              echo "error :" .$sql."<br>".mysqli_error($con);
+          }
+      }
+ }
+
 
 ?>
 
@@ -64,6 +115,8 @@ if(isset($_GET['appr'])){
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
+      echo $reg = $row["registration_no"];
+      
     echo '<tr>
       
       <td>'.$row["registration_no"].'</td>
@@ -73,8 +126,17 @@ if(isset($_GET['appr'])){
       <td>'.$row["date"].'</td>
       <td>'.$row["time"].'</td>
       <td>'.$row["reson_for_exit"].'</td>
+      
+      <form method="GET">
       <td><input type="text" id="cmt" name="cmt"> </td>
-      <td><button type="submit" class="btn btn-success btn-sm" name="appr"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="submit" class="btn btn-danger btn-sm" name="reje"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
+
+      <td>
+      <button type="submit" class="btn btn-success btn-sm" name="approve" value="'.$reg.'"><i class="fas fa-thumbs-up"></i> Approve</button>
+
+      <input type="submit" name="reject" value="'.$reg.'">
+      <button type="submit" class="btn btn-danger btn-sm" name="reject" value="'.$reg.'"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
+      <input type="hidden" name="date" value="'.$row["date"].'">
+      </form>
     </tr>
     
     </tr>';

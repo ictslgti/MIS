@@ -36,19 +36,20 @@ date_default_timezone_set("Asia/colombo");
          
            
             $tel =$_GET['tel'];
-            $date =$_GET['date'];
-            $time =$_GET['time'];
+            $date =$_GET['dat'];
+            $time =$_GET['tim'];
             $ref =$_GET['rfe'];
+                                                                              
             
             
-            $sql= "INSERT INTO `off_peak` (`registration_no`, `name_of_applicant`, `department`, `contact_no`, `date`, `time`, `reson_for_exit`, `warden's_comment`, `status`) 
-            VALUES (' $student_id', '$name', '$dept', '$tel', '', '', ' $ref', '', '');";
-            if(mysqli_query($con,$sql)){
-                echo "new record create sucessfully ";
-            }else{
-                echo "error :".$sql."<br>".mysqli_error($con);
-            }
-          }
+          //   $sql= "INSERT INTO `off_peak` (`registration_no`, `name_of_applicant`, `department`, `contact_no`, `date`, `time`, `reson_for_exit`, `warden's_comment`, `status`) 
+          //   VALUES (' $student_id', '$name', '$dept', '$tel', '', '', ' $ref', '', '');";
+          //   if(mysqli_query($con,$sql)){
+          //       echo "new record create sucessfully ";
+          //   }else{
+          //       echo "error :".$sql."<br>".mysqli_error($con);
+          //   }
+           }
     
           
         
@@ -92,17 +93,17 @@ date_default_timezone_set("Asia/colombo");
    <label for="text" class="font-weight-bolder"  >Contact No :</label><br>
     <input type="tel" id="tel"  pattern="[0-9]{10}" class="form-control" name="tel" placeholder=""  required >
     </div>
-    <!-- <?php echo date("Y-m-d"); ?> -->
+    
     
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="date" class="font-weight-bolder"  >Date :</label><br>
-    <input type="date" name="date" value ="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="" id="date"  required disabled>
+    <input type="date" id="dat"  name="dat"  value ="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder=""  required disabled>
     </div>
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="date" class="font-weight-bolder"  >Time :</label><br>
-    <input type="time" name="time" value ="<?php echo date("H:i"); ?>" class="form-control" placeholder="" id="time"  required disabled>
+    <input type="time" id="tim" name="tim"  value ="<?php echo date("H:i"); ?>" class="form-control" placeholder=""   required disabled>
     </div>
    
     <div class="col-12" >
