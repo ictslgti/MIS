@@ -194,7 +194,7 @@ function showCouese(val) {
             document.getElementById("course").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("POST", "controller/getcourse", true);
+    xmlhttp.open("POST", "controller/getCourse", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send("department=" + val);
 }
@@ -206,7 +206,7 @@ function showModule(val) {
             document.getElementById("module").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("POST", "controller/getmodule", true);
+    xmlhttp.open("POST", "controller/getModule", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send("course=" + val);
 }
