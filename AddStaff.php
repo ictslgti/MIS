@@ -13,7 +13,7 @@ include_once("menu.php");
 
 <?PHP
 // Add coding
-$StaffID=$Department_id=$StaffName=$Address=$DOB=$NIC=$Email=$PNO=$DOJ=$Gender=$EPF=$Position=$Type=null;
+$StaffID=$Department_id=$StaffName=$Address=$DOB=$NIC=$Email=$PNO=$DOJ=$Gender=$EPF=$Position=$Type=$status=null;
 
 if(isset($_POST['Add'])){
  
@@ -84,6 +84,7 @@ if(isset($_POST['Add'])){
         $sql="SELECT * FROM `staff` WHERE `staff_id`='$id'";
         $result=mysqli_query($con,$sql);
         if(mysqli_num_rows($result)==1){
+      
             $row=mysqli_fetch_assoc($result);
             $StaffID=$row['staff_id'];
             $StaffName=$row['staff_name'];
@@ -98,6 +99,7 @@ if(isset($_POST['Add'])){
             $Gender= $row['staff_gender'];
             $Position= $row['staff_position'];
             $Type= $row['staff_type'];
+            $status=$row['staff_status'];
         }
         else{
           echo "Error".$sql."<br>".mysqli_error($con);
@@ -241,6 +243,25 @@ if(isset($_POST['Add'])){
             <option value="Visiting Lecturer"
             <?php if($Type=="Visiting Lecturer")  echo 'selected';?>
             >Visiting Lecturer</option>
+      </select>
+    </div>
+
+    <div class="form-group col-lg-4 pt-2">
+      <label for="text" class="font-weight-bolder pl-1">Status :</label><br>
+      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Type</label>
+      <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['status'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['status'])){echo ' is-valid';} ?>"  id="status" name="status">
+            <option selected disabled>Choose Status</option>
+            <option value="Working"
+            <?php if($Type=="Working")  echo 'selected';?>
+            >Working Staff</option>
+
+            <option value="Terminated"
+            <?php if($Type=="Terminated")  echo 'selected';?>
+            >Terminated</option>
+
+            <option value="Resigned"
+            <?php if($Type=="Resigned")  echo 'selected';?>
+            >Resigned</option>
       </select>
     </div>
   </div>
