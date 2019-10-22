@@ -8,19 +8,39 @@ include_once("homenav.php");
  ?>
 <!-- END DON'T CHANGE THE ORDER -->
 <!-- Sidebar -->
+<?php
+function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
 
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
 
+    $string = array(
+        'y' => 'year',
+        'm' => 'month',
+        'w' => 'week',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+        } else {
+            unset($string[$k]);
+        }
+    }
 
-
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
+}
+?>
 
 <div class="row">
-<div class="col-4">
-
-</div>
-
-
-<div class="col-4">
-
+<div class="col-7">
 </div>
 
 
@@ -28,14 +48,7 @@ include_once("homenav.php");
 
 
 
-
-
-
-
-
-
-
-<div class ="col-4 ">
+<div class="col-5">
 <ul class="nav nav-tabs">
 <li class="nav-item">
     <a class="nav-link " href="home.php">Status</a>
@@ -51,31 +64,61 @@ include_once("homenav.php");
   </li>
 </ul>
 </nav>
+<div class="card border-light mb-3" style="max-width:1500px;">
 
 <div class="card-body p-3 mb-2 bg-dark text-white ">
   <p class="card-text "><h1><i class="fas fa-users float-right"></h1></i><h5 class="text-center">Student Contact </h5></p> 
   </div>
   <ul class="list-group list-group-flush ">
-    <li class="list-group-item list-group-item-action"> <i class="fas fa-user-circle"></i> Gafoor Sahan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hi how are you. I'm sahan and what about you</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Abdullah <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hello boss you.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Faheem <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> feeling love.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Nifras <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> how are you.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Kajan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> So what.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Thilogini <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Hmmmmmmm.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Janani <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center">Tommorow will you come.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Sarujan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> I'm Sleeping.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Newsika <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> i call HOd.</small></li>
-    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> Sanjeevan <h5><i class="fas fa-envelope-open-text float-right"></i></h5><small id="emailHelp" class="form-text text-muted float-center"> Java is the best language.</small></li>
-    
+
+<?php
+
+$sql = "SELECT `message_time`,student_fullname from chat_group_message,student group by student_fullname";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result)> 0){
+    while ($row = mysqli_fetch_assoc($result)){
+      
+      echo ' 
+      <div class="media text-muted pt-3">
+      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <strong class="text-gray-dark">' . $row ["student_fullname"].'</strong>
+          <i>' . time_elapsed_string($row ["message_time"]).'</i>
+        </div>
+      </div>
+    </div>
+    ';
+    }
+}
+
+
+?>
+
 
    
+
+    <small class="d-block text-right mt-3">
+      <a href="#">All suggestions</a>
+    </small>
+  </div>
+
+
+
+
+
+     
+ <!-- <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"></small></li> -->
+ 
+        <!-- <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i> <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"></small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"></small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>   <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> </small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>   <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> </small></li>
+    <li class="list-group-item list-group-item-action"><i class="fas fa-user-circle"></i>  <h5><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center"> </small></li>
+   
+    -->
   </ul>
 </div>
-</div>
-</div>
-</div>
-</div>
- 
 </div>
 
 
@@ -97,7 +140,5 @@ include_once("homenav.php");
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->
-    <?php 
-    include_once("footer.php");
-    ?>
+    <?php include_once ("menu.php"); ?>   
     <!-- END DON'T CHANGE THE ORDER -->

@@ -13,30 +13,29 @@ include_once ("menu.php");
 <?php
 $gcourse_id=null;
 ?>
-<hr class="mb-8 mt-4">
-  
-		<div class="card mt-12 ">
-			<div class="card"><br>
-				<h4 style="text-align:center">Module Details</h4><br>
-      </div>
-    </div>
-<br>
-<br>
+	<div class="shadow  p-3 mb-1 bg-white rounded">
+	    <div class="highlight-blue">
+	        <h1 class="display-4 text-center">Module Details</h1>
+	        <!-- <p class="text-center"></p> -->
+	    </div>
+	</div>
 
-              <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="dataTable" width="200%" cellspacing="0">
-                  <thead>
+  <div class="row">
+	    <div class="col-md-12 col-sm-12">
+              <div class="table-responsive table-responsive-sm">
+                <table class="table table-hover">
+                  <thead class="thead-dark">
                     <tr style="text-align:center">
-                      <th>Module ID</th>
-                      <th>Module Name</th>
-                      <th>Course Name</th>
-                      <th>Learning Hours</th>
-                      <th>Semester ID </th>
-                      <th>Relative Unit</th>
-                      <th>Lecture Hours</th>
-                      <th>Pracical Hours</th>
-                      <th>Self Study Hours</th>
-                      <th>Options</th>
+                    <th scope="col">Module ID</th>
+                    <th scope="col">Module Name</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Learning Hours</th>
+                    <th scope="col">Semester ID </th>
+                    <th scope="col">Relative Unit</th>
+                    <th scope="col">Lecture Hours</th>
+                    <th scope="col">Pracical Hours</th>
+                    <th scope="col">Self Study Hours</th>
+                    <th scope="col">Options</th>
                     </tr>
                   </thead>
 
@@ -53,11 +52,24 @@ $gcourse_id=null;
 
                     if(mysqli_query($con,$sql))
                     {
-                        echo"Record has been Deleted Succesfully";
+                      echo '
+                      <div class="alert alert-sucess alert-dismissible fade show" role="alert">
+                      <strong> Succes </strong> Record has been Deleted Succesfully 
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>  ';
                     }
                     else
                     {
-                        echo"Error in Deleting" . mysqli_error($con);
+                      echo '
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      <strong> Error </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>  ';               
+                     
                     }
                 }
                 ?>
@@ -103,9 +115,9 @@ $gcourse_id=null;
 
                                
                               <td> 
-                                    <a href=" AddModule.php ?module_id='.$row["module_id"].' " class="btn btn-outline-success" style="font-size:15px;><i class="far fa-edit">View Edit</i> </a>
+                                    <a href=" AddModule.php ?edits='.$row["module_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
  
-                                    <a href=" ?dlt='.$row["module_id"].' " style="font-size:25px;color:red;"> <i class="fas fa-trash"></i> </a>  
+                                    <button data-href=" ?dlt='.$row["module_id"].' " class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
 
                                     </td> 
                             </tr>';
@@ -139,7 +151,8 @@ $gcourse_id=null;
                 </li>
               </ul>
                 </nav>
-                </div>
+            </div>
+      </div>
  </div>
 <body>
 

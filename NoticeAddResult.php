@@ -7,74 +7,51 @@ include_once("menu.php");
 ?>
 <!-- end don't change the order-->
 
+
+
+
+
 <?php
+
 //for add
+$Department=$AcademicYear=$Course=$Module=$Type=null;
+
 if(isset($_POST['Add'])){
-  if( !empty($_POST['result_id']) && !empty($_POST['department_id']) && !empty($_POST['academic_year']))
-  {
-     $result_id= $_POST['result_id'];
-     $Department = $_POST['Department'];
-     $AcademicYear = $_POST['AcademicYear'];
-     $Course = $_POST['Course'];
-     $Module = $_POST['Module'];
-     $sql = "INSERT INTO `notice_result`(`result_id`, `department_id`, `academic_year`,`course_id`,`module_id`)
-     
-      VALUES ('$result_id','$Department',`$AcademicYear`,'$Course',`$Module`,)";  
-     if(mysqli_query($con,$sql))
-     {
-         echo "Record has been Inserted succesfully";
-     }
-     else {
-    echo "Error in insert" . mysqli_error($con);
-     }
-   }
-}
-//for edit
-if(isset($_POST['Edit']))
-{  
-   if(!empty($_POST['code'])&& !empty($_POST['name'])&& !empty($_GET['edit']))
-   {   
-      $code = $_POST['code'];
-      $name = $_POST['name'];
-      $id = $_GET['edit'];
-      $sql = "UPDATE `notice_result` SET `result_id`='$result_id' ,`department_id`= '$Department',`academic_year`='$AcademicYear',`course_id`='$Course',`module_id`'$Module'WHERE `department`.`department_id`= $id";
-      if(mysqli_query($con,$sql))
-      {
-           echo"Record has been updated succesfully";
-      }
-      else{
-     echo "Error in update" . mysqli_error($con);
-     }
-   }
-}
-?>
+  echo "ok";
+
+  if(!empty($_POST['department_id'])
+  &&!empty($_POST['academic_year'])
+  &&!empty($_POST['course_id'])
+  &&!empty($_POST['module_id']))
 
 
-<?php
-
-
-$Department=$Course=$Module=$AcademicYear=$Type=null;
-
-
-
-  if(isset($_GET['edit'])){
-        $id=$_GET['edit'];
-        $sql="SELECT * FROM `notice_result` WHERE `result_id`='$result_id'";
-        $result=mysqli_query($con,$sql);
-        if(mysqli_num_rows($result)==1){
-            $row=mysqli_fetch_assoc($result);
-     $Department_id=$_POST['Department'];
-     $cours=$_POST['AcademicYear'];
-     $Module=$_POST['Course'];
-     $AcademicYear=$_POST['Modules'];
-    
-        }
-        else{
-          echo "Error".$sql."<br>".mysqli_error($con);
-        }
-    }
+  { 
+     echo "ok2";
+     echo $department_id   =  $_POST['department_id'];
+     echo $academic_year  =   $_POST['academic_year'];
+     echo $course_id   =  $_POST['course_id'];
+     echo $module_id  =   $_POST['module_id'];
+   
   
-?>
+     echo $sql = "INSERT INTO `notice_result` (`department_id`, `academic_year`,`course_id`, `module_id`)
+      VALUES (`$department_id`,`$academic_year`,`$course_id`,`$module_id`)";
+   
+      if (mysqli_query($con, $sql)) {
+        echo "record add";
+    
+
+      } else {
+         echo "Error: " . $sql .
+        "<br>" . 	mysqli_error($con);
+      
+        
+
+      }
+  }
+}
+
+
+  ?>
 
 
 
@@ -84,55 +61,30 @@ $Department=$Course=$Module=$AcademicYear=$Type=null;
 <!-- bLOCK#2 start your code here & u can change -->
 
 
+  <form method="POST" action="#">
 
-
-<br><br>
-<div class="alert bg-dark text-white" role="alert">
-  <h1>Add New Result</h1>
-</div>
-<hr>
-
-<form method="POST" action="#">
-  <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Result Id</label>
-    <div class="col-sm-10">
-	<select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
- 
-  <option selected disabled required>Result Id</option>
-  <?php          
-            $sql = "SELECT * FROM `department`";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                echo '<option  value="'.$row["department_id"].'" required';
-                if($row["department_id"]==$Department) echo ' selected';
-                echo '>'.$row["department_name"].'</option>';
-                }
-            }
-            ?>
-    </select>
-  </div>
-   </div>
-
-
-<form method="POST" action="#">
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Department</label>
     <div class="col-sm-10">
-	<select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
+  <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['department_id'])){echo ' is-invalid';}
+  if(isset($_POST['Add']) && !empty($_POST['department_id'])){echo ' is-valid';} ?>"  id="department_id" name="department_id">
  
   <option selected disabled required>Department</option>
   <?php          
-            $sql = "SELECT * FROM `department`";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                echo '<option  value="'.$row["department_id"].'" required';
-                if($row["department_id"]==$Department) echo ' selected';
-                echo '>'.$row["department_name"].'</option>';
-                }
+            
+            $sql="SELECT * from department";
+            $result = mysqli_query($con,$sql);
+            if(mysqli_num_rows($result)>0)
+            while($row = mysqli_fetch_assoc($result)) 
+            {
+            echo '<option value="'.$row['department_id'].'"';
+            if ($row["department_id"]==$Department )
+            {
+              echo 'selected'; 
             }
-            ?>
+            echo '>'.$row['department_name'].'</option>';
+            }
+            ?> 
     </select>
   </div>
    </div>
@@ -239,15 +191,27 @@ end your code here-->
 
 
 
+<?PHP 
+  echo '<div class="btn-group-horizontal">';
 
-<?php
-       if(isset($_GET['edit'])) {
-        echo'<input id="button" type="submit" name="Edit" value="Edit">';
-       }
-        else{
-        echo'<input id="button" type="submit" name="Add" value="Add">';
-       }  
-       ?>
+    if(isset($_GET['edit']))
+    {
+      echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+
+    }
+    if(isset($_GET['delete']))
+    {
+      echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
+
+    }
+    if(!isset($_GET['delete']) && !isset($_GET['edit'])){
+      echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
+
+    }
+      
+      echo '</div>';
+      ?>
 </form>
 
 <!--bLOCK#3  start don't change the order-->

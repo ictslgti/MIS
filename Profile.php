@@ -110,7 +110,7 @@ function time_elapsed_string($datetime, $full = false) {
                     <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Change Password</a>
                 </li>
                 <li class="nav-item text-right">
-                    <a href="library/tcpdf/profile?username=<?php echo $username;?>" class="nav-link" target="blank">PDF</a>
+                    <a href="library/pdf/profile?username=<?php echo $username;?>" class="nav-link" target="blank">PDF</a>
                 </li>
             </ul>
             <div class="tab-content py-4">

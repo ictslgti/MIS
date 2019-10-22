@@ -11,12 +11,13 @@ include_once("menu.php");
 
 <!-- ADD STAFF PHP CODNG -->
 
+
+<!-- Add coding -->
 <?PHP
-// Add coding
-$StaffID=$Department_id=$StaffName=$Address=$DOB=$NIC=$Email=$PNO=$DOJ=$Gender=$EPF=$Position=$Type=null;
+$StaffID=$Department_id=$StaffName=$Address=$DOB=$NIC=$Email=$PNO=$DOJ=$Gender=$EPF=$Position=$Type=$status=null;
 
 if(isset($_POST['Add'])){
- 
+
   if(!empty($_POST['StaffID'])
     &&!empty($_POST['Department_id'])
     &&!empty($_POST['StaffName'])
@@ -30,6 +31,7 @@ if(isset($_POST['Add'])){
     &&!empty($_POST['EPF'])
     &&!empty($_POST['Position'])
     &&!empty($_POST['Type'])){
+
      
       $StaffID=$_POST['StaffID'];
       $Department_id=$_POST['Department_id'];
@@ -77,6 +79,76 @@ if(isset($_POST['Add'])){
 }
 ?>
 
+
+<!-- update coding -->
+<?PHP
+  if(isset($_POST['Update'])){
+   
+    if(!empty($_POST['StaffID'])
+    // &&!empty($_POST['Department_id'])
+    // &&!empty($_POST['StaffName'])
+    &&!empty($_POST['Address'])
+    // &&!empty($_POST['DOB'])
+    // &&!empty($_POST['NIC'])
+    // &&!empty($_POST['Email'])
+    // &&!empty($_POST['PNO'])
+    // &&!empty($_POST['DOJ'])
+    // &&!empty($_POST['Gender'])
+    // &&!empty($_POST['EPF'])
+    // &&!empty($_POST['Position'])
+    // &&!empty($_POST['Type'])
+    ){ 
+
+
+      $StaffID=$_POST['StaffID'];
+      // $Department_id=$_POST['Department_id'];
+      // $StaffName=$_POST['StaffName'];
+      $Address=$_POST['Address'];
+      // $DOB=$_POST['DOB'];
+      // $NIC=$_POST['NIC'];
+      // $Email=$_POST['Email'];
+      // $PNO=$_POST['PNO'];
+      // $DOJ=$_POST['DOJ'];
+      // $Gender=$_POST['Gender'];
+      // $EPF=$_POST['EPF'];
+      // $Position=$_POST['Position'];
+      // $Type=$_POST['Type'];
+
+      $sql="UPDATE `staff` SET `staff_address`='$Address' WHERE `staff_id`='$StaffID'";
+
+      if(mysqli_query($con,$sql))
+      {
+        echo '
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>'.$StaffID.'</strong> Staff details updated
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>    
+        ';
+      }
+      else{
+        
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$StaffID.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
+      }
+
+
+    }
+  }
+?>
+
+
+
+
+
 <!-- search coding -->
 <?php
   if(isset($_GET['edit'])){
@@ -84,6 +156,7 @@ if(isset($_POST['Add'])){
         $sql="SELECT * FROM `staff` WHERE `staff_id`='$id'";
         $result=mysqli_query($con,$sql);
         if(mysqli_num_rows($result)==1){
+      
             $row=mysqli_fetch_assoc($result);
             $StaffID=$row['staff_id'];
             $StaffName=$row['staff_name'];
@@ -98,6 +171,7 @@ if(isset($_POST['Add'])){
             $Gender= $row['staff_gender'];
             $Position= $row['staff_position'];
             $Type= $row['staff_type'];
+            $status=$row['staff_status'];
         }
         else{
           echo "Error".$sql."<br>".mysqli_error($con);
@@ -218,7 +292,7 @@ if(isset($_POST['Add'])){
               if (mysqli_num_rows($result) > 0) {
                   while($row = mysqli_fetch_assoc($result)) {
                   echo '<option  value="'.$row["staff_position_type_id"].'" required';
-                  if($row["staff_position_type_name"]==$Position) echo ' selected';
+                  if($row["staff_position_type_id"]==$Position) echo ' selected';
                   echo '>'.$row["staff_position_type_name"].'</option>';
                   }
               }
@@ -243,6 +317,26 @@ if(isset($_POST['Add'])){
             >Visiting Lecturer</option>
       </select>
     </div>
+
+    
+    <div class="form-group col-lg-4 pt-2">
+      <label for="text" class="font-weight-bolder pl-1">Status :</label><br>
+      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Status</label>
+      <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['status'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['status'])){echo ' is-valid';} ?>"  id="status" name="status">
+            <option selected disabled>Choose Status</option>
+            <option value="Working"
+            <?php if($status=="Working")  echo 'selected';?>
+            >Working Staff</option>
+
+            <option value="Terminated"
+            <?php if($status=="Terminated")  echo 'selected';?>
+            >Terminated</option>
+
+            <option value="Resigned"
+            <?php if($status=="Resigned")  echo 'selected';?>
+            >Resigned</option>
+      </select>
+    </div>
   </div>
 
   <div class="form-row pt-3">
@@ -250,7 +344,7 @@ if(isset($_POST['Add'])){
   echo '<div class="btn-group-horizontal">';
 
     if(isset($_GET['edit'])){
-      echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo '<button type="submit"  value="Update" name="Update" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
       echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 
     }if(isset($_GET['delete']))
@@ -258,7 +352,7 @@ if(isset($_POST['Add'])){
       echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
 
     }if(!isset($_GET['delete']) && !isset($_GET['edit'])){
-      echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
+      echo '<button type="submit" value="Add" name="Add" onclick="disable()" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
 
     }
       
@@ -267,6 +361,14 @@ if(isset($_POST['Add'])){
   </div>
 </form>
 <!--END OF YOUR COD-->
+
+<!-- script  -->
+<script>
+  function disable() {
+  document.getElementById("name").disabled = false;
+  }
+</script>
+
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>

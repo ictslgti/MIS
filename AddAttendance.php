@@ -9,6 +9,29 @@ include_once ("attendancenav.php");
 
 ?>
 <!-- end dont change the order-->
+
+
+<?PHP
+$RollNumber=$StudentName=$Module=$AttendanceStatus=$AttendanceDate=null;
+if(isset($_GET['edit'])){
+  $id = $_GET['edit'];
+  $sql = "SELECT * FROM `timetable` WHERE `time` = '$id'";
+  $result = mysqli_query($con, $sql);
+  if (mysqli_num_rows($result)==1)
+   {
+      $row = mysqli_fetch_assoc($result);
+      $RollNumber = $row['attendance_id'];
+      $StudentName = $row['student_id'];
+      $Module = $row['attendance_status'];
+      $AttendanceStatus= $row['staff_id'];
+      $AttendanceDate = $row['module_id'];
+     
+  }
+
+}
+?>
+
+
 <?PHP
 
 // Add coding
@@ -53,7 +76,7 @@ if(isset($_POST['Add'])){
           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
          </div>
 
-         
+       
         
 
 
@@ -109,6 +132,7 @@ if(isset($_POST['Add'])){
               </div>
             </div>
           </div>
+          
 
           <div class="card-body">
     <div class="table-responsive">
@@ -116,59 +140,67 @@ if(isset($_POST['Add'])){
      <table class="table table-striped table-bordered" id="attendance_table">
       <thead>
        <tr>
-        <th>Roll No</th>
-        <th>Student Name</th>
-        <th>Present</th>
-              <th>Absent</th>
-              
+       <th scope="col" width="8%">Roll Number</th>
+       <th scope="col" width="8%">Student Name</th>
+       <th scope="col" width="8%">Present</th>
+        <th scope="col" width="8%">Absent</th>
+ 
+        
        </tr>
-       <tr>
-            <td>1</td>
-            <td>janani haripriya</td>
-            <td align="center">
-                    <input type="radio" name="attendance_status" value="Present" />
-                  </td>
-                  <td align="center">
-                    <input type="radio" name="attendance_status" checked value="Absent" />
-                  </td>
-            </tr>
-
-            <tr>
-            <td>2</td>
-            <td>Hanushiya Mohanraj</td>
-            <td align="center">
-                    <input type="radio" name="attendance_status" value="Present" />
-                  </td>
-                  <td align="center">
-                    <input type="radio" name="attendance_status" checked value="Absent" />
-                  </td>
-            </tr>
-            <tr>
-            <td>3</td>
-            <td>Rosha haripriya</td>
-            <td align="center">
-                    <input type="radio" name="attendance_status" value="Present" />
-                  </td>
-                  <td align="center">
-                    <input type="radio" name="attendance_status" checked value="Absent" />
-                  </td>
-            </tr>
-      </thead>
+       </thead>
       
+       
+            <?php
+            echo"";
+   $sql = "SELECT	student_fullname,student_id,module_id FROM student,module group by student_fullname";
+   $result = mysqli_query ($con, $sql);
+   if (mysqli_num_rows($result)>0)
+   {
+     while($row = mysqli_fetch_assoc($result))
+     {
+       echo '
+       <tr style="text-align:left";>
+         
+          <td>'. $row["student_id"]."<br>".'</td>
+          <td>'. $row["student_fullname"]."<br>".'</td>
+         
+          
+          <td align="center">
+          <input type="radio" name="attendance_status" value="Present" />
+        </td>
+        <td align="center">
+        <input type="radio" name="attendance_status" checked value="Absent" />
+      </td>
+       </tr> ';
+     }
+   }
+   else
+   {
+     echo "0 results";
+   }
+    
+  ?>
 
 
-     </table>
-    </div>
-   </div>
+
+  
+ 
+ 
+                   
+               
+         
+              </table>
+            </div>
+          </div>
+         
   
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
-      
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      
-    </div>
-    
+          <div class="modal-footer">
+          <input type="hidden" name="attendance_id" id="attendance_id" />
+          <input type="hidden" name="action" id="action" value="Add" />
+          <input type="submit" name="button_action" id="button_action" class="btn btn-success btn-sm" value="Add" />
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+        </div>
  </div>
  
         
@@ -192,37 +224,53 @@ if(isset($_POST['Add'])){
 </form>
 </div>
 </div>
+
    <div class="card-body">
     <div class="table-responsive">
         <table class="table table-striped table-bordered" id="attendance_table">
-          <thead>
+        <thead>
             <tr>
-              <th>Student Name</th>
-              <th>Roll Number</th>
-              <th>Module</th>
-              <th>Attendance Status</th>
-              <th>Attendance Date</th>
+            <th scope="col" width="8%">Roll Number</th>
+              <th scope="col" width="8%">Student Name</th>
+              <th scope="col" width="8%">Module</th>
+              <th scope="col" width="8%">Attendance Status</th>
+              <th scope="col" width="8%">Attendance Date</th>
             </tr>
-            <tr>
-            <td>puja</td>
-            <td>2017/ict/bit/13</td>
-            <td>Graphic Design</td>
-            <td> <span class="badge badge-success">Present</span></td>
+        
            
-            <td>2019.05.12</td>
-            </tr>
-            <tr>
-            <td>puja</td>
-            <td>2017/ict/bit/13</td>
-            <td>Graphic Design</td>
-            <td> <span class="badge badge-danger">Absent</span></td>
-            <td>2019.05.12</td>
-            </tr>
-          </thead>
-          <tbody>
-
-          </tbody>
+            <?php
+   $sql = "SELECT	student_id,student_id,module_id,attendance_status,attendance_date FROM attendance";
+   $result = mysqli_query ($con, $sql);
+   if (mysqli_num_rows($result)>0)
+   {
+     while($row = mysqli_fetch_assoc($result))
+     {
+       echo '
+       <tr style="text-align:left";>
+         
+          <td>'. $row["student_id"]."<br>".'</td>
+          <td>'. $row["student_id"]."<br>".'</td>
+          <td>'. $row["module_id"]."<br>".'</td>
+          <td> <span class="badge badge-success">'. $row["attendance_status"]."<br>".'</td>
+          <td>'. $row["attendance_date"]."<br>".'</td>
+          
+         
+         
+       </tr> ';
+     }
+   }
+   else
+   {
+     echo "0 results";
+   }
+    
+  ?>
+ 
+ </thead>
         </table>
+       
+   
+
         <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-end">
     <li class="page-item ">
@@ -250,12 +298,8 @@ if(isset($_POST['Add'])){
   <script src="js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
 </body>
-
-
 </html>
-
 
 <script>
     $(document).ready(function(){
@@ -272,7 +316,6 @@ if(isset($_POST['Add'])){
 
 
 
-    
   
 
 <!-- end your code -->
