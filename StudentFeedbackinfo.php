@@ -90,8 +90,8 @@ if(isset($_GET['delete'])){
                                     <div class="col-2"></div>
                                     <div class="col-2"></div>
                                     <div class="col-3"> 
-                                        | <a href="AddStudentFeedback.php?id='. $row["survey_id"].'" class="text-success"> View</a> | 
-                                        <a href="feedbacksummeryedit.php?edit='. $row["survey_id"].'" class="text-info"> Edit</a> |
+                                        | <a href="feedbackForm.php?id='. $row["survey_id"].'" class="text-success"> View</a> | 
+                                        <a href="feedbacksummery.php?edit='. $row["survey_id"].'" class="text-info"> Edit</a> |
                                         <a href="?delete='. $row["survey_id"]. ' " class="text-danger"> Delete</a> |
                                     </div>
                                 </div> 
