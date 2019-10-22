@@ -27,7 +27,8 @@ if(isset($_GET['edit']))
   $stid =$_GET['edit'];
   $sql = "SELECT s.`student_id`,`student_title`,`student_fullname`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,
   `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,
-  `student_em_name`,`student_em_address`,`student_em_phone`,`student_em_relation`,`student_status`,`course_id`, academic_year, student_enroll_status FROM `student` AS s, student_enroll as e  WHERE s.student_id=e.student_id and s.`student_id`= '$stid'";
+  `student_em_name`,`student_em_address`,`student_em_phone`,`student_em_relation`,`student_status`,`course_id`, academic_year, student_enroll_status, 
+  `student_enroll_date`,`student_enroll_exit_date` FROM `student` AS s, student_enroll as e  WHERE s.student_id=e.student_id and s.`student_id`= '$stid'";
   $result = mysqli_query($con,$sql);
 
   if(mysqli_num_rows($result)==1)
@@ -37,8 +38,8 @@ if(isset($_GET['edit']))
     $year = $row['academic_year'];
     //$stid = $row['student_id'];
     $enstatus =$row['student_enroll_status'];
-    // $enroll = $row['start_date'];
-    // $exit = $row['exit_date'];
+    $enroll = $row['student_enroll_date'];
+    $exit = $row['student_enroll_exit_date'];
     $title = $row['student_title'];
     $fname = $row['student_fullname'];
     $ininame = $row['student_ininame'];
@@ -60,6 +61,56 @@ if(isset($_GET['edit']))
     $erelation = $row['student_em_relation'];
     
   }
+
+  //Insert coding
+  
+  if(isset($_POST['Add']))
+  {
+     if(!empty($_POST['sid']) && !empty($_POST['cid']) && !empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['enrolldate']) && 
+     !empty($_POST['exitdate']) && !empty($_POST['title']) && !empty($_POST['fullname']) && !empty($_POST['ini_name']) && !empty($_POST['gender']) 
+     && !empty($_POST['civil']) && !empty($_POST['email']) && !empty($_POST['nic']) && !empty($_POST['dob']) && !empty($_POST['phone']) && !empty($_POST['address'])
+     && !empty($_POST['zip']) && !empty($_POST['district']) && !empty($_POST['ds']) && !empty($_POST['province']) && !empty($_POST['blood']) && !empty($_POST['qualification'])
+     && !empty($_POST['indexno']) && !empty($_POST['yoe']) && !empty($_POST['subject']) && !empty($_POST['result']) && !empty($_POST['Ename']) && !empty($_POST['addressE'])
+     && !empty($_POST['Ephone']) && !empty($_POST['relation']))
+     {
+      $stid=$_POST['sid'];
+      $coid=$_POST['cid'];
+      $year=$_POST['ayear'];
+      $enstatus=$_POST['status'];
+      $title=$_POST['title'];
+      $fname=$_POST['fullname'];
+      $ininame=$_POST['ini_name'];
+      $gender=$_POST['gender'];
+      $civil=$_POST['civil'];
+      $email=$_POST['email'];
+      $nic=$_POST['nic'];
+      $dob=$_POST['dob'];
+      $phone=$_POST['phone'];
+      $address=$_POST['address'];
+      $zip=$_POST['zip'];
+      $district=$_POST['district'];
+      $division=$_POST['ds'];
+      $province=$_POST['province'];
+      $blood=$_POST['blood'];
+      $ename=$_POST['Ename'];
+      $eaddress=$_POST['addressE'];
+      $ephone=$_POST['Ephone'];
+      $erelation=$_POST['relation'];
+      $qualification=$_POST['qualification'];
+      $index=$_POST['indexno'];
+      $yoe=$_POST['yoe'];
+      $subject=$_POST['subject'];
+      $result=$_POST['result'];
+      $enroll=$_POST['enrolldate'];
+      $exit=$_POST['exitdate'];
+      
+     }
+  }
+  //edit coding
+  if(isset($_POST['Edit']))
+  {
+
+  }
 }
 ?>
 <div class="ROW">
@@ -73,9 +124,9 @@ if(isset($_GET['edit']))
 <form class="needs-validation" novalidate action="">
 
     <div class="form-row">
-        <div class="col-md-7 mb-3">
+        <div class="col-md-6 mb-3">
           <label for="cid"> Course Name: </label>
-          <select name="cid" id="cid" class="form-control" >
+          <select name="cid" id="cid" class="custom-select">
           <option selected disabled> ........select the Course .......</option>
               <?php 
                 $sql="SELECT * from course";
@@ -96,22 +147,23 @@ if(isset($_GET['edit']))
 
         <div class="col-md-3 mb-3">
           <label for="ayear"> Academic Year: </label>
-          <select name="ayear" id="ayear" class="form-control" >
-          <option selected disabled> ........select Academic Year .......</option>
-              <?php 
-              $sql="SELECT academic_year from academic";
-              $result = mysqli_query($con,$sql);
-              if(mysqli_num_rows($result)>0)
-              while($row = mysqli_fetch_assoc($result)) 
-              {
-              echo '<option value="'.$row['academic_year'].'"';
-              if ($row["academic_year"]==$year)
-              {
-                echo 'selected'; 
-              }
-              echo '>'.$row['academic_year'].'</option>';
-              }
-              ?> 
+          <select name="ayear" id="ayear" class="selectpicker show-tick" data-live-search="true" data-width="100%">
+          <option selected disabled>--Academic Year--</option>
+
+          <?php
+            $sql = "SELECT * FROM `academic` ORDER BY `academic_year`  DESC ";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)){
+            echo '<option  value="'.$row ['academic_year'].'" data-subtext="'.$row ['academic_year_status'].'"';
+            if($row ["academic_year"] == $year)
+            {
+              echo 'selected';
+            }
+            echo '>'.$row ['academic_year'].'</option>';
+            }
+            }
+            ?>
           </select>
         </div>
     </div>
@@ -120,12 +172,12 @@ if(isset($_GET['edit']))
 
         <div class="col-md-3 mb-3">
           <label for="sid">Student ID:</label>
-          <input type="text" class="form-control" id="sid" value="<?php echo $stid ?>" placeholder="" aria-describedby="idPrepend" required>
+          <input type="text" class="form-control" name="sid" id="sid" value="<?php echo $stid ?>" placeholder="" aria-describedby="idPrepend" required>
         </div>
 
         <div class="col-md-3 mb-3">
           <label for="status">Status:</label>
-          <select name="status" id="status" class="form-control" value="<?php echo $enstatus ?>" >
+          <select name="status" id="status" class="custom-select" value="<?php echo $enstatus ?>" >
             <option selected disabled>Choose Status</option>
               <option value="Following" <?php if($enstatus=="Following")  echo 'selected';?>>Following</option> 
               <option value="Completed" <?php if($enstatus == "Completed") echo ' selected';?>>Completed</option>
@@ -135,12 +187,12 @@ if(isset($_GET['edit']))
 
         <div class="col-md-3 mb-3">
           <label for="enrolldate">Enroll Date:</label>
-          <input type="text" class="form-control" id="enrolldate" placeholder="" aria-describedby="enrolldatePrepend" required>
+          <input type="text" class="form-control" id="enrolldate" name="enrolldate" placeholder="" aria-describedby="enrolldatePrepend" required>
         </div>
 
         <div class="col-md-3 mb-3">
           <label for="exitdate">Exit Date:</label>
-          <input type="text" class="form-control" id="exitdate" placeholder="" aria-describedby="exitdatePrepend" required>
+          <input type="text" class="form-control" id="exitdate" name="exitdate" placeholder="" aria-describedby="exitdatePrepend" required>
         </div>
     </div>
 
@@ -156,9 +208,9 @@ if(isset($_GET['edit']))
           <label for="title"> Title: </label>
           <select name="title" id="title" class="form-control" value="<?php echo $title ?>">
             <option selected disabled>Choose Title</option>
-              <option value="Mr" <?php if($title=="Mr")  echo 'selected';?>>Mr</option> 
+              <option value="Mr" <?php if($title=="Mr") echo 'selected';?>>Mr</option> 
               <option value="Miss" <?php if($title == "Miss") echo 'selected';?>>Miss</option>
-              <option value="Mrs"<?php if($title=="Mrs") echo ' selected';?>>Mrs</option>
+              <option value="Mrs"<?php if($title=="Mrs") echo 'selected';?>>Mrs</option>
          </select>
          </div>
               
@@ -185,8 +237,8 @@ if(isset($_GET['edit']))
         </div>
 
         <div class="col-md-3 mb-3">
-            <label for="civilstatus"> Civil Status: </label>
-            <select name="civilstatus" id="civilstatus" class="form-control">
+            <label for="civil"> Civil Status: </label>
+            <select name="civil" id="civilstatus" class="form-control">
             <option selected disabled>Choose Status</option>
               <option value="Single"<?php if($civil=="Single")  echo 'selected';?>>Single</option> 
               <option value="Married"<?php if($civil=="Married") echo ' selected';?> >Married</option>
@@ -267,7 +319,7 @@ if(isset($_GET['edit']))
 
           <div class="col-md-2 mb-3">
             <label for="ds"> Divisional Secretariat: </label>
-            <input type="text" class="form-control" id="ds" value="<?php echo $division ?>" placeholder=""  required>
+            <input type="text" name="ds" class="form-control" id="ds" value="<?php echo $division ?>" placeholder=""  required>
           </div>
           
           <div class="col-md-2 mb-3">
@@ -287,8 +339,8 @@ if(isset($_GET['edit']))
           </div>
 
           <div class="col-md-2 mb-3">
-            <label for="bloodgroup"> Blood Group: </label>
-            <select name="bloodgroup" id="bloodgroup" class="form-control" value="<?php echo $blood?>">
+            <label for="blood"> Blood Group: </label>
+            <select name="blood" id="blood" class="form-control" value="<?php echo $blood?>">
               <option selected disabled> Blood Group </option>
               <option value="A+"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
               <option value="A-"<?php if($blood=="A-")  echo 'selected';?>> A- </option>
@@ -315,10 +367,17 @@ if(isset($_GET['edit']))
 
       <div class="col-md-2 mb-3 ">
             <label for="qualification"> Qualification Type: </label>
-            <input name="qualification" id="qualification" class="form-control" type="text" value="" >
+            <!-- <input name="qualification" id="qualification" class="form-control" type="text" value="" > -->
+
+            <select name="qualification" id="qualification" class="custom-select custom-select-sm">
+            <option value="null">-Qualification-</option>
+              <option value="NVQ3">NVQ3</option>
+              <option value="NVQ4">NVQ4</option>
+              <option value="NVQ5">NVQ5</option>
+            </select>
         </div>
 
-        <div class="col-md-2 mb-3 ">
+        <div class="col-md-3 mb-3 ">
             <label for="indexno"> Index No: </label>
             <input name="indexno" id="indexno" class="form-control" type="text" value="" >
         </div>
@@ -357,8 +416,9 @@ if(isset($_GET['edit']))
                // {
                   //$stid =$_GET['edit'];WHERE `qualification_student_id`= '$stid'"
                   //include_once("mysqli_connect.php");
+                  $stid =$_GET['edit'];
                   $sql ="SELECT `qualification_type`,`qualification_index_no`,`qualification_year`,`qualification_description`,`qualification_results` 
-                  FROM `student_qualification`";
+                  FROM `student_qualification` where `qualification_student_id`= '$stid' ";
                   $result = mysqli_query ($con, $sql);
                   if (mysqli_num_rows($result)>0)
                   {
@@ -386,19 +446,17 @@ if(isset($_GET['edit']))
       </div>
         
         <script>
-    
                 var table = document.getElementById('table');
                 
                 for(var i = 1; i < table.rows.length; i++)
                 {
                     table.rows[i].onclick = function()
                     {
-                         //rIndex = this.rowIndex;
-                         document.getElementById("qualification").value = this.cells[0].innerHTML;
-                         document.getElementById("indexno").value = this.cells[1].innerHTML;
-                         document.getElementById("yoe").value = this.cells[2].innerHTML;
-                         document.getElementById("subject").value = this.cells[3].innerHTML;
-                         document.getElementById("result").value = this.cells[4].innerHTML;
+                         document.getElementById("qualification").value = this.cells[0].innerText;
+                         document.getElementById("indexno").value = this.cells[1].innerText;
+                         document.getElementById("yoe").value = this.cells[2].innerText;
+                         document.getElementById("subject").value = this.cells[3].innerText;
+                         document.getElementById("result").value = this.cells[4].innerText;
                     };
                 }
     
@@ -416,21 +474,21 @@ if(isset($_GET['edit']))
     <div class="form-row">
         <div class="col-md-12 mb-3">
           <label for="Ename">Name :</label>
-          <input type="text" class="form-control" id="Ename" value="<?php echo $ename ?>" placeholder="" value="" required>
+          <input type="text" class="form-control" id="Ename" name="Ename" value="<?php echo $ename ?>" placeholder="" value="" required>
         </div>
     </div>
     
     <div class="form-row">
         <div class="col-md-12 mb-3">
           <label for="addressE">Address :</label>
-          <input type="text" class="form-control" id="addressE" value="<?php echo $eaddress ?>" placeholder="" value="" required>
+          <input type="text" class="form-control" id="addressE" name="addressE" value="<?php echo $eaddress ?>" placeholder="" value="" required>
         </div>
     </div>
     
     <div class="form-row">
         <div class="col-md-3 mb-3">
           <label for="Ephone">Phone No :</label>
-          <input type="text" class="form-control" id="Ephon"  value="<?php echo $ephone ?>" placeholder="" value="" required>
+          <input type="text" class="form-control" id="Ephon" name="Ephone" value="<?php echo $ephone ?>" placeholder="" value="" required>
         </div>
     
         <div class="col-md-3 mb-3">
