@@ -159,7 +159,7 @@ $title = "Home | SLGTI";
 						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
 						            <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
-                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="add_to_cart" />
+                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
                                  </div>   
                                  
                                     </div>
@@ -206,7 +206,7 @@ $title = "Home | SLGTI";
 						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
 						            <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
-                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="add_to_cart" />
+                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
                                  </div>   
                                  </div>
                                 </div>
@@ -248,11 +248,11 @@ $title = "Home | SLGTI";
                         <form method="POST" action="#">   
                                  <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
-						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $rotti ?>" />
+						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $stringhoppers ?>" />
 						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
 						            <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
-                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="add_to_cart" />
+                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
                                  </div>   
                                  </div>
                                 </div>
@@ -320,32 +320,37 @@ $title = "Home | SLGTI";
                                 <h4 class="display-5 mt-3"><p>
 
                         <?php
-                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd005'";
-                        $result = mysqli_query($con, $sql);
-                        if (mysqli_num_rows($result)>0){
-                            while ($row = mysqli_fetch_assoc($result)){
-                                echo'
-                                <tr>
-                            
-                                <td>' . $row ["food_name"].'</td>
-                                <td>' . $row ["food_unit_qty"].'</td>
-                                <td>' . $row ["food_measurements"].'</td>
-                                <td>' . $row ["food_unit_price"].'</td>
-                                </tr>';
-                            }
-                        }else{
-                        echo "0 results";
-                        }
-                        ?> </h4>  
+                       $sql = "SELECT * FROM `food` WHERE `food_id`='fd005'";
+                       $result = mysqli_query($con, $sql);
+                       if (mysqli_num_rows($result)>0){
+                           while ($row = mysqli_fetch_assoc($result)){
+                               $FRice=$row ["food_name"];
+                               $uqty=$row ["food_unit_qty"];
+                               $mea=$row ["food_measurements"];
+                               $pri=$row ["food_unit_price"];
+                               $id=$row ["food_id"];
+                               }
+                           }
+                       else{
+                       echo "0 results";
+                       }
+                       ?>
+                       </h4>
+                       <form method="POST" action="#">   
                                 <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                   <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
+                                   <input type="text" class="form-control"  name="hidden_name" value="<?php echo $FRice ?>" />
+                                   <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                   <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
+                                   <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
+                                   <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
                                 </div>   
-                                <a href="#" class="btn btn-info">Add</a>                                   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                </div>
+                               </div>
+                           </div>  
+                            </form>  
+                       </div>
+                   </div>
 
 
 
@@ -364,28 +369,34 @@ $title = "Home | SLGTI";
                         $result = mysqli_query($con, $sql);
                         if (mysqli_num_rows($result)>0){
                             while ($row = mysqli_fetch_assoc($result)){
-                                echo'
-                                <tr>
-                            
-                                <td>' . $row ["food_name"].'</td>
-                                <td>' . $row ["food_unit_qty"].'</td>
-                                <td>' . $row ["food_measurements"].'</td>
-                                <td>' . $row ["food_unit_price"].'</td>
-                                </tr>';
+                                $VRice=$row ["food_name"];
+                                $uqty=$row ["food_unit_qty"];
+                                $mea=$row ["food_measurements"];
+                                $pri=$row ["food_unit_price"];
+                                $id=$row ["food_id"];
+                                }
                             }
-                        }else{
+                        else{
                         echo "0 results";
                         }
-                        ?> </h4> 
-                                <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
-                                </div>    
-                                <a href="#" class="btn btn-info">Add</a>                                   
-                            </div>
+                        ?>
+                        </h4>
+                        <form method="POST" action="#">   
+                                 <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
+                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $VRice ?>" />
+                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
+                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
+                                 </div>   
+                                 </div>
+                                </div>
+                            </div>  
+                             </form>  
                         </div>
                     </div>
-                </div>
-            </div>
+ 
 
 
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
@@ -403,28 +414,34 @@ $title = "Home | SLGTI";
                         $result = mysqli_query($con, $sql);
                         if (mysqli_num_rows($result)>0){
                             while ($row = mysqli_fetch_assoc($result)){
-                                echo'
-                                <tr>
-                            
-                                <td>' . $row ["food_name"].'</td>
-                                <td>' . $row ["food_unit_qty"].'</td>
-                                <td>' . $row ["food_measurements"].'</td>
-                                <td>' . $row ["food_unit_price"].'</td>
-                                </tr>';
+                                $CRice=$row ["food_name"];
+                                $uqty=$row ["food_unit_qty"];
+                                $mea=$row ["food_measurements"];
+                                $pri=$row ["food_unit_price"];
+                                $id=$row ["food_id"];
+                                }
                             }
-                        }else{
+                        else{
                         echo "0 results";
                         }
-                        ?> </h4> 
-                                <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
-                                </div>    
-                                <a href="#" class="btn btn-info">Add</a>                                   
-                            </div>
+                        ?>
+                        </h4>
+                        <form method="POST" action="#">   
+                                 <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
+                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $CRice ?>" />
+                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
+                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
+                                 </div>   
+                                 </div>
+                                </div>
+                            </div>  
+                             </form>  
                         </div>
                     </div>
-                </div>
-            </div>
+ 
 
 
 
@@ -483,34 +500,37 @@ $title = "Home | SLGTI";
                                 <h4 class="display-5 mt-3">
 
                         <?php
-                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd009'";
-                        $result = mysqli_query($con, $sql);
-                        if (mysqli_num_rows($result)>0){
-                            while ($row = mysqli_fetch_assoc($result)){
-                                echo'
-                                <tr>
-                            
-                                <td>' . $row ["food_name"].'</td>
-                                <td>' . $row ["food_unit_qty"].'</td>
-                                <td>' . $row ["food_measurements"].'</td>
-                                <td>' . $row ["food_unit_price"].'</td>
-                                </tr>';
-                            }
-                        }else{
-                        echo "0 results";
-                        }
-                        ?> </h4>  
+                       $sql = "SELECT * FROM `food` WHERE `food_id`='fd009'";
+                       $result = mysqli_query($con, $sql);
+                       if (mysqli_num_rows($result)>0){
+                           while ($row = mysqli_fetch_assoc($result)){
+                               $Koththu=$row ["food_name"];
+                               $uqty=$row ["food_unit_qty"];
+                               $mea=$row ["food_measurements"];
+                               $pri=$row ["food_unit_price"];
+                               $id=$row ["food_id"];
+                               }
+                           }
+                       else{
+                       echo "0 results";
+                       }
+                       ?>
+                       </h4>
+                       <form method="POST" action="#">   
                                 <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
+                                   <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
+                                   <input type="text" class="form-control"  name="hidden_name" value="<?php echo $Koththu ?>" />
+                                   <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                   <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
+                                   <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
+                                   <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
                                 </div>   
-                                <a href="#" class="btn btn-info">Add</a>                                   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+                                </div>
+                               </div>
+                           </div>  
+                            </form>  
+                       </div>
+                   </div>
 
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
                 <div class="card">
@@ -523,33 +543,37 @@ $title = "Home | SLGTI";
                                 <h4 class="display-5 mt-3">
 
                         <?php
-                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd010'";
-                        $result = mysqli_query($con, $sql);
-                        if (mysqli_num_rows($result)>0){
-                            while ($row = mysqli_fetch_assoc($result)){
-                                echo'
-                                <tr>
-                            
-                                <td>' . $row ["food_name"].'</td>
-                                <td>' . $row ["food_unit_qty"].'</td>
-                                <td>' . $row ["food_measurements"].'</td>
-                                <td>' . $row ["food_unit_price"].'</td>
-                                </tr>';
-                            }
-                        }else{
-                        echo "0 results";
-                        }
-                        ?> </h4>
+                       $sql = "SELECT * FROM `food` WHERE `food_id`='fd010'";
+                       $result = mysqli_query($con, $sql);
+                       if (mysqli_num_rows($result)>0){
+                           while ($row = mysqli_fetch_assoc($result)){
+                               $Pittu=$row ["food_name"];
+                               $uqty=$row ["food_unit_qty"];
+                               $mea=$row ["food_measurements"];
+                               $pri=$row ["food_unit_price"];
+                               $id=$row ["food_id"];
+                               }
+                           }
+                       else{
+                       echo "0 results";
+                       }
+                       ?>
+                       </h4>
+                       <form method="POST" action="#">   
                                 <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
-                                </div>     
-                                <a href="#" class="btn btn-info">Add</a>                                   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+                                   <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
+                                   <input type="text" class="form-control"  name="hidden_name" value="<?php echo $Pittu ?>" />
+                                   <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                   <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
+                                   <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
+                                   <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
+                                </div>   
+                                </div>
+                               </div>
+                           </div>  
+                            </form>  
+                       </div>
+                   </div>
 
 
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
@@ -567,28 +591,33 @@ $title = "Home | SLGTI";
                         $result = mysqli_query($con, $sql);
                         if (mysqli_num_rows($result)>0){
                             while ($row = mysqli_fetch_assoc($result)){
-                                echo'
-                                <tr>
-                            
-                                <td>' . $row ["food_name"].'</td>
-                                <td>' . $row ["food_unit_qty"].'</td>
-                                <td>' . $row ["food_measurements"].'</td>
-                                <td>' . $row ["food_unit_price"].'</td>
-                                </tr>';
+                                $FriRic=$row ["food_name"];
+                                $uqty=$row ["food_unit_qty"];
+                                $mea=$row ["food_measurements"];
+                                $pri=$row ["food_unit_price"];
+                                $id=$row ["food_id"];
+                                }
                             }
-                        }else{
+                        else{
                         echo "0 results";
                         }
-                        ?> </h4>  
-                                <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
-                                </div>   
-                                <a href="#" class="btn btn-info">Add</a>                                   
-                            </div>
+                        ?>
+                        </h4>
+                        <form method="POST" action="#">   
+                                 <div class="pb-1" style="max-width: 4rem;">
+                                    <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
+                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $FriRic?>" />
+                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
+                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
+                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
+                                 </div>   
+                                 </div>
+                                </div>
+                            </div>  
+                             </form>  
                         </div>
                     </div>
-                </div>
-            </div>
 
             <div class="col container invisible">       
                 <div class="card">
