@@ -24,14 +24,14 @@ if(isset($_GET['approve'])){
       $da=$row["date"];
       $ti=$row["time"];
       $rfe=$row["reson_for_exit"];
-      //$cmt=$_GET['cmt'];
+      $cmt=$_GET['cmt'];
       // echo "approved";
       // echo $dept;
 
       $sql = "UPDATE `off_peak` 
           SET `name_of_applicant` = ' $noa', 
           `department` = '$dept',
-          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`=null,`status`='approved'
+          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`= '$cmt',`status`='approved'
           WHERE `off_peak`.`registration_no` = '$reg'";
         
           if(mysqli_query($con,$sql)){
@@ -67,7 +67,7 @@ if(isset($_GET['reject'])){
       $sql = "UPDATE `off_peak` 
           SET `name_of_applicant` = ' $noa', 
           `department` = '$dept',
-          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`=$cmt,`status`='Reject'
+          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`='$cmt',`status`='Reject'
           WHERE `off_peak`.`registration_no` = '$reg'";
         
           if(mysqli_query($con,$sql)){
@@ -133,7 +133,6 @@ if(isset($_GET['reject'])){
       <td>
       <button type="submit" class="btn btn-success btn-sm" name="approve" value="'.$reg.'"><i class="fas fa-thumbs-up"></i> Approve</button>
 
-      <input type="submit" name="reject" value="'.$reg.'">
       <button type="submit" class="btn btn-danger btn-sm" name="reject" value="'.$reg.'"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
       <input type="hidden" name="date" value="'.$row["date"].'">
       </form>
