@@ -145,13 +145,14 @@ if(isset($_POST['Add'])){
        <th scope="col" width="8%">Present</th>
         <th scope="col" width="8%">Absent</th>
  
-              
-              
+        
        </tr>
+       </thead>
+      
        
             <?php
-            echo"das";
-   $sql = "SELECT	student_fullname,student_id,module_id ,attendance_status FROM student,module group by student_fullname";
+            echo"";
+   $sql = "SELECT	student_fullname,student_id,module_id FROM student,module group by student_fullname";
    $result = mysqli_query ($con, $sql);
    if (mysqli_num_rows($result)>0)
    {
@@ -162,11 +163,14 @@ if(isset($_POST['Add'])){
          
           <td>'. $row["student_id"]."<br>".'</td>
           <td>'. $row["student_fullname"]."<br>".'</td>
-          <td> <span class="badge badge-success">'. $row["attendance_status"]."<br>".'</td>
-          
-          
          
-         
+          
+          <td align="center">
+          <input type="radio" name="attendance_status" value="Present" />
+        </td>
+        <td align="center">
+        <input type="radio" name="attendance_status" checked value="Absent" />
+      </td>
        </tr> ';
      }
    }
@@ -176,24 +180,27 @@ if(isset($_POST['Add'])){
    }
     
   ?>
+
+
+
+  
  
-       <tr>
-      </thead>
-      
-
-
-     </table>
-    </div>
-   </div>
+ 
+                   
+               
+         
+              </table>
+            </div>
+          </div>
+         
   
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
-      
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      
-    </div>
-    
+          <div class="modal-footer">
+          <input type="hidden" name="attendance_id" id="attendance_id" />
+          <input type="hidden" name="action" id="action" value="Add" />
+          <input type="submit" name="button_action" id="button_action" class="btn btn-success btn-sm" value="Add" />
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+        </div>
  </div>
  
         
