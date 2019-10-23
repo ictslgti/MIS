@@ -84,37 +84,45 @@ if(isset($_POST['Add'])){
 <?PHP
   if(isset($_POST['Update'])){
    
-    if(!empty($_POST['StaffID'])
-    // &&!empty($_POST['Department_id'])
-    // &&!empty($_POST['StaffName'])
+    
+    if(
+    !empty($_POST['Department_id'])
+    &&!empty($_POST['StaffName'])
     &&!empty($_POST['Address'])
-    // &&!empty($_POST['DOB'])
-    // &&!empty($_POST['NIC'])
-    // &&!empty($_POST['Email'])
-    // &&!empty($_POST['PNO'])
-    // &&!empty($_POST['DOJ'])
-    // &&!empty($_POST['Gender'])
-    // &&!empty($_POST['EPF'])
-    // &&!empty($_POST['Position'])
-    // &&!empty($_POST['Type'])
-    ){ 
+    &&!empty($_POST['DOB'])
+    &&!empty($_POST['NIC'])
+    &&!empty($_POST['Email'])
+    &&!empty($_POST['PNO'])
+    &&!empty($_POST['DOJ'])
+    &&!empty($_POST['Gender'])
+    &&!empty($_POST['EPF'])
+    &&!empty($_POST['Position'])
+    &&!empty($_POST['Type'])
+    &&!empty($_POST['status'])
+    &&!empty($_POST['StaffID'])){ 
 
-
-      $StaffID=$_POST['StaffID'];
-      // $Department_id=$_POST['Department_id'];
-      // $StaffName=$_POST['StaffName'];
+echo "adad";
+     
+      $Department_id=$_POST['Department_id'];
+      $StaffName=$_POST['StaffName'];
       $Address=$_POST['Address'];
-      // $DOB=$_POST['DOB'];
-      // $NIC=$_POST['NIC'];
-      // $Email=$_POST['Email'];
-      // $PNO=$_POST['PNO'];
-      // $DOJ=$_POST['DOJ'];
-      // $Gender=$_POST['Gender'];
-      // $EPF=$_POST['EPF'];
-      // $Position=$_POST['Position'];
-      // $Type=$_POST['Type'];
+      $DOB=$_POST['DOB'];
+      $NIC=$_POST['NIC'];
+      $Email=$_POST['Email'];
+      $PNO=$_POST['PNO'];
+      $DOJ=$_POST['DOJ'];
+      $Gender=$_POST['Gender'];
+      $EPF=$_POST['EPF'];
+      $Position=$_POST['Position'];
+      $Type=$_POST['Type'];
+      $status=$row['staff_status'];
+      $StaffID=$_POST['StaffID'];
 
-      $sql="UPDATE `staff` SET `staff_address`='$Address' WHERE `staff_id`='$StaffID'";
+
+      $sql="UPDATE `staff` SET `department_id`='$Department_id',`staff_name`='$StaffName',
+      `staff_address`='$Address',`staff_dob`='$DOB'`staff_nic`='$NIC',`staff_email`='$Email',
+      `staff_pno`='$PNO',`staff_date_of_join`='$DOJ',`staff_gender`='$Gender',
+      `staff_epf`='$EPF',`staff_position`='$Position',`staff_type`='$Type',`staff_status`='$status' WHERE `staff_id`='$StaffID'";
 
       if(mysqli_query($con,$sql))
       {
@@ -174,7 +182,15 @@ if(isset($_POST['Add'])){
             $status=$row['staff_status'];
         }
         else{
-          echo "Error".$sql."<br>".mysqli_error($con);
+          echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$StaffID.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
         }
     }
   

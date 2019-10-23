@@ -20,8 +20,8 @@ include_once("menu.php");
 <!-- form start---->
 <?php
 echo $_SESSION['user_name'];  
-$stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $ename = $eaddress = $ephone = $erelation = $status = null;
-$coid = $year = $enroll = $exit = null;
+$stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = 
+$ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $result = null;
 if(isset($_GET['edit']))
 {
   $stid =$_GET['edit'];
@@ -61,11 +61,13 @@ if(isset($_GET['edit']))
     $erelation = $row['student_em_relation'];
     
   }
+}
 
   //Insert coding
   
-  if(isset($_POST['Add']))
+  if(isset($_POST['Submit']))
   {
+    //echo "welcome";
      if(!empty($_POST['sid']) && !empty($_POST['cid']) && !empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['enrolldate']) && 
      !empty($_POST['exitdate']) && !empty($_POST['title']) && !empty($_POST['fullname']) && !empty($_POST['ini_name']) && !empty($_POST['gender']) 
      && !empty($_POST['civil']) && !empty($_POST['email']) && !empty($_POST['nic']) && !empty($_POST['dob']) && !empty($_POST['phone']) && !empty($_POST['address'])
@@ -73,45 +75,69 @@ if(isset($_GET['edit']))
      && !empty($_POST['indexno']) && !empty($_POST['yoe']) && !empty($_POST['subject']) && !empty($_POST['result']) && !empty($_POST['Ename']) && !empty($_POST['addressE'])
      && !empty($_POST['Ephone']) && !empty($_POST['relation']))
      {
-      $stid=$_POST['sid'];
-      $coid=$_POST['cid'];
-      $year=$_POST['ayear'];
-      $enstatus=$_POST['status'];
-      $title=$_POST['title'];
-      $fname=$_POST['fullname'];
-      $ininame=$_POST['ini_name'];
-      $gender=$_POST['gender'];
-      $civil=$_POST['civil'];
-      $email=$_POST['email'];
-      $nic=$_POST['nic'];
-      $dob=$_POST['dob'];
-      $phone=$_POST['phone'];
-      $address=$_POST['address'];
-      $zip=$_POST['zip'];
-      $district=$_POST['district'];
-      $division=$_POST['ds'];
-      $province=$_POST['province'];
-      $blood=$_POST['blood'];
-      $ename=$_POST['Ename'];
-      $eaddress=$_POST['addressE'];
-      $ephone=$_POST['Ephone'];
-      $erelation=$_POST['relation'];
-      $qualification=$_POST['qualification'];
-      $index=$_POST['indexno'];
-      $yoe=$_POST['yoe'];
-      $subject=$_POST['subject'];
-      $result=$_POST['result'];
-      $enroll=$_POST['enrolldate'];
-      $exit=$_POST['exitdate'];
-      
-     }
+       ECHO "SUCCESS";
+        $stid=$_POST['sid'];
+        $coid=$_POST['cid'];
+        $year=$_POST['ayear'];
+        $enstatus=$_POST['status'];
+        $title=$_POST['title'];
+        $fname=$_POST['fullname'];
+        $ininame=$_POST['ini_name'];
+        $gender=$_POST['gender'];
+        $civil=$_POST['civil'];
+        $email=$_POST['email'];
+        $nic=$_POST['nic'];
+        $dob=$_POST['dob'];
+        $phone=$_POST['phone'];
+        $address=$_POST['address'];
+        $zip=$_POST['zip'];
+        $district=$_POST['district'];
+        $division=$_POST['ds'];
+        $province=$_POST['province'];
+        $blood=$_POST['blood'];
+        $ename=$_POST['Ename'];
+        $eaddress=$_POST['addressE'];
+        $ephone=$_POST['Ephone'];
+        $erelation=$_POST['relation'];
+        $qutype=$_POST['qualification'];
+        $index=$_POST['indexno'];
+        $yoe=$_POST['yoe'];
+        $subject=$_POST['subject'];
+        $result=$_POST['result'];
+        $enroll=$_POST['enrolldate'];
+        $exit=$_POST['exitdate'];
+        
+        $sqlstudent = "INSERT INTO `student`(`student_id`, `student_title`, `student_fullname`, `student_ininame`, `student_gender`, `student_civil`, 
+        `student_email`, `student_nic`, `student_dob`, `student_phone`, `student_address`, `student_zip`, `student_district`, `student_divisions`, 
+        `student_provice`, `student_blood`, `student_em_name`, `student_em_address`, `student_em_phone`, `student_em_relation`,) VALUES 
+        ('$stid','$title','$fname','$ininame','$gender','$civil','$email','$nic','$dob','$phone','$address','$zip','$district','$division','$province',
+        '$blood','$ename','$eaddress','$ephone','$erelation')";
+
+        $sqlenroll = "INSERT INTO `student_enroll`(`student_id`, `course_id`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`, 
+        `student_enroll_status`) VALUES ('$stid','$coid','$year','$enroll','$exit','$enstatus')";
+
+        $sqlqualification = "INSERT INTO `student_qualification`(`qualification_student_id`, `qualification_type`, `qualification_index_no`, 
+        `qualification_year`, `qualification_description`, `qualification_results`) VALUES ('$stid','$qutype','$index','$yoe','$subject','$result')";
+
+              if(mysqli_query($con,$sqlstudent,$sqlenroll,$sqlqualification))
+              {
+                echo "Record Updated Successfully";
+              }
+              else
+              {
+                echo "Error: ".$sqlstudent . "<br>" . mysqli_error($con);
+                echo "Error: ".$sqlenroll . "<br>" . mysqli_error($con);
+                echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
+                echo "Fill the required field";
+              }
+      }
   }
   //edit coding
-  if(isset($_POST['Edit']))
-  {
+  //if(isset($_POST['Edit']))
+  //{
 
-  }
-}
+  //}
+//}
 ?>
 <div class="ROW">
      <div class="col text-center">
@@ -121,12 +147,12 @@ if(isset($_GET['edit']))
 
 
 <div class="container">
-<form class="needs-validation" novalidate action="">
+<form class="needs-validation" novalidate action="" method="POST">
 
     <div class="form-row">
         <div class="col-md-6 mb-3">
           <label for="cid"> Course Name: </label>
-          <select name="cid" id="cid" class="custom-select">
+          <select name="cid" id="cid" class="custom-select" value="<?php echo $coid ?>" required>
           <option selected disabled> ........select the Course .......</option>
               <?php 
                 $sql="SELECT * from course";
@@ -147,7 +173,7 @@ if(isset($_GET['edit']))
 
         <div class="col-md-3 mb-3">
           <label for="ayear"> Academic Year: </label>
-          <select name="ayear" id="ayear" class="selectpicker show-tick" data-live-search="true" data-width="100%">
+          <select name="ayear" id="ayear" class="selectpicker show-tick" data-live-search="true" data-width="100%" value="<?php echo $year ?>" required>
           <option selected disabled>--Academic Year--</option>
 
           <?php
@@ -181,18 +207,19 @@ if(isset($_GET['edit']))
             <option selected disabled>Choose Status</option>
               <option value="Following" <?php if($enstatus=="Following")  echo 'selected';?>>Following</option> 
               <option value="Completed" <?php if($enstatus == "Completed") echo ' selected';?>>Completed</option>
-              <option value="Exit"<?php if($enstatus=="Exit") echo 'selected';?>>Exit</option>
+              <option value="Dropout"<?php if($enstatus=="Dropout") echo 'selected';?>>Dropout</option>
+              <option value="Long Absent"<?php if($enstatus=="Long Absent") echo 'selected';?>>Long Absent</option>
           </select>
         </div>
 
         <div class="col-md-3 mb-3">
           <label for="enrolldate">Enroll Date:</label>
-          <input type="text" class="form-control" id="enrolldate" name="enrolldate" placeholder="" aria-describedby="enrolldatePrepend" required>
+          <input type="text" class="form-control" value="<?php echo $enroll ?>" id="enrolldate" name="enrolldate" placeholder="" aria-describedby="enrolldatePrepend" required>
         </div>
 
         <div class="col-md-3 mb-3">
           <label for="exitdate">Exit Date:</label>
-          <input type="text" class="form-control" id="exitdate" name="exitdate" placeholder="" aria-describedby="exitdatePrepend" required>
+          <input type="text" class="form-control" value="<?php echo $exit ?>" id="exitdate" name="exitdate" placeholder="" aria-describedby="exitdatePrepend" required>
         </div>
     </div>
 
@@ -206,7 +233,7 @@ if(isset($_GET['edit']))
     <div class="form-row">
           <div class="col-md-2 mb-3">
           <label for="title"> Title: </label>
-          <select name="title" id="title" class="form-control" value="<?php echo $title ?>">
+          <select name="title" id="title" class="form-control" value="<?php echo $title ?>" required>
             <option selected disabled>Choose Title</option>
               <option value="Mr" <?php if($title=="Mr") echo 'selected';?>>Mr</option> 
               <option value="Miss" <?php if($title == "Miss") echo 'selected';?>>Miss</option>
@@ -229,7 +256,7 @@ if(isset($_GET['edit']))
 
         <div class="col-md-2 mb-3">
             <label for="gender"> Gender: </label>
-            <select name="gender" id="gender" class="form-control" value="">
+            <select name="gender" id="gender" class="form-control" value="<?php echo $gender ?>" required>
               <option selected disabled>Choose Gender</option>
               <option value="Male"<?php if($gender=="M")  echo 'selected';?>>Male</option>
               <option value="Female"<?php if($gender=='F') echo ' selected';?>>Female</option>
@@ -238,7 +265,7 @@ if(isset($_GET['edit']))
 
         <div class="col-md-3 mb-3">
             <label for="civil"> Civil Status: </label>
-            <select name="civil" id="civilstatus" class="form-control">
+            <select name="civil" id="civilstatus" class="form-control" value="<?php echo $civil ?>" required>
             <option selected disabled>Choose Status</option>
               <option value="Single"<?php if($civil=="Single")  echo 'selected';?>>Single</option> 
               <option value="Married"<?php if($civil=="Married") echo ' selected';?> >Married</option>
@@ -287,7 +314,7 @@ if(isset($_GET['edit']))
           
           <div class="col-md-2 mb-3">
             <label for="district"> District: </label>
-            <select name="district" id="district" class="form-control" value="<?php echo $district ?>">
+            <select name="district" id="district" class="form-control" value="<?php echo $district ?>" required>
                 <option value="">Select</option>
                 <option value="Ampara"<?php if($district=="Ampara")  echo 'selected';?>> Ampara </option>
                 <option value="Batticalo"<?php if($district=="Batticalo")  echo 'selected';?>> Batticalo </option>
@@ -324,7 +351,7 @@ if(isset($_GET['edit']))
           
           <div class="col-md-2 mb-3">
             <label for="province"> Province: </label>
-            <select name="province" id="province" class="form-control" value="<?php echo $province?>">
+            <select name="province" id="province" class="form-control" value="<?php echo $province?>" required>
                 <option value="">Select</option>
                 <option value="1"<?php if($province=="1")  echo 'selected';?>> Northen </option>
                 <option value="2"<?php if($province=="2")  echo 'selected';?>> Eastern </option>
@@ -340,7 +367,7 @@ if(isset($_GET['edit']))
 
           <div class="col-md-2 mb-3">
             <label for="blood"> Blood Group: </label>
-            <select name="blood" id="blood" class="form-control" value="<?php echo $blood?>">
+            <select name="blood" id="blood" class="form-control" value="<?php echo $blood?>" required>
               <option selected disabled> Blood Group </option>
               <option value="A+"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
               <option value="A-"<?php if($blood=="A-")  echo 'selected';?>> A- </option>
@@ -369,7 +396,7 @@ if(isset($_GET['edit']))
             <label for="qualification"> Qualification Type: </label>
             <!-- <input name="qualification" id="qualification" class="form-control" type="text" value="" > -->
 
-            <select name="qualification" id="qualification" class="custom-select custom-select-sm">
+            <select name="qualification" id="qualification" class="custom-select custom-select-sm" value="<?php echo $qutype ?>" required>
             <option value="null">-Qualification-</option>
               <option value="NVQ3">NVQ3</option>
               <option value="NVQ4">NVQ4</option>
@@ -379,28 +406,28 @@ if(isset($_GET['edit']))
 
         <div class="col-md-3 mb-3 ">
             <label for="indexno"> Index No: </label>
-            <input name="indexno" id="indexno" class="form-control" type="text" value="" >
+            <input type="text" name="indexno" id="indexno" class="form-control"  value="<?php echo $index ?>" required>
         </div>
                             
         <div class="col-md-2 mb-3">
             <label  for="yoe"> Year of Exam: </label>
-            <input name="yoe" id="yoe" class="form-control" type="text" value="" >
+            <input  type="text" name="yoe" id="yoe" class="form-control" value="<?php echo $yoe ?>" required>
         </div>
 
         <div class="col-md-5 mb-3">
             <label  for="subject"> Subject/Name of the Course: </label>
-            <input name="subject" id="subject" class="form-control" type="text" value="" >
+            <input type="text" name="subject" id="subject" class="form-control"  value="<?php echo $subject ?>" required>
         </div>
 
         <div class="col-md-2 mb-3">
             <label  for="result"> Result: </label>
-            <input type="text" class="form-control" id="result" name="result" placeholder=""  required>
+            <input type="text" class="form-control" id="result" name="result" placeholder="" value="<?php echo $result ?>"  required>
         </div>
       </div>
         
         <div class="form-row">
         <div id="results-student_education" class="form-group table-responsive">               
-            <table class="table table-hover" width="100%" id="table" >
+            <table class="table table-hover" width="100%" id="table">
               <thead>
               <tr>
               <th width="15%"> Qualification Type </th>
@@ -412,8 +439,8 @@ if(isset($_GET['edit']))
               </head>
               <tbody>
               <?php
-               //if(isset($_GET['edit']))
-               // {
+               if(isset($_GET['edit']))
+               {
                   //$stid =$_GET['edit'];WHERE `qualification_student_id`= '$stid'"
                   //include_once("mysqli_connect.php");
                   $stid =$_GET['edit'];
@@ -439,6 +466,7 @@ if(isset($_GET['edit']))
                   {
                     echo "0 results";
                   }
+               }
               ?>
               </tbody>
             </table>  
@@ -474,21 +502,21 @@ if(isset($_GET['edit']))
     <div class="form-row">
         <div class="col-md-12 mb-3">
           <label for="Ename">Name :</label>
-          <input type="text" class="form-control" id="Ename" name="Ename" value="<?php echo $ename ?>" placeholder="" value="" required>
+          <input type="text" class="form-control" id="Ename" name="Ename" value="<?php echo $ename ?>" placeholder=""  required>
         </div>
     </div>
     
     <div class="form-row">
         <div class="col-md-12 mb-3">
           <label for="addressE">Address :</label>
-          <input type="text" class="form-control" id="addressE" name="addressE" value="<?php echo $eaddress ?>" placeholder="" value="" required>
+          <input type="text" class="form-control" id="addressE" name="addressE" value="<?php echo $eaddress ?>" placeholder="" required>
         </div>
     </div>
     
     <div class="form-row">
         <div class="col-md-3 mb-3">
           <label for="Ephone">Phone No :</label>
-          <input type="text" class="form-control" id="Ephon" name="Ephone" value="<?php echo $ephone ?>" placeholder="" value="" required>
+          <input type="text" class="form-control" id="Ephon" name="Ephone" value="<?php echo $ephone ?>" placeholder=""  required>
         </div>
     
         <div class="col-md-3 mb-3">
@@ -502,10 +530,6 @@ if(isset($_GET['edit']))
         </div>
     </div>
 
-<div>
-<p> 
-</div>
-
 <?php
 if(isset($_GET['edit']))
 {
@@ -515,7 +539,7 @@ else
 {
   echo '<input type="submit" name ="Submit" value ="Submit">';
 }
-?>        
+?>  
 </form>
 </div>
 
