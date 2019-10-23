@@ -697,8 +697,8 @@ $title = "Home | SLGTI";
 			?>
 				<tr>
 					<td colspan="3" align="right">Total</td>
-					<td align="right">$ <?php echo number_format($total, 2); ?></td>
-					<td></td>
+					
+					
 				</tr>
 			<?php
 			}
@@ -749,7 +749,7 @@ $title = "Home | SLGTI";
                             <p>Total</p>
                         </div>
                         <div class="col">
-                            <p></p>
+                            <p><?php echo number_format($total, 2); ?></p>
                         </div>
                     </div>
 
