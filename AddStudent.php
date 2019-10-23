@@ -130,14 +130,73 @@ if(isset($_GET['edit']))
                 echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
                 echo "Fill the required field";
               }
-      }
-  }
+            }
+    }
   //edit coding
-  //if(isset($_POST['Edit']))
-  //{
+     if(isset($_POST['Edit']))
+     {
+      
+       if(!empty($_POST['sid']) && !empty($_POST['cid']) && !empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['enrolldate']) && 
+       !empty($_POST['exitdate']) && !empty($_POST['title']) && !empty($_POST['fullname']) && !empty($_POST['ini_name']) && !empty($_POST['gender']) 
+       && !empty($_POST['civil']) && !empty($_POST['email']) && !empty($_POST['nic']) && !empty($_POST['dob']) && !empty($_POST['phone']) && !empty($_POST['address'])
+       && !empty($_POST['zip']) && !empty($_POST['district']) && !empty($_POST['ds']) && !empty($_POST['province']) && !empty($_POST['blood']) && !empty($_POST['qualification'])
+       && !empty($_POST['indexno']) && !empty($_POST['yoe']) && !empty($_POST['subject']) && !empty($_POST['result']) && !empty($_POST['Ename']) && !empty($_POST['addressE'])
+       && !empty($_POST['Ephone']) && !empty($_POST['relation']))
+       {
+        ECHO "SUCCESS";
+        $stid=$_POST['sid'];
+        $coid=$_POST['cid'];
+        $year=$_POST['ayear'];
+        $enstatus=$_POST['status'];
+        $title=$_POST['title'];
+        $fname=$_POST['fullname'];
+        $ininame=$_POST['ini_name'];
+        $gender=$_POST['gender'];
+        $civil=$_POST['civil'];
+        $email=$_POST['email'];
+        $nic=$_POST['nic'];
+        $dob=$_POST['dob'];
+        $phone=$_POST['phone'];
+        $address=$_POST['address'];
+        $zip=$_POST['zip'];
+        $district=$_POST['district'];
+        $division=$_POST['ds'];
+        $province=$_POST['province'];
+        $blood=$_POST['blood'];
+        $ename=$_POST['Ename'];
+        $eaddress=$_POST['addressE'];
+        $ephone=$_POST['Ephone'];
+        $erelation=$_POST['relation'];
+        $qutype=$_POST['qualification'];
+        $index=$_POST['indexno'];
+        $yoe=$_POST['yoe'];
+        $subject=$_POST['subject'];
+        $result=$_POST['result'];
+        $enroll=$_POST['enrolldate'];
+        $exit=$_POST['exitdate'];
 
-  //}
-//}
+        $sql1 = "UPDATE `student` SET `student_title`='$title',`student_fullname`='$fname',`student_ininame`='$ininame',`student_gender`='$gender',
+        `student_civil`='$civil',`student_email`='$email',`student_nic`='$nic',`student_dob`='$dob',`student_phone`='$phone',`student_address`='$address',
+        `student_zip`='$zip',`student_district`='$district',`student_divisions`='$division',`student_provice`='$province',`student_blood`='$blood',
+        `student_em_name`='$ename',`student_em_address`='$eaddress',`student_em_phone`='$ephone',`student_em_relation`='$erelation' WHERE student_id = '$stid'";
+        
+        $sql2 = "UPDATE `student_enroll` SET `academic_year`='$year',`student_enroll_date`='$enroll',`student_enroll_exit_date`='$exit',
+        `student_enroll_status`='$enstatus' WHERE `student_id`= '$stid' and `course_id`= '$coid'";
+
+        $sql3 = "UPDATE `student_qualification` SET `qualification_type`='$qutype',`qualification_index_no`='$index',`qualification_year`='$yoe',
+        `qualification_description`='$subject',`qualification_results`='$result' WHERE `qualification_student_id`= '$stid'";
+
+            if(mysqli_query($conn,$sql))
+            {
+              echo "Record Updated Successfully";
+            }
+            else
+            {
+              echo "Error: ".$sql . "<br>" . mysqli_error($conn);
+            }
+          }
+    }
+
 ?>
 <div class="ROW">
      <div class="col text-center">
@@ -233,7 +292,7 @@ if(isset($_GET['edit']))
     <div class="form-row">
           <div class="col-md-2 mb-3">
           <label for="title"> Title: </label>
-          <select name="title" id="title" class="form-control" value="<?php echo $title ?>" required>
+          <select name="title" id="title" class="custom-select" value="<?php echo $title ?>" required>
             <option selected disabled>Choose Title</option>
               <option value="Mr" <?php if($title=="Mr") echo 'selected';?>>Mr</option> 
               <option value="Miss" <?php if($title == "Miss") echo 'selected';?>>Miss</option>
@@ -255,7 +314,7 @@ if(isset($_GET['edit']))
         </div>
 
         <div class="col-md-2 mb-3">
-            <label for="gender"> Gender: </label>
+            <label for="custom-select"> Gender: </label>
             <select name="gender" id="gender" class="form-control" value="<?php echo $gender ?>" required>
               <option selected disabled>Choose Gender</option>
               <option value="Male"<?php if($gender=="M")  echo 'selected';?>>Male</option>
@@ -265,7 +324,7 @@ if(isset($_GET['edit']))
 
         <div class="col-md-3 mb-3">
             <label for="civil"> Civil Status: </label>
-            <select name="civil" id="civilstatus" class="form-control" value="<?php echo $civil ?>" required>
+            <select name="civil" id="civilstatus" class="custom-select" value="<?php echo $civil ?>" required>
             <option selected disabled>Choose Status</option>
               <option value="Single"<?php if($civil=="Single")  echo 'selected';?>>Single</option> 
               <option value="Married"<?php if($civil=="Married") echo ' selected';?> >Married</option>
@@ -314,7 +373,7 @@ if(isset($_GET['edit']))
           
           <div class="col-md-2 mb-3">
             <label for="district"> District: </label>
-            <select name="district" id="district" class="form-control" value="<?php echo $district ?>" required>
+            <select name="district" id="district" class="show-tick selectpicker" data-live-search="true" data-width="100%" value="<?php echo $district ?>" required>
                 <option value="">Select</option>
                 <option value="Ampara"<?php if($district=="Ampara")  echo 'selected';?>> Ampara </option>
                 <option value="Batticalo"<?php if($district=="Batticalo")  echo 'selected';?>> Batticalo </option>
@@ -351,7 +410,7 @@ if(isset($_GET['edit']))
           
           <div class="col-md-2 mb-3">
             <label for="province"> Province: </label>
-            <select name="province" id="province" class="form-control" value="<?php echo $province?>" required>
+            <select name="province" id="province" class="custom-select" value="<?php echo $province?>" required>
                 <option value="">Select</option>
                 <option value="1"<?php if($province=="1")  echo 'selected';?>> Northen </option>
                 <option value="2"<?php if($province=="2")  echo 'selected';?>> Eastern </option>
@@ -367,14 +426,14 @@ if(isset($_GET['edit']))
 
           <div class="col-md-2 mb-3">
             <label for="blood"> Blood Group: </label>
-            <select name="blood" id="blood" class="form-control" value="<?php echo $blood?>" required>
+            <select name="blood" id="blood" class="custom-select" value="<?php echo $blood?>" required>
               <option selected disabled> Blood Group </option>
               <option value="A+"<?php if($blood=="A+")  echo 'selected';?>> A+ </option>
               <option value="A-"<?php if($blood=="A-")  echo 'selected';?>> A- </option>
               <option value="B+"<?php if($blood=="B+")  echo 'selected';?>> B+ </option>
               <option value="B-"<?php if($blood=="B-")  echo 'selected';?>> B- </option>
-              <option value="C+"<?php if($blood=="C+")  echo 'selected';?>> C+ </option>
-              <option value="C-"<?php if($blood=="C-")  echo 'selected';?>> C- </option>
+              <option value="C+"<?php if($blood=="C+")  echo 'selected';?>> O+ </option>
+              <option value="C-"<?php if($blood=="C-")  echo 'selected';?>> O- </option>
               <option value="AB+"<?php if($blood=="AB+")  echo 'selected';?>> AB+ </option>
               <option value="AB-"<?php if($blood=="AB-")  echo 'selected';?>> AB- </option> 
             </select>
@@ -396,7 +455,7 @@ if(isset($_GET['edit']))
             <label for="qualification"> Qualification Type: </label>
             <!-- <input name="qualification" id="qualification" class="form-control" type="text" value="" > -->
 
-            <select name="qualification" id="qualification" class="custom-select custom-select-sm" value="<?php echo $qutype ?>" required>
+            <select name="qualification" id="qualification" class="custom-select" value="<?php echo $qutype ?>" required>
             <option value="null">-Qualification-</option>
               <option value="NVQ3">NVQ3</option>
               <option value="NVQ4">NVQ4</option>
@@ -421,7 +480,7 @@ if(isset($_GET['edit']))
 
         <div class="col-md-2 mb-3">
             <label  for="result"> Result: </label>
-            <input type="text" class="form-control" id="result" name="result" placeholder="" value="<?php echo $result ?>"  required>
+            <input type="text" class="form-control" id="result" name="result" placeholder="" value="<?php echo $results ?>"  required>
         </div>
       </div>
         
@@ -521,7 +580,7 @@ if(isset($_GET['edit']))
     
         <div class="col-md-3 mb-3">
           <label for="relation">Relationship :</label>
-          <select name="relation" id="relation" value="<?php echo $erelation ?>" class="form-control" >
+          <select name="relation" id="relation" value="<?php echo $erelation ?>" class="custom-select" >
               <option value="">Select</option>
               <option value="mother" <?php if($erelation=="mother") echo 'selected' ?>> Mother </option>
               <option value="father" <?php if($erelation=="father") echo 'selected' ?>> Father </option>
