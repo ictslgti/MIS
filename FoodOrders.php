@@ -154,11 +154,11 @@ $title = "Home | SLGTI";
                                     </h4>
                                 <form method="POST" action="#">   
                                  <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
+                                    <input type="text" name="qty" value="<?php echo $uqty  ?>" class="form-control" />
 						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $idly ?>" />
 						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
-						            <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
-                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
+						            <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
+                                    <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
                                  </div>   
                                  
@@ -181,7 +181,7 @@ $title = "Home | SLGTI";
                             <div class="card-body">
                                 <h4 class="display-5 mt-3"> 
                                     
-                                            <?php
+                                            <!-- <?php
                                             $sql = "SELECT * FROM `food` WHERE `food_id`='fd002'";
                                             $result = mysqli_query($con, $sql);
                                             if (mysqli_num_rows($result)>0){
@@ -197,17 +197,17 @@ $title = "Home | SLGTI";
                                             else{
                                             echo "0 results";
                                             }
-                                            ?>
+                                            ?> -->
                                 </h4> 
                                 <form method="POST" action="#">   
-                                 <div class="pb-1" style="max-width: 4rem;">
+                                 <!-- <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
 						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $rotti ?>" />
 						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
 						            <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
-                                 </div>   
+                                 </div>    -->
                                  </div>
                                 </div>
                             </div>  
@@ -228,7 +228,7 @@ $title = "Home | SLGTI";
                             <div class="card-body">
                                 <h4 class="display-5 mt-3"> 
 
-                        <?php
+                        <!-- <?php
                         $sql = "SELECT * FROM `food` WHERE `food_id`='fd003'";
                         $result = mysqli_query($con, $sql);
                         if (mysqli_num_rows($result)>0){
@@ -243,17 +243,17 @@ $title = "Home | SLGTI";
                         else{
                         echo "0 results";
                         }
-                        ?>
+                        ?> -->
                         </h4>
                         <form method="POST" action="#">   
-                                 <div class="pb-1" style="max-width: 4rem;">
+                                 <!-- <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
 						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $stringhoppers ?>" />
 						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
 						            <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
-                                 </div>   
+                                 </div>    -->
                                  </div>
                                 </div>
                             </div>  
@@ -687,9 +687,9 @@ $title = "Home | SLGTI";
 				<tr>
 					<td><?php echo $values["item_name"]; ?></td>
 					<td><?php echo $values["item_quantity"]; ?></td>
-					<td>$ <?php echo $values["item_price"]; ?></td>
-					<td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
-					<td><a href="index.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
+					<td> <?php echo $values["item_price"]; ?></td>
+					<td> <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
+					<td><a href="FoodOrders.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
 				</tr>
 			<?php	
 					$total = $total + ($values["item_quantity"] * $values["item_price"]);
