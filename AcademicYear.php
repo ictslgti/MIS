@@ -58,10 +58,10 @@ if (mysqli_num_rows($result)>0){
         <td>' . $row ["second_semi_end_date"].'</td>
         <td>' . $row ["academic_year_status"].'</td>
         <td>
-        <a href= "AddAcademicYear.php?edit='.$row["academic_year"].'"class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Edit</i></a>
-    <a href= "?delete='.$row["academic_year"].'"class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Delete</i></a>
+        <a href="AddAcademicYear.php?edit='.$row["academic_year"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+    <button class="btn btn-sm btn-danger" data-href="?delete='.$row["academic_year"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
     
-    
+
     
       
         </tr>';
@@ -85,9 +85,7 @@ if(isset($_GET['delete'])){
     $sql = "DELETE FROM `academic` WHERE `academic_year` = '$academic_year'";
     
     if (mysqli_query($con, $sql)){
-        echo '<div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%">Delete Success</div>
-      </div>';
+        echo '<a class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
     }else{
         echo "Error deleting record:" . mysqli_error($con);
     }

@@ -8,6 +8,7 @@ include_once("homenav.php");
  ?>
 <!-- END DON'T CHANGE THE ORDER -->
 <!-- Sidebar -->
+<body onload="changeTextFD()">
 <?php
 function time_elapsed_string($datetime, $full = false) {
     $now = new DateTime;
@@ -130,14 +131,20 @@ if(isset($_GET['chat_group'])){
                     <textarea dir="auto" data-region="send-message-txt" class="form-control bg-light" rows="3"
                         data-auto-rows="" data-min-rows="3" data-max-rows="5" role="textbox"
                         aria-label="Write a message..." placeholder="Write a message..."
-                        style="resize: none"></textarea>
+                        style="resize: none" id="chatBox"></textarea>
                     <button class="btn btn-link btn-icon icon-size-3 ml-1 mt-auto" aria-label="Send message"
                         data-action="send-message">
 
+                    
 
 
-                        <span data-region="send-icon-container"><i class="icon fa fa-paper-plane fa-fw "
-                                aria-hidden="true"></i></span>
+
+      
+
+
+
+                        <span data-region="send-icon-container"> <i class="icon fa fa-paper-plane fa-fw "
+                                aria-hidden="true">  </i></span>
                         <span class="hidden" data-region="loading-icon-container"><span
                                 class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "
                                     title="Loading" aria-label="Loading"></i></span>
@@ -174,7 +181,7 @@ $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)> 0){
     while ($row = mysqli_fetch_assoc($result)){
       
-        echo'<i class="fas fa-user-circle"></i> <a href="?chat_group='.$row ["chat_group_id"].'">
+        echo'<i class="fas fa-user-circle"></i> <a href="?chat_group='.$row ["chat_group_id"].'" onclick="changeTextFD()">
         <tr> 
         <td>' . $row ["chat_group_name"].'</td>
         
@@ -207,7 +214,11 @@ echo "0 results";
 </div>
 </div>
 
-
+<script>
+function changeTextFD(){
+    document.getElementById("chatBox").focus();
+}
+</script>
 
 
 <!-- /#sidebar-wrapper -->
@@ -219,7 +230,7 @@ echo "0 results";
 
 
 
-
+</body>
 
 
 
