@@ -151,7 +151,6 @@ echo '<div class="btn-group-horizontal">';
 if(isset($_GET['edit']))
 {
   echo '<button type="submit" value="Edit" name="Edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-        
   echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 }
 else
