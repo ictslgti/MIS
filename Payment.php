@@ -5,19 +5,6 @@ include_once("head.php");
 include_once("menu.php");
 ?>
 <!-- dont change -->
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>examinations</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.min.css">
-    <style>
-    </style>
-</head>
-
-<body>
 
     <div class="shadow p-3 mb-s bg-white rounded">
         <h1 class="text-center display-3">SLGTI Student Payment Portal</h1> 
@@ -109,7 +96,7 @@ if(isset($_POST['edit'])){
 
 
 
-    <br>
+
     <div class="row">
         <div class="col-sm-8"> </div>
         <div class="col-sm-4  ">
@@ -266,7 +253,7 @@ if(isset($_POST['edit'])){
                     </tr>
                 </tbody>
             </table>
-            <br>
+           
             <h2>
                 <button type="submit" name="Add" value="Add" class="btn btn-primary btn-block">
                     <h1><i class="fab fa-amazon-pay"></i>&nbsp;
@@ -317,9 +304,6 @@ if(isset($_POST['edit'])){
     </div>
     <!-- dont change -->
     
-</body>
-
-</html>
 
 
 </div>
