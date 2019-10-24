@@ -7,7 +7,16 @@ $title = "Examinations | SLGTI";
 <!--END DON'T CHANGE THE ORDER-->
 
 <!-- add assessment code -->
-<?php
+
+<!-- /add asssessment code -->
+
+<!-- start my code -->
+<html>
+
+    <body style="background-color: rgb(255,255,255);">
+
+        <!--  -->
+        <?php
 
 
 $course_name=$course_id=$module_name=$assessment_type=$assessment_name=$assessment_percentage=null;
@@ -27,7 +36,7 @@ if (isset($_POST['Add'])) {
         $assessment_name=$_POST['assessment_name'];
         $assessment_percentage=$_POST['assessment_percentage'];
 
-        $sql = "INSERT INTO `module`(`course_name`,`module_name`,`assessment_type`,`assessment_name`,`assessment_percentage`) 
+        $sql = "INSERT INTO `AddAssessmentType`(`course_name`,`module_name`,`assessment_type`,`assessment_name`,`assessment_percentage`) 
         VALUES(`$course_name`,`$module_name`,`$assessment_type`,`$assessment_name`,`$assessment_percentage`)";
 
 if (mysqli_query($con, $sql)) {
@@ -73,12 +82,9 @@ else{
 
 
 ?>
-<!-- /add asssessment code -->
 
-<!-- start my code -->
-<html>
 
-    <body style="background-color: rgb(255,255,255);">
+        <!--  -->
 
 
 
@@ -134,7 +140,7 @@ else{
                         </div>
                     </div>
                     <!--  -->
-                    
+
 
 
                 </div>
@@ -146,7 +152,8 @@ else{
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01"><i
-                                        class="fas fa-book-open"></i>&nbsp;&nbsp;Select Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        class="fas fa-book-open"></i>&nbsp;&nbsp;Select
+                                    Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
                             <select
                                 class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"
@@ -188,7 +195,8 @@ else{
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i
-                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment
+                                    Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             </div>
                             <input type="text"
                                 class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_name'])){echo ' is-valid';} ?>"
@@ -208,12 +216,14 @@ else{
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1"><i
-                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment Percentage&nbsp;&nbsp;</span>
+                                        class="fas fa-chalkboard"></i>&nbsp;&nbsp;Asessment
+                                    Percentage&nbsp;&nbsp;</span>
                             </div>
                             <input type="text"
                                 class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_percentage'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_percentage'])){echo ' is-valid';} ?>"
-                                placeholder="Assessment Percentage" aria-label="Username" aria-describedby="basic-addon1"
-                                name="assessment_name" value="<?php echo $assessment_name; ?>" onkeypress="IsInputNumber(event)">
+                                placeholder="Assessment Percentage" aria-label="Username"
+                                aria-describedby="basic-addon1" name="assessment_name"
+                                value="<?php echo $assessment_name; ?>" onkeypress="IsInputNumber(event)">
                         </div>
                     </div>
                 </div>
@@ -225,8 +235,8 @@ else{
 
                             </div>
                             <div class="col-md-auto">
-                                <button type="submit" class="btn btn-outline-primary"> <i class="fas fa-plus" value="Add"
-                                             name="Add"></i> Add Asessments</button>
+                                <button type="submit" class="btn btn-outline-primary"> <i class="fas fa-plus"
+                                        value="Add" name="Add"></i> Add Asessments</button>
                             </div>
                             <div class="col col-lg-2">
 
@@ -240,7 +250,7 @@ else{
 
 
 
-                
+
 
 
         </form>
@@ -300,46 +310,45 @@ else{
         <!-- end my code -->
 
         <script>
-            // function showCouese(val) {
-            //     var xmlhttp = new XMLHttpRequest();
-            //     xmlhttp.onreadystatechange = function() {
-            //         if (this.readyState == 4 && this.status == 200) {
-            //             document.getElementById("course_name").innerHTML = this.responseText;
-            //         }
-            //     };
-            //     xmlhttp.open("POST", "controller/getCourse", true);
-            //     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            //     xmlhttp.send("module=" + val);
-            // }
+        // function showCouese(val) {
+        //     var xmlhttp = new XMLHttpRequest();
+        //     xmlhttp.onreadystatechange = function() {
+        //         if (this.readyState == 4 && this.status == 200) {
+        //             document.getElementById("course_name").innerHTML = this.responseText;
+        //         }
+        //     };
+        //     xmlhttp.open("POST", "controller/getCourse", true);
+        //     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        //     xmlhttp.send("module=" + val);
+        // }
 
-            function showModule(val) {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        document.getElementById("Module").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("POST", "controller/getModule", true);
-                xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xmlhttp.send("course=" + val);
+        function showModule(val) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("Module").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "controller/getModule", true);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send("course=" + val);
+        }
+
+
+
+        function IsInputNumber(evt) {
+            var ch = String.fromCharCode(evt.which);
+
+            if (!(/[0-9]/.test(ch))) {
+                evt.preventDefault();
+                alert("Please Enter Numbers Only For Assessment Percentage!");
+            } else if ((/[0-9]/.test(ch))) {
+
+
+
             }
 
-
-
-            function IsInputNumber(evt) {
-                var ch = String.fromCharCode(evt.which);
-
-                if (!(/[0-9]/.test(ch))) {
-                    evt.preventDefault();
-                    alert("Please Enter Numbers Only For Assessment Percentage!");
-                }
-                else if ((/[0-9]/.test(ch))) {
-                    
-                    
-                    
-                }
-                
-            }
+        }
         </script>
 
 
