@@ -55,8 +55,8 @@ FROM
 LEFT JOIN  `student` ON
 `student`.`student_id` = `student_enroll`.`student_id`
 
-WHERE `student_enroll`.`course_id` = '5IT' 
-AND `student_enroll`.`academic_year` = '2018/2019'";
+WHERE `student_enroll`.`course_id` = 'course_id' 
+AND `student_enroll`.`academic_year` = 'academic_year'";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)>0){
     while ($row = mysqli_fetch_assoc($result)){
@@ -68,7 +68,7 @@ if (mysqli_num_rows($result)>0){
         <td>' . $row ["student_enroll_status"].'</td>
       
         <td>
-        <a href="Student" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;View</i></a>
+        <a href="Student" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;View</i></a>
         
     </td>
     
