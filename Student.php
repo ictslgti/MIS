@@ -29,6 +29,13 @@ include_once("menu.php");
     </div>
 </div><br>
 
+<div class="form-row">
+    <div class="col-md-5 mb-3" style="padding-right:200px">
+    <i class="fas fa-search ml-3" aria-hidden="true"></i>
+    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search......." id="search coursemode">
+    </div>
+</div><br>
+
 <a href="AddStudent,php"> Add </a>
 <table class="table table-bordered">
   <thead>
@@ -44,7 +51,7 @@ include_once("menu.php");
     </tr>
   <?php
    $sql = "SELECT student_id,student_title,student_fullname,student_ininame,student_gender,student_email,student_nic,student_dob,student_phone,student_address, student_status FROM student";
-   $result = mysqli_query ($con, $sql);
+   $result = mysqli_query($con, $sql);
    if (mysqli_num_rows($result)>0)
    {
      while($row = mysqli_fetch_assoc($result))
