@@ -64,7 +64,7 @@ include_once("menu.php");
               
               $dept = $row['department_id'];
               
-              $dist = $row['district'];
+              
               $dis = $row['distance'];
              
               $block = $row['block_no'];
@@ -92,16 +92,21 @@ include_once("menu.php");
            $leave =$_POST['leave'];
          
           $sql = "UPDATE `hostel_student_details` 
-          SET `fullname` = ' $name', 
-          `department_name` = '$dept',
-          `address` = ' $addr',`district` = ' $dist',`distance` = ' $dis',`gender` = '$title',`block_no` = ' $block',`room_no` = ' $room',
+          SET 
+          `department_id` = '$dept',
+          `distance` = ' $dis',`block_no` = ' $block',`room_no` = ' $room',
           `date_of_addmission` = ' $date',`date_of_leaving` = ' $leave'
           WHERE `hostel_student_details`.`student_id` = '$student_id'";
         
           if(mysqli_query($con,$sql)){
-              echo "new record update sucessfully ";
+            echo
+            '<div class="alert alert-success">
+            <strong>Success!</strong> Your data was Updated.</a>
+          </div>';
           }else{
-              echo "error :" .$sql."<br>".mysqli_error($con);
+            echo '<div class="alert alert-warning">
+            <strong>Warning!</strong> Invalid data. Please Check Your Data !
+          </div>';
           }
       }
    
@@ -158,7 +163,7 @@ include_once("menu.php");
       
        </div>
        <div class="form-group col-md-2  ">
-       <label for="dis"><i class="fas fa-map-signs"></i>&nbsp;Dpartment id :
+       <label for="dis"><i class="fas fa-map-signs"></i>&nbsp;Department id :
              <label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;"></label>
             </label>
             <input type="text" class="form-control" id="dept" value="<?php echo $dept; ?>" name="dept" placeholder=""  required>
