@@ -12,15 +12,22 @@ include_once("menu.php");
 date_default_timezone_set("Asia/colombo");
 
   $s_id =  $_SESSION['user_name'];
+  $u_type =  $_SESSION['user_type'];
 
   $student_id=$name= $dept=$tel=$date=$time=$ref=null;
   if($_SESSION['user_type']=='STU'){
-    $sql ="SELECT * FROM `hostel_student_details` WHERE `student_id` = '$s_id'";
+    $sql ="SELECT 
+    `hostel_student_details`.`student_id`,
+    `student`.`student_fullname`,
+    `department`.`department_name`
+   FROM `hostel_student_details`
+    LEFT JOIN `student` ON `hostel_student_details`.`student_id`=`student`.`student_id` 
+    LEFT JOIN `department` ON `department`.`department_id`=`hostel_student_details`.`department_id` WHERE `hostel_student_details`.`student_id` = '$s_id'";
     $result = mysqli_query($con ,$sql);
    if(mysqli_num_rows($result)== 1){
     $row = mysqli_fetch_assoc($result);
     $student_id = $row['student_id'];
-    $name = $row['fullname'];
+    $name = $row['student_fullname'];
     $dept = $row['department_name'];
     
      
@@ -36,14 +43,14 @@ date_default_timezone_set("Asia/colombo");
          
            
             $tel =$_GET['tel'];
-            $date =$_GET['dat'];
-            $time =$_GET['tim'];
+           echo  $date =$_GET['dat'];
+            echo $time =$_GET['tim'];
             $ref =$_GET['rfe'];
                                                                               
             
             
-            $sql= "INSERT INTO `off_peak` (`registration_no`, `name_of_applicant`, `department`, `contact_no`, `date`, `time`, `reson_for_exit`, `warden's_comment`, `status`) 
-            VALUES (' $student_id', '$name', '$dept', '$tel', '', '', ' $ref', '', '');";
+            $sql= "INSERT INTO `off_peak` (`student_id`, `name_of_applicant`, `department`, `contact_no`, `date`, `time`, `reson_for_exit`, `warden's_comment`, `status`) 
+            VALUES (' $student_id', '$name', '$dept', '$tel', '$date', '$time', ' $ref', '', '');";
             if(mysqli_query($con,$sql)){
                 echo "new record create sucessfully ";
             }else{
@@ -98,12 +105,14 @@ date_default_timezone_set("Asia/colombo");
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="date" class="font-weight-bolder"  >Date :</label><br>
-    <input type="date" id="dat"  name="dat"  value ="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder=""  required disabled>
+   <input type="date" id="dath"  name="dath"  value ="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="" disabled>
+    <input type="hidden" id="dat"  name="dat"  value ="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="" >
     </div>
     <div class="col-md-4 col-sm-12" >
     <br>
    <label for="date" class="font-weight-bolder"  >Time :</label><br>
-    <input type="time" id="tim" name="tim"  value ="<?php echo date("H:i"); ?>" class="form-control" placeholder=""   required disabled>
+    <input type="time" id="timh" name="timh"  value ="<?php echo date("H:i"); ?>" class="form-control" placeholder=""   required disabled>
+    <input type="hidden" id="tim" name="tim"  value ="<?php echo date("H:i"); ?>" class="form-control" placeholder=""   required >
     </div>
    
     <div class="col-12" >
