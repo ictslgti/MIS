@@ -34,16 +34,31 @@ if(isset($_POST['Add']))
      $sql="INSERT INTO `inventory_item`(`item_id`, `supplier_id`, `inventory_item_purchase`, `inventory_item_warranty`, `inventory_item_description`, `item_code`)
         VALUES('$itemid','$supplierid','$inventoryitempurchase','$inventoryitemwarranty','$inventoryitemdescription','$itemcode')";
 
-
-        if(mysqli_query($con,$sql))
-        {
-          echo "Record has been Inserted succesfully";
-        }
-        else
-        {
-          echo "Error in insert" . mysqli_error($con);    
+if(mysqli_query($con,$sql))
+      {
+        echo '
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>'.$itemid.'</strong> Item details inserted
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>    
+        ';
+      }
+      else{
         
-        }
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$itemid.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
+
+
+      }
 
       }
 
