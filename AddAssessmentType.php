@@ -36,8 +36,8 @@ if (isset($_POST['Add'])) {
         $assessment_name=$_POST['assessment_name'];
         $assessment_percentage=$_POST['assessment_percentage'];
 
-        $sql = "INSERT INTO `AddAssessmentType`(`course_name`,`module_name`,`assessment_type`,`assessment_name`,`assessment_percentage`) 
-        VALUES(`$course_name`,`$module_name`,`$assessment_type`,`$assessment_name`,`$assessment_percentage`)";
+        $sql = "INSERT INTO `assessments_type`(`course_name`,`module_name`,`assessment_name`,`assessment_type`,`assessment_percentage`) 
+        VALUES(`$course_name`,`$module_name`,`$assessment_name`,`$assessment_type`,`$assessment_percentage`)";
 
 if (mysqli_query($con, $sql)) {
     echo "record add";
