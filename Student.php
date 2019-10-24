@@ -44,7 +44,7 @@ include_once("menu.php");
     </tr>
   <?php
    $sql = "SELECT student_id,student_title,student_fullname,student_ininame,student_gender,student_email,student_nic,student_dob,student_phone,student_address, student_status FROM student";
-   $result = mysqli_query ($con, $sql);
+   $result = mysqli_query($con, $sql);
    if (mysqli_num_rows($result)>0)
    {
      while($row = mysqli_fetch_assoc($result))
