@@ -345,6 +345,16 @@ if(isset($_GET['edit']))
             ?>
           </select>
         </div>
+
+        <div class="col-md-2 mb-3">
+          <label for="mode"> Course Mode: </label>
+          <select name="mode" id="mode" class="custom-select" value="<?php// echo $mode; ?>" required>
+            <option selected disabled>Choose Title</option>
+              <option value="p" <?php //if($title=="Mr") echo 'selected';?>>Full Time</option> 
+              <option value="f" <?php //if($title == "Miss") echo 'selected';?>>Part Time</option>
+              
+         </select>
+         </div>
     </div>
 
     <div class="form-row">

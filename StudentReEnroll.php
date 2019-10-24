@@ -66,8 +66,13 @@ include_once("menu.php");
           </div>
 
           <div class="form-row">
+          <label for="mode"> Course Mode : </label>
+          <input type="text"  class="form-control" id="mode" name="mode" value="" placeholder="" aria-describedby="modedPrepend" required>
+          </div>
+
+          <div class="form-row">
           <label for="type"> Course Type : </label>
-          <input type="text" class="form-control" id="type" name="type" value="" placeholder="" aria-describedby="eryearPrepend" required>
+          <input type="text" class="form-control" id="type" name="type" value="" placeholder="" aria-describedby="typePrepend" required>
           </div>
 
           <div class="form-row">
@@ -77,12 +82,12 @@ include_once("menu.php");
 
           <div class="form-row">
           <label for="edate"> ReEntroll Date : </label>
-          <input type="text" class="form-control" id="edate" name="edate" value="" placeholder="" aria-describedby="eryearPrepend" required>
+          <input type="text" class="form-control" id="edate" name="edate" value="" placeholder="" aria-describedby="edatePrepend" required>
           </div>
 
           <div class="form-row">
           <label for="Exdate"> ReExit Date : </label>
-          <input type="text" class="form-control" id="Exdate" name="Exdate" value="" placeholder="" aria-describedby="eryearPrepend" required>
+          <input type="text" class="form-control" id="Exdate" name="Exdate" value="" placeholder="" aria-describedby="ExdatePrepend" required>
           </div>
 
         </div>
@@ -113,11 +118,31 @@ include_once("menu.php");
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             </tr>
         </tbody>
     </table>
 </div>
 </div>
+<?php
+echo '<div class="btn-group-horizontal">';
+
+if(isset($_GET['edit']))
+{
+  echo '<button type="submit" value="Edit" name="Edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+  echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+}
+else
+{
+  echo '<button type="submit" value="Submit" name="Submit"  class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>ADD</button>';
+}
+echo '</div>';
+?>  
+
 
 
 <!---BLOCK 03--->
