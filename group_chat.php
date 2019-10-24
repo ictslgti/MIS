@@ -149,7 +149,7 @@ if(isset($_GET['chat_group'])){
             </div>
         </div>
 
-    </div>
+  
 
 
     <?php
