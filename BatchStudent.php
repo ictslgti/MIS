@@ -55,8 +55,8 @@ FROM
 LEFT JOIN  `student` ON
 `student`.`student_id` = `student_enroll`.`student_id`
 
-WHERE `student_enroll`.`course_id` = 'course_id' 
-AND `student_enroll`.`academic_year` = 'academic_year'";
+WHERE `student_enroll`.`course_id` = '5IT' 
+AND `student_enroll`.`academic_year` = '2018/2019'";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)>0){
     while ($row = mysqli_fetch_assoc($result)){
