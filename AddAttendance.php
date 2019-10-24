@@ -29,32 +29,43 @@ if(isset($_GET['edit'])){
   }
 
 }
-?>
 
 
-<?PHP
 
-// Add coding
-$module_id=null;
 
 
 if(isset($_POST['Add'])){
+  echo "ok";
 
-  if(!empty($_POST['department_id'])
-  &&!empty($_POST['module_id'])){ 
-
-      $module_id  =   $_POST['module_id'];
+  if(!empty($_POST['attendance_id'])
+  &&!empty($_POST['student_id'])
+  &&!empty($_POST['attendance_status'])
+  &&!empty($_POST['attendance_date'])
+  &&!empty($_POST['staff_id'])
+  &&!empty($_POST['module_id']))
+ 
+  { 
+     echo "ok2";
+     echo $department_id   =  $_POST['attendance_id'];
+     echo $course_id   =  $_POST['student_id'];
+     echo $module_id  =   $_POST['attendance_status'];
+     echo $academic_year  =   $_POST['attendance_date'];
+     echo $staff_id   =   $_POST['staff_id'];
+     echo $weekdays  =  $_POST['module_id'];
+  
+     echo $sql = "INSERT INTO `attendance` (`attendance_id`, `student_id`, `attendance_status`, `attendance_date`, `staff_id`, `module_id`)
+      VALUES ('$attendance_id','$student_id','$attendance_status','$attendance_date','$staff_id','$module_id')";
    
-    
-     $sql= "INSERT INTO `timetable` (`module_id`)
-     
-     VALUES (
-         NULL, '$module_id ')";
       if (mysqli_query($con, $sql)) {
-          echo "New record created successfully";
+        echo "record add";
+    
+
       } else {
-          echo "Error: " . $sql .
-          "<br>" . 	mysqli_error($con);
+         echo "Error: " . $sql .
+        "<br>" . 	mysqli_error($con);
+      
+        
+
       }
   }
 }
@@ -62,8 +73,15 @@ if(isset($_POST['Add'])){
 
   ?>
 
-<!-- Block#2 start your code -->
 
+
+
+
+
+
+
+
+<!-- Block#2 start your code -->
 
 <div class="container" style="margin-top:30px">
   <div class="card">
@@ -71,18 +89,15 @@ if(isset($_POST['Add'])){
       <div class="row">
         <div class="col-md-9">Attendance List</div>
         <div class="col-md-3" align="right">
-        
-
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
-         </div>
-
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add</button>
+</div>
        
         
 
 
          <!-- strt model codee -->
          <div class="modal fade" id="myModal">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
   
     <!-- Modal content-->
     <div class="modal-content">
@@ -140,10 +155,19 @@ if(isset($_POST['Add'])){
      <table class="table table-striped table-bordered" id="attendance_table">
       <thead>
        <tr>
-       <th scope="col" width="8%">Roll Number</th>
-       <th scope="col" width="8%">Student Name</th>
-       <th scope="col" width="8%">Present</th>
-        <th scope="col" width="8%">Absent</th>
+       <th scope="col" width="8%" name="student_id">Roll Number <?php  if(isset($_POST['Add']) && empty($_POST['student_id']))
+                  {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_id'])){echo ' is-valid';} ?></th>
+
+       <th scope="col" width="8%" name="student_fullname">">>Student Name <?php  if(isset($_POST['Add']) && empty($_POST['student_fullname']))
+                  {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_fullname'])){echo ' is-valid';} ?></th>
+
+       <th scope="col" width="8%" name="Present">Present <?php  if(isset($_POST['Add']) && empty($_POST['Present']))
+                  {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Present'])){echo ' is-valid';} ?></th>
+
+
+
+        <th scope="col" width="8%" name="Absent">Absent <?php  if(isset($_POST['Add']) && empty($_POST['Absent']))
+                  {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Absent'])){echo ' is-valid';} ?></th>
  
         
        </tr>
@@ -156,6 +180,7 @@ if(isset($_POST['Add'])){
    $result = mysqli_query ($con, $sql);
    if (mysqli_num_rows($result)>0)
    {
+     $count=1;
      while($row = mysqli_fetch_assoc($result))
      {
        echo '
@@ -164,24 +189,20 @@ if(isset($_POST['Add'])){
           <td>'. $row["student_id"]."<br>".'</td>
           <td>'. $row["student_fullname"]."<br>".'</td>
          
-          
-          <td align="center">
-          <div class="input-group">
-          <div class="input-group-prepend">
+       
+
+          <td align="center"> 
+            <input type="radio"  name= "' . $count . '"  value="Present">
             
-            <input type="radio" aria-label="Radio button for following text input">
-            </div>
         </td>
         <td align="center">
-        <div class="input-group">
-        <div class="input-group-prepend">
+    <input type="radio"  name="' . $count . '"  value="Absent">
     
-    <input type="radio" aria-label="Radio button for following text input">
-    </div>
         </td>
         </tr>     
                 
          ';
+         $count=$count+1;
          
          
        
@@ -189,9 +210,9 @@ if(isset($_POST['Add'])){
        
      }
    }
-   else
+   else if ($AttendanceStatus == "Second")
    {
-     echo "0 results";
+    echo("Second, eh?");
    }
     
   ?>
@@ -212,15 +233,34 @@ if(isset($_POST['Add'])){
   
 
           <div class="modal-footer">
-          <input type="hidden" name="attendance_id" id="attendance_id" />
-          <input type="hidden" name="action" id="action" value="Add" />
-          <input type="submit" name="button_action" id="button_action" class="btn btn-success btn-sm" value="Add" />
+          <?PHP 
+  echo '<div class="btn-group-horizontal">';
+
+    if(isset($_GET['edit']))
+    {
+      echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+
+    }
+    if(isset($_GET['delete']))
+    {
+      echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
+
+    }
+    if(!isset($_GET['delete']) && !isset($_GET['edit'])){
+      echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
+
+    }
+      
+      echo '</div>';
+      ?>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Add</button>
           <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
         </div>
  </div>
+  
  
         
-
 
          <!--end  model codee -->
          </div>
@@ -230,6 +270,9 @@ if(isset($_POST['Add'])){
 
     </div>
 
+ 
+
+    
     <div class="row">
 
 <div class="col-sm-9 " ></div>

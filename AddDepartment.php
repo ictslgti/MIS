@@ -49,7 +49,7 @@ $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)==1){
     $row = mysqli_fetch_assoc($result);
     $id = $row['department_id'];
-    $name = $row['department_name'];
+    $name = $row['department_name']; 
 }
 }
 if(isset($_POST['Add'])){
@@ -58,7 +58,7 @@ if(isset($_POST['Add'])){
        $name = $_POST['name'];
        $sql = "INSERT INTO `department` (`department_id`,`department_name`) VALUE ('$id','$name')";
        if (mysqli_query($con, $sql)){
-           echo "New record created successfully";
+           echo '<a class = "text-success"><div class="fa-1.5x"><i class="fas fa-spinner fa-pulse "></i>Insert Success</div></a>';
        }else{
            echo "Error:" .$sql. "<br>". mysqli_error($con);
        }
@@ -72,7 +72,7 @@ if(isset($_POST['Edit'])){
         $id = $_GET['edit'];
         $sql = " UPDATE `department` SET `department_id`='$id',`department_name`='$name' WHERE `department`.`department_id`= '$id'";
         if (mysqli_query($con, $sql)){
-            echo '<span class="badge badge-success">Edit Success</span>'; 
+            echo '<a class = "text-success"><div class="fa-1.5x"><i class="fas fa-spinner fa-pulse "></i>Edit Success</div></a>';
         }else{
             echo "Error:" .$sql. "<br>". mysqli_error($con);
         }
@@ -82,16 +82,20 @@ if(isset($_POST['Edit'])){
 
 ?>
 <br><br>
+<div class = "mx-auto">
 <form method = "POST">
-<input class="form-control" type = "text" name= "id" value ="<?php echo $id;?>" placeholder="Department ID" required><br>
-<input class="form-control" type = "text" name= "name" value ="<?php echo $name;?>" placeholder="Department Name" required><br>
+<div class ="row">
+<div class ="col-4"><input class="form-control" type = "text" name= "id" value ="<?php echo $id;?>" placeholder="Department ID" required><br></div>
+<div class ="col-8"><input class="form-control" type = "text" name= "name" value ="<?php echo $name;?>" placeholder="Department Name" required><br></div>
+</div>
+</div>
 <?php
 if(isset($_GET['edit'])){
-    echo '<input type = "submit" value="Edit" name="Edit"<a href="" class="btn btn-success" role="button" aria-pressed="true"></a> '; 
-    echo '<a href="Department" class="btn btn-primary" role="button" aria-pressed="true">Back</a>';
+    echo '<input type = "submit" value="Edit" name="Edit"<a href="" class="btn btn-sm btn-success" role="button" aria-pressed="true"></a> '; 
+    echo '<a href="Department" class="btn btn-sm btn-primary" role="button" aria-pressed="true">Back</a>';
 }else{
-    echo '<input type="submit" value = "Add" name="Add" <a href="" class="btn btn-success" role="button" aria-pressed="true"></a> ';
-    echo '<a href="Department" class="btn btn-primary" role="button" aria-pressed="true">Back</a>';
+    echo '<input type="submit" value = "Add" name="Add" <a href="" class="btn btn-sm btn-success" role="button" aria-pressed="true"></a> ';
+    echo '<a href="Department" class="btn btn-sm btn-primary" role="button" aria-pressed="true">Back</a>';
 }
 
 

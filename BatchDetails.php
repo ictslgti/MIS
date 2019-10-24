@@ -63,9 +63,12 @@ if (mysqli_num_rows($result)>0){
         <td>' . $row ["course_id"].'</td>
         <td>' .$row["academic_year"].'</td>
         <td>
-        <a href="BatchStudent" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;&nbsp;Students</i></a>
-      
-        </tr>';
+        
+    <a href="BatchStudent" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Students</i></a>
+    <a href="AddNewBatch.php?edit='.$row["batch_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+    <button class="btn btn-sm btn-danger" data-href="?delete='.$row["batch_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
+      </tr>';
+
     }
 }else{
 echo "0 results";
@@ -109,6 +112,20 @@ echo "0 results";
   </tbody>
   </form>
 </table>
+<?php
+
+if(isset($_GET['delete'])){
+    $batch_id = $_GET['delete'];
+    $sql = "DELETE FROM `batch` WHERE `batch_id` = '$batch_id'";
+    
+    if (mysqli_query($con, $sql)){
+        echo '<a class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
+    }else{
+        echo "Error deleting record:" . mysqli_error($con);
+    }
+}
+
+?>
 <a href="Department" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
 <br>
 <!-- END YOUR CODER HERE -->

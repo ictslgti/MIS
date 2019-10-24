@@ -19,27 +19,23 @@
 	    </div>
 	</div>
 	<!-- END DELETE MODEL -->
-  <!-- Modal -->
-  
 
-  
-  
-  </div>
-  </div>
-  <!-- /#page-content-wrapper -->
-  </div>
-  <!-- /#wrapper -->
-  <footer class="footer mt-auto py-3 text-center bg-dark">
+</div>
+</main>
+</div>
+
+  <!-- <footer class="footer mt-auto py-3 text-center bg-dark">
       <div class="container">
           <span class="text-muted">All Rights Reserved. Designed and Developed by Department of Information and
               Communication Technology, Sri Lanka-German Training Institute.</span>
       </div>
-  </footer>
+  </footer> -->
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
+  </script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
   </script>
@@ -49,12 +45,46 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
   <!-- Menu Toggle Script -->
   <script>
-$("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
+// $("#menu-toggle").click(function(e) {
+//     e.preventDefault();
+//     $("#wrapper").toggleClass("toggled");
+// });
+
+jQuery(function ($) {
+
+$(".sidebar-dropdown > a").click(function() {
+$(".sidebar-submenu").slideUp(200);
+if (
+$(this)
+  .parent()
+  .hasClass("active")
+) {
+$(".sidebar-dropdown").removeClass("active");
+$(this)
+  .parent()
+  .removeClass("active");
+} else {
+$(".sidebar-dropdown").removeClass("active");
+$(this)
+  .next(".sidebar-submenu")
+  .slideDown(200);
+$(this)
+  .parent()
+  .addClass("active");
+}
 });
-//call dropdown 
-$('.dropdown-toggle').dropdown();
+
+$("#close-sidebar").click(function() {
+$(".page-wrapper").removeClass("toggled");
+});
+$("#show-sidebar").click(function() {
+$(".page-wrapper").addClass("toggled");
+});
+
+
+
+
+});
 
 //delete model
 $('#confirm-delete').on('show.bs.modal', function(e) {
@@ -89,13 +119,13 @@ function refreshTime() {
 //         xmlhttp.send();
 // }
 
-//notification sample number
-var x = document.getElementById("notificationx")
-x.innerHTML = Math.floor((Math.random() * 1000) + 1);
+// //notification sample number
+// var x = document.getElementById("notificationx")
+// x.innerHTML = Math.floor((Math.random() * 1000) + 1);
 
-//message sample number
-var x = document.getElementById("messengerx")
-x.innerHTML = Math.floor((Math.random() * 2000) + 1);
+// //message sample number
+// var x = document.getElementById("messengerx")
+// x.innerHTML = Math.floor((Math.random() * 2000) + 1);
   </script>
 
 

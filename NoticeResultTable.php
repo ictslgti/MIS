@@ -17,12 +17,13 @@ include_once("menu.php");
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>Result Id</th>
-      <th>Department</th>
-      <th>Acedamic Year</th>
-      <th>Course</th>
-      <th>Module</th>
-      <th>Options</th>
+    <th >ID</th>
+      <th > Department </th>
+      <th > Course </th>
+      <th > Module </th>
+      <th > AcademicYear</th>
+      <th > Option</th>
+     
     </tr>
   </thead>
 
@@ -44,7 +45,7 @@ if(isset($_GET['delete']))
 
 <?php 
 //for insert
-$sql = "Select * from notice_result";
+$sql = "SELECT result_id,department_id,course_id,module_id,academic_year  FROM notice_result";
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0)
 { //output data of each row
@@ -52,11 +53,11 @@ if(mysqli_num_rows($result)>0)
     {
         echo '
         <tr>
-            <td>'. $row["result_id"] . "<br>" .'</td>
-            <td>'. $row["department_id"] . "<br>" .'</td>
-            <td>'. $row["academic_year"] .  "<br>" .'</td>
-            <td>'. $row["course_id"] .  "<br>" .'</td>
-            <td>'. $row["module_id"] .  "<br>" .'</td>
+        <td>'. $row["result_id"] . "<br>" .'</td>
+        <td>'. $row["department_id"]."<br>".'</td>
+        <td>'. $row["course_id"]."<br>".'</td>
+          <td>'. $row["module_id"]."<br>".'</td>
+          <td>'. $row["academic_year"]."<br>".'</td>
             <td>   
                     <a href="NoticeAddResult.php ?edit='.$row["result_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
                     <button class="btn btn-sm btn-danger" data-href="?delete='.$row["result_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>     
