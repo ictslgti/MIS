@@ -18,7 +18,8 @@ $today = date('Y-m-d');
     <div class="form-row pb-4">
         <div class="col-3">
             <div class="form-row align-items-center">
-                <select class="selectpicker mr-sm-2" id="TeacherName" name="staff_id" data-live-search="true" data-width="100%">
+                <select class="selectpicker mr-sm-2" id="TeacherName" name="staff_id" data-live-search="true"
+                    data-width="100%">
                     <option value="null" selected disabled>-- Select a Teacher --</option>
                     <?php
           $sql = "SELECT * FROM `staff`";
@@ -39,7 +40,8 @@ $today = date('Y-m-d');
 
         <div class="col-md-3 col-sm-12">
             <div class="form-row align-items-center">
-                <select class="selectpicker mr-sm-2" id="Course" onchange="showModule(this.value)" name="course_id" data-live-search="true" data-width="100%">
+                <select class="selectpicker mr-sm-2" id="Course" onchange="showModule(this.value)" name="course_id"
+                    data-live-search="true" data-width="100%">
                     <option value="null" selected disabled>-- Select a Course --</option>
                     <?php
           $sql = "SELECT * FROM `course`";
@@ -66,7 +68,8 @@ $today = date('Y-m-d');
 
         <div class="col-md-2 col-sm-12">
             <div class="form-row align-items-center">
-                <select class="selectpicker mr-sm-2" id="academic_year" name="academic_year" data-live-search="true" data-width="100%">
+                <select class="selectpicker mr-sm-2" id="academic_year" name="academic_year" data-live-search="true"
+                    data-width="100%">
                     <option value="null" selected disabled>-- Select a Academic Year --</option>
                     <?php
           $sql = "SELECT * FROM `academic` ORDER BY `academic_year` DESC";
@@ -87,7 +90,8 @@ $today = date('Y-m-d');
 
         <div class="col-md-1 col-sm-12">
             <div class="form-row align-items-center">
-                <button type="button" class="btn btn-primary btn-block ml-2" onclick="showTimetable()"><i class="fas fa-search"></i></button>
+                <button type="button" class="btn btn-primary btn-block ml-2" onclick="showTimetable()"><i
+                        class="fas fa-search"></i></button>
             </div>
         </div>
     </div>
@@ -103,7 +107,8 @@ $today = date('Y-m-d');
             <table class="table table-sm ">
                 <thead>
                     <tr>
-                        <th scope="col" class="p-3 bg-info text-light" style="width: 8%;">Date : <?php echo $today;?></th>
+                        <th scope="col" class="p-3 bg-info text-light" style="width: 8%;">Date : <?php echo $today;?>
+                        </th>
                         <th scope="col" class="p-3" style="width: 6%;">Monday</th>
                         <th scope="col" class="p-3" style="width: 6%;"> Tuesday</th>
                         <th scope="col" class="p-3" style="width: 6%;">Wednesday</th>
@@ -116,7 +121,7 @@ $today = date('Y-m-d');
                 <tbody>
                     <tr>
                         <th class="align-middle" scope="row" style="height: 50px;">08:30 AM - 10.00 AM</th>
-    <?php
+                        <?php
        
         foreach ($weeks as $value) {
             echo '<td class="align-middle ">';
@@ -132,8 +137,8 @@ $today = date('Y-m-d');
                     </tr>
                     <tr class="table-secondary">
                         <th sclass="align-middle p-3" scope="row">10.00 AM - 10.30 AM</th>
-                        <td class="align-middle text-center p-3" colspan="7">Tea Break</td>                 
-                    </tr> 
+                        <td class="align-middle text-center p-3" colspan="7">Tea Break</td>
+                    </tr>
                     <tr>
                         <th class="align-middle" scope="row" style="height: 50px;">10:30 AM - 12.00 AM</th>
                         <?php
@@ -151,8 +156,8 @@ $today = date('Y-m-d');
                     </tr>
                     <tr class="table-secondary">
                         <th sclass="align-middle p-3" scope="row">12.00 AM - 01.00 PM</th>
-                        <td class="align-middle text-center p-3" colspan="7">Lunch Break</td>                 
-                    </tr> 
+                        <td class="align-middle text-center p-3" colspan="7">Lunch Break</td>
+                    </tr>
                     <tr>
                         <th class="align-middle" scope="row" style="height: 50px;">01.00 PM - 02.30 PM</th>
                         <?php
@@ -170,8 +175,8 @@ $today = date('Y-m-d');
                     </tr>
                     <tr class="table-secondary">
                         <th sclass="align-middle p-3" scope="row">02.30 PM - 02.45 PM</th>
-                        <td class="align-middle text-center p-3" colspan="7">Tea Break</td>                 
-                    </tr> 
+                        <td class="align-middle text-center p-3" colspan="7">Tea Break</td>
+                    </tr>
                     <tr>
                         <th class="align-middle" scope="row" style="height: 50px;">02.45 PM - 04.15 PM</th>
                         <?php
@@ -187,8 +192,8 @@ $today = date('Y-m-d');
         }
     ?>
                     </tr>
-                
-                    
+
+
                 </tbody>
             </table>
         </div>
