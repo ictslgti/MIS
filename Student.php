@@ -59,8 +59,8 @@ include_once("menu.php");
           <td>'. $row["student_address"]."<br>".'</td>
           <td>'. $row["student_status"]."</br>".'</td>
           <td>
-          <a href="AddStudent.php? edit='.$row["student_id"].'"> Edit </a> |
-          <a href="?Student_Id='.$row["student_id"].'"> View More
+          <a href="AddStudent.php? edit='.$row["student_id"].'"><i class="fad fa-money-check-edit"></i></a> |
+          <a href="?Student_Id='.$row["student_id"].'"> <i class="fas fa-angle-double-right"></i>
           </td>
        </tr> ';
      }
