@@ -11,7 +11,7 @@ include_once("menu.php");
 
 
 <?PHP
-$department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$time=$classroom= $tid=null;
+$department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$classroom=$startdate=$endeate=$tid=null;
 
 if(isset($_GET['edit']))
 
@@ -29,8 +29,10 @@ if(isset($_GET['edit']))
       echo $academic_year= $row['academic_year'];
       echo $staff_id = $row['staff_id'];
       echo $weekdays = $row['weekdays'];
-      echo $weekdays = $row['time'];
+      echo $weekdays = $row['timep'];
       echo $classroom = $row['classroom'];
+      echo $startdate = $row['startdate'];
+      echo $endeate = $row['endeate'];
 
   }
 
@@ -41,7 +43,7 @@ if(isset($_GET['edit']))
 
 
 if(isset($_POST['Add'])){
-  echo "ok";
+  
 
   if(!empty($_POST['department_id'])
   &&!empty($_POST['course_id'])
@@ -49,21 +51,26 @@ if(isset($_POST['Add'])){
   &&!empty($_POST['academic_year'])
   &&!empty($_POST['staff_id'])
   &&!empty($_POST['weekdays'])
-  &&!empty($_POST['time'])
-  &&!empty($_POST['classroom']))
+  &&!empty($_POST['timep'])
+  &&!empty($_POST['classroom'])
+  &&!empty($_POST['startdate'])
+  &&!empty($_POST['endeate']))
+
   { 
-     echo "ok2";
-     echo $department_id   =  $_POST['department_id'];
-     echo $course_id   =  $_POST['course_id'];
-     echo $module_id  =   $_POST['module_id'];
-     echo $academic_year  =   $_POST['academic_year'];
-     echo $staff_id   =   $_POST['staff_id'];
-     echo $weekdays  =  $_POST['weekdays'];
-     echo $time   =    $_POST['time'];
-     echo $classroom   =  $_POST['classroom'];
   
-     echo $sql = "INSERT INTO `timetable` (`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `time`, `classroom`)
-      VALUES ('$department_id','$course_id','$module_id','$academic_year','$staff_id','$weekdays','$time','$classroom')";
+     $department_id   =  $_POST['department_id'];
+     $course_id   =  $_POST['course_id'];
+     $module_id  =   $_POST['module_id'];
+     $academic_year  =   $_POST['academic_year'];
+     $staff_id   =   $_POST['staff_id'];
+     $weekdays  =  $_POST['weekdays'];
+     $timep    =    $_POST['timep'];
+     $classroom   =  $_POST['classroom'];
+     $startdate   =  $_POST['startdate'];
+     $endeate   =  $_POST['endeate'];
+  
+    $sql = "INSERT INTO `timetable` (`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `timep`, `classroom`,`startdate`,`endeate`)
+      VALUES ('$department_id','$course_id','$module_id','$academic_year','$staff_id','$weekdays','$timep','$classroom','$startdate','$endeate')";
    
       if (mysqli_query($con, $sql)) {
         echo "record add";
@@ -268,20 +275,20 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Time</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['time']))
-    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['time'])){echo ' is-valid';} ?>"  id="time" name="time">
+    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['timep']))
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['timep'])){echo ' is-valid';} ?>"  id="timep" name="timep">
 
         <option selected disabled required >Time</option>
 
         <option value="P1"
 
-        <?php if($time=="P1")  echo 'selected';?>
+        <?php if($timep=="P1")  echo 'selected';?>
 
         >P1-8.30-10.00</option>
 
     <option value="P2"
 
-    <?php if($time=="P2")  echo 'selected';?>
+    <?php if($timep=="P2")  echo 'selected';?>
     
     >P2-10.30-12.00</option>
 
@@ -289,13 +296,13 @@ if(isset($_POST['Add'])){
     <option value="P3"
 
 
-    <?php if($time=="P3")  echo 'selected';?>
+    <?php if($timep=="P3")  echo 'selected';?>
 
     >P3-13.00-14.30</option>
 
     <option value="P4"
 
-    <?php if($time=="P4")  echo 'selected';?>
+    <?php if($timep=="P4")  echo 'selected';?>
     >P4-14.45-16.15</option>
 	
       
@@ -340,23 +347,20 @@ if(isset($_POST['Add'])){
 
 
  
- <!--
+
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Startdate</label>
     <div class="col-sm-10">
-      <input type="date" class="form-control" <?php echo $startdate; ?> <?php  if(isset($_POST['Add'])
-       && empty($_POST['startdate'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['startdate'])){echo ' is-valid';} ?>"  >
-    </div>
+      <input type="date" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['startdate']))
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['startdate'])){echo ' is-valid';} ?>"  id="startdate" name="startdate">
+</div>
+
   </div>
-
-
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">EndDate</label>
     <div class="col-sm-10">
-      <input type="date" class="form-control<?php echo $endeate; ?>"
-       class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['endeate']))
-       {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['endeate'])){echo 
-       ' is-valid';} ?>
+      <input type="date" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['endeate']))
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['endeate'])){echo ' is-valid';} ?>"  id="endeate" name="endeate">
 
 
 
@@ -364,7 +368,7 @@ if(isset($_POST['Add'])){
     </div>
   </div>
 
-       -->
+     
 
 
   

@@ -37,34 +37,29 @@ include_once("menu.php");
                         }
                     }
                     ?>
+
 <!-- STAFF info design  -->
 <div class="pt-2 bg-white ">
     <h1 class="display-4 text-center">Time Table</h1>
    
-</div>
 
-<table class="table table-bordered">
+
+<table class="table table-bordered" scope="col" height="150">
   <thead>
     <tr>
-      <th scope="col" width="8%"> ID</th>
-      <th scope="col" width="8%"> Department </th>
-      <th scope="col" width="8%"> Course </th>
-      <th scope="col" width="8%"> Module </th>
-      <th scope="col" width="5%"> AcademicYear</th>
-      <th scope="col" width="5%"> Lecture </th>
-      <th scope="col" width="5%"> WeekDays </th>
-      <th scope="col" width="5%"> Time </th>
-      <th scope="col" width="5%"> ClassRoom </th>
-    <th scope="col" width="8%"  ></th>
+      <th scope="col" width="1%">Time</th>
+      <th scope="col" width="5%">Monday</th>
+      <th scope="col" width="5%">Tuesday</th>
+      <th scope="col" width="5%">Wednesday</th>
+      <th scope="col" width="5%">Thursday</th>
+      <th scope="col" width="5%">Friday</th>
+      <th scope="col" width="5%">Saturday </th>
+      <th scope="col" width="5%">Sunday</th>
+     
+                  </thead>
     </tr>
-
-
-
-
-
-   
-<?php
-   $sql = "SELECT time_id,department_id,course_id,module_id,academic_year,staff_id,weekdays,time,classroom FROM timetable";
+ <?php
+   $sql = "SELECT time_id,timep,department_id,course_id,module_id,academic_year,staff_id,weekdays,classroom FROM timetable";
    
    $result = mysqli_query ($con, $sql);
    if (mysqli_num_rows($result)>0)
@@ -72,28 +67,60 @@ include_once("menu.php");
      while($row = mysqli_fetch_assoc($result))
      {
        echo '
-       <tr style="text-align:left";>
-       <td>'. $row["time_id"]."<br>".'</td>
+  
+       <tr>
+       <tr style="text-align:left"scope="col" height="150";>
+       <td>'. $row["timep"]."<br>".'</td>
           <td>'. $row["department_id"]."<br>".'</td>
           <td>'. $row["course_id"]."<br>".'</td>
           <td>'. $row["module_id"]."<br>".'</td>
           <td>'. $row["academic_year"]."<br>".'</td>
           <td>'. $row["staff_id"]."<br>".'</td>
           <td>'. $row["weekdays"]."<br>".'</td>
-          <td>'. $row["time"]."<br>".'</td>
           <td>'. $row["classroom"]."<br>".'</td>
            
         
-          <td>
+     </tr>
+     <tr>
+     <tr style="text-align:left" scope="col" height="150";>
+     <td>'. $row["timep"]."<br>".'</td>
+        <td>'. $row["department_id"]."<br>".'</td>
+        <td>'. $row["course_id"]."<br>".'</td>
+        <td>'. $row["module_id"]."<br>".'</td>
+        <td>'. $row["academic_year"]."<br>".'</td>
+        <td>'. $row["staff_id"]."<br>".'</td>
+        <td>'. $row["weekdays"]."<br>".'</td>
+        <td>'. $row["classroom"]."<br>".'</td>
          
-          <a href="?Student_Id='.$row["time_id"].'"> View More
-          <a href="AddTimetable.php ?edit='.$row["time_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+        
+     </tr>
+     <tr>
+     <tr style="text-align:left" scope="col" height="150";>
+     <td>'. $row["timep"]."<br>".'</td>
+        <td>'. $row["department_id"]."<br>".'</td>
+        <td>'. $row["course_id"]."<br>".'</td>
+        <td>'. $row["module_id"]."<br>".'</td>
+        <td>'. $row["academic_year"]."<br>".'</td>
+        <td>'. $row["staff_id"]."<br>".'</td>
+        <td>'. $row["weekdays"]."<br>".'</td>
+        <td>'. $row["classroom"]."<br>".'</td>
+         
+     </tr>
+     <tr>
+     <tr style="text-align:left" scope="col" height="150";>
+     
+     <td>'. $row["timep"]."<br>".'</td>
+        <td>'. $row["department_id"]."<br>".'</td>
+        <td>'. $row["course_id"]."<br>".'</td>
+        <td>'. $row["module_id"]."<br>".'</td>
+        <td>'. $row["academic_year"]."<br>".'</td>
+        <td>'. $row["staff_id"]."<br>".'</td>
+        <td>'. $row["weekdays"]."<br>".'</td>
+        <td>'. $row["classroom"]."<br>".'</td>
+         
+     </tr>
 
-                                       
-          <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["time_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>      
-          </td>
-         
-       </tr> ';
+       ';
      }
    }
    else
@@ -102,8 +129,17 @@ include_once("menu.php");
    }
     
   ?>
+
  
+  
  </table>
+ <td>
+         
+         <a href="?Student_Id='.$row["time_id"].'"> View More
+         <a href="AddTimetable.php ?edit='.$row["time_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+         <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["time_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>      
+         </td>
+        
 <!--END OF YOUR COD-->
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>

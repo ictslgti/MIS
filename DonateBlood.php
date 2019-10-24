@@ -25,7 +25,7 @@ include_once("menu.php");
 <div class="col-sm-6 " ></div>
 <div class="col-sm-3 " > 
 <form class="form-inline md-form form-sm mt-4">
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_ID" aria-label="Search"id="search"> 
+  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_ID" aria-label="Search"   id="search"> 
   <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button>
 </form>
 </div>
@@ -93,8 +93,8 @@ include_once("menu.php");
             <td>'.$row["reference_id"].'</td>
             <td> 
            
-            <a href=" donor.php ?edit='.$row["d_id"].' class="class="btn btn-outline-success btn-icon-split"""><i class="far fa-edit"></i>&nbsp;&nbsp;  </a>  
-            <button class="btn btn-outline-danger btn-icon-split" data-href="?delete_id='.$row["d_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
+            <a href=" donor.php ?edit='.$row["reference_id"].' "class="btn btn-outline-success btn-icon-split""><i class="far fa-edit"></i>&nbsp;&nbsp;  </a>  
+            <button class="btn btn-outline-danger btn-icon-split" data-href="?delete='.$row["d_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
            
             </td>
         </tr>';

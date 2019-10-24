@@ -34,16 +34,31 @@ if(isset($_POST['Add']))
      $sql="INSERT INTO `inventory_item`(`item_id`, `supplier_id`, `inventory_item_purchase`, `inventory_item_warranty`, `inventory_item_description`, `item_code`)
         VALUES('$itemid','$supplierid','$inventoryitempurchase','$inventoryitemwarranty','$inventoryitemdescription','$itemcode')";
 
-
-        if(mysqli_query($con,$sql))
-        {
-          echo "Record has been Inserted succesfully";
-        }
-        else
-        {
-          echo "Error in insert" . mysqli_error($con);    
+if(mysqli_query($con,$sql))
+      {
+        echo '
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>'.$itemid.'</strong> Item details inserted
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>    
+        ';
+      }
+      else{
         
-        }
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$itemid.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
+
+
+      }
 
       }
 
@@ -70,7 +85,7 @@ if(isset($_POST['Add']))
               
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="">02.SUPPLIER ID</label> <span style="color:red;">*</span></label>
-                  <select class="custom-select mr-sm-2<?php echo $supplierid;?>"class="form-control <?php if(isset($_POST['Add']) && empty($_POST['supplierid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['supplierid'])&& !empty($_POST['supplierid'])){echo '  is-valid';} ?>"  id="supplierid" aria-describedby="supplierid" placeholder="SUPPLIERID" required="required">
+                  <select class="custom-select mr-sm-2<?php echo $supplierid;?>"class="form-control <?php if(isset($_POST['Add']) && empty($_POST['supplierid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['supplierid'])&& !empty($_POST['supplierid'])){echo '  is-valid';} ?>"  id="supplierid" aria-describedby="supplierid" placeholder="SUPPLIERID" required="required" name="supplierid">
                   
                   <option value="null" selected disabled>--Select supplier_id--</option>
                     <?php          
