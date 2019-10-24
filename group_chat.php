@@ -135,15 +135,10 @@ if(isset($_GET['chat_group'])){
                     <button class="btn btn-link btn-icon icon-size-3 ml-1 mt-auto" aria-label="Send message"
                         data-action="send-message">
 
-                    
 
 
 
-      
-
-
-
-                        <span data-region="send-icon-container"> <i class="icon fa fa-paper-plane fa-fw "
+                         <span data-region="send-icon-container"> <i class="icon fa fa-paper-plane fa-fw " name="Add"
                                 aria-hidden="true">  </i></span>
                         <span class="hidden" data-region="loading-icon-container"><span
                                 class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "
@@ -157,6 +152,40 @@ if(isset($_GET['chat_group'])){
     </div>
 
 
+    <?php
+if(isset($_POST['Add'])){
+  
+
+  if(!empty($_POST['message'])
+  &&!empty($_POST['message_time'])
+  &&!empty($_POST['chat_group_sender'])
+  &&!empty($_POST['chat_group_reciver_group_id']))
+  { 
+ 
+     echo $message   =  $_POST['message'];
+     echo $message_time   =  $_POST['message_time'];
+     echo $chat_group_sender  =   $_POST['chat_group_sender'];
+     echo $chat_group_reciver_group_id  =   $_POST['chat_group_reciver_group_id'];
+  
+     echo $sql = "INSERT INTO `chat_group_message` (`message`, `message_time`, `chat_group_sender`, `chat_group_reciver_group_id`)
+      VALUES ('$message','$message_time','$chat_group_sender','$chat_group_reciver_group_id')";
+   
+      if (mysqli_query($con, $sql)) {
+        echo "record add";
+    
+
+      } else {
+         echo "Error: " . $sql .
+        "<br>" . 	mysqli_error($con);
+      
+        
+
+      }
+  }
+}
+
+
+  ?>
 
 
 
