@@ -291,10 +291,10 @@ $title = "Home | SLGTI";
                         echo "0 results";
                         }
                         ?> </h4>  
-                                <div class="pb-1" style="max-width: 4rem;">
+                                <!-- <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
-                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
+                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                    -->
                             </div>
                         </div>
                     </div>
@@ -382,14 +382,14 @@ $title = "Home | SLGTI";
                         ?>
                         </h4>
                         <form method="POST" action="#">   
-                                 <div class="pb-1" style="max-width: 4rem;">
+                                 <!-- <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
                                     <input type="text" class="form-control"  name="hidden_name" value="<?php echo $VRice ?>" />
                                     <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
                                     <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
-                                 </div>   
+                                 </div>    -->
                                  </div>
                                 </div>
                             </div>  
@@ -427,14 +427,14 @@ $title = "Home | SLGTI";
                         ?>
                         </h4>
                         <form method="POST" action="#">   
-                                 <div class="pb-1" style="max-width: 4rem;">
+                                 <!-- <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
                                     <input type="text" class="form-control"  name="hidden_name" value="<?php echo $CRice ?>" />
                                     <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
                                     <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
-                                 </div>   
+                                 </div>    -->
                                  </div>
                                 </div>
                             </div>  
@@ -472,10 +472,10 @@ $title = "Home | SLGTI";
                             echo "0 results";
                             }
                             ?> </h4>
-                                <div class="pb-1" style="max-width: 4rem;">
+                                <!-- <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
-                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
+                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                    -->
                             </div>
                         </div>
                     </div>
@@ -517,14 +517,14 @@ $title = "Home | SLGTI";
                        ?>
                        </h4>
                        <form method="POST" action="#">   
-                                <div class="pb-1" style="max-width: 4rem;">
+                                <!-- <div class="pb-1" style="max-width: 4rem;">
                                    <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $Koththu ?>" />
                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
                                    <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
-                                </div>   
+                                </div>    -->
                                 </div>
                                </div>
                            </div>  
@@ -560,14 +560,14 @@ $title = "Home | SLGTI";
                        ?>
                        </h4>
                        <form method="POST" action="#">   
-                                <div class="pb-1" style="max-width: 4rem;">
+                                <!-- <div class="pb-1" style="max-width: 4rem;">
                                    <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $Pittu ?>" />
                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
                                    <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
-                                </div>   
+                                </div>    -->
                                 </div>
                                </div>
                            </div>  
@@ -604,14 +604,14 @@ $title = "Home | SLGTI";
                         ?>
                         </h4>
                         <form method="POST" action="#">   
-                                 <div class="pb-1" style="max-width: 4rem;">
+                                 <!-- <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
                                     <input type="text" class="form-control"  name="hidden_name" value="<?php echo $FriRic?>" />
                                     <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
                                     <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
-                                 </div>   
+                                 </div>    -->
                                  </div>
                                 </div>
                             </div>  
@@ -647,10 +647,10 @@ $title = "Home | SLGTI";
                         echo "0 results";
                         }
                         ?> </h4> 
-                                <div class="pb-1" style="max-width: 4rem;">
+                                <!-- <div class="pb-1" style="max-width: 4rem;">
                                     <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"   required>
                                 </div>   
-                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                   
+                                <a href="#" class="btn btn-info" value="Add" name="Add">Add</a>                                    -->
                             </div>
                         </div>
                     </div>
@@ -731,14 +731,14 @@ $title = "Home | SLGTI";
             </div>
                 <div class="card-body">
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col">
                             <p>Order ID</p>
                         </div>
                         <div class="col">
                             <p></p>
                         </div>
-                    </div>
+                    </div> -->
                     
                     <div class="row">
                         <div class="col">
@@ -750,7 +750,7 @@ $title = "Home | SLGTI";
                     </div>
 
                     <div class="row">
-                        <a href="OrderView" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" >Order</button></a>
+                        <button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="button">Order</button></a>
                     </div>
                     
                 </div>
