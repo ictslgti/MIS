@@ -16,41 +16,47 @@ $title = "Examinations | SLGTI";
     <body style="background-color: rgb(255,255,255);">
 
         <!--  -->
-        <?php
 
 
+
+        <!--  -->
+
+
+
+        <div class="shadow p-3 mb-5 bg-white rounded">
+
+            <div class="highlight-blue">
+
+                <div class="container">
+                    <div class="intro">
+                        <h2 class="display-5 text-center">Welcome <?php echo $_SESSION["user_name"];?> to</h2>
+                        <h1 class="display-4 text-center">Asignments Portal</h1>
+
+                        <p class="text-center">Add Assessment Type&nbsp;</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!--  -->
+<?php
 $course_name=$course_id=$module_name=$assessment_type=$assessment_name=$assessment_percentage=null;
 
 if (isset($_POST['Add'])) {
-    echo "sd";
-    if (!empty($_POST['course_name'])
-       
+    if (!empty($_POST['course_name'])  
     &&!empty($_POST['module_name'])
     &&!empty($_POST['assessment_type'])
     &&!empty($_POST['assessment_name'])
     &&!empty($_POST['assessment_percentage'])){
 
-     $course_name=$_POST['course_name'];
-        $module_name=$_POST['module_name'];
-        $assessment_type=$_POST['assessment_type'];
-        $assessment_name=$_POST['assessment_name'];
-        $assessment_percentage=$_POST['assessment_percentage'];
+         $course_name=$_POST['course_name'];
+         $module_name=$_POST['module_name'];
+         $assessment_type=$_POST['assessment_type'];
+         $assessment_name=$_POST['assessment_name'];
+         $assessment_percentage=$_POST['assessment_percentage'];
 
-        $sql = "INSERT INTO `assessments_type`(`course_name`,`module_name`,`assessment_name`,`assessment_type`,`assessment_percentage`) 
-        VALUES(`$course_name`,`$module_name`,`$assessment_name`,`$assessment_type`,`$assessment_percentage`)";
-
-if (mysqli_query($con, $sql)) {
-    echo "record add";
-
-
-  } else {
-     echo "Error: " . $sql .
-    "<br>" . 	mysqli_error($con);
-  
-    
-
-  }
-
+         $sql = "INSERT INTO `assessments_type` ( `course_id`, `module_id`, `assessment_name`, `assessment_type`, `assessment_percentage`) 
+        VALUES ('$course_name', '$module_name', '$assessment_name', '$assessment_type', '$assessment_percentage')";
 if(mysqli_query($con,$sql))
 {
   echo '
@@ -59,7 +65,7 @@ if(mysqli_query($con,$sql))
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>
-    </div>    
+    </div>  <script> showAssessmentType(\''.$course_name.'\',\''.$module_name.'\');</script>  
   ';
 }
 else{
@@ -82,30 +88,9 @@ else{
 
 
 ?>
-
-
-        <!--  -->
-
-
-
-        <div class="shadow p-3 mb-5 bg-white rounded">
-
-            <div class="highlight-blue">
-
-                <div class="container">
-                    <div class="intro">
-                        <h2 class="display-5 text-center">Welcome <?php echo $_SESSION["user_name"];?> to</h2>
-                        <h1 class="display-4 text-center">Asignments Portal</h1>
-
-                        <p class="text-center">Add Assessment Type&nbsp;</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!--  -->
         <form method="POST" action="#">
+            <!--  -->
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -116,8 +101,7 @@ else{
                                         class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
                                     Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
-                            <select
-                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['courser_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"
+                            <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['course_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_name'])){echo ' is-valid';} ?>"
                                 id="course_name" name="course_name" value="<?php echo $course_id; ?>"
                                 onchange="showModule(this.value)" required>
                                 <option value="null" selected disabled>--Select Course--</option>
@@ -156,7 +140,7 @@ else{
                                     Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
                             <select
-                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"
+                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_name'])){echo ' is-valid';} ?>"
                                 id="Module" name="module_name" required>
                                 <option value="null" selected disabled>--Select Module--</option>
 
@@ -180,9 +164,9 @@ else{
                             <select
                                 class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['assessment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_type'])){echo ' is-valid';} ?>"
                                 id="inputGroupSelect01" name="assessment_type" value="<?php echo $assessment_type; ?>">
-                                <option selected>Choose...</option>
-                                <option value="1">Theory</option>
-                                <option value="2">Practical</option>
+                                <option value="null" selected disabled>--Select assessment_type--</option>
+                                <option value="T">Theory</option>
+                                <option value="P">Practical</option>
                             </select>
                         </div>
 
@@ -222,8 +206,8 @@ else{
                             <input type="text"
                                 class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_percentage'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_percentage'])){echo ' is-valid';} ?>"
                                 placeholder="Assessment Percentage" aria-label="Username"
-                                aria-describedby="basic-addon1" name="assessment_name"
-                                value="<?php echo $assessment_name; ?>" onkeypress="IsInputNumber(event)">
+                                aria-describedby="basic-addon1" name="assessment_percentage"
+                                value="<?php echo $assessment_percentage; ?>" onkeypress="IsInputNumber(event)">
                         </div>
                     </div>
                 </div>
@@ -235,8 +219,7 @@ else{
 
                             </div>
                             <div class="col-md-auto">
-                                <button type="submit" class="btn btn-outline-primary"> <i class="fas fa-plus"
-                                        value="Add" name="Add"></i> Add Asessments</button>
+                                <button type="submit" class="btn btn-outline-primary" value="Add" name="Add" onclick="showAssessmentType('aaa','vvv')"><i class="fas fa-plus"></i> Add Asessments</button>
                             </div>
                             <div class="col col-lg-2">
 
@@ -321,7 +304,19 @@ else{
         //     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         //     xmlhttp.send("module=" + val);
         // }
+        function showAssessmentType(val1,val2) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("Module").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "controller/getAssessmentType", true);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send("course_id=" + val1 + "&module_id=" + val2);
 
+
+        }
         function showModule(val) {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
