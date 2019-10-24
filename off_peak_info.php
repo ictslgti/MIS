@@ -35,9 +35,9 @@ include_once("menu.php");
   <table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
-    
+    <th scope="col">Student_id</th>
       <th scope="col">Name of applicant</th>
-      <th scope="col">Registration No</th>
+      
       <th scope="col">Department</th>
       <th scope="col">Contact No</th>
       <th scope="col">Date</th>
@@ -55,7 +55,7 @@ include_once("menu.php");
     while($row = mysqli_fetch_assoc($result)){
     echo '<tr>
       
-      <td>'.$row["registration_no"].'</td>
+      <td>'.$row["student_id"].'</td>
       <td>'.$row["name_of_applicant"].'</td>
       <td>'.$row["department"].'</td>
       <td>'.$row["contact_no"].'</td>
@@ -81,9 +81,9 @@ else{
   <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab"><table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
- 
+    <th scope="col">Student_id</th>
       <th scope="col">Name of applicant</th>
-      <th scope="col">Registration No</th>
+      
       <th scope="col">Department</th>
       <th scope="col">Contact No</th>
       <th scope="col">Date</th>
@@ -101,7 +101,7 @@ else{
     while($row = mysqli_fetch_assoc($result)){
     echo '<tr>
       
-      <td>'.$row["registration_no"].'</td>
+      <td>'.$row["student_id"].'</td>
       <td>'.$row["name_of_applicant"].'</td>
       <td>'.$row["department"].'</td>
       <td>'.$row["contact_no"].'</td>
@@ -125,9 +125,9 @@ else{
   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab"><table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
-    
+    <th scope="col">Student_id</th>
       <th scope="col">Name of applicant</th>
-      <th scope="col">Registration No</th>
+      
       <th scope="col">Department</th>
       <th scope="col">Contact No</th>
       <th scope="col">Date</th>
@@ -145,7 +145,7 @@ else{
     while($row = mysqli_fetch_assoc($result)){
     echo '<tr>
       
-      <td>'.$row["registration_no"].'</td>
+      <td>'.$row["student_id"].'</td>
       <td>'.$row["name_of_applicant"].'</td>
       <td>'.$row["department"].'</td>
       <td>'.$row["contact_no"].'</td>
