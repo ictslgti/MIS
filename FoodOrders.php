@@ -750,7 +750,7 @@ $title = "Home | SLGTI";
                     </div>
 
                     <div class="row">
-                        <button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="button">Order</button></a>
+                        <a href="OrderView.php" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="button">Order</button></a>
                     </div>
                     
                 </div>

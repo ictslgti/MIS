@@ -5,19 +5,6 @@ include_once("head.php");
 include_once("menu.php");
 ?>
 <!-- dont change -->
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>examinations</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.min.css">
-    <style>
-    </style>
-</head>
-
-<body>
 
     <div class="shadow p-3 mb-s bg-white rounded">
         <h1 class="text-center display-3">SLGTI Student Payment Portal</h1> 
@@ -109,7 +96,7 @@ if(isset($_POST['edit'])){
 
 
 
-    <br>
+
     <div class="row">
         <div class="col-sm-8"> </div>
         <div class="col-sm-4  ">
@@ -179,24 +166,24 @@ if(isset($_POST['edit'])){
                         </div>
                         <select
                             class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_type'])){echo ' is-valid';} ?> "
-                            id="payment_type" name="payment_type">
+                            id="payment_type"  onchange="showpaymentreason(this.value)">
 
                             <?php
-                  $sql = "select DISTINCT payment_type from payment";
-                  $result = mysqli_query($con, $sql);
-                  if (mysqli_num_rows($result) > 0) {
-                  while($row = mysqli_fetch_assoc($result)) {
-                    echo '<option  value="'.$row["payment_reason"].'" required>'.$row["payment_type"].'</option>';
-                    $id=$row["payment_type"];
-                  }
-                  }else{
-                    echo '<option value="null"   selected disabled>-- No Course --</option>';
-                  }
-                  
-                  ?>
-                        </select>
-                        
-                </div>
+                                $sql = "select DISTINCT payment_type from payment";
+                                $result = mysqli_query($con, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    echo '<option  value="'.$row["payment_reason"].'" required>'.$row["payment_type"].'</option>';
+                                    
+                                }
+                                }else{
+                                    echo '<option value="null"   selected disabled>-- No Course --</option>';
+                                }
+                                
+                                ?>
+                                        </select>
+                                        
+                                </div>
 
 
                     <div class="input-group mb-3 col-md-12 ">
@@ -206,25 +193,9 @@ if(isset($_POST['edit'])){
         fa-swatchbook"></i>&nbsp;Payment Reason</label>
                         </div>
                         <br>
-                        <select
-                            class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_reason'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_reason'])){echo ' is-valid';} ?>"
-                            id="inputGroupSelect01" name="payment_reason">
-                            
-                            <?php
-                  $sql = "SELECT payment_reason from payment WHERE payment_type='$id'";
-                  $result = mysqli_query($con, $sql);
-                 
-                  if (mysqli_num_rows($result) > 0) {
-                  while($row = mysqli_fetch_assoc($result)) {
-                    echo '<option  value="'.$row["pays_reason"].'" required>'.$row["payment_id"].'</option>';
-                  }
-                  }else{
-                    echo '<option value="null"   selected disabled>-- No payment --</option>';
-                  }
-                 
-                  ?>
-                            
-                        </select>
+                        <select class="custom-select mr-sm-2" id="payment_reason" name="payment_reason">
+                             <option value="null" selected disabled>-- Select a Payment type --</option>
+                         </select>
                     </div>
 
                     <div class="form-group col-md-12"><i class="fas fa-th"></i>&nbsp;
@@ -282,7 +253,7 @@ if(isset($_POST['edit'])){
                     </tr>
                 </tbody>
             </table>
-            <br>
+           
             <h2>
                 <button type="submit" name="Add" value="Add" class="btn btn-primary btn-block">
                     <h1><i class="fab fa-amazon-pay"></i>&nbsp;
@@ -332,16 +303,24 @@ if(isset($_POST['edit'])){
     <br>
     </div>
     <!-- dont change -->
-    <?php
-include_once("footer.php");
-?>
-</body>
-
-</html>
-
+    
 
 
 </div>
+
+<script>
+function showpaymentreason(val) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("payment_reason").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST", "controller/getPaymentreason", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("payment_type=" + val);
+}
+</script>
 <!-- dont change -->
 <?php
     include_once("footer.php");
