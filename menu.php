@@ -1,9 +1,26 @@
 <?php
 $u_n = $_SESSION['user_name'];
-$u_a = $_SESSION['user_table'];
+$u_ta = $_SESSION['user_table'];
 $u_t = $_SESSION['user_type'];
 $d_c = $_SESSION['department_code'];
 
+$username = null;
+if($u_ta=='staff'){
+  $sql = "SELECT * FROM `staff` WHERE `staff_id` = '$u_n'";
+  $result = mysqli_query($con, $sql);
+  if (mysqli_num_rows($result) == 1) {
+  $row = mysqli_fetch_assoc($result);
+  $username =  $row['staff_name'];
+  }
+
+}if($u_ta=='student'){
+  $sql = "SELECT * FROM `student` WHERE `student_id` = '$u_n'";
+  $result = mysqli_query($con, $sql);
+  if (mysqli_num_rows($result) == 1) {
+  $row = mysqli_fetch_assoc($result);
+  $username =  $row['student_fullname'];
+  }
+}
 
 ?>
 <nav id="sidebar" class="sidebar-wrapper">
@@ -21,9 +38,9 @@ $d_c = $_SESSION['department_code'];
         </div>
         <div class="user-info">
           <span class="user-name">
-            <strong><?php echo $_SESSION['user_name'];?></strong>
+            <strong><?php echo $username;?></strong>
           </span>
-          <span class="user-role"><?php echo $_SESSION['user_table'].$_SESSION['user_type'];?> | <?php echo $_SESSION['department_code'];?> </span>
+          <span class="user-role"><?php echo $_SESSION['user_type'];?> | <?php echo $_SESSION['department_code'];?> </span>
           <span class="user-status">
             <i class="fa fa-circle"></i>
             <span>Online</span>
