@@ -59,13 +59,26 @@ $title = "Examinations | SLGTI";
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01"><i
-                                class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
-                            Semister&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>Choose...</option>
+                    <select class="custom-select" id="inputGroupSelect01" onchange="showModule(this.value)">
+                        <!-- <option selected>Choose...</option>
                         <option value="1">Semister 1</option>
-                        <option value="2">Semister 2</option>
+                        <option value="2">Semister 2</option> -->
+
+                        <?php
+                  $sql = "SELECT * FROM `assessments_type`";
+                  $result = mysqli_query($con, $sql);
+                  if (mysqli_num_rows($result) > 0) {
+                  while($row = mysqli_fetch_assoc($result)) {
+                    echo '<option  value="'.$row["course_id"].'" required>'.$row["course_name"].'</option>';
+                  }
+                  }else{
+                    echo '<option value="null"   selected disabled>-- No Course --</option>';
+                  }
+                  ?>
+
+
                     </select>
                 </div>
 
@@ -76,13 +89,14 @@ $title = "Examinations | SLGTI";
                                 class="fas fa-book-open"></i>&nbsp;&nbsp;Select
                             Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>Graphic Design</option>
+                    <select class="custom-select" id="Module" name="module_name">
+                    <option value="null" selected disabled>--Select Module--</option>
+                        <!-- <option selected>Graphic Design</option>
                         <option value="1">Programming</option>
                         <option value="2">Database 1</option>
                         <option value="3">System Analysis and Design</option>
                         <option value="3">Manage Workplace</option>
-                        <option value="3">Manage Workplace & Communication</option>
+                        <option value="3">Manage Workplace & Communication</option> -->
                     </select>
                 </div>
 
@@ -358,6 +372,22 @@ $title = "Examinations | SLGTI";
             <!-- main table container end below -->
         </div>
         <!-- end mode  -->
+        <script>
+        function showModule(val) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("Module").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "controller/getModule", true);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send("acourse=" + val);
+        }
+        
+        
+        
+        </script>
 
 
         
