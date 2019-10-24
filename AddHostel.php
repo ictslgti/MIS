@@ -21,7 +21,7 @@ include_once("menu.php");
           
         if(isset($_POST['allo'])){
          
-         
+        
         
           
           $id=$_POST['id'];
@@ -35,12 +35,17 @@ include_once("menu.php");
           $room =$_POST['room'];
           $date =$_POST['date'];
           $leave =$_POST['leave'];
-          $sql= "INSERT INTO `hostel_student_details` (`student_id`, `fullname`, `department_name`, `address`, `district`, `distance`, `gender`, `block_no`, 
-          `room_no`, `date_of_addmission`, `date_of_leaving`) VALUES ('$id', '$name', '$dept', '$address', '$dist', '$dis', '$gender', '$block', '$room', '$date', '$leave')";
+          $sql= "INSERT INTO `hostel_student_details` (`student_id`,  `department_id`,  `distance`,  `block_no`, 
+          `room_no`, `date_of_addmission`, `date_of_leaving`) VALUES ('$id', '$dept',   '$dis',  '$block', '$room', '$date', '$leave')";
           if(mysqli_query($con,$sql)){
-              echo "new record create sucessfully ";
+            echo
+            '<div class="alert alert-success">
+            <strong>Success!</strong> Your data was inserted.</a>
+          </div>';
           }else{
-              echo "error :".$sql."<br>".mysqli_error($con);
+              echo '<div class="alert alert-warning">
+              <strong>Warning!</strong> Invalid data. Please Check Your Data !
+            </div>';
           }
         }
   
