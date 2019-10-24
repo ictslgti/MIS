@@ -70,7 +70,7 @@ if(isset($_POST['Add']))
               
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="">02.SUPPLIER ID</label> <span style="color:red;">*</span></label>
-                  <select class="custom-select mr-sm-2<?php echo $supplierid;?>"class="form-control <?php if(isset($_POST['Add']) && empty($_POST['supplierid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['supplierid'])&& !empty($_POST['supplierid'])){echo '  is-valid';} ?>"  id="supplierid" aria-describedby="supplierid" placeholder="SUPPLIERID" required="required">
+                  <select class="custom-select mr-sm-2<?php echo $supplierid;?>"class="form-control <?php if(isset($_POST['Add']) && empty($_POST['supplierid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['supplierid'])&& !empty($_POST['supplierid'])){echo '  is-valid';} ?>"  id="supplierid" aria-describedby="supplierid" placeholder="SUPPLIERID" required="required" name="supplierid">
                   
                   <option value="null" selected disabled>--Select supplier_id--</option>
                     <?php          
