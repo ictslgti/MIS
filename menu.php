@@ -38,7 +38,7 @@ if($u_ta=='staff'){
         </div>
         <div class="user-info">
           <span class="user-name">
-            <strong><?php echo $username;?></strong>
+            <strong><?php echo $u_n;?></strong>
           </span>
           <span class="user-role"><?php echo $_SESSION['user_type'];?> | <?php echo $_SESSION['department_code'];?> </span>
           <span class="user-status">
