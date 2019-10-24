@@ -1,6 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
 <?php
-$title = "Home | SLGTI";
+$title = "Timetable | SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
