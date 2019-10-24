@@ -400,6 +400,3 @@ if(isset($_POST['Adding']))
 <!--Block#3 start dont change the order-->
 <?php include_once ("footer.php"); ?>  
 <!--  end dont change the order-->
-    
-    
-  

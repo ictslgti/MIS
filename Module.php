@@ -1,9 +1,9 @@
-	
 <!--Block#1 start dont change the order-->
 <?php 
 $title="Module details | SLGTI";    
 include_once ("config.php");
 include_once ("head.php");
+include_once ("menu.php");
 include_once ("menu.php");
 ?>
 <!-- end dont change the order-->
@@ -11,7 +11,7 @@ include_once ("menu.php");
 
 <!-- Block#2 start your code -->
 <?php
-$gcourse_id=null;
+$gcourse_id=$sum=$mid=$cid=null;
 ?>
 	<div class="shadow  p-3 mb-1 bg-white rounded">
 	    <div class="highlight-blue">
@@ -31,7 +31,7 @@ $gcourse_id=null;
                     <th scope="col">Course Name</th>
                     <th scope="col">Learning Hours</th>
                     <th scope="col">Semester ID </th>
-                    <th scope="col">Relative Unit</th>
+                    <th scope="col">Notional</th>
                     <th scope="col">Lecture Hours</th>
                     <th scope="col">Pracical Hours</th>
                     <th scope="col">Self Study Hours</th>
@@ -40,16 +40,12 @@ $gcourse_id=null;
                   </thead>
 
                   <?php
-
                 
-
                 if(isset($_GET['dlt']))
                 {
                     
                     $m_id = $_GET['dlt'];
-
                     $sql = "DELETE from module where module_id = '$m_id'";
-
                     if(mysqli_query($con,$sql))
                     {
                       echo '
@@ -81,13 +77,13 @@ $gcourse_id=null;
                       `module_name`,
                       `module_learning_hours`,
                       `semester_id`,
+                      `module`.`course_id` AS `course_id`,
                       `module_relative_unit`,
                       `module_lecture_hours`,
                       `module_practical_hours`,
                       `module_self_study_hours`,
                       course.course_name as course_name FROM `module`,
                       `course` WHERE module.course_id = course.course_id";
-
                         if(isset($_GET['course_id']))
                         {
                             $gcourse_id=$_GET['course_id'];
@@ -101,6 +97,15 @@ $gcourse_id=null;
                         
                         while($row = mysqli_fetch_assoc($result))
                         { 
+                            $mid = $row["module_id"];
+                            $cid = $row["course_id"];
+                            $sql_r = "SELECT SUM(module_self_study_hours+module_lecture_hours+module_practical_hours) as 'value_sum' FROM module  WHERE module_id='$mid' and course_id='$cid'"; 
+                            $result_r = mysqli_query($con,$sql_r);
+                            if(mysqli_num_rows($result_r)==1)
+                            {
+                            $row_r = mysqli_fetch_assoc($result_r);
+                            $sum = $row_r['value_sum'];
+                            }
                             echo'
                             <tr style="text-align:center">
                               <td>'. $row["module_id"] . "<br>" .' </td>
@@ -108,17 +113,15 @@ $gcourse_id=null;
                               <td>'. $row["course_name"] . "<br>" .'</td>
                               <td>'. $row["module_learning_hours"] . "<br>" .'</td>
                               <td>'. $row["semester_id"] . "<br>" .'</td>
-                              <td>'. $row["module_relative_unit"] . "<br>" .'</td>
+                              <td>'. "$sum". "<br>" .'</td>
                               <td>'. $row["module_lecture_hours"] . "<br>" .'</td>
                               <td>'. $row["module_practical_hours"] . "<br>" .'</td>
                               <td>'. $row["module_self_study_hours"] . "<br>" .'</td>
-
                                
                               <td> 
                                     <a href=" AddModule.php ?edits='.$row["module_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
  
                                     <button data-href=" ?dlt='.$row["module_id"].' " class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
-
                                     </td> 
                             </tr>';
                         }
@@ -164,5 +167,3 @@ $gcourse_id=null;
 <?php include_once ("footer.php"); ?>  
 <!--  end dont change the order-->
     
-    
-  
