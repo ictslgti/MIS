@@ -102,6 +102,8 @@ include_once("menu.php");
       
     </tr>
   </thead>
+
+  <!---table show--->
   <?php
      $sql = "SELECT `supplier_id`, `supplier_name`, `supplier_phone_number`, `supplier_email`, `supplier_address` FROM `inventory_item_supplier`";
      $result = mysqli_query ($con, $sql);
