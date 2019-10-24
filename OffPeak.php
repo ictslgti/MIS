@@ -12,12 +12,12 @@ include_once("menu.php");
 <?php
 if(isset($_GET['approve'])){
   $reg = $_GET['approve'];
-  $sql ="SELECT * FROM `off_peak` WHERE `registration_no` = '$reg'";
+  $sql ="SELECT * FROM `off_peak` WHERE `student_id` = '$reg'";
   $result = mysqli_query($con ,$sql);
  if(mysqli_num_rows($result)== 1){
       $row = mysqli_fetch_assoc($result);
      
-      $reg=$row["registration_no"];
+      $reg=$row["student_id"];
       $noa=$row["name_of_applicant"];
       $dept=$row["department"];
       $cn=$row["contact_no"];
@@ -32,7 +32,7 @@ if(isset($_GET['approve'])){
           SET `name_of_applicant` = ' $noa', 
           `department` = '$dept',
           `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`= '$cmt',`status`='Approved'
-          WHERE `off_peak`.`registration_no` = '$reg' and `off_peak`.  `date`='$da' ";
+          WHERE `off_peak`.`student_id` = '$reg' and `off_peak`.  `date`='$da' ";
         
           if(mysqli_query($con,$sql)){
               echo "new record update sucessfully ";
@@ -49,12 +49,12 @@ if(isset($_GET['approve'])){
 if(isset($_GET['reject'])){
   $reg = $_GET['reject'];
   $date = $_GET['date'];
-  $sql ="SELECT * FROM `off_peak` WHERE `registration_no` = '$reg'";
+  $sql ="SELECT * FROM `off_peak` WHERE `student_id` = '$reg'";
   $result = mysqli_query($con ,$sql);
  if(mysqli_num_rows($result)== 1){
       $row = mysqli_fetch_assoc($result);
      
-      $reg=$row["registration_no"];
+      $reg=$row["student_id"];
       $noa=$row["name_of_applicant"];
       $dept=$row["department"];
       $cn=$row["contact_no"];
@@ -69,7 +69,7 @@ if(isset($_GET['reject'])){
           SET `name_of_applicant` = ' $noa', 
           `department` = '$dept',
           `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`='$cmt',`status`='Rejected'
-          WHERE `off_peak`.`registration_no` = '$reg' and `off_peak`. `date`='$da' ";
+          WHERE `off_peak`.`student_id` = '$reg' and `off_peak`. `date`='$da' ";
         
           if(mysqli_query($con,$sql)){
               echo "new record update sucessfully ";
@@ -98,7 +98,7 @@ if(isset($_GET['reject'])){
   <thead class="thead-dark">
     <tr>
       
-    <th scope="col">Registration No</th>
+    <th scope="col">Student_id</th>
       <th scope="col">Name of applicant</th>
       <th scope="col">Department</th>
       <th scope="col">Contact No</th>
@@ -111,7 +111,7 @@ if(isset($_GET['reject'])){
   </thead>
   <tbody>
   <?php
-  $sql = "SELECT * FROM `off_peak`";
+  $sql = "SELECT * FROM `off_peak` where `status`=''";
 
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
@@ -120,7 +120,7 @@ if(isset($_GET['reject'])){
       
     echo '<tr>
       
-      <td>'.$row["registration_no"].'</td>
+      <td>'.$row["student_id"].'</td>
       <td>'.$row["name_of_applicant"].'</td>
       <td>'.$row["department"].'</td>
       <td>'.$row["contact_no"].'</td>
