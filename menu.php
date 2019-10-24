@@ -502,7 +502,7 @@ if($u_ta=='staff'){
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="Timetable.new">
               <i class="fa fa-calendar"></i>
               <span>Calendar</span>
             </a>
