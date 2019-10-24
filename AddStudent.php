@@ -352,7 +352,6 @@ if(isset($_GET['edit']))
             <option selected disabled>Choose Title</option>
               <option value="p" <?php //if($title=="Mr") echo 'selected';?>>Full Time</option> 
               <option value="f" <?php //if($title == "Miss") echo 'selected';?>>Part Time</option>
-              
          </select>
          </div>
     </div>
@@ -586,6 +585,22 @@ if(isset($_GET['edit']))
             <label  for="result"> Result: </label>
             <input type="text" class="form-control" id="result" name="result" placeholder="" value="<?php echo $results; ?>"  required>
         </div>
+
+        <?php
+            echo '<div class="btn-group-horizontal">';
+
+            if(isset($_GET['edit']))
+            {
+              echo '<button type="submit" value="edit" name="edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+              //echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+            }
+            else
+            {
+              echo '<button type="submit" value="add" name="add"  class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>ADD</button>';
+              echo '<button type="submit" value="edit" name="edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+            }
+            echo '</div>';
+        ?>  
       </div>
         
         <div class="form-row">

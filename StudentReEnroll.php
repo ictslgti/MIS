@@ -113,19 +113,36 @@ include_once("menu.php");
             </tr>
         </thead>
         <tbody>
-            <tr>
-            <th scope="row">1</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            </tr>
-        </tbody>
+        <?php
+           $sql = "";
+           $result = mysqli_query($con, $sql);
+           if (mysqli_num_rows($result)>0)
+           {
+               while($row = mysqli_fetch_assoc($result))
+               {
+                   echo '
+                   <tr style="text-align:left";>
+                        <td scope="row">1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                   </tr>
+                </tbody>'
+               }
+           }
+           else
+           {
+            echo "0 results";
+           }
+        ?>
+    <
     </table>
+        
 </div>
 </div>
 <?php
@@ -134,6 +151,7 @@ echo '<div class="btn-group-horizontal">';
 if(isset($_GET['edit']))
 {
   echo '<button type="submit" value="Edit" name="Edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+        
   echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 }
 else

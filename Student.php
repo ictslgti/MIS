@@ -29,6 +29,13 @@ include_once("menu.php");
     </div>
 </div><br>
 
+<div class="form-row">
+    <div class="col-md-5 mb-3" style="padding-right:200px">
+    <i class="fas fa-search ml-3" aria-hidden="true"></i>
+    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search......." id="search coursemode">
+    </div>
+</div><br>
+
 <a href="AddStudent,php"> Add </a>
 <table class="table table-bordered">
   <thead>
@@ -72,20 +79,6 @@ include_once("menu.php");
     
   ?>
 </table>
-<?php
-echo '<div class="btn-group-horizontal">';
-
-if(isset($_GET['edit']))
-{
-  echo '<button type="submit" value="Edit" name="Edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-  echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
-}
-else
-{
-  echo '<button type="submit" value="Submit" name="Submit"  class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>ADD</button>';
-}
-echo '</div>';
-?>  
 
 
 <!---BLOCK 03--->
