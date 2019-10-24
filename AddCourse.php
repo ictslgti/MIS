@@ -52,11 +52,24 @@ if(isset($_POST['Editing']))
 
    if(mysqli_query($con,$sql))
    {
-        echo"Record has been updated succesfully";
+     echo '
+     <div class="alert alert-sucess alert-dismissible fade show" role="alert">
+     <strong> Succes </strong> Record has been Updated Succesfully 
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+     </button>
+   </div>  ';
    }
    else
    {
-    echo "Error in update" . mysqli_error($con);
+     echo '
+     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+     <strong> Error </strong> Cannot update a parent row (foreign key constraint fails)
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+     </button>
+   </div>  ';               
+    
    }
    }
 }

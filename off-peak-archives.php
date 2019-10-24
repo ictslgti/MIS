@@ -22,7 +22,7 @@ include_once("menu.php");
     <tr>
       
       <th scope="col">Name of applicant</th>
-      <th scope="col">Registration No</th>
+      <th scope="col">Student_id</th>
       <th scope="col">Department</th>
       <th scope="col">Date</th>
       <th scope="col">Time</th>
@@ -32,8 +32,8 @@ include_once("menu.php");
   </thead>
   <tbody>
   <?php
-   $user=$_SESSION['user_name'];
-  $sql = "SELECT * FROM `off_peak`  where `registration_no`='$user' ";
+    $usern = $_SESSION['user_name'];
+  echo $sql = "SELECT * FROM `off_peak`  where `student_id`='$usern' ";
  
 
   $result = mysqli_query($con, $sql);
@@ -41,7 +41,7 @@ include_once("menu.php");
     while($row = mysqli_fetch_assoc($result)){
     echo '<tr>
       
-      <td>'.$row["registration_no"].'</td>
+      <td>'.$row["student_id"].'</td>
       <td>'.$row["name_of_applicant"].'</td>
       <td>'.$row["department"].'</td>
       <td>'.$row["contact_no"].'</td>
