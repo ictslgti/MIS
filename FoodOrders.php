@@ -40,7 +40,7 @@ if(isset($_POST["add_to_cart"]))
 	
 	$item_data = json_encode($cart_data);
 	setcookie('shopping_cart', $item_data, time() + (86400 * 30));
-	//header("location:index.php?success=1");
+        header("location:FoodOrders.php?success=1");
 }
 
 if(isset($_GET["action"]))
@@ -56,14 +56,14 @@ if(isset($_GET["action"]))
 				unset($cart_data[$keys]);
 				$item_data = json_encode($cart_data);
 				setcookie("shopping_cart", $item_data, time() + (86400 * 30));
-				//header("location:index.php?remove=1");
+				header("location:FoodOrders.php?remove=1");
 			}
 		}
 	}
 	if($_GET["action"] == "clear")
 	{
 		setcookie("shopping_cart", "", time() - 3600);
-		//header("location:index.php?clearall=1");
+		header("location:FoodOrders.php?clearall=1");
 	}
 }
 
@@ -337,14 +337,14 @@ $title = "Home | SLGTI";
                        ?>
                        </h4>
                        <form method="POST" action="#">   
-                                <div class="pb-1" style="max-width: 4rem;">
+                                <!-- <div class="pb-1" style="max-width: 4rem;">
                                    <input type="text" name="quantity" value="<?php echo $uqty  ?>" class="form-control" />
                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $FRice ?>" />
                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
                                    <input type="text" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                    <input type="text" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD TO CART" />
-                                </div>   
+                                </div>    -->
                                 </div>
                                </div>
                            </div>  
@@ -676,7 +676,7 @@ $title = "Home | SLGTI";
                     </tr>
                  </thead>
                  <?php
-			if(isset($_COOKIE["shopping_cart"]))
+			if(isset($_COOKIE["shopping_cart"])) 
 			{
 				$total = 0;
 				$cookie_data = stripslashes($_COOKIE['shopping_cart']);
@@ -695,11 +695,7 @@ $title = "Home | SLGTI";
 					$total = $total + ($values["item_quantity"] * $values["item_price"]);
 				}
 			?>
-				<tr>
-					<td colspan="3" align="right">Total</td>
-					
-					
-				</tr>
+				
 			<?php
 			}
 			else
