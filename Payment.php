@@ -31,18 +31,15 @@ $student_id=$student_name=$student_profile_img =$payment_id=$pays_reason=$paymen
 
 
 if(isset($_POST['Add'])){
-    echo "13";
-//   if(!empty($_POST['student_id'])
-//   &&!empty($_POST['student_name'])
-//   &&!empty($_POST['pays_depatment'])
 
-//     &&!empty($_POST['payment_type'])
-//     &&!empty($_POST['payment_reason'])
-//     &&!empty($_POST['payment_qty'])
-//     &&!empty($_POST['payment_note'])
-//     &&!empty($_POST['payment_amount'])){
-    
-        echo "sdf";
+  if(!empty($_POST['student_id'])
+  && !empty($_POST['student_name'])
+  && !empty($_POST['pays_depatment'])
+&& !empty($_POST['payment_type'])
+&& !empty($_POST['payment_reason'])
+&& !empty($_POST['payment_qty'])
+&& !empty($_POST['payment_note'])
+&& !empty($_POST['payment_amount'])){
 
 
       $student_id=$_POST['student_id'];
@@ -61,8 +58,7 @@ if(isset($_POST['Add'])){
     
 
 
-if(mysqli_query($con,$sql))
-      {
+if(mysqli_query($con,$sql)){
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
           <strong>'.$student_name.'</strong> paid
@@ -87,6 +83,7 @@ if(mysqli_query($con,$sql))
 
       
     }
+}
 }
 ?>
 
@@ -185,12 +182,21 @@ if(isset($_POST['edit'])){
                         <select
                             class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_type'])){echo ' is-valid';} ?> "
                             id="payment_type" name="payment_type">
-                            <option selected>Choose...</option>
-                            <option value="1">Exam</option>
-                            <option value="2">Stationery Items</option>
-                            <option value="3">Accessories</option>
-                            <option value="3">Other</option>
+
+                            <?php
+                  $sql = "select DISTINCT pays_reason from payment";
+                  $result = mysqli_query($con, $sql);
+                  if (mysqli_num_rows($result) > 0) {
+                  while($row = mysqli_fetch_assoc($result)) {
+                    echo '<option  value="'.$row["payment_id"].'" required>'.$row["pays_reason"].'</option>';
+                   
+                  }
+                  }else{
+                    echo '<option value="null"   selected disabled>-- No Course --</option>';
+                  }
+                  ?>
                         </select>
+                        
                     </div>
 
 
@@ -204,14 +210,18 @@ if(isset($_POST['edit'])){
                         <select
                             class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_reason'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_reason'])){echo ' is-valid';} ?>"
                             id="inputGroupSelect01" name="payment_reason">
-                            <option selected>Choose...</option>
-                            <option value="1">Hostal Fee</option>
-                            <option value="2">Cap</option>
-                            <option value="3">C.B.T Book</option>
-                            <option value="3">Re exam</option>
-                            <option value="3">Books</option>
-                            <option value="3">Re Correction</option>
-                            <option value="3">Other</option>
+                            
+                            <?php
+                  $sql = "SELECT payment_id from payment WHERE pays_reason=$pays_reason";
+                  $result = mysqli_query($con, $sql);
+                  if (mysqli_num_rows($result) > 0) {
+                  while($row = mysqli_fetch_assoc($result)) {
+                    echo '<option  value="'.$row["pays_reason"].'" required>'.$row["payment_id"].'</option>';
+                  }
+                  }else{
+                    echo '<option value="null"   selected disabled>-- No payment --</option>';
+                  }
+                  ?>
                             
                         </select>
                     </div>
