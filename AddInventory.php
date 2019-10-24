@@ -103,7 +103,7 @@ if(isset($_POST['Add'])){
               <div class="w-100"></div>
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
                       <label class="font-weight-bold" for="">01.DEPARTMENT ID</label> <span style="color:red;">*</span></label>
-                      <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
+                      <select id="Department_id" name="Department_id" value="<?php echo $Departmentid ?>" class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  >
       
                     <option value="null" selected disabled>--Select Department--</option>
                     <?php          
@@ -124,7 +124,7 @@ if(isset($_POST['Add'])){
               
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
                       <label class="font-weight-bold" for="authorName">02.INVENTORY ID</label> <span style="color:red;">*</span></label>
-                      <input type="text" name="inventoryid" value="<?php echo $inventoryid;?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['inventoryid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['inventoryid'])&& !empty($_POST['inventoryid'])){echo '  is-valid';} ?>" id="inventory" aria-describedby="inventory" placeholder="inventory" required="required">
+                      <input type="text" name="inventoryid" value="<?php echo $inventoryid ?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['inventoryid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['inventoryid'])&& !empty($_POST['inventoryid'])){echo '  is-valid';} ?>" id="inventory" aria-describedby="inventory" placeholder="inventory" required="required">
                       <small id="inventoryid" class="form-text text-muted"></small>
               </div>
 
@@ -133,7 +133,7 @@ if(isset($_POST['Add'])){
               <div class="w-100"></div>
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
                       <label class="font-weight-bold" for="">03. ITEM ID </label> <span style="color:red;">*</span></label>
-                      <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['itemid'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['itemid'])){echo ' is-valid';} ?>"  id="itemid" name="itemid">
+                      <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['itemid'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['itemid'])){echo ' is-valid';} ?>"  id="itemid" name="itemid" value="<?php echo $itemid ?>">
       
                     <option value="null" selected disabled>--Select inventory item code--</option>
                     <?php          
