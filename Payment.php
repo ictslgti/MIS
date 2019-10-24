@@ -164,8 +164,7 @@ if(isset($_POST['edit'])){
                             <label class="input-group-text" for="inputGroupSelect01"><i class="fas
                         fa-swatchbook"></i>&nbsp;Payment Type&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         </div>
-                        <select
-                            class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_type'])){echo ' is-valid';} ?> "
+                        <select class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_type'])){echo ' is-valid';} ?> "
                             id="payment_type"  onchange="showpaymentreason(this.value)">
 
                             <?php
@@ -173,7 +172,7 @@ if(isset($_POST['edit'])){
                                 $result = mysqli_query($con, $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                 while($row = mysqli_fetch_assoc($result)) {
-                                    echo '<option  value="'.$row["payment_reason"].'" required>'.$row["payment_type"].'</option>';
+                                    echo '<option  value="'.$row["payment_type"].'" required>'.$row["payment_type"].'</option>';
                                     
                                 }
                                 }else{
@@ -316,7 +315,7 @@ function showpaymentreason(val) {
             document.getElementById("payment_reason").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("POST", "controller/getPaymentreason", true);
+    xmlhttp.open("POST", "controller/getPaymentReason", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send("payment_type=" + val);
 }
