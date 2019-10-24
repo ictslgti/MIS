@@ -18,8 +18,8 @@ $id =  $fullname= $address = $email = $dob= $blood_group = $designation =$joint_
 if(isset($_GET['edit']))
 {
 
-    $id = $_GET['edit'];
-    $sql = " SELECT * from donor WHERE d_id= '$id'";
+    $reference_id = $_GET['edit'];
+    $sql = " SELECT * from donor WHERE reference_id= '$reference_id'";
     $result = mysqli_query($con,$sql);
     if(mysqli_num_rows($result)==1)                                               
         {
@@ -41,6 +41,8 @@ if(isset($_GET['edit']))
           echo "Error".$sql."<br>".mysqli_error($con);
         }
 }
+
+
 
 
 
@@ -98,7 +100,7 @@ if(isset($_POST['Edit'])){
       $id = $_GET['edit'];
       $sql = "UPDATE `donor` SET `d_id`='$id',`address`='$address'',`email`='$email',`dob`='$dob',`blood_group`='$blood_group',`designation`='$designation',
       `joint_date`='$joint_date',`gender`='$gender',`weight`='$weight',
-      `reference_id`='$reference_id',`fullname`='$fullname' WHERE  d_id= '$id'";
+      `reference_id`='$reference_id',`fullname`='$fullname' WHERE d_id= '$id'";
       if (mysqli_query($con, $sql)){
           echo 'update successfully'; 
       }else
@@ -150,11 +152,15 @@ if(isset($_POST['Edit'])){
 
 <form>
 <div class="row">   
-         <div class="col-12">
-      <label for="inputEmail4"><i class="far fa-id-card"></i>&nbsp;D_id</label>
-      <input type="text" value="<?php echo $id; ?>" class="form-control"  name="id" placeholder="D_id" required>
+         <div class="col-6">
+                       <label for="inputEmail4"><i class="far fa-id-card"></i>&nbsp;D_id</label>
+                       <input type="text" value="<?php echo $id; ?>" class="form-control"  name="id" placeholder="D_id" required>
          </div>
-        
+
+         <div class="col-6">
+                       <label for="inputEmail4"><i class="far fa-id-card"></i>&nbsp;Reference_id</label>                
+                       <input type="text" value="<?php echo $reference_id; ?>" class="form-control"  name="reference_id" placeholder="reference_id" required>
+        </div>
          <div class="form-group col-md-12">
       <label for="inputState"><i class="fas fa-chalkboard-teacher"></i>&nbsp;Designation</label>
       <select id="inputState"value="<?php echo $designation; ?>" class="form-control">
