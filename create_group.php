@@ -20,14 +20,9 @@ include_once("menu.php");
     <label for="exampleInputEmail1"></label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Type of group subject here">
     <small id="emailHelp" class="form-text text-muted">We'll never share your group with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1"></label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Type of information">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your information with anyone else.</small>
-  </div>
+  
 </ul>
-<button type="button" class="btn btn-outline-dark float-right">Add</button>
+<button type="button" class="btn btn-outline-dark float-left">Add</button>
   </div> 
 
 
