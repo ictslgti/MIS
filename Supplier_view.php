@@ -8,6 +8,42 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+
+
+<!-- delete coding -->
+<?php
+                    if(isset($_GET['delete_id']))
+                    {                
+                        $c_id = $_GET['delete_id'];
+
+                        $sql = "DELETE from inventory_item_supplier where supplier_id = '$c_id' ";
+
+                        if(mysqli_query($con,$sql))
+                        {
+                          echo '
+                          <div class="alert alert-sucess alert-dismissible fade show" role="alert">
+                          <strong> Succes </strong> Record has been Deleted Succesfully 
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>  ';
+                        }
+                        else
+                        {
+                          echo '
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <strong> Error </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>  ';               
+                         
+                        }
+                    }
+                    ?>
+
+
+
 <?php
   if(isset($_GET['edit'])){
         $supplier_id=$_GET['edit'];
