@@ -592,7 +592,7 @@ if(isset($_GET['edit']))
             if(isset($_GET['edit']))
             {
               echo '<button type="submit" value="edit" name="edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-              //echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+              echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
             }
             else
             {
