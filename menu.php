@@ -1,3 +1,11 @@
+<?php
+$u_n = $_SESSION['user_name'];
+$u_a = $_SESSION['user_table'];
+$u_t = $_SESSION['user_type'];
+$d_c = $_SESSION['department_code'];
+
+
+?>
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
       <div class="sidebar-brand">
@@ -15,7 +23,7 @@
           <span class="user-name">
             <strong><?php echo $_SESSION['user_name'];?></strong>
           </span>
-          <span class="user-role"><?php echo $_SESSION['user_type'];?> | <?php echo $_SESSION['department_code'];?> </span>
+          <span class="user-role"><?php echo $_SESSION['user_table'].$_SESSION['user_type'];?> | <?php echo $_SESSION['department_code'];?> </span>
           <span class="user-status">
             <i class="fa fa-circle"></i>
             <span>Online</span>
@@ -44,111 +52,428 @@
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-university"></i>
-              <span>Department</span>
-              <span class="badge badge-pill badge-warning">New</span>
+              <span>Departments</span>
+              <!-- <span class="badge badge-pill badge-warning">New</span> -->
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="AddDepartment">Add a Department
-                    <span class="badge badge-pill badge-success">Pro</span>
-                  </a>
-                </li>
-              
-                <li>
-                <a  href="Department">Department Info</a>
+                <a  href="Department">Departments Info</a>
                 </li>
                 <li>
-                  <a href="#">Dashboard 3</a>
+                <a href="AddDepartment">Add a Department
+                </a>
                 </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>E-commerce</span>
-              <span class="badge badge-pill badge-danger">3</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
                 <li>
-                  <a href="#">Products
+                <a  href="AcademicYear">Academic Years Info</a>
+                </li>
+                <li>
+                <a href="AddAcademicYear">Add a Academic Year
+                </a>
+                </li>
 
-                  </a>
+                <li>
+                <a  href="Course">Courses Info</a>
                 </li>
                 <li>
-                  <a href="#">Orders</a>
+                <a href="AddCourse">Add a Course
+                </a>
+                </li>
+
+                <li>
+                <a  href="Module">Modules Info</a>
                 </li>
                 <li>
-                  <a href="#">Credit cart</a>
+                <a href="addModule">Add a Module
+                </a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-user-tie"></i>
+              <span>Staffs</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="Staff">Staffs Info</a>
+                </li>
+                <li>
+                  <a href="AddStaff">Add a Staff</a>
+                  <hr>
+                </li>              
+                <li>
+                  <a href="StaffModuleEnrollment">Module Enrollment</a>
+                </li>
+                <li>
+                  <a href="StaffExit">Staff Exit</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
-              <i class="far fa-gem"></i>
-              <span>Components</span>
+              <i class="fas fa-user-graduate"></i>
+              <span>Students</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">General</a>
+                  <a href="Student">Students Info</a>
                 </li>
                 <li>
-                  <a href="#">Panels</a>
+                  <a href="AddStudent">Add a Student</a>
+                </li>
+                <hr>
+                <li>
+                  <a href="StudentReEnroll">Student Re Enroll</a>
                 </li>
                 <li>
-                  <a href="#">Tables</a>
-                </li>
-                <li>
-                  <a href="#">Icons</a>
-                </li>
-                <li>
-                  <a href="#">Forms</a>
+                  <a href="StudentEnrollmentReport">Student Enrollment Report</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-chart-line"></i>
-              <span>Charts</span>
+              <i class="fas fa-calendar-alt"></i>
+              <span>Timetable & Notice</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Pie chart</a>
+                  <a href="Timetable">Timetable</a>
                 </li>
                 <li>
-                  <a href="#">Line chart</a>
+                  <a href="AddTimetable">Add a Timetable</a>
+                </li>
+                <hr>
+                <li>
+                  <a href="Notice">Notice Info</a>
                 </li>
                 <li>
-                  <a href="#">Bar chart</a>
-                </li>
-                <li>
-                  <a href="#">Histogram</a>
+                  <a href="AddNotice">Add a Notice</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-globe"></i>
-              <span>Maps</span>
+              <i class="fas fa-award"></i>
+              <span>Examinations</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Google maps</a>
+                  <a href="Assessment">Assessments</a>
                 </li>
                 <li>
-                  <a href="#">Open street map</a>
+                  <a href="AddAssessment">Add Assessment</a>
+                </li>
+                <li>
+                  <a href="AddAssessmentType">Add a Assessment Type</a>
+                </li>
+                <li>
+                  <a href="AddAssessmentResults">Add a Assessment Results</a>
+                </li>
+                <li>
+                  <a href="AssessmentReport">Assessment Report</a>
+                </li>
+                <hr>
+                <li>
+                  <a href="TVECExamination">TVEC Examinations Info</a>
+                </li>
+                <li>
+                  <a href="AddTVECExamination">Add TVEC Examination</a>
                 </li>
               </ul>
             </div>
           </li>
+
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-chalkboard-teacher"></i>
+              <span>Attendances</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="Attendance">Attendances Info </a>
+                </li>
+                <li>
+                  <a href="AddAttendance">Add a Attendance </a>
+                  <hr>
+                </li>              
+                <li>
+                  <a href="AttendanceReport">Attendance Report</a>
+                </li>
+                <li>
+                  <a href="WarningsLetters">Warnings Letters</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-briefcase"></i>
+              <span>On-the-job Training</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="OJT">On-the-job Training Info</a>
+                </li>
+                <li>
+                  <a href="AddTrainingPlace">Add a Training Place</a>
+                  <hr>
+                </li>              
+                <li>
+                  <a href="StudentsRequest">Students Request</a>
+                </li>
+                <li>
+                  <a href="PlacementRequest">Student Placement Request</a>
+                </li>
+                <li>
+                  <a href="OJTInfo">Training Place Info</a>
+                </li>
+                <li>
+                  <a href="OJTChange">Placement Change</a>
+                </li>
+                <li>
+                  <a href="OJTReport">OJT Report</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="far fa-building"></i>
+              <span>Hostels</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="Hostel">Hostels Info</a>
+                </li>
+                <li>
+                  <a href="AddHostel">Add a Hostel</a>    
+                </li>              
+                <li>
+                  <a href="AddRoom">Add a Room</a>
+                  <hr>
+                </li>
+                <li>
+                  <a href="RequestHostel">Request Hostel</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="far fa-grin"></i>
+              <span>Feedbacks</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="StudentFeedbackinfo">Students Feedback Info</a>
+                </li>
+                <li>
+                  <a href="AddStudentFeedback">Create a Student Feedback</a>
+                  <hr>
+                </li>              
+                <li>
+                  <a href="TeacherFeedback">Teacher Feedback Info</a>
+                </li>
+                <li>
+                  <a href="AddTeacherFeedback">Create a Teacher Feedback</a>
+                </li>
+                <li>
+                  <a href="IndustryFeedback">Industry Feedback Info</a>
+                </li>
+                <li>
+                  <a href="AddIndustryFeedback">Create a Industry Feedback</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-file-alt"></i>
+              <span>Inventory</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="InventoryInfo">Inventory Info</a>
+                </li>
+                <li>
+                  <a href="AddInventory">Add a Inventory</a>
+                  <hr>
+                </li>              
+                <li>
+                  <a href="AddItem">Add a Item</a>
+                </li>
+                <li>
+                  <a href="AddSupplier">Add a Supplier</a>
+                </li>
+                <li>
+                  <a href="InventoryReport">Inventory Report</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-book-open"></i>
+              <span>Library</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="Library">Library Info</a>
+                </li>
+                <li>
+                  <a href="AddBook">Add a Book</a>
+                </li>  
+                <li>
+                  <a href="AddBookCategory">Add a Category</a>
+                  <hr>
+                </li>  
+
+                <li>
+                  <a href="IssuedBook">Issued Books Info</a>
+                </li>
+                <li>
+                  <a href="IssueBook">Issue a Book</a>
+                  <hr>
+                </li>
+                <li>
+                  <a href="IssueBook">Issue a Book</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-hamburger"></i>
+              <span>Canteen</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="FoodItems">Food Items</a>
+                </li>
+                <li>
+                  <a href="AddFoodItem">Add a Food Item</a>
+                  <hr>
+                </li>              
+                <li>
+                  <a href="FoodOrders">Food Orders</a>
+                  <hr>
+                </li>
+                <li>
+                  <a href="CanteenReport">Daily Report</a>
+                </li>
+                <li>
+                  <a href="dailyorder">Daily Orders</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fab fa-amazon-pay"></i>
+              <span>Payments</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="Payments">Payments Info</a>
+                </li>
+                <li>
+                  <a href="Payment">Make a Payment</a>
+                  <hr>
+                </li>              
+                <li>
+                  <a href="PaymentsReport">Payments Report</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-door-open"></i>
+              <span>On-Peak & Off-Peak</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="onpeak">On-Peak Info</a>
+                </li>
+                <li>
+                  <a href="onpeak_request">Request a On-Peak</a>
+                  <hr>
+                </li>              
+                <li>
+                  <a href="OffPeak">Off-Peak Info</a>
+                </li>
+                <li>
+                  <a href="RequestOffPeak">Request a Off-Peak</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-tint"></i>
+              <span>Blood Donations</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="BloodDonations">Blood Donations Info</a>
+                </li>
+                <li>
+                  <a href="BloodDonors">Blood Donors</a>
+                  <hr>
+                </li>              
+                <li>
+                  <a href="DonateBlood">Donate Blood</a>
+                </li>          
+              </ul>
+            </div>
+          </li>
+
+
+
           <li class="header-menu">
             <span>Extra</span>
           </li>
@@ -156,7 +481,7 @@
             <a href="#">
               <i class="fa fa-book"></i>
               <span>Documentation</span>
-              <span class="badge badge-pill badge-primary">Beta</span>
+              <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
             </a>
           </li>
           <li>
@@ -164,13 +489,7 @@
               <i class="fa fa-calendar"></i>
               <span>Calendar</span>
             </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-folder"></i>
-              <span>Examples</span>
-            </a>
-          </li>
+          </li>        
         </ul>
       </div>
       <!-- sidebar-menu  -->
