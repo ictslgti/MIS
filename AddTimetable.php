@@ -41,7 +41,7 @@ if(isset($_GET['edit']))
 
 
 if(isset($_POST['Add'])){
-  echo "ok";
+  
 
   if(!empty($_POST['department_id'])
   &&!empty($_POST['course_id'])
@@ -52,17 +52,17 @@ if(isset($_POST['Add'])){
   &&!empty($_POST['time'])
   &&!empty($_POST['classroom']))
   { 
-     echo "ok2";
-     echo $department_id   =  $_POST['department_id'];
-     echo $course_id   =  $_POST['course_id'];
-     echo $module_id  =   $_POST['module_id'];
-     echo $academic_year  =   $_POST['academic_year'];
-     echo $staff_id   =   $_POST['staff_id'];
-     echo $weekdays  =  $_POST['weekdays'];
-     echo $time   =    $_POST['time'];
-     echo $classroom   =  $_POST['classroom'];
   
-     echo $sql = "INSERT INTO `timetable` (`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `time`, `classroom`)
+     $department_id   =  $_POST['department_id'];
+     $course_id   =  $_POST['course_id'];
+     $module_id  =   $_POST['module_id'];
+     $academic_year  =   $_POST['academic_year'];
+     $staff_id   =   $_POST['staff_id'];
+     $weekdays  =  $_POST['weekdays'];
+     $time   =    $_POST['time'];
+     $classroom   =  $_POST['classroom'];
+  
+    $sql = "INSERT INTO `timetable` (`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `time`, `classroom`)
       VALUES ('$department_id','$course_id','$module_id','$academic_year','$staff_id','$weekdays','$time','$classroom')";
    
       if (mysqli_query($con, $sql)) {
