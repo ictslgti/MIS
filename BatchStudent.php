@@ -68,7 +68,7 @@ if (mysqli_num_rows($result)>0){
         <td>' . $row ["student_enroll_status"].'</td>
       
         <td>
-        <a href="Student" class="btn btn-outline-secondary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;View</i></a>
+        <a href="Student" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;View</i></a>
         
     </td>
     
