@@ -29,12 +29,8 @@ $gcourse_id=$sum=$mid=$cid=null;
                     <th scope="col">Module ID</th>
                     <th scope="col">Module Name</th>
                     <th scope="col">Course Name</th>
-                    <th scope="col">Learning Hours</th>
                     <th scope="col">Semester ID </th>
-                    <th scope="col">Notional</th>
-                    <th scope="col">Lecture Hours</th>
-                    <th scope="col">Pracical Hours</th>
-                    <th scope="col">Self Study Hours</th>
+                    <th scope="col">Notional Hours</th>
                     <th scope="col">Options</th>
                     </tr>
                   </thead>
@@ -99,6 +95,7 @@ $gcourse_id=$sum=$mid=$cid=null;
                         { 
                             $mid = $row["module_id"];
                             $cid = $row["course_id"];
+                            
                             $sql_r = "SELECT SUM(module_self_study_hours+module_lecture_hours+module_practical_hours) as 'value_sum' FROM module  WHERE module_id='$mid' and course_id='$cid'"; 
                             $result_r = mysqli_query($con,$sql_r);
                             if(mysqli_num_rows($result_r)==1)
@@ -111,12 +108,8 @@ $gcourse_id=$sum=$mid=$cid=null;
                               <td>'. $row["module_id"] . "<br>" .' </td>
                               <td>'. $row["module_name"] . "<br>" .' </td>
                               <td>'. $row["course_name"] . "<br>" .'</td>
-                              <td>'. $row["module_learning_hours"] . "<br>" .'</td>
                               <td>'. $row["semester_id"] . "<br>" .'</td>
                               <td>'. "$sum". "<br>" .'</td>
-                              <td>'. $row["module_lecture_hours"] . "<br>" .'</td>
-                              <td>'. $row["module_practical_hours"] . "<br>" .'</td>
-                              <td>'. $row["module_self_study_hours"] . "<br>" .'</td>
                                
                               <td> 
                                     <a href=" AddModule.php ?edits='.$row["module_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
