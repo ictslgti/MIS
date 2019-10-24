@@ -70,11 +70,25 @@ if(isset($_POST['Add']))
               
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="">02.SUPPLIER ID</label> <span style="color:red;">*</span></label>
-                  <input type="text" name="supplierid" value="<?php echo $supplierid;?>"class="form-control <?php if(isset($_POST['Add']) && empty($_POST['supplierid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['supplierid'])&& !empty($_POST['supplierid'])){echo '  is-valid';} ?>"  id="supplierid" aria-describedby="supplierid" placeholder="SUPPLIERID" required="required">
-                  <small id="" class="form-text text-muted"></small>
+                  <select class="custom-select mr-sm-2<?php echo $supplierid;?>"class="form-control <?php if(isset($_POST['Add']) && empty($_POST['supplierid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['supplierid'])&& !empty($_POST['supplierid'])){echo '  is-valid';} ?>"  id="supplierid" aria-describedby="supplierid" placeholder="SUPPLIERID" required="required">
+                  
+                  <option value="null" selected disabled>--Select supplier_id--</option>
+                    <?php          
+                    $sql = "SELECT * FROM `inventory_item_supplier`";
+                    $result = mysqli_query($con, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_assoc($result)) {
+                        echo '<option  value="'.$row["supplier_id"].'" required';
+                        if($row["supplier_id"]==$supplierid) echo ' selected';
+                        echo '>'.$row["supplier_id"].'</option>';
+                        }
+                    }
+                    ?>
+                </select>
+                     
+                      <small id="" class="form-text text-muted"></small>
               </div>
               
-            
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="">03.ITEM PURCHASE</label> <span style="color:red;">*</span></label>
                   <input type="date" name="inventoryitempurchase" value="<?php echo $inventoryitempurchase;?>" class="form-control <?php if(isset($_POST['Add']) && empty($_POST['inventoryitempurchase'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['inventoryitempurchase'])&& !empty($_POST['inventoryitempurchase'])){echo '  is-valid';} ?>"  id="datePic" aria-describedby="datePicHelp" required="required">
