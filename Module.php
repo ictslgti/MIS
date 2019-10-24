@@ -164,5 +164,3 @@ $gcourse_id=null;
 <?php include_once ("footer.php"); ?>  
 <!--  end dont change the order-->
     
-    
-  
