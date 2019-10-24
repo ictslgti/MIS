@@ -19,7 +19,16 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <!-- form start---->
+<?php
+    $stid = $coid = $year = $enroll = $exit = null;
 
+    // edit coding
+
+    // update coding
+
+    // insert coding
+
+?>
 
 <div class="ROW">
         <div class="col text-center">
