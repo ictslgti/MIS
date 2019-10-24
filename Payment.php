@@ -30,29 +30,27 @@ include_once("menu.php");
 $student_id=$student_name=$student_profile_img =$payment_id=$pays_reason=$payment_note=$pays_amount=$payment_id=$pays_date=null;
 
 
-if(isset($_POST['Add'])){
+if(isset($_GET['Add'])){
 
   if(!empty($_POST['student_id'])
   && !empty($_POST['student_name'])
   && !empty($_POST['pays_depatment'])
-&& !empty($_POST['payment_type'])
 && !empty($_POST['payment_reason'])
 && !empty($_POST['payment_qty'])
 && !empty($_POST['payment_note'])
 && !empty($_POST['payment_amount'])){
-
+    
 
       $student_id=$_POST['student_id'];
       $pays_department=$_POST['pays_department'];
       $pays_reason=$_POST['payment_reason'];
-      $pays_type=$_POST['payment_type'];
       $pays_qty=$_POST['payment_qty'];
       $pays_note=$_POST['payment_note'];
       $pays_amount=$_POST['payment_amount'];
-      
+     
       
      
-        $sql="INSERT INTO `pays`(`student_id`,`payment_id`,`pays_note`,`pays_amount`,`pays_qty`,`pays_department`) 
+        $sql="INSERT INTO `pays`(`student_id`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_department`) 
         VALUES ('$student_id','reexam','$pays_note','$pays_amount','$pays_qty','$pays_department')";
 
     
@@ -136,7 +134,7 @@ if(isset($_POST['edit'])){
 
         </div>
     </div>
-    <form method="POST" action="#">
+    <form method="GET" action="#">
   
         <div class="row">
         <div class="col-sm-4"><?php if($student_profile_img!=null) { ?> <img src="<?php echo $student_profile_img; ?>"
@@ -177,27 +175,28 @@ if(isset($_POST['edit'])){
                         <div class="input-group-prepend">
 
                             <label class="input-group-text" for="inputGroupSelect01"><i class="fas
-        fa-swatchbook"></i>&nbsp;Payment Type&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        fa-swatchbook"></i>&nbsp;Payment Type&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         </div>
                         <select
                             class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_type'])){echo ' is-valid';} ?> "
                             id="payment_type" name="payment_type">
 
                             <?php
-                  $sql = "select DISTINCT pays_reason from payment";
+                  $sql = "select DISTINCT payment_type from payment";
                   $result = mysqli_query($con, $sql);
                   if (mysqli_num_rows($result) > 0) {
                   while($row = mysqli_fetch_assoc($result)) {
-                    echo '<option  value="'.$row["payment_id"].'" required>'.$row["pays_reason"].'</option>';
-                   
+                    echo '<option  value="'.$row["payment_reason"].'" required>'.$row["payment_type"].'</option>';
+                    $id=$row["payment_type"];
                   }
                   }else{
                     echo '<option value="null"   selected disabled>-- No Course --</option>';
                   }
+                  
                   ?>
                         </select>
                         
-                    </div>
+                </div>
 
 
                     <div class="input-group mb-3 col-md-12 ">
@@ -212,8 +211,9 @@ if(isset($_POST['edit'])){
                             id="inputGroupSelect01" name="payment_reason">
                             
                             <?php
-                  $sql = "SELECT payment_id from payment WHERE pays_reason=$pays_reason";
+                  $sql = "SELECT payment_reason from payment WHERE payment_type='$id'";
                   $result = mysqli_query($con, $sql);
+                 
                   if (mysqli_num_rows($result) > 0) {
                   while($row = mysqli_fetch_assoc($result)) {
                     echo '<option  value="'.$row["pays_reason"].'" required>'.$row["payment_id"].'</option>';
@@ -221,6 +221,7 @@ if(isset($_POST['edit'])){
                   }else{
                     echo '<option value="null"   selected disabled>-- No payment --</option>';
                   }
+                 
                   ?>
                             
                         </select>
