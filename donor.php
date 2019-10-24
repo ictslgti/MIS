@@ -144,7 +144,7 @@ if(isset($_POST['Edit'])){
          <div class="col-12">
          <form>
          <p style="font-size:20px;"> Personal Info <hr color ="black" style="height:1px;"></p><br>
-         </form>
+         
 </div>
 </div>
 
