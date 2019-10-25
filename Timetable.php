@@ -47,7 +47,7 @@ include_once("menu.php");
 <table class="table table-bordered" scope="col" height="150">
   <thead>
     <tr>
-      <th scope="col" width="1%">Time</th>
+      <th scope="col" width="5%">timep</th>
       <th scope="col" width="5%">Monday</th>
       <th scope="col" width="5%">Tuesday</th>
       <th scope="col" width="5%">Wednesday</th>
@@ -58,77 +58,61 @@ include_once("menu.php");
      
                   </thead>
     </tr>
- <?php
-   $sql = "SELECT time_id,timep,department_id,course_id,module_id,academic_year,staff_id,weekdays,classroom FROM timetable";
-   
-   $result = mysqli_query ($con, $sql);
-   if (mysqli_num_rows($result)>0)
-   {
-     while($row = mysqli_fetch_assoc($result))
-     {
-       echo '
-  
-       <tr>
-       <tr style="text-align:left"scope="col" height="150";>
-       <td>'. $row["timep"]."<br>".'</td>
-          <td>'. $row["department_id"]."<br>".'</td>
-          <td>'. $row["course_id"]."<br>".'</td>
-          <td>'. $row["module_id"]."<br>".'</td>
-          <td>'. $row["academic_year"]."<br>".'</td>
-          <td>'. $row["staff_id"]."<br>".'</td>
-          <td>'. $row["weekdays"]."<br>".'</td>
-          <td>'. $row["classroom"]."<br>".'</td>
-           
-        
-     </tr>
-     <tr>
-     <tr style="text-align:left" scope="col" height="150";>
-     <td>'. $row["timep"]."<br>".'</td>
-        <td>'. $row["department_id"]."<br>".'</td>
-        <td>'. $row["course_id"]."<br>".'</td>
-        <td>'. $row["module_id"]."<br>".'</td>
-        <td>'. $row["academic_year"]."<br>".'</td>
-        <td>'. $row["staff_id"]."<br>".'</td>
-        <td>'. $row["weekdays"]."<br>".'</td>
-        <td>'. $row["classroom"]."<br>".'</td>
-         
-        
-     </tr>
-     <tr>
-     <tr style="text-align:left" scope="col" height="150";>
-     <td>'. $row["timep"]."<br>".'</td>
-        <td>'. $row["department_id"]."<br>".'</td>
-        <td>'. $row["course_id"]."<br>".'</td>
-        <td>'. $row["module_id"]."<br>".'</td>
-        <td>'. $row["academic_year"]."<br>".'</td>
-        <td>'. $row["staff_id"]."<br>".'</td>
-        <td>'. $row["weekdays"]."<br>".'</td>
-        <td>'. $row["classroom"]."<br>".'</td>
-         
-     </tr>
-     <tr>
-     <tr style="text-align:left" scope="col" height="150";>
-     
-     <td>'. $row["timep"]."<br>".'</td>
-        <td>'. $row["department_id"]."<br>".'</td>
-        <td>'. $row["course_id"]."<br>".'</td>
-        <td>'. $row["module_id"]."<br>".'</td>
-        <td>'. $row["academic_year"]."<br>".'</td>
-        <td>'. $row["staff_id"]."<br>".'</td>
-        <td>'. $row["weekdays"]."<br>".'</td>
-        <td>'. $row["classroom"]."<br>".'</td>
-         
-     </tr>
 
-       ';
-     }
-   }
-   else
-   {
-     echo "0 results";
-   }
+
     
-  ?>
+       <tr style="text-align:left"scope="col" height="150";>
+  
+
+       <td></td>
+          <td> <?php
+ 
+ $sql = "SELECT time_id,timep,department_id,course_id,module_id,academic_year,staff_id,weekdays,classroom FROM timetable WHERE weekdays='Monday' AND  timep='P1'";
+ 
+ $result = mysqli_query ($con, $sql);
+ if (mysqli_num_rows($result)>0)
+ {
+
+   while($row = mysqli_fetch_assoc($result))
+   {
+     echo $row['module_id'].'-'.$row['staff_id'].'-'.$row['department_id'].'-'.$row['course_id'].'-'.$row['academic_year'].'-'.$row['classroom'].'<br>';
+   }
+ }
+ else
+ {
+   echo "0 results";
+ }
+  
+?>
+</td>
+          <td>
+          <?php
+ 
+ $sql = "SELECT time_id,timep,department_id,course_id,module_id,academic_year,staff_id,weekdays,classroom FROM timetable WHERE weekdays='Tuesday' AND  timep='P1'";
+ 
+ $result = mysqli_query ($con, $sql);
+ if (mysqli_num_rows($result)>0)
+ {
+
+   while($row = mysqli_fetch_assoc($result))
+   {
+     echo $row['module_id'].'-'.$row['staff_id'].'-'.$row['department_id'].'-'.$row['course_id'].'-'.$row['academic_year'].'-'.$row['classroom'].'<br>';
+   }
+ }
+ else
+ {
+   echo "0 results";
+ }
+  
+?>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td> </td>
+           
+ 
 
  
   
