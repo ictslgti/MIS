@@ -21,4 +21,37 @@ if (mysqli_connect_errno()){
     //echo "Connected successfully";
   }
 
+
+
+define("EMAIL_USE_SMTP", false);
+define("EMAIL_SMTP_HOST", 'yourhost');
+define("EMAIL_SMTP_AUTH", true); // leave this true until your SMTP can be used without login
+define("EMAIL_SMTP_USERNAME", 'yourusername');
+define("EMAIL_SMTP_PASSWORD", 'yourpassword');
+define("EMAIL_SMTP_PORT", 465);
+define("EMAIL_SMTP_ENCRYPTION", 'ssl');
+/**
+ * Configuration file for: password reset email data
+ * This is the place where your constants are saved
+ * absolute URL to register.php, necessary for email password reset links 
+* */
+
+define("EMAIL_PASSWORDRESET_URL", "https://".COOKIE_DOMAIN."/passwordrecovery");
+define("EMAIL_PASSWORDRESET_FROM", "noreply@achchuthan.org");
+define("EMAIL_PASSWORDRESET_FROM_NAME", "MIS@SLGTI");
+define("EMAIL_PASSWORDRESET_SUBJECT", "Password reset for MIS@SLGTI");
+define("EMAIL_PASSWORDRESET_CONTENT", "Please click on this link to reset your password: ");
+/**
+ * Configuration file for: verification email data
+ * This is the place where your constants are saved
+ * absolute URL to register.php, necessary for email verification links 
+ * */
+define("EMAIL_VERIFICATION_URL", "https://".COOKIE_DOMAIN."/signup");
+define("EMAIL_VERIFICATION_FROM", "noreply@achchuthan.org");
+define("EMAIL_VERIFICATION_FROM_NAME", "MIS@SLGTI");
+define("EMAIL_VERIFICATION_SUBJECT", "Account Activation for MIS@SLGTI");
+define("EMAIL_VERIFICATION_CONTENT", "Please click on this link to activate your account:");
+
+
+
 ?>
