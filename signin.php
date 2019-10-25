@@ -1,6 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
 <?php
-$title = "Sign in to MIS @ SLGTI ";
+$title = "Sign in to continue to MIS @ SLGTI ";
 include_once("config.php");
 ?>
 <!--END DON'T CHANGE THE ORDER-->
