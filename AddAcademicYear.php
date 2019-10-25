@@ -1,6 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER -->
 <?php 
-$title = "Department Details | SLGTI" ;
+$title = "Add Academic Year | SLGTI" ;
 include_once("config.php"); 
 include_once("head.php"); 
 include_once("menu.php");
@@ -104,19 +104,19 @@ if(isset($_POST['Edit'])){
 <br><br>
 <form method = "POST">
 <div class = "row">
-<div class ="col-6"><input class="form-control" type = "text" name= "academic_year" value ="<?php echo $academic_year;?>" placeholder="Academic Year" required></div>
-<div class ="col-6"><select name="academic_year_status" id="academic_year_status" class="form-control">
+<div class ="col-6"><label for="Duration-Institute Training">Academic Year</label><input class="form-control" type = "text" name= "academic_year" value ="<?php echo $academic_year;?>" placeholder="Academic Year" required></div>
+<div class ="col-6"><label for="Duration-Institute Training">Academic Year Status</label><select name="academic_year_status" id="academic_year_status" class="form-control">
           <option selected="" disabled=""> Academic Year Status</option>
               <option value="Completed">Completed</option><option value="Active">Active</option>
           </select></div>
           
           <!-- <div class ="col-6"><input class="form-control" type = "text" name= "academic_year_status" value ="<?php echo $academic_year_status;?>" placeholder="Academic Year Status" required></div> -->
 <br><br>
-<div class ="col-6"><input class="form-control" type = "text" name= "first_semi_start_date" value ="<?php echo $first_semi_start_date;?>" placeholder="First Semester Start Date" required></div>
-<div class ="col-6"><input class="form-control" type = "text" name= "first_semi_end_date" value ="<?php echo $first_semi_end_date;?>" placeholder="First Semester End Date" required></div>
+<div class ="col-6"><label for="Duration-Institute Training">First Semester Start Date</label><input class="form-control" type = "date" name= "first_semi_start_date" value ="<?php echo $first_semi_start_date;?>" placeholder="First Semester Start Date" required></div>
+<div class ="col-6"><label for="Duration-Institute Training">First Semester End Date</label><input class="form-control" type = "date" name= "first_semi_end_date" value ="<?php echo $first_semi_end_date;?>" placeholder="First Semester End Date" required></div>
 <br><br>
-<div class ="col-6"><input class="form-control" type = "text" name= "second_semi_start_date" value ="<?php echo $second_semi_start_date;?>" placeholder="Second Semester Start Date" required></div>
-<div class ="col-6"><input class="form-control" type = "text" name= "second_semi_end_date" value ="<?php echo $second_semi_end_date;?>" placeholder="Second Semester End Date" required></div>
+<div class ="col-6"><label for="Duration-Institute Training">Second Semester Start Date</label><input class="form-control" type = "date" name= "second_semi_start_date" value ="<?php echo $second_semi_start_date;?>" placeholder="Second Semester Start Date" required></div>
+<div class ="col-6"><label for="Duration-Institute Training">Second Semester End Date</label><input class="form-control" type = "date" name= "second_semi_end_date" value ="<?php echo $second_semi_end_date;?>" placeholder="Second Semester End Date" required></div>
 <br><br>
 </div>
 <?php
