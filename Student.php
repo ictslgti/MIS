@@ -30,13 +30,14 @@ include_once("menu.php");
     <div class="col-md-3 mb-3"></div>
 
     <div class="col-md-3 mb-3">
-      <button type="button" class="btn btn-outline-primary">Primary</button>
-      <button type="button" class="btn btn-outline-danger">Primary</button>
+      <a href="AddStudent.php"><button type="button" class="btn btn-outline-primary"> ADD NEW STUDENT </button><a>
+      <button class="btn btn-sm btn-danger" data-href="?delete='.$row[student_id].'" data-toggle="modal" data-target="#confirm-delete"> <i class="fas fa-trash"></i> </button>
     </div>
 </div><br>
 
-<a href="AddStudent,php"> Add </a>
-<table class="table table-bordered">
+<div class="form-row">
+<div class="table-responsive">
+<table class="table table-hover">
   <thead>
     <tr>
       <th scope="col" width="8%"> Student Id </th>
@@ -47,6 +48,8 @@ include_once("menu.php");
       <th scope="col" width="20%"> Address </th>
       <th scope="col" width="8%"> Action </th>
     </tr>
+  </thead>
+  <tbody>
   <?php
    $sql ="SELECT student_id,student_title,student_fullname,student_ininame,student_gender,student_email,student_nic,student_dob,student_phone,student_address 
    FROM student where student_status='Active'";
@@ -76,7 +79,21 @@ include_once("menu.php");
    }
     
   ?>
+            <script>  
+                var table = document.getElementById('table');
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                         
+                    };
+                }
+    
+            </script>
 </table>
+</div>
+</div>
 
 
 <!---BLOCK 03--->
