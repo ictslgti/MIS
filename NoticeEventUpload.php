@@ -55,6 +55,17 @@ include_once("menu.php");
             <input type="date" class="form-control" name="event_date" >
         </div>
 
+
+        <div class="input-group mb-3 ">
+            <div class="input-group-prepend">  
+                <label class="input-group-text" for="inputGroupSelect01"> 
+                    <i class="far fa-clock"> </i>&nbsp;&nbsp;Event Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+                    <input class="form-control" type="time" name="event_time">
+        </div>
+
+
+
         <div class="input-group mb-3 ">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01"> 
@@ -101,7 +112,12 @@ include_once("menu.php");
 
     <div class="input-group mb-3 ">
             <div class="input-group-prepend">
-                <input type="submit"  value="ADD" name="add" class="btn btn-outline-primary">
+                <!-- <input type="submit"  value="ADD" name="add" class="btn btn-outline-primary"> -->
+                <button type="submit" value="ADD" name="add"  class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>ADD</button>
+
+
+
+                <!-- <a href="" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-plus">&nbsp;&nbsp;ADD EVENT</i></a> -->
             </div>
             <div class="input-group-prepend"> 
               
@@ -113,31 +129,35 @@ include_once("menu.php");
 
 
 <?php
+echo md5(uniqid(rand(), true));
+
+
 if(isset($_POST['add'])){
      if(!empty($_POST['event_name'])&&
       !empty($_POST['event_venue'])&&
        !empty($_POST['event_date'])&& 
        !empty($_POST['event_chief_guest'])&& 
        !empty($_POST['event_comment'])&&
+       !empty($_POST['event_time'])&&
        !empty($_POST['status'])){
         $event_name=$_POST['event_name'];
         $event_venue=$_POST['event_venue'];
         $event_date=$_POST['event_date'];
         $event_chief_guest=$_POST['event_chief_guest'];
         $event_comment=$_POST['event_comment'];
+        $event_time=$_POST['event_time'];
         $status=$_POST['status'];
 
-
-
+        
         $t_name = $_FILES["ima"]["tmp_name"];
         $name = basename($_FILES["ima"]["name"]);
-        $test_dir = 'img/doc/event';
+        $test_dir = './docs/events';
         move_uploaded_file($t_name, $test_dir.'/'.$name);
        
-        $sql="INSERT INTO `notice_event` (`event_name`,`event_venue`,`event_date`,`event_chief_guest`,`event_comment`,`status`,`file_name`) values('$event_name','$event_venue','$event_date','$event_chief_guest','$event_comment','$status','$name')";
+        $sql="INSERT INTO `notice_event` (`event_name`,`event_venue`,`event_date`,`event_chief_guest`,`event_comment`,`event_time`,`event_docs_url`,`status`) values('$event_name','$event_venue','$event_date','$event_chief_guest','$event_comment','$event_time','$name','$status')";
         if(mysqli_query($con,$sql)){
             $message ="New record created successfully";
-            echo "<script type='text/javascript'> alert('$message');</script>";
+            echo "'$message';";
         }else{
             echo "Error :-".$sql.
           "<br>"  .mysqli_error($con);
