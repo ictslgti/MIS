@@ -2,12 +2,9 @@
 <?php
 $title = "Find your MIS @ SLGTI Account ";
 include_once("config.php");
-
-
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;         
-require 'library/phpmailer/autoload.php';
+require './library/phpmailer/autoload.php';
 $msg =$msgs = null;
 if (isset($_POST['ResetPassword']) && !empty($_POST['username'])) {
   $user_name = htmlspecialchars($_POST['username']);
