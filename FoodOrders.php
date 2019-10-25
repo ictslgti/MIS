@@ -156,11 +156,12 @@ $title = "Home | SLGTI";
                
                 <div class="col-md-3"> 
                 <div class="card">
+                <p class="card-text"><h3><?php echo $type; ?></h3></p>
                 <img src="img/Itli.png" class="card-img-top" alt="...">
                 <div class="card-body">
                 <h5 class="card-title"><?php echo $idly;?> <a href="#" class="badge badge-info"><?php echo $uqty.'-'.$mea; ?> </a>
                 <p class="card-text"> <?php echo $pri; ?></p>
-                <p class="card-text"><?php echo $type; ?></p>
+                
                 <form method="POST" action="#"> 
                 <div class="row">
                 <div class="col-md-8"><input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
