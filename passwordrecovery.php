@@ -57,7 +57,7 @@ if (isset($_POST['ResetPassword']) && !empty($_POST['username'])) {
         $mail->msgHTML($html_message, __DIR__);
         if (!$mail->send()) {
             $msg = 'Password mail not sent';
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            // echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
             $msgs = 'Password mail sent';
         }
