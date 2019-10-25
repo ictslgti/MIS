@@ -114,33 +114,31 @@ include_once("menu.php");
         </thead>
         <tbody>
         <?php
-           $sql = "";
+           $sql = "SELECT `student_id`, `course_id`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`, `student_enroll_status` FROM `student_enroll`";
            $result = mysqli_query($con, $sql);
            if (mysqli_num_rows($result)>0)
            {
                while($row = mysqli_fetch_assoc($result))
-               {
+                {
                    echo '
                    <tr style="text-align:left";>
                         <td scope="row">1</td>
+                        <td>'. $row["student_id"]."<br>".'</td>
+                        <td>'. $row["course_id"]."<br>".'</td>
+                        <td>'. $row["academic_year"]."<br>".'</td>
+                        <td>'. $row["student_enroll_date"]."<br>".'</td>
+                        <td>'. $row["student_enroll_exit_date"]."<br>".'</td>
+                        <td>'. $row["student_enroll_status"]."<br>".'</td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                   </tr>
-                </tbody>'
-               }
+                   </tr>';
+                }
            }
            else
            {
             echo "0 results";
            }
         ?>
-    <
+        </tbody>
     </table>
         
 </div>
