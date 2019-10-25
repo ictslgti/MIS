@@ -151,13 +151,14 @@ $title = "Home | SLGTI";
                 $mea=$row ["food_measurements"];
                 $pri=$row ["food_unit_price"];
                 $id=$row ["food_id"];
+                $img=$row ["food_img"];
                 $type=$row ["available_time"];
                 ?>
                
                 <div class="col-md-3"> 
                 <div class="card">
                 <p class="card-text"><h3><?php echo $type; ?></h3></p>
-                <img src="img/Itli.png" class="card-img-top" alt="...">
+                <img src="docs/food/<?php echo $img;?>" class="card-img-top" alt="...">
                 <div class="card-body">
                 <h5 class="card-title"><?php echo $idly;?> <a href="#" class="badge badge-info"><?php echo $uqty.'-'.$mea; ?> </a>
                 <p class="card-text"> <?php echo $pri; ?></p>
@@ -277,15 +278,15 @@ $title = "Home | SLGTI";
                     
                     <div class="row">
                         <div class="col">
-                            <p>Total</p>
+                            <p><h2>Total</h2></p>
                         </div>
                         <div class="col">
-                            <p><?php echo number_format($total, 2); ?></p>
+                            <p><h2><?php echo number_format($total, 2); ?></h2></p>
                         </div>
                     </div>
 
                     <div class="row">
-                        <a href="OrderView.php" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="button"><i class="fas fa-shopping-cart"></i> Order Now</button></a>
+                        <a href="OrderView.php" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="button"><h2><i class="fas fa-shopping-cart"></i> Order Now</h2></button></a>
                     </div>
                     
                 </div>
