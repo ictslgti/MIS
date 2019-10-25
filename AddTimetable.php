@@ -52,9 +52,8 @@ if(isset($_POST['Add'])){
   &&!empty($_POST['staff_id'])
   &&!empty($_POST['weekdays'])
   &&!empty($_POST['timep'])
-  &&!empty($_POST['classroom'])
-  &&!empty($_POST['startdate'])
-  &&!empty($_POST['endeate']))
+  &&!empty($_POST['classroom']))
+
 
   { 
   
@@ -66,11 +65,10 @@ if(isset($_POST['Add'])){
      $weekdays  =  $_POST['weekdays'];
      $timep    =    $_POST['timep'];
      $classroom   =  $_POST['classroom'];
-     $startdate   =  $_POST['startdate'];
-     $endeate   =  $_POST['endeate'];
+    
   
-    $sql = "INSERT INTO `timetable` (`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `timep`, `classroom`,`startdate`,`endeate`)
-      VALUES ('$department_id','$course_id','$module_id','$academic_year','$staff_id','$weekdays','$timep','$classroom','$startdate','$endeate')";
+    $sql = "INSERT INTO `timetable` (`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `timep`, `classroom`)
+      VALUES ('$department_id','$course_id','$module_id','$academic_year','$staff_id','$weekdays','$timep','$classroom')";
    
       if (mysqli_query($con, $sql)) {
         echo "record add";
@@ -348,7 +346,7 @@ if(isset($_POST['Add'])){
 
  
 
-  <div class="form-group row">
+  <!--<div class="form-group row">
     <label class="col-sm-2 col-form-label">Startdate</label>
     <div class="col-sm-10">
       <input type="date" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['startdate']))
@@ -367,7 +365,7 @@ if(isset($_POST['Add'])){
 
     </div>
   </div>
-
+          -->
      
 
 
