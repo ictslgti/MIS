@@ -142,7 +142,7 @@ if(isset($_POST['Add'])){
                     if (mysqli_num_rows($result) > 0) {
                         while($row = mysqli_fetch_assoc($result)) {
                         echo '<option  value="'.$row["item_id"].'" required';
-                        if($row["item_id"]==$Departmentid) echo ' selected';
+                        if($row["item_id"]==$itemid) echo ' selected';
                         echo '>'.$row["item_id"].'</option>';
                         }
                     }
