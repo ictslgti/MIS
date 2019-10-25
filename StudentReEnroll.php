@@ -99,7 +99,7 @@ include_once("menu.php");
 
  <div class="table-row">
     <div class="col-md-09 mb-3">
-    <table class="table table-sm">
+    <table class="table table-sm table-hover">
         <thead>
             <tr>
             <th scope="col">No</th>
@@ -118,11 +118,13 @@ include_once("menu.php");
            $result = mysqli_query($con, $sql);
            if (mysqli_num_rows($result)>0)
            {
+            $num=1;
                while($row = mysqli_fetch_assoc($result))
+                 
                 {
                    echo '
                    <tr style="text-align:left";>
-                        <td scope="row">1</td>
+                        <td scope="row">'.$num."<br>".'</td>
                         <td>'. $row["student_id"]."<br>".'</td>
                         <td>'. $row["course_id"]."<br>".'</td>
                         <td>'. $row["academic_year"]."<br>".'</td>
@@ -131,8 +133,9 @@ include_once("menu.php");
                         <td>'. $row["student_enroll_status"]."<br>".'</td>
                         <td></td>
                    </tr>';
+                   $num=$num+1;
                 }
-                 count=count+1;
+                
            }
            else
            {
