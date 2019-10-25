@@ -101,25 +101,25 @@ if(isset($_POST['Add'])){
 
  <h1 class="text-center">Add Time Table </h1>
  <br>
-         <div class="row"> 
+         <div class="row" class="row d-flex justify-content-center"> 
 		
-         <div class="col-12">
+         <div class="col-12" >
          <p style="font-size:20px;"> Time table   <hr color ="black" style="height:1px;"></p><br>
  </div>
  </div>
 
 
- <form method="POST" action="#">
+ <form method="POST" action="#" >
 
   
-  <div class="form-group row">
+  <div class="form-group row"  >
     <label for="inputEmail3" class="col-sm-2 col-form-label">Department</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['department_id']))
+    <select required  id="inputState" class="selectpicker" data-live-search="true" <?php  if(isset($_POST['Add']) && empty($_POST['department_id']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['department_id'])){echo ' is-valid';} ?>" id="department_id" name="department_id">
 
 
-        <option selected disabled>Department</option>
+        
         <?php          
             
             $sql="SELECT * from department";
@@ -143,7 +143,7 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Course</label>
     <div class="col-sm-10">
-  <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['course_id']))
+  <select id="inputState" class="selectpicker" data-live-search="true"  class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['course_id']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"  id="course_id" name="course_id">
         <option selected disabled required>Course</option>
         <?php          
@@ -166,7 +166,7 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Module</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['module_id']))
+    <select id="inputState" class="selectpicker" data-live-search="true"  class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['module_id']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"  id="module_id" name="module_id">
         <option selected disabled required >Module</option>
         <?php          
@@ -191,7 +191,7 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">AcademicYear</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['academic_year']))
+    <select id="inputState" class="selectpicker" data-live-search="true"  class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['academic_year']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>"  id="academic_year" name="academic_year">
         <option selected disabled required >AcademicYear</option>
 
@@ -214,7 +214,7 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Lecture</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['staff_id']))
+    <select id="inputState" class="selectpicker" data-live-search="true"  class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['staff_id']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['staff_id'])){echo ' is-valid';} ?>"  id="staff_id" name="staff_id">
         <option selected disabled required >Lecture</option>
 
@@ -238,7 +238,7 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">WeekDays</label>
     <div class="col-sm-10"> 
-    <select class="selectpicker" multiple id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['weekdays']))
+    <select class="selectpicker" multiple data-live-search="true" id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['weekdays']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['weekdays'])){echo ' is-valid';} ?>"  id="weekdays" name="weekdays[]">
        
 
@@ -281,7 +281,7 @@ if(isset($_POST['Add'])){
   <div  class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Time</label>
     <div class="col-sm-10"> 
-    <select class="selectpicker" multiple id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['timep']))
+    <select class="selectpicker" multiple data-live-search="true" id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['timep']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['timep'])){echo ' is-valid';} ?>"  id="timep" name="timep[]">
 
 
@@ -321,7 +321,7 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">ClassRoom</label>
     <div class="col-sm-10"> 
-    <select name="classroom"  class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['classroom']))
+    <select name="classroom" class="selectpicker" data-live-search="true"  class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['classroom']))
                   {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['classroom'])){echo ' is-valid';} ?>" name="classroom">
         <option selected disabled required >ClassRoom</option>
 
