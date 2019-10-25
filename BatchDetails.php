@@ -1,6 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER -->
 <?php 
-$title = "Department Details | SLGTI" ;
+$title = "Batch Details | SLGTI" ;
 include_once("config.php"); 
 include_once("head.php"); 
 include_once("menu.php");
