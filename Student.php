@@ -79,18 +79,7 @@ include_once("menu.php");
    }
     
   ?>
-            <script>  
-                var table = document.getElementById('table');
-                
-                for(var i = 1; i < table.rows.length; i++)
-                {
-                    table.rows[i].onclick = function()
-                    {
-                         
-                    };
-                }
-    
-            </script>
+  </tbody>
 </table>
 </div>
 </div>
