@@ -95,9 +95,9 @@ include_once("menu.php");
       <th scope="col">ITEM ID</th>
       <th scope="col">SUPPLIER ID</th>
       <th scope="col">ITEM PURCHASE</th>
-      <th scope="col">ITEM DESCRIPTION</th>
+      <th scope="col"> WARRENTY</th>
+      <th scope="col"> ITEM DESCRIPTION </th>
       <th scope="col">ITEM CODE</th>
-      <th scope="col">WARRENTY</th>
       <th scope="col">ACTION</th>
       
     </tr>

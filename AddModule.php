@@ -81,11 +81,26 @@ if(isset($_POST['Editing']))
 
    if(mysqli_query($con,$sql))
    {
-        echo"Record has been updated succesfully";
+     echo '
+       <div class="alert alert-success alert-dismissible fade show" role="alert">
+       <strong>'.$mid.'</strong> Succesfully Has Been Updated
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+       </button>
+       </div>    
+     ';
    }
-   else
-   {
-    echo "Error in update" . mysqli_error($con);
+   else{
+     
+     echo '
+     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+     <strong>'.$mid.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+     </button>
+     </div>
+     
+     ';
    }
    }
 }
@@ -149,14 +164,28 @@ if(isset($_POST['Adding']))
       '$m_selfstudy_h',
       '$cid')";
      
-     if(mysqli_query($con,$sql))
-     {
-         echo "Record has been Inserted succesfully";
-     }
-     else
-   {
-    echo "Error in insert" . mysqli_error($con);
-   }
+                  if(mysqli_query($con,$sql))
+                        {
+                          echo '
+                          <div class="alert alert-sucess alert-dismissible fade show" role="alert">
+                          <strong> '.$mid.' </strong> Record has been Added Succesfully 
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>  ';
+                        }
+                        else
+                        {
+                          echo '
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <strong> '.$mid.' </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>  ';               
+                         
+                        }
+
 
   }
 
@@ -183,17 +212,13 @@ if(isset($_POST['Adding']))
               <div class="col-md-6 mb-3">
                 <label for="ID">Module ID</label>
                 <input type="text" class="form-control" id="ID" placeholder="" value="<?php echo $mid ?>" name="mid" required>
-              <div class="invalid-feedback">
-                  Valid Module ID is required.
-              </div>
+              
               </div>
 
               <div class="col-md-6 mb-3">
                 <label for="Name">Module Name</label>
                 <input type="text" class="form-control" id="Name" placeholder="" value="<?php echo $m_name ?>" name="mname" required>
-              <div class="invalid-feedback">
-                Valid Module Name is required.
-              </div>
+              
               </div>
 
             </div>
@@ -208,10 +233,8 @@ if(isset($_POST['Adding']))
                 <div class="input-group-prepend">
                   <span class="input-group-text">Hrs</span>
                 </div>
-                  <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" name="learning" value="<?php echo $m_learning_h ?>" required>
-                <div class="invalid-feedback" style="width: 50%;">
-                  Duration is required.
-                </div>
+                  <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" name="learning" value="<?php echo $m_learning_h ?>" maxlength="4" required>
+                
                 </div>
               </div>
 
@@ -238,9 +261,7 @@ if(isset($_POST['Adding']))
                     ?>
                     
                 </select>
-                  <div class="invalid-feedback">
-                    Please provide a Department.
-                  </div>
+                 
                 </div>
 
             </div>
@@ -255,10 +276,8 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
               </div>
-                <input type="text" class="form-control" id="Notional" placeholder="Hours in Digits"  name="notional" value="<?php echo $sum ?>" required disabled>
-              <div class="invalid-feedback" style="width: 50%;">
-                Duration is required.
-              </div>
+                <input type="text" class="form-control" id="Notional" placeholder="Hours in Digits"  name="notional" value="<?php echo $sum ?>"  required disabled>
+              
               </div>
               </div>
 
@@ -268,10 +287,8 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
               </div>
-                <input type="text" class="form-control" id="Lectures" placeholder="Hours in Digits" name="lecture" value="<?php echo $m_lecture_h ?>" required>
-              <div class="invalid-feedback" style="width: 50%;">
-                Duration is required.
-              </div>
+                <input type="text" class="form-control" id="Lectures" placeholder="Hours in Digits" name="lecture" value="<?php echo $m_lecture_h ?>" maxlength="5" required>
+              
               </div>
               </div>
 
@@ -281,10 +298,8 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
               </div>
-                <input type="text" class="form-control" id="Practical" placeholder="Hours in Digits" name="practical" value="<?php echo $m_practical_h ?>" required>
-              <div class="invalid-feedback" style="width: 50%;">
-                Duration is required.
-              </div>
+                <input type="text" class="form-control" id="Practical" placeholder="Hours in Digits" name="practical" value="<?php echo $m_practical_h ?>" maxlength="5" required>
+              
               </div>
               </div>
 
@@ -294,7 +309,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
               </div>
-                <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" name="selfstudy" value="<?php echo $m_selfstudy_h ?>" required>
+                <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" name="selfstudy" value="<?php echo $m_selfstudy_h ?>" maxlength="5" required>
               
               </div>
               </div>
@@ -306,39 +321,14 @@ if(isset($_POST['Adding']))
             <div class="row">
 
               <div class="col-md-6 mb-3">
-              <label for="Department">Semester Name</label>
-              <select class="custom-select d-block w-100"  name="semester" required>
-                    <option selected  disabled selected>Select Semester Name...</option>
-                    <?php
-                     $sql = "SELECT distinct semester_id FROM module";
-                     $result = mysqli_query($con, $sql);
-                     if(mysqli_num_rows($result)>0)
-                     {
-                       while($row = mysqli_fetch_assoc($result))
-                       {
-                         echo '<option value ="'.$row['semester_id'].'" ';
-
-                         if($row['semester_id']== $sid)
-                         {
-                           echo 'selected';
-                         }
-                         echo '>' .$row['semester_id'].'</option>';
-                       }
-                     }
-                    ?>
-                    
-                </select>
-              <div class="invalid-feedback">
-                Please provide a Department.
-              </div>
+              <label for="Department">Semester ID</label>
+              <input type="text" class="form-control" id="unit" placeholder="1 or 2 are only acceptable"   name="semester" value="<?php echo $sid ?>" maxlength="1"  required>
               </div>
 
               <div class="col-md-6 mb-3">
                 <label for="unit">Relative Unit</label>
                 <input type="text" class="form-control" id="unit" placeholder=""   name="unit" value="<?php echo $m_r_unit ?>" required>
-                <div class="invalid-feedback">
-                  Please provide a Relative Unit name
-                </div>
+                
               </div>
 
             </div>
@@ -349,33 +339,25 @@ if(isset($_POST['Adding']))
               <div class="col-md-3 mb-3">
                 <label for="aim">Module aim</label>
                 <textarea class="form-control" id="Module aim" rows="8" name="aim"><?php echo $m_aim; ?></textarea>
-              <div class="invalid-feedback">
-                Module is required.
-              </div>
+              
               </div>
               
               <div class="col-md-3 mb-3">
                 <label for="unit">Learning Outcomes</label>
                 <textarea class="form-control" id="Outcomes" rows="8" name="outcomes" value="<?php echo $m_l_outcomes ?>"><?php echo $m_l_outcomes; ?></textarea>
-              <div class="invalid-feedback">
-                Learning Outcomes is required.
-              </div>
+              
               </div>
 
               <div class="col-md-3 mb-3">
                 <label for="resources">Resources</label>
                 <textarea class="form-control" id="resources" rows="8" name="resources" value="<?php echo $m_resources ?>"><?php echo $m_resources; ?></textarea>
-              <div class="invalid-feedback">
-                Resources is required.
-              </div>
+              
               </div>
 
               <div class="col-md-3 mb-3">
                 <label for="references">References</label>
                 <textarea class="form-control" id="References" rows="8" name="references" value="<?php echo $m_references ?>"><?php echo $m_references; ?></textarea>
-              <div class="invalid-feedback">
-                References is required.
-              </div>
+              
               </div>
               </form >
               <?php

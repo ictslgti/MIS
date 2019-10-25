@@ -451,10 +451,10 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="onpeak">On-Peak Info</a>
+                  <a href="OnPeak">On-Peak Info</a>
                 </li>
                 <li>
-                  <a href="onpeak_request">Request a On-Peak</a>
+                  <a href="RequestOnPeak">Request a On-Peak</a>
                   <hr>
                 </li>              
                 <li>
@@ -502,7 +502,7 @@ if($u_ta=='staff'){
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="Timetable.new">
               <i class="fa fa-calendar"></i>
               <span>Calendar</span>
             </a>

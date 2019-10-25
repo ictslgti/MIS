@@ -21,26 +21,30 @@ include_once("menu.php");
           
         if(isset($_POST['allo'])){
          
-         
+        
         
           
           $id=$_POST['id'];
-          $name =$_POST['name'];
+          
           $dept =$_POST['dept'];
-          $address =$_POST['address'];
-          $dist =$_POST['dist'];
+         
           $dis =$_POST['dis'];
-          $gender =$_POST['title'];
+        
           $block =$_POST['block'];
           $room =$_POST['room'];
           $date =$_POST['date'];
           $leave =$_POST['leave'];
-          $sql= "INSERT INTO `hostel_student_details` (`student_id`, `fullname`, `department_name`, `address`, `district`, `distance`, `gender`, `block_no`, 
-          `room_no`, `date_of_addmission`, `date_of_leaving`) VALUES ('$id', '$name', '$dept', '$address', '$dist', '$dis', '$gender', '$block', '$room', '$date', '$leave')";
+          $sql= "INSERT INTO `hostel_student_details` (`student_id`,  `department_id`,  `distance`,  `block_no`, 
+          `room_no`, `date_of_addmission`, `date_of_leaving`) VALUES ('$id', '$dept',   '$dis',  '$block', '$room', '$date', '$leave')";
           if(mysqli_query($con,$sql)){
-              echo "new record create sucessfully ";
+            echo
+            '<div class="alert alert-success">
+            <strong>Success!</strong> Your data was inserted.</a>
+          </div>';
           }else{
-              echo "error :".$sql."<br>".mysqli_error($con);
+              echo '<div class="alert alert-warning">
+              <strong>Warning!</strong> Invalid data. Please Check Your Data !
+            </div>';
           }
         }
   
@@ -57,12 +61,12 @@ include_once("menu.php");
          if(mysqli_num_rows($result)== 1){
               $row = mysqli_fetch_assoc($result);
               $student_id = $row['student_id'];
-              $name = $row['fullname'];
-              $dept = $row['department_name'];
-              $addr = $row['address'];
-              $dist = $row['district'];
+              
+              $dept = $row['department_id'];
+              
+              
               $dis = $row['distance'];
-              $title = $row['gender'];
+             
               $block = $row['block_no'];
               $room = $row['room_no'];
               $date = $row['date_of_addmission'];
@@ -77,28 +81,32 @@ include_once("menu.php");
         if(isset($_POST['upt'])){
            
            $student_id = $_GET['edit'];
-           $name =$_POST['name'];
+          
            $dept =$_POST['dept'];
-           $addr =$_POST['address'];
-           $dist =$_POST['dist'];
+          
            $dis =$_POST['dis'];
-           $title =$_POST['title'];
+          
            $block =$_POST['block'];
            $room =$_POST['room'];
            $date =$_POST['date'];
            $leave =$_POST['leave'];
          
           $sql = "UPDATE `hostel_student_details` 
-          SET `fullname` = ' $name', 
-          `department_name` = '$dept',
-          `address` = ' $addr',`district` = ' $dist',`distance` = ' $dis',`gender` = '$title',`block_no` = ' $block',`room_no` = ' $room',
+          SET 
+          `department_id` = '$dept',
+          `distance` = ' $dis',`block_no` = ' $block',`room_no` = ' $room',
           `date_of_addmission` = ' $date',`date_of_leaving` = ' $leave'
           WHERE `hostel_student_details`.`student_id` = '$student_id'";
         
           if(mysqli_query($con,$sql)){
-              echo "new record update sucessfully ";
+            echo
+            '<div class="alert alert-success">
+            <strong>Success!</strong> Your data was Updated.</a>
+          </div>';
           }else{
-              echo "error :" .$sql."<br>".mysqli_error($con);
+            echo '<div class="alert alert-warning">
+            <strong>Warning!</strong> Invalid data. Please Check Your Data !
+          </div>';
           }
       }
    
@@ -154,91 +162,54 @@ include_once("menu.php");
 
       
        </div>
-
+       <div class="form-group col-md-2  ">
+       <label for="dis"><i class="fas fa-map-signs"></i>&nbsp;Department id :
+             <label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;"></label>
+            </label>
+            <input type="text" class="form-control" id="dept" value="<?php echo $dept; ?>" name="dept" placeholder=""  required>
+       </div>
        
     
        
-       <div class="form-group col-md-4  ">
-       <label for="name"><i class="far fa-id-card"></i>&nbsp;Full Name</label> <br>
-       <input type="text" class="form-control " name="name" value="<?php echo $name; ?>" id="name" required >
+       <div class="form-group col-md-2  ">
+       <label for="dis"><i class="fas fa-map-signs"></i>&nbsp;Distance
+             <label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;">Home to SLGTI </label>
+            </label>
+            <input type="text" class="form-control" id="dis" value="<?php echo $dis; ?>" name="dis" placeholder="in km"  required>
        </div>
-       <div class="form-group col-md-4  ">
-       <label for="name"><i class="fas fa-university"></i>&nbsp;Department</label> <br>
-       <input type="text" class="form-control " id="name" value="<?php echo $dept; ?>" name="dept" required >
+       
+       <div class="form-group col-md-2  ">
+       <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Block No:</label>
+        
+        <input type="text" class="form-control" id="block"value="<?php echo $block; ?>" name="block"  required>
        </div>
        </div>
 
        
 <div class="form-row">
 
-<div class="form-group col-md-6  ">
-       <label for="ad"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</label> <br>
-       <textarea name="address" class="rounded  form-control  text-black"  type="text"  id="add" value="" placeholder="House-No, Street, Hometown." cols="15" rows="3" required > <?php echo $addr; ?> </textarea>
+<div class="form-group col-md-2  ">
+<label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Room No:</label>
+        
+        <input type="text" class="form-control" id="room" value="<?php echo $room; ?>" name="room"  required>
         </div>
+        
 
 
-        <div class="col-md-4 mb-3">
-            <label for="district"><i class="fas fa-map-marker-alt"></i>&nbsp;District</label>
-            <input type="text" class="form-control" id="district" value="<?php echo $dist; ?>" name="dist"  required>
+        <div class="col-md-3">
+        <label for="add"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Addmission</label>
+            <input type="date" class="form-control" id="add" value="<?php echo $date; ?>" name="date" placeholder=""  required>
           </div>
 
-          <div class="col-md-2 mb-3">
-            <label for="dis"><i class="fas fa-map-signs"></i>&nbsp;Distance
-             <label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;">Home to SLGTI </label>
-            </label>
-            <input type="text" class="form-control" id="dis" value="<?php echo $dis; ?>" name="dis" placeholder="in km"  required>
+          <div class="col-md-3">
+          <label for="leave"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Leaving</label>
+            <input type="date" class="form-control" id="leave" value="<?php echo $leave; ?>" name="leave" placeholder=""  required>
           </div>
 
        </div>
 
 
-<div class="form-row">
 
-
-<div class="form-group col-md-3  ">
-<label for="hostel"><i class="fas fa-transgender"></i>&nbsp;Gender :</label>
-<select name="title" id="gender" value="<?php echo $title; ?>"  class="form-control" required >
-               <option value="" selected disabled>---Select---</option>
-               
-               <option value="Male" <?php if($title=="Male") echo 'selected'; ?>>  Male </option>
-                    <option value="Female" <?php if($title=="Female") echo 'selected'; ?>> Female </option>
-                    
-         </select>
-         </div>
-
-
-         
-         <div class="form-group col-md-3  ">
-         <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Block No:</label>
-        
-         <input type="text" class="form-control" id="block"value="<?php echo $block; ?>" name="block"  required>
-</div>
-
-<div class="form-group col-md-3  ">
-         <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Room No:</label>
-        
-         <input type="text" class="form-control" id="room" value="<?php echo $room; ?>" name="room"  required>
-</div>
-</div>
-
-
-
-
-
-
-<div class="form-row">
-<div class="col-md-3 mb-3">
-            <label for="add"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Addmission</label>
-            <input type="date" class="form-control" id="add" value="<?php echo $date; ?>" name="date" placeholder=""  required>
-          </div>
-
-          <div class="col-md-3 mb-3">
-            <label for="leave"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Leaving</label>
-            <input type="date" class="form-control" id="leave" value="<?php echo $leave; ?>" name="leave" placeholder=""  required>
-          </div>
-          
-        
-          </div>
          
         <div class="row">
     <div class="col-md-3 col-sm-12 ">

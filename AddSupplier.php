@@ -37,7 +37,7 @@ if(isset($_POST['Add'])){
       {
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$supplierid.'</strong> Staff details inserted
+          <strong>'.$supplierid.'</strong> Supplier details inserted
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -88,7 +88,7 @@ if(isset($_POST['Add'])){
               </div>
               
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
-                  <label class="font-weight-bold" for="">02.SUPPLIER NAME</label> <span style="color:red;">*</span></label>
+                  <label class="font-weight-bold" for="">02.SUPPLIER EMAIL</label> <span style="color:red;">*</span></label>
                   <input type="text" name="supplieremail" value="<?php echo $supplieremail;?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['supplieremail'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['supplieremail'])&& !empty($_POST['suppliername'])){echo '  is-valid';} ?>" id="" aria-describedby="supplieremail" placeholder=" supplieremail" required="required">
                   <small id="" class="form-text text-muted"></small>
               </div>

@@ -70,17 +70,24 @@ include_once("menu.php");
     <!-- </div> -->
     <!-- <button type="submit" formaction="academic.php" value="Add" name="Add"  class="btn btn-link">Add</button> </td>                            -->
     </tr>
+    
+<?php
+
+if(isset($_GET['delete'])){
+    $department_id = $_GET['delete'];
+    $sql = "";
+    
+    if (mysqli_query($con, $sql)){
+        echo '';
+    }else{
+        echo "Error deleting record:" . mysqli_error($con);
+    }
+}
+
+?>
     <?php
 
-$sql = "SELECT department.department_id as department_id, 
-department.department_name as department_name, 
-course.course_id as course_id, 
-course.course_name as course_name, 
-course.course_nvq_level as course_nvq_level
-from `department` 
-left JOIN `course` 
-ON department.department_id = course.course_id";
-
+$sql = "SELECT `department_id`, `department_name` FROM `department`";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)>0){
     while ($row = mysqli_fetch_assoc($result)){
@@ -89,11 +96,10 @@ if (mysqli_num_rows($result)>0){
         <td>' . $row ["department_id"].'</td>
         <td>' . $row ["department_name"].'</td>
         <td>
-        <a href="Course.php?id='.$row["department_id"].'" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Course</i></a>
-    <a href="BatchDetails" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Batch</i></a>
-    <a href="AddDepartment.php?edit='.$row["department_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-    <button class="btn btn-sm btn-danger" data-href="?delete='.$row["department_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
-      
+        <a href="Course.php?id='.$row["department_id"].'" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-book">&nbsp;&nbsp;Course</i></a>
+        <a href="BatchDetails" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-id-badge">&nbsp;&nbsp;Batch</i></a>
+        <a href="AddDepartment.php?edit='.$row["department_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+        <button class="btn btn-sm btn-danger" data-href="?delete='.$row["department_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
         </tr>';
     }
 }else{

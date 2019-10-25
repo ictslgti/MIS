@@ -109,14 +109,13 @@ $today = date('Y-m-d');
                     <tr>
                         <th scope="col" class="p-3 bg-info text-light" style="width: 8%;">Date : <?php echo $today;?>
                         </th>
-                        <?php
-                        foreach ($weeks as $value) {
-                          ?>
-                         <th scope="col" class="p-3 <?php if(date('l')==$value) echo ' bg-warning'; ?>" style="width: 6%;"> <?php echo $value; echo date("Y-m-d", strtotime("$today + " . (2) . " day"));?></th>
-                        
-                        <?php
-                        }
-                        ?>
+                        <th scope="col" class="p-3" style="width: 6%;">Monday</th>
+                        <th scope="col" class="p-3" style="width: 6%;"> Tuesday</th>
+                        <th scope="col" class="p-3" style="width: 6%;">Wednesday</th>
+                        <th scope="col" class="p-3" style="width: 6%;">Thursday</th>
+                        <th scope="col" class="p-3" style="width: 6%;">Friday</th>
+                        <th scope="col" class="p-3" style="width: 6%;">Saturday</th>
+                        <th scope="col" class="p-3" style="width: 6%;">Sunday</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,8 +129,6 @@ $today = date('Y-m-d');
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
-
-              
                 echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . ' <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
             }
             echo '</td>';   

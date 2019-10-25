@@ -12,7 +12,6 @@ include_once ("menu.php");
 
 <!-- Block#2 start your code -->
 <?php
- echo $_SESSION['user_name'];
   $cid = $cname = $ctraining = $cojt =  $nvq = $did =null;
 
   if(isset($_GET['edits']))
@@ -54,7 +53,7 @@ if(isset($_POST['Editing']))
    {
      echo '
      <div class="alert alert-sucess alert-dismissible fade show" role="alert">
-     <strong> Succes </strong> Record has been Updated Succesfully 
+     <strong> '.$cid.' </strong> Record has been Updated Succesfully 
      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
        <span aria-hidden="true">&times;</span>
      </button>
@@ -64,7 +63,7 @@ if(isset($_POST['Editing']))
    {
      echo '
      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-     <strong> Error </strong> Cannot update a parent row (foreign key constraint fails)
+     <strong> '.$cid.' </strong> Cannot update a parent row (foreign key constraint fails)
      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
        <span aria-hidden="true">&times;</span>
      </button>
@@ -91,12 +90,27 @@ if(isset($_POST['Adding']))
      
      if(mysqli_query($con,$sql))
      {
-         echo "Record has been Inserted succesfully";
+       echo '
+         <div class="alert alert-success alert-dismissible fade show" role="alert">
+         <strong>'.$cid.'</strong> Succesfully Has Been Added
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+         </button>
+         </div>    
+       ';
      }
-     else
-   {
-    echo "Error in insert" . mysqli_error($con);
-   }
+     else{
+       
+       echo '
+       <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       <strong>'.$cid.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+       </button>
+       </div>
+       
+       ';
+     }
 
   }
 
@@ -144,7 +158,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Months</span>
               </div>
-                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_training" value ="<?php echo $ctraining ?>" required>
+                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_training" value ="<?php echo $ctraining ?>" maxlength="4" required>
               
               </div>
               </div>
@@ -155,7 +169,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Months</span>
               </div>
-                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_ojt" value="<?php echo $cojt ?>"required>
+                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_ojt" value="<?php echo $cojt ?>" maxlength="2"required>
               
               </div>
               </div>
@@ -192,27 +206,7 @@ if(isset($_POST['Adding']))
 
               <div class="col-md-6 mb-3">
                 <label for="Level">NVQ Level</label>
-                <select class="custom-select d-block w-100"  name="n_level" required>
-                <option disabled selected>Select NVQ Level</option>
-                    <?php
-                     $sql = "SELECT distinct course_nvq_level FROM course";
-                     $result = mysqli_query($con, $sql);
-                     if(mysqli_num_rows($result)>0)
-                     {
-                       while($row = mysqli_fetch_assoc($result))
-                       {
-                         echo '<option value ="'.$row['course_nvq_level'].'" ';
-
-                         if($row['course_nvq_level']== $nvq)
-                         {
-                           echo 'selected';
-                         }
-                         echo '>' .$row['course_nvq_level'].'</option>';
-                       }
-                     }
-                    ?>
-                    
-                </select>
+              <input type="text" class="form-control" id="unit" placeholder="NVQ are only '3-6' and 'BRI' for Bridging"   name="n_level" value="<?php echo $nvq ?>" min="3" max="6" maxlength="1" required>
               </div>
             
                 

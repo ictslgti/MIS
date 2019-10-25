@@ -1,6 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER -->
 <?php 
-$title = "Department Details | SLGTI" ;
+$title = "Batch Student Details | SLGTI" ;
 include_once("config.php"); 
 include_once("head.php"); 
 include_once("menu.php");
@@ -37,7 +37,7 @@ include_once("menu.php");
       <th scope="col">Profile</th>
 
      
-      
+      <!-- cid=5IT&ay=2017/2018 -->
     </tr>
   </thead>
   <tbody>
@@ -68,7 +68,7 @@ if (mysqli_num_rows($result)>0){
         <td>' . $row ["student_enroll_status"].'</td>
       
         <td>
-        <a href="Student" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;View</i></a>
+        <a href="Student" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-file-alt">&nbsp;&nbsp;View</i></a>
         
     </td>
     

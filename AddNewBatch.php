@@ -1,6 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER -->
 <?php 
-$title = "Department Details | SLGTI" ;
+$title = "Add New Batch | SLGTI" ;
 include_once("config.php"); 
 include_once("head.php"); 
 include_once("menu.php");
@@ -50,24 +50,25 @@ include_once("menu.php");
 </table>
 <?php
 
-$batch_id = $course_id = $academic_year = null;
-if(isset($_GET['edit'])){
+$batch_id = $c_id = $academic_year = null;
+if(isset($_GET['edit'])){ 
     $batch_id = $_GET['edit'];
     $sql = "SELECT * FROM `batch` WHERE `batch_id`='$batch_id'";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)==1){
     $row = mysqli_fetch_assoc($result);
     $batch_id = $row['batch_id'];
-    $course_id = $row['course_id']; 
+    $c_id = $row['course_id']; 
     $academic_year = $row['academic_year'];
 }
 }
 if(isset($_POST['Add'])){
+    echo "ok";
    if (!empty($_POST['batch_id']) && !empty ($_POST['course_id']) && !empty ($_POST['academic_year'])){
        $batch_id = $_POST['batch_id'];
-       $course_id = $_POST['course_id'];
+       $c_id = $_POST['course_id'];
        $academic_year = $_POST['academic_year'];
-       $sql = "INSERT INTO `batch` (`batch_id`,`course_id`,`academic_year`) VALUE ('$batch_id','$course_id','$academic_year')";
+       $sql = "INSERT INTO `batch` (`batch_id`,`course_id`,`academic_year`) VALUE ('$batch_id','$c_id','$academic_year')";
        if (mysqli_query($con, $sql)){
            echo '<a class = "text-success"><div class="fa-1.5x"><i class="fas fa-spinner fa-pulse "></i>Insert Success</div></a>';
        }else{
@@ -76,19 +77,30 @@ if(isset($_POST['Add'])){
    }
     // echo "Add";
 }
-if(isset($_POST['Edit'])){
-  if (!empty($_POST['batch_id']) && !empty ($_POST['course_id']) && !empty ($_POST['academic_year']) && !empty($_GET['edit'])){
-        $batch_id = $_POST['batch_id'];
-        $course_id = $_POST['course_id'];
+
+if(isset($_POST['Edit']))
+{
+   
+    if(!empty($_POST['batch_id']) 
+    && !empty($_POST['course_id']) 
+    && !empty($_POST['academic_year']) 
+    && !empty($_GET['edit']))
+  //{/
+    echo "SUCCESS";
+        //$c_id = $_POST['course_id'];
         $academic_year = $_POST['academic_year'];
         $batch_id = $_GET['edit'];
-        $sql = " UPDATE `batch` SET `course_id`='$course_id' WHERE `batch_id`='$batch_id'";
-        if (mysqli_query($con, $sql)){
+
+        $sql = "UPDATE `batch` SET `academic_year`='$academic_year' WHERE `batch_id`='$batch_id' and `course_id`='$c_id'";
+
+        if (mysqli_query($con, $sql))
+        {
             echo '<a class = "text-success"><div class="fa-1.5x"><i class="fas fa-spinner fa-pulse "></i>Edit Success</div></a>';
-        }else{
+        }else
+        {
             echo "Error:" .$sql. "<br>". mysqli_error($con);
         }
-    }
+    //}
     // echo "EDIT";
 }
 
@@ -97,12 +109,33 @@ if(isset($_POST['Edit'])){
 <div class = "mx-auto">
 <form method = "POST">
 <div class ="row">
-<div class ="col-6"><input class="form-control" type = "text" name= "batch_id" value ="<?php echo $batch_id;?>" placeholder="Batch ID" required><br></div>
-<div class ="col-6"><input class="form-control" type = "text" name= "course_id" value ="<?php echo $course_id;?>" placeholder="Course ID" required><br></div>
-<div class ="col-6"><select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['academic_year'])){echo ' is-invalid';}?>"  name="academic_year" >
+<div class ="col-6">
+<label for="Duration-Institute Training">Batch ID</label>
+<input class="form-control" type = "text" name= "batch_id" value ="<?php echo $batch_id;?>" placeholder="Batch ID" required><br></div>
+
+<div class ="col-6">
+<label for="Duration-Institute Training">Course ID</label>
+<select class="custom-select mr-sm-2"  name="course_id" value ="<?php echo $c_id;?>" required >
+        <option selected disabled>Select Course ID</option>
+            <?php          
+            $sql = "SELECT * FROM `course`";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                echo '<option  value="'.$row["course_id "].'"';
+                if($row["course_id"]==$c_id) echo ' selected';
+                echo '>'.$row["course_id"].'</option>';
+                }
+            }
+            ?>
+            </select>
+            </div>
+<div class ="col-6">
+<label for="Duration-Institute Training">Select Academic Year</label>
+<select class="custom-select mr-sm-2"  name="academic_year" >
         <option value="null" selected disabled>Select Academic Year</option>
             <?php          
-            $sql = "SELECT * FROM `academic`";
+            $sql = "SELECT distinct academic_year FROM `academic`";
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
@@ -115,7 +148,8 @@ if(isset($_POST['Edit'])){
            </select>
 </div>
 </div>
-<br></div>
+<br>
+</div>
 <?php
 if(isset($_GET['edit'])){
     echo '<input type = "submit" value="Edit" name="Edit"<a href="" class="btn btn-sm btn-success" role="button" aria-pressed="true"></a> '; 

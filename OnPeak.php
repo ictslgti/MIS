@@ -1,18 +1,16 @@
-<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
+<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->  
 <?php
-$title = "Onpeak | SLGTI";
-include_once("config.php");
-include_once("head.php");
-include_once("menu.php");
-?>
-<!--END DON'T CHANGE THE ORDER-->
+$title = "Home | SLGTI";
+ include_once("config.php"); 
+ include_once("head.php"); 
+ include_once("menu.php"); 
+ ?>
+<!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+   <!-- Content here -->
 
-
-          <!-- Content here -->
-
-  <br>     
+   <br>     
         <div class="row border border-light shadow p-3 mb-5 bg-white rounded">
           <div class="col">
           <br>
@@ -235,12 +233,10 @@ include_once("menu.php");
       </div>
 
  
-  
-        
+ 
 
-         
 <!--END OF YOUR COD-->
 
-<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
+<!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
-<!--END DON'T CHANGE THE ORDER-->
+<!--END DON'T CHANGE THE ORDER-->  
