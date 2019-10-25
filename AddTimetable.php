@@ -56,26 +56,34 @@ if(isset($_POST['Add'])){
 
 
   { 
-  
+   
+    
      $department_id   =  $_POST['department_id'];
      $course_id   =  $_POST['course_id'];
      $module_id  =   $_POST['module_id'];
      $academic_year  =   $_POST['academic_year'];
      $staff_id   =   $_POST['staff_id'];
-     $weekdays  =  $_POST['weekdays'];
-     $timep    =    $_POST['timep'];
+    //  $weekdays  =  $_POST['weekdays'];
+    //  $timep    =    $_POST['timep'];
      $classroom   =  $_POST['classroom'];
+     $sql_insert = null;
+     foreach ($_POST['weekdays'] as $weekdays)
+     {
+       foreach ($_POST['timep'] as $timep)
+     {
+       $sql_insert .= "INSERT INTO `timetable` (`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `timep`, `classroom`)
+       VALUES ('$department_id','$course_id','$module_id','$academic_year','$staff_id','$weekdays','$timep','$classroom');";
+ 
+     }
+     }
+    //  echo  $sql_insert;
     
-  
-    $sql = "INSERT INTO `timetable` (`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `timep`, `classroom`)
-      VALUES ('$department_id','$course_id','$module_id','$academic_year','$staff_id','$weekdays','$timep','$classroom')";
-   
-      if (mysqli_query($con, $sql)) {
+      if (mysqli_multi_query($con, $sql_insert)) {
         echo "record add";
     
 
       } else {
-         echo "Error: " . $sql .
+         echo "Error: " . $sql_insert .
         "<br>" . 	mysqli_error($con);
       
         
@@ -230,9 +238,9 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">WeekDays</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['weekdays']))
-    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['weekdays'])){echo ' is-valid';} ?>"  id="weekdays" name="weekdays">
-        <option selected disabled required >Days</option>
+    <select class="selectpicker" multiple id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['weekdays']))
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['weekdays'])){echo ' is-valid';} ?>"  id="weekdays" name="weekdays[]">
+       
 
 
         <option  value="Monday" <?php if($weekdays=="Monday")  echo 'selected';?>
@@ -270,13 +278,12 @@ if(isset($_POST['Add'])){
   
 
 
-  <div class="form-group row">
+  <div  class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Time</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['timep']))
-    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['timep'])){echo ' is-valid';} ?>"  id="timep" name="timep">
+    <select class="selectpicker" multiple id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['timep']))
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['timep'])){echo ' is-valid';} ?>"  id="timep" name="timep[]">
 
-        <option selected disabled required >Time</option>
 
         <option value="P1"
 
@@ -418,5 +425,6 @@ if(isset($_POST['Add'])){
 
  </form>
 
-          
+
+
  <?php include_once("footer.php"); ?>
