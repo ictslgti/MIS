@@ -133,7 +133,7 @@ $title = "Home | SLGTI";
         
         <div class ="row">
           <div class="row pl-3 pt-4 ">
-            <em><h1 class="display-5">Morning Fare</h1></em>
+            <em><h1 class="display-5">FOOD MENU</h1></em>
             
         </div>
 
@@ -151,15 +151,16 @@ $title = "Home | SLGTI";
                 $mea=$row ["food_measurements"];
                 $pri=$row ["food_unit_price"];
                 $id=$row ["food_id"];
-
+                $type=$row ["available_time"];
                 ?>
                
                 <div class="col-md-3"> 
                 <div class="card">
                 <img src="img/Itli.png" class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title"><?php echo $idly; ?> <a href="#" class="badge badge-info"><?php echo $uqty.'-'.$mea; ?> </a>
-                <p class="card-text">LKR <?php echo $pri; ?></p>
+                <h5 class="card-title"><?php echo $idly;?> <a href="#" class="badge badge-info"><?php echo $uqty.'-'.$mea; ?> </a>
+                <p class="card-text"> <?php echo $pri; ?></p>
+                <p class="card-text"><?php echo $type; ?></p>
                 <form method="POST" action="#"> 
                 <div class="row">
                 <div class="col-md-8"><input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
