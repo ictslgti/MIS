@@ -14,7 +14,7 @@ include_once("menu.php");
             <div class="container">
                 <div class="intro">
                     <h1 class="display-3 text-center">Batch Details</h1>
-                    <h3 class="display-10 text-center">Department Of Information & Communication Technology</h3>
+                    <h3 class="display-10 text-center"></h3>
                     <!-- <p class="text-center"></p> -->
 
                 </div>
@@ -64,7 +64,7 @@ if (mysqli_num_rows($result)>0){
         <td>' .$row["academic_year"].'</td>
         <td>
         
-    <a href="BatchStudent" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-eye">&nbsp;&nbsp;Students</i></a>
+    <a href="BatchStudent" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-user-graduate">&nbsp;&nbsp;Students</i></a>
     <a href="AddNewBatch.php?edit='.$row["batch_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
     <button class="btn btn-sm btn-danger" data-href="?delete='.$row["batch_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
       </tr>';
