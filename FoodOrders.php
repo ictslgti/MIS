@@ -126,58 +126,6 @@ $title = "Home | SLGTI";
 
  <!-- FOOD MENU DESIGN    -->
 
-<!-- <div class="row">
-
-<div class="col-8">
-<div class="card mb-3" style="max-width:540px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="img/Itli.png" class="card-img" alt="responsive">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"> <?php
-                                $sql = "SELECT * FROM `food` WHERE `food_id`='fd001'";
-                                $result = mysqli_query($con, $sql);
-                                if (mysqli_num_rows($result)>0){
-                                    while ($row = mysqli_fetch_assoc($result)){
-
-                                        $idly=$row ["food_name"];
-                                        $uqty=$row ["food_unit_qty"];
-                                        $mea=$row ["food_measurements"];
-                                        $pri=$row ["food_unit_price"];
-                                        $id=$row ["food_id"];
-                                        }
-                                    }
-                                    else{
-                                        echo "0 results";
-                                        }
-                                ?></h5>
-        <p class="card-text">
-        
-        
-        <form method="POST" action="#">   
-        <input type="text" name="qty" value="<?php echo $uqty  ?>" class="form-control" />
-						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $idly ?>" />
-						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
-						            <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
-                                    <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
-                                    <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" /></p>
-
-</form>
-
-
-
-        <p class="card-text"><small class="text-muted"></small></p>
-      </div>
-    </div>
-  </div>
-</div></div>
-
-
-
-</div> -->
-
  <div class="row">
   <div class="col-sm-7">
     <div class="card">
@@ -191,7 +139,7 @@ $title = "Home | SLGTI";
             <div class="col-md-3">           
                 <div class="card" >
                     <div class="row">
-                        <div class="col pl-1">
+                        <div class="col pl-3">
                             <img class="card-img" src="img/Itli.png" alt="">
                         </div>
                         <div class="col">
@@ -236,7 +184,7 @@ $title = "Home | SLGTI";
             <div class="col-sm-12 col-md-6 col-lg-3 container">           
                 <div class="card">
                     <div class="row">
-                        <div class="col pl-1">
+                        <div class="col pl-3">
                             <img class="card-img-top" src="img/rotti.png" alt="">
                         </div>
                         <div class="col">
