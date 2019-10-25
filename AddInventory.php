@@ -21,8 +21,8 @@ if(isset($_GET['edit']))
    {
       $row = mysqli_fetch_assoc($result);
     echo  $inventoryid = $row['inventoryid'];
-     echo $Departmentid = $row['Departmentid'];
-      echo$itemid = $row['itemid'];
+    echo $Departmentid = $row['Departmentid'];
+    echo $itemid = $row['itemid'];
      echo $inventorystatus= $row['inventorystatus'];
      echo $inventoryquantity = $row['inventoryquantity'];
       
