@@ -1,11 +1,11 @@
-<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
+<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->  
 <?php
 $title = "Home | SLGTI";
-include_once("config.php");
-include_once("head.php");
-include_once("menu.php");
-?>
-<!--END DON'T CHANGE THE ORDER-->
+ include_once("config.php"); 
+ include_once("head.php"); 
+ include_once("menu.php"); 
+ ?>
+<!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <br>
@@ -212,55 +212,8 @@ include_once("menu.php");
   </div>
     
 
+<!--END OF YOUR COD-->
 
-
-
-
-
-
-
-<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
+<!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
-<!--END DON'T CHANGE THE ORDER-->
-<script>
-function showCouese(val) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("Course").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("POST", "controller/getCourse", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("department=" + val);
-}
-
-function showModule(val) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("Module").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("POST", "controller/getModule", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("course=" + val);
-}
-
-function showTeacher() {
-    var did = document.getElementById("Departmentx").value;
-    var cid = document.getElementById("Course").value;
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("Teacher").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("POST", "controller/getTeacher", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("Department=" + did + "&Course="+ cid );
-}
-</script>
-<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
-<?php include_once("footer.php"); ?>
-<!--END DON'T CHANGE THE ORDER-->
+<!--END DON'T CHANGE THE ORDER-->  
