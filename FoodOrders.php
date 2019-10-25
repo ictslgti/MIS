@@ -127,15 +127,15 @@ $title = "Home | SLGTI";
  <!-- FOOD MENU DESIGN    -->
 
  <div class="row">
-  <div class="col-sm-7">
+  <div class="col-sm-8">
     <div class="card">
       <div class="card-body">
         
         <p class="card-text"><div class ="row">
-  <div class="row pl-2 pt-4 ">
+  <div class="row pl-3 pt-4 ">
             <em><h1 class="display-5">Morning Fare</h1></em>
         </div>
-        <div class="row no-gutters">
+        <div class="row">
             <div class="col-md-3">           
                 <div class="card" >
                     <div class="row">
@@ -144,7 +144,7 @@ $title = "Home | SLGTI";
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-3 mt-1">   
+                                <h4 class="display-5 mt-1">   
                                 <?php
                                 $sql = "SELECT * FROM `food` WHERE `food_id`='fd001'";
                                 $result = mysqli_query($con, $sql);
@@ -165,9 +165,9 @@ $title = "Home | SLGTI";
                                     </h4>
                                 <form method="POST" action="#">   
                                  <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="qty" value="<?php echo $uqty, $mea  ?>" class="form-control" />
-						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $idly ?>" /> 
-						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>"  />
+                                    <input type="text" name="qty" value="<?php echo $uqty, $mea  ?>" class="form-control"readonly />
+						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $idly ?>"readonly /> 
+						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>"readonly/>
 						            <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" />
@@ -211,9 +211,9 @@ $title = "Home | SLGTI";
                                 </h4> 
                                 <form method="POST" action="#">   
                                  <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" />
-						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $rotti ?>" />
-						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control"readonly />
+						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $rotti ?>" readonly/>
+						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>"readonly />
 						            <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" />
@@ -257,9 +257,9 @@ $title = "Home | SLGTI";
                         </h4>
                         <form method="POST" action="#">   
                                  <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="quantity" value="<?php echo $uqty,$mea  ?>" class="form-control" />
-						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $stringhoppers ?>" />
-						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" name="quantity" value="<?php echo $uqty,$mea  ?>" class="form-control" readonly/>
+						            <input type="text" class="form-control"  name="hidden_name" value="<?php echo $stringhoppers ?>"readonly />
+						            <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" readonly/>
 						            <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" />
@@ -302,9 +302,9 @@ $title = "Home | SLGTI";
                         </h4>
                         <form method="POST" action="#">   
                                  <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" />
-                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $Bread?>" />
-                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" readonly/>
+                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $Bread?>" readonly/>
+                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>"readonly />
                                     <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" />
@@ -338,11 +338,11 @@ $title = "Home | SLGTI";
                 <div class="card" >
                     <div class="row">
                         <div class="col pl-3">
-                            <img class="card-img-top responsive" src="img/fish.png" alt="">
+                            <img class="card-img" src="img/fish.png" alt="">
                         </div>
                         <div class="col">
                             <div class="card-body">
-                                <h4 class="display-5 mt-0"><p>
+                                <h4 class="display-5 mt-1"><p>
 
                         <?php
                        $sql = "SELECT * FROM `food` WHERE `food_id`='fd005'";
@@ -363,9 +363,9 @@ $title = "Home | SLGTI";
                        </h4>
                        <form method="POST" action="#">   
                                 <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" />
-                                   <input type="text" class="form-control"  name="hidden_name" value="<?php echo $FRice ?>" />
-                                   <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" readonly/>
+                                   <input type="text" class="form-control"  name="hidden_name" value="<?php echo $FRice ?>"readonly />
+                                   <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" readonly/>
                                    <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                    <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" />
@@ -408,9 +408,9 @@ $title = "Home | SLGTI";
                         </h4>
                         <form method="POST" action="#">   
                                  <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" />
-                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $VRice ?>" />
-                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" readonly/>
+                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $VRice ?>" readonly/>
+                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" readonly/>
                                     <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" />
@@ -453,9 +453,9 @@ $title = "Home | SLGTI";
                         </h4>
                         <form method="POST" action="#">   
                                  <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" />
-                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $CRice ?>" />
-                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" readonly/>
+                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $CRice ?>"readonly />
+                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>"readonly />
                                     <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" />
@@ -499,9 +499,9 @@ $title = "Home | SLGTI";
                         </h4>
                         <form method="POST" action="#">   
                                  <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" />
-                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $SplFd?>" />
-                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control"readonly />
+                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $SplFd?>" readonly/>
+                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" readonly/>
                                     <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" />
@@ -564,9 +564,9 @@ $title = "Home | SLGTI";
                        </h4>
                        <form method="POST" action="#">   
                                 <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" />
-                                   <input type="text" class="form-control"  name="hidden_name" value="<?php echo $Koththu ?>" />
-                                   <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control"readonly />
+                                   <input type="text" class="form-control"  name="hidden_name" value="<?php echo $Koththu ?>"readonly />
+                                   <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>"readonly />
                                    <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                    <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" />
@@ -607,9 +607,9 @@ $title = "Home | SLGTI";
                        </h4>
                        <form method="POST" action="#">   
                                 <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" />
-                                   <input type="text" class="form-control"  name="hidden_name" value="<?php echo $Pittu ?>" />
-                                   <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" readonly/>
+                                   <input type="text" class="form-control"  name="hidden_name" value="<?php echo $Pittu ?>" readonly/>
+                                   <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" readonly/>
                                    <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                    <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" />
@@ -651,9 +651,9 @@ $title = "Home | SLGTI";
                         </h4>
                         <form method="POST" action="#">   
                                  <div class="pb-1" style="max-width: 4rem;">
-                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" />
-                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $FriRic?>" />
-                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>" />
+                                    <input type="text" name="quantity" value="<?php echo $uqty ,$mea  ?>" class="form-control" readonly/>
+                                    <input type="text" class="form-control"  name="hidden_name" value="<?php echo $FriRic?>" readonly/>
+                                    <input type="text" class="form-control"  name="hidden_price" value="<?php echo $pri ?>"readonly />
                                     <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
                                     <input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required>
                                     <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info" value="ADD" />
@@ -709,20 +709,17 @@ $title = "Home | SLGTI";
       </div>
     </div>
   </div>
-  <div class="col-sm-5">
+  <div class="col-sm-4">
     <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"> <div class="row pt-5">
-        <div class="col-sm-12 col-md-4 col-lg-9 container">  
-            <table class="table">
+      <div class="card-body"><table class="table">
                 <thead class="thead-dark">
                     <tr>
                         
-                        <th><p class="h5">ITEM NAME</p></th>
-                        <th><p class="h5">QTY</p></th>
-                        <th><p class="h5">PER AMOUNT</p></th>
-                        <th><p class="h5">TOTAL AMOUNT</p></th>
-                        <th><p class="h5">ACTION</p></th>
+                        <th><p class="h8">ITEM NAME</p></th>
+                        <th><p class="h8">QTY</p></th>
+                        <th><p class="h8">PER AMOUNT</p></th>
+                        <th><p class="h8">TOTAL AMOUNT</p></th>
+                        <th><p class="h8">ACTION</p></th>
                     </tr>
                  </thead>
                  <?php
@@ -759,56 +756,22 @@ $title = "Home | SLGTI";
 			?>
                
                    
-                   
-                   
-            </table>
-           
-                   
-        </div>
-</h5>
+                   </table>
+        <h6 class="card-title"> 
+        <div class="row pt-5">
+        <div class="col-sm-12 col-md-4 col-lg-9 container">  
+             </div>
+</h6>
         <p class="card-text">
 
 
-<!--         
-        <div class="col-sm-12 col-md-4 col-lg-3 container">
-        <div class="card bg-light mb-3" style="max-width: 18rem;">
-             <div class="card-header">
-                <div class="row">
-                    <div class="col-sm-6 col-md-10 col-lg-10 container">
-                        <p class="h2">FOOD CART</p>
-                    </div>
-                    <div class="col-sm-4 col-md-2 col-lg-2 container">
-                        <img src="img/FOOD.png" height="35" class="float-right" alt="Error">
-                    </div>
-                </div> 
-            </div> 
-                </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div> -->
+
   </div>
 </div>
  
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-        
-<!-- ORDE CART DESIGN  -->
+ <!-- ORDE CART DESIGN  -->
   
    
                 
