@@ -1,6 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
 <?php
-$title = "Sign in to MIS";
+$title = "Sign in to MIS @ SLGTI ";
 include_once("config.php");
 ?>
 <!--END DON'T CHANGE THE ORDER-->
@@ -80,6 +80,7 @@ if (isset($_POST['SignIn']) && !empty($_POST['username']) && !empty($_POST['pass
   if(mysqli_num_rows($result)==1){
     $_SESSION['user_name'] = $username; 
     
+    if(!empty($_POST['rememberme']) ){
     //set a cookie
     echo $random_token_string = hash('sha256', mt_rand());
     echo '<br>';
@@ -95,7 +96,7 @@ if (isset($_POST['SignIn']) && !empty($_POST['username']) && !empty($_POST['pass
     // // set cookie
     setcookie('rememberme', $cookie_string, time() + COOKIE_RUNTIME, "/", COOKIE_DOMAIN);
     //end cookie
-
+    }
     $row = mysqli_fetch_assoc($result);
      //set session data
      echo $_SESSION['user_name'] =  $row['user_name'];
@@ -141,6 +142,7 @@ if (isset($_GET['signout'])) {
 
 }
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -153,36 +155,77 @@ if (isset($_GET['signout'])) {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/signin.css">
     <link href="css/all.min.css" rel="stylesheet">
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <title><?php echo $title; ?></title>
 </head>
 
 <body>
-    <div class="d-flex" id="wrapper">
-        <!--BLOCK#2 START YOUR CODE HERE -->
-        <div class="text-center signin">
-            <form class="form-signin" action="#" method="post">
-                <img class="mb-4" src="img/logo-1.png" alt="" height="100">
-                <?php
-        if (!empty($msg))
-          echo '<div class="alert alert-danger" >' . $msg . '</div>';
-        ?>
-                <h1 class="mb-3">Sign in to MIS</h1>
-                <label for="inputEmail" class="sr-only">Username</label>
-                <input type="text" id="inputEmail" class="form-control" name="username"
-                    placeholder="[achchuthan,2025ICT5IT01]" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="1234"
-                    required>
-                <button type="submit" name="SignIn" class="btn btn-lg btn-primary btn-block">Sign in</button>
-                <div>
-                    <a href="#">Forgot password?</a>
-                </div>
 
-            </form>
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <!-- The image half -->
+            <div class="col-md-6 d-none d-md-flex bg-image"></div>
+
+
+            <!-- The content half -->
+            <div class="col-md-6 bg-light">
+                <div class="login d-flex align-items-center py-5">
+
+                    <!-- Demo content-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 col-xl-7 mx-auto">
+                                <h3 class="display-4 text-center">MIS@SLGTI</h3>
+                                <p class="text-muted text-center mb-4 blockquote-footer">Management Information System
+                                </p>
+                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                    <?php
+                                    if (!empty($msg))
+                                    echo '<div class="alert alert-danger rounded-pill border-0 shadow-sm px-4" >' . $msg . '</div>';
+                                    ?>
+                                    <div class="form-group mb-3">
+                                        <input id="inputEmail" type="text" name="username" placeholder="Username" required=""
+                                            autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input id="inputPassword" type="password" name="password" placeholder="Password" required=""
+                                            class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input id="customCheck1" name="rememberme" value="yes" type="checkbox" checked class="custom-control-input">
+                                        <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                    </div>
+                                    <button type="submit" name="SignIn"
+                                        class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign
+                                        in</button>
+
+                                    <div class="form-group mb-3 text-center">
+                                    <a href=""class="font-italic text-muted pr-1">Forgot password?</a>
+                                    Don't have an account?
+                                    <a href=""class="font-italic text-muted text-right">Sign Up</a>
+                                    </div>
+                                    <div class="text-center d-flex justify-content-between mt-4">
+                                        <p>All Rights Reserved. Designed and Developed by Department of Information and
+                                            Communication Technology, <a href="http://slgti.com"
+                                                class="font-italic text-muted">
+                                                Sri Lanka-German Training Institute.</a></p>
+                                    </div>
+
+
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- End -->
+
+                </div>
+            </div><!-- End -->
+
         </div>
     </div>
-
-    <body>
+</body>
 
 </html>

@@ -26,15 +26,14 @@ if($u_ta=='staff'){
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
       <div class="sidebar-brand">
-        <a href="index">MIS@SLGTI</a>
+        <a href="#">MIS@SLGTI</a>
         <div id="close-sidebar">
           <i class="fas fa-times"></i>
         </div>
       </div>
       <div class="sidebar-header">
         <div class="user-pic">
-          <img class="img-responsive img-rounded" src="img/user.jpg"
-            alt="User picture">
+          <img class="img-responsive img-rounded" src="img/user.jpg" alt="<?php echo $u_n;?> picture">
         </div>
         <div class="user-info">
           <span class="user-name">
@@ -48,7 +47,7 @@ if($u_ta=='staff'){
         </div>
       </div>
       <!-- sidebar-header  -->
-      <div class="sidebar-search">
+      <!-- <div class="sidebar-search">
         <div>
           <div class="input-group">
             <input type="text" class="form-control search-menu" placeholder="Search...">
@@ -59,14 +58,24 @@ if($u_ta=='staff'){
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- sidebar-search  -->
       <div class="sidebar-menu">
         <ul>
           <li class="header-menu">
             <span>General</span>
           </li>
+          <li>
+            <a href="index">
+              <i class="fa fa-home"></i>
+              <span>Dashboard</span>
+              <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
+            </a>
+          </li>
+
           <li class="sidebar-dropdown">
+          
+
             <a href="#">
               <i class="fas fa-university"></i>
               <span>Departments</span>
