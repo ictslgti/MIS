@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+date_default_timezone_set('Asia/Colombo');
 //database connection
 define('DB_HOST','mis.achchuthan.org');
 define('DB_USER','misuser');
@@ -23,13 +23,13 @@ if (mysqli_connect_errno()){
 
 
 
-define("EMAIL_USE_SMTP", false);
-define("EMAIL_SMTP_HOST", 'yourhost');
+define("EMAIL_USE_SMTP", true);
+define("EMAIL_SMTP_HOST", 'smtp.gmail.com');
 define("EMAIL_SMTP_AUTH", true); // leave this true until your SMTP can be used without login
-define("EMAIL_SMTP_USERNAME", 'yourusername');
-define("EMAIL_SMTP_PASSWORD", 'yourpassword');
-define("EMAIL_SMTP_PORT", 465);
-define("EMAIL_SMTP_ENCRYPTION", 'ssl');
+define("EMAIL_SMTP_USERNAME", '');
+define("EMAIL_SMTP_PASSWORD", '');
+define("EMAIL_SMTP_PORT", 587);
+define("EMAIL_SMTP_ENCRYPTION", 'tls');
 /**
  * Configuration file for: password reset email data
  * This is the place where your constants are saved
@@ -39,7 +39,7 @@ define("EMAIL_SMTP_ENCRYPTION", 'ssl');
 define("EMAIL_PASSWORDRESET_URL", "https://".COOKIE_DOMAIN."/passwordrecovery");
 define("EMAIL_PASSWORDRESET_FROM", "noreply@achchuthan.org");
 define("EMAIL_PASSWORDRESET_FROM_NAME", "MIS@SLGTI");
-define("EMAIL_PASSWORDRESET_SUBJECT", "Password reset for MIS@SLGTI");
+define("EMAIL_PASSWORDRESET_SUBJECT", "[MIS@SLGTI] Password Reset");
 define("EMAIL_PASSWORDRESET_CONTENT", "Please click on this link to reset your password: ");
 /**
  * Configuration file for: verification email data
@@ -49,7 +49,7 @@ define("EMAIL_PASSWORDRESET_CONTENT", "Please click on this link to reset your p
 define("EMAIL_VERIFICATION_URL", "https://".COOKIE_DOMAIN."/signup");
 define("EMAIL_VERIFICATION_FROM", "noreply@achchuthan.org");
 define("EMAIL_VERIFICATION_FROM_NAME", "MIS@SLGTI");
-define("EMAIL_VERIFICATION_SUBJECT", "Account Activation for MIS@SLGTI");
+define("EMAIL_VERIFICATION_SUBJECT", "[MIS@SLGT] Account Activation I");
 define("EMAIL_VERIFICATION_CONTENT", "Please click on this link to activate your account:");
 
 
