@@ -46,7 +46,7 @@ $gcourse_id=$sum=$mid=$cid=null;
                     {
                       echo '
                       <div class="alert alert-sucess alert-dismissible fade show" role="alert">
-                      <strong> Succes </strong> Record has been Deleted Succesfully 
+                      <strong>'.$m_id.' </strong> Record has been Deleted Succesfully 
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -56,7 +56,7 @@ $gcourse_id=$sum=$mid=$cid=null;
                     {
                       echo '
                       <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <strong> Error </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                      <strong> '.$m_id.' </strong> Cannot delete or update a parent row (foreign key constraint fails)
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>

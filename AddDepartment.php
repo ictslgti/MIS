@@ -1,6 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER -->
 <?php 
-$title = "Department Details | SLGTI" ;
+$title = "Add Department | SLGTI" ;
 include_once("config.php"); 
 include_once("head.php"); 
 include_once("menu.php");
@@ -85,8 +85,10 @@ if(isset($_POST['Edit'])){
 <div class = "mx-auto">
 <form method = "POST">
 <div class ="row">
-<div class ="col-4"><input class="form-control" type = "text" name= "id" value ="<?php echo $id;?>" placeholder="Department ID" required><br></div>
-<div class ="col-8"><input class="form-control" type = "text" name= "name" value ="<?php echo $name;?>" placeholder="Department Name" required><br></div>
+<div class ="col-4"><label for="Duration-Institute Training">Department ID</label>
+<input class="form-control" type = "text" name= "id" value ="<?php echo $id;?>" placeholder="Department ID" required><br></div>
+<div class ="col-8"><label for="Duration-Institute Training">Department Name</label>
+<input class="form-control" type = "text" name= "name" value ="<?php echo $name;?>" placeholder="Department Name" required><br></div>
 </div>
 </div>
 <?php

@@ -1,6 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER -->
 <?php 
-$title = "Department Details | SLGTI" ;
+$title = "Add New Batch | SLGTI" ;
 include_once("config.php"); 
 include_once("head.php"); 
 include_once("menu.php");
@@ -97,9 +97,9 @@ if(isset($_POST['Edit'])){
 <div class = "mx-auto">
 <form method = "POST">
 <div class ="row">
-<div class ="col-6"><input class="form-control" type = "text" name= "batch_id" value ="<?php echo $batch_id;?>" placeholder="Batch ID" required><br></div>
-<div class ="col-6"><input class="form-control" type = "text" name= "course_id" value ="<?php echo $course_id;?>" placeholder="Course ID" required><br></div>
-<div class ="col-6"><select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['academic_year'])){echo ' is-invalid';}?>"  name="academic_year" >
+<div class ="col-6"><label for="Duration-Institute Training">Batch ID</label><input class="form-control" type = "text" name= "batch_id" value ="<?php echo $batch_id;?>" placeholder="Batch ID" required><br></div>
+<div class ="col-6"><label for="Duration-Institute Training">Course ID</label><input class="form-control" type = "text" name= "course_id" value ="<?php echo $course_id;?>" placeholder="Course ID" required><br></div>
+<div class ="col-6"><label for="Duration-Institute Training">Select Academic Year</label><select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['academic_year'])){echo ' is-invalid';}?>"  name="academic_year" >
         <option value="null" selected disabled>Select Academic Year</option>
             <?php          
             $sql = "SELECT * FROM `academic`";

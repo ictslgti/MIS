@@ -42,7 +42,7 @@ include_once ("menu.php");
                         {
                           echo '
                           <div class="alert alert-sucess alert-dismissible fade show" role="alert">
-                          <strong> Succes </strong> Record has been Deleted Succesfully 
+                          <strong> '.$c_id.' </strong> Record has been Deleted Succesfully 
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -52,7 +52,7 @@ include_once ("menu.php");
                         {
                           echo '
                           <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                          <strong> Error </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                          <strong> '.$c_id.' </strong> Cannot delete or update a parent row (foreign key constraint fails)
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -64,16 +64,18 @@ include_once ("menu.php");
 
 	                <tbody>
 	                    <?php 
-
-
                     $sql = "SELECT course.course_id AS course_id, 
                     course.course_name as course_name, 
-                    course.course_nvq_level as course_nvq_level,
-                    department.department_name as department_name
-                    from `course` 
-                    left JOIN `department` 
-                    ON course.department_id = department.department_id";
-                    
+                    department.department_name as department_name,
+                    course.course_nvq_level as course_nvq_level
+                    from `course`,`department` 
+                    where course.department_id = department.department_id";
+
+                        if(isset($_GET['id']))
+                        {
+                            $id=$_GET['id'];
+                            $sql.=" AND course.department_id='$id'";
+                        }
                     $result = mysqli_query($con,$sql);
 
                     if(mysqli_num_rows($result)>0)

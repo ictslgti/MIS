@@ -4,6 +4,7 @@ $title = "Home | SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
+
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
@@ -49,12 +50,18 @@ include_once("menu.php");
                  <div class="card-header"><h3>EVENTS</h3></div>
                 
                          <div class="list-group">
-                                <a href="NoticeEventView.php" class="list-group-item list-group-item-action list-group-item-primary">Awarding Ceremoney</a>
-                                 <a href="" class="list-group-item list-group-item-action list-group-item-danger">Celebration</a>
+                   
+                                    <form action="NoticeEventView" method="POST">
+                                    <input type="submit"  name='evName' value='AwardingCeremony' class="btn btn-primary"> <br>
+                                    <input type="submit"  name='evName' value='Celebration' class="btn btn-primary">
+                                    </form>
+                                <a href="NoticeEventView.php?id='AwardingCeremony'" class="list-group-item list-group-item-action list-group-item-primary">Awarding Ceremoney</a>
+                                 <a href="NoticeEventView.php?id='SportMeet'" class="list-group-item list-group-item-action list-group-item-danger">Celebration</a>
                                 <a href="" class="list-group-item list-group-item-action list-group-item-secondary">Visitor's Visit</a>
                                 <a href="" class="list-group-item list-group-item-action list-group-item-success">Volunteer</a>
                                 <a href="NoticeOthers" class="list-group-item list-group-item-action list-group-item-">Other Events</a>
-                                
+                           
+
                          </div>
               </div>
               </div>

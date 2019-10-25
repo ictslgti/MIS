@@ -37,7 +37,7 @@ if(isset($_POST['Add'])){
       {
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$supplierid.'</strong> Staff details inserted
+          <strong>'.$supplierid.'</strong> Supplier details inserted
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>

@@ -20,11 +20,11 @@ if(isset($_GET['edit']))
   if (mysqli_num_rows($result)==1)
    {
       $row = mysqli_fetch_assoc($result);
-    echo  $inventoryid = $row['inventoryid'];
-     echo $Departmentid = $row['Departmentid'];
-      echo$itemid = $row['itemid'];
-     echo $inventorystatus= $row['inventorystatus'];
-     echo $inventoryquantity = $row['inventoryquantity'];
+    echo  $inventoryid = $row['inventory_id'];
+     echo $Departmentid = $row['inventory_department_id'];
+      echo$itemid = $row['item_id'];
+     echo $inventorystatus= $row['inventory_status'];
+     echo $inventoryquantity = $row['inventory_quantity'];
       
 
   }
@@ -65,7 +65,7 @@ if(isset($_POST['Add'])){
       {
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$inventoryid.'</strong> Staff details inserted
+          <strong>'.$inventoryid.'</strong> Inventory details inserted
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -173,7 +173,7 @@ if(isset($_POST['Add'])){
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
               
           <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset"> 
-                  <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">update </button>
+                  <button type="submit"  class="btn btn-primary ml-2 mt-3 float-right">update </button>
                   <button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='inventory_view.php'">view </button>
                   <button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
                  
