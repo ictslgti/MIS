@@ -202,9 +202,9 @@ if (isset($_GET['signout'])) {
                                         in</button>
 
                                     <div class="form-group mb-3 text-center">
-                                    <a href=""class="font-italic text-muted pr-1">Forgot password?</a>
+                                    <a href="passwordrecovery" class="font-italic text-muted pr-1">Forgot password?</a>
                                     Don't have an account?
-                                    <a href=""class="font-italic text-muted text-right">Sign Up</a>
+                                    <a href="signup"class="font-italic text-muted text-right">Sign Up</a>
                                     </div>
                                     <div class="text-center d-flex justify-content-between mt-4">
                                         <p>All Rights Reserved. Designed and Developed by Department of Information and
@@ -212,10 +212,6 @@ if (isset($_GET['signout'])) {
                                                 class="font-italic text-muted">
                                                 Sri Lanka-German Training Institute.</a></p>
                                     </div>
-
-
-
-
                                 </form>
                             </div>
                         </div>
