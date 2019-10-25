@@ -5,6 +5,7 @@ include_once("config.php");
 
 ?>
 
+
 <!doctype html>
 <html lang="en">
 
@@ -46,6 +47,9 @@ include_once("config.php");
                                     <?php
                                     if (!empty($msg))
                                     echo '<div class="alert alert-danger rounded-pill border-0 shadow-sm px-4" >' . $msg . '</div>';
+                                    
+                                    if (!empty($msgs))
+                                    echo '<div class="alert alert-success rounded-pill border-0 shadow-sm px-4" >' . $msgs . '</div>';
                                     ?>
                                     <div class="form-group mb-3">
                                         <input id="inputEmail" type="text" name="username" placeholder="Username" required=""
