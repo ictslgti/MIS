@@ -11,26 +11,29 @@ include_once("menu.php");
 
 
 <?PHP
-$Department=$Course=$Module=$AcademicYear=$Lecture=$WeekDays=$Time=$ClassRoom=$startdate=$endeate= $tid=null;
+$department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$classroom=$startdate=$endeate=$tid=null;
 
 if(isset($_GET['edit']))
+
 {
   $id = $_GET['edit'];
-  $sql = "SELECT * FROM `timetable` WHERE `time_id` = '$tid'";
+  $sql = "SELECT * FROM `timetable` WHERE `time_id` = $id";
   $result = mysqli_query($con, $sql);
   if (mysqli_num_rows($result)==1)
    {
       $row = mysqli_fetch_assoc($result);
-      $department_id = $row['department_id'];
-      $course_id = $row['course_id'];
-      $module_id = $row['module_id'];
-      $academic_year= $row['academic_year'];
-      $staff_id = $row['staff_id'];
-      $weekdays = $row['weekdays'];
-      $classroom = $row['classroom'];
-      $startdate = $row['startdate`'];
-      $enddate= $row['enddate'];
-      $time= $row['time'];
+      echo $time_id = $row['time_id'];
+      echo $department_id = $row['department_id'];
+      echo $course_id = $row['course_id'];
+      echo $module_id = $row['module_id'];
+      echo $academic_year= $row['academic_year'];
+      echo $staff_id = $row['staff_id'];
+      echo $weekdays = $row['weekdays'];
+      echo $weekdays = $row['timep'];
+      echo $classroom = $row['classroom'];
+      echo $startdate = $row['startdate'];
+      echo $endeate = $row['endeate'];
+
   }
 
 }
@@ -40,29 +43,32 @@ if(isset($_GET['edit']))
 
 
 if(isset($_POST['Add'])){
-  echo "ok";
+  
 
-  if(!empty($_POST['Department_id'])
+  if(!empty($_POST['department_id'])
   &&!empty($_POST['course_id'])
   &&!empty($_POST['module_id'])
   &&!empty($_POST['academic_year'])
   &&!empty($_POST['staff_id'])
   &&!empty($_POST['weekdays'])
-  &&!empty($_POST['time'])
+  &&!empty($_POST['timep'])
   &&!empty($_POST['classroom']))
+
+
   { 
-     echo "ok2";
-     echo $department_id   =  $_POST['Department_id'];
-     echo $course_id   =  $_POST['course_id'];
-     echo $module_id  =   $_POST['module_id'];
-     echo $academic_year  =   $_POST['academic_year'];
-     echo $staff_id   =   $_POST['staff_id'];
-     echo $weekdays  =  $_POST['weekdays'];
-     echo $time   =    $_POST['time'];
-     echo $classroom   =  $_POST['classroom'];
   
-     echo $sql = "INSERT INTO `timetable` (`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `time`, `classroom`)
-      VALUES ('$department_id','$course_id','$module_id','$academic_year','$staff_id','$weekdays','$time','$classroom')";
+     $department_id   =  $_POST['department_id'];
+     $course_id   =  $_POST['course_id'];
+     $module_id  =   $_POST['module_id'];
+     $academic_year  =   $_POST['academic_year'];
+     $staff_id   =   $_POST['staff_id'];
+     $weekdays  =  $_POST['weekdays'];
+     $timep    =    $_POST['timep'];
+     $classroom   =  $_POST['classroom'];
+    
+  
+    $sql = "INSERT INTO `timetable` (`department_id`, `course_id`, `module_id`, `academic_year`, `staff_id`, `weekdays`, `timep`, `classroom`)
+      VALUES ('$department_id','$course_id','$module_id','$academic_year','$staff_id','$weekdays','$timep','$classroom')";
    
       if (mysqli_query($con, $sql)) {
         echo "record add";
@@ -101,8 +107,9 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Department</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control"  
-    id="Department_id" name="Department_id">
+    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['department_id']))
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['department_id'])){echo ' is-valid';} ?>" id="department_id" name="department_id">
+
 
         <option selected disabled>Department</option>
         <?php          
@@ -113,7 +120,7 @@ if(isset($_POST['Add'])){
             while($row = mysqli_fetch_assoc($result)) 
             {
             echo '<option value="'.$row['department_id'].'"';
-            if ($row["department_id"]==$Department )
+            if ($row["department_id"]==$department_id )
             {
               echo 'selected'; 
             }
@@ -128,8 +135,8 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Course</label>
     <div class="col-sm-10">
-  <select id="inputState" class="form-control" <?php  if(isset($_POST['Add']) && empty($_POST['course_id']))
-    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>  id="module_id" name="course_id">
+  <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['course_id']))
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"  id="course_id" name="course_id">
         <option selected disabled required>Course</option>
         <?php          
             $sql = "SELECT * FROM `course`";
@@ -137,7 +144,7 @@ if(isset($_POST['Add'])){
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                 echo '<option  value="'.$row["course_id"].'" required';
-                if($row["course_id"]==$Course) echo ' selected';
+                if($row["course_id"]==$course_id) echo ' selected';
                 echo '>'.$row["course_name"].'</option>';
                 }
             }
@@ -160,7 +167,7 @@ if(isset($_POST['Add'])){
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                 echo '<option  value="'.$row["module_id"].'" required';
-                if($row["module_id"]==$Module) echo ' selected';
+                if($row["module_id"]==$module_id) echo ' selected';
                 echo '>'.$row["module_name"].'</option>';
                 }
             }
@@ -186,7 +193,7 @@ if(isset($_POST['Add'])){
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                 echo '<option  value="'.$row["academic_year"].'" required';
-                if($row["academic_year"]==$AcademicYear) echo ' selected';
+                if($row["academic_year"]==$academic_year) echo ' selected';
                 echo '>'.$row["academic_year"].'</option>';
                 }
             }
@@ -209,7 +216,7 @@ if(isset($_POST['Add'])){
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                 echo '<option  value="'.$row["staff_id"].'"';
-                if($row["staff_id"]==$Lecture) echo ' selected';
+                if($row["staff_id"]==$staff_id) echo ' selected';
                 echo '>'.$row["staff_name"].'</option>';
                 }
             }
@@ -228,32 +235,32 @@ if(isset($_POST['Add'])){
         <option selected disabled required >Days</option>
 
 
-        <option  value="Monday" <?php if($WeekDays=="Monday")  echo 'selected';?>
+        <option  value="Monday" <?php if($weekdays=="Monday")  echo 'selected';?>
 
         >Monday</option>
 
     <option value="Tuesday"
 
-    <?php if($WeekDays=="Tuesday")  echo 'selected';?>
+    <?php if($weekdays=="Tuesday")  echo 'selected';?>
 
     >Tuesday</option>
 
     <option value="Wednesday"
 
-    <?php if($WeekDays=="Wednesday")  echo 'selected';?>
+    <?php if($weekdays=="Wednesday")  echo 'selected';?>
 
     >Wednesday</option>
 
     <option value="Thursday"
 
-    <?php if($WeekDays=="Thursday")  echo 'selected';?>
+    <?php if($weekdays=="Thursday")  echo 'selected';?>
 
     >Thursday</option>
 
 
     <option value="Friday"
 
-     <?php if($WeekDays=="Friday")  echo 'selected';?>
+     <?php if($weekdays=="Friday")  echo 'selected';?>
     
     >Friday</option>
 
@@ -266,20 +273,20 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Time</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['time']))
-    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['time'])){echo ' is-valid';} ?>"  id="time" name="time">
+    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['timep']))
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['timep'])){echo ' is-valid';} ?>"  id="timep" name="timep">
 
         <option selected disabled required >Time</option>
 
         <option value="P1"
 
-        <?php if($Time=="P1")  echo 'selected';?>
+        <?php if($timep=="P1")  echo 'selected';?>
 
         >P1-8.30-10.00</option>
 
     <option value="P2"
 
-    <?php if($Time=="P2")  echo 'selected';?>
+    <?php if($timep=="P2")  echo 'selected';?>
     
     >P2-10.30-12.00</option>
 
@@ -287,13 +294,13 @@ if(isset($_POST['Add'])){
     <option value="P3"
 
 
-    <?php if($Time=="P3")  echo 'selected';?>
+    <?php if($timep=="P3")  echo 'selected';?>
 
     >P3-13.00-14.30</option>
 
     <option value="P4"
 
-    <?php if($Time=="P4")  echo 'selected';?>
+    <?php if($timep=="P4")  echo 'selected';?>
     >P4-14.45-16.15</option>
 	
       
@@ -313,19 +320,19 @@ if(isset($_POST['Add'])){
 
         <option  value="LAP-01"
 
-        <?php if($ClassRoom=="LAP-01")  echo 'selected';?>
+        <?php if($classroom=="LAP-01")  echo 'selected';?>
         
         >LAP-01</option>
 
     <option value="LAP-02"
-    <?php if($ClassRoom=="LAP-02")  echo 'selected';?>
+    <?php if($classroom=="LAP-02")  echo 'selected';?>
     >LAP-02</option>
 
     <option  value="LAP-03"
-    <?php if($ClassRoom=="LAP-03")  echo 'selected';?>
+    <?php if($classroom=="LAP-03")  echo 'selected';?>
     >LAP-03</option>
     <option  value="LAP-04"
-    <?php if($ClassRoom=="LAP-04")  echo 'selected';?>
+    <?php if($classroom=="LAP-04")  echo 'selected';?>
     
     >LAP-04</option>
 	
@@ -338,31 +345,28 @@ if(isset($_POST['Add'])){
 
 
  
- <!--
-  <div class="form-group row">
+
+  <!--<div class="form-group row">
     <label class="col-sm-2 col-form-label">Startdate</label>
     <div class="col-sm-10">
-      <input type="date" class="form-control" <?php echo $startdate; ?> <?php  if(isset($_POST['Add'])
-       && empty($_POST['startdate'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['startdate'])){echo ' is-valid';} ?>"  >
-    </div>
+      <input type="date" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['startdate']))
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['startdate'])){echo ' is-valid';} ?>"  id="startdate" name="startdate">
+</div>
+
   </div>
-
-
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">EndDate</label>
     <div class="col-sm-10">
-      <input type="date" class="form-control<?php echo $endeate; ?>"
-       class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['endeate']))
-       {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['endeate'])){echo 
-       ' is-valid';} ?>
+      <input type="date" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['endeate']))
+    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['endeate'])){echo ' is-valid';} ?>"  id="endeate" name="endeate">
 
 
 
 
     </div>
   </div>
-
-       -->
+          -->
+     
 
 
   

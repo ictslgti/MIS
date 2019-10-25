@@ -29,6 +29,13 @@ include_once("menu.php");
     </div>
 </div><br>
 
+<div class="form-row">
+    <div class="col-md-5 mb-3" style="padding-right:200px">
+    <i class="fas fa-search ml-3" aria-hidden="true"></i>
+    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search......." id="search coursemode">
+    </div>
+</div><br>
+
 <a href="AddStudent,php"> Add </a>
 <table class="table table-bordered">
   <thead>
@@ -44,7 +51,7 @@ include_once("menu.php");
     </tr>
   <?php
    $sql = "SELECT student_id,student_title,student_fullname,student_ininame,student_gender,student_email,student_nic,student_dob,student_phone,student_address, student_status FROM student";
-   $result = mysqli_query ($con, $sql);
+   $result = mysqli_query($con, $sql);
    if (mysqli_num_rows($result)>0)
    {
      while($row = mysqli_fetch_assoc($result))
@@ -59,8 +66,8 @@ include_once("menu.php");
           <td>'. $row["student_address"]."<br>".'</td>
           <td>'. $row["student_status"]."</br>".'</td>
           <td>
-          <a href="AddStudent.php? edit='.$row["student_id"].'"> Edit </a> |
-          <a href="?Student_Id='.$row["student_id"].'"> View More
+          <a href="AddStudent.php? edit='.$row["student_id"].'"><i class="fad fa-money-check-edit"></i></a> |
+          <a href="?Student_Id='.$row["student_id"].'"> <i class="fas fa-angle-double-right"></i>
           </td>
        </tr> ';
      }

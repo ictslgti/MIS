@@ -37,7 +37,7 @@ if(isset($_POST['Add'])){
       {
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$supplier_id.'</strong> Staff details inserted
+          <strong>'.$supplierid.'</strong> Staff details inserted
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -48,7 +48,7 @@ if(isset($_POST['Add'])){
         
         echo '
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>'.$supplier_id.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <strong>'.$supplierid.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -69,7 +69,7 @@ if(isset($_POST['Add'])){
 
 <form method="POST" action="#">
 
-<form>
+
             <div class="row ">
             <div class="col-md-12 col-sm-12  form-group  container bg-info">
                 <h2  class="pt-2" style="color:white">ADD SUPPLIER</h2>
@@ -83,16 +83,17 @@ if(isset($_POST['Add'])){
               
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="">02.SUPPLIER NAME</label> <span style="color:red;">*</span></label>
-                  <input type="text" name="suppliername" value="<?php echo $suppliername;?>"c class="form-control<?php if(isset($_POST['Add']) && empty($_POST['suppliername'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['suppliername'])&& !empty($_POST['suppliername'])){echo '  is-valid';} ?>" id="" aria-describedby="suppliername" placeholder=" Name" required="required">
+                  <input type="text" name="suppliername" value="<?php echo $suppliername;?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['suppliername'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['suppliername'])&& !empty($_POST['suppliername'])){echo '  is-valid';} ?>" id="" aria-describedby="suppliername" placeholder=" Name" required="required">
                   <small id="" class="form-text text-muted"></small>
               </div>
               
-            
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
-                  <label class="font-weight-bold" for="">03.SUPPLIER EMAIL</label> <span style="color:red;">*</span></label>
-                  <input type="text" name="suppliermail" value="<?php echo $supplieremail;?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['supplieremail'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['supplieremail'])&& !empty($_POST['supplieremail'])){echo '  is-valid';} ?>" id="" aria-describedby="supplieremail" placeholder="supplier" required="required">
+                  <label class="font-weight-bold" for="">02.SUPPLIER EMAIL</label> <span style="color:red;">*</span></label>
+                  <input type="text" name="supplieremail" value="<?php echo $supplieremail;?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['supplieremail'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['supplieremail'])&& !empty($_POST['suppliername'])){echo '  is-valid';} ?>" id="" aria-describedby="supplieremail" placeholder=" supplieremail" required="required">
                   <small id="" class="form-text text-muted"></small>
               </div>
+            
+              
               
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="cost">04. SUPPLIER PHONE NUMBER</label> <span style="color:red;">*</span></label>

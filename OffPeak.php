@@ -9,6 +9,79 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
+<?php
+if(isset($_GET['approve'])){
+  $reg = $_GET['approve'];
+  $sql ="SELECT * FROM `off_peak` WHERE `student_id` = '$reg'";
+  $result = mysqli_query($con ,$sql);
+ if(mysqli_num_rows($result)== 1){
+      $row = mysqli_fetch_assoc($result);
+     
+      $reg=$row["student_id"];
+      $noa=$row["name_of_applicant"];
+      $dept=$row["department"];
+      $cn=$row["contact_no"];
+      $da=$row["date"];
+      $ti=$row["time"];
+      $rfe=$row["reson_for_exit"];
+      $cmt=$_GET['cmt'];
+      // echo "approved";
+      // echo $dept;
+
+      $sql = "UPDATE `off_peak` 
+          SET `name_of_applicant` = ' $noa', 
+          `department` = '$dept',
+          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`= '$cmt',`status`='Approved'
+          WHERE `off_peak`.`student_id` = '$reg' and `off_peak`.  `date`='$da' ";
+        
+          if(mysqli_query($con,$sql)){
+              echo "new record update sucessfully ";
+          }else{
+              echo "error :" .$sql."<br>".mysqli_error($con);
+          }
+      }
+ }
+
+
+?>
+
+<?php
+if(isset($_GET['reject'])){
+  $reg = $_GET['reject'];
+  $date = $_GET['date'];
+  $sql ="SELECT * FROM `off_peak` WHERE `student_id` = '$reg'";
+  $result = mysqli_query($con ,$sql);
+ if(mysqli_num_rows($result)== 1){
+      $row = mysqli_fetch_assoc($result);
+     
+      $reg=$row["student_id"];
+      $noa=$row["name_of_applicant"];
+      $dept=$row["department"];
+      $cn=$row["contact_no"];
+      $da=$row["date"];
+      $ti=$row["time"];
+      $rfe=$row["reson_for_exit"];
+      $cmt=$_GET['cmt'];
+      // echo "approved";
+      // echo $dept;
+
+      $sql = "UPDATE `off_peak` 
+          SET `name_of_applicant` = ' $noa', 
+          `department` = '$dept',
+          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`='$cmt',`status`='Rejected'
+          WHERE `off_peak`.`student_id` = '$reg' and `off_peak`. `date`='$da' ";
+        
+          if(mysqli_query($con,$sql)){
+              echo "new record update sucessfully ";
+          }else{
+              echo "error :" .$sql."<br>".mysqli_error($con);
+          }
+      }
+ }
+
+
+?>
+
 <br><br>
 
 
@@ -25,7 +98,7 @@ include_once("menu.php");
   <thead class="thead-dark">
     <tr>
       
-    <th scope="col">Registration No</th>
+    <th scope="col">Student_id</th>
       <th scope="col">Name of applicant</th>
       <th scope="col">Department</th>
       <th scope="col">Contact No</th>
@@ -38,22 +111,32 @@ include_once("menu.php");
   </thead>
   <tbody>
   <?php
-  $sql = "SELECT * FROM `off_peak`";
+  $sql = "SELECT * FROM `off_peak` where `status`=''";
 
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
+     $reg = $row["registration_no"];
+      
     echo '<tr>
       
-      <td>'.$row["registration_no"].'</td>
+      <td>'.$row["student_id"].'</td>
       <td>'.$row["name_of_applicant"].'</td>
       <td>'.$row["department"].'</td>
       <td>'.$row["contact_no"].'</td>
       <td>'.$row["date"].'</td>
       <td>'.$row["time"].'</td>
       <td>'.$row["reson_for_exit"].'</td>
-      <td><input type="text" id="cmt"> </td>
-      <td><button type="submit" class="btn btn-success btn-sm"><i class="fas fa-thumbs-up"></i> Approve</button>   <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
+      
+      <form method="GET">
+      <td><input type="text" id="cmt" name="cmt"> </td>
+
+      <td>
+      <button type="submit" class="btn btn-success btn-sm" name="approve" value="'.$reg.'"><i class="fas fa-thumbs-up"></i> Approve</button>
+
+      <button type="submit" class="btn btn-danger btn-sm" name="reject" value="'.$reg.'"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
+      <input type="hidden" name="date" value="'.$row["date"].'">
+      </form>
     </tr>
     
     </tr>';
@@ -75,7 +158,7 @@ else{
 
 </div>
 <a href="index.php"><<< Back to home </a>
-   
+  
 
 <!--END OF YOUR COD-->
 

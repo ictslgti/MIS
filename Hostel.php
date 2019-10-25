@@ -11,7 +11,7 @@ include_once("menu.php");
 <?php 
 if(isset($_GET['delete'])){
   $student_id = $_GET['delete'];
-  $sql = "DELETE FROM `hostel_student_details` WHERE `student_id`=$student_id";
+  $sql = "DELETE FROM `hostel_student_details` WHERE `hosttler_id`=$student_id";
  if(mysqli_query($con ,$sql)){
      echo "Record delete successfully";
    
@@ -79,7 +79,16 @@ if(isset($_GET['delete'])){
 
 <tbody>
 <?php 
-$sql = "SELECT * FROM `hostel_student_details`";
+$sql = "SELECT `hostel_student_details`.`hosttler_id`,
+`hostel_student_details`.`student_id`,
+`student`.`student_fullname`,
+`department`.`department_name`,
+`student`.`student_gender`,
+`student`.`student_address`,
+`student`.`student_district`,
+`hostel_student_details`.`distance`,`hostel_student_details`.`block_no`,`hostel_student_details`.`room_no`,`hostel_student_details`.`date_of_addmission`,`hostel_student_details`.`date_of_leaving` from `hostel_student_details`
+LEFT JOIN `student` ON `hostel_student_details`.`student_id`=`student`.`student_id` 
+LEFT JOIN `department` ON `department`.`department_id`=`hostel_student_details`.`department_id`";
 
 $result = mysqli_query($con, $sql);
 if(mysqli_num_rows($result) > 0){
@@ -87,11 +96,11 @@ if(mysqli_num_rows($result) > 0){
 echo '<tr>
 <td>'.$row["hosttler_id"].'  </td>
     <td>'.$row["student_id"].'  </td>
-    <td>'.$row["fullname"].'  </td>
+    <td>'.$row["student_fullname"].'  </td>
     <td>'.$row["department_name"].' </td>
-    <td>'.$row["gender"].'  </td>
-    <td>'.$row["address"].'  </td>
-    <td>'.$row["district"].'  </td>
+    <td>'.$row["student_gender"].'  </td>
+    <td>'.$row["student_address"].'  </td>
+    <td>'.$row["student_district"].'  </td>
     <td>'.$row["distance"].'  </td>
     <td>'.$row["block_no"].'  </td>
     <td>'.$row["room_no"].'  </td>
@@ -99,12 +108,12 @@ echo '<tr>
     <td>'.$row["date_of_leaving"].'  </td>
     
     <td>
-    <a href="?delete='.$row["student_id"].'">
-    <button type="button" name="delete" class="btn btn-outline-danger rounded-pill  waves-effect text-danger  ">
-    <i class="fas fa-minus-circle"></i><br>
+    <a data-href="?delete='.$row["hosttler_id"].'" data-toggle="modal" data-target="#confirm-delete">
+    <button type="button" name="delete" class="btn btn-danger btn-circle">
+    <i class="fas fa-trash"></i>
     </button></a>
 
-    <a href="AddHostel.php ?edit='.$row["student_id"].'">
+    <a href="AddHostel.php ?edit='.$row["student_id"].'" >
     <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
     <i class="far fa-edit"></i>
     </button></a></td>

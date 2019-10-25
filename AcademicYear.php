@@ -32,42 +32,66 @@ include_once("menu.php");
  
     <tr >
       <th scope="col">Academic Year</th>
+      <th scope="col">First Semi Start Date</th>
+      <th scope="col">First Semi End Date</th>
+      <th scope="col">Second Semi Start Date</th>
+      <th scope="col">Second Semi End Date</th>
+      <th scope="col">Academic Year Status</th>
+      <th scope="col">Option</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="table-light">
+      </tr>
+      <?php
+
+$sql = "SELECT * FROM `academic`";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result)>0){
+    while ($row = mysqli_fetch_assoc($result)){
+        echo'
+        <tr>
+        <td>' . $row ["academic_year"].'</td>
+        <td>' . $row ["first_semi_start_date"].'</td>
+        <td>' . $row ["first_semi_end_date"].'</td>
+        <td>' . $row ["second_semi_start_date"].'</td>
+        <td>' . $row ["second_semi_end_date"].'</td>
+        <td>' . $row ["academic_year_status"].'</td>
+        <td>
+        <a href="AddAcademicYear.php?edit='.$row["academic_year"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+    <button class="btn btn-sm btn-danger" data-href="?delete='.$row["academic_year"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
+    
+
+    
       
-    </tr>
-  </thead>
-  <tbody>
- 
-  <tr class="table-light">
-      
+        </tr>';
+    }
+}else{
+echo "0 results";
+}
+
+
+?>
+
   
-      <td>2018/2019</td>
-      
-  
-    </tr>
-    <tr class="table-light">
-     
-     
-      <td>2016/2017</td>
-     </tr>
-    <tr class="table-light">
-    
-     
-      <td>2014/2015</td>
-       </tr>
-    <tr class="table-light ">
-     
-     
-      <td>2013/2012</td>
-       </tr>
-    
-    
-    </tr>
-   
-  </tbody>
+</tbody>
   </form>
 </table>
 </div>
-<br>
+<?php
+
+if(isset($_GET['delete'])){
+    $academic_year = $_GET['delete'];
+    $sql = "DELETE FROM `academic` WHERE `academic_year` = '$academic_year'";
+    
+    if (mysqli_query($con, $sql)){
+        echo '<a class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
+    }else{
+        echo "Error deleting record:" . mysqli_error($con);
+    }
+}
+
+?>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->

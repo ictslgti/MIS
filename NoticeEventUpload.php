@@ -97,12 +97,21 @@ include_once("menu.php");
 
 
 <?php
+<<<<<<< HEAD
 if(isset($_POST['add'])){ 
    if( !empty($_POST['event_name'])&& 
     !empty($_POST['event_venue'])&& 
     !empty($_POST['event_date'])&& 
     !empty($_POST['event_chief_guest'])&& 
     !empty($_POST['event_comment'])) {
+=======
+if(isset($_POST['add'])){
+     if(!empty($_POST['event_name'])&&
+      !empty($_POST['event_venue'])&&
+       !empty($_POST['event_date'])&& 
+       !empty($_POST['event_chief_guest'])&& 
+       !empty($_POST['event_comment'])){
+>>>>>>> 653ca5f7bdd3b8304c304f6348e7d40eba994952
         $event_name=$_POST['event_name'];
         $event_venue=$_POST['event_venue'];
         $event_date=$_POST['event_date'];

@@ -7,250 +7,233 @@ include_once("menu.php");
 ?>
 <!-- end don't change the order-->
 
-<?php
-//for add
-if(isset($_POST['Add'])){
-  if( !empty($_POST['result_id']) && !empty($_POST['department_id']) && !empty($_POST['academic_year']))
-  {
-     $result_id= $_POST['result_id'];
-     $Department = $_POST['Department'];
-     $AcademicYear = $_POST['AcademicYear'];
-     $Course = $_POST['Course'];
-     $Module = $_POST['Module'];
-     $sql = "INSERT INTO `notice_result`(`result_id`, `department_id`, `academic_year`,`course_id`,`module_id`)
-     
-      VALUES ('$result_id','$Department',`$AcademicYear`,'$Course',`$Module`,)";  
-     if(mysqli_query($con,$sql))
-     {
-         echo "Record has been Inserted succesfully";
-     }
-     else {
-    echo "Error in insert" . mysqli_error($con);
-     }
-   }
-}
-//for edit
-if(isset($_POST['Edit']))
-{  
-   if(!empty($_POST['code'])&& !empty($_POST['name'])&& !empty($_GET['edit']))
-   {   
-      $code = $_POST['code'];
-      $name = $_POST['name'];
-      $id = $_GET['edit'];
-      $sql = "UPDATE `notice_result` SET `result_id`='$result_id' ,`department_id`= '$Department',`academic_year`='$AcademicYear',`course_id`='$Course',`module_id`'$Module'WHERE `department`.`department_id`= $id";
-      if(mysqli_query($con,$sql))
-      {
-           echo"Record has been updated succesfully";
-      }
-      else{
-     echo "Error in update" . mysqli_error($con);
-     }
-   }
-}
-?>
-
-
-<?php
-
-
-$Department=$Course=$Module=$AcademicYear=$Type=null;
-
-
-
-  if(isset($_GET['edit'])){
-        $id=$_GET['edit'];
-        $sql="SELECT * FROM `notice_result` WHERE `result_id`='$result_id'";
-        $result=mysqli_query($con,$sql);
-        if(mysqli_num_rows($result)==1){
-            $row=mysqli_fetch_assoc($result);
-     $Department_id=$_POST['Department'];
-     $cours=$_POST['AcademicYear'];
-     $Module=$_POST['Course'];
-     $AcademicYear=$_POST['Modules'];
-    
-        }
-        else{
-          echo "Error".$sql."<br>".mysqli_error($con);
-        }
-    }
-  
-?>
-
-
-
-
 
 
 <!-- bLOCK#2 start your code here & u can change -->
 
-
-
-
-<br><br>
-<div class="alert bg-dark text-white" role="alert">
-  <h1>Add New Result</h1>
+<br>
+<hr>
+<div class="alert bg-dark text-white text-center" role="alert"><h1>Notice Add Result</h1>
 </div>
 <hr>
 
-<form method="POST" action="#">
-  <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Result Id</label>
-    <div class="col-sm-10">
-	<select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
- 
-  <option selected disabled required>Result Id</option>
-  <?php          
-            $sql = "SELECT * FROM `department`";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                echo '<option  value="'.$row["department_id"].'" required';
-                if($row["department_id"]==$Department) echo ' selected';
-                echo '>'.$row["department_name"].'</option>';
-                }
-            }
-            ?>
-    </select>
-  </div>
-   </div>
 
 
-<form method="POST" action="#">
-  <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Department</label>
-    <div class="col-sm-10">
-	<select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
- 
-  <option selected disabled required>Department</option>
-  <?php          
-            $sql = "SELECT * FROM `department`";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                echo '<option  value="'.$row["department_id"].'" required';
-                if($row["department_id"]==$Department) echo ' selected';
-                echo '>'.$row["department_name"].'</option>';
-                }
-            }
-            ?>
-    </select>
-  </div>
-   </div>
 
+<?PHP
+$department_id=$course_id=$module_id=$academic_year=$tid=null;
 
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Academic Year</label>
-    <div class="col-sm-10">
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['academic_year'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>"  id="academic_year" name="academic_year">
-      <option selected disabled required >Select the Academic Year...</option>
-      <?php          
-            $sql = "SELECT * FROM `academic`";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                echo '<option  value="'.$row["academic_year"].'" required';
-                if($row["academic_year"]==$AcademicYear) echo ' selected';
-                echo '>'.$row["academic_year"].'</option>';
-                }
-            }
-            ?>
-    </select>
-  </div>
-  </div>
+if(isset($_GET['edit']))
 
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Course</label>
-    <div class="col-sm-10">
-    <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['course_id']))
-    {echo ' is-invalid';
-    }if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>" 
+{
+  $id = $_GET['edit'];
+  $sql = "SELECT * FROM `notice_result` WHERE `result_id` = $id";
+  $result = mysqli_query($con, $sql);
+  if (mysqli_num_rows($result)==1)
+   {
+      $row = mysqli_fetch_assoc($result);
+      $result_id = $row['result_id'];
+     $department_id = $row['department_id'];
+    $course_id = $row['course_id'];
+    $module_id = $row['module_id'];
+      $academic_year= $row['academic_year'];
     
-     id="course_id" name="course_id">
+  }
+
+}
+
+// Add coding
 
 
-      <option selected disabled required  >Select Your Course...</option>
 
-      <?php          
-            $sql = "SELECT * FROM `course`";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                echo '<option  value="'.$row["course_id"].'" required';
-                if($row["course_id"]==$Course) echo ' selected';
-                echo '>'.$row["course_name"].'</option>';
-                }
-            }
-            ?>
+if(isset($_POST['Add'])){
+  echo "ok";
 
-    </select>
-  </div>
-  </div>
+  if(!empty($_POST['department_id'])
+  &&!empty($_POST['course_id'])
+  &&!empty($_POST['module_id'])
+  &&!empty($_POST['academic_year']))
  
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Modules</label>
-    <div class="col-sm-10">
-    <select id="inputState" class="form-control<?php  if(isset($_POST['Add'])
-    && empty($_POST['module_id'])){echo ' is-invalid';
-    }if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>" 
+  { 
+     echo "ok2";
+     echo $department_id   =  $_POST['department_id'];
+     echo $course_id   =  $_POST['course_id'];
+     echo $module_id  =   $_POST['module_id'];
+     echo $academic_year  =   $_POST['academic_year'];
+     
+  
+     echo $sql = "INSERT INTO `notice_result` (`department_id`, `course_id`, `module_id`, `academic_year`)
+      VALUES ('$department_id','$course_id','$module_id','$academic_year')";
+   
+      if (mysqli_query($con, $sql)) {
+        echo "record add";
     
-     id="module_id" name="module_id">
-      <option selected disabled required >Select the Module...</option>
 
+      } else {
+         echo "Error: " . $sql .
+        "<br>" . 	mysqli_error($con);
+      
+        
+
+      }
+  }
+}
+
+
+  ?>
+
+
+<!-- Add timetable design  -->
+
+<form method="POST" action="#">
+
+  
+<div class="form-group row">
+  <label for="inputEmail3" class="col-sm-2 col-form-label">Department</label>
+  <div class="col-sm-10"> 
+  <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['department_id']))
+  {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['department_id'])){echo ' is-valid';} ?>" id="department_id" name="department_id">
+
+
+      <option selected disabled>Department</option>
       <?php          
-            $sql = "SELECT * FROM `module`";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                echo '<option  value="'.$row["module_id"].'" required';
-                if($row["module_id"]==$Module) echo ' selected';
-                echo '>'.$row["module_name"].'</option>';
-                }
-            }
-            ?>
+          
+          $sql="SELECT * from department";
+          $result = mysqli_query($con,$sql);
+          if(mysqli_num_rows($result)>0)
+          while($row = mysqli_fetch_assoc($result)) 
+          {
+          echo '<option value="'.$row['department_id'].'"';
+          if ($row["department_id"]==$department_id )
+          {
+            echo 'selected'; 
+          }
+          echo '>'.$row['department_name'].'</option>';
+          }
+          ?> 
+     
     </select>
   </div>
-  </div>
-
- 
-  
-<!--<div class="input-group mb-3">
-
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Upload  Your File and Link</label>
-		<input class="form-control" type="file" name="file" required/></td>
-  </div>
-
- <h1 class="text-right">
- <hr>
- <div class="row"> 
-
- <div class="col-12">
-<button type="button" class="btn btn-primary btn-lg">Add</button>
-<button type="button" class="btn btn-secondary btn-lg">Edit</button>
-<button type="button" class="btn btn-secondary btn-lg">Delete</button>
-<button type="button" class="btn btn-outline-primary btn-lg"><a href="AddNotice.php">Back</a></button>
 </div>
+
+<div class="form-group row">
+  <label for="inputPassword3" class="col-sm-2 col-form-label">Course</label>
+  <div class="col-sm-10">
+<select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['course_id']))
+  {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"  id="course_id" name="course_id">
+      <option selected disabled required>Course</option>
+      <?php          
+          $sql = "SELECT * FROM `course`";
+          $result = mysqli_query($con, $sql);
+          if (mysqli_num_rows($result) > 0) {
+              while($row = mysqli_fetch_assoc($result)) {
+              echo '<option  value="'.$row["course_id"].'" required';
+              if($row["course_id"]==$course_id) echo ' selected';
+              echo '>'.$row["course_name"].'</option>';
+              }
+          }
+          ?>
+
+    </select>
+  </div>
+</div>                       
+
+
+<div class="form-group row">
+  <label for="inputEmail3" class="col-sm-2 col-form-label">Module</label>
+  <div class="col-sm-10"> 
+  <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['module_id']))
+  {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"  id="module_id" name="module_id">
+      <option selected disabled required >Module</option>
+      <?php          
+          $sql = "SELECT * FROM `module`";
+          $result = mysqli_query($con, $sql);
+          if (mysqli_num_rows($result) > 0) {
+              while($row = mysqli_fetch_assoc($result)) {
+              echo '<option  value="'.$row["module_id"].'" required';
+              if($row["module_id"]==$module_id) echo ' selected';
+              echo '>'.$row["module_name"].'</option>';
+              }
+          }
+          ?>
+     
+
+    </select>
+  </div>
 </div>
-<hr>
-  
-end your code here-->
- 
- 
+
+
+
+<div class="form-group row">
+  <label for="inputEmail3" class="col-sm-2 col-form-label">AcademicYear</label>
+  <div class="col-sm-10"> 
+  <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['academic_year']))
+  {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>"  id="academic_year" name="academic_year">
+      <option selected disabled required >AcademicYear</option>
+
+      <?php          
+          $sql = "SELECT * FROM `academic`";
+          $result = mysqli_query($con, $sql);
+          if (mysqli_num_rows($result) > 0) {
+              while($row = mysqli_fetch_assoc($result)) {
+              echo '<option  value="'.$row["academic_year"].'" required';
+              if($row["academic_year"]==$academic_year) echo ' selected';
+              echo '>'.$row["academic_year"].'</option>';
+              }
+          }
+          ?>
+
+    </select>
+  </div>
+</div>
+
+
+      
+   
+
+       <div class="col-12">
+
+       <h1 class="text-right">
+
+       <?PHP 
+echo '<div class="btn-group-horizontal">';
+
+  if(isset($_GET['edit']))
+  {
+    echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+    echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+
+  }
+  if(isset($_GET['delete']))
+  {
+    echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
+
+  }
+  if(!isset($_GET['delete']) && !isset($_GET['edit'])){
+    echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
+
+  }
+    
+    echo '</div>';
+    ?>
+
+<a href="NoticeResultTable.php" class="btn btn-sm btn-warning"><i class="far fa-edit"></i> View</a></button>
 
 
 
 
 
-<?php
-       if(isset($_GET['edit'])) {
-        echo'<input id="button" type="submit" name="Edit" value="Edit">';
-       }
-        else{
-        echo'<input id="button" type="submit" name="Add" value="Add">';
-       }  
-       ?>
+
+
+
+
+
+
+
+  </div>
+</div>
+
 </form>
 
-<!--bLOCK#3  start don't change the order-->
-    <?php include_once("footer.php");?>
-<!-- end don't change the order-->
-   
+        
+<?php include_once("footer.php"); ?>

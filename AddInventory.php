@@ -7,7 +7,39 @@ $title = "Department Details | SLGTI";
 <!-- end default code -->
 
 <!-- start my code -->
+
 <?PHP
+$inventoryid=$Departmentid=$itemid=$inventorystatus=$inventoryquantity=null;
+
+if(isset($_GET['edit']))
+
+{
+  $id = $_GET['edit'];
+  $sql = "SELECT * FROM `inventory` WHERE `inventory_id` = $id'";
+  $result = mysqli_query($con, $sql);
+  if (mysqli_num_rows($result)==1)
+   {
+      $row = mysqli_fetch_assoc($result);
+    echo  $inventoryid = $row['inventoryid'];
+     echo $Departmentid = $row['Departmentid'];
+      echo$itemid = $row['itemid'];
+     echo $inventorystatus= $row['inventorystatus'];
+     echo $inventoryquantity = $row['inventoryquantity'];
+      
+
+  }
+
+}
+
+?>
+
+
+
+
+
+
+<?PHP
+
 
 // Add coding
 $inventoryid=$Departmentid=$itemid=$inventorystatus=$inventoryquantity=null;
@@ -71,7 +103,7 @@ if(isset($_POST['Add'])){
               <div class="w-100"></div>
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
                       <label class="font-weight-bold" for="">01.DEPARTMENT ID</label> <span style="color:red;">*</span></label>
-                      <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
+                      <select id="Department_id" name="Department_id" value="<?php echo $Departmentid ?>" class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  >
       
                     <option value="null" selected disabled>--Select Department--</option>
                     <?php          
@@ -92,16 +124,34 @@ if(isset($_POST['Add'])){
               
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
                       <label class="font-weight-bold" for="authorName">02.INVENTORY ID</label> <span style="color:red;">*</span></label>
-                      <input type="text" name="inventoryid" value="<?php echo $inventoryid;?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['inventoryid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['inventoryid'])&& !empty($_POST['inventoryid'])){echo '  is-valid';} ?>" id="inventory" aria-describedby="inventory" placeholder="inventory" required="required">
+                      <input type="text" name="inventoryid" value="<?php echo $inventoryid ?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['inventoryid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['inventoryid'])&& !empty($_POST['inventoryid'])){echo '  is-valid';} ?>" id="inventory" aria-describedby="inventory" placeholder="inventory" required="required">
                       <small id="inventoryid" class="form-text text-muted"></small>
               </div>
+
+
+
               <div class="w-100"></div>
-              <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
-                  <label class="font-weight-bold" for="ITEM">03. ITEM ID</label> <span style="color:red;">*</span></label>
-                  <input type="text" name="itemid" value="<?php echo $itemid;?>"class="form-control <?php if(isset($_POST['Add']) && empty($_POST['itemid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['itemid'])&& !empty($_POST['itemid'])){echo '  is-valid';} ?>"  id="ITEM" aria-describedby="ITEM" placeholder="ITEM" required="required">
-                  <small id="ITEM" class="form-text text-muted"></small>
+              <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
+                      <label class="font-weight-bold" for="">03. ITEM ID </label> <span style="color:red;">*</span></label>
+                      <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['itemid'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['itemid'])){echo ' is-valid';} ?>"  id="itemid" name="itemid" value="<?php echo $itemid ?>">
+      
+                    <option value="null" selected disabled>--Select inventory item code--</option>
+                    <?php          
+                    $sql = "SELECT * FROM `inventory_item`";
+                    $result = mysqli_query($con, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_assoc($result)) {
+                        echo '<option  value="'.$row["item_id"].'" required';
+                        if($row["item_id"]==$Departmentid) echo ' selected';
+                        echo '>'.$row["item_id"].'</option>';
+                        }
+                    }
+                    ?>
+                </select>
+                     
+                      <small id="" class="form-text text-muted"></small>
               </div>
-        
+            
              
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="category">04.STATAUS</label> <span style="color:red;">*</span></label>
@@ -122,9 +172,10 @@ if(isset($_POST['Add'])){
           </div>
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
               
-          <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
-                  <button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
+          <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset"> 
+                  <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">update </button>
                   <button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='inventory_view.php'">view </button>
+                  <button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
                  
                  
 

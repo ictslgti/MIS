@@ -35,9 +35,9 @@ include_once("menu.php");
   <table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
-       <th scope="col">#</th>
+    <th scope="col">Student_id</th>
       <th scope="col">Name of applicant</th>
-      <th scope="col">Registration No</th>
+      
       <th scope="col">Department</th>
       <th scope="col">Contact No</th>
       <th scope="col">Date</th>
@@ -47,29 +47,32 @@ include_once("menu.php");
     </tr>
   </thead>
   <tbody>
-    <tr>
-    <th scope="row">1</th>
-      <td>????</td>
-      <td>????</td>
-      <td>????</td>
-      <td>?????</td>
-      <td>?????</td>
-      <td>????</td>
-      <td>??????</td>
-      <td>??????</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+  <?php
+  $sql = "SELECT * FROM `off_peak` where `status`='Approved'";
+
+  $result = mysqli_query($con, $sql);
+  if(mysqli_num_rows($result) > 0){
+    while($row = mysqli_fetch_assoc($result)){
+    echo '<tr>
+      
+      <td>'.$row["student_id"].'</td>
+      <td>'.$row["name_of_applicant"].'</td>
+      <td>'.$row["department"].'</td>
+      <td>'.$row["contact_no"].'</td>
+      <td>'.$row["date"].'</td>
+      <td>'.$row["time"].'</td>
+      <td>'.$row["reson_for_exit"].'</td>
+      <td>'.$row["status"].'</td>
+      
+    </tr>';
+
+  }
+}
+else{
+  echo "0 result";
+}
+
+    ?>
   </tbody>
 </table>
 
@@ -78,9 +81,9 @@ include_once("menu.php");
   <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab"><table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
-    <th scope="col">#</th>
+    <th scope="col">Student_id</th>
       <th scope="col">Name of applicant</th>
-      <th scope="col">Registration No</th>
+      
       <th scope="col">Department</th>
       <th scope="col">Contact No</th>
       <th scope="col">Date</th>
@@ -90,43 +93,41 @@ include_once("menu.php");
     </tr>
   </thead>
   <tbody>
-    <tr>
-    <th scope="row">1</th>
-      <td>????</td>
-      <td>????</td>
-      <td>????</td>
-      <td>?????</td>
-      <td>?????</td>
-      <td>????</td>
-      <td>??????</td>
-      <td>??????</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>??????</td>
-      <td>??????</td>
-      <td>??????</td>
-      <td>??????</td>
-      <td>??????</td>
-      <td>??????</td>
-      <td>??????</td>
-      <td>??????</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+  <?php
+  $sql = "SELECT * FROM `off_peak` where `status`='Rejected'";
+
+  $result = mysqli_query($con, $sql);
+  if(mysqli_num_rows($result) > 0){
+    while($row = mysqli_fetch_assoc($result)){
+    echo '<tr>
+      
+      <td>'.$row["student_id"].'</td>
+      <td>'.$row["name_of_applicant"].'</td>
+      <td>'.$row["department"].'</td>
+      <td>'.$row["contact_no"].'</td>
+      <td>'.$row["date"].'</td>
+      <td>'.$row["time"].'</td>
+      <td>'.$row["reson_for_exit"].'</td>
+      <td>'.$row["status"].'</td>
+      
+    </tr>';
+
+  }
+}
+else{
+  echo "0 result";
+}
+
+    ?>
   </tbody>
 </table>
 </div>
   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab"><table class="table table-responsive-sm">
   <thead class="thead-dark">
     <tr>
-    <th scope="col">#</th>
+    <th scope="col">Student_id</th>
       <th scope="col">Name of applicant</th>
-      <th scope="col">Registration No</th>
+      
       <th scope="col">Department</th>
       <th scope="col">Contact No</th>
       <th scope="col">Date</th>
@@ -136,33 +137,34 @@ include_once("menu.php");
     </tr>
   </thead>
   <tbody>
-    <tr>
-    <th scope="row">1</th>
-      <td>????</td>
-      <td>????</td>
-      <td>????</td>
-      <td>?????</td>
-      <td>?????</td>
-      <td>????</td>
-      <td>??????</td>
+  <?php
+  $sql = "SELECT * FROM `off_peak`  where `status`=''";
+
+  $result = mysqli_query($con, $sql);
+  if(mysqli_num_rows($result) > 0){
+    while($row = mysqli_fetch_assoc($result)){
+    echo '<tr>
       
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-  
+      <td>'.$row["student_id"].'</td>
+      <td>'.$row["name_of_applicant"].'</td>
+      <td>'.$row["department"].'</td>
+      <td>'.$row["contact_no"].'</td>
+      <td>'.$row["date"].'</td>
+      <td>'.$row["time"].'</td>
+      <td>'.$row["reson_for_exit"].'</td>
+      
+    </tr>';
+
+  }
+}
+else{
+  echo "0 result";
+}
+
+    ?>
+    </tbody>
+    </table>
+    
 
 <script>
   $(function () {
@@ -170,8 +172,9 @@ include_once("menu.php");
   })
 </script>
   
-</div>
-</div>
+  </div>
+
+
 <a href="offpeak.php"><<< Back to off-peak requests </a>
    
 

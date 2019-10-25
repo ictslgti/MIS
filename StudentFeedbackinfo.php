@@ -1,72 +1,121 @@
-<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
-<?php
-$title = "Home | SLGTI";
-include_once("config.php");
-include_once("head.php");
+<!-- BLOCK#1 START DON'T CHANGE THE ORDER -->
+<?php 
+$title = "Department Details | SLGTI" ;
+include_once("config.php"); 
+include_once("head.php"); 
 include_once("menu.php");
+
+if(isset($_GET['delete'])){
+
+    $survey_id = $_GET['delete'];
+   $sql="DELETE FROM `feedback_survey` where `survey_id`=$survey_id";
+   if (mysqli_query($con, $sql)) {
+    $message =" Record deleted successfully";
+            echo "<script type='text/javascript'> alert('$message');</script>";
+    } else {
+    echo "Error deleting record: " .
+    mysqli_error($con);
+    }
+    
+}
 ?>
-<!--END DON'T CHANGE THE ORDER-->
 
-<!--BLOCK#2 START YOUR CODE HERE -->
-<!--border border-primary rounded
+<!-- END DON'T CHANGE THE ORDER -->
 
-bg-primary text-warning
--->
-<div class=" mr-5 ml-5 mt-5 mb-5">
-            <div class="card  shadow  p-3 mb-5 bg-white rounded border-primary">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="">
-                        <h2 class="display-5 text-center text-primary"> <i class="fas fa-chart-line"></i> Feedback  info list</h2>
-                        </div>
-                    </div> 
+<!-- BLOCK#2 START YOUR CODER HERE -->
+
+<form method="post">
+<div class="shadow  p-3 mb-5 bg-white rounded">
+
+        <div class="highlight-blue">
+            <div class="container">
+                <div class="intro">
+                    <h1 class="display-4 text-center text-primary"> -- Feedback Survey --</h1>
+                    
+                    <p class="text-center"> This Contant to Add Feedback.&nbsp;</p>
+
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- <a href="AddDepartment" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add New Department </a> -->
 
-                <div class="row">
+
+
+<!-- <h1 class="col text-center">Department Details</h1> -->
+<br><br>
+<div class="row">
                     <div class="col-sm-12">
-                        
-                        <div class="card border-secondary ">
-                                <h3 class="card-header display-5 text-center text-secondary">   Department of Infromation & communication Techonology</h3>
-                                <div class="card-body">
-                                 
+                   
+                      
+                                <!-- <h3 class="card-header display-5 text-center text-secondary">   Department of Infromation & communication Techonology</h3> -->
+                               
                                   
-                                <div class="row border-bottom">
-                                    <div class="col-1"><h6>#</h6></div>
-                                    <div class="col-3"><h6>Staff Name</h6></div>
-                                    <div class="col-3"><h6>Modules</h6></div>
-                                    <div class="col-2"><h6>Course</h6></div>
-                                    <div class="col-3"><h6>Academin Year</h6></div>
+                                <div class="row table-active border-bottom">
+                                    <div class="col-1"><h5>#</h5></div>
+                                    <div class="col-2"><h5>Staff Name</h5></div>
+                                    <div class="col-3"><h5>Modules</h5></div>
+                                    <div class="col-2"><h5>Course</h5></div>
+                                    <div class="col-2"><h5>Academin Year</h5></div>
+                                    <div class="col-2"><h5>End Date</h5></div>
                                 </div>   
+                                <?php 
 
-                                <div class="row">
-                                    <div class="col-1">1</div>
-                                    <div class="col-3">Y.achchuthan</div>
-                                    <div class="col-3">B03/K72C001M05</div>
-                                    <div class="col-2">ICT</div>
-                                    <div class="col-3">2018/2019</div>
+                                    $sql="SELECT `feedback_survey`.`survey_id` AS `survey_id`,
+                                    `feedback_survey`.`academic_year` AS `academic_year`,
+                                    `course`.`course_id` AS `course_id` ,
+                                    `module`.`module_id` AS `module_id`,
+                                    `staff`.`staff_id` AS  `staff_id`,
+                                    `feedback_survey`.`end_date` AS  `end_date`
+                                    from `feedback_survey`,`course`,`module`,`staff` WHERE `feedback_survey`.`course_id`=`course`.`course_id` and `feedback_survey`.`module_id`=`module`.`module_id` and `feedback_survey`.`staff_id`=`staff`.`staff_id`"; 
+                                $result = mysqli_query($con, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                
+                                while($row = mysqli_fetch_assoc($result)) {
+                                
+                                 echo '
+                                <div class="row border-bottom">
+                                    <div class="col-1">' . $row["survey_id"]. ' </div>
+                                    <div class="col-2">' . $row["staff_id"]. '</div>
+                                    <div class="col-3">' . $row["module_id"]. '</div>
+                                    <div class="col-2">' . $row["course_id"]. '</div>
+                                    <div class="col-2">' . $row["academic_year"]. '</div>
+                                    <div class="col-2">' . $row["end_date"]. '</div>
                                 </div> 
 
-                                        <a class="btn btn-outline-primary" href="feedbacksummery.php" role="button">create</a>
-                                        <a class="btn btn-outline-success" href="#" role="button">view</a>
-                                
-                               
-    
-                                </div>
-                        </div>
+                                <div class="row">
+                                    <div class="col-1"></div>
+                                    <div class="col-2"></div>
+                                    <div class="col-2"></div>
+                                    <div class="col-2"></div>
+                                    <div class="col-2"></div>
+                                    <div class="col-3"> 
+                                        | <a href="feedbackForm.php?id='. $row["survey_id"].'" class="text-success"> View</a> | 
+                                        <a href="feedbacksummery.php?edit='. $row["survey_id"].'" class="text-info"> Edit</a> |
+                                        <a href="?delete='. $row["survey_id"]. ' " class="text-danger"> Delete</a> |
+                                    </div>
+                                </div> 
+                                ';
+                                }
+                                } else {
+                                echo "0 results";
+                                }
+                                ?>
+                             
+                        
 
                         
                     </div>
-                </div>
-        
-    </div>
+           
+  </form>
+</table>
+</div>
+<br>
 
+<!-- END YOUR CODER HERE -->
 
- 
-  
-
-<!--END OF YOUR COD-->
-
-<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
-<?php include_once("footer.php"); ?>
-<!--END DON'T CHANGE THE ORDER-->
+    <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->
+    <?php 
+    include_once("footer.php");
+    ?>
+    <!-- END DON'T CHANGE THE ORDER -->

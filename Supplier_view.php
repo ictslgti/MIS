@@ -8,6 +8,42 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+
+
+<!-- delete coding -->
+<?php
+                    if(isset($_GET['delete_id']))
+                    {                
+                        $c_id = $_GET['delete_id'];
+
+                        $sql = "DELETE from inventory_item_supplier where supplier_id = '$c_id' ";
+
+                        if(mysqli_query($con,$sql))
+                        {
+                          echo '
+                          <div class="alert alert-sucess alert-dismissible fade show" role="alert">
+                          <strong> Succes </strong> Record has been Deleted Succesfully 
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>  ';
+                        }
+                        else
+                        {
+                          echo '
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <strong> Error </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>  ';               
+                         
+                        }
+                    }
+                    ?>
+
+
+
 <?php
   if(isset($_GET['edit'])){
         $supplier_id=$_GET['edit'];
@@ -66,6 +102,8 @@ include_once("menu.php");
       
     </tr>
   </thead>
+
+  <!---table show--->
   <?php
      $sql = "SELECT `supplier_id`, `supplier_name`, `supplier_phone_number`, `supplier_email`, `supplier_address` FROM `inventory_item_supplier`";
      $result = mysqli_query ($con, $sql);
@@ -82,7 +120,10 @@ include_once("menu.php");
           <td>'. $row["supplier_address"]."<br>".'</td>
           
           <td>
-          <a href="AddSupplier.php? edit='.$row["supplier_id"].'"> Edit </a> 
+          
+          <a href="AddSupplier.php ?edits='.$row["supplier_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                                    <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["supplier_id"].'" 
+                                    data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
           </td>
        </tr> ';
      }

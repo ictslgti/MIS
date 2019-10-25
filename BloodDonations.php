@@ -48,7 +48,7 @@ include_once("menu.php");
   </thead>
 
   <?php
-  echo $_SESSION['user_name'];
+  
     $sql="SELECT * from donation";
     $result=mysqli_query($con,$sql);
     if(mysqli_num_rows($result)>0)
@@ -91,7 +91,7 @@ include_once("menu.php");
 ?>
 
 
-  <button type="submit" class="btn btn-danger"  ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
+  <button type="submit" class="btn btn-danger" onclick="location.href='index.php'"   ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
 
 
 </div>
