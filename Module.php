@@ -26,6 +26,7 @@ $gcourse_id=$sum=$mid=$cid=null;
                 <table class="table table-hover">
                   <thead class="thead-dark">
                     <tr style="text-align:center">
+                    <th scope="col">NO.</th>
                     <th scope="col">Module ID</th>
                     <th scope="col">Module Name</th>
                     <th scope="col">Course Name</th>
@@ -90,7 +91,7 @@ $gcourse_id=$sum=$mid=$cid=null;
                       
                       if(mysqli_num_rows($result)>0)
                       {
-                        
+                        $count=1;
                         while($row = mysqli_fetch_assoc($result))
                         { 
                             $mid = $row["module_id"];
@@ -105,6 +106,7 @@ $gcourse_id=$sum=$mid=$cid=null;
                             }
                             echo'
                             <tr style="text-align:center">
+                              <td>'.$count.'.'. "<br>" .' </td>
                               <td>'. $row["module_id"] . "<br>" .' </td>
                               <td>'. $row["module_name"] . "<br>" .' </td>
                               <td>'. $row["course_name"] . "<br>" .'</td>
@@ -117,6 +119,7 @@ $gcourse_id=$sum=$mid=$cid=null;
                                     <button data-href=" ?dlt='.$row["module_id"].' " class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
                                     </td> 
                             </tr>';
+                            $count=$count+1;
                         }
                       }
                       else

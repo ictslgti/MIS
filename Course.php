@@ -23,6 +23,7 @@ include_once ("menu.php");
 	            <table class="table table-hover">
 	                <thead class="thead-dark">
 	                    <tr>
+                            <th scope="col">No.</th>
 	                        <th scope="col">ID</th>
 	                        <th scope="col">Course</th>
 	                        <th scope="col">Department</th>
@@ -80,11 +81,13 @@ include_once ("menu.php");
 
                     if(mysqli_num_rows($result)>0)
                         { 
+                            $count=1;
                           //output data of each row
                             while($row = mysqli_fetch_assoc($result))
                             {
                                 echo '
                                 <tr>
+                                    <td>'. $count.'.'. "<br>" .'</td>
                                     <td scope="row">'. $row["course_id"] . "<br>" .'</td>
                                     <td>'. $row["course_name"] .  "<br>" .'</td>
                                     <td>'. $row["department_name"] .  "<br>" .'</td>
@@ -102,6 +105,7 @@ include_once ("menu.php");
                                     <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["course_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>                                    
                                     </td> 
                                 </tr>';
+                                $count=$count+1;
                             }
                         }
                         else
