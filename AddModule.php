@@ -233,7 +233,7 @@ if(isset($_POST['Adding']))
                 <div class="input-group-prepend">
                   <span class="input-group-text">Hrs</span>
                 </div>
-                  <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" name="learning" value="<?php echo $m_learning_h ?>" required>
+                  <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" name="learning" value="<?php echo $m_learning_h ?>" maxlength="4" required>
                 
                 </div>
               </div>
@@ -276,7 +276,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
               </div>
-                <input type="text" class="form-control" id="Notional" placeholder="Hours in Digits"  name="notional" value="<?php echo $sum ?>" required disabled>
+                <input type="text" class="form-control" id="Notional" placeholder="Hours in Digits"  name="notional" value="<?php echo $sum ?>"  required disabled>
               
               </div>
               </div>
@@ -287,7 +287,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
               </div>
-                <input type="text" class="form-control" id="Lectures" placeholder="Hours in Digits" name="lecture" value="<?php echo $m_lecture_h ?>" required>
+                <input type="text" class="form-control" id="Lectures" placeholder="Hours in Digits" name="lecture" value="<?php echo $m_lecture_h ?>" maxlength="5" required>
               
               </div>
               </div>
@@ -298,7 +298,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
               </div>
-                <input type="text" class="form-control" id="Practical" placeholder="Hours in Digits" name="practical" value="<?php echo $m_practical_h ?>" required>
+                <input type="text" class="form-control" id="Practical" placeholder="Hours in Digits" name="practical" value="<?php echo $m_practical_h ?>" maxlength="5" required>
               
               </div>
               </div>
@@ -309,7 +309,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Hrs</span>
               </div>
-                <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" name="selfstudy" value="<?php echo $m_selfstudy_h ?>" required>
+                <input type="text" class="form-control" id="Self" placeholder="Hours in Digits" name="selfstudy" value="<?php echo $m_selfstudy_h ?>" maxlength="5" required>
               
               </div>
               </div>
@@ -322,7 +322,7 @@ if(isset($_POST['Adding']))
 
               <div class="col-md-6 mb-3">
               <label for="Department">Semester ID</label>
-              <input type="text" class="form-control" id="unit" placeholder="1 or 2 are acceptable"   name="semester" value="<?php echo $sid ?>" required>
+              <input type="text" class="form-control" id="unit" placeholder="1 or 2 are only acceptable"   name="semester" value="<?php echo $sid ?>" maxlength="1"  required>
               </div>
 
               <div class="col-md-6 mb-3">

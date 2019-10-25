@@ -158,7 +158,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Months</span>
               </div>
-                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_training" value ="<?php echo $ctraining ?>" required>
+                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_training" value ="<?php echo $ctraining ?>" maxlength="4" required>
               
               </div>
               </div>
@@ -169,7 +169,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Months</span>
               </div>
-                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_ojt" value="<?php echo $cojt ?>"required>
+                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_ojt" value="<?php echo $cojt ?>" maxlength="2"required>
               
               </div>
               </div>
@@ -206,7 +206,7 @@ if(isset($_POST['Adding']))
 
               <div class="col-md-6 mb-3">
                 <label for="Level">NVQ Level</label>
-              <input type="text" class="form-control" id="unit" placeholder="1 or 2 are acceptable"   name="n_level" value="<?php echo $nvq ?>" required>
+              <input type="text" class="form-control" id="unit" placeholder="NVQ are only '3-6' and 'BRI' for Bridging"   name="n_level" value="<?php echo $nvq ?>" min="3" max="6" maxlength="1" required>
               </div>
             
                 

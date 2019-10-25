@@ -26,7 +26,7 @@ include_once ("menu.php");
 	                        <th scope="col">ID</th>
 	                        <th scope="col">Course</th>
 	                        <th scope="col">Department</th>
-	                        <th scope="col">NVQ</th>
+	                        <th scope="col">Level (NVQ)</th>
 	                        <th scope="col">Actions</th>
 	                    </tr>
 	                </thead>
