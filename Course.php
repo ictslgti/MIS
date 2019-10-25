@@ -64,16 +64,18 @@ include_once ("menu.php");
 
 	                <tbody>
 	                    <?php 
-
-
                     $sql = "SELECT course.course_id AS course_id, 
                     course.course_name as course_name, 
-                    course.course_nvq_level as course_nvq_level,
-                    department.department_name as department_name
-                    from `course` 
-                    left JOIN `department` 
-                    ON course.department_id = department.department_id";
-                    
+                    department.department_name as department_name,
+                    course.course_nvq_level as course_nvq_level
+                    from `course`,`department` 
+                    where course.department_id = department.department_id";
+
+                        if(isset($_GET['id']))
+                        {
+                            $id=$_GET['id'];
+                            $sql.=" AND course.department_id='$id'";
+                        }
                     $result = mysqli_query($con,$sql);
 
                     if(mysqli_num_rows($result)>0)
