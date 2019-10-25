@@ -43,19 +43,19 @@ include_once("menu.php");
     <tr>
       
       <th scope="col">Supplier Id</th>
-      <th scope="col">supplier name</th>
-      <th scope="col">supplier phone number</th>
-      <th scope="col">supplier email</th>
-      <th scope="col">supplier address</th>
-      <th scope="col">item id</th>
-      <th scope="col">item purchase</th>
-      <th scope="col">item warranty</th>
-      <th scope="col">item description</th>
-      <th scope="col">item code</th>
-      <th scope="col">inventory id</th>
-      <th scope="col">department id</th>
-      <th scope="col">inventory status</th>
-      <th scope="col">inventory quantity</th>
+      <th scope="col">Supplier Name</th>
+      <th scope="col">Supplier Phone Number</th>
+      <th scope="col">Supplier Email</th>
+      <th scope="col">Supplier Address</th>
+      <th scope="col">Item Id</th>
+      <th scope="col">Item Purchase</th>
+      <th scope="col">Item Warranty</th>
+      <th scope="col">Item Description</th>
+      <th scope="col">Item Code</th>
+      <th scope="col">Inventory Id</th>
+      <th scope="col">Department Id</th>
+      <th scope="col">Inventory Status</th>
+      <th scope="col">Inventory Quantity</th>
       
     </tr>
   </thead>
