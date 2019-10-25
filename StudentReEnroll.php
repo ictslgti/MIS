@@ -132,6 +132,7 @@ include_once("menu.php");
                         <td></td>
                    </tr>';
                 }
+                 count=count+1;
            }
            else
            {

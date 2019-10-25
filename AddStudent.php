@@ -69,27 +69,27 @@ if(isset($_GET['edit']))
   
   if(isset($_POST['Submit']))
   {
-      echo "welcome Edit"; 
-      echo 'sid'.$_POST['sid']; 
-      echo 'title'.$_POST['title'];
-      echo 'fullname'.$_POST['fullname'];
-      echo 'ini_name'.$_POST['ini_name']; 
-      echo 'gender'.$_POST['gender'];
-      echo 'civil'.$_POST['civil'];
-      echo 'email'.$_POST['email'];
-      echo 'nic'.$_POST['nic'];
-      echo 'dob'.$_POST['dob'];
-      echo 'phone'.$_POST['phone'];
-      echo 'address'.$_POST['address'];
-      echo 'zip'.$_POST['zip'];
-      echo 'ds'.$_POST['ds'];
-      echo 'province'.$_POST['province'];
-      echo 'blood'.$_POST['blood'];
-       echo 'district'.$_POST['district'];
-       echo 'Ename'.$_POST['Ename'];
-       echo 'addressE'.$_POST['addressE']; 
-       echo 'Ephone'.$_POST['Ephone']; 
-       echo 'relation'.$_POST['relation'];
+      // echo "welcome Edit"; 
+      // echo 'sid'.$_POST['sid']; 
+      // echo 'title'.$_POST['title'];
+      // echo 'fullname'.$_POST['fullname'];
+      // echo 'ini_name'.$_POST['ini_name']; 
+      // echo 'gender'.$_POST['gender'];
+      // echo 'civil'.$_POST['civil'];
+      // echo 'email'.$_POST['email'];
+      // echo 'nic'.$_POST['nic'];
+      // echo 'dob'.$_POST['dob'];
+      // echo 'phone'.$_POST['phone'];
+      // echo 'address'.$_POST['address'];
+      // echo 'zip'.$_POST['zip'];
+      // echo 'ds'.$_POST['ds'];
+      // echo 'province'.$_POST['province'];
+      // echo 'blood'.$_POST['blood'];
+      //  echo 'district'.$_POST['district'];
+      //  echo 'Ename'.$_POST['Ename'];
+      //  echo 'addressE'.$_POST['addressE']; 
+      //  echo 'Ephone'.$_POST['Ephone']; 
+      //  echo 'relation'.$_POST['relation'];
   
     if(!empty($_POST['sid']) && !empty($_POST['title']) && !empty($_POST['fullname']) && !empty($_POST['ini_name']) && !empty($_POST['gender']) && !empty($_POST['civil']) 
     &&!empty($_POST['email']) && !empty($_POST['nic']) && !empty($_POST['dob']) && !empty($_POST['phone']) && !empty($_POST['address']) && !empty($_POST['zip']) && !empty($_POST['district']) 
@@ -120,13 +120,13 @@ if(isset($_GET['edit']))
         
         echo $sqlstudent = "INSERT INTO `student`(`student_id`, `student_title`, `student_fullname`, `student_ininame`, `student_gender`, `student_civil`, 
         `student_email`, `student_nic`, `student_dob`, `student_phone`, `student_address`, `student_zip`, `student_district`, `student_divisions`, 
-        `student_provice`, `student_blood`, `student_em_name`, `student_em_address`, `student_em_phone`, `student_em_relation`,) VALUES 
+        `student_provice`, `student_blood`, `student_em_name`, `student_em_address`, `student_em_phone`, `student_em_relation`) VALUES 
         ('$stid','$title','$fname','$ininame','$gender','$civil','$email','$nic','$dob','$phone','$address','$zip','$district','$division','$province',
         '$blood','$ename','$eaddress','$ephone','$erelation')";
 
               if(mysqli_query($con,$sqlstudent))
               {
-                echo "Record Updated Successfully";
+                echo "Record Insert Successfully";
               }
               else
               {
@@ -154,7 +154,7 @@ if(isset($_POST['Submit']))
 
                     if(mysqli_query($con,$sqlenroll))
                     {
-                      echo "Record Updated Successfully";
+                      echo "Record Insert Successfully";
                     }
                     else
                     {
@@ -166,7 +166,7 @@ if(isset($_POST['Submit']))
       }
     }
   
-    if(isset($_POST['Submit']))
+if(isset($_POST['Submit']))
   {
   //echo "welcome";
     if(!empty($_POST['sid']) 
@@ -189,18 +189,18 @@ if(isset($_POST['Submit']))
 
               if(mysqli_query($con,$sqlqualification))
               {
-                echo "Record Updated Successfully";
+                echo "Record Insert Successfully";
               }
               else
               {
                 echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
-                echo "Fill the required field";
+               // echo "Fill the required field";
               }
             }
     }
 
   //update coding FOR STUDENT
-     if(isset($_POST['Edit']))
+if(isset($_POST['Edit']))
      {
       // echo "welcome Edit"; echo 'sid'.$_POST['sid']; echo 'cid'.$_POST['cid']; echo 'ayear'.$_POST['ayear']; echo 'enrolldate'.$_POST['enrolldate'];
       // echo 'exitdate'.$_POST['exitdate']; echo 'title'.$_POST['title'];echo 'fullname'.$_POST['fullname'];echo 'ini_name'.$_POST['ini_name']; echo 'gender'.$_POST['gender'];
@@ -210,8 +210,7 @@ if(isset($_POST['Submit']))
       // echo 'indexno'.$_POST['indexno'];echo 'yoe'.$_POST['yoe'];echo 'subject'.$_POST['subject'];echo 'subject'.$_POST['subject']; echo 'district'.$_POST['district'];
       // echo 'result'.$_POST['result'];echo 'Ename'.$_POST['Ename'];echo 'addressE'.$_POST['addressE']; echo 'Ephone'.$_POST['Ephone']; echo 'relation'.$_POST['relation'];
        if(
-         !empty($_POST['sid']) 
-         && !empty($_POST['title']) && !empty($_POST['fullname']) 
+         !empty($_POST['title']) && !empty($_POST['fullname']) 
          && !empty($_POST['ini_name']) && !empty($_POST['gender']) 
          && !empty($_POST['civil']) && !empty($_POST['email']) 
          && !empty($_POST['nic']) && !empty($_POST['dob']) 
@@ -223,7 +222,7 @@ if(isset($_POST['Submit']))
          && !empty($_POST['relation']) && !empty($_GET['edit']))
        {
         echo "SUCCESS";
-        $stid=$_POST['sid'];
+        $stid=$_GET['edit'];
         $title=$_POST['title'];
         $fname=$_POST['fullname'];
         $ininame=$_POST['ini_name'];
@@ -267,14 +266,13 @@ if(isset($_POST['Submit']))
     if(isset($_POST['Edit']))
      {
        if(
-         !empty($_POST['sid']) && !empty($_POST['cid']) 
-         && !empty($_POST['ayear']) && !empty($_POST['status']) 
+         !empty($_POST['ayear']) && !empty($_POST['status']) 
          && !empty($_POST['enrolldate']) && !empty($_POST['exitdate']) 
          && !empty($_GET['edit']))
        {
         echo "SUCCESS";
-        $stid=$_POST['sid'];
-        $coid=$_POST['cid'];
+        $stid=$_GET['edit'];
+        $coid=$_GET['edit'];
         $year=$_POST['ayear'];
         $enstatus=$_POST['status'];
         $enroll=$_POST['enrolldate'];
@@ -300,11 +298,8 @@ if(isset($_POST['Submit']))
     if(isset($_POST['Edit']))
     {
       if(
-        !empty($_POST['sid']) && !empty($_POST['qualification'])
-        && !empty($_POST['indexno']) && !empty($_POST['yoe'])
-        && !empty($_POST['subject']) && !empty($_POST['result']) 
-        && !empty($_POST['Ename']) && !empty($_POST['addressE'])
-        && !empty($_GET['edit']))
+       !empty($_POST['qualification']) && !empty($_POST['yoe']) && !empty($_POST['result']) 
+        && !empty($_POST['Ename']) && !empty($_POST['addressE']) && !empty($_GET['edit']))
       {
        echo "SUCCESS";
        $stid=$_POST['sid'];
