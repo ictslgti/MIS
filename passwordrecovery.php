@@ -3,6 +3,76 @@
 $title = "Find your MIS @ SLGTI Account ";
 include_once("config.php");
 
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;         
+require 'library/phpmailer/autoload.php';
+$msg =$msgs = null;
+if (isset($_POST['ResetPassword']) && !empty($_POST['username'])) {
+  $user_name = htmlspecialchars($_POST['username']);
+
+  $temporary_timestamp = time();
+  // generate random hash for email password reset verification (40 char string)
+  $user_password_reset_hash = sha1(uniqid(mt_rand(), true));
+
+  // database query, getting all the info of the selected user
+   $sql = "SELECT user_email FROM user WHERE user_name = '$user_name' ";
+  $result = mysqli_query($con,$sql);
+  if(mysqli_num_rows($result)==1){
+    $row = mysqli_fetch_assoc($result);
+    $user_email = $row['user_email'];
+
+    $sql = "UPDATE user SET user_password_reset_hash = '$user_password_reset_hash',
+    user_password_reset_timestamp = '$temporary_timestamp'
+    WHERE user_name = '$user_name' ";
+
+    // check if exactly one row was successfully changed:
+    if(mysqli_query($con,$sql)){
+        // send a mail to the user, containing a link with that token hash string
+        if(EMAIL_USE_SMTP){
+        $mail = new PHPMailer;
+        $mail->isSMTP();
+        $mail->Host = EMAIL_SMTP_HOST;
+        $mail->Port = 587;
+        $mail->SMTPAuth = true;
+        $mail->Username = EMAIL_SMTP_USERNAME;
+        $mail->Password = EMAIL_SMTP_PASSWORD;
+        $mail->setFrom(EMAIL_PASSWORDRESET_FROM, EMAIL_PASSWORDRESET_FROM_NAME);
+        $mail->addReplyTo(EMAIL_PASSWORDRESET_FROM, EMAIL_PASSWORDRESET_FROM_NAME);
+        $mail->addAddress($user_email);
+        $mail->Subject = EMAIL_PASSWORDRESET_SUBJECT;
+        $link    = EMAIL_PASSWORDRESET_URL.'?un='.urlencode($user_name).'&vc='.urlencode($user_password_reset_hash);
+        $html_message = "
+            Dear  $user_name,
+            <br />
+            We received a request for password change for username <b> $user_name </b> at ". EMAIL_PASSWORDRESET_FROM_NAME.".
+            <br />
+            Go to this page $link  to set your new password.  <br />
+            The link will be active for one hour.
+            <br />
+            <br />
+            Best Regards,
+            <br />
+            The ICT Support Team
+            <br />   
+        ";
+        $mail->msgHTML($html_message, __DIR__);
+        if (!$mail->send()) {
+            $msg = 'Password mail not sent';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            $msgs = 'Password mail sent';
+        }
+    }
+       
+    }else{
+        $msg = 'Database error';
+    }
+  }else{
+    $msg = 'User not exist';
+  }
+}
 ?>
 
 <!doctype html>
@@ -46,6 +116,10 @@ include_once("config.php");
                                     <?php
                                     if (!empty($msg))
                                     echo '<div class="alert alert-danger rounded-pill border-0 shadow-sm px-4" >' . $msg . '</div>';
+                                    
+                                    if (!empty($msgs))
+                                    echo '<div class="alert alert-success rounded-pill border-0 shadow-sm px-4" >' . $msgs . '</div>';
+                                    
                                     ?>
                                     <div class="form-group mb-3">
                                         <input id="inputEmail" type="text" name="username" placeholder="Username" required=""
