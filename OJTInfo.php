@@ -88,7 +88,7 @@ $StudentID=$Department_id=$StudentName=$DepartmentName=$Finalplace=$Address=null
 
                     <div class="form-group">
                         <label for="Rplace"><i class="fas fa-map-marker-alt"></i>Training Place Address</label>
-                        <input type="text" name= "Finalplace" value="<?php echo $Finalplace; ?>" class="form-control"  >
+                        <input type="text" name= "Address" value="<?php echo $Address; ?>" class="form-control"  >
                     </div>
 
                     <p> This is your final Traing Place. Approved by Student affair's, SLGTI.</p>
