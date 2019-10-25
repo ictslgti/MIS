@@ -4,10 +4,80 @@ $title = "Home | SLGTI";
  include_once("config.php"); 
  include_once("head.php"); 
  include_once("menu.php"); 
+
+
+ $student_id = $_SESSION['user_name'];
+ $user_type = $_SESSION['user_type'];
+ echo $department_id = $_SESSION['department_code'];
+ if($user_type == 'STU'){
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+<?PHP
+$id=$sid=$student_name=$department_id=$contact_no=$reason=$exit_date=$exit_time=$return_date=$return_time=$status=$request_date=$request_time=null;
+
+if(isset($_POST['Add'])){
+
+  if(!empty($_POST['student_id'])
+    &&!empty($_POST['department_id'])
+    &&!empty($_POST['contact_no'])
+    &&!empty($_POST['reason'])
+    &&!empty($_POST['exit_date'])
+    &&!empty($_POST['exit_time'])
+    &&!empty($_POST['return_date'])
+    &&!empty($_POST['return_time'])
+    &&!empty($_POST['status'])){
+
+     
+      $sid=$_POST['student_id'];
+      $department_id=$_POST['department_id'];
+      $contact_no=$_POST['contact_no'];
+      $reason=$_POST['reason'];
+      $exit_date=$_POST['exit_date'];
+      $exit_time=$_POST['exit_time'];
+      $return_date=$_POST['return_date'];
+      $return_time=$_POST['return_time'];
+      $status=$_POST['status'];
+      
+     
+    
+       $sql= "INSERT INTO `onpeak_request`(`student_id`, `department_id`, `contact_no`, `reason`, `exit_date`, `exit_time`, `return_date`, `return_time`, `onpeak_request_status`) 
+       VALUES ('$sid','$department_id','$contact_no','$reason','$exit_date','$exit_time','$return_date','$return_time','$status')";
+
+      if(mysqli_query($con,$sql))
+      {
+        echo '
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>'.$student_name.'</strong> Staff details inserted
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>    
+        ';
+      }
+      else{
+        
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$student_name.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
+      }
+
+    }
+}
+
+?>
+
+
+
+
+
 <br>
 <div class="row border border-light shadow p-3 mb-5 bg-white rounded">
           <div class="col">
@@ -22,7 +92,7 @@ $title = "Home | SLGTI";
 </div>
 
 <!-- card start here-->
-
+<form method="POST" action="#">
 <div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
 <br>    
 <div class="table container">    
@@ -34,7 +104,7 @@ $title = "Home | SLGTI";
                         <label class="input-group-text" for="inputGroupSelect01"> 
                             <i class="fas fa-user"> </i>&nbsp;&nbsp;Full Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" type="text" placeholder="Nirthika Ravienthiran">
+                    <input class="form-control" name="student_name" type="text"  >
         </div>
 
 <br>
@@ -44,7 +114,7 @@ $title = "Home | SLGTI";
                         <label class="input-group-text" for="inputGroupSelect01"> 
                             <i class="fas fa-fingerprint"> </i>&nbsp;&nbsp;Registration No&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" type="text" placeholder="2018/SLGTI/5IT/04">
+                    <input class="form-control" name="sid" type="text"  value="<?php echo  $student_id; ?>" disabled required readonly>
         </div>
 
 <br>       
@@ -54,17 +124,21 @@ $title = "Home | SLGTI";
                         <label class="input-group-text" for="inputGroupSelect01">
                             <i class="fas fa-school"></i>&nbsp;&nbsp;Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>Choose...</option>
-                        <option value="1">Department of Information & Communication Technology </option>
-                        <option value="1">Department of Food Technology </option>
-                        <option value="1">Department of Mechnical Technology </option>
-                        <option value="1">Department of Automobile Technology </option>
-                        <option value="1">Department of Construction Technology </option>
-                        <option value="1">Department of Electrical Technology </option>
+                    <select class="browser-default custom-select" name="department_id" id="Departmentx"  onchange="showCouese(this.value)" required>
+                       <option value="1"> Department of Information & Communication Technology </option> 
+                                <?php
+                                    $sql="select * from `department`";
+                                    $result = mysqli_query($con,$sql);
+                                    if (mysqli_num_rows($result) > 0 ) {
+                                    while($row=mysqli_fetch_assoc($result)){
+                                    echo '<option  value="'.$row["department_id"].'" required>'.$row["department_name"].'</option>';
+                                    }}   
+                                ?>
                     </select>
         </div>
 
+
+ 
 <br>
 
         <div class="input-group mb-3">
@@ -72,7 +146,7 @@ $title = "Home | SLGTI";
                         <label class="input-group-text" for="inputGroupSelect01"> 
                             <i class="fas fa-phone-alt"> </i>&nbsp;&nbsp;Contact no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" type="text" placeholder="Mobile or Home number">
+                    <input class="form-control" name="contact_no" type="text" placeholder="Mobile or Home number">
         </div>
 
 <br>
@@ -82,7 +156,7 @@ $title = "Home | SLGTI";
                         <label class="input-group-text" for="inputGroupSelect01">
                             <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Reason for Exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
+                    <select class="custom-select" id="inputGroupSelect01" name="reason">
                         <option selected>Choose...</option>
                         <option value="1">Hospital </option>
                         <option value="1">Family issues </option>
@@ -96,9 +170,33 @@ $title = "Home | SLGTI";
         <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01"> 
-                            <i class="far fa-clock"> </i>&nbsp;&nbsp;Exit Date and Time&nbsp;</label>
+                        <i class="far fa-calendar-alt"></i>&nbsp;&nbsp;Exit Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" type="text" placeholder="2019.02.06 - 10.00 pm">
+                    
+                    <input class="form-control" type="date" name="exit_date">
+                    
+        </div>
+
+<br>
+
+        <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01"> 
+                            <i class="far fa-clock"> </i>&nbsp;&nbsp;Exit Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                    
+                    <input class="form-control" type="time" name="exit_time">
+        </div>
+
+<br>
+
+        <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01"> 
+                        <i class="fas fa-calendar-check"></i>&nbsp;&nbsp;Return Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                    
+                    <input class="form-control" type="date" name="return_date">
         </div>
 
 <br>
@@ -108,14 +206,15 @@ $title = "Home | SLGTI";
                         <label class="input-group-text" for="inputGroupSelect01"> 
                             <i class="fas fa-history"> </i>&nbsp;&nbsp;Return Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" type="text" placeholder="12.00 noon">
+                    
+                    <input class="form-control" type="time" name="return_time">
         </div>
 
 <br>
 
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">Comments : </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="exampleFormControlTextarea1">Comment : </label>
+            <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
 
 <br>
@@ -133,8 +232,20 @@ $title = "Home | SLGTI";
         <div class="row">
             <div class="col">
                 <div class="mx-auto" style="width: 200px;">
-                <button type="button" class="btn btn-primary "><i class="fab fa-telegram"></i>&nbsp;&nbsp;&nbsp;Request to approval</button>
+                <button type="button" class="btn btn-primary " name="Add" value="Add"><i class="fab fa-telegram"></i>&nbsp;&nbsp;&nbsp;Request to approval</button>
                    
+                </div>
+            </div>
+        </div>
+
+<br>
+
+        <div class="row">
+            <div class="col">
+                <div class="mx-auto" style="width: 200px;">
+                <button type="button" name="reset" class="btn btn-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-redo-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;Reset
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                            
                 </div>
             </div>
         </div>
@@ -178,42 +289,70 @@ $title = "Home | SLGTI";
         <table class="table">
             <thead>
                   <tr>
-                    <th scope="col">EXIT DATE & TIME</th>
-                    <th scope="col">RETURN DATE & TIME</th>
+                    <th scope="col">EXIT DATE</th>
+                    <th scope="col">EXIT TIME</th>
+                    <th scope="col">RETURN DATE </th>
+                    <th scope="col">RETURN TIME</th>
                     <th scope="col">REASON FOR EXIT</th>
                     <th scope="col">REFERENCE</th>
+                    <th scope="col">status</th>
+                    <th scope="col">status</th>
                     </tr>
             </thead>
-            <tbody>
-                  <tr>
-                    <td> 25.2.2019/ 10.00 am</td>
-                    <td> 25.2.2019/ 1.00 pm</td>
-                    <td> Hospital </td>
-                    <td> approved </td>
-                  </tr>
 
-                  <tr>
-                    <td>20.6.2019/ 9.00 am</td>
-                    <td> 20.6.2019/ 2.00 pm</td>
-                    <td> Other Reason </td>
-                    <td> disapproved</td>
-                  </tr>
 
-                  <tr>
-                    <td>21.7.2019/ 10.30 am</td>
-                    <td> 21.7.2019/ 12.00 noon</td>
-                    <td> Family issues</td>
-                    <td> approved </td>
-                  </tr>
-            </tbody>
+            <?php
+                $sql = "SELECT * FROM `onpeak_request`";
+                $result = mysqli_query($con, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+
+                echo '
+                <tr>
+                    <td>'. $row["reason"].'</td>
+                    <td>'. $row["exit_date"]. '</td>
+                    <td>'. $row["exit_time"].'</td>
+                    <td>'. $row["return_date"]. '</td>
+                    <td>'. $row["return_time"]. '</td>
+                    <td>'. $row["onpeak_request_status"]. '</td>
+                    <td>'. $row["request_date"]. '</td>
+                    <td>'. $row["request_time"]. '</td>
+                    <td> 
+                        <a href="RequestOnpeak.php?id='.$row["id"].'"> Edit Request </a> |
+                        <a href="?delete='. $row["id"].'"> Delete </a> 
+                    </td>
+                </tr>
+                ';
+                 }
+                } else {
+                    echo "No more Requests";
+                }
+            ?>
         </table> 
-      </div>
     </div>
-  </div>
-    
+
+
+
+    <?php 
+
+        if(isset($_GET['delete'])){
+            $id = $_GET['delete'];
+            $sql = "DELETE FROM `department` WHERE `id`=$id";
+                if (mysqli_query($con, $sql)) {
+                    echo "Request Deleted successfully";
+                } else {
+                    echo "Error deleting record: " . 	mysqli_error($conn);
+                }
+
+                }
+    ?>
+
+    </div>
+</div>
+</form>    
 
 <!--END OF YOUR COD-->
-
+ <?php } ?>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->  
