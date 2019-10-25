@@ -20,11 +20,11 @@ if(isset($_GET['edits']))
   if (mysqli_num_rows($result)==1)
    {
       $row = mysqli_fetch_assoc($result);
-    echo  $inventoryid = $row['inventory_id'];
-     echo $Departmentid = $row['inventory_department_id'];
-      echo$itemid = $row['item_id'];
-     echo $inventorystatus= $row['inventory_status'];
-     echo $inventoryquantity = $row['inventory_quantity'];
+    echo  $inventoryid = $row['inventoryid'];
+     echo $Departmentid = $row['departmentid'];
+      echo$itemid = $row['itemid'];
+     echo $inventorystatus= $row['inventorystatus'];
+     echo $inventoryquantity = $row['inventoryquantity'];
       
 
   }
