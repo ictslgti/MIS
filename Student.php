@@ -4,7 +4,7 @@
    
 include_once("config.php");
 
-$title ="STUDENT PROFILE | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
+$title ="STUDENT INFORMATION | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
 include_once("head.php");
 include_once("menu.php");
 
@@ -23,16 +23,15 @@ include_once("menu.php");
 <br><br>
 
 <div class="form-row">
-    <div class="col-md-5 mb-3" style="padding-right:200px">
-    <i class="fas fa-search ml-3" aria-hidden="true"></i>
-    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search......." id="search">
+    <div class="col-md-6 mb-3">
+      
     </div>
-</div><br>
+    
+    <div class="col-md-3 mb-3"></div>
 
-<div class="form-row">
-    <div class="col-md-5 mb-3" style="padding-right:200px">
-    <i class="fas fa-search ml-3" aria-hidden="true"></i>
-    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search......." id="search coursemode">
+    <div class="col-md-3 mb-3">
+      <button type="button" class="btn btn-outline-primary">Primary</button>
+      <button type="button" class="btn btn-outline-danger">Primary</button>
     </div>
 </div><br>
 
@@ -46,11 +45,11 @@ include_once("menu.php");
       <th scope="col" width="5%"> NIC </th>
       <th scope="col" width="5%"> Phone No </th>
       <th scope="col" width="20%"> Address </th>
-      <th scope="col" width="5%"> Status </th>
       <th scope="col" width="8%"> Action </th>
     </tr>
   <?php
-   $sql = "SELECT student_id,student_title,student_fullname,student_ininame,student_gender,student_email,student_nic,student_dob,student_phone,student_address, student_status FROM student";
+   $sql ="SELECT student_id,student_title,student_fullname,student_ininame,student_gender,student_email,student_nic,student_dob,student_phone,student_address 
+   FROM student where student_status='Active'";
    $result = mysqli_query($con, $sql);
    if (mysqli_num_rows($result)>0)
    {
@@ -64,10 +63,9 @@ include_once("menu.php");
           <td>'. $row["student_nic"]."<br>".'</td>
           <td>'. $row["student_phone"]."<br>".'</td>
           <td>'. $row["student_address"]."<br>".'</td>
-          <td>'. $row["student_status"]."</br>".'</td>
           <td>
-          <a href="AddStudent.php? edit='.$row["student_id"].'"><i class="fad fa-money-check-edit"></i></a> |
-          <a href="?Student_Id='.$row["student_id"].'"> <i class="fas fa-angle-double-right"></i>
+          <a href="AddStudent.php? edit='.$row["student_id"]. '" class="btn btn-sm btn-primary""><i class="far fa-edit"></i></a> |
+          <a href="?Student_Id='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i>
           </td>
        </tr> ';
      }

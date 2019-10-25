@@ -4,7 +4,7 @@
    
 include_once("config.php");
 
-$title ="STUDENTS DETAILS | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
+$title ="STUDENTS' REGISTRATION FORM | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
 include_once("head.php");
 include_once("menu.php");
 
@@ -293,7 +293,7 @@ if(isset($_GET['edit']))
 
 ?>
 <div class="ROW">
-     <div class="col text-center">
+     <div class="col text-center shadow p-3 mb-5 bg-white rounded ">
          <h1 style="text-align:center"> SLGTI STUDENTS' REGISTRATION FORM </h1>   
      </div>
 </div><br><br>
@@ -349,7 +349,7 @@ if(isset($_GET['edit']))
         <div class="col-md-2 mb-3">
           <label for="mode"> Course Mode: </label>
           <select name="mode" id="mode" class="custom-select" value="<?php// echo $mode; ?>" required>
-            <option selected disabled>Choose Title</option>
+            <option selected disabled> Course Mode </option>
               <option value="p" <?php //if($title=="Mr") echo 'selected';?>>Full Time</option> 
               <option value="f" <?php //if($title == "Miss") echo 'selected';?>>Part Time</option>
          </select>
