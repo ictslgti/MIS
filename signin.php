@@ -1,6 +1,6 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
 <?php
-$title = "Sign in to continue to MIS @ SLGTI ";
+$title = "Sign in to continue to MIS @ SLGTI";
 include_once("config.php");
 ?>
 <!--END DON'T CHANGE THE ORDER-->
@@ -180,7 +180,7 @@ if (isset($_GET['signout'])) {
                                 <h3 class="display-4 text-center">MIS@SLGTI</h3>
                                 <p class="text-muted text-center mb-4 blockquote-footer">Management Information System
                                 </p>
-                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                <form  method="post">
                                     <?php
                                     if (!empty($msg))
                                     echo '<div class="alert alert-danger rounded-pill border-0 shadow-sm px-4" >' . $msg . '</div>';
