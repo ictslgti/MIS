@@ -13,7 +13,7 @@ include_once("menu.php");
 
 
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
 
         <div class="row border border-light shadow p-3 mb-5 bg-white rounded">
                 <div class="col">
@@ -73,15 +73,31 @@ include_once("menu.php");
             <!-- <textarea class="form-control"   placeholder="event_comment" name="event_comment" value=""></textarea> -->
         </div>
 
-    
-    <!-- <div class="input-group mb-3 ">
+        <div class="col-12">
+                <div class="form-group">
+                <label> <i class="fas fa-university text-primary"> </i> Event</label>
+                <select class="browser-default custom-select" name="status" id="Departmentx"  onchange="showCouese(this.value)" required>
+                <option value="null" selected disabled >---- Select the Event ---- </option>
+                <?php
+                $sql="select * from `notice_event_stutas`";
+                $result = mysqli_query($con,$sql);
+                if (mysqli_num_rows($result) > 0 ) {
+                while($row=mysqli_fetch_assoc($result)){
+                    echo '<option  value="'.$row["id"].'" required>'.$row["status"].'</option>';
+                }}   
+                ?>
+                </select>
+                </div>
+
+        </div>
+    <div class="input-group mb-3 ">
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01"> 
             <i class="fas fa-plus"></i>  </i>&nbsp;&nbsp;Add File&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-         <input class="form-control" type="file" name="file" required/></td>
-      
-    </div> -->
+         <input type="file" name='ima' class="form-control" id="customFile" required/>
+
+    </div>
 
     <div class="input-group mb-3 ">
             <div class="input-group-prepend">
@@ -97,27 +113,28 @@ include_once("menu.php");
 
 
 <?php
-<<<<<<< HEAD
-if(isset($_POST['add'])){ 
-   if( !empty($_POST['event_name'])&& 
-    !empty($_POST['event_venue'])&& 
-    !empty($_POST['event_date'])&& 
-    !empty($_POST['event_chief_guest'])&& 
-    !empty($_POST['event_comment'])) {
-=======
 if(isset($_POST['add'])){
      if(!empty($_POST['event_name'])&&
       !empty($_POST['event_venue'])&&
        !empty($_POST['event_date'])&& 
        !empty($_POST['event_chief_guest'])&& 
-       !empty($_POST['event_comment'])){
->>>>>>> 653ca5f7bdd3b8304c304f6348e7d40eba994952
+       !empty($_POST['event_comment'])&&
+       !empty($_POST['status'])){
         $event_name=$_POST['event_name'];
         $event_venue=$_POST['event_venue'];
         $event_date=$_POST['event_date'];
         $event_chief_guest=$_POST['event_chief_guest'];
         $event_comment=$_POST['event_comment'];
-        $sql="INSERT INTO `notice_event` (`event_name`,`event_venue`,`event_date`,`event_chief_guest`,`event_comment`) values('$event_name','$event_venue','$event_date','$event_chief_guest','$event_comment')";
+        $status=$_POST['status'];
+
+
+
+        $t_name = $_FILES["ima"]["tmp_name"];
+        $name = basename($_FILES["ima"]["name"]);
+        $test_dir = 'img/doc/event';
+        move_uploaded_file($t_name, $test_dir.'/'.$name);
+       
+        $sql="INSERT INTO `notice_event` (`event_name`,`event_venue`,`event_date`,`event_chief_guest`,`event_comment`,`status`,`file_name`) values('$event_name','$event_venue','$event_date','$event_chief_guest','$event_comment','$status','$name')";
         if(mysqli_query($con,$sql)){
             $message ="New record created successfully";
             echo "<script type='text/javascript'> alert('$message');</script>";
