@@ -14,7 +14,7 @@ if (isset($_POST['ResetPassword']) && !empty($_POST['username'])) {
   $user_password_reset_hash = sha1(uniqid(mt_rand(), true));
 
   // database query, getting all the info of the selected user
-   $sql = "SELECT user_email FROM user WHERE user_name = '$user_name' ";
+    $sql = "SELECT user_email FROM user WHERE user_name = '$user_name' ";
   $result = mysqli_query($con,$sql);
   if(mysqli_num_rows($result)==1){
     $row = mysqli_fetch_assoc($result);
@@ -43,7 +43,7 @@ if (isset($_POST['ResetPassword']) && !empty($_POST['username'])) {
         $html_message = "
             Dear  $user_name,
             <br />
-            We received a request for password change for username <b> $user_name </b> at ". EMAIL_PASSWORDRESET_FROM_NAME.".
+            We received a request for password change for <b> $user_name </b> at ". EMAIL_PASSWORDRESET_FROM_NAME.".
             <br />
             Go to this page $link  to set your new password.  <br />
             The link will be active for one hour.
@@ -57,7 +57,6 @@ if (isset($_POST['ResetPassword']) && !empty($_POST['username'])) {
         $mail->msgHTML($html_message, __DIR__);
         if (!$mail->send()) {
             $msg = 'Password mail not sent';
-            // echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
             $msgs = 'Password mail sent';
         }
@@ -72,6 +71,32 @@ if (isset($_POST['ResetPassword']) && !empty($_POST['username'])) {
 }
 ?>
 
+<?php
+if (isset($_POST['ChangePassword']) && !empty($_POST['password'])&& !empty($_POST['repeatpassword'])) {
+    $password = htmlspecialchars($_POST['password']);
+    $repeatpassword = htmlspecialchars($_POST['repeatpassword']);
+    $user_name = htmlspecialchars($_GET['un']);
+    $user_password_reset_hash = htmlspecialchars($_GET['vc']);
+    if($password==$repeatpassword){
+        if(strlen($password)>=8){
+            $password_hash = hash('sha256', $password);
+            $sql_r = "UPDATE user  SET user_password_hash = '$password_hash',
+            user_password_reset_hash = NULL, user_password_reset_timestamp = NULL
+            WHERE user_name = '$user_name' AND user_password_reset_hash = '$user_password_reset_hash'";
+             if(mysqli_query($con,$sql_r)){
+                $msgs = 'Password changed';
+             }else{
+                $msg = 'Password changed failed';
+             }
+             
+        }else{
+            $msg = 'Password too short';
+        }
+    }else{
+        $msg = 'Bad confirm password';
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -118,6 +143,10 @@ if (isset($_POST['ResetPassword']) && !empty($_POST['username'])) {
                                     echo '<div class="alert alert-success rounded-pill border-0 shadow-sm px-4" >' . $msgs . '</div>';
                                     
                                     ?>
+                                    <?php 
+                                    if(!isset($_GET['un']) && !isset($_GET['cv'])){
+                                    ?>
+
                                     <div class="form-group mb-3">
                                         <input id="inputEmail" type="text" name="username" placeholder="Username" required=""
                                             autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
@@ -126,6 +155,34 @@ if (isset($_POST['ResetPassword']) && !empty($_POST['username'])) {
                                     <button type="submit" name="ResetPassword"
                                         class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Reset Password</button>
 
+                                    <?php
+                                    }
+                                    ?>
+                                    <?php 
+                                    if(isset($_GET['un']) && isset($_GET['vc'])){
+                                    ?>
+                                    <!-- reset password? -->
+                                    <div class="form-group mb-3">
+                                        <input id="inputpassword" type="password" name="password" placeholder="New password" required=""
+                                            autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" onkeyup="checkPass(); return false;">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <input id="inputrepeatpassword" type="password" name="repeatpassword" placeholder="Re-enter new password" required=""
+                                            autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" onkeyup="checkPass(); return false;" >
+                                    </div> 
+
+                                    <div class="d-flex mt-4">
+                                    <p class="text-center" id="error-nwl"></p>
+                                    </div>
+                                    <button type="submit" name="ChangePassword" id="ChangePassword"
+                                        class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Change Password</button>
+                                    
+                                    <!-- reset password? -->
+
+                                    <?php
+                                    }
+                                    ?>
                                     <div class="form-group mb-3 text-center">
                                     <a href="passwordrecovery" class="font-italic text-muted pr-1">Forgot password?</a>
                                    
@@ -147,6 +204,44 @@ if (isset($_POST['ResetPassword']) && !empty($_POST['username'])) {
 
         </div>
     </div>
+<script>
+    document.getElementById("ChangePassword").disabled = true;
+    function checkPass(){
+    var pass1 = document.getElementById('inputpassword');
+    var pass2 = document.getElementById('inputrepeatpassword');
+    var message = document.getElementById('error-nwl');
+    var goodColor = "rgb(147, 255, 171)";
+    var badColor = "rgb(255, 201, 206)";
+ 	
+    if(pass1.value.length >= 8)
+    {
+        pass1.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML ="";
+    }
+    else
+    {
+        pass1.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = " You have to enter at least 8 digit!"
+        return;
+    }
+  
+    if(pass1.value == pass2.value)
+    {
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        document.getElementById("ChangePassword").disabled = false;
+        message.innerHTML ="";
+    }
+	else
+    {
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = " These passwords don't match"
+    }
+}  
+</script>
 </body>
 
 </html>
