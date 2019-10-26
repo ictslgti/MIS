@@ -144,7 +144,7 @@ if (isset($_POST['ChangePassword']) && !empty($_POST['password'])&& !empty($_POS
                                     
                                     ?>
                                     <?php 
-                                    if(!isset($_GET['un']) && !isset($_GET['cv'])){
+                                    if(!isset($_GET['un']) && !isset($_GET['vc'])){
                                     ?>
 
                                     <div class="form-group mb-3">
