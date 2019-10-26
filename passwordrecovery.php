@@ -14,56 +14,60 @@ if (isset($_POST['ResetPassword']) && !empty($_POST['username'])) {
   $user_password_reset_hash = sha1(uniqid(mt_rand(), true));
 
   // database query, getting all the info of the selected user
-    $sql = "SELECT user_email FROM user WHERE user_name = '$user_name' ";
+    $sql = "SELECT user_email,user_active FROM user WHERE user_name = '$user_name'";
   $result = mysqli_query($con,$sql);
   if(mysqli_num_rows($result)==1){
     $row = mysqli_fetch_assoc($result);
     $user_email = $row['user_email'];
+    $user_active = $row['user_active'];
+    if($user_active==1){
+        $sql = "UPDATE user SET user_password_reset_hash = '$user_password_reset_hash',
+        user_password_reset_timestamp = '$temporary_timestamp'
+        WHERE user_name = '$user_name' ";
 
-    $sql = "UPDATE user SET user_password_reset_hash = '$user_password_reset_hash',
-    user_password_reset_timestamp = '$temporary_timestamp'
-    WHERE user_name = '$user_name' ";
-
-    // check if exactly one row was successfully changed:
-    if(mysqli_query($con,$sql)){
-        // send a mail to the user, containing a link with that token hash string
-        if(EMAIL_USE_SMTP){
-        $mail = new PHPMailer;
-        $mail->isSMTP();
-        $mail->Host = EMAIL_SMTP_HOST;
-        $mail->Port = 587;
-        $mail->SMTPAuth = true;
-        $mail->Username = EMAIL_SMTP_USERNAME;
-        $mail->Password = EMAIL_SMTP_PASSWORD;
-        $mail->setFrom(EMAIL_PASSWORDRESET_FROM, EMAIL_PASSWORDRESET_FROM_NAME);
-        $mail->addReplyTo(EMAIL_PASSWORDRESET_FROM, EMAIL_PASSWORDRESET_FROM_NAME);
-        $mail->addAddress($user_email);
-        $mail->Subject = EMAIL_PASSWORDRESET_SUBJECT;
-        $link    = EMAIL_PASSWORDRESET_URL.'?un='.urlencode($user_name).'&vc='.urlencode($user_password_reset_hash);
-        $html_message = "
-            Dear  $user_name,
-            <br />
-            We received a request for password change for <b> $user_name </b> at ". EMAIL_PASSWORDRESET_FROM_NAME.".
-            <br />
-            Go to this page $link  to set your new password.  <br />
-            The link will be active for one hour.
-            <br />
-            <br />
-            Best Regards,
-            <br />
-            The ICT Support Team
-            <br />   
-        ";
-        $mail->msgHTML($html_message, __DIR__);
-        if (!$mail->send()) {
-            $msg = 'Password mail not sent';
-        } else {
-            $msgs = 'Password mail sent';
+        // check if exactly one row was successfully changed:
+        if(mysqli_query($con,$sql)){
+            // send a mail to the user, containing a link with that token hash string
+            if(EMAIL_USE_SMTP){
+            $mail = new PHPMailer;
+            $mail->isSMTP();
+            $mail->Host = EMAIL_SMTP_HOST;
+            $mail->Port = 587;
+            $mail->SMTPAuth = true;
+            $mail->Username = EMAIL_SMTP_USERNAME;
+            $mail->Password = EMAIL_SMTP_PASSWORD;
+            $mail->setFrom(EMAIL_PASSWORDRESET_FROM, EMAIL_PASSWORDRESET_FROM_NAME);
+            $mail->addReplyTo(EMAIL_PASSWORDRESET_FROM, EMAIL_PASSWORDRESET_FROM_NAME);
+            $mail->addAddress($user_email);
+            $mail->Subject = EMAIL_PASSWORDRESET_SUBJECT;
+            $link    = EMAIL_PASSWORDRESET_URL.'?un='.urlencode($user_name).'&vc='.urlencode($user_password_reset_hash);
+            $html_message = "
+                Dear  $user_name,
+                <br />
+                We received a request for password change for <b> $user_name </b> at ". EMAIL_PASSWORDRESET_FROM_NAME.".
+                <br />
+                Go to this page $link  to set your new password.  <br />
+                The link will be active for one hour.
+                <br />
+                <br />
+                Best Regards,
+                <br />
+                The ICT Support Team
+                <br />   
+            ";
+            $mail->msgHTML($html_message, __DIR__);
+            if (!$mail->send()) {
+                $msg = 'Password mail not sent';
+            } else {
+                $msgs = 'Password mail sent';
+            }
         }
-    }
-       
+        
+        }else{
+            $msg = 'Database error';
+        }
     }else{
-        $msg = 'Database error';
+        $msg = 'User not active';
     }
   }else{
     $msg = 'User not exist';
