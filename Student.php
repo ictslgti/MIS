@@ -19,21 +19,7 @@ include_once("menu.php");
 <!-----END YOUR CODE----->
 <!-- form start---->
 
-<?php
-if(isset($_GET['delete']))
-{
-    $stid = $_GET['delete'];
-    $sql = "DELETE FROM `student` WHERE `student_id`='$stid'";
-    if(mysqli_query($con,$sql))
-    {
-        echo "Recorde Delete Successfully";
-    }
-    else
-    {
-    echo "Error Deleteing Record: ". mysqli_error($con);
-    }
-}
-?>
+
 <br>
 <h1 style="text-align:center"> SLGTI STUDENTS' INFORMATION </h1>
 <br><br>
