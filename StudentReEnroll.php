@@ -25,14 +25,16 @@ include_once("menu.php");
     // edit coding
     if(isset($_GET['edit']))
     {
+     //echo 'coid'.$_POST['coid']; 
       $stid =$_GET['edit'];
-    // $coid =$_GET['edit'];
+      $coid =$_GET['edit'];
       $sql = "SELECT `student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`,`student_enroll_status`
       FROM `student_enroll`where student_id ='$stid' and course_id ='$coid'";
       $result = mysqli_query($con,$sql);
 
       if(mysqli_num_rows($result)==1)
         {
+          echo "welcom";
         $row =mysqli_fetch_assoc($result);
         $coid = $row['course_id'];
         $stid = $row['student_id'];
@@ -50,45 +52,34 @@ include_once("menu.php");
     // insert coding
 
     if(isset($_POST['Submit']))
+  {
+    if(!empty($_POST['sid']) && !empty($_POST['cid']) && !empty($_POST['mode']) && !empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['enrolldate']) && !empty($_POST['exitdate']))
     {
-      // echo "welcome";
-      // echo 'stid'.$_POST['stid'];
-      // echo 'coid'.$_POST['coid'];
-      // echo 'ayear'.$_POST['ayear'];
-      // echo 'status'.$_POST['status'];
-      // echo 'edate'.$_POST['edate'];
-      // echo 'exdate'.$_POST['exdate'];
-      // echo 'mode'.$_POST['mode'];
-      if(!empty($_POST['sid']) && !empty($_POST['coid']) 
-      && !empty($_POST['ayear']) && !empty($_POST['status']) 
-      && !empty($_POST['edate']) && !empty($_POST['exdate'])
-      && !empty($_POST['mode']))
-      {
-          echo "SUCCESS";
-          $stid=$_POST['stid'];
-          $coid=$_POST['cid'];
-          $mode=$_POST['mode'];
-          $year=$_POST['ayear'];
-          $enstatus=$_POST['status'];
-          $enroll=$_POST['edate'];
-          $exit=$_POST['exdate'];
-  
-          echo $sqlenroll = "INSERT INTO `student_enroll`(`student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`, `student_enroll_status`)
-          VALUES ('$stid','$coid','$mode',$year','$enroll','$exit','$enstatus')";
+        echo "SUCCESS";
+        $stid=$_POST['sid'];
+        $coid=$_POST['cid'];
+        $mode=$_POST['mode'];
+        $year=$_POST['ayear'];
+        $enstatus=$_POST['status'];
+        $enroll=$_POST['enrolldate'];
+        $exit=$_POST['exitdate'];
 
-            if(mysqli_query($con,$sqlenroll))
-            {
-              echo "Record Insert Successfully";
-            }
-            else
-            {
-            // echo "Error: ".$sqlstudent . "<br>" . mysqli_error($con);
-              echo "Error: ".$sqlenroll . "<br>" . mysqli_error($con);
-              //echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
-              echo "Fill the required field";
-            }
-        }
+          $sqlenroll = "INSERT INTO `student_enroll`(`student_id`, `course_id`, course_mode,`academic_year`, `student_enroll_date`, `student_enroll_exit_date`, 
+          `student_enroll_status`) VALUES ('$stid','$coid','$mode','$year','$enroll','$exit','$enstatus')";
+
+                    if(mysqli_query($con,$sqlenroll))
+                    {
+                      echo "Record Insert Successfully";
+                    }
+                    else
+                    {
+                    // echo "Error: ".$sqlstudent . "<br>" . mysqli_error($con);
+                      echo "Error: ".$sqlenroll . "<br>" . mysqli_error($con);
+                      //echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
+                      echo "Fill the required field";
+                    }
       }
+    }
 ?>
 
 <div class="ROW">
@@ -269,7 +260,7 @@ include_once("menu.php");
                         <td>'. $row["student_enroll_exit_date"]."<br>".'</td>
                         <td>'. $row["student_enroll_status"]."<br>".'</td>
                         <td>
-                        <a href="StudentReEnroll.php? edit='.$row["student_id"]. '" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
+                        <a href="StudentReEnroll.php? edit='.$row["student_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
                         <a href="?Student_Id='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i></td>
                    </tr>';
                   $num=$num+1;

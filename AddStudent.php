@@ -66,20 +66,34 @@ if(isset($_GET['edit']))
   }
 }
   
-   //delete coding
-  if(isset($_GET['edit']))
-  {
-      $stid = $_GET['edit'];
-      $sql = "DELETE FROM `student` WHERE `student_id`='$stid'";
-      if(mysqli_query($con,$sql))
-      {
-          echo "Recorde Delete Successfully";
-      }
-      else
-      {
-      echo "Error Deleteing Record: ". mysqli_error($con);
-      }
-  }
+  //  //delete coding
+  // // if(isset($_GET['edit']))
+  // // {
+  // //     $stid = $_GET['edit'];
+  // //     $sql = "DELETE FROM `student` WHERE `student_id`='$stid'";
+  // //     if(mysqli_query($con,$sql))
+  // //     {
+  // //         echo "Student Personal Recorde Delete Successfully";
+  // //     }
+  // //     else
+  // //     {
+  // //     echo "Error Deleteing Record: ". mysqli_error($con);
+  // //     }
+  // // }
+
+  // if(isset($_GET['edit']))
+  // {
+  //     $stid = $_GET['edit'];
+  //     $sql = "DELETE FROM `student` WHERE `student_id`='$stid'";
+  //     if(mysqli_query($con,$sql))
+  //     {
+  //         echo "Student Personal Recorde Delete Successfully";
+  //     }
+  //     else
+  //     {
+  //     echo "Error Deleteing Record: ". mysqli_error($con);
+  //     }
+  // }
 
 
   //Insert coding
