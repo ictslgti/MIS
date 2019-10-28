@@ -17,28 +17,32 @@ include_once("menu.php");
 $student_id=$student_name=$student_profile_img =$payment_id=$pays_reason=$payment_note=$pays_amount=$payment_id=$pays_date=null;
 
 
-if(isset($_GET['Add'])){
+if(isset($_POST['Add'])){
 
-  if(!empty($_POST['student_id'])
-  && !empty($_POST['student_name'])
-  && !empty($_POST['pays_depatment'])
-&& !empty($_POST['payment_reason'])
-&& !empty($_POST['payment_qty'])
-&& !empty($_POST['payment_note'])
-&& !empty($_POST['payment_amount'])){
+//   if(!empty($_POST['student_id'])
+//   && !empty($_POST['student_name'])
+//   && !empty($_POST['pays_depatment'])
+//   && !empty($_POST['payment_type'])
+// && !empty($_POST['payment_reason'])
+// && !empty($_POST['payment_qty'])
+// && !empty($_POST['payment_note'])
+// && !empty($_POST['payment_amount'])){
     
 
-      $student_id=$_POST['student_id'];
-      $pays_department=$_POST['pays_department'];
-      $pays_reason=$_POST['payment_reason'];
-      $pays_qty=$_POST['payment_qty'];
-      $pays_note=$_POST['payment_note'];
-      $pays_amount=$_POST['payment_amount'];
+     echo $student_id=$_POST['student_id'];
+     echo $pays_department=$_POST['pays_department'];
+     echo $pays_reason=$_POST['payment_reason'];
+     echo $pays_qty=$_POST['payment_qty'];
+     echo $pays_note=$_POST['payment_note'];
+     echo $pays_amount=$_POST['payment_amount'];
+     echo $payment_type=$_POST['payment_type'];
+     
      
       
-     
-        $sql="INSERT INTO `pays`(`student_id`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_department`) 
-        VALUES ('$student_id','reexam','$pays_note','$pays_amount','$pays_qty','$pays_department')";
+      $sql="INSERT INTO `pays` (`student_id`,`payment_type`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_department`) 
+      VALUES ('$student_id','$payment_type','$pays_reason','$pays_note','$pays_amount','$pays_qty','$pays_department')";
+        // $sql="INSERT INTO `pays`(`student_id`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_department`) 
+        // VALUES ('$student_id','$pays_reason','$pays_note','$pays_amount','$pays_qty','$pays_department')";
 
     
 
@@ -66,10 +70,10 @@ if(mysqli_query($con,$sql)){
         ';
 
 
-      
-    }
+      }
+    
 }
-}
+
 ?>
 
     <?php
@@ -121,7 +125,7 @@ if(isset($_POST['edit'])){
 
         </div>
     </div>
-    <form method="GET" action="#">
+    <form method="POST" action="#">
   
         <div class="row">
         <div class="col-sm-4"><?php if($student_profile_img!=null) { ?> <img src="<?php echo $student_profile_img; ?>"
@@ -165,7 +169,7 @@ if(isset($_POST['edit'])){
                         fa-swatchbook"></i>&nbsp;Payment Type&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         </div>
                         <select class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_type'])){echo ' is-valid';} ?> "
-                            id="payment_type"  onchange="showpaymentreason(this.value)">
+                            id="payment_type" name="payment_type" onchange="showpaymentreason(this.value)">
 
                             <?php
                                 $sql = "select DISTINCT payment_type from payment";
@@ -191,9 +195,10 @@ if(isset($_POST['edit'])){
                             <label class="input-group-text" for="inputGroupSelect01"><i class="fas
         fa-swatchbook"></i>&nbsp;Payment Reason</label>
                         </div>
-                        <br>
-                        <select class="custom-select mr-sm-2" id="payment_reason" name="payment_reason">
-                             <option value="null" selected disabled>-- Select a Payment type --</option>
+                        
+                        <select class="custom-select  <?php  if(isset($_POST['Add']) && empty($_POST['payment_reason'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_reason'])){echo ' is-valid';} ?>
+                        " id="payment_reason" name="payment_reason">
+                             <option value="null" selected disabled>-- Select a Payment Reason --</option>
                          </select>
                     </div>
 
@@ -221,7 +226,7 @@ if(isset($_POST['edit'])){
 
         </div>
         <div class="col-sm-4">
-            <table class="table table-sm">
+            <!-- <table class="table table-sm">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -251,7 +256,7 @@ if(isset($_POST['edit'])){
                         <td>@twitter</td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
            
             <h2>
                 <button type="submit" name="Add" value="Add" class="btn btn-primary btn-block">
