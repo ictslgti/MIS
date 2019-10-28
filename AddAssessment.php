@@ -22,13 +22,72 @@ $title = "Examinations | SLGTI";
 </div>
 
 <!-- end header -->
+
+<?php
+$course=$assessments=$academic_year= $assessment_date=null;
+
+if (isset($_POST['Add'])) {
+
+    # code...
+    if (!empty($_POST['course']))
+    // // &&!empty($_POST['assessments'])
+    // &&!empty($_POST['academic_year'])
+    // &&!empty($_POST['assessment_date']) 
+    // {
+        # code...
+        echo $course=$_POST['course'];
+        echo $assessments=$_POST['assessments'];
+        echo $academic_year=$_POST['academic_year'];
+        echo $assessment_date=$_POST['assessment_date'];
+
+       echo $sql = "INSERT INTO `assessments` (`course_id`,`assessment_type_id`,`academic_year`,`assessment_date`)
+        VALUES ('$course','$assessments','$academic_year','$assessment_date')";
+
+
+if(mysqli_query($con,$sql))
+{
+  echo '
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>'.$assessments.'</strong> Assessment Type details inserted!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>   
+  ';
+}
+else{
+  
+  echo '
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>'.$assessments.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  
+  ';
+}
+
+
+
+
+    // }
+}
+
+
+
+?>
+
 <div class="container">
-    <form class="needs-validation" novalidate>
+        <form class="needs-validation" novalidate method="POST" action="#">
+    
         <div class="form-row">
             <div class="col-md-3 mb-2">
                     
                     <label for="validationCustom02">Course</label>
-                            <select class="custom-select" id="course" name="course"  onchange="showAssessments(this.value)" required>
+                            <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['course'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course'])){echo ' is-valid';} ?>" 
+                            id="course" name="course"  onchange="showAssessments(this.value)" required>
+
                               <option selected>Choose Course...</option>
                               <?php
                   $sql = "SELECT * FROM `assessments_type`";
@@ -51,7 +110,7 @@ $title = "Examinations | SLGTI";
             </div>
             <div class="col-md-3 mb-2">
                 <label for="validationCustom02">Assessments</label>
-                <select class="custom-select" id="Assess" name="assessments">
+                <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['assessments'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessments'])){echo ' is-valid';} ?>" id="assessments" name="assessments">
                         <option selected>Choose...</option>
                         
                       </select>
@@ -62,7 +121,7 @@ $title = "Examinations | SLGTI";
             <div class="col-md-3 mb-2">
                 <label for="validationCustomUsername">Academy Year</label>
                 
-                <select class="custom-select" id="inputGroupSelect01">
+                <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['academic_year'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>" id="academic_year" name="academic_year">
                         <option selected>Choose...</option>
                         <?php
                   $sql = "SELECT *  FROM `academic`";
@@ -85,26 +144,31 @@ $title = "Examinations | SLGTI";
 
                 <div class="col-md-3 mb-2">
                     <label for="">Assessment Date</label>
-                    <input type="date" class="form-control" id="dob" name="dob" value="" placeholder=""  required>
+                    <input type="date" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_date'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_date'])){echo ' is-valid';} ?>" 
+                    id="assessment_date" name="assessment_date" value="" placeholder=""  required>
 
 
                 </div>
             </div>
         
+
+
         <div class="row">
             <div class="col-md-3 mb-2">
-                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button class="btn btn-primary" type="submit" value="Add" name="Add">Save</button>
 
             </div>
                 
 
 
         </div>
+    </form>
+
     </div>
 
 
         
-    </form>
+    
 
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -133,7 +197,7 @@ $title = "Examinations | SLGTI";
                              var xmlhttp = new XMLHttpRequest();
                              xmlhttp.onreadystatechange = function () {
                                  if (this.readyState == 4 && this.status == 200) {
-                                     document.getElementById("Assess").innerHTML = this.responseText;
+                                     document.getElementById("assessments").innerHTML = this.responseText;
                                  }
                              };
                              xmlhttp.open("POST", "controller/getAssessmentType", true);
