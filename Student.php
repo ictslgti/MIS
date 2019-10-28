@@ -18,6 +18,22 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <!-- form start---->
+
+<?php
+if(isset($_GET['delete']))
+{
+    $stid = $_GET['delete'];
+    $sql = "DELETE FROM `student` WHERE `student_id`='$stid'";
+    if(mysqli_query($con,$sql))
+    {
+        echo "Recorde Delete Successfully";
+    }
+    else
+    {
+    echo "Error Deleteing Record: ". mysqli_error($con);
+    }
+}
+?>
 <br>
 <h1 style="text-align:center"> SLGTI STUDENTS' INFORMATION </h1>
 <br><br>
@@ -31,7 +47,7 @@ include_once("menu.php");
 
     <div class="col-md-3 mb-3">
       <a href="AddStudent.php"><button type="button" class="btn btn-outline-primary"> ADD NEW STUDENT </button><a>
-      <button class="btn btn-sm btn-danger" data-href="?delete='.$row[student_id].'" data-toggle="modal" data-target="#confirm-delete"> <i class="fas fa-trash"></i> </button>
+      
     </div>
 </div><br>
 

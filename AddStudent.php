@@ -65,6 +65,22 @@ if(isset($_GET['edit']))
     
   }
 }
+  
+   //delete coding
+  if(isset($_GET['edit']))
+  {
+      $stid = $_GET['edit'];
+      $sql = "DELETE FROM `student` WHERE `student_id`='$stid'";
+      if(mysqli_query($con,$sql))
+      {
+          echo "Recorde Delete Successfully";
+      }
+      else
+      {
+      echo "Error Deleteing Record: ". mysqli_error($con);
+      }
+  }
+
 
   //Insert coding
   
@@ -759,6 +775,7 @@ if(isset($_GET['edit']))
 {
   echo '<button type="submit" value="Edit" name="Edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
   echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+  echo '<button class="btn btn-sm btn-danger" value="delete" name="delete" data-href="?delete='.$row["student_id"].'" data-toggle="modal" data-target="#confirm-delete"> <i class="fas fa-trash"></i> </button>';
 }
 else
 {
