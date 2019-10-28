@@ -19,29 +19,30 @@ $student_id=$student_name=$student_profile_img =$payment_id=$pays_reason=$paymen
 
 if(isset($_POST['Add'])){
 
-  if(!empty($_POST['student_id'])
-  && !empty($_POST['student_name'])
-  && !empty($_POST['pays_depatment'])
-  && !empty($_POST['payment_type'])
-&& !empty($_POST['payment_reason'])
-&& !empty($_POST['payment_qty'])
-&& !empty($_POST['payment_note'])
-&& !empty($_POST['payment_amount'])){
+//   if(!empty($_POST['student_id'])
+//   && !empty($_POST['student_name'])
+//   && !empty($_POST['pays_depatment'])
+//   && !empty($_POST['payment_type'])
+// && !empty($_POST['payment_reason'])
+// && !empty($_POST['payment_qty'])
+// && !empty($_POST['payment_note'])
+// && !empty($_POST['payment_amount'])){
     
 
-      $student_id=$_POST['student_id'];
-      $pays_department=$_POST['pays_department'];
-      $payment_type=$_POST['payment_type'];
-      $pays_reason=$_POST['payment_reason'];
-      $pays_qty=$_POST['payment_qty'];
-      $pays_note=$_POST['payment_note'];
-      $pays_amount=$_POST['payment_amount'];
+     echo $student_id=$_POST['student_id'];
+     echo $pays_department=$_POST['pays_department'];
+     echo $pays_reason=$_POST['payment_reason'];
+     echo $pays_qty=$_POST['payment_qty'];
+     echo $pays_note=$_POST['payment_note'];
+     echo $pays_amount=$_POST['payment_amount'];
+     echo $payment_type=$_POST['payment_type'];
+     
      
       
-      $sql="INSERT INTO `pays` (`student_id`, `payment_type`, `payment_reason`, `pays_note`, `pays_amount`, `pays_qty`, `pays_department`) 
-      VALUES ('$student_id', '$payment_type', '$pays_reason', '$pays_note', ' $pays_amount', '$pays_qty', '$pays_department')";
+      $sql="INSERT INTO `pays` (`student_id`,`payment_type`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_department`) 
+      VALUES ('$student_id','$payment_type','$pays_reason','$pays_note','$pays_amount','$pays_qty','$pays_department')";
         // $sql="INSERT INTO `pays`(`student_id`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_department`) 
-        // VALUES ('$student_id','reexam','$pays_note','$pays_amount','$pays_qty','$pays_department')";
+        // VALUES ('$student_id','$pays_reason','$pays_note','$pays_amount','$pays_qty','$pays_department')";
 
     
 
@@ -69,10 +70,10 @@ if(mysqli_query($con,$sql)){
         ';
 
 
-      
-    }
+      }
+    
 }
-}
+
 ?>
 
     <?php
@@ -197,7 +198,7 @@ if(isset($_POST['edit'])){
                         
                         <select class="custom-select  <?php  if(isset($_POST['Add']) && empty($_POST['payment_reason'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_reason'])){echo ' is-valid';} ?>
                         " id="payment_reason" name="payment_reason">
-                             <option value="null" selected disabled>-- Select a Payment type --</option>
+                             <option value="null" selected disabled>-- Select a Payment Reason --</option>
                          </select>
                     </div>
 
