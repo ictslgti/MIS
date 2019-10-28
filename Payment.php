@@ -50,7 +50,7 @@ if(isset($_POST['Add'])){
 if(mysqli_query($con,$sql)){
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$student_name.'</strong> paid
+          <strong>'.$student_name.'</strong> <h4 class="text-center display-3">PAID</h4> 
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -226,37 +226,7 @@ if(isset($_POST['edit'])){
 
         </div>
         <div class="col-sm-4">
-            <!-- <table class="table table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Reason</th>
-                        <th scope="col">Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <th>Total:</th>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table> -->
+        
            
             <h2>
                 <button type="submit" name="Add" value="Add" class="btn btn-primary btn-block">
@@ -265,7 +235,23 @@ if(isset($_POST['edit'])){
                 <button type="button" class="btn btn-secondary btn-sm"><i class="fas
         fa-redo-alt"></i>&nbsp;Reset</button>&nbsp;
                 <button type="button" class="btn btn-danger btn-sm"><i class="fas
-        fa-times"></i>&nbsp;Close</button>
+        fa-times"></i>&nbsp;Close</button> <div class="row">
+        <div class="col-sm-12"> 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        </div>
         </div>
         <br>
     </form>
@@ -277,8 +263,7 @@ if(isset($_POST['edit'])){
         <div class="col-sm-4">
 
         </div>
-        <div class="col-sm-8"></div>
-    </div>
+        
 
     <div class="row">
         <div class="col-sm-4">
