@@ -125,8 +125,8 @@ include_once("menu.php");
         <div class="col-md-1 mb-3"></div>
    
         <div class="col-md-5 mb-3">
-          <label for="Exdate"> ReExit Date : </label>
-          <input type="text" class="form-control" id="Exdate" name="Exdate" value="" placeholder="" aria-describedby="ExdatePrepend" required>
+          <label for="exdate"> ReExit Date : </label>
+          <input type="text" class="form-control" id="exdate" name="exdate" value="" placeholder="" aria-describedby="ExdatePrepend" required>
         </div>
   
       </div>
