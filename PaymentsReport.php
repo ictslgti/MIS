@@ -97,18 +97,21 @@ include_once("menu.php");
     <div class="row">
 
         <table class="table">
-            <thead class="thead-dark">
+            
     <tr>
-        <th>PAYMENT ID</th>
-        <th>CONSUMER ID</th>
-        <th>NAME</th>
-        <th>DEPATMENT</th>
-        <th>REASON</th>
-        <th>DATE</th>
+    <th>PAYMENT ID</th>
+        <th>STUDENT ID</th>
+        <th>PAYMENT CATEGORY</th>
+        <th>PAYMENT REASON</th>
+        <th>PAYMENT NOTE</th>
+        <th>PAYMENT AMOUNT</th>
+        <th>PAYMENTQTY</th>
+        <th>PAYMENT DATE</th>
+        <th>PAYMENT DEPARTMENT</th>
         
 
 </tr>
-</thead>
+
 
 
 
