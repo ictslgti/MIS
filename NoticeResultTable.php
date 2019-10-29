@@ -22,6 +22,7 @@ include_once("menu.php");
       <th > Course </th>
       <th > Module </th>
       <th > AcademicYear</th>
+      <th > Upload File</th>
       <th > Option</th>
      
     </tr>

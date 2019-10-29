@@ -52,7 +52,14 @@ if(isset($_POST['Add'])){
   if(!empty($_POST['department_id'])
   &&!empty($_POST['course_id'])
   &&!empty($_POST['module_id'])
-  &&!empty($_POST['academic_year']))
+  &&!empty($_POST['academic_year'])
+  &&!empty($_POST['upload']))
+
+  $upload = $upload["ima"];
+  $upload = basename($upload["ima"]["upload"]);
+  $test_dir = 'docs/events';
+  move_uploaded_file($upload, $upload.'/'.$upload);
+ 
  
   { 
      echo "ok2";
@@ -60,10 +67,11 @@ if(isset($_POST['Add'])){
      echo $course_id   =  $_POST['course_id'];
      echo $module_id  =   $_POST['module_id'];
      echo $academic_year  =   $_POST['academic_year'];
+     echo $upload  =   $_POST['upload'];
      
   
-     echo $sql = "INSERT INTO `notice_result` (`department_id`, `course_id`, `module_id`, `academic_year`)
-      VALUES ('$department_id','$course_id','$module_id','$academic_year')";
+     echo $sql = "INSERT INTO `notice_result` (`department_id`, `course_id`, `module_id`, `academic_year`,`upload`)
+      VALUES ('$department_id','$course_id','$module_id','$academic_year',`$upload`)";
    
       if (mysqli_query($con, $sql)) {
         echo "record add";
@@ -89,7 +97,7 @@ if(isset($_POST['Add'])){
 
   
 <div class="form-group row">
-  <label for="inputEmail3" class="col-sm-2 col-form-label">Department</label>
+  <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Department</label>
   <div class="col-sm-10"> 
   <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['department_id']))
   {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['department_id'])){echo ' is-valid';} ?>" id="department_id" name="department_id">
@@ -117,7 +125,7 @@ if(isset($_POST['Add'])){
 </div>
 
 <div class="form-group row">
-  <label for="inputPassword3" class="col-sm-2 col-form-label">Course</label>
+  <label for="inputPassword3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Course</label>
   <div class="col-sm-10">
 <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['course_id']))
   {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"  id="course_id" name="course_id">
@@ -140,7 +148,7 @@ if(isset($_POST['Add'])){
 
 
 <div class="form-group row">
-  <label for="inputEmail3" class="col-sm-2 col-form-label">Module</label>
+  <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Module</label>
   <div class="col-sm-10"> 
   <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['module_id']))
   {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"  id="module_id" name="module_id">
@@ -165,7 +173,7 @@ if(isset($_POST['Add'])){
 
 
 <div class="form-group row">
-  <label for="inputEmail3" class="col-sm-2 col-form-label">AcademicYear</label>
+  <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;AcademicYear</label>
   <div class="col-sm-10"> 
   <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['academic_year']))
   {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>"  id="academic_year" name="academic_year">
@@ -188,7 +196,12 @@ if(isset($_POST['Add'])){
 </div>
 
 
-      
+<div class="input-group mb-3">
+
+<label for="inputEmail3" class="col-sm-2 col-form-label">Upload Your File</label>
+<input class="form-control" type="file" value="<?php  if(isset($_POST['Add']) && empty($_POST['upload']))
+  {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['upload'])){echo ' is-valid';} ?>"  id="upload" name="upload"></td>
+</div>     
    
 
        <div class="col-12">
@@ -216,8 +229,8 @@ echo '<div class="btn-group-horizontal">';
     
     echo '</div>';
     ?>
-
-<a href="NoticeResultTable.php" class="btn btn-sm btn-warning"><i class="far fa-edit"></i> View</a></button>
+  
+    <a href="NoticeResultTable.php" class="btn btn-sm btn-warning"><i class="far fa-edit"></i> View</a></button>
 
 
 
