@@ -77,19 +77,20 @@ else{
 
 
 ?>
+<form class="needs-validation" novalidate method="POST" action="#">
 
-<div class="container">
-        <form class="needs-validation" novalidate method="POST" action="#">
-    
+    <div class="container">
+
         <div class="form-row">
             <div class="col-md-3 mb-2">
-                    
-                    <label for="validationCustom02">Course</label>
-                            <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['course'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course'])){echo ' is-valid';} ?>" 
-                            id="course" name="course"  onchange="showAssessments(this.value)" required>
 
-                              <option selected>Choose Course...</option>
-                              <?php
+                <label for="validationCustom02">Course</label>
+                <select
+                    class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['course'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course'])){echo ' is-valid';} ?>"
+                    id="course" name="course" onchange="showAssessments(this.value)" required>
+
+                    <option selected>Choose Course...</option>
+                    <?php
                   $sql = "SELECT * FROM `assessments_type`";
                   $result = mysqli_query($con, $sql);
                   if (mysqli_num_rows($result) > 0) {
@@ -100,9 +101,9 @@ else{
                     echo '<option value="null"   selected disabled>-- No Course --</option>';
                   }
                   ?>
-                             
-                            </select>
-                          
+
+                </select>
+
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -110,20 +111,24 @@ else{
             </div>
             <div class="col-md-3 mb-2">
                 <label for="validationCustom02">Assessments</label>
-                <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['assessments'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessments'])){echo ' is-valid';} ?>" id="assessments" name="assessments">
-                        <option selected>Choose...</option>
-                        
-                      </select>
+                <select
+                    class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['assessments'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessments'])){echo ' is-valid';} ?>"
+                    id="assessments" name="assessments">
+                    <option selected>Choose...</option>
+
+                </select>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
             <div class="col-md-3 mb-2">
                 <label for="validationCustomUsername">Academy Year</label>
-                
-                <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['academic_year'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>" id="academic_year" name="academic_year">
-                        <option selected>Choose...</option>
-                        <?php
+
+                <select
+                    class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['academic_year'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>"
+                    id="academic_year" name="academic_year">
+                    <option selected>Choose...</option>
+                    <?php
                   $sql = "SELECT *  FROM `academic`";
                   $result = mysqli_query($con, $sql);
                   if (mysqli_num_rows($result) > 0) {
@@ -135,76 +140,136 @@ else{
                   }
                   ?>
 
-                        
-                      </select>
-                    <div class="invalid-feedback">
-                        Please choose a Academy Year!
-                    </div>
-                </div>
 
-                <div class="col-md-3 mb-2">
-                    <label for="">Assessment Date</label>
-                    <input type="date" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_date'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_date'])){echo ' is-valid';} ?>" 
-                    id="assessment_date" name="assessment_date" value="" placeholder=""  required>
-
-
+                </select>
+                <div class="invalid-feedback">
+                    Please choose a Academy Year!
                 </div>
             </div>
-        
 
+            <div class="col-md-3 mb-2">
+                <label for="">Assessment Date</label>
+                <input type="date"
+                    class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_date'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_date'])){echo ' is-valid';} ?>"
+                    id="assessment_date" name="assessment_date" value="" placeholder="" required>
+
+
+            </div>
+        </div>
 
         <div class="row">
-            <div class="col-md-3 mb-2">
-                    <button class="btn btn-primary" type="submit" value="Add" name="Add">Save</button>
+            <div class="col-sm">
+                
+            </div>
+            <div class="col-sm">
+                
+            </div>
+            <div class="col-sm">
+
+                <button class="btn btn-success" type="submit" value="Add" name="Add"><i class="fas fa-plus"></i>&nbsp&nbspSave</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter"><i class="fab fa-readme"></i>&nbsp&nbsp
+                    View Assessments Types
+                </button>
 
             </div>
-                
-
-
         </div>
-    </form>
+    </div>
+    <br>
 
+</form>
+<!--  -->
+<div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Assessments Types</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
     </div>
 
 
-        
-    
-
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
 
 
 
 
-        function showAssessments(val) {
-                             var xmlhttp = new XMLHttpRequest();
-                             xmlhttp.onreadystatechange = function () {
-                                 if (this.readyState == 4 && this.status == 200) {
-                                     document.getElementById("assessments").innerHTML = this.responseText;
-                                 }
-                             };
-                             xmlhttp.open("POST", "controller/getAssessmentType", true);
-                             xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                             xmlhttp.send("assessmentType=" + val);
-                         }
-    </script>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+
+
+
+    function showAssessments(val) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("assessments").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("POST", "controller/getAssessmentType", true);
+        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.send("assessmentType=" + val);
+    }
+</script>
 
 
 

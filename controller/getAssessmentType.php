@@ -24,7 +24,8 @@ if(isset($_POST['assessmentType'])){
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0) {
         while($row = mysqli_fetch_assoc($result)) {
-        echo '<option  value="'.$row["module_id"].'" required>['.$id.'-'.$row["module_id"].'] '.$row["assessment_name"]. $row["assessment_type"].'</option>';
+        echo '<option  value="'.$row["assessment_type_id"].'" required>['.$id.'-'.$row["assessment_type_id"].']</option>';
+        // echo '<option value="'.$row["assessment_type_id"].'" required></option>';
         }
     }else{
         echo '<option value="null"   selected disabled>-- No Assessments --</option>';
