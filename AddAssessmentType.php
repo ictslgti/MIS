@@ -263,6 +263,15 @@ else{
         <br>
 
         <br>
+        <div>
+            <h3 class="display-5 text-center">
+                Assessment Types Records
+
+            </h3>
+
+        </div>
+        <br>
+        
 
 
 
@@ -276,7 +285,7 @@ else{
             <table class="table">
                 <thead>
 
-                   
+
 
                     <th>
                         <center>Module</center>
@@ -296,7 +305,7 @@ else{
                 </thead>
                 <tbody>
 
-                <?php
+                    <?php
                 $sql = "SELECT module_id,course_id,assessment_name,assessment_percentage FROM assessments_type";
                 $result = mysqli_query($con, $sql);
                 if (mysqli_num_rows($result)>0) {
@@ -331,7 +340,7 @@ else{
 
 
             </table>
-            
+
         </div>
 
 
@@ -353,46 +362,46 @@ else{
         //     xmlhttp.send("module=" + val);
         // }
         function showAssessmentType(val1, val2) {
-                             var xmlhttp = new XMLHttpRequest();
-                             xmlhttp.onreadystatechange = function () {
-                                 if (this.readyState == 4 && this.status == 200) {
-                                     document.getElementById("Module").innerHTML = this.responseText;
-                                 }
-                             };
-                             xmlhttp.open("POST", "controller/getAssessmentType", true);
-                             xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                             xmlhttp.send("course_id=" + val1 + "&module_id=" + val2);
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("Module").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "controller/getAssessmentType", true);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send("course_id=" + val1 + "&module_id=" + val2);
 
 
-                         }
+        }
 
         function showModule(val) {
-                             var xmlhttp = new XMLHttpRequest();
-                             xmlhttp.onreadystatechange = function () {
-                                 if (this.readyState == 4 && this.status == 200) {
-                                     document.getElementById("Module").innerHTML = this.responseText;
-                                 }
-                             };
-                             xmlhttp.open("POST", "controller/getModule", true);
-                             xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                             xmlhttp.send("course=" + val);
-                         }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("Module").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "controller/getModule", true);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send("course=" + val);
+        }
 
 
 
         function IsInputNumber(evt) {
-                             var ch = String.fromCharCode(evt.which);
+            var ch = String.fromCharCode(evt.which);
 
-                             if (!(/[0-9]/.test(ch))) {
-                                 evt.preventDefault();
-                                 alert("Please Enter Numbers Only For Assessment Percentage!");
-                             } else if ((/[0-9]/.test(ch))) {
+            if (!(/[0-9]/.test(ch))) {
+                evt.preventDefault();
+                alert("Please Enter Numbers Only For Assessment Percentage!");
+            } else if ((/[0-9]/.test(ch))) {
 
 
 
-                             }
+            }
 
-                         }
+        }
         </script>
 
 

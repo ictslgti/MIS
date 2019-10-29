@@ -167,7 +167,7 @@ if(isset($_POST['Add'])){
               <div class="w-100"></div>
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="cost">05.QUANTITY</label> <span style="color:red;">*</span></label>
-                  <input type="text"  name="inventoryquantity" value="<?php echo $inventoryquantity;?>" class="form-control  <?php if(isset($_POST['Add']) && empty($_POST['itemid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['itemid'])&& !empty($_POST['itemid'])){echo '  is-valid';} ?>"id="quantity" aria-describedby="quantity" placeholder="quantity" required="required">
+                  <input type="text"  name="inventoryquantity" value="<?php echo $inventoryquantity;?>" class="form-control  <?php if(isset($_POST['Add']) && empty($_POST['inventoryquantity'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['inventoryquantity'])&& !empty($_POST['inventoryquantity'])){echo '  is-valid';} ?>"id="quantity" aria-describedby="quantity" placeholder="quantity" required="required">
                   <small id="quantity" class="form-text text-muted"></small>
           </div>
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
