@@ -120,7 +120,7 @@ $title = "Examinations | SLGTI";
                 <div class="row justify-content-md-center">
                     <div class="col-md-auto">
                         <!-- main button  -->
-                        <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus"></i>&nbsp;Ok
+                        <button type="button" class="btn btn-outline-primary" id="students" name="students" onclick="showStudents(this.value)" ><i class="fas fa-plus"></i>&nbsp;Ok
                         </button>
                     </div>
                 </div>
@@ -132,18 +132,7 @@ $title = "Examinations | SLGTI";
             <br>
             <br>
 
-            <?php
-        // modules for ict sem1
-     $Sem1module1 = 'Database';
-     $Sem1module2 = 'Graphic Design';
-     $Sem1module3 = 'Programming';
-     $Sem1module4 = 'Testing';
-     $Sem1module5 = 'ICT';
-    //  students details
-    $stdname = 'midhusahn';
-
-
-     ?>
+            
 
             <div class="card">
                 <br>
@@ -399,7 +388,25 @@ $title = "Examinations | SLGTI";
             xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xmlhttp.send("academyYear=" + val);
         }
+
+        function showStudents(val) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("students").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "controller/getAssessmentType", true);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send("academyYear=" + val);
+        }
+
+
+
+
+
         </script>
+
 
 
 
