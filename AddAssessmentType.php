@@ -38,8 +38,8 @@ $title = "Examinations | SLGTI";
                 </div>
             </div>
         </div>
-            <!--  -->
-<?php
+        <!--  -->
+        <?php
 $course_name=$course_id=$module_name=$assessment_type=$assessment_name=$assessment_percentage=null;
 
 if (isset($_POST['Add'])) {
@@ -101,7 +101,8 @@ else{
                                         class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
                                     Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
-                            <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['course_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_name'])){echo ' is-valid';} ?>"
+                            <select
+                                class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['course_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_name'])){echo ' is-valid';} ?>"
                                 id="course_name" name="course_name" value="<?php echo $course_id; ?>"
                                 onchange="showModule(this.value)" required>
                                 <option value="null" selected disabled>--Select Course--</option>
@@ -219,7 +220,9 @@ else{
 
                             </div>
                             <div class="col-md-auto">
-                                <button type="submit" class="btn btn-outline-primary" value="Add" name="Add" onclick="showAssessmentType('aaa','vvv')"><i class="fas fa-plus"></i> Add Asessments</button>
+                                <button type="submit" class="btn btn-outline-primary" value="Add" name="Add"
+                                    onclick="showAssessmentType('aaa','vvv')"><i class="fas fa-plus"></i> Add
+                                    Asessments</button>
                             </div>
                             <div class="col col-lg-2">
 
@@ -262,34 +265,79 @@ else{
         <br>
 
 
+
+
+
+
         <div class="table-responsive-sm">
+
+
+
             <table class="table">
                 <thead>
 
+                   
+
                     <th>
                         <center>Module</center>
                     </th>
                     <th>
-                        <center>Module</center>
+                        <center>Course</center>
                     </th>
                     <th>
-                        <center>Module</center>
+                        <center>Assessment Name</center>
                     </th>
-
-
-
+                    <th>
+                        <center>Assessment Percentage</center>
+                    </th>
 
 
 
                 </thead>
+                <tbody>
+
+                <?php
+                $sql = "SELECT module_id,course_id,assessment_name,assessment_percentage FROM assessments_type";
+                $result = mysqli_query($con, $sql);
+                if (mysqli_num_rows($result)>0) {
+
+
+                    # code...
+                    while ($row = mysqli_fetch_assoc($result)) {
+
+                        # code...
+                        echo '
+                        <tr>
+                        <td><center>'. $row["module_id"]."<br>".'</center></td>
+                        <td><center>'. $row["course_id"]."<br>".'</center></td>
+                        <td><center>'. $row["assessment_name"]."<br>".'</center></td>
+                        <td><center>'. $row["assessment_percentage"]."<br>".'</center></td>
+                        
+                        </tr>';
+                    }
+                }
+                else {
+                    
+                    echo "0 results";
+                }
+
+
+
+?>
+
+
+
+                </tbody>
 
 
             </table>
+            
         </div>
 
 
-        </table>
+
         </div>
+
         <!-- end my code -->
 
         <script>
@@ -304,46 +352,47 @@ else{
         //     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         //     xmlhttp.send("module=" + val);
         // }
-        function showAssessmentType(val1,val2) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("Module").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("POST", "controller/getAssessmentType", true);
-            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xmlhttp.send("course_id=" + val1 + "&module_id=" + val2);
+        function showAssessmentType(val1, val2) {
+                             var xmlhttp = new XMLHttpRequest();
+                             xmlhttp.onreadystatechange = function () {
+                                 if (this.readyState == 4 && this.status == 200) {
+                                     document.getElementById("Module").innerHTML = this.responseText;
+                                 }
+                             };
+                             xmlhttp.open("POST", "controller/getAssessmentType", true);
+                             xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                             xmlhttp.send("course_id=" + val1 + "&module_id=" + val2);
 
 
-        }
+                         }
+
         function showModule(val) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("Module").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("POST", "controller/getModule", true);
-            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xmlhttp.send("course=" + val);
-        }
+                             var xmlhttp = new XMLHttpRequest();
+                             xmlhttp.onreadystatechange = function () {
+                                 if (this.readyState == 4 && this.status == 200) {
+                                     document.getElementById("Module").innerHTML = this.responseText;
+                                 }
+                             };
+                             xmlhttp.open("POST", "controller/getModule", true);
+                             xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                             xmlhttp.send("course=" + val);
+                         }
 
 
 
         function IsInputNumber(evt) {
-            var ch = String.fromCharCode(evt.which);
+                             var ch = String.fromCharCode(evt.which);
 
-            if (!(/[0-9]/.test(ch))) {
-                evt.preventDefault();
-                alert("Please Enter Numbers Only For Assessment Percentage!");
-            } else if ((/[0-9]/.test(ch))) {
+                             if (!(/[0-9]/.test(ch))) {
+                                 evt.preventDefault();
+                                 alert("Please Enter Numbers Only For Assessment Percentage!");
+                             } else if ((/[0-9]/.test(ch))) {
 
 
 
-            }
+                             }
 
-        }
+                         }
         </script>
 
 

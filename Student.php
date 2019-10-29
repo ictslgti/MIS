@@ -18,6 +18,8 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <!-- form start---->
+
+
 <br>
 <h1 style="text-align:center"> SLGTI STUDENTS' INFORMATION </h1>
 <br><br>
@@ -31,7 +33,7 @@ include_once("menu.php");
 
     <div class="col-md-3 mb-3">
       <a href="AddStudent.php"><button type="button" class="btn btn-outline-primary"> ADD NEW STUDENT </button><a>
-      <button class="btn btn-sm btn-danger" data-href="?delete='.$row[student_id].'" data-toggle="modal" data-target="#confirm-delete"> <i class="fas fa-trash"></i> </button>
+      
     </div>
 </div><br>
 
@@ -79,18 +81,7 @@ include_once("menu.php");
    }
     
   ?>
-            <script>  
-                var table = document.getElementById('table');
-                
-                for(var i = 1; i < table.rows.length; i++)
-                {
-                    table.rows[i].onclick = function()
-                    {
-                         
-                    };
-                }
-    
-            </script>
+  </tbody>
 </table>
 </div>
 </div>

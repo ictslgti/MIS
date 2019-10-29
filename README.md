@@ -1,23 +1,11 @@
-# List of some basic Git commands to get you going with Git.
+Student Information System (SIS) is a web-based application software designed to introduce a conducive and structured information exchange environment for integrating students, parents, teachers and the administration of a college. Some > of the other software packages available for this purpose include Student Management System (SMS), Student Information Management System (SIMS) and Student Records System (SRS). These software systems enable educational institutions to supervise student-related activities such as keeping records of tests or examinations conducted, attendance, appraisal on performance including details of marks scored, particulars of everyday school attendance, and all other institution-related activities; in short, they provide a complete student records system. They are designed with diverse application potentials ranging from simple management of students’ records at school to management of all student-related functions as well as administrative functions of a university or a chain of educational establishments.
 
-### Create a working copy of a local repository:
-- **C:\wamp64\www>** git clone https://github.com/ictslgti/mis.git
-- **C:\wamp64\www>** cd mis
+***
 
-
-### Configure the author name and email address to be used with your commits.
-- **C:\wamp64\www\mis>** git config --global user.name "achchuthany"
-- **C:\wamp64\www\mis>** git config --global user.email achchuthan@slgti.com
-
-### Fetch and merge changes on the remote server to your working directory:
-- **C:\wamp64\www\mis>** git pull origin master
-
-### Add one or more files to staging (index):
-- **C:\wamp64\www\mis>** git add index.php
-### Commit changes to head (but not yet to the remote repository):
-- **C:\wamp64\www\mis>** git commit -m "index title changes“
-### Send changes to the master branch of your remote repository:
-- **C:\wamp64\www\mis>** git push -u origin master
-
-### clean the working tree
-- **C:\wamp64\www\mis>** git reset --hard
+### Features of Management Information System 
+* Admission of students to the institution
+* Centralised information sourcing and management
+* Centralised accounting and billing procedures
+* Monitoring student-related activities
+* Easy scheduling of examinations
+* Integrating parents, teachers and administrators 
