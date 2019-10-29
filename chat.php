@@ -43,7 +43,12 @@ function time_elapsed_string($datetime, $full = false) {
 
 <div class="row">
 <div class="col-6">
-<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+<div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+
+
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+                <h5 class=" border-gray pb-2 mb-0">Messages</h5>
+</div>
 </div>
 <?php
 
@@ -91,9 +96,9 @@ if(isset($_GET['chat_group'])){
                         aria-label="Write a message..." placeholder="Write a message..."
                         style="resize: none" id="chatBox"></textarea>
                         
-                        <button type="submit" name="send" class="btn btn-info mt-2 float-right" onclick="sendStatus()">SEND</button>
-                        </form>
                         
+                        </form>
+                        <button type="submit" name="send" class="btn btn-info mt-2 float-right" onclick="sendStatus()">SEND</button>
                 </div>
             </div>
 
@@ -139,7 +144,11 @@ if(isset($_GET['chat_group'])){
 <form class="form-inline md-form form-sm mt-4">
 <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search"aria-label="Search" id="search">
 <i class="fas fa-search ml-3" aria-hidden="true"></i>
+
+
+<a href="create_group.php" class="btn btn-outline-dark text-white text-right" role="button" aria-pressed="true">add new</a>
 </form>
+
 </div>
 </div>
 
@@ -147,11 +156,10 @@ if(isset($_GET['chat_group'])){
 
 <ul class="list-group list-group-flush ">
 <li class="list-group-item list-group-item-action"> 
-</ul>
+
 
 <?php
-$sql = "SELECT * FROM `chat_group` ";
-
+$sql = "CALL chat_group()"; 
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)> 0){
     while ($row = mysqli_fetch_assoc($result)){
@@ -174,7 +182,7 @@ echo "0 results";
            
 
 </div>
-
+</ul>
 
 
 
