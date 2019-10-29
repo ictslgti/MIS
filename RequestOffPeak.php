@@ -43,8 +43,8 @@ date_default_timezone_set("Asia/colombo");
          
            
             $tel =$_GET['tel'];
-           echo  $date =$_GET['dat'];
-            echo $time =$_GET['tim'];
+             $date =$_GET['dat'];
+             $time =$_GET['tim'];
             $ref =$_GET['rfe'];
                                                                               
             
@@ -52,9 +52,14 @@ date_default_timezone_set("Asia/colombo");
             $sql= "INSERT INTO `off_peak` (`student_id`, `name_of_applicant`, `department`, `contact_no`, `date`, `time`, `reson_for_exit`, `warden's_comment`, `status`) 
             VALUES (' $student_id', '$name', '$dept', '$tel', '$date', '$time', ' $ref', '', '');";
             if(mysqli_query($con,$sql)){
-                echo "new record create sucessfully ";
+              echo
+              '<div class="alert alert-success">
+              <strong>Success!</strong> Your data was inserted.</a>
+            </div>';
             }else{
-                echo "error :".$sql."<br>".mysqli_error($con);
+              echo '<div class="alert alert-warning">
+              <strong>Warning!</strong> Invalid data. Please Check Your Data !
+            </div>';
             }
            }
     

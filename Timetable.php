@@ -97,6 +97,13 @@ $today = date('Y-m-d');
     </div>
 </form>
 
+
+<!--entries
+<label>Show Entries <select name="dtHorizontalVerticalExample_length"
+ aria-controls="dtHorizontalVerticalExample" class="custom-select custom-select-sm form-control form-control-sm">
+    <option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label>
+-->
+
 <?php
  $weeks = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
 
@@ -104,7 +111,7 @@ $today = date('Y-m-d');
 <div class="row">
     <div class="col-md-12 col-sm-12">
         <div class="table-responsive">
-            <table class="table table-sm ">
+        <table id="dtHorizontalVerticalExample" >
                 <thead>
                     <tr>
                         <th scope="col" class="p-3 bg-info text-light" style="width: 8%;">Date : <?php echo $today;?>
@@ -112,7 +119,7 @@ $today = date('Y-m-d');
                         <?php
                         foreach ($weeks as $value) {
                           ?>
-                         <th scope="col" class="p-3 <?php if(date('l')==$value) echo ' bg-warning'; ?>" style="width: 6%;"> <?php echo $value; echo date("Y-m-d", strtotime("$today + " . (2) . " day"));?></th>
+                         <th scope="col" class="p-3 <?php if(date('l')==$value) echo ' bg-warning'; ?>" style="width: 6%;"> <?php echo $value; echo date("Y-m-d", strtotime("+1 week" . (1) . " day"));?></th>
                         
                         <?php
                         }
@@ -137,6 +144,7 @@ $today = date('Y-m-d');
             echo '</td>';   
         }
     ?>
+
                     </tr>
                     <tr class="table-secondary">
                         <th sclass="align-middle p-3" scope="row">10.00 AM - 10.30 AM</th>
@@ -202,6 +210,12 @@ $today = date('Y-m-d');
         </div>
     </div>
 </div>
+<ul class="pagination"><li class="paginate_button page-item previous disabled" id="dtHorizontalExample_previous">
+    <a href="#" aria-controls="dtHorizontalExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active">
+        <a href="#" aria-controls="dtHorizontalExample" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+    </li><li class="paginate_button page-item next disabled" id="dtHorizontalExample_next">
+    <a href="#" aria-controls="dtHorizontalExample" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul>
+
 
 
 <script>

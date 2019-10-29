@@ -12,28 +12,17 @@ include_once("menu.php");
 <?php
 if(isset($_GET['approve'])){
   $reg = $_GET['approve'];
-  $sql ="SELECT * FROM `off_peak` WHERE `student_id` = '$reg'";
+  $da = $_GET['date'];
+   $cmt = $_GET['cmt'];
+  
   $result = mysqli_query($con ,$sql);
  if(mysqli_num_rows($result)== 1){
       $row = mysqli_fetch_assoc($result);
      
-      $reg=$row["student_id"];
-      $noa=$row["name_of_applicant"];
-      $dept=$row["department"];
-      $cn=$row["contact_no"];
-      $da=$row["date"];
-      $ti=$row["time"];
-      $rfe=$row["reson_for_exit"];
-      $cmt=$_GET['cmt'];
-      // echo "approved";
-      // echo $dept;
+      
 
-      $sql = "UPDATE `off_peak` 
-          SET `name_of_applicant` = ' $noa', 
-          `department` = '$dept',
-          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`= '$cmt',`status`='Approved'
-          WHERE `off_peak`.`student_id` = '$reg' and `off_peak`.  `date`='$da' ";
-        
+       $sql = "UPDATE `off_peak` SET `status` = 'approved',`warden's_comment`= '$cmt' WHERE `off_peak`.`student_id` = '$reg' AND `off_peak`.`date` = '$da'";
+      
           if(mysqli_query($con,$sql)){
               echo "new record update sucessfully ";
           }else{
@@ -48,28 +37,16 @@ if(isset($_GET['approve'])){
 <?php
 if(isset($_GET['reject'])){
   $reg = $_GET['reject'];
-  $date = $_GET['date'];
-  $sql ="SELECT * FROM `off_peak` WHERE `student_id` = '$reg'";
+  $da = $_GET['date'];
+  $cmt = $_GET['cmt'];
+  
   $result = mysqli_query($con ,$sql);
  if(mysqli_num_rows($result)== 1){
       $row = mysqli_fetch_assoc($result);
-     
-      $reg=$row["student_id"];
-      $noa=$row["name_of_applicant"];
-      $dept=$row["department"];
-      $cn=$row["contact_no"];
-      $da=$row["date"];
-      $ti=$row["time"];
-      $rfe=$row["reson_for_exit"];
-      $cmt=$_GET['cmt'];
-      // echo "approved";
-      // echo $dept;
 
-      $sql = "UPDATE `off_peak` 
-          SET `name_of_applicant` = ' $noa', 
-          `department` = '$dept',
-          `contact_no` = ' $cn',`date` = ' $da',`time` = ' $ti',`reson_for_exit` = '$rfe',`warden's_comment`='$cmt',`status`='Rejected'
-          WHERE `off_peak`.`student_id` = '$reg' and `off_peak`. `date`='$da' ";
+      $sql = "UPDATE `off_peak` SET `status` = 'Rejected',`warden's_comment`= '$cmt' WHERE `off_peak`.`student_id` = '$reg' AND `off_peak`.`date` = '$da'";
+     
+     
         
           if(mysqli_query($con,$sql)){
               echo "new record update sucessfully ";
@@ -116,7 +93,7 @@ if(isset($_GET['reject'])){
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-     $reg = $row["registration_no"];
+     $reg = $row["student_id"];
       
     echo '<tr>
       
@@ -136,6 +113,7 @@ if(isset($_GET['reject'])){
 
       <button type="submit" class="btn btn-danger btn-sm" name="reject" value="'.$reg.'"><i class="fas fa-thumbs-down"></i>  Reject</button></td>
       <input type="hidden" name="date" value="'.$row["date"].'">
+      
       </form>
     </tr>
     

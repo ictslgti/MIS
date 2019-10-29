@@ -34,28 +34,29 @@ include_once("menu.php");
     <li class="list-group-item list-group-item-action"> 
   <?php
 
-$sql = "SELECT`student_fullname` FROM `student` ";
+$sql = "CALL std_full_name() ";
 
 $result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result)> 0){
+if (mysqli_num_rows($result)> 0){?>
+<form action="#" method="post">
+  <?php
     while ($row = mysqli_fetch_assoc($result)){
         echo'
         <tr><i class="fas fa-user-circle"></i>
         <td>' . $row ["student_fullname"].'</td>
         
-       <input type="checkbox" aria-label="Checkbox for following text right"></input>
+       <input type="checkbox" name="check_list[]" aria-label="Checkbox for following text right"></input>
   
         <small id="emailHelp" class="form-text text-muted float-center">
         </small><li class="list-group-item list-group-item-action">
         
         </tr>';
-    }
+    }?>
+    </form>
+    <?php
 }else{
 echo "0 results";
 }
-
-
-
 ?> 
 
 
@@ -83,9 +84,19 @@ echo "0 results";
 <div>
 
 
+<button type="button" name="create" class="btn btn-outline-dark float-right rounded-circle"><i class="fas fa-plus"></i></button>
 
+<?php
+if(isset($_POST['create'])){//to run PHP script on submit
+if(!empty($_POST['check_list'])){
+// Loop to store and display values of individual checked checkbox.
+foreach($_POST['check_list'] as $selected){
+echo $selected."</br>";
+}
+}
+}
+?>
 
-<button type="button" class="btn btn-outline-dark float-right rounded-circle"><i class="fas fa-plus"></i></button>
 <?php
 
 $id= $name = null;
