@@ -32,7 +32,7 @@ if(isset($_POST['Add'])){
       
 
       $sql="INSERT INTO `ojt`(`student_id`, `student_name`,  `phone_no`, `e_mail`, `department_name`, `final_place`, `final_address`) 
-      VALUES ('$StudentID', '$StudentName',  '$PNO', '$Email', '$DepartmentName','$Finalplace','$Address')";
+      VALUES ('$StudentID', '$StudentName', '$PNO', '$Email', '$DepartmentName','$Finalplace','$Address')";
 
       if(mysqli_query($con,$sql))
       {
@@ -93,6 +93,15 @@ if(isset($_POST['Add'])){
 
 if(isset($_POST['update'])){
 
+  if(
+    !empty($_POST['StudentID'])
+    &&!empty($_POST['StudentName'])
+    &&!empty($_POST['PNO'])
+    &&!empty($_POST['Email'])
+    &&!empty($_POST['DepartmentName'])
+    &&!empty($_POST['Finalplace'])
+    &&!empty($_POST['Address'])){ 
+
     $StudentID=$_POST['StudentID'];
     $StudentName=$_POST['StudentName'];
     $PNO=$_POST['PNO'];
@@ -102,13 +111,14 @@ if(isset($_POST['update'])){
     $Address=$_POST['Address'];
     
 
-    $sql="UPDATE `ojt` SET `student_name`=$StudentName,`phone_no`=$PNO,`e_mail`=$Email,`department_name`=$DepartmentName,`final_place`=$Finalplace,`final_address`=$Address, WHERE `student_id`=$StudentID,";
+    $sql="UPDATE `ojt` SET `student_name`='$StudentName',`phone_no`='$PNO',`e_mail`='$Email',`department_name`='$DepartmentName',
+    `final_place`='$Finalplace',`final_address`='$Address', WHERE `student_id`='$StudentID',";
 
     if(mysqli_query($con,$sql))
     {
       echo '
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>'.$StudentName.'</strong> Student details updated
+        <strong>'.$StudentID.'</strong> Student details updated
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -119,7 +129,7 @@ if(isset($_POST['update'])){
       
       echo '
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong>'.$StudentName.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+      <strong>'.$StudentID.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
       </button>
@@ -130,8 +140,7 @@ if(isset($_POST['update'])){
 
     }
 
-  
-
+    }
 }
 ?>
 
@@ -219,7 +228,7 @@ if(isset($_POST['update'])){
                     <span class="input-group-text font-weight-bolder"><i class="far fa-building"></i>Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     </div>
                     <select id="DepartmentName" name="DepartmentName" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['DepartmentName'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['DepartmentName'])){echo ' is-valid';} ?>" required>
-                    <option value="null" selected disabled>--Select Department--</option>
+                    <option value="<?php echo $DepartmentName; ?>" selected disabled>--Select Department--</option>
                   <?php          
                   $sql = "SELECT * FROM `department`";
                   $result = mysqli_query($con, $sql);
@@ -259,30 +268,26 @@ if(isset($_POST['update'])){
                     </div>
                     </div>
 
-                    <div>
-                    <?PHP 
-                    echo '<div class="btn-group-horizontal">';
+                    <div class="form-row pt-3">
+    <?PHP 
+  echo '<div class="btn-group-horizontal">';
 
-                    if(isset($_GET['edit'])){
-                      if(!isset($_GET['update']) && !isset($_GET['reset'])){
-                        echo '<button type="submit" class="btn btn-outline-primary font-weight-bolder" mr-2" name="update" value="update"><i class="fas fa-user-edit"></i>   Update</button>';
-                        }
-                    echo'<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+    if(isset($_GET['edit'])){
+      echo '<button type="submit"  value="update" name="update" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 
-                    }if(isset($_GET['delete']))
-                    {
-                    echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
+    }if(isset($_GET['delete']))
+    {
+      echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
 
-                    }if(!isset($_GET['delete']) && !isset($_GET['edit'])){
-                    echo '<button type="submit" class="btn btn-outline-primary font-weight-bolder" mr-2" name="Add" value="Add"><i class="fas fa-user-plus"></i>   ADD</button>';
-                    }
+    }if(!isset($_GET['delete']) && !isset($_GET['edit'])){
+      echo '<button type="submit" value="Add" name="Add" onclick="disable()" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>ADD</button>';
 
-                   
+    }
       
-                    echo '</div>';
-                    ?>
-                
-                    </div>
+      echo '</div>';
+      ?>
+  </div>
                    
                     
                 </form>
