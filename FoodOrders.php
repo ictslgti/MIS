@@ -113,13 +113,18 @@ $title = "Home | SLGTI";
 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+
+
+
+
+ <!-- FOOD MENU DESIGN    -->
     <div class="row shadow  p-3 mt-1 bg-info text-white">
     <div class="col-sm-12 col-md-4 col-lg-9">
     <h1 class="text-center">EAT GOOD FEEL GOOD</h1>
     </div>
     </div>
 
- <!-- FOOD MENU DESIGN    -->
+
 
  <div class="row">
 
@@ -286,7 +291,7 @@ $title = "Home | SLGTI";
                     </div>
 
                     <div class="row">
-                        <a href="OrderView.php" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="button"><h2><i class="fas fa-shopping-cart"></i> Order Now</h2></button></a>
+                        <a href="OrderView.php" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="Order"><h2><i class="fas fa-shopping-cart"></i> Order Now</h2></button></a>
                     </div>
                     
                 </div>
