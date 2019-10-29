@@ -166,7 +166,7 @@ $title = "Home | SLGTI";
                 <img src="docs/canteen/<?php echo $img;?>" class="card-img-top" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title"><?php echo $idly;?> <a href="#" class="badge badge-info"><?php echo $uqty.'-'.$mea; ?> </a>
-                <p class="card-text"> <?php echo 'LK'.$pri; ?></p>
+                <p class="card-text"> Rs <?php echo $pri; ?></p>
                 
                 <form method="POST" action="#"> 
                 <div class="row">
@@ -226,8 +226,8 @@ $title = "Home | SLGTI";
 				<tr>
 					<td><?php echo $values["item_name"]; ?></td>
 					<td><?php echo $values["item_quantity"]; ?></td>
-					<td> <?php echo $values["item_price"]; ?></td>
-					<td> <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
+					<td>Rs <?php echo $values["item_price"]; ?></td>
+					<td>Rs <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
 					<td><a href="FoodOrders.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
 				</tr>
 			<?php	
@@ -286,7 +286,7 @@ $title = "Home | SLGTI";
                             <p><h2>Total</h2></p>
                         </div>
                         <div class="col">
-                            <p><h2><?php echo number_format($total, 2); ?></h2></p>
+                            <p><h2>Rs <?php echo number_format($total, 2); ?></h2></p>
                         </div>
                     </div>
 
