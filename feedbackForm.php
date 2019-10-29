@@ -73,7 +73,7 @@ include_once("menu.php");
                             $result = mysqli_query($con, $sql);
                             if (mysqli_num_rows($result) > 0) {
 
-                            while($row = mysqli_fetch_assoc($result)) {
+                            $row = mysqli_fetch_assoc($result);
                                 $survey_id=$row["survey_id"];
                                echo '
                                <th scope="col" name="survey_id">' . $row["survey_id"]. '</th>
@@ -84,7 +84,7 @@ include_once("menu.php");
                                
                                ';
                                
-                            }
+                            
                             } else {
                             echo "0 results";
                             }
@@ -743,7 +743,15 @@ include_once("menu.php");
                     <div class="col">
                       <div class="form-group">
                         <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button> -->
-                        <input type="submit" value="Submit" name="add" class="btn btn-primary btn-lg btn-block">
+                        <?php 
+                        $C_date=date('Y-m-d');
+                        echo $row["end_date"]<$C_date ?
+                           '<h6>End Date Not valid<h6>': 
+                    '<input type="submit" value="Submit" name="add" class="btn btn-primary btn-lg btn-block">';
+                   
+                    echo  $row["end_date"];
+                        ?>
+                        
                       </div>
                     </div>
                 </div>
@@ -753,47 +761,53 @@ include_once("menu.php");
 </form>
 
 <?php
-if (isset($_POST['add'])) {
-    if (!empty($_POST['feedback_q1'])&&!empty($_POST['feedback_q2'])&&
-    !empty($_POST['feedback_q3'])&&!empty($_POST['feedback_q4'])&&
-    !empty($_POST['feedback_q5'])&&!empty($_POST['feedback_q6'])&&
-    !empty($_POST['feedback_q7'])&&!empty($_POST['feedback_q8'])&&
-    !empty($_POST['feedback_q9'])&&!empty($_POST['feedback_q10'])&&
-    !empty($_POST['feedback_q11'])&&!empty($_POST['feedback_q12'])&&
-    !empty($_POST['feedback_q13'])&&!empty($_POST['feedback_q14'])&&
-    !empty($_POST['feedback_q15'])&&!empty($_POST['feedback_q16'])&&
-    !empty($_POST['feedback_q17'])&&!empty($_POST['feedback_q18'])&&!empty($_POST['feedback_commond'])){
-        $feedback_q1 = $_POST['feedback_q1'];
-        $feedback_q2 = $_POST['feedback_q2'];
-        $feedback_q3 = $_POST['feedback_q3'];
-        $feedback_q4 = $_POST['feedback_q4'];
-        $feedback_q5 = $_POST['feedback_q5'];
-        $feedback_q6 = $_POST['feedback_q6'];
-        $feedback_q7 = $_POST['feedback_q7'];
-        $feedback_q8 = $_POST['feedback_q8'];
-        $feedback_q9 = $_POST['feedback_q9'];
-        $feedback_q10 = $_POST['feedback_q10'];
-        $feedback_q11 = $_POST['feedback_q11'];
-        $feedback_q12 = $_POST['feedback_q12'];
-        $feedback_q13 = $_POST['feedback_q13'];
-        $feedback_q14 = $_POST['feedback_q14'];
-        $feedback_q15 = $_POST['feedback_q15'];
-        $feedback_q16 = $_POST['feedback_q16'];
-        $feedback_q17 = $_POST['feedback_q17'];
-        $feedback_q18 = $_POST['feedback_q18'];
-        $feedback_commond = $_POST['feedback_commond'];
 
-        $sql="INSERT INTO `feedback` (`feedback_q1`, `feedback_q2`, `feedback_q3`, `feedback_q4`, `feedback_q5`, `feedback_q6`, `feedback_q7`, `feedback_q8`, `feedback_q9`, `feedback_q10`, `feedback_q11`, `feedback_q12`, `feedback_q13`, `feedback_q14`, `feedback_q15`, `feedback_q16`, `feedback_q17`, `feedback_q18`, `feedback_commond`, `survey_id`) VALUES('$feedback_q1','$feedback_q2','$feedback_q3','$feedback_q4','$feedback_q5','$feedback_q6','$feedback_q7','$feedback_q8','$feedback_q9','$feedback_q10','$feedback_q11','$feedback_q12','$feedback_q13','$feedback_q14','$feedback_q15','$feedback_q16','$feedback_q17','$feedback_q18','$feedback_commond','$survey_id')";
-        if(mysqli_query($con,$sql)){
-            $message ="New record created successfully";
-            echo "<script type='text/javascript'> alert('$message');</script>";
-        }else{
-            echo "Error :-".$sql.
-          "<br>"  .mysqli_error($con);
+
+
+    if (isset($_POST['add'])) {
+        if (!empty($_POST['feedback_q1'])&&!empty($_POST['feedback_q2'])&&
+        !empty($_POST['feedback_q3'])&&!empty($_POST['feedback_q4'])&&
+        !empty($_POST['feedback_q5'])&&!empty($_POST['feedback_q6'])&&
+        !empty($_POST['feedback_q7'])&&!empty($_POST['feedback_q8'])&&
+        !empty($_POST['feedback_q9'])&&!empty($_POST['feedback_q10'])&&
+        !empty($_POST['feedback_q11'])&&!empty($_POST['feedback_q12'])&&
+        !empty($_POST['feedback_q13'])&&!empty($_POST['feedback_q14'])&&
+        !empty($_POST['feedback_q15'])&&!empty($_POST['feedback_q16'])&&
+        !empty($_POST['feedback_q17'])&&!empty($_POST['feedback_q18'])&&!empty($_POST['feedback_commond'])){
+            $feedback_q1 = $_POST['feedback_q1'];
+            $feedback_q2 = $_POST['feedback_q2'];
+            $feedback_q3 = $_POST['feedback_q3'];
+            $feedback_q4 = $_POST['feedback_q4'];
+            $feedback_q5 = $_POST['feedback_q5'];
+            $feedback_q6 = $_POST['feedback_q6'];
+            $feedback_q7 = $_POST['feedback_q7'];
+            $feedback_q8 = $_POST['feedback_q8'];
+            $feedback_q9 = $_POST['feedback_q9'];
+            $feedback_q10 = $_POST['feedback_q10'];
+            $feedback_q11 = $_POST['feedback_q11'];
+            $feedback_q12 = $_POST['feedback_q12'];
+            $feedback_q13 = $_POST['feedback_q13'];
+            $feedback_q14 = $_POST['feedback_q14'];
+            $feedback_q15 = $_POST['feedback_q15'];
+            $feedback_q16 = $_POST['feedback_q16'];
+            $feedback_q17 = $_POST['feedback_q17'];
+            $feedback_q18 = $_POST['feedback_q18'];
+            $feedback_commond = $_POST['feedback_commond'];
+    
+            $sql="INSERT INTO `feedback` (`feedback_q1`, `feedback_q2`, `feedback_q3`, `feedback_q4`, `feedback_q5`, `feedback_q6`, `feedback_q7`, `feedback_q8`, `feedback_q9`, `feedback_q10`, `feedback_q11`, `feedback_q12`, `feedback_q13`, `feedback_q14`, `feedback_q15`, `feedback_q16`, `feedback_q17`, `feedback_q18`, `feedback_commond`, `survey_id`) VALUES('$feedback_q1','$feedback_q2','$feedback_q3','$feedback_q4','$feedback_q5','$feedback_q6','$feedback_q7','$feedback_q8','$feedback_q9','$feedback_q10','$feedback_q11','$feedback_q12','$feedback_q13','$feedback_q14','$feedback_q15','$feedback_q16','$feedback_q17','$feedback_q18','$feedback_commond','$survey_id')";
+            if(mysqli_query($con,$sql)){
+                $message ="New record created successfully";
+                echo "<script type='text/javascript'> alert('$message');</script>";
+            }else{
+                echo "Error :-".$sql.
+              "<br>"  .mysqli_error($con);
+            }
+           
         }
-       
     }
-}
+
+
+
     ?>
 
      <!-- ,`staff_name`,`course_name`,`module_name`,`survey_id`,'$staff_name','$course_name','$module_name','$survey_id' -->

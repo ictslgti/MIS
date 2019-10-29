@@ -116,7 +116,7 @@ if(isset($_GET['reject'])){
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-     $reg = $row["registration_no"];
+     $reg = $row["student_id"];
       
     echo '<tr>
       

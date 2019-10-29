@@ -15,7 +15,7 @@ $title = "Home | SLGTI";
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <?PHP
-$id=$sid=$student_name=$department_id=$contact_no=$reason=$exit_date=$exit_time=$return_date=$return_time=$status=$request_date=$request_time=null;
+$id=$sid=$department_id=$contact_no=$reason=$exit_date=$exit_time=$return_date=$return_time=$comment=null;
 
 if(isset($_POST['Add'])){
 
@@ -27,7 +27,7 @@ if(isset($_POST['Add'])){
     &&!empty($_POST['exit_time'])
     &&!empty($_POST['return_date'])
     &&!empty($_POST['return_time'])
-    &&!empty($_POST['status'])){
+    &&!empty($_POST['comment'])){
 
      
       $sid=$_POST['student_id'];
@@ -38,18 +38,18 @@ if(isset($_POST['Add'])){
       $exit_time=$_POST['exit_time'];
       $return_date=$_POST['return_date'];
       $return_time=$_POST['return_time'];
-      $status=$_POST['status'];
+      $comment=$_POST['comment'];
       
      
     
-       $sql= "INSERT INTO `onpeak_request`(`student_id`, `department_id`, `contact_no`, `reason`, `exit_date`, `exit_time`, `return_date`, `return_time`, `onpeak_request_status`) 
-       VALUES ('$sid','$department_id','$contact_no','$reason','$exit_date','$exit_time','$return_date','$return_time','$status')";
+       $sql= "INSERT INTO `onpeak_request`(`student_id`, `department_id`, `contact_no`, `reason`, `exit_date`, `exit_time`, `return_date`, `return_time`, `comment`) 
+       VALUES ('$sid','$department_id','$contact_no','$reason','$exit_date','$exit_time','$return_date','$return_time','$comment')";
 
       if(mysqli_query($con,$sql))
       {
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$student_name.'</strong> Staff details inserted
+          <strong>'.$sid.'</strong> Request Submitted
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -60,7 +60,7 @@ if(isset($_POST['Add'])){
         
         echo '
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>'.$student_name.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <strong>'.$sid.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -92,11 +92,12 @@ if(isset($_POST['Add'])){
 </div>
 
 <!-- card start here-->
-<form method="POST" action="#">
+
 <div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
 <br>    
 <div class="table container">    
     <div class="container">
+    <form method="POST" action="#">   
         <div class="intro">
 
         <div class="input-group mb-3">
@@ -114,7 +115,7 @@ if(isset($_POST['Add'])){
                         <label class="input-group-text" for="inputGroupSelect01"> 
                             <i class="fas fa-fingerprint"> </i>&nbsp;&nbsp;Registration No&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" name="sid" type="text"  value="<?php echo  $student_id; ?>" disabled required readonly>
+                    <input class="form-control" name="student_id" type="text"  value="<?php echo  $student_id; ?>" disabled required readonly>
         </div>
 
 <br>       
@@ -122,16 +123,16 @@ if(isset($_POST['Add'])){
         <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">
-                            <i class="fas fa-school"></i>&nbsp;&nbsp;Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <i class="fas fa-school"></i>&nbsp;&nbsp;Department ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <select class="browser-default custom-select" name="department_id" id="Departmentx"  onchange="showCouese(this.value)" required>
-                       <option value="1"> Department of Information & Communication Technology </option> 
+                    <select class="browser-default custom-select" name="department_id"   onchange="showCouese(this.value)" required>
+                       <option value="1"> Select the Department ID </option> 
                                 <?php
                                     $sql="select * from `department`";
                                     $result = mysqli_query($con,$sql);
                                     if (mysqli_num_rows($result) > 0 ) {
                                     while($row=mysqli_fetch_assoc($result)){
-                                    echo '<option  value="'.$row["department_id"].'" required>'.$row["department_name"].'</option>';
+                                    echo '<option  value="'.$row["department_id"].'" required>'.$row["department_id"].'</option>';
                                     }}   
                                 ?>
                     </select>
@@ -218,6 +219,18 @@ if(isset($_POST['Add'])){
         </div>
 
 <br>
+
+        <div class =row>
+            <div class="col">
+            <input type="date" id="dath"  name="dath"  value ="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="" disabled>
+            <input type="hidden" id="dat"  name="dat"  value ="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="" >
+
+            <input type="time" id="timh" name="timh"  value ="<?php echo date("H:i"); ?>" class="form-control" placeholder=""   required disabled>
+            <input type="hidden" id="tim" name="tim"  value ="<?php echo date("H:i"); ?>" class="form-control" placeholder=""   required >
+            </div>
+        </div>
+
+<br>
         
         <div class=row>
             <div class="col">
@@ -232,8 +245,7 @@ if(isset($_POST['Add'])){
         <div class="row">
             <div class="col">
                 <div class="mx-auto" style="width: 200px;">
-                <button type="button" class="btn btn-primary " name="Add" value="Add"><i class="fab fa-telegram"></i>&nbsp;&nbsp;&nbsp;Request to approval</button>
-                   
+                <button type="button" class="btn btn-primary " name="Add"> <i class="fab fa-telegram"></i>&nbsp;&nbsp;&nbsp;Request to approval</button>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ if(isset($_POST['payment_type'])){
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0) {
         while($row = mysqli_fetch_assoc($result)) {
-        echo '<option  value="'.$row["payment_type"].'" required>'.$row["payment_reason"].'</option>';
+        echo '<option  value="'.$row["payment_reason"].'" required>'.$row["payment_reason"].'</option>';
         }
     }else{
         echo '<option value="null"   selected disabled>-- No reason --</option>';
