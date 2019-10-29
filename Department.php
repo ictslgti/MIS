@@ -71,14 +71,15 @@ include_once("menu.php");
     <!-- <button type="submit" formaction="academic.php" value="Add" name="Add"  class="btn btn-link">Add</button> </td>                            -->
     </tr>
     
+
 <?php
 
 if(isset($_GET['delete'])){
     $department_id = $_GET['delete'];
-    $sql = "";
+    $sql = "DELETE FROM `department` WHERE `department_id` = '$department_id'";
     
     if (mysqli_query($con, $sql)){
-        echo '';
+        echo '<a class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
     }else{
         echo "Error deleting record:" . mysqli_error($con);
     }
@@ -87,7 +88,7 @@ if(isset($_GET['delete'])){
 ?>
     <?php
 
-$sql = "SELECT `department_id`, `department_name` FROM `department`";
+$sql = "call department()";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)>0){
     while ($row = mysqli_fetch_assoc($result)){
@@ -193,20 +194,7 @@ echo "0 results";
 </table>
 </div>
 
-<?php
 
-if(isset($_GET['delete'])){
-    $department_id = $_GET['delete'];
-    $sql = "DELETE FROM `department` WHERE `department_id` = '$department_id'";
-    
-    if (mysqli_query($con, $sql)){
-        echo '<a class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
-    }else{
-        echo "Error deleting record:" . mysqli_error($con);
-    }
-}
-
-?>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->
