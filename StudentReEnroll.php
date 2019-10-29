@@ -26,9 +26,9 @@ include_once("menu.php");
     if(isset($_GET['edit']))
     {
      //echo 'coid'.$_POST['coid']; 
-      $stid =$_GET['edit'];
-      $coid =$_GET['edit'];
-      $sql = "SELECT `student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`,`student_enroll_status`
+      echo $stid =$_GET['edit'];
+      echo $coid =$_GET['edit'];
+      echo $sql = "SELECT `student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`,`student_enroll_status`
       FROM `student_enroll`where student_id ='$stid' and course_id ='$coid'";
       $result = mysqli_query($con,$sql);
 
@@ -36,8 +36,8 @@ include_once("menu.php");
         {
           echo "welcom";
         $row =mysqli_fetch_assoc($result);
-        $coid = $row['course_id'];
         $stid = $row['student_id'];
+        $coid = $row['course_id'];
         $mode = $row['course_mode'];
         $year = $row['academic_year'];
         $enstatus =$row['student_enroll_status'];
@@ -252,15 +252,15 @@ include_once("menu.php");
                    echo '
                    <tr style="text-align:left";>
                         <td scope="row">'.$num."<br>".'</td>
-                        <td>'. $row["student_id"]."<br>".'</td>
-                        <td>'. $row["course_id"]."<br>".'</td>
-                        <td>'. $row["course_mode"]."<br>".'</td>
-                        <td>'. $row["academic_year"]."<br>".'</td>
-                        <td>'. $row["student_enroll_date"]."<br>".'</td>
-                        <td>'. $row["student_enroll_exit_date"]."<br>".'</td>
-                        <td>'. $row["student_enroll_status"]."<br>".'</td>
+                        <td>'.$row["student_id"]."<br>".'</td>
+                        <td>'.$row["course_id"]."<br>".'</td>
+                        <td>'.$row["course_mode"]."<br>".'</td>
+                        <td>'.$row["academic_year"]."<br>".'</td>
+                        <td>'.$row["student_enroll_date"]."<br>".'</td>
+                        <td>'.$row["student_enroll_exit_date"]."<br>".'</td>
+                        <td>'.$row["student_enroll_status"]."<br>".'</td>
                         <td>
-                        <a href="StudentReEnroll.php? edit='.$row["student_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
+                        <a href="StudentReEnroll.php?edit='.$row["student_id"].'&&?edit='.$row["course_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
                         <a href="?Student_Id='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i></td>
                    </tr>';
                   $num=$num+1;
