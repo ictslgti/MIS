@@ -126,6 +126,7 @@ if(isset($_GET['edit']))
     &&!empty($_POST['email']) && !empty($_POST['nic']) && !empty($_POST['dob']) && !empty($_POST['phone']) && !empty($_POST['address']) && !empty($_POST['zip']) && !empty($_POST['district']) 
     &&!empty($_POST['ds']) && !empty($_POST['province']) && !empty($_POST['blood']) && !empty($_POST['Ename']) && !empty($_POST['addressE']) && !empty($_POST['Ephone']) 
     &&!empty($_POST['relation']))
+    
      {
        echo "SUCCESS";
         $stid=$_POST['sid'];
@@ -135,6 +136,10 @@ if(isset($_GET['edit']))
         $gender=$_POST['gender'];
         $civil=$_POST['civil'];
         $email=$_POST['email'];
+         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+         {
+          $emailErr = "Invalid email format";
+         }
         $nic=$_POST['nic'];
         $dob=$_POST['dob'];
         $phone=$_POST['phone'];
@@ -521,7 +526,7 @@ if(isset($_POST['Edit']))
 
           <div class="col-md-3 mb-3">
             <label for="nic"> NIC: </label>
-            <input type="text" class="form-control" id="nic" name="nic" value="<?php echo $nic; ?>" placeholder=""  required>
+            <input type="text" class="form-control" id="nic" name="nic" max="12" min="10" value="<?php echo $nic; ?>" placeholder=""  required>
           </div>
           
           <div class="col-md-2 mb-3">
@@ -531,7 +536,7 @@ if(isset($_POST['Edit']))
 
           <div class="col-md-3 mb-3">
             <label for="phone"> Phone No: </label>
-            <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $phone; ?>" placeholder=""  required>
+            <input type="text" class="form-control" id="phone" name="phone" maxlength="10" minlength="10" value="<?php echo $phone; ?>" placeholder=""  required>
           </div>
     </div>    
 
@@ -633,7 +638,9 @@ if(isset($_POST['Edit']))
             <!-- <input name="qualification" id="qualification" class="form-control" type="text" value="" > -->
 
             <select name="qualification" id="qualification" class="custom-select" value="<?php echo $qutype; ?>" required>
-            <option value="null">-Qualification-</option>
+              <option value="null">-Qualification-</option>
+              <option value="O/L">O/L</option>
+              <option value="A/L">A/L</option>
               <option value="NVQ3">NVQ3</option>
               <option value="NVQ4">NVQ4</option>
               <option value="NVQ5">NVQ5</option>
@@ -660,22 +667,12 @@ if(isset($_POST['Edit']))
             <input type="text" class="form-control" id="result" name="result" placeholder="" value="<?php echo $results; ?>"  required>
         </div>
 
-        <?php
-            // echo '<div class="btn-group-horizontal">';
-
-            // if(isset($_GET['edit']))
-            // {
-            //   echo '<button type="submit" value="edit" name="edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-            //   echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
-            // }
-            // else
-            // {
-            //   echo '<button type="submit" value="add" name="add"  class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>ADD</button>';
-            //   echo '<button type="submit" value="edit" name="edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-            // }
-            // echo '</div>';
-        ?>  
-      </div>
+        <div class="col-md-6 mb-3"></div>
+        <div class="btn-group-horizontal">
+           <button type="submit" value="addq" name="addq"  class="btn btn-primary mr-2" style="float:right"><i class="fas fa-user-plus"></i>ADD</button><br><br>
+           <button type="submit" value="editq" name="editq" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button> 
+        </div>
+    </div><br>
         
         <div class="form-row">
         <div id="results-student_education" class="form-group table-responsive">               
@@ -768,7 +765,7 @@ if(isset($_POST['Edit']))
     <div class="form-row">
         <div class="col-md-3 mb-3">
           <label for="Ephone">Phone No :</label>
-          <input type="text" class="form-control" id="Ephon" name="Ephone" value="<?php echo $ephone; ?>" placeholder=""  required>
+          <input type="text" class="form-control" id="Ephon" maxlength="10" minlength="10" name="Ephone" value="<?php echo $ephone; ?>" placeholder=""  required>
         </div>
     
         <div class="col-md-3 mb-3">

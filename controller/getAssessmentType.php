@@ -34,5 +34,22 @@ if(isset($_POST['assessmentType'])){
 }
 
 
+if(isset($_POST['academyYear'])){
+    $id = $_POST['academyYear'];
+    echo '<option value="null"  selected disabled>-- Select Academy Year --</option>';
+    $sql = "SELECT * FROM `assessments`  WHERE `assessment_type_id` = '$id'";
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+        echo '<option  value="'.$row["assessment_type_id"].'" required>['.$id.'-'.$row["academic_year"].']</option>';
+        // echo '<option value="'.$row["assessment_type_id"].'" required></option>';
+        }
+    }else{
+        echo '<option value="null"   selected disabled>-- No Academy Year --</option>';
+    }
+
+}
+
+
 
 ?>

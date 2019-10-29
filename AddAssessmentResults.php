@@ -15,20 +15,20 @@ $title = "Examinations | SLGTI";
     $ictDepartmentName = "Department Of Information & Communication Technology";
     ?>
 
-<div class="shadow p-3 mb-5 bg-white rounded">
+        <div class="shadow p-3 mb-5 bg-white rounded">
 
-        <div class="highlight-blue">
-            <div class="container">
-                <div class="intro">
-                    <h1 class="display-4 text-center">Asignments Portal</h1>
-                    <H3 class="display-5 text-center"><?php echo $ictDepartmentName ?></H3>
-                    <p class="text-center">Welcome to examinations portal for lectures or admin. This section to add
-                        examinations and assignments/asessments results&nbsp;</p>
+            <div class="highlight-blue">
+                <div class="container">
+                    <div class="intro">
+                        <h1 class="display-4 text-center">Asignments Portal</h1>
+                        <H3 class="display-5 text-center"><?php echo $ictDepartmentName ?></H3>
+                        <p class="text-center">Welcome to examinations portal for lectures or admin. This section to add
+                            examinations and assignments/asessments results&nbsp;</p>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
         <!-- card start -->
 
@@ -45,7 +45,7 @@ $title = "Examinations | SLGTI";
             </div>
             <!-- </div> -->
         </div>
-    
+
         <!-- end start -->
 
         <br>
@@ -55,23 +55,22 @@ $title = "Examinations | SLGTI";
 
 
             <!-- mainform start  -->
-           
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01"><i
-                                class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    </div>
-                    <select class="custom-select" id="inputGroupSelect01" onchange="showModule(this.value)">
-                        <!-- <option selected>Choose...</option>
-                        <option value="1">Semister 1</option>
-                        <option value="2">Semister 2</option> -->
 
-                        <?php
-                  $sql = "SELECT * FROM `assessments_type`";
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01"><i
+                            class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
+                        Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                <select class="custom-select" id="course" name="course" onchange="showAssessments(this.value)" required>
+                    <option value="null" selected disabled>--Select Course--</option>
+
+                    <?php
+                  $sql = "SELECT * FROM `assessments`";
                   $result = mysqli_query($con, $sql);
                   if (mysqli_num_rows($result) > 0) {
                   while($row = mysqli_fetch_assoc($result)) {
-                    echo '<option  value="'.$row["course_id"].'" required>'.$row["course_name"].'</option>';
+                    echo '<option  value="'.$row["course_id"].'" required>'.$row["course_id"].'</option>';
                   }
                   }else{
                     echo '<option value="null"   selected disabled>-- No Course --</option>';
@@ -79,70 +78,62 @@ $title = "Examinations | SLGTI";
                   ?>
 
 
-                    </select>
+
+
+
+                </select>
+            </div>
+
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01"><i
+                            class="fas fa-book-open"></i>&nbsp;&nbsp;Select
+                        Assessment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 </div>
+                <select class="custom-select" id="assessmentsType" name="assessmentsType" onchange="showAcademyYear(this.value)" required>
+                    <option value="null" selected disabled>--Select Assessment--</option>
 
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01"><i
-                                class="fas fa-book-open"></i>&nbsp;&nbsp;Select
-                            Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+
+
+
+
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01"><i
+                            class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Academic Year</label>
+                </div>
+                <select class="custom-select" id="AcademyYear" name="AcademyYear">
+                    <option selected>Choose...</option>
+                    
+                </select>
+            </div>
+
+            <br>
+
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        <!-- main button  -->
+                        <button type="button" class="btn btn-outline-primary" id="students" name="students" onclick="showStudents(this.value)" ><i class="fas fa-plus"></i>&nbsp;Ok
+                        </button>
                     </div>
-                    <select class="custom-select" id="Module" name="module_name">
-                    <option value="null" selected disabled>--Select Module--</option>
-                        <!-- <option selected>Graphic Design</option>
-                        <option value="1">Programming</option>
-                        <option value="2">Database 1</option>
-                        <option value="3">System Analysis and Design</option>
-                        <option value="3">Manage Workplace</option>
-                        <option value="3">Manage Workplace & Communication</option> -->
-                    </select>
                 </div>
+            </div>
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01"><i
-                                class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Asignments</label>
-                    </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>Choose...</option>
-                        <option value="1">A1</option>
-                        <option value="2">A2</option>
-                    </select>
-                </div>
-
-                <br>
-
-                <div class="container">
-                    <div class="row justify-content-md-center">
-                        <div class="col-md-auto">
-                            <!-- main button  -->
-                            <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus"></i>&nbsp;Ok
-                                </button>
-                        </div>
-                    </div>
-                </div>
-           
             <!-- main form end -->
 
             <br>
             <br>
             <br>
 
-            <?php
-        // modules for ict sem1
-     $Sem1module1 = 'Database';
-     $Sem1module2 = 'Graphic Design';
-     $Sem1module3 = 'Programming';
-     $Sem1module4 = 'Testing';
-     $Sem1module5 = 'ICT';
-    //  students details
-    $stdname = 'midhusahn';
+            
 
-
-     ?>
-     
             <div class="card">
                 <br>
                 <div class="container">
@@ -205,7 +196,7 @@ $title = "Examinations | SLGTI";
                     </tr>
                 </tbody>
             </table>
-        
+
             <!-- end of add table -->
             <br>
             <!-- save button start -->
@@ -286,14 +277,14 @@ $title = "Examinations | SLGTI";
             </table>
             <!-- small view table end -->
             <!-- print mode start -->
-         
+
             <br>
             <br>
             <br>
             <br>
 
 
-<!-- sinna table -->
+            <!-- sinna table -->
             <div class="card">
                 <br>
                 <div class="container">
@@ -320,7 +311,7 @@ $title = "Examinations | SLGTI";
                 <br>
             </div>
             <br>
-            
+
 
             <!-- sinna table thodakkam -->
 
@@ -359,7 +350,8 @@ $title = "Examinations | SLGTI";
 
                 </div>
                 <div class="col-md-auto">
-                        <button type="button" class="btn btn-outline-primary">&nbsp;&nbsp;&nbsp;<i class="far fa-edit"></i>&nbsp;&nbsp;Update&nbsp;&nbsp;&nbsp;</button>
+                    <button type="button" class="btn btn-outline-primary">&nbsp;&nbsp;&nbsp;<i
+                            class="far fa-edit"></i>&nbsp;&nbsp;Update&nbsp;&nbsp;&nbsp;</button>
 
                 </div>
                 <div class="col col-lg-2">
@@ -373,25 +365,52 @@ $title = "Examinations | SLGTI";
         </div>
         <!-- end mode  -->
         <script>
-        function showModule(val) {
+        function showAssessments(val) {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("Module").innerHTML = this.responseText;
+                    document.getElementById("assessmentsType").innerHTML = this.responseText;
                 }
             };
-            xmlhttp.open("POST", "controller/getModule", true);
+            xmlhttp.open("POST", "controller/getAssessmentType", true);
             xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xmlhttp.send("acourse=" + val);
+            xmlhttp.send("assessmentType=" + val);
         }
-        
-        
-        
+
+        function showAcademyYear(val) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("AcademyYear").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "controller/getAssessmentType", true);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send("academyYear=" + val);
+        }
+
+        function showStudents(val) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("students").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "controller/getAssessmentType", true);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send("academyYear=" + val);
+        }
+
+
+
+
+
         </script>
 
 
-        
-        
+
+
+
 
 
 
