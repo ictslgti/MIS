@@ -151,7 +151,7 @@ $title = "Home | SLGTI";
         if (mysqli_num_rows($result)>0){
             while ($row = mysqli_fetch_assoc($result)){
 
-                $idly=$row ["food_name"];
+                $fdname=$row ["food_name"];
                 $uqty=$row ["food_unit_qty"];
                 $mea=$row ["food_measurements"];
                 $pri=$row ["food_unit_price"];
@@ -165,11 +165,12 @@ $title = "Home | SLGTI";
                 <p class="card-text"><h3><?php echo $type; ?></h3></p>
                 <img src="docs/canteen/<?php echo $img;?>" class="card-img-top" alt="Card image cap">
                 <div class="card-body">
-                <h5 class="card-title"><?php echo $idly;?> <a href="#" class="badge badge-info"><?php echo $uqty.'-'.$mea; ?> </a>
+                <h5 class="card-title"><?php echo $fdname;?> <a href="#" class="badge badge-info"><?php echo $uqty.'-'.$mea; ?> </a>
                 <p class="card-text"> Rs <?php echo $pri; ?></p>
                 
                 <form method="POST" action="#"> 
                 <div class="row">
+                
                 <div class="col-md-8"><input type="number"  min=0.5 step="any" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
                 <div class="col-md-4"><button type="submit" name="add_to_cart"  class="btn btn-primary" value="ADD"><i class="fas fa-cart-plus"></i></i> </button></div>
                 </div>  
@@ -181,7 +182,7 @@ $title = "Home | SLGTI";
                 
                                 
                 <input type="hidden" name="qty" value="<?php echo $uqty,$mea  ?>" class="form-control"readonly />
-                <input type="hidden" class="form-control"  name="hidden_name" value="<?php echo $idly ?>"readonly /> 
+                <input type="hidden" class="form-control"  name="hidden_name" value="<?php echo $fdname ?>"readonly /> 
                 <input type="hidden" class="form-control"  name="hidden_price" value="<?php echo $pri ?>"readonly/>
                 <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
 
