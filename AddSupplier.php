@@ -112,9 +112,11 @@ if(isset($_POST['Add'])){
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
               
           <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
-           <button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
-                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='Supplier_view.php'">view </button>
+         
+                        
                         <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">update </button>
+                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='Supplier_view.php'">view </button>
+                        <button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
             </div>
             </div>
       </form>
