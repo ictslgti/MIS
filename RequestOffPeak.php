@@ -52,7 +52,10 @@ date_default_timezone_set("Asia/colombo");
             $sql= "INSERT INTO `off_peak` (`student_id`, `name_of_applicant`, `department`, `contact_no`, `date`, `time`, `reson_for_exit`, `warden's_comment`, `status`) 
             VALUES (' $student_id', '$name', '$dept', '$tel', '$date', '$time', ' $ref', '', '');";
             if(mysqli_query($con,$sql)){
-                echo "new record create sucessfully ";
+              echo
+              '<div class="alert alert-success">
+              <strong>Success!</strong> Your data was inserted.</a>
+            </div>';
             }else{
               echo '<div class="alert alert-warning">
               <strong>Warning!</strong> Invalid data. Please Check Your Data !
