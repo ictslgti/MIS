@@ -22,95 +22,188 @@ $title = "Examinations | SLGTI";
 </div>
 
 <!-- end header -->
+
+<?php
+$course=$assessments=$academic_year= $assessment_date=null;
+
+if (isset($_POST['Add'])) {
+
+    # code...
+    if (!empty($_POST['course']))
+    // // &&!empty($_POST['assessments'])
+    // &&!empty($_POST['academic_year'])
+    // &&!empty($_POST['assessment_date']) 
+    // {
+        # code...
+        echo $course=$_POST['course'];
+        echo $assessments=$_POST['assessments'];
+        echo $academic_year=$_POST['academic_year'];
+        echo $assessment_date=$_POST['assessment_date'];
+
+       echo $sql = "INSERT INTO `assessments` (`course_id`,`assessment_type_id`,`academic_year`,`assessment_date`)
+        VALUES ('$course','$assessments','$academic_year','$assessment_date')";
+
+
+if(mysqli_query($con,$sql))
+{
+  echo '
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>'.$assessments.'</strong> Assessment Type details inserted!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>   
+  ';
+}
+else{
+  
+  echo '
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>'.$assessments.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  
+  ';
+}
+
+
+
+
+    // }
+}
+
+
+
+?>
+
 <div class="container">
-    <form class="needs-validation" novalidate>
+        <form class="needs-validation" novalidate method="POST" action="#">
+    
         <div class="form-row">
-            <div class="col-md-4 mb-3">
-                <label for="validationCustom01">First name</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark"
-                    required>
+            <div class="col-md-3 mb-2">
+                    
+                    <label for="validationCustom02">Course</label>
+                            <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['course'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course'])){echo ' is-valid';} ?>" 
+                            id="course" name="course"  onchange="showAssessments(this.value)" required>
+
+                              <option selected>Choose Course...</option>
+                              <?php
+                  $sql = "SELECT * FROM `assessments_type`";
+                  $result = mysqli_query($con, $sql);
+                  if (mysqli_num_rows($result) > 0) {
+                  while($row = mysqli_fetch_assoc($result)) {
+                    echo '<option  value="'.$row["course_id"].'" required>'.$row["course_id"].'</option>';
+                  }
+                  }else{
+                    echo '<option value="null"   selected disabled>-- No Course --</option>';
+                  }
+                  ?>
+                             
+                            </select>
+                          
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+            </div>
+            <div class="col-md-3 mb-2">
+                <label for="validationCustom02">Assessments</label>
+                <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['assessments'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessments'])){echo ' is-valid';} ?>" id="assessments" name="assessments">
+                        <option selected>Choose...</option>
+                        
+                      </select>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationCustom02">Last name</label>
-                <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto"
-                    required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationCustomUsername">Username</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                    </div>
-                    <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username"
-                        aria-describedby="inputGroupPrepend" required>
+            <div class="col-md-3 mb-2">
+                <label for="validationCustomUsername">Academy Year</label>
+                
+                <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['academic_year'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>" id="academic_year" name="academic_year">
+                        <option selected>Choose...</option>
+                        <?php
+                  $sql = "SELECT *  FROM `academic`";
+                  $result = mysqli_query($con, $sql);
+                  if (mysqli_num_rows($result) > 0) {
+                  while($row = mysqli_fetch_assoc($result)) {
+                    echo '<option  value="'.$row["academic_year"].'" required>'.$row["academic_year"].'</option>';
+                  }
+                  }else{
+                    echo '<option value="null"   selected disabled>-- No Course --</option>';
+                  }
+                  ?>
+
+                        
+                      </select>
                     <div class="invalid-feedback">
-                        Please choose a username.
+                        Please choose a Academy Year!
                     </div>
                 </div>
+
+                <div class="col-md-3 mb-2">
+                    <label for="">Assessment Date</label>
+                    <input type="date" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['assessment_date'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['assessment_date'])){echo ' is-valid';} ?>" 
+                    id="assessment_date" name="assessment_date" value="" placeholder=""  required>
+
+
+                </div>
             </div>
+        
+
+
+        <div class="row">
+            <div class="col-md-3 mb-2">
+                    <button class="btn btn-primary" type="submit" value="Add" name="Add">Save</button>
+
+            </div>
+                
+
+
         </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-                <label for="validationCustom03">City</label>
-                <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-                <div class="invalid-feedback">
-                    Please provide a valid city.
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <label for="validationCustom04">State</label>
-                <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <label for="validationCustom05">Zip</label>
-                <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-                <div class="invalid-feedback">
-                    Please provide a valid zip.
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                <label class="form-check-label" for="invalidCheck">
-                    Agree to terms and conditions
-                </label>
-                <div class="invalid-feedback">
-                    You must agree before submitting.
-                </div>
-            </div>
-        </div>
-        <button class="btn btn-primary" type="submit">Submit form</button>
     </form>
 
+    </div>
+
+
+        
+    
+
     <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+
+
+
+
+        function showAssessments(val) {
+                             var xmlhttp = new XMLHttpRequest();
+                             xmlhttp.onreadystatechange = function () {
+                                 if (this.readyState == 4 && this.status == 200) {
+                                     document.getElementById("assessments").innerHTML = this.responseText;
+                                 }
+                             };
+                             xmlhttp.open("POST", "controller/getAssessmentType", true);
+                             xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                             xmlhttp.send("assessmentType=" + val);
+                         }
     </script>
 
 

@@ -113,13 +113,18 @@ $title = "Home | SLGTI";
 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+
+
+
+
+ <!-- FOOD MENU DESIGN    -->
     <div class="row shadow  p-3 mt-1 bg-info text-white">
     <div class="col-sm-12 col-md-4 col-lg-9">
     <h1 class="text-center">EAT GOOD FEEL GOOD</h1>
     </div>
     </div>
 
- <!-- FOOD MENU DESIGN    -->
+
 
  <div class="row">
 
@@ -141,12 +146,12 @@ $title = "Home | SLGTI";
 
 
         <?php
-        $sql = "SELECT * FROM `food`";
+        $sql = 'call food()';
         $result = mysqli_query($con, $sql);
         if (mysqli_num_rows($result)>0){
             while ($row = mysqli_fetch_assoc($result)){
 
-                $idly=$row ["food_name"];
+                $fdname=$row ["food_name"];
                 $uqty=$row ["food_unit_qty"];
                 $mea=$row ["food_measurements"];
                 $pri=$row ["food_unit_price"];
@@ -160,13 +165,21 @@ $title = "Home | SLGTI";
                 <p class="card-text"><h3><?php echo $type; ?></h3></p>
                 <img src="docs/canteen/<?php echo $img;?>" class="card-img-top" alt="Card image cap">
                 <div class="card-body">
-                <h5 class="card-title"><?php echo $idly;?> <a href="#" class="badge badge-info"><?php echo $uqty.'-'.$mea; ?> </a>
-                <p class="card-text"> <?php echo $pri; ?></p>
+                <h5 class="card-title"><?php echo $fdname;?> <a href="#" class="badge badge-info"><?php echo $uqty.'-'.$mea; ?> </a>
+                <p class="card-text"> Rs <?php echo $pri; ?></p>
                 
                 <form method="POST" action="#"> 
                 <div class="row">
-                <div class="col-md-8"><input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
-                <div class="col-md-4"><button type="submit" name="add_to_cart"  class="btn btn-primary" value="ADD"> <i class="fas fa-shopping-cart"></i> </button></div>
+
+                <?php if($id=="fd004"){?>
+                    <div class="col-md-8"><input type="number"  min=0.5 step="any" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
+                <?php }
+                else{?>
+                <div class="col-md-8"><input type="number"  name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
+               <?php }?>
+               
+
+                <div class="col-md-4"><button type="submit" name="add_to_cart"  class="btn btn-primary" value="ADD"><i class="fas fa-cart-plus"></i></i> </button></div>
                 </div>  
                 
                 
@@ -176,7 +189,7 @@ $title = "Home | SLGTI";
                 
                                 
                 <input type="hidden" name="qty" value="<?php echo $uqty,$mea  ?>" class="form-control"readonly />
-                <input type="hidden" class="form-control"  name="hidden_name" value="<?php echo $idly ?>"readonly /> 
+                <input type="hidden" class="form-control"  name="hidden_name" value="<?php echo $fdname ?>"readonly /> 
                 <input type="hidden" class="form-control"  name="hidden_price" value="<?php echo $pri ?>"readonly/>
                 <input type="hidden" class="form-control"  name="hidden_id" value="<?php echo $id  ?>" />
 
@@ -221,13 +234,13 @@ $title = "Home | SLGTI";
 				<tr>
 					<td><?php echo $values["item_name"]; ?></td>
 					<td><?php echo $values["item_quantity"]; ?></td>
-					<td> <?php echo $values["item_price"]; ?></td>
-					<td> <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
+					<td>Rs <?php echo $values["item_price"]; ?></td>
+					<td>Rs <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
 					<td><a href="FoodOrders.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Remove</span></a></td>
 				</tr>
 			<?php	
 					$total = $total + ($values["item_quantity"] * $values["item_price"]);
-				}
+                }
 			?>
 				
 			<?php
@@ -281,12 +294,12 @@ $title = "Home | SLGTI";
                             <p><h2>Total</h2></p>
                         </div>
                         <div class="col">
-                            <p><h2><?php echo number_format($total, 2); ?></h2></p>
+                            <p><h2>Rs <?php echo number_format($total, 2); ?></h2></p>
                         </div>
                     </div>
 
                     <div class="row">
-                        <a href="OrderView.php" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="button"><h2><i class="fas fa-shopping-cart"></i> Order Now</h2></button></a>
+                        <a href="OrderView.php" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="Order"><h2><i class="fas fa-cart-plus"></i></i> Order Now</h2></button></a>
                     </div>
                     
                 </div>
