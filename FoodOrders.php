@@ -170,7 +170,7 @@ $title = "Home | SLGTI";
                 
                 <form method="POST" action="#"> 
                 <div class="row">
-                <div class="col-md-8"><input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
+                <div class="col-md-8"><input type="number"  min=0.5 step="any" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
                 <div class="col-md-4"><button type="submit" name="add_to_cart"  class="btn btn-primary" value="ADD"><i class="fas fa-cart-plus"></i></i> </button></div>
                 </div>  
                 
