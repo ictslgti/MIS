@@ -20,9 +20,9 @@ include_once("menu.php");
     <table class="table table-responsive-sm w-100">
   <thead class="thead-dark">
     <tr>
-      
+    
+    <th scope="col">Student_id</th>
       <th scope="col">Name of applicant</th>
-      <th scope="col">Student_id</th>
       <th scope="col">Department</th>
       <th scope="col">Date</th>
       <th scope="col">Time</th>
@@ -44,10 +44,12 @@ include_once("menu.php");
       <td>'.$row["student_id"].'</td>
       <td>'.$row["name_of_applicant"].'</td>
       <td>'.$row["department"].'</td>
-      <td>'.$row["contact_no"].'</td>
+    
       <td>'.$row["date"].'</td>
       <td>'.$row["time"].'</td>
+      <td>'.$row["warden's_comment"].'</td>
       <td>'.$row["status"].'</td>
+
       
     </tr>';
 
