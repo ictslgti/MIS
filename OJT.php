@@ -31,50 +31,41 @@ $title ="Home | SLGTI";
       <th scope="col" class="bg-primary"><i class="fas fa-map-marker-alt">..</i>Requested Place Address</th>
       <th scope="col" class="bg-primary"><i class="fas fa-industry">..</i>Final Place / company</th>
       <th scope="col" class="bg-primary"><i class="fas fa-map-marker-alt">..</i>Final Place Address</th>
-      <th scope="col" class="bg-primary">Salary</th>
+      <th scope="col" class="bg-primary">Action</th>
       
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-    <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-    <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
+  <?php
+   $sql ="SELECT `student_id`, `student_name`, `phone_no`, `e_mail`, `department_name`, `requested_place`, `requested_address`, `final_place`, `final_address`, FROM `ojt` where student_id ='Active'";
+   $result = mysqli_query($con, $sql);
+   if (mysqli_num_rows($result)>0)
+   {
+     while($row = mysqli_fetch_assoc($result))
+     {
+       echo '
+       <tr style="text-align:left";>
+          <td>'. $row["student_id"]."<br>".'</td>
+          <td>'. $row["student_name"]."<br>".'</td>
+          <td>'. $row["phone_no"]."<br>".'</td>
+          <td>'. $row["e_mail"]."<br>".'</td>
+          <td>'. $row["department_name"]."<br>".'</td>
+          <td>'. $row["requested_place"]."<br>".'</td>
+          <td>'. $row["requested_address"]."<br>".'</td>
+          <td>'. $row["final_place"]."<br>".'</td>
+          <td>'. $row["final_address"]."<br>".'</td>
+          <td>
+          <a href="AddTrainingPlace.php? edit='.$row["student_id"]. '" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> 
+          </td>
+       </tr> ';
+     }
+   }
+   else
+   {
+     echo "0 results";
+   }
+    
+  ?>
   </tbody>
 </table>
 </div>
