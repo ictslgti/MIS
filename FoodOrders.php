@@ -158,7 +158,7 @@ $title = "Home | SLGTI";
                 <div class="col-md-3"> 
                 <div class="card">
                 <p class="card-text"><h3><?php echo $type; ?></h3></p>
-                <img src="docs/food/<?php echo $img;?>" class="card-img-top" alt="Card image cap">
+                <img src="docs/canteen/<?php echo $img;?>" class="card-img-top" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title"><?php echo $idly;?> <a href="#" class="badge badge-info"><?php echo $uqty.'-'.$mea; ?> </a>
                 <p class="card-text"> <?php echo $pri; ?></p>
