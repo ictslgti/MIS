@@ -166,12 +166,12 @@ $title = "Home | SLGTI";
                 <img src="docs/canteen/<?php echo $img;?>" class="card-img-top" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title"><?php echo $idly;?> <a href="#" class="badge badge-info"><?php echo $uqty.'-'.$mea; ?> </a>
-                <p class="card-text"> <?php echo $pri; ?></p>
+                <p class="card-text"> <?php echo 'LK'.$pri; ?></p>
                 
                 <form method="POST" action="#"> 
                 <div class="row">
                 <div class="col-md-8"><input type="text" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
-                <div class="col-md-4"><button type="submit" name="add_to_cart"  class="btn btn-primary" value="ADD"> <i class="fas fa-shopping-cart"></i> </button></div>
+                <div class="col-md-4"><button type="submit" name="add_to_cart"  class="btn btn-primary" value="ADD"><i class="fas fa-cart-plus"></i></i> </button></div>
                 </div>  
                 
                 
@@ -232,7 +232,7 @@ $title = "Home | SLGTI";
 				</tr>
 			<?php	
 					$total = $total + ($values["item_quantity"] * $values["item_price"]);
-				}
+                }
 			?>
 				
 			<?php
@@ -291,7 +291,7 @@ $title = "Home | SLGTI";
                     </div>
 
                     <div class="row">
-                        <a href="OrderView.php" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="Order"><h2><i class="fas fa-shopping-cart"></i> Order Now</h2></button></a>
+                        <a href="OrderView.php" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="Order"><h2><i class="fas fa-cart-plus"></i></i> Order Now</h2></button></a>
                     </div>
                     
                 </div>
