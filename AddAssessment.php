@@ -159,16 +159,18 @@ else{
 
         <div class="row">
             <div class="col-sm">
-                
-            </div>
-            <div class="col-sm">
-                
+
             </div>
             <div class="col-sm">
 
-                <button class="btn btn-success" type="submit" value="Add" name="Add"><i class="fas fa-plus"></i>&nbsp&nbspSave</button>
+            </div>
+            <div class="col-sm">
+
+                <button class="btn btn-success" type="submit" value="Add" name="Add"><i
+                        class="fas fa-plus"></i>&nbsp&nbspSave</button>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter"><i class="fab fa-readme"></i>&nbsp&nbsp
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter"><i
+                        class="fab fa-readme"></i>&nbsp&nbsp
                     View Assessments Types
                 </button>
 
@@ -196,6 +198,79 @@ else{
                     </button>
                 </div>
                 <div class="modal-body">
+
+                    <div class="table-responsive-sm">
+                        <table class="table">
+                            <thead>
+                                <th>
+                                    <center>Module</center>
+                                </th>
+                                <th>
+                                    <center>Course</center>
+                                </th>
+                                <th>
+                                    <center>Assessments</center>
+
+                                </th>
+                                <th>
+                                    <center>
+                                        Assessment Percentage
+                                    </center>
+                                </th>
+
+
+
+                            </thead>
+                            <tbody>
+
+                                <?php
+                $sql = "SELECT module_id,course_id,assessment_name,assessment_percentage FROM assessments_type";
+                $result = mysqli_query($con, $sql);
+                if (mysqli_num_rows($result)>0) {
+
+
+                    # code...
+                    while ($row = mysqli_fetch_assoc($result)) {
+
+                        # code...
+                        echo '
+                        <tr>
+                        <td><center>'. $row["module_id"]."<br>".'</center></td>
+                        <td><center>'. $row["course_id"]."<br>".'</center></td>
+                        <td><center>'. $row["assessment_name"]."<br>".'</center></td>
+                        <td><center>'. $row["assessment_percentage"]."<br>".'</center></td>
+                        
+                        </tr>';
+                    }
+                }
+                else {
+                    
+                    echo "0 results";
+                }
+
+
+
+?>
+
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
                     ...
                 </div>
                 <div class="modal-footer">
@@ -206,10 +281,81 @@ else{
         </div>
     </div>
 
+</div>
+
+<br>
+<br>
+<br>
+
+
+<div class="container">
+        <div class="mx-auto" style="width: 200px;">
+                <h3 class="display-5">Assessments</h3>
+              </div>
+
+
+              <div>
+                  <table class="table">
+                      <thead>
+                          <th>
+                              <center>Assessment Type</center>
+                          </th>
+                          <th>
+                              <center>Course</center>
+                            
+                          </th>
+                          <th>
+                              <center>Academy Year</center>
+                          </th>
+                          <th>
+                              <center>Assessment Date</center>
+                          </th>
+                      </thead>
+                      <tbody>
+                            <?php
+                            $sql = "SELECT assessment_type_id,course_id,academic_year,assessment_date FROM assessments";
+                            $result = mysqli_query($con, $sql);
+                            if (mysqli_num_rows($result)>0) {
+            
+            
+                                # code...
+                                while ($row = mysqli_fetch_assoc($result)) {
+            
+                                    # code...
+                                    echo '
+                                    <tr>
+                                    <td><center>'. $row["assessment_type_id"]."<br>".'</center></td>
+                                    <td><center>'. $row["course_id"]."<br>".'</center></td>
+                                    <td><center>'. $row["academic_year"]."<br>".'</center></td>
+                                    <td><center>'. $row["assessment_date"]."<br>".'</center></td>
+                                    
+                                    </tr>';
+                                }
+                            }
+                            else {
+                                
+                                echo "0 results";
+                            }
+            
+            
+            
+            ?>
 
 
 
 
+
+
+
+                      </tbody>
+
+
+                  </table>
+
+
+              </div>
+
+        
 
 
 
@@ -236,39 +382,39 @@ else{
 
 
 <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
 
 
 
 
-    function showAssessments(val) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("assessments").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("POST", "controller/getAssessmentType", true);
-        xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xmlhttp.send("assessmentType=" + val);
-    }
+function showAssessments(val) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("assessments").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST", "controller/getAssessmentType", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("assessmentType=" + val);
+}
 </script>
 
 

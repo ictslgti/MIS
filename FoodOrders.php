@@ -114,6 +114,40 @@ $title = "Home | SLGTI";
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
+<!-- FOOD ORDER  -->
+
+<?php
+if(isset($_POST['Order'])){
+  
+$username=$_SESSION['user_name'];
+
+
+$sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
+ VALUES ('$username','Pending')";
+
+ if(mysqli_query($con,$sql)){
+            
+        $sql1="SELECT  food_order_id from food_order WHERE food_order_user_name='$username'";
+        $result=mysqli_query($con,$sql1);
+      if(mysqli_num_rows($result)==1){
+          $row=mysqli_fetch_assoc($result);
+          
+            $orderid=$row['food_order_id'];
+
+             echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
+             <strong>'.$orderid.'</strong> Order ID
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+         </div>   ';
+        }
+        
+    }
+    else{
+        echo "Error".$sql."<br>".mysqli_error($con);
+     }
+}
+?>
 
 
 
@@ -177,7 +211,7 @@ $title = "Home | SLGTI";
                 else{?>
                 <div class="col-md-8"><input type="number"  name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
                <?php }?>
-               
+
 
                 <div class="col-md-4"><button type="submit" name="add_to_cart"  class="btn btn-primary" value="ADD"><i class="fas fa-cart-plus"></i></i> </button></div>
                 </div>  
@@ -297,11 +331,14 @@ $title = "Home | SLGTI";
                             <p><h2>Rs <?php echo number_format($total, 2); ?></h2></p>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <a href="OrderView.php" button type="button" class="btn btn-success w-100" role="button" aria-pressed="true" name="Order"><h2><i class="fas fa-cart-plus"></i></i> Order Now</h2></button></a>
-                    </div>
                     
+                    <form method="POST" action="#"> 
+                    <div class="row">
+                        <a href="OrderView.php" button type="submit" class="btn btn-success w-100" role="button" aria-pressed="true" value ="Order" name="Order" ><h2><i class="fas fa-cart-plus"></i></i> Order Now</h2></button></a>
+                       
+                    </div>
+                    </form>
+
                 </div>
             </div>      
         </div>
