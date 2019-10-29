@@ -43,8 +43,8 @@ date_default_timezone_set("Asia/colombo");
          
            
             $tel =$_GET['tel'];
-           echo  $date =$_GET['dat'];
-            echo $time =$_GET['tim'];
+             $date =$_GET['dat'];
+             $time =$_GET['tim'];
             $ref =$_GET['rfe'];
                                                                               
             
@@ -54,7 +54,9 @@ date_default_timezone_set("Asia/colombo");
             if(mysqli_query($con,$sql)){
                 echo "new record create sucessfully ";
             }else{
-                echo "error :".$sql."<br>".mysqli_error($con);
+              echo '<div class="alert alert-warning">
+              <strong>Warning!</strong> Invalid data. Please Check Your Data !
+            </div>';
             }
            }
     

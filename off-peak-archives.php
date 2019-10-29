@@ -33,7 +33,7 @@ include_once("menu.php");
   <tbody>
   <?php
     $usern = $_SESSION['user_name'];
-  echo $sql = "SELECT * FROM `off_peak`  where `student_id`='$usern' ";
+ $sql = "SELECT * FROM `off_peak` WHERE `off_peak`.`student_id` = ' $usern'";
  
 
   $result = mysqli_query($con, $sql);

@@ -138,7 +138,7 @@ if(isset($_GET['chat_group'])){
 
 
 
-                         <span data-region="send-icon-container"> <i class="icon fa fa-paper-plane fa-fw " name="Add"
+                         <span data-region="send-icon-container"> <i class="icon fa fa-paper-plane fa-fw " name="Add" value ="Submit"
                                 aria-hidden="true">  </i></span>
                         <span class="hidden" data-region="loading-icon-container"><span
                                 class="loading-icon icon-no-margin"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "
@@ -149,36 +149,31 @@ if(isset($_GET['chat_group'])){
             </div>
         </div>
 
-    </div>
-
-
-    <?php
-if(isset($_POST['Add'])){
-  
-
+        <?php
+if(isset($_POST['Add']))
+{
   if(!empty($_POST['message'])
   &&!empty($_POST['message_time'])
   &&!empty($_POST['chat_group_sender'])
   &&!empty($_POST['chat_group_reciver_group_id']))
   { 
- 
+     //echo $id = $_POST['message'];
      echo $message   =  $_POST['message'];
      echo $message_time   =  $_POST['message_time'];
      echo $chat_group_sender  =   $_POST['chat_group_sender'];
      echo $chat_group_reciver_group_id  =   $_POST['chat_group_reciver_group_id'];
-  
-     echo $sql = "INSERT INTO `chat_group_message` (`message`, `message_time`, `chat_group_sender`, `chat_group_reciver_group_id`)
-      VALUES ('$message','$message_time','$chat_group_sender','$chat_group_reciver_group_id')";
-   
-      if (mysqli_query($con, $sql)) {
-        echo "record add";
-    
-
-      } else {
-         echo "Error: " . $sql .
-        "<br>" . 	mysqli_error($con);
-      
         
+     echo $sql = "INSERT INTO `chat_group_message`(`message_id`, `message`, `message_time`, `chat_group_sender`, `chat_group_reciver_group_id`)
+     VALUES (null,'$message','$message_time','$chat_group_sender,'$chat_group_reciver_group_id')";
+   
+      if (mysqli_query($con, $sql)) 
+      {
+        echo "record add";
+      } 
+      else 
+      {
+         echo "Error: " . $sql .
+        "<br>" . 	mysqli_error($con); 
 
       }
   }
@@ -186,8 +181,6 @@ if(isset($_POST['Add'])){
 
 
   ?>
-
-
 
 
     <div class="col-4">
