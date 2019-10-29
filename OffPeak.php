@@ -24,7 +24,10 @@ if(isset($_GET['approve'])){
        $sql = "UPDATE `off_peak` SET `status` = 'approved',`warden's_comment`= '$cmt' WHERE `off_peak`.`student_id` = '$reg' AND `off_peak`.`date` = '$da'";
       
           if(mysqli_query($con,$sql)){
-              echo "new record update sucessfully ";
+            echo
+            '<div class="alert alert-success">
+            <strong>Success!</strong> Student has approved to exit! </a>
+          </div>';
           }else{
               echo "error :" .$sql."<br>".mysqli_error($con);
           }
@@ -49,7 +52,9 @@ if(isset($_GET['reject'])){
      
         
           if(mysqli_query($con,$sql)){
-              echo "new record update sucessfully ";
+            echo '<div class="alert alert-danger">
+            <strong>Success!</strong> Student has rejected to exit! </a>
+          </div>';
           }else{
               echo "error :" .$sql."<br>".mysqli_error($con);
           }
