@@ -27,22 +27,15 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
 if(isset($_GET['edit']))
 {
   $stid =$_GET['edit'];
-  $sql = "SELECT s.`student_id`,s.`student_title`,s.`student_fullname`,s.`student_ininame`,s.`student_gender`,s.`student_civil`,s.`student_email`,
-  s.`student_nic`,`student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,
-  `student_em_name`,`student_em_address`,`student_em_phone`,`student_em_relation`,`student_status`,`course_id`,`course_mode`, academic_year, student_enroll_status, 
-  `student_enroll_date`,`student_enroll_exit_date` FROM `student` AS s, student_enroll as e  WHERE s.student_id = e.student_id and s.`student_id`= '$stid'";
+  $sql = "SELECT `student_id`,`student_title`,`student_fullname`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,
+  `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,
+  `student_em_name`,`student_em_address`,`student_em_phone`,`student_em_relation`,`student_status` FROM `student` WHERE `student_id`= '$stid'";
   $result = mysqli_query($con,$sql);
 
   if(mysqli_num_rows($result)==1)
   {
     $row =mysqli_fetch_assoc($result);
-    $year = $row['academic_year'];
-    $coid = $row['course_id'];
     //$stid = $row['student_id'];
-    $mode = $row['course_mode'];
-    $enstatus =$row['student_enroll_status'];
-    $enroll = $row['student_enroll_date'];
-    $exit = $row['student_enroll_exit_date'];
     $title = $row['student_title'];
     $fname = $row['student_fullname'];
     $ininame = $row['student_ininame'];
@@ -62,6 +55,27 @@ if(isset($_GET['edit']))
     $eaddress = $row['student_em_address'];
     $ephone = $row['student_em_phone'];
     $erelation = $row['student_em_relation'];
+    
+  }
+}
+
+if(isset($_GET['edit']))
+{
+  $stid =$_GET['edit'];
+  $sql = "SELECT `student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`, `student_enroll_status` 
+  FROM `student_enroll` WHERE `student_id`= '$stid'";
+  $result = mysqli_query($con,$sql);
+
+  if(mysqli_num_rows($result)==1)
+  {
+    $row =mysqli_fetch_assoc($result);
+    $year = $row['academic_year'];
+    $coid = $row['course_id'];
+    //$stid = $row['student_id'];
+    $mode = $row['course_mode'];
+    $enstatus =$row['student_enroll_status'];
+    $enroll = $row['student_enroll_date'];
+    $exit = $row['student_enroll_exit_date'];
     
   }
 }
@@ -203,7 +217,7 @@ if(isset($_POST['Submit']))
       }
     }
   
-if(isset($_POST['Submit']))
+if(isset($_POST['addq']))
   {
   //echo "welcome";
     if(!empty($_POST['sid']) 
@@ -340,7 +354,7 @@ if(isset($_POST['Edit']))
 
     // UPDATE TO STUDENT_QUALIFICATION
 
-    if(isset($_POST['Edit']))
+    if(isset($_POST['editq']))
     {
       if(
        !empty($_POST['qualification']) && !empty($_POST['yoe']) && !empty($_POST['result']) 
@@ -668,11 +682,13 @@ if(isset($_POST['Edit']))
         </div>
 
         <div class="col-md-6 mb-3"></div>
-        <div class="btn-group-horizontal">
-           <button type="submit" value="addq" name="addq"  class="btn btn-primary mr-2" style="float:right"><i class="fas fa-user-plus"></i>ADD</button><br><br>
-           <button type="submit" value="editq" name="editq" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button> 
+        
+        <div class="btn-group-horizontal col-md-2 mb-3"> 
+           <button type="submit" style="margin-top:35px" value="editq" name="editq" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>EDIT</button>  
+           <button type="submit" value="addq" style="margin-top:35px" name="addq"  class="btn btn-primary mr-2" style="float:right"><i class="fas fa-user-plus"></i>ADD</button>
+           <button type="delete" class="btn btn-sm btn-danger" value="delete" name="delete" data-href="?delete='.$row=["student_id"].'" data-toggle="modal" data-target="#confirm-delete"> <i class="fas fa-trash"></i> </button>';
         </div>
-    </div><br>
+    </div>
         
         <div class="form-row">
         <div id="results-student_education" class="form-group table-responsive">               
