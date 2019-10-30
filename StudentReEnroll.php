@@ -23,19 +23,22 @@ include_once("menu.php");
     $stid = $coid = $year = $enroll = $exit = $enstatus = $mode = null;
 
     // edit coding
-    if(isset($_GET['edit'],$_GET['edit1'])){
-      echo $stid =$_GET['edit'];
-      echo $coid =$_GET['edit1'];
-     echo 'coid'.$_POST['coid']; 
-
+    
+    if((isset($_GET['stid'])) && (isset($_GET['coid'])))
+    {
+      $stid =$_GET['stid'];
+      $coid =$_GET['coid'];
+     //echo 'coid'.$_POST['coid']; 
+     
+      
       //echo 'coid'.$_POST['coid'];
-      echo $sql = "SELECT `student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`, `student_enroll_status` 
+      $sql = "SELECT `student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`, `student_enroll_status` 
       FROM `student_enroll` WHERE `student_id`='$stid' AND `course_id`='$coid'";
       $result = mysqli_query($con,$sql);
 
       if(mysqli_num_rows($result)==1)
         {
-          echo "welcom";
+          //echo "welcom";
         $row =mysqli_fetch_assoc($result);
         $stid = $row['student_id'];
         $coid = $row['course_id'];
@@ -46,6 +49,9 @@ include_once("menu.php");
         $exit = $row['student_enroll_exit_date'];
       }
     }
+     
+    
+  
   
 
 
@@ -262,7 +268,7 @@ include_once("menu.php");
                         <td>'.$row["student_enroll_exit_date"]."<br>".'</td>
                         <td>'.$row["student_enroll_status"]."<br>".'</td>
                         <td>
-                        <a href="StudentReEnroll.php?edit='.$row["student_id"].'&&?edit1='.$row["course_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
+                        <a href="StudentReEnroll.php?stid='.$row["student_id"].'&&coid='.$row["course_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
                         <a href="?Student_Id='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i></td>
                    </tr>';
                   $num=$num+1;
