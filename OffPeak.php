@@ -21,7 +21,7 @@ if(isset($_GET['approve'])){
      
       
 
-       $sql = "UPDATE `off_peak` SET `status` = 'approved',`warden's_comment`= '$cmt' WHERE `off_peak`.`student_id` = '$reg' AND `off_peak`.`date` = '$da'";
+       $sql = "UPDATE `off_peak` SET `status` = 'Approved',`warden's_comment`= '$cmt' WHERE `off_peak`.`student_id` = '$reg' AND `off_peak`.`date` = '$da'";
       
           if(mysqli_query($con,$sql)){
             echo
