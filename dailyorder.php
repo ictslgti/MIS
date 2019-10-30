@@ -33,27 +33,20 @@ include_once("menu.php");
               
 
       <?php
+      $username=null;
         if(isset($_GET['search'])){
           
-          $oid=$_GET['search'];
-          $sql="SELECT  food_order_user_name ,food_name,food_order_details_food_qty,food_order_details_unit_price 
-          FROM food,food_order,food_order_details 
-          WHERE  food_order_details_food_order_id=food_order_id 
-          AND food_order_details_food_id=food_id 
-          AND food_order_details_food_order_id='$oid'";
+            $oid=$_GET['search'];
+            $sql="SELECT DISTINCT food_order_user_name FROM food_order,food_order_details 
+            WHERE food_order_details_food_order_id=food_order_id AND food_order_details_food_order_id='$oid'";
 
-          $result=mysqli_query($con,$sql);
-          if(mysqli_num_rows($result)>0){
+            $result=mysqli_query($con,$sql);
+            if(mysqli_num_rows($result)==1){
+              $row=mysqli_fetch_assoc($result);
 
-            while($row=mysqli_fetch_assoc($result)){;
-
-            $username=$row['food_order_user_name'];
-            $foodname=$row['food_name'];
-            $orderesfoodqty=$row['food_order_details_food_qty'];
-            $unitprice=$row['food_order_details_unit_price'];?>
-
-
-            <div class="mx-auto" >
+              $username=$row['food_order_user_name'];?> 
+              
+              <div class="mx-auto" >
 
               <div class ="row">
                 <div class="col-9">
@@ -77,38 +70,52 @@ include_once("menu.php");
                     <p><h4><?php echo $username;?></h4></p>
                 </div>
               </div>
+            
+              
+              <?php
+              }
+              
+              $sql1="SELECT  food_order_user_name ,food_name,food_order_details_food_qty,food_order_details_unit_price 
+              FROM food,food_order,food_order_details 
+              WHERE  food_order_details_food_order_id=food_order_id 
+              AND food_order_details_food_id=food_id 
+                AND food_order_details_food_order_id='$oid'";
+   
+                $result=mysqli_query($con,$sql1);
+                if(mysqli_num_rows($result)>0){
 
+                      while($row=mysqli_fetch_assoc($result)){
 
+                    
+                      $foodname=$row['food_name'];
+                      $orderesfoodqty=$row['food_order_details_food_qty'];
+                      $unitprice=$row['food_order_details_unit_price'];?>
 
-    <div class="row">
-      <div class="col-9">
-        <table class="table table-borderless">
-          <thead>
-            <tr>
-              <th scope="col">Item Name</th>
-              <th scope="col">Item Qty</th>
-              <th scope="col">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td><?php echo $foodname;?></td>
-            <td><?php echo $orderesfoodqty;?></td>
-            <td><?php echo $unitprice;?></td>
-            </tr>
-          </tbody>
-      </table>
-      </div>
-</div>
+                            <div class="row">
+                                  <div class="col-9">
+                                    <table class="table table-borderless">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">Item Name</th>
+                                          <th scope="col">Item Qty</th>
+                                          <th scope="col">Amount</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                      <tr>
+                                        <td><?php echo $foodname;?></td>
+                                        <td><?php echo $orderesfoodqty;?></td>
+                                        <td><?php echo $unitprice;?></td>
+                                        </tr>
+                                      </tbody>
+                                  </table>
+                                  </div>
+                            </div>
 
- </div>
-
-</form>
-</div>
-
-          <?php
-            }
-          }
+                          
+                   <?php
+                    }
+                  }
           else{
             echo '
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -123,6 +130,10 @@ include_once("menu.php");
         }
         ?>
 
+</div>
+
+</form>
+</div>
 
 <div class="col-3">
 
