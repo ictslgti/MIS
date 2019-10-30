@@ -24,7 +24,7 @@ $title = "Examinations | SLGTI";
 <!-- end header -->
 
 <?php
-$course=$assessments=$academic_year= $assessment_date=null;
+$course=$module=$assessments=$academic_year= $assessment_date=null;
 
 if (isset($_POST['Add'])) {
 
@@ -35,13 +35,14 @@ if (isset($_POST['Add'])) {
     // &&!empty($_POST['assessment_date']) 
     // {
         # code...
-        echo $course=$_POST['course'];
-        echo $assessments=$_POST['assessments'];
-        echo $academic_year=$_POST['academic_year'];
-        echo $assessment_date=$_POST['assessment_date'];
+         $course=$_POST['course'];
+         $module=$_POST['module'];
+         $assessments=$_POST['assessments'];
+         $academic_year=$_POST['academic_year'];
+         $assessment_date=$_POST['assessment_date'];
 
-       echo $sql = "INSERT INTO `assessments` (`course_id`,`assessment_type_id`,`academic_year`,`assessment_date`)
-        VALUES ('$course','$assessments','$academic_year','$assessment_date')";
+        $sql = "INSERT INTO `assessments` (`course_id`,`module_id`,`assessment_type_id`,`academic_year`,`assessment_date`)
+        VALUES ('$course','$module','$assessments','$academic_year','$assessment_date')";
 
 
 if(mysqli_query($con,$sql))
@@ -330,15 +331,22 @@ else{
                             
                           </th>
                           <th>
+                          <center>Module</center>
+                          </th>
+                          <th>
                               <center>Academy Year</center>
                           </th>
                           <th>
                               <center>Assessment Date</center>
                           </th>
+                          <th>
+                          <center>Action</center>
+                          
+                          </th>
                       </thead>
                       <tbody>
                             <?php
-                            $sql = "SELECT assessment_type_id,course_id,academic_year,assessment_date FROM assessments";
+                            $sql = "SELECT assessment_type_id,course_id,module_id,academic_year,assessment_date FROM assessments";
                             $result = mysqli_query($con, $sql);
                             if (mysqli_num_rows($result)>0) {
             
@@ -351,6 +359,7 @@ else{
                                     <tr>
                                     <td><center>'. $row["assessment_type_id"]."<br>".'</center></td>
                                     <td><center>'. $row["course_id"]."<br>".'</center></td>
+                                    <td><center>'. $row["module_id"]."<br>".'</center></td>
                                     <td><center>'. $row["academic_year"]."<br>".'</center></td>
                                     <td><center>'. $row["assessment_date"]."<br>".'</center></td>
                                     
