@@ -105,28 +105,30 @@ $today = date('Y-m-d');
 -->
 
 <?php
- $weeks = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
 
 ?>
 <div class="row">
     <div class="col-md-12 col-sm-12">
         <div class="table-responsive">
         <table id="dtHorizontalVerticalExample" >
-
-        <thead>
+                <thead>
                     <tr>
-                        <th scope="col" class="p-3 bg-info text-light" style="width: 8%;">Date : <?php echo $today;?>
+                        <th scope="col" class="p-3 bg-info text-light" style="width: 8%;">Date : <?php echo $today; ?>
+                        
                         </th>
-                        <th scope="col" class="p-3" style="width: 6%;">Monday <?php echo date('Y-m-d', strtotime('monday this week', strtotime('last sunday')));?></th>
-                        <th scope="col" class="p-3" style="width: 6%;"> Tuesday <?php echo date('Y-m-d', strtotime('Tuesday this week', strtotime('last sunday')));?></th>
-                        <th scope="col" class="p-3" style="width: 6%;">Wednesday <?php echo date('Y-m-d', strtotime('Wednesday this week', strtotime('last sunday')));?></th>
-                        <th scope="col" class="p-3" style="width: 6%;">Thursday <?php echo date('Y-m-d', strtotime('Thursday this week', strtotime('last sunday')));?></th>
-                        <th scope="col" class="p-3" style="width: 6%;">Friday <?php echo date('Y-m-d', strtotime('Friday this week', strtotime('last sunday')));?></th>
-                        <th scope="col" class="p-3" style="width: 6%;">Saturday <?php echo date('Y-m-d', strtotime('Saturday this week', strtotime('last sunday')));?></th>
-                        <th scope="col" class="p-3" style="width: 6%;">Sunday <?php echo date('Y-m-d', strtotime('Sunday this week', strtotime('last sunday')));?></th>
+                        <?php
+                         $weeks = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+
+                        foreach ($weeks as $value) {
+                          ?>
+                         <th scope="col" class="p-3 <?php if(date('l')==$value) echo ' bg-warning'; ?>" style="width: 6%;"> 
+                         <?php echo $value; ?></th>
+                    
+                        <?php
+                        }
+                        ?>
                     </tr>
                 </thead>
-               
                 <tbody>
                     <tr>
                         <th class="align-middle" scope="row" style="height: 50px;">08:30 AM - 10.00 AM</th>
