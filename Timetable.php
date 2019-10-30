@@ -105,7 +105,6 @@ $today = date('Y-m-d');
 -->
 
 <?php
- $weeks = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
 
 ?>
 <div class="row">
@@ -114,13 +113,17 @@ $today = date('Y-m-d');
         <table id="dtHorizontalVerticalExample" >
                 <thead>
                     <tr>
-                        <th scope="col" class="p-3 bg-info text-light" style="width: 8%;">Date : <?php echo $today;?>
+                        <th scope="col" class="p-3 bg-info text-light" style="width: 8%;">Date : <?php echo $today; ?>
+                        
                         </th>
                         <?php
+                         $weeks = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+
                         foreach ($weeks as $value) {
                           ?>
-                         <th scope="col" class="p-3 <?php if(date('l')==$value) echo ' bg-warning'; ?>" style="width: 6%;"> <?php echo $value; echo date("Y-m-d", strtotime("+1 week" . (1) . " day"));?></th>
-                        
+                         <th scope="col" class="p-3 <?php if(date('l')==$value) echo ' bg-warning'; ?>" style="width: 6%;"> 
+                         <?php echo $value; ?></th>
+                    
                         <?php
                         }
                         ?>
@@ -139,7 +142,8 @@ $today = date('Y-m-d');
             while($row = mysqli_fetch_assoc($result)) 
 
               
-                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . ' <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
             }
             echo '</td>';   
         }
@@ -159,7 +163,8 @@ $today = date('Y-m-d');
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
-                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . ' <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
             }
             echo '</td>';   
         }
@@ -178,7 +183,8 @@ $today = date('Y-m-d');
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
-                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . ' <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
             }
             echo '</td>';   
         }
@@ -197,7 +203,8 @@ $today = date('Y-m-d');
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
-                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . ' <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
             }
             echo '</td>';   
         }

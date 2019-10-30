@@ -17,6 +17,16 @@ include_once ("menu.php");
 	    </div>
 	</div>
 
+    <div class="row">
+    <div class="col-sm-8"></div>
+	<div class="col-sm-4">
+    <form class="form-inline md-form form-sm mt-4" method="GET">
+    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="search" placeholder="Search_ID" aria-label="Search"  name="query" > 
+    <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button>
+    </form><br>
+    </div>
+    </div>
+
 	<div class="row">
 	    <div class="col-md-12 col-sm-12">
 	        <div class="table-responsive table-responsive-sm">
@@ -58,6 +68,25 @@ include_once ("menu.php");
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>  ';               
+                         
+                        }
+                    }
+                    ?>
+
+                    <?php
+                    if(isset($_GET['query']))
+                    {                
+                        $query = $_GET['query'];
+
+                        $query = "SELECT * FROM course WHERE (`course_name` LIKE '%".$c_id."%')";
+
+                        if(mysqli_query($con,$query))
+                        {
+                          echo 'yes value';
+                        }
+                        else
+                        {
+                          echo 'no value';               
                          
                         }
                     }
