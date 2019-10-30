@@ -208,8 +208,9 @@ $sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
                 <?php if($id=="fd004"){?>
                     <div class="col-md-8"><input type="number"  min=0.5 step="any" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
                 <?php }
+
                 else{?>
-                <div class="col-md-8"><input type="number"  name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
+                <div class="col-md-8"><input type="number"  min=1 name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
                <?php }?>
 
 
@@ -335,7 +336,7 @@ $sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
                     <form method="POST" action="#"> 
                     <div class="row">
                         <button type="submit" class="btn btn-success w-100" role="button" aria-pressed="true" value ="Order" name="Order" ><h2><i class="fas fa-cart-plus"></i></i> Order Now</h2></button></a>
-                        a href="OrderView.php"
+                    
                     </div>
                     </form>
 
