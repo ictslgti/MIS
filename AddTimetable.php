@@ -11,13 +11,13 @@ include_once("menu.php");
 
 
 <?PHP
-$department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$classroom=$startdate=$endeate=$tid=null;
+$department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$classroom=$start_date=$end_date=$tid=null;
 
 if(isset($_GET['edit']))
 
 {
   $id = $_GET['edit'];
-  $sql = "SELECT * FROM `timetable` WHERE `time_id` = $id";
+  $sql = "SELECT * FROM `timetable` WHERE `time_id` = '$id'";
   $result = mysqli_query($con, $sql);
   if (mysqli_num_rows($result)==1)
    {
@@ -31,8 +31,8 @@ if(isset($_GET['edit']))
       echo $weekdays = $row['weekdays'];
       echo $weekdays = $row['timep'];
       echo $classroom = $row['classroom'];
-      echo $startdate = $row['start_date'];
-      echo $endeate = $row['end_date'];
+      echo $start_date = $row['start_date'];
+      echo $end_date = $row['end_date'];
 
   }
 
@@ -379,8 +379,6 @@ if(isset($_POST['Add'])){
      
 
 
-  
-
         
      
 
@@ -416,6 +414,7 @@ if(isset($_POST['Add'])){
 
 
 
+ 
 
 
 
