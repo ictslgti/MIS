@@ -28,11 +28,9 @@ include_once("menu.php");
     {
       $stid =$_GET['stid'];
       $coid =$_GET['coid'];
-     //echo 'coid'.$_POST['coid']; 
      
-      
       //echo 'coid'.$_POST['coid'];
-      $sql = "SELECT `student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`, `student_enroll_status` 
+      $sql = "SELECT `student_id`,`course_id`,`course_mode`,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,`student_enroll_status` 
       FROM `student_enroll` WHERE `student_id`='$stid' AND `course_id`='$coid'";
       $result = mysqli_query($con,$sql);
 
@@ -144,8 +142,8 @@ include_once("menu.php");
           <label for="mode"> Course Mode : </label>
           <select name="mode" id="mode" class="custom-select" value="<?php echo $mode; ?>" required>
             <option selected disabled> Course Mode </option>
-              <option value="F" <?php if($mode=="F") echo 'selected';?>>Full Time</option> 
-              <option value="P" <?php if($mode == "P") echo 'selected';?>>Part Time</option>
+              <option value="Full"<?php if($mode=="Full") echo 'selected';?>>Full Time</option> 
+              <option value="Part"<?php if($mode == "Part") echo 'selected';?>>Part Time</option>
          </select>
         </div>
         
