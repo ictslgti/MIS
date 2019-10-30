@@ -192,19 +192,19 @@ if(isset($_POST['Submit']))
           $sqlenroll = "INSERT INTO `student_enroll`(`student_id`, `course_id`, course_mode,`academic_year`, `student_enroll_date`, `student_enroll_exit_date`, 
           `student_enroll_status`) VALUES ('$stid','$coid','$mode','$year','$enroll','$exit','$enstatus')";
 
-                    if(mysqli_query($con,$sqlenroll))
-                    {
-                      echo "Record Insert Successfully";
-                    }
-                    else
-                    {
-                    // echo "Error: ".$sqlstudent . "<br>" . mysqli_error($con);
-                      echo "Error: ".$sqlenroll . "<br>" . mysqli_error($con);
-                      //echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
-                      echo "Fill the required field";
-                    }
-      }
+            if(mysqli_query($con,$sqlenroll))
+            {
+              echo "Record Insert Successfully";
+            }
+            else
+            {
+            // echo "Error: ".$sqlstudent . "<br>" . mysqli_error($con);
+              echo "Error: ".$sqlenroll . "<br>" . mysqli_error($con);
+              //echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
+              echo "Fill the required field";
+            }
     }
+  }
   
 
 
@@ -282,8 +282,7 @@ if(isset($_POST['Edit']))
       echo 'status'.$_POST['status'];
       echo 'enrolldate'.$_POST['enrolldate'];
       echo 'exitdate'.$_POST['exitdate'];
-       if(
-         !empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['mode']) && !empty($_POST['cid'])
+       if(!empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['mode']) && !empty($_POST['cid'])
          && !empty($_POST['enrolldate']) && !empty($_POST['exitdate']) 
          && !empty($_GET['edit']))
        {
