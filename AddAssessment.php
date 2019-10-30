@@ -87,7 +87,7 @@ else{
                 <label for="validationCustom02">Course</label>
                 <select
                     class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['course'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course'])){echo ' is-valid';} ?>"
-                    id="course" name="course" onchange="showModule(this.value)" required >
+                    id="course" name="course" onchange="showModule(this.value)" required>
 
                     <option selected>Choose Course...</option>
                     <?php
