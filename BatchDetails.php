@@ -53,9 +53,13 @@ include_once("menu.php");
   
     </tr>
     <?php
-    $sql = "call batch()"; 
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result)>0){
+    if(isset($_GET['batch']))
+    {
+  
+    $id =$_GET['batch'];
+    $sql = "SELECT b.batch_id, b.course_id, b.academic_year from batch as b, course as c,department as d where d.department_id=c.department_id and c.course_id=b.course_id and d.department_id='$id'"; 
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows($result)>0){
     while ($row = mysqli_fetch_assoc($result)){
         echo'
         <tr>
@@ -70,7 +74,8 @@ if (mysqli_num_rows($result)>0){
       </tr>';
 
     }
-}else{
+}
+else{
 echo "0 results";
 }
 
