@@ -23,12 +23,11 @@ include_once("menu.php");
     $stid = $coid = $year = $enroll = $exit = $enstatus = $mode = null;
 
     // edit coding
-    if(isset($_GET['edit']) && ($_GET['edit1'])){
+    if(isset($_GET['edit'],$_GET['edit1'])){
       echo $stid =$_GET['edit'];
       echo $coid =$_GET['edit1'];
-     //echo 'coid'.$_POST['coid']; 
-     
-      
+     echo 'coid'.$_POST['coid']; 
+
       //echo 'coid'.$_POST['coid'];
       echo $sql = "SELECT `student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`, `student_enroll_status` 
       FROM `student_enroll` WHERE `student_id`='$stid' AND `course_id`='$coid'";
