@@ -87,7 +87,7 @@ else{
                 <label for="validationCustom02">Course</label>
                 <select
                     class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['course'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course'])){echo ' is-valid';} ?>"
-                    id="course" name="course" onchange="showAssessments(this.value)" required>
+                    id="course" name="course" onchange="showModule(this.value)" required >
 
                     <option selected>Choose Course...</option>
                     <?php
@@ -109,6 +109,31 @@ else{
                 </div>
 
             </div>
+            <!-- module -->
+            <div class="col-md-3 mb-2">
+            <label for="validationCustom02">Module</label>
+            <select
+                    class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module'])){echo ' is-valid';} ?>"
+                    id="module" name="module" onchange="showAssessments(this.value)" required>
+                    <option selected>Choose...</option>
+
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+
+            
+            
+            
+            
+            </div>
+
+
+
+
+
+
             <div class="col-md-3 mb-2">
                 <label for="validationCustom02">Assessments</label>
                 <select
@@ -399,7 +424,20 @@ else{
             }, false);
         });
     }, false);
-})();
+}
+
+
+function showModule(val) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("module").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST", "controller/getAssessmentType", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("getmodule=" + val);
+}
 
 
 
@@ -415,6 +453,7 @@ function showAssessments(val) {
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send("assessmentType=" + val);
 }
+
 </script>
 
 
