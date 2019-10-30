@@ -24,7 +24,7 @@ $title = "Examinations | SLGTI";
 <!-- end header -->
 
 <?php
-$course=$assessments=$academic_year= $assessment_date=null;
+$course=$module=$assessments=$academic_year= $assessment_date=null;
 
 if (isset($_POST['Add'])) {
 
@@ -35,13 +35,14 @@ if (isset($_POST['Add'])) {
     // &&!empty($_POST['assessment_date']) 
     // {
         # code...
-        echo $course=$_POST['course'];
-        echo $assessments=$_POST['assessments'];
-        echo $academic_year=$_POST['academic_year'];
-        echo $assessment_date=$_POST['assessment_date'];
+         $course=$_POST['course'];
+         $module=$_POST['module'];
+         $assessments=$_POST['assessments'];
+         $academic_year=$_POST['academic_year'];
+         $assessment_date=$_POST['assessment_date'];
 
-       echo $sql = "INSERT INTO `assessments` (`course_id`,`assessment_type_id`,`academic_year`,`assessment_date`)
-        VALUES ('$course','$assessments','$academic_year','$assessment_date')";
+        $sql = "INSERT INTO `assessments` (`course_id`,`module_id`,`assessment_type_id`,`academic_year`,`assessment_date`)
+        VALUES ('$course','$module','$assessments','$academic_year','$assessment_date')";
 
 
 if(mysqli_query($con,$sql))
@@ -87,7 +88,7 @@ else{
                 <label for="validationCustom02">Course</label>
                 <select
                     class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['course'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course'])){echo ' is-valid';} ?>"
-                    id="course" name="course" onchange="showAssessments(this.value)" required>
+                    id="course" name="course" onchange="showModule(this.value)" required>
 
                     <option selected>Choose Course...</option>
                     <?php
@@ -109,6 +110,31 @@ else{
                 </div>
 
             </div>
+            <!-- module -->
+            <div class="col-md-3 mb-2">
+            <label for="validationCustom02">Module</label>
+            <select
+                    class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module'])){echo ' is-valid';} ?>"
+                    id="module" name="module" onchange="showAssessments(this.value)" required>
+                    <option selected>Choose...</option>
+
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+
+            
+            
+            
+            
+            </div>
+
+
+
+
+
+
             <div class="col-md-3 mb-2">
                 <label for="validationCustom02">Assessments</label>
                 <select
@@ -305,15 +331,22 @@ else{
                             
                           </th>
                           <th>
+                          <center>Module</center>
+                          </th>
+                          <th>
                               <center>Academy Year</center>
                           </th>
                           <th>
                               <center>Assessment Date</center>
                           </th>
+                          <th>
+                          <center>Action</center>
+                          
+                          </th>
                       </thead>
                       <tbody>
                             <?php
-                            $sql = "SELECT assessment_type_id,course_id,academic_year,assessment_date FROM assessments";
+                            $sql = "SELECT assessment_type_id,course_id,module_id,academic_year,assessment_date FROM assessments";
                             $result = mysqli_query($con, $sql);
                             if (mysqli_num_rows($result)>0) {
             
@@ -326,6 +359,7 @@ else{
                                     <tr>
                                     <td><center>'. $row["assessment_type_id"]."<br>".'</center></td>
                                     <td><center>'. $row["course_id"]."<br>".'</center></td>
+                                    <td><center>'. $row["module_id"]."<br>".'</center></td>
                                     <td><center>'. $row["academic_year"]."<br>".'</center></td>
                                     <td><center>'. $row["assessment_date"]."<br>".'</center></td>
                                     
@@ -383,23 +417,36 @@ else{
 
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
-        });
-    }, false);
-})();
+// (function() {
+//     'use strict';
+//     window.addEventListener('load', function() {
+//         // Fetch all the forms we want to apply custom Bootstrap validation styles to
+//         var forms = document.getElementsByClassName('needs-validation');
+//         // Loop over them and prevent submission
+//         var validation = Array.prototype.filter.call(forms, function(form) {
+//             form.addEventListener('submit', function(event) {
+//                 if (form.checkValidity() === false) {
+//                     event.preventDefault();
+//                     event.stopPropagation();
+//                 }
+//                 form.classList.add('was-validated');
+//             }, false);
+//         });
+//     }, false);
+// }
+
+
+function showModule(val) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("module").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST", "controller/getAssessmentType", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("getmodule=" + val);
+}
 
 
 
@@ -415,6 +462,7 @@ function showAssessments(val) {
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send("assessmentType=" + val);
 }
+
 </script>
 
 
