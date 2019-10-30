@@ -198,8 +198,7 @@ Join </button> -->
 
 
 <?php
-if(isset($_GET['chat_group'])){              
-  $chat_group = $_GET['chat_group'];
+
 $sql = "CALL chat_group()"; 
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)> 0){
@@ -221,7 +220,7 @@ if (mysqli_num_rows($result)> 0){
 }else{
 echo "0 results";
 }
-}
+
 ?>
            
 
