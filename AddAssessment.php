@@ -362,6 +362,14 @@ else{
                                     <td><center>'. $row["module_id"]."<br>".'</center></td>
                                     <td><center>'. $row["academic_year"]."<br>".'</center></td>
                                     <td><center>'. $row["assessment_date"]."<br>".'</center></td>
+                                    <td>
+                                    <center>
+                                    <a href="AddAssessmentResults.php?" class="btn btn-sm btn-success"">Add Assessment Results</a>
+                                    
+                                    
+                                    </center>
+                                    
+                                    </td>
                                     
                                     </tr>';
                                 }
