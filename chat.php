@@ -61,6 +61,7 @@ if(isset($_GET['chat_group'])){
         
         echo ' 
         <div class="media text-muted pt-3">
+        
         <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
           <div class="d-flex justify-content-between align-items-center w-100">
             <strong class="text-gray-dark">';
@@ -90,17 +91,20 @@ if(isset($_GET['chat_group'])){
 ?>
     <div class="card-body">
                 <div class="d-flex mt-1">
-                <form method="POST">
+                <form method="POST"z>
                     <textarea name="typeMessage" dir="auto" data-region="send-message-txt" class="form-control bg-light" rows="3"
                         data-auto-rows="" data-min-rows="3" data-max-rows="5" role="textbox"
                         aria-label="Write a message..." placeholder="Write a message..."
                         style="resize: none" id="chatBox"></textarea>
-                        
+                        <button type="submit" name="send" class="btn btn-info mt-2 float-right" onclick="sendStatus()">SEND</button>
                         
                         </form>
-                        <button type="submit" name="send" class="btn btn-info mt-2 float-right" onclick="sendStatus()">SEND</button>
+                        
+                        
                 </div>
+                
             </div>
+            
 
 
 
@@ -141,16 +145,51 @@ if(isset($_GET['chat_group'])){
 
 <div class="card-body p-3 mb-2 bg-dark text-white">
 <p class="card-text ">
-<form class="form-inline md-form form-sm mt-4">
+<form class="form-inline md-form form-sm mt-4" method="">
 <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search"aria-label="Search" id="search">
 <i class="fas fa-search ml-3" aria-hidden="true"></i>
 
 
-<a href="create_group.php" class="btn btn-outline-dark text-white text-right" role="button" aria-pressed="true">add new</a>
+
 </form>
 
 </div>
 </div>
+<!-- <button type="button" name="Join"  class="btn text-dark float-right" data-toggle="modal" data-target="#exampleModal">
+Join </button> -->
+
+<?php
+    if(isset($_POST['Join'])){
+
+ 
+      $message   =  $_POST['typeMessage'];
+      $message_time   =  "2019-10-09 00:00:00.000000";
+      $chat_group_sender  =   "achchuthan";
+      $chat_group_reciver_group_id  = 4;
+  
+      $sql = "INSERT INTO `chat_group_member` (`student_fullname`, `chat_group_name`, `chat_group_sender`, `chat_group_reciver_group_id`) VALUES ('$student_fullname',NOW(),'$chat_group_name')";
+   
+      if (mysqli_query($con, $sql)) {
+        $resultSte="Join group";
+
+      } else {
+        echo "INSERT Error: " .mysqli_error($con);
+        $resultSte="fail";
+      
+  }
+}
+
+?>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -159,17 +198,22 @@ if(isset($_GET['chat_group'])){
 
 
 <?php
+if(isset($_GET['chat_group'])){              
+  $chat_group = $_GET['chat_group'];
 $sql = "CALL chat_group()"; 
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)> 0){
     while ($row = mysqli_fetch_assoc($result)){
       
-        echo'<i class="fas fa-user-circle"></i> <a href="?chat_group='.$row ["chat_group_id"].'" onclick="changeTextFD()">
+        echo'<i class="fas fa-user-circle"></i> <button type="button" name="Join"  class="btn text-dark float-right" data-toggle="modal" data-target="#exampleModal">
+        Join </button><a href="?chat_group='.$row ["chat_group_id"].'" onclick="changeTextFD()">
         <tr> 
+       
         <td>' . $row ["chat_group_name"].'</td>
         
-        <a ><i class="fas fa-envelope-open-text float-right"></i><small id="emailHelp" class="form-text text-muted float-center">
-        </small></li><li class="list-group-item list-group-item-action"> </a>
+        
+       </i><small id="emailHelp" class="form-text text-muted float-center">
+        </small></li><li class="list-group-item list-group-item-action">
         
         </tr>
         </a>';
@@ -177,12 +221,50 @@ if (mysqli_num_rows($result)> 0){
 }else{
 echo "0 results";
 }
-
+}
 ?>
            
 
 </div>
 </ul>
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+         
+
+
+
+      <div class="modal-body">
+     <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">full name</label>
+    <input type="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your name with anyone else.</small>
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
