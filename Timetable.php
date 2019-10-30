@@ -112,20 +112,21 @@ $today = date('Y-m-d');
     <div class="col-md-12 col-sm-12">
         <div class="table-responsive">
         <table id="dtHorizontalVerticalExample" >
-                <thead>
+
+        <thead>
                     <tr>
                         <th scope="col" class="p-3 bg-info text-light" style="width: 8%;">Date : <?php echo $today;?>
                         </th>
-                        <?php
-                        foreach ($weeks as $value) {
-                          ?>
-                         <th scope="col" class="p-3 <?php if(date('l')==$value) echo ' bg-warning'; ?>" style="width: 6%;"> <?php echo $value; echo date("Y-m-d", strtotime("+1 week" . (1) . " day"));?></th>
-                        
-                        <?php
-                        }
-                        ?>
+                        <th scope="col" class="p-3" style="width: 6%;">Monday <?php echo date('Y-m-d', strtotime('monday this week', strtotime('last sunday')));?></th>
+                        <th scope="col" class="p-3" style="width: 6%;"> Tuesday <?php echo date('Y-m-d', strtotime('Tuesday this week', strtotime('last sunday')));?></th>
+                        <th scope="col" class="p-3" style="width: 6%;">Wednesday <?php echo date('Y-m-d', strtotime('Wednesday this week', strtotime('last sunday')));?></th>
+                        <th scope="col" class="p-3" style="width: 6%;">Thursday <?php echo date('Y-m-d', strtotime('Thursday this week', strtotime('last sunday')));?></th>
+                        <th scope="col" class="p-3" style="width: 6%;">Friday <?php echo date('Y-m-d', strtotime('Friday this week', strtotime('last sunday')));?></th>
+                        <th scope="col" class="p-3" style="width: 6%;">Saturday <?php echo date('Y-m-d', strtotime('Saturday this week', strtotime('last sunday')));?></th>
+                        <th scope="col" class="p-3" style="width: 6%;">Sunday <?php echo date('Y-m-d', strtotime('Sunday this week', strtotime('last sunday')));?></th>
                     </tr>
                 </thead>
+               
                 <tbody>
                     <tr>
                         <th class="align-middle" scope="row" style="height: 50px;">08:30 AM - 10.00 AM</th>
@@ -139,7 +140,8 @@ $today = date('Y-m-d');
             while($row = mysqli_fetch_assoc($result)) 
 
               
-                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . ' <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
             }
             echo '</td>';   
         }
@@ -159,7 +161,8 @@ $today = date('Y-m-d');
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
-                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . ' <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
             }
             echo '</td>';   
         }
@@ -178,7 +181,8 @@ $today = date('Y-m-d');
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
-                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . ' <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
             }
             echo '</td>';   
         }
@@ -197,7 +201,8 @@ $today = date('Y-m-d');
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
-                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . ' <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
             }
             echo '</td>';   
         }
