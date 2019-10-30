@@ -53,6 +53,7 @@ include_once("menu.php");
   
     </tr>
     <?php
+    
     if(isset($_GET['batch']))
     {
   
@@ -68,7 +69,7 @@ include_once("menu.php");
         <td>' .$row["academic_year"].'</td>
         <td>
         
-    <a href="BatchStudent" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-user-graduate">&nbsp;&nbsp;Students</i></a>
+    <a href="BatchStudent.php?bst='.$row["batch_id"].'"" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-user-graduate">&nbsp;&nbsp;Students</i></a>
     <a href="AddNewBatch.php?edit='.$row["batch_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
     <button class="btn btn-sm btn-danger" data-href="?delete='.$row["batch_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
       </tr>';
@@ -78,6 +79,7 @@ include_once("menu.php");
 else{
 echo "0 results";
 }
+    }
 
 
 ?>
