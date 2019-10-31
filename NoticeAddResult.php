@@ -13,13 +13,11 @@ include_once("menu.php");
 
 <br>
 <hr>
-<div class="alert bg-dark text-white text-center" role="alert"><h1>Notice Add Result</h1>
+<div class="alert bg-dark text-white text-center" role="alert"><h1>SriLanka German Training Institute<br>Notice Add Result.</h1>
 </div>
+<br>
 <hr>
-
-
-
-
+<br>
 <?PHP
 $department_id=$course_id=$module_id=$academic_year=$tid=null;
 
@@ -33,10 +31,11 @@ if(isset($_GET['edit']))
    {
       $row = mysqli_fetch_assoc($result);
       $result_id = $row['result_id'];
-     $department_id = $row['department_id'];
-    $course_id = $row['course_id'];
-    $module_id = $row['module_id'];
+      $department_id = $row['department_id'];
+      $course_id = $row['course_id'];
+      $module_id = $row['module_id'];
       $academic_year= $row['academic_year'];
+      $upload= $row['upload'];
     
   }
 
@@ -46,46 +45,6 @@ if(isset($_GET['edit']))
 
 
 
-if(isset($_POST['Add'])){
-  echo "ok";
-
-  if(!empty($_POST['department_id'])
-  &&!empty($_POST['course_id'])
-  &&!empty($_POST['module_id'])
-  &&!empty($_POST['academic_year'])
-  &&!empty($_POST['upload']))
-
-  $upload = $upload["ima"];
-  $upload = basename($upload["ima"]["upload"]);
-  $test_dir = 'docs/events';
-  move_uploaded_file($upload, $upload.'/'.$upload);
- 
- 
-  { 
-     echo "ok2";
-     echo $department_id   =  $_POST['department_id'];
-     echo $course_id   =  $_POST['course_id'];
-     echo $module_id  =   $_POST['module_id'];
-     echo $academic_year  =   $_POST['academic_year'];
-     echo $upload  =   $_POST['upload'];
-     
-  
-     echo $sql = "INSERT INTO `notice_result` (`department_id`, `course_id`, `module_id`, `academic_year`,`upload`)
-      VALUES ('$department_id','$course_id','$module_id','$academic_year',`$upload`)";
-   
-      if (mysqli_query($con, $sql)) {
-        echo "record add";
-    
-
-      } else {
-         echo "Error: " . $sql .
-        "<br>" . 	mysqli_error($con);
-      
-        
-
-      }
-  }
-}
 
 
   ?>
@@ -93,11 +52,11 @@ if(isset($_POST['Add'])){
 
 <!-- Add timetable design  -->
 
-<form method="POST" action="#">
+<form method="POST" action="" enctype="multipart/form-data">
 
   
 <div class="form-group row">
-  <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Department</label>
+  <label for="inputEmail3" class="col-sm-2 col-form-label"><h5>&nbsp;&nbsp;&nbsp;Department</h5></label>
   <div class="col-sm-10"> 
   <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['department_id']))
   {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['department_id'])){echo ' is-valid';} ?>" id="department_id" name="department_id">
@@ -125,7 +84,7 @@ if(isset($_POST['Add'])){
 </div>
 
 <div class="form-group row">
-  <label for="inputPassword3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Course</label>
+  <label for="inputPassword3" class="col-sm-2 col-form-label"><h5>&nbsp;&nbsp;&nbsp;Course</h5></label>
   <div class="col-sm-10">
 <select id="inputState" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['course_id']))
   {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"  id="course_id" name="course_id">
@@ -148,7 +107,7 @@ if(isset($_POST['Add'])){
 
 
 <div class="form-group row">
-  <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;Module</label>
+  <label for="inputEmail3" class="col-sm-2 col-form-label"><h5>&nbsp;&nbsp;&nbsp;Module</h5></label>
   <div class="col-sm-10"> 
   <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['module_id']))
   {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"  id="module_id" name="module_id">
@@ -173,7 +132,7 @@ if(isset($_POST['Add'])){
 
 
 <div class="form-group row">
-  <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;AcademicYear</label>
+  <label for="inputEmail3" class="col-sm-2 col-form-label"><h5>&nbsp;&nbsp;&nbsp;AcademicYear</h5></label>
   <div class="col-sm-10"> 
   <select id="inputState" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['academic_year']))
   {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>"  id="academic_year" name="academic_year">
@@ -198,8 +157,8 @@ if(isset($_POST['Add'])){
 
 <div class="input-group mb-3">
 
-<label for="inputEmail3" class="col-sm-2 col-form-label">Upload Your File</label>
-<input class="form-control" type="file" value="<?php  if(isset($_POST['Add']) && empty($_POST['upload']))
+<label for="inputEmail3" class="col-sm-2 col-form-label"><h5>Upload Your File</h5></label>
+<input class="form-control" type="file" name='pdf' value="<?php  if(isset($_POST['Add']) && empty($_POST['upload']))
   {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['upload'])){echo ' is-valid';} ?>"  id="upload" name="upload"></td>
 </div>     
    
@@ -247,6 +206,41 @@ echo '<div class="btn-group-horizontal">';
 </div>
 
 </form>
+<?php
+if(isset($_POST['Add'])){
+  if(!empty($_POST['department_id'])
+  &&!empty($_POST['course_id'])
+  &&!empty($_POST['module_id'])
+  &&!empty($_POST['academic_year']))
+  { 
+     echo $department_id   =  $_POST['department_id'];
+     echo $course_id   =  $_POST['course_id'];
+     echo $module_id  =   $_POST['module_id'];
+     echo $academic_year  =   $_POST['academic_year'];
 
+     $t_name = $_FILES["pdf"]["tmp_name"];
+     $name = basename($_FILES["pdf"]["name"]);
+     $test_dir = './docs/result';
+     move_uploaded_file($t_name, $test_dir.'/'.$name);
+   
+  
+     echo $sql = "INSERT INTO `notice_result` (`department_id`, `academic_year`,`course_id`, `module_id` ,`upload`)
+      VALUES ('$department_id','$course_id','$module_id','$academic_year','$name')";
+   
+      if (mysqli_query($con, $sql)) {
+        echo "record add";
+    
+
+      } else {
+         echo "Error: " . $sql .
+        "<br>" . 	mysqli_error($con);
+      
+        
+
+      }
+  }
+}
+
+?>
         
 <?php include_once("footer.php"); ?>
