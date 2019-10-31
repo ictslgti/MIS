@@ -2,7 +2,7 @@
 include_once("../config.php");
 if(isset($_POST['course'])){
     $id = $_POST['course'];
-    echo '<option value="null"  selected disabled>--Select Module--</option>';
+
     $sql = "SELECT * FROM `module`  WHERE `course_id` = '$id'";
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0) {

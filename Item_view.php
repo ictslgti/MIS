@@ -11,7 +11,6 @@ include_once("menu.php");
 
 
 
-
 <!-- delete coding -->
 <?php
                     if(isset($_GET['delete_id']))
@@ -47,27 +46,7 @@ include_once("menu.php");
 
 
 
-<?php
-  if(isset($_GET['edit'])){
-        $item_id=$_GET['edit'];
-        $sql="SELECT * FROM `inventory_item` WHERE `item_id`='$item_id'";
-        $result=mysqli_query($con,$sql);
-        if(mysqli_num_rows($result)==1){
-            $row=mysqli_fetch_assoc($result);
-            $item_id=$row['item_id'];
-            $supplier_id=$row['supplier_id'];
-            $inventory_item_purchase=$row['inventory_item_purchase'];
-            $inventory_item_warranty=$row['inventory_item_warranty'];
-            $inventory_item_description=$row['inventory_item_description'];
-            $item_code=$row['	item_code'];
-          
-        }
-        else{
-          echo "Error".$sql."<br>".mysqli_error($con);
-        }
-    }
-  
-?>
+
 
 
 
@@ -118,7 +97,7 @@ include_once("menu.php");
           <td>'. $row["item_code"]."<br>".'</td>
           <td>
      
-          <a href="AddItem.php ?edits='.$row["item_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+          <a href="AddItem.php?edits='.$row["item_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
 
                                        
                                     <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["item_id"].'" 
