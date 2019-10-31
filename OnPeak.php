@@ -10,6 +10,31 @@ $title = "Home | SLGTI";
 <!--BLOCK#2 START YOUR CODE HERE -->
    <!-- Content here -->
 
+   <?php
+   if(isset($_POST['Approved'])){
+     echo $id=$_POST['Approved'];
+    $sql = "UPDATE `onpeak_request` 
+    SET `onpeak_request_status`='Approved'
+     WHERE `onpeak_request`. `id`= $id";
+if (mysqli_query($con, $sql)) {
+    echo '
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>  New record Updated </strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>    
+    ';
+    //echo " New record Updated";
+} else {
+     echo " Error : ". $sql . 
+    "<br>" . mysqli_error($con);
+}
+   }
+
+   ?>
+
+
    <br>     
         <div class="row border border-light shadow p-3 mb-5 bg-white rounded">
           <div class="col">
@@ -33,9 +58,8 @@ $title = "Home | SLGTI";
             <div class="col">
                 <br>
                 <br>
-                <div id="timestamp" class="pr-5 pl-2 ml-auto text-info">9/18/2019 - 2:07:56 PM</div>
-                <br>
-                <br>
+                <pre> Pending Requests </pre>
+                
             </div>
         </div>
         
@@ -45,61 +69,56 @@ $title = "Home | SLGTI";
         <table class="table table-hover">
             <thead>
                   <tr>
-                    <th scope="col">NAME</th>
                     <th scope="col">REGISTRATION NO </th>
-                    <th scope="col">REASON FOR EXIT</th>
-                    <th scope="col">EXIT DATE & TIME</th>
-                    <th scope="col">RETURN DATE & TIME</th>
                     <th scope="col"> CONTACT NO </th>
+                    <th scope="col">REASON FOR EXIT</th>
+                    <th scope="col">EXIT DATE</th>
+                    <th scope="col">EXIT TIME</th>
+                    <th scope="col">RETURN DATE</th>
+                    <th scope="col">RETURN TIME</th>
                     <th scope="col">ACTION</th>
                     
                   </tr>
             </thead>
-            <tbody>
-                  <tr>
-                    <th scope="row">Nirthika Ravinthiran</th>
-                    <td> 24586</td>
-                    <td> Hospital </td>
-                    <td> 25.2.2019/ 10.00 am</td>
-                    <td> 25.2.2019/ 1.00 pm</td>
-                    <td> 077896542</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-primary">Approved</button>
-                        <button type="button" class="btn btn-outline-danger">Disapproved</button>
-                    </td>
-                  </tr>
+           
+             <?php
+                $sql = "SELECT * FROM `onpeak_request` WHERE `onpeak_request_status`= 'Pending' ";
+                $result = mysqli_query($con, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                 while($row = mysqli_fetch_assoc($result)) {
 
-                  <tr>
-                    <th scope="row">Piruntha Jeyananthan</th>
-                    <td> 24586</td>
-                    <td> Other Reason </td>
-                    <td>20.6.2019/ 9.00 am</td>
-                    <td> 20.6.2019/ 2.00 pm</td>
-                    <td> 077856542</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-primary">Approved</button>
-                        <button type="button" class="btn btn-outline-danger">Disapproved</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">Hephzibha Pathmanathan</th>
-                    <td> 24586</td>
-                    <td> Family issues</td>
-                    <td>21.7.2019/ 10.30 am</td>
-                    <td> 21.7.2019/ 12.00 noon</td>
-                    <td> 077456542</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-primary">Approved</button>
-                        <button type="button" class="btn btn-outline-danger">Disapproved</button>
-                    </td>
-                  </tr>
-            </tbody>
+                echo '
+                <tbody> 
+                <tr>
+                    <th scope="row">'. $row["student_id"].'</th>
+                    <td>'. $row["contact_no"]. '</td>
+                    <td>'. $row["reason"]. '</td>
+                    <td>'. $row["exit_date"]. '</td>
+                    <td>'. $row["exit_time"]. '</td>
+                    <td>'. $row["return_date"].'</td>
+                    <td>'. $row["return_time"]. '</td>
+                    <td> 
+                    <form method="POST">
+                        <input type="submit" name="Approved'.$row["student_id"].'" class="btn btn-outline-primary" value="Approved"> 
+                         <input type="submit" name="Not Approved" class="btn btn-outline-danger" value="Not Approved">
+                     </td>
+                     </form>
+                     <td> <pre> '. $row["request_date_time"]. ' </pre> </td>
+                 </tr> 
+                 </tbody>
+                 ';
+                  }
+                 } else {
+                     echo "No more Requests";
+                }
+            ?>
+           
         </table> 
       </div>
     </div>
   </div>
  
+
 
   <div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
       <div class="col">
@@ -138,50 +157,48 @@ $title = "Home | SLGTI";
         
 
       <div class=row >
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                   <tr>
-                    <th scope="col">NAME</th>
                     <th scope="col">REGISTRATION NO </th>
                     <th scope="col">REASON FOR EXIT</th>
-                    <th scope="col">EXIT DATE & TIME</th>
-                    <th scope="col">RETURN DATE & TIME</th>
-                    <th scope="col"> CONTACT NO </th>
+                    <th scope="col">EXIT DATE</th>
+                    <th scope="col">EXIT TIME</th>
+                    <th scope="col">RETURN DATE</th>
+                    <th scope="col">RETURN TIME</th>
+                    <th scope="col">CONTACT NO </th>
                     <th scope="col">REFERENCE</th>
                     
                   </tr>
             </thead>
-            <tbody>
-                  <tr>
-                    <th scope="row">Nirthika Ravinthiran</th>
-                    <td> 24586</td>
-                    <td> Hospital </td>
-                    <td> 25.2.2019/ 10.00 am</td>
-                    <td> 25.2.2019/ 1.00 pm</td>
-                    <td> 077896542</td>
-                    <td> approved </td>
-                  </tr>
+            
+                <?php
+                    $sql = "SELECT * FROM `onpeak_request` WHERE `onpeak_request_status`= 'Approved' OR `onpeak_request_status`= 'Not Approved'  ";
+                    $result = mysqli_query($con, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
 
-                  <tr>
-                    <th scope="row">Piruntha Jeyananthan</th>
-                    <td> 24586</td>
-                    <td> Other Reason </td>
-                    <td>20.6.2019/ 9.00 am</td>
-                    <td> 20.6.2019/ 2.00 pm</td>
-                    <td> 077856542</td>
-                    <td> disapproved</td>
-                  </tr>
-
-                  <tr>
-                    <th scope="row">Hephzibha Pathmanathan</th>
-                    <td> 24586</td>
-                    <td> Family issues</td>
-                    <td>21.7.2019/ 10.30 am</td>
-                    <td> 21.7.2019/ 12.00 noon</td>
-                    <td> 077456542</td>
-                    <td> approved </td>
-                  </tr>
-            </tbody>
+                    echo '
+                      <tbody> 
+                        <tr>
+                          <th scope="row">'. $row["student_id"].'</th>
+                          <td>'. $row["reason"]. '</td>
+                          <td>'. $row["contact_no"]. '</td>
+                          <td>'. $row["exit_date"]. '</td>
+                          <td>'. $row["exit_time"]. '</td>
+                          <td>'. $row["return_date"].'</td>
+                          <td>'. $row["return_time"]. '</td>
+                          <td>'. $row["contact_no"]. '</td>
+                          <td>'. $row["onpeak_request_status"]. '</td>
+                         </tr> 
+                    </tbody>
+                    ';
+                    }
+                        } else {
+                            echo "No more Requests";
+                        }
+            ?>
+           
         </table> 
       </div>
     </div>
