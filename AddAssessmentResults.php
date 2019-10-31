@@ -11,9 +11,7 @@ $title = "Examinations | SLGTI";
 
     <body style="background-color: rgb(255,255,255);">
 
-        <?php
-    $ictDepartmentName = "Department Of Information & Communication Technology";
-    ?>
+        
 
         <div class="shadow p-3 mb-5 bg-white rounded">
 
@@ -21,7 +19,7 @@ $title = "Examinations | SLGTI";
                 <div class="container">
                     <div class="intro">
                         <h1 class="display-4 text-center">Asignments Portal</h1>
-                        <H3 class="display-5 text-center"><?php echo $ictDepartmentName ?></H3>
+                        
                         <p class="text-center">Welcome to examinations portal for lectures or admin. This section to add
                             examinations and assignments/asessments results&nbsp;</p>
 
@@ -30,133 +28,35 @@ $title = "Examinations | SLGTI";
             </div>
         </div>
 
-        <!-- card start -->
-
-        <div class="table container">
-            <!-- <div class="shadow p-3 mb-5 bg-white rounded"> -->
-            <div class="card">
-                <br>
-                <div class="container">
-                    <div class="intro">
-                        <h3 class="display-5 text-center">Add Asignments Marks</h3>
-                    </div>
-                </div>
-                <br>
-            </div>
-            <!-- </div> -->
-        </div>
-
-        <!-- end start -->
-
-        <br>
-
-        <!-- main table container start -->
-        <div class="table container">
-
-
-            <!-- mainform start  -->
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01"><i
-                            class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Select
-                        Course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                </div>
-                <select class="custom-select" id="course" name="course" onchange="showAssessments(this.value)" required>
-                    <option value="null" selected disabled>--Select Course--</option>
-
-                    <?php
-                  $sql = "SELECT * FROM `assessments`";
-                  $result = mysqli_query($con, $sql);
-                  if (mysqli_num_rows($result) > 0) {
-                  while($row = mysqli_fetch_assoc($result)) {
-                    echo '<option  value="'.$row["course_id"].'" required>'.$row["course_id"].'</option>';
-                  }
-                  }else{
-                    echo '<option value="null"   selected disabled>-- No Course --</option>';
-                  }
-                  ?>
-
-
-
-
-
-                </select>
-            </div>
-
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01"><i
-                            class="fas fa-book-open"></i>&nbsp;&nbsp;Select
-                        Assessment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                </div>
-                <select class="custom-select" id="assessmentsType" name="assessmentsType" onchange="showAcademyYear(this.value)" required>
-                    <option value="null" selected disabled>--Select Assessment--</option>
-
-
-
-
-
-
-
-                </select>
-            </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01"><i
-                            class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp;Select Academic Year</label>
-                </div>
-                <select class="custom-select" id="AcademyYear" name="AcademyYear">
-                    <option selected>Choose...</option>
-                    
-                </select>
-            </div>
-
-            <br>
-
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <div class="col-md-auto">
-                        <!-- main button  -->
-                        <button type="button" class="btn btn-outline-primary" id="students" name="students" onclick="showStudents(this.value)" ><i class="fas fa-plus"></i>&nbsp;Ok
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- main form end -->
-
-            <br>
-            <br>
-            <br>
-
             
 
-            <div class="card">
-                <br>
-                <div class="container">
-                    <div class="intro">
-                        <h3 class="display-5 text-center">Enter Asignments Marks</h3>
-                    </div>
-                </div>
-                <br>
-            </div>
-            <br>
+
+            <!-- main area start-->
+            <div class="container">
+                    <div class="card">
+                            <br>
+                                <div class="intro">
+                                    <h3 class="display-5 text-center">Enter Students Asignments Marks</h3>
+                                </div>
+                            <br>
+                        </div>
+                        <br>
 
             <!-- table -->
             <table class="table">
                 <thead>
                     <tr>
+                        <th scope="col">Assessment ID</th>
                         <th scope="col">Student Roll Number</th>
                         <th scope="col">Student Full Name</th>
                         <th scope="col">Marks</th>
+                        <th scope="col">Attempt</th>
                         <th scope="col">Grade</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <th scope="row">0</th>
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td>
@@ -165,35 +65,23 @@ $title = "Examinations | SLGTI";
                                     aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                         </td>
+                        <td>
+                                <div class="input-group mb-3">
+                                        
+                                        <select class="custom-select" id="inputGroupSelect01">
+                                          <option selected>Choose...</option>
+                                          <option value="1">1st</option>
+                                          <option value="2">Repeat</option>
+                                        </select>
+                                      </div>
+
+
+                        </td>
                         <td scope="row">
                             <h3 class="text-success">Pass</h3>
                         </td>
                     </tr>
-                    <tr>
-
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-
-                        <td>
-                            <div class="input-group mb-3">
-
-                                <input type="text" class="form-control" placeholder="Enter the Marks"
-                                    aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-
-                        <td>
-                            <div class="input-group mb-3">
-
-                                <input type="text" class="form-control" placeholder="Enter the Marks"
-                                    aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
 
@@ -359,6 +247,7 @@ $title = "Examinations | SLGTI";
                             class="fas fa-print"></i>&nbsp;&nbsp;Print&nbsp;&nbsp;&nbsp;</button>
                 </div>
             </div>
+        </div>
             <!-- small view table end -->
 
             <!-- main table container end below -->

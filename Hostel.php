@@ -13,7 +13,10 @@ if(isset($_GET['delete'])){
   $student_id = $_GET['delete'];
   $sql = "DELETE FROM `hostel_student_details` WHERE `hosttler_id`=$student_id";
  if(mysqli_query($con ,$sql)){
-     echo "Record delete successfully";
+  echo
+  '<div class="alert alert-danger">
+  <strong>Success!</strong> Your data was Deleted.</a>
+</div>';
    
  }else{
    echo "error deleting record : ". mysqli_error($con);

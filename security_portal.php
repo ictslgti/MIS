@@ -28,6 +28,7 @@ include_once("menu.php");
       <th scope="col">Time</th>
       <th scope="col">Warden's comment</th>
      <th colspan="3">Status</th>
+     <th>View</th>
     </tr>
   </thead>
   <tbody>
@@ -47,6 +48,31 @@ include_once("menu.php");
       <td>'.$row["time"].'</td>
       <td>'.$row["reson_for_exit"].'</td>
       <td>'.$row["status"].'</td>
+      <td>
+                        <button type="button" class="btn info-btn" data-toggle="modal" data-target="#reason-'.$row["student_id"].'">
+                        <i class="fa fa-eye"></i> View
+                        </button>
+                        <div class="modal" id="reason-'.$row["student_id"].'" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Reason For Recommending Leave</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>'.$row["name_of_applicant"].'</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
       
     </tr>';
 

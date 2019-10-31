@@ -17,6 +17,7 @@ include_once ("menu.php");
   if(isset($_GET['edits']))
   {
     $mid = $_GET['edits'];
+    $cid = $_GET['edits'];
     $sql = "SELECT * FROM module WHERE module_id = '$mid'";
     $result = mysqli_query($con,$sql);
     

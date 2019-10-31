@@ -114,9 +114,9 @@ $gcourse_id=$sum=$mid=$cid=null;
                               <td>'. "$sum". "<br>" .'</td>
                                
                               <td> 
-                                    <a href=" AddModule.php ?edits='.$row["module_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                                    <a href=" AddModule.php ?edits='.$row["module_id"].'  &&  ?edits='.$row["course_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
  
-                                    <button data-href=" ?dlt='.$row["module_id"].' " class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
+                                    <button data-href=" ?dlt='.$row["module_id"].' &&  ?dlt='.$row["course_id"].' " class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
                                     </td> 
                             </tr>';
                             $count=$count+1;
@@ -127,29 +127,12 @@ $gcourse_id=$sum=$mid=$cid=null;
                           echo "0 results";
                       }
                      
-                      
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                     ?>
                      </tbody>
                     </table>
-                    
-                      
-
-                    
-                 
-
-                <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next Page</a>
-                </li>
-              </ul>
-                </nav>
+                    <a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i>
+                
             </div>
       </div>
  </div>

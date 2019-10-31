@@ -53,9 +53,14 @@ include_once("menu.php");
   
     </tr>
     <?php
-    $sql = "call batch()"; 
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result)>0){
+    
+    if(isset($_GET['batch']))
+    {
+  
+    $id =$_GET['batch'];
+    $sql = "SELECT b.batch_id, b.course_id, b.academic_year from batch as b, course as c,department as d where d.department_id=c.department_id and c.course_id=b.course_id and d.department_id='$id'"; 
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows($result)>0){
     while ($row = mysqli_fetch_assoc($result)){
         echo'
         <tr>
@@ -64,15 +69,17 @@ if (mysqli_num_rows($result)>0){
         <td>' .$row["academic_year"].'</td>
         <td>
         
-    <a href="BatchStudent" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-user-graduate">&nbsp;&nbsp;Students</i></a>
+    <a href="BatchStudent.php?bst='.$row["batch_id"].'"" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-user-graduate">&nbsp;&nbsp;Students</i></a>
     <a href="AddNewBatch.php?edit='.$row["batch_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
     <button class="btn btn-sm btn-danger" data-href="?delete='.$row["batch_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
       </tr>';
 
     }
-}else{
+}
+else{
 echo "0 results";
 }
+    }
 
 
 ?>

@@ -23,18 +23,20 @@ include_once("menu.php");
     $stid = $coid = $year = $enroll = $exit = $enstatus = $mode = null;
 
     // edit coding
-    if(isset($_GET['edit']))
+    
+    if((isset($_GET['stid'])) && (isset($_GET['coid'])))
     {
-     //echo 'coid'.$_POST['coid']; 
-      echo $stid =$_GET['edit'];
-      echo $coid =$_GET['edit'];
-      echo $sql = "SELECT `student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`,`student_enroll_status`
-      FROM `student_enroll`where student_id ='$stid' and course_id ='$coid'";
+      $stid =$_GET['stid'];
+      $coid =$_GET['coid'];
+     
+      //echo 'coid'.$_POST['coid'];
+      $sql = "SELECT `student_id`,`course_id`,`course_mode`,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,`student_enroll_status` 
+      FROM `student_enroll` WHERE `student_id`='$stid' AND `course_id`='$coid'";
       $result = mysqli_query($con,$sql);
 
       if(mysqli_num_rows($result)==1)
         {
-          echo "welcom";
+          //echo "welcom";
         $row =mysqli_fetch_assoc($result);
         $stid = $row['student_id'];
         $coid = $row['course_id'];
@@ -46,40 +48,74 @@ include_once("menu.php");
       }
     }
 
-
     // update coding
 
-    // insert coding
-
-    if(isset($_POST['Submit']))
-  {
-    if(!empty($_POST['sid']) && !empty($_POST['cid']) && !empty($_POST['mode']) && !empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['enrolldate']) && !empty($_POST['exitdate']))
-    {
+    if(isset($_POST['Edit']))
+     {
+      // echo "welcome Edit"; 
+      echo 'stid'.$_POST['stid']; echo 'mode'.$_POST['mode']; echo 'status'.$_POST['status'];
+      echo 'ayear'.$_POST['ayear'];echo 'edate'.$_POST['edate']; echo 'exdate'.$_POST['exdate'];
+      
+      if(!empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['mode']) && !empty($_POST['edate']) && !empty($_POST['exdate']) && !empty($_GET['Edit']))
+       {
         echo "SUCCESS";
-        $stid=$_POST['sid'];
-        $coid=$_POST['cid'];
+        $stid=$_GET['stid'];
+        $coid=$_GET['coid'];
         $mode=$_POST['mode'];
         $year=$_POST['ayear'];
         $enstatus=$_POST['status'];
-        $enroll=$_POST['enrolldate'];
-        $exit=$_POST['exitdate'];
+        $enroll=$_POST['edate'];
+        $exit=$_POST['exdate'];
 
-          $sqlenroll = "INSERT INTO `student_enroll`(`student_id`, `course_id`, course_mode,`academic_year`, `student_enroll_date`, `student_enroll_exit_date`, 
+        echo $sql2 = "UPDATE `student_enroll` SET `course_mode`='$mode',`academic_year`='$year',`student_enroll_date`='$enstatus',
+        `student_enroll_exit_date`='$enroll',`student_enroll_status`='$exit' WHERE `student_id`='$stid' and `course_id`='$coid'";
+
+            if(mysqli_query($con,$sql2))
+            {
+              echo "Record Updated Successfully";
+            }
+            else
+            {
+              echo "Error: ".$sq2. "<br>" . mysqli_error($con);
+              echo "Fill the required field";
+            }
+          }
+    }
+    // insert coding
+
+    if(isset($_POST['Submit']))
+     {
+      //  echo 'stid'.$_POST['stid']; echo 'coid'.$_POST['coid'];echo 'mode'.$_POST['mode'];echo 'exdate'.$_POST['exdate'];
+      //  echo 'ayear'.$_POST['ayear'];echo 'status'.$_POST['status'];echo 'edate'.$_POST['edate'];
+       
+      if(!empty($_POST['stid']) && !empty($_POST['coid']) && !empty($_POST['mode']) && !empty($_POST['ayear']) 
+      && !empty($_POST['status']) && !empty($_POST['edate']) && !empty($_POST['exdate']))
+        {
+        echo "SUCCESS";
+        $stid=$_POST['stid'];
+        $coid=$_POST['coid'];
+        $mode=$_POST['mode'];
+        $year=$_POST['ayear'];
+        $enstatus=$_POST['status'];
+        $enroll=$_POST['edate'];
+        $exit=$_POST['exdate'];
+
+          $sqlenroll = "INSERT INTO `student_enroll`(`student_id`,`course_id`,`course_mode`,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
           `student_enroll_status`) VALUES ('$stid','$coid','$mode','$year','$enroll','$exit','$enstatus')";
 
-                    if(mysqli_query($con,$sqlenroll))
-                    {
-                      echo "Record Insert Successfully";
-                    }
-                    else
-                    {
-                    // echo "Error: ".$sqlstudent . "<br>" . mysqli_error($con);
-                      echo "Error: ".$sqlenroll . "<br>" . mysqli_error($con);
-                      //echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
-                      echo "Fill the required field";
-                    }
-      }
+            if(mysqli_query($con,$sqlenroll))
+            {
+              echo "Record Insert Successfully";
+            }
+            else
+            {
+            // echo "Error: ".$sqlstudent . "<br>" . mysqli_error($con);
+              echo "Error: ".$sqlenroll . "<br>" . mysqli_error($con);
+              //echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
+              echo "Fill the required field";
+            }
     }
+  }
 ?>
 
 <div class="ROW">
@@ -136,8 +172,8 @@ include_once("menu.php");
           <label for="mode"> Course Mode : </label>
           <select name="mode" id="mode" class="custom-select" value="<?php echo $mode; ?>" required>
             <option selected disabled> Course Mode </option>
-              <option value="F" <?php if($mode=="F") echo 'selected';?>>Full Time</option> 
-              <option value="P" <?php if($mode == "P") echo 'selected';?>>Part Time</option>
+              <option value="Full"<?php if($mode=="Full") echo 'selected';?>>Full Time</option> 
+              <option value="Part"<?php if($mode == "Part") echo 'selected';?>>Part Time</option>
          </select>
         </div>
         
@@ -201,7 +237,7 @@ include_once("menu.php");
           <?php
               echo '<div class="btn-group-horizontal">';
               
-              if(isset($_GET['edit']))
+              if((isset($_GET['stid'])) && (isset($_GET['coid'])))
               {
                 
                 echo '<button type="submit" value="Edit" name="Edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
@@ -210,7 +246,7 @@ include_once("menu.php");
               else
               {
                 echo '<button type="submit" value="Submit" name="Submit" onclick="addtable();" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>ADD</button>';
-                //echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+                echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
               }
               echo '</div>';
       ?>  
@@ -260,7 +296,7 @@ include_once("menu.php");
                         <td>'.$row["student_enroll_exit_date"]."<br>".'</td>
                         <td>'.$row["student_enroll_status"]."<br>".'</td>
                         <td>
-                        <a href="StudentReEnroll.php?edit='.$row["student_id"].'&&?edit='.$row["course_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
+                        <a href="StudentReEnroll.php?stid='.$row["student_id"].'&&coid='.$row["course_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
                         <a href="?Student_Id='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i></td>
                    </tr>';
                   $num=$num+1;

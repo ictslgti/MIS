@@ -195,15 +195,15 @@ include_once("menu.php");
         </div>
         
 
-
+        
         <div class="col-md-3">
         <label for="add"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Addmission</label>
-            <input type="date" class="form-control" id="add" value="<?php echo $date; ?>" name="date" placeholder=""  required>
+            <input type="date" class="form-control" id="add" value="<?php echo $date;  ?>" name="date" placeholder="" min="<?php echo  $min = date("Y-m-d"); ?>" required>
           </div>
 
           <div class="col-md-3">
           <label for="leave"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Leaving</label>
-            <input type="date" class="form-control" id="leave" value="<?php echo $leave; ?>" name="leave" placeholder=""  required>
+            <input type="date" class="form-control" id="leave" value="<?php echo $leave; ?>" name="leave" placeholder="" min="<?php echo  $min = date("Y-m-d"); ?>" required>
           </div>
 
        </div>

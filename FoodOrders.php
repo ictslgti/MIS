@@ -117,6 +117,7 @@ $title = "Home | SLGTI";
 <!-- FOOD ORDER  -->
 
 <?php
+$username=$foodid=$foodqty=$foodunitprice=null;
 if(isset($_POST['Order'])){
   
 $username=$_SESSION['user_name'];
@@ -134,12 +135,14 @@ $sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
           
             $orderid=$row['food_order_id'];
 
-             echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
-             <strong>'.$orderid.'</strong> Order ID
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-         </div>   ';
+            $sql2="INSERT INTO `food_order_details`(`food_order_details_food_order_id`, `food_order_details_food_id`, `food_order_details_food_qty`, `food_order_details_unit_price`)
+             VALUES ()";
+        //      echo ' <div class="s alert-dismissible fade show" role="alert">
+        //      <strong>'.$orderid.'</strong> Order ID
+        //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //     <span aria-hidden="true">&times;</span>
+        //   </button>
+        //  </div>   ';
         }
         
     }
@@ -208,8 +211,9 @@ $sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
                 <?php if($id=="fd004"){?>
                     <div class="col-md-8"><input type="number"  min=0.5 step="any" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
                 <?php }
+
                 else{?>
-                <div class="col-md-8"><input type="number"  name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
+                <div class="col-md-8"><input type="number"  min=1 name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
                <?php }?>
 
 
@@ -334,8 +338,8 @@ $sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
                     
                     <form method="POST" action="#"> 
                     <div class="row">
-                        <a href="OrderView.php" button type="submit" class="btn btn-success w-100" role="button" aria-pressed="true" value ="Order" name="Order" ><h2><i class="fas fa-cart-plus"></i></i> Order Now</h2></button></a>
-                       
+                        <button type="submit" class="btn btn-success w-100" role="button" aria-pressed="true" value ="Order" name="Order" ><h2><i class="fas fa-cart-plus"></i></i> Order Now</h2></button></a>
+                    
                     </div>
                     </form>
 
