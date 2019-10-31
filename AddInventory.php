@@ -21,7 +21,7 @@ if(isset($_GET['edit']))
    {
       $row = mysqli_fetch_assoc($result);
     echo  $inventoryid = $row['inventory_id'];
-     echo $Departmentid = $row['inventory_department_id'];
+     echo $Departmentid = $row['inventorydepartmentid'];
       echo$itemid = $row['item_id'];
      echo $inventorystatus= $row['inventory_status'];
      echo $inventoryquantity = $row['inventory_quantity'];
@@ -50,13 +50,13 @@ $inventoryid=$Departmentid=$itemid=$inventorystatus=$inventoryquantity=null;
 
 if(isset($_POST['Add'])){
   if(!empty($_POST['inventoryid'])
-    &&!empty($_POST['Department_id'])
+    &&!empty($_POST['Departmentid'])
     &&!empty($_POST['itemid'])
     &&!empty($_POST['inventorystatus'])
     &&!empty($_POST['inventoryquantity'])){
       
       $inventoryid=$_POST['inventoryid'];
-      $Departmentid=$_POST['Department_id'];
+      $Departmentid=$_POST['Departmentid'];
       $itemid=$_POST['itemid'];
       $inventorystatus=$_POST['inventorystatus'];
       $inventoryquantity=$_POST['inventoryquantity'];
@@ -128,7 +128,7 @@ if(isset($_GET['edits'])){
        'inventoryquantity'.$_POST['inventoryquantity'];
        
       
-       if(!empty($_POST['inventory_id']) && !empty($_POST['Departmentid']) && !empty($_POST['itemid']) && !empty($_POST['inventorystatus'])
+       if(!empty($_POST['inventoryid']) && !empty($_POST['Departmentid']) && !empty($_POST['itemid']) && !empty($_POST['inventorystatus'])
          && !empty($_POST['inventoryquantity']) 
          && !empty($_GET['edits']))
        {
@@ -167,7 +167,7 @@ if(isset($_GET['edits'])){
               <div class="w-100"></div>
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
                       <label class="font-weight-bold" for="">01.DEPARTMENT ID</label> <span style="color:red;">*</span></label>
-                      <select id="Department_id" name="Department_id" value="<?php echo $Departmentid ?>" class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  >
+                      <select id="Departmentid" name="Departmentid" value="<?php echo $Departmentid ?>" class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Departmentid'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Departmentid'])){echo ' is-valid';} ?>">
       
                     <option value="null" selected disabled>--Select Department--</option>
                     <?php          
