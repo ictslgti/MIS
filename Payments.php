@@ -73,10 +73,7 @@ if(mysqli_num_rows($result)>0){
         <td>'.$row['pays_qty'].'</td>
         <td>'.$row['pays_date'].'</td>
         <td>'.$row['pays_department'].'</td>
-        <td> <a href="Update_Payment.php ?upt='.$row["pays_id"].'" >
-        <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
-        <i class="far fa-edit"></i>
-        </button></a> </td>
+        
         
         </tr>';
 
