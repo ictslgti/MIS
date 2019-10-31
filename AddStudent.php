@@ -59,41 +59,30 @@ if(isset($_GET['edit']))
   }
 }
 
-if(isset($_GET['edit']))
-{
-  $stid =$_GET['edit'];
-  $sql = "SELECT `student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`, `student_enroll_status` 
-  FROM `student_enroll` WHERE `student_id`= '$stid'";
-  $result = mysqli_query($con,$sql);
+// if(isset($_GET['edit']))
+// {
+//   $stid =$_GET['edit'];
+//   $sql = "SELECT `student_id`, `course_id`, `course_mode`, `academic_year`, `student_enroll_date`, `student_enroll_exit_date`, `student_enroll_status` 
+//   FROM `student_enroll` WHERE `student_id`= '$stid'";
+//   $result = mysqli_query($con,$sql);
 
-  if(mysqli_num_rows($result)==1)
-  {
-    $row =mysqli_fetch_assoc($result);
-    $year = $row['academic_year'];
-    $coid = $row['course_id'];
-    //$stid = $row['student_id'];
-    $mode = $row['course_mode'];
-    $enstatus =$row['student_enroll_status'];
-    $enroll = $row['student_enroll_date'];
-    $exit = $row['student_enroll_exit_date'];
-    
-  }
-}
+//   if(mysqli_num_rows($result)==1)
+//   {
+//     $row =mysqli_fetch_assoc($result);
+//     $year = $row['academic_year'];
+//     $coid = $row['course_id'];
+//     //$stid = $row['student_id'];
+//     $mode = $row['course_mode'];
+//     $enstatus =$row['student_enroll_status'];
+//     $enroll = $row['student_enroll_date'];
+//     $exit = $row['student_enroll_exit_date'];
   
-  //  //delete coding
-  // // if(isset($_GET['edit']))
-  // // {
-  // //     $stid = $_GET['edit'];
-  // //     $sql = "DELETE FROM `student` WHERE `student_id`='$stid'";
-  // //     if(mysqli_query($con,$sql))
-  // //     {
-  // //         echo "Student Personal Recorde Delete Successfully";
-  // //     }
-  // //     else
-  // //     {
-  // //     echo "Error Deleteing Record: ". mysqli_error($con);
-  // //     }
-  // // }
+//   }
+// }
+
+  
+   //delete coding
+  
 
   // if(isset($_GET['edit']))
   // {
@@ -203,52 +192,21 @@ if(isset($_POST['Submit']))
           $sqlenroll = "INSERT INTO `student_enroll`(`student_id`, `course_id`, course_mode,`academic_year`, `student_enroll_date`, `student_enroll_exit_date`, 
           `student_enroll_status`) VALUES ('$stid','$coid','$mode','$year','$enroll','$exit','$enstatus')";
 
-                    if(mysqli_query($con,$sqlenroll))
-                    {
-                      echo "Record Insert Successfully";
-                    }
-                    else
-                    {
-                    // echo "Error: ".$sqlstudent . "<br>" . mysqli_error($con);
-                      echo "Error: ".$sqlenroll . "<br>" . mysqli_error($con);
-                      //echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
-                      echo "Fill the required field";
-                    }
-      }
-    }
-  
-if(isset($_POST['addq']))
-  {
-  //echo "welcome";
-    if(!empty($_POST['sid']) 
-    &&!empty($_POST['qualification']) 
-    &&!empty($_POST['indexno']) 
-    &&!empty($_POST['yoe']) 
-    &&!empty($_POST['subject']) 
-    &&!empty($_POST['result']))
-     {
-       echo "SUCCESS";
-        $stid=$_POST['sid'];
-        $qutype=$_POST['qualification'];
-        $index=$_POST['indexno'];
-        $yoe=$_POST['yoe'];
-        $subject=$_POST['subject'];
-        $result=$_POST['result'];
-    
-           $sqlqualification = "INSERT INTO `student_qualification`(`qualification_student_id`, `qualification_type`, `qualification_index_no`, `qualification_year`, 
-          `qualification_description`, `qualification_results`) VALUES  ('$stid','$qutype','$index','$yoe','$subject','$result')";
-
-              if(mysqli_query($con,$sqlqualification))
-              {
-                echo "Record Insert Successfully";
-              }
-              else
-              {
-                echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
-               // echo "Fill the required field";
-              }
+            if(mysqli_query($con,$sqlenroll))
+            {
+              echo "Record Insert Successfully";
+            }
+            else
+            {
+            // echo "Error: ".$sqlstudent . "<br>" . mysqli_error($con);
+              echo "Error: ".$sqlenroll . "<br>" . mysqli_error($con);
+              //echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
+              echo "Fill the required field";
             }
     }
+  }
+  
+
 
   //update coding FOR STUDENT
 if(isset($_POST['Edit']))
@@ -307,6 +265,7 @@ if(isset($_POST['Edit']))
             else
             {
               echo "Error: ".$sql . "<br>" . mysqli_error($con);
+              echo "Fill the required field";
             }
           }
     }
@@ -323,8 +282,7 @@ if(isset($_POST['Edit']))
       echo 'status'.$_POST['status'];
       echo 'enrolldate'.$_POST['enrolldate'];
       echo 'exitdate'.$_POST['exitdate'];
-       if(
-         !empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['mode']) && !empty($_POST['cid'])
+       if(!empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['mode']) && !empty($_POST['cid'])
          && !empty($_POST['enrolldate']) && !empty($_POST['exitdate']) 
          && !empty($_GET['edit']))
        {
@@ -347,47 +305,16 @@ if(isset($_POST['Edit']))
             else
             {
               echo "Error: ".$sq2 . "<br>" . mysqli_error($con);
+              echo "Fill the required field";
             }
           }
     }
 
-
-    // UPDATE TO STUDENT_QUALIFICATION
-
-    if(isset($_POST['editq']))
-    {
-      if(
-       !empty($_POST['qualification']) && !empty($_POST['yoe']) && !empty($_POST['result']) 
-        && !empty($_POST['Ename']) && !empty($_POST['addressE']) && !empty($_GET['edit']))
-      {
-       echo "SUCCESS";
-       $stid=$_GET['edit'];
-       $qutype=$_POST['qualification'];
-       $index=$_POST['indexno'];
-       $yoe=$_POST['yoe'];
-       $subject=$_POST['subject'];
-       $result=$_POST['result'];
-       $enroll=$_POST['enrolldate'];
-       $exit=$_POST['exitdate'];
-
-       $sql3 = "UPDATE `student_qualification` SET `qualification_type`='$qutype',`qualification_index_no`='$index',`qualification_year`='$yoe',
-       qualification_description='$subject',`qualification_results`='$result' WHERE `qualification_student_id`= '$stid'";
-
-           if(mysqli_query($con,$sql3))
-           {
-             echo "Record Updated Successfully";
-           }
-           else
-           {
-             echo "Error: ".$sql . "<br>" . mysqli_error($con);
-           }
-         }
-   }
-
 ?>
 <div class="ROW">
-     <div class="col text-center shadow p-3 mb-5 bg-white rounded ">
-         <h1 style="text-align:center"> SLGTI STUDENTS' REGISTRATION FORM </h1>   
+     <div class="col text-center shadow p-5 mb-5 bg-white rounded ">
+         <h1 style="text-align:center"> STUDENTS' REGISTRATION FORM </h1>
+         <h5 style="text-align:center"> SRI LANKA GERMAN TRAINING INSTITUTE</h5>
      </div>
 </div><br><br>
 
@@ -395,10 +322,17 @@ if(isset($_POST['Edit']))
 <div class="container">
 <form class="needs-validation" action="" method="POST">
 
+<div class="form-row">
+          <div class class="col-md-1"></div>
+          <div class="col">
+          <h2 style="font-size: 20px; font-weight: 700; border-bottom: 2px solid #aaa;"> Enroll Information </h2>
+          </div>  
+</div><br>
+
     <div class="form-row">
         <div class="col-md-6 mb-3">
           <label for="cid"> Course Name: </label>
-          <select name="cid" id="cid" class="custom-select" value="<?php echo $coid; ?>" required>
+          <select name="cid" id="cid" class="custom-select" value="<?php echo $coid; ?>">
           <option selected disabled> ........select the Course .......</option>
               <?php 
                 $sql="SELECT * from course";
@@ -683,11 +617,76 @@ if(isset($_POST['Edit']))
 
         <div class="col-md-6 mb-3"></div>
         
-        <div class="btn-group-horizontal col-md-2 mb-3"> 
+        <div class="btn-group-horizontal col-md-3 mb-3"> 
            <button type="submit" style="margin-top:35px" value="editq" name="editq" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>EDIT</button>  
            <button type="submit" value="addq" style="margin-top:35px" name="addq"  class="btn btn-primary mr-2" style="float:right"><i class="fas fa-user-plus"></i>ADD</button>
-           <button type="delete" class="btn btn-sm btn-danger" value="delete" name="delete" data-href="?delete='.$row=["student_id"].'" data-toggle="modal" data-target="#confirm-delete"> <i class="fas fa-trash"></i> </button>';
+           
         </div>
+      <?php
+        if(isset($_POST['addq']))
+              {
+              //echo "welcome";
+                if(!empty($_POST['sid']) 
+                &&!empty($_POST['qualification']) 
+                &&!empty($_POST['indexno']) 
+                &&!empty($_POST['yoe']) 
+                &&!empty($_POST['subject']) 
+                &&!empty($_POST['result']))
+                {
+                  echo "SUCCESS";
+                    $stid=$_POST['sid'];
+                    $qutype=$_POST['qualification'];
+                    $index=$_POST['indexno'];
+                    $yoe=$_POST['yoe'];
+                    $subject=$_POST['subject'];
+                    $result=$_POST['result'];
+                
+                      $sqlqualification = "INSERT INTO `student_qualification`(`qualification_student_id`, `qualification_type`, `qualification_index_no`, `qualification_year`, 
+                      `qualification_description`, `qualification_results`) VALUES  ('$stid','$qutype','$index','$yoe','$subject','$result')";
+
+                          if(mysqli_query($con,$sqlqualification))
+                          {
+                            echo "Record Insert Successfully";
+                          }
+                          else
+                          {
+                            echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
+                          // echo "Fill the required field";
+                          }
+                        }
+                }
+
+                if(isset($_POST['editq']))
+                  {
+                    if(
+                    !empty($_POST['qualification']) && !empty($_POST['yoe']) && !empty($_POST['result']) 
+                      && !empty($_POST['Ename']) && !empty($_POST['addressE']) && !empty($_GET['edit']))
+                    {
+                    echo "SUCCESS";
+                    $stid=$_GET['edit'];
+                    $qutype=$_POST['qualification'];
+                    $index=$_POST['indexno'];
+                    $yoe=$_POST['yoe'];
+                    $subject=$_POST['subject'];
+                    $result=$_POST['result'];
+                    $enroll=$_POST['enrolldate'];
+                    $exit=$_POST['exitdate'];
+
+                    $sql3 = "UPDATE `student_qualification` SET `qualification_type`='$qutype',`qualification_index_no`='$index',`qualification_year`='$yoe',
+                    qualification_description='$subject',`qualification_results`='$result' WHERE `qualification_student_id`= '$stid'";
+
+                        if(mysqli_query($con,$sql3))
+                        {
+                          echo "Record Updated Successfully";
+                        }
+                        else
+                        {
+                          echo "Error: ".$sql . "<br>" . mysqli_error($con);
+                        }
+                      }
+                }
+          
+                ?>
     </div>
         
         <div class="form-row">
@@ -700,6 +699,7 @@ if(isset($_POST['Edit']))
               <th width="15%"> Year of Exam </th>
               <th width="30%"> Subject </th>
               <th width="10%"> Result </th>
+              <th width="10%"> Action </th>
               </tr>
               </head>
               <tbody>
@@ -723,6 +723,8 @@ if(isset($_POST['Edit']))
                           <td>'. $row["qualification_year"].'</td>
                           <td>'. $row["qualification_description"].'</td>
                           <td>'. $row["qualification_results"].'</td>
+                          <td>
+                          <a href="?desub='.$row["qualification_description"].'&&deinde='.$row["qualification_index_no"].'"class="btn btn-outline-danger btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a>
                           </td>
                       </tr> ';
                     }
@@ -732,6 +734,22 @@ if(isset($_POST['Edit']))
                     echo "0 results";
                   }
                }
+               ?>
+            <?php
+               if((isset($_GET['desub'])) && (isset($_GET['deinde'])))
+               {
+                 $index =$_GET['deinde'];
+                 $subject=$_GET['desub'];
+                 $sql = "DELETE FROM `student_qualification` WHERE `qualification_description`='$subject' and `qualification_index_no`='$index'";
+                  if(mysqli_query($con,$sql))
+                  {
+                      echo "Student Qualification Recorde Delete Successfully";
+                  }
+                  else
+                  {
+                  echo "Error Deleteing Record: ". mysqli_error($con);
+                  }
+                }
               ?>
               </tbody>
             </table>  
@@ -800,13 +818,13 @@ echo '<div class="btn-group-horizontal">';
 
 if(isset($_GET['edit']))
 {
-  echo '<button type="submit" value="Edit" name="Edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-  echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+  echo '<button type="submit" value="Edit" name="Edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>';
   echo '<button class="btn btn-sm btn-danger" value="delete" name="delete" data-href="?delete='.$row["student_id"].'" data-toggle="modal" data-target="#confirm-delete"> <i class="fas fa-trash"></i> </button>';
 }
 else
 {
   echo '<button type="submit" value="Submit" name="Submit"  class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>ADD</button>';
+  echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 }
 echo '</div>';
 ?>  

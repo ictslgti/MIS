@@ -117,6 +117,7 @@ $title = "Home | SLGTI";
 <!-- FOOD ORDER  -->
 
 <?php
+$username=$foodid=$foodqty=$foodunitprice=null;
 if(isset($_POST['Order'])){
   
 $username=$_SESSION['user_name'];
@@ -134,12 +135,14 @@ $sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
           
             $orderid=$row['food_order_id'];
 
-             echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
-             <strong>'.$orderid.'</strong> Order ID
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-         </div>   ';
+            $sql2="INSERT INTO `food_order_details`(`food_order_details_food_order_id`, `food_order_details_food_id`, `food_order_details_food_qty`, `food_order_details_unit_price`)
+             VALUES ()";
+        //      echo ' <div class="s alert-dismissible fade show" role="alert">
+        //      <strong>'.$orderid.'</strong> Order ID
+        //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        //     <span aria-hidden="true">&times;</span>
+        //   </button>
+        //  </div>   ';
         }
         
     }

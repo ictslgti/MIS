@@ -8,6 +8,10 @@ $today = date('Y-m-d');
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
+
+<?php
+$department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$classroom=$start_date=$end_date=$tid=null;
+?>
 <div class="row">
     <div class="col-md-12 col-sm-12">
         <h3 class="text-center">Timetable</h3>
@@ -223,8 +227,14 @@ $today = date('Y-m-d');
     </li><li class="paginate_button page-item next disabled" id="dtHorizontalExample_next">
     <a href="#" aria-controls="dtHorizontalExample" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul>
 
-
-
+    <td>
+         
+    <td>
+          <a href="AddTimetable.php? edit='.$row["department_id"].'"> Edit </a> |
+          <a href="?Student_Id='.$row["department_id"].'"> View More
+          </td>     
+         </td>
+        
 <script>
 function showModule(val) {
     var xmlhttp = new XMLHttpRequest();
