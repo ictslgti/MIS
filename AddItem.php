@@ -11,6 +11,7 @@ $title = "Department Details | SLGTI";
 
 <?PHP
 
+// Add coding
 $itemid=$supplierid=$inventoryitempurchase=$inventoryitemwarranty=$inventoryitemdescription=$itemcode=null;
 
 if(isset($_POST['Add']))
@@ -83,6 +84,45 @@ if(isset($_GET['edits'])){
         else{
           echo "Error".$sql."<br>".mysqli_error($con);
         }
+    }
+
+
+    if(isset($_POST['edit']))
+     {
+       echo"sssss";
+      
+       'itemid'.$_POST['itemid'];
+       'supplierid'.$_POST['supplierid'];
+       'inventoryitempurchase'.$_POST['inventoryitempurchase'];
+       'inventoryitemwarranty'.$_POST['inventoryitemwarranty'];
+       'inventoryitemdescription'.$_POST['inventoryitemdescription'];
+       'itemcode'.$_POST['itemcode'];
+      
+       if(!empty($_POST['itemid']) && !empty($_POST['supplierid']) && !empty($_POST['inventoryitempurchase']) && !empty($_POST['inventoryitemwarranty'])
+         && !empty($_POST['inventoryitemdescription']) && !empty($_POST['itemcode']) 
+         && !empty($_GET['edits']))
+       {
+        
+        $itemid=$_GET['edits'];
+        $supplierid=$_POST['supplierid'];
+        $inventoryitempurchase=$_POST['inventoryitempurchase'];
+        $inventoryitemwarranty=$_POST['inventoryitemwarranty'];
+        $inventoryitemdescription=$_POST['inventoryitemdescription'];
+        $itemcode=$_POST['itemcode'];
+        
+
+        $sql2 = "UPDATE `inventory_item` SET `supplier_id`='$supplierid',`inventory_item_purchase`='$inventoryitempurchase',`inventory_item_warranty`='$inventoryitemwarranty',`inventory_item_description`='$inventoryitemdescription',`item_code`='$itemcode' WHERE `item_id`='$itemid'";
+
+            if(mysqli_query($con,$sql2))
+            {
+              echo "Record Updated Successfully";
+            }
+            else
+            {
+              echo "Error: ".$sq2 . "<br>" . mysqli_error($con);
+              echo "Fill the required field";
+            }
+          }
     }
 
 ?>
