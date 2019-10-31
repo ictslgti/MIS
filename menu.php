@@ -232,7 +232,7 @@ if($u_ta=='staff'){
                   <a href="Attendance">Attendances Info </a>
                 </li>
                 <li>
-                  <a href="AddAttendance">Add a Attendance </a>
+                  <a href="MarkAttendance">Add a Attendance </a>
                   <hr>
                 </li>              
                 <li>
