@@ -47,26 +47,28 @@ include_once("menu.php");
         </div>
         <div class="col-md-4 col-sm-12 pl-5 ">
             <div class="card text-white bg-success mb-3 mt-5" style="max-width: 18rem;">
-                 <div class="card-header"><h3>EVENTS</h3></div>
+                <div class="card-header"><h3>EVENTS</h3></div>
                 
-                         <div class="list-group">
-                   
-                                    <form action="NoticeEventView" method="POST">
-                                    <input type="submit"  name='evName' value='AwardingCeremony' class="btn btn-primary"> <br>
-                                    <input type="submit"  name='evName' value='Celebration' class="btn btn-primary">
-                                    </form>
-                                <a href="NoticeEventView.php?id='AwardingCeremony'" class="list-group-item list-group-item-action list-group-item-primary">Awarding Ceremoney</a>
-                                 <a href="NoticeEventView.php?id='SportMeet'" class="list-group-item list-group-item-action list-group-item-danger">Celebration</a>
-                                <a href="" class="list-group-item list-group-item-action list-group-item-secondary">Visitor's Visit</a>
-                                <a href="" class="list-group-item list-group-item-action list-group-item-success">Volunteer</a>
-                                <a href="NoticeOthers" class="list-group-item list-group-item-action list-group-item-">Other Events</a>
-                           
-
-                         </div>
-              </div>
-              </div>
-              
+                    <div class="list-group">
+                        <form action="NoticeEventView" method="POST">   
+                            <input type="submit"  name='evName' value='AwardingCeremony' class="btn btn-success"><br> <a href="NoticeEventView.php?id='AwardingCeremony'"></a>
+                            <input type="submit"  name='evName' value='Celebration' class="btn btn-success"><br><a href="NoticeEventView.php?id='SportMeet'" ></a>
+                            
+                        </form>
+                        <form action="" method="POST">   
+                        <input type="submit"  name='' value='Visitors Visit' class="btn btn-success"><br> <a href="" ></a>
+                        <input type="submit"  name='' value='Volunteer' class="btn btn-success"><br><a href="" ></a>
+                        <input type="submit"  name='' value='Other Events' class="btn btn-success"><a href="" ></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>     
     </div>
+
+
+
+       
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 <!--END OF YOUR COD-->
