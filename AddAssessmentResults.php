@@ -46,6 +46,7 @@ $title = "Examinations | SLGTI";
             <table class="table">
                 <thead>
                     <tr>
+                        <th scope="col">Assessment ID</th>
                         <th scope="col">Student Roll Number</th>
                         <th scope="col">Student Full Name</th>
                         <th scope="col">Marks</th>
@@ -55,6 +56,7 @@ $title = "Examinations | SLGTI";
                 </thead>
                 <tbody>
                     <tr>
+                        <th scope="row">0</th>
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td>
