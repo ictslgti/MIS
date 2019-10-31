@@ -58,7 +58,7 @@ if(isset($_GET['delete'])){
 
 // "
 
-$sql="SELECT * FROM `pays`";//SELECT * FROM `department`
+$sql="SELECT * FROM `pays` ORDER BY `pays_id` DESC";//SELECT * FROM `department`
 $result=mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
     while($row=mysqli_fetch_assoc($result)){

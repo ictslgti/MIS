@@ -7,10 +7,10 @@
                     $postchar = (int)$_POST['id'];
                     //multiply the id value by 10 to set SQL OFFSET value
                     $postchar = $postchar*10;                 
-                     $query ="SELECT * FROM `pays` LIMIT 10 OFFSET $postchar";
+                     $query ="SELECT * FROM `pays` ORDER BY `pays_id` DESC LIMIT 10 OFFSET $postchar";
                 }
                else{ 
-                    $query = "SELECT * FROM `pays` LIMIT 10 OFFSET 0"; 
+                    $query = "SELECT * FROM `pays` ORDER BY `pays_id` DESC LIMIT 10 OFFSET 0"; 
                 }  
                $result = mysqli_query($con, $query);
                while($row = mysqli_fetch_array($result)){  
