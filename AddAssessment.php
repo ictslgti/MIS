@@ -371,7 +371,7 @@ if(isset($_GET['delete'])){
                                     <td><center>'. $row["assessment_date"]."<br>".'</center></td>
                                     <td>
                                     <center>
-                                    <a href="AddAssessmentResults.php?" class="btn btn-sm btn-success">Add Assessment Results</a>
+                                    <a href="AddAssessmentResults.php?StudentMarks='.$row["assessment_id"].'" class="btn btn-sm btn-success">Add Assessment Results</a>
                                     <a  class="btn btn-sm btn-danger" data-href="?delete='.$row["assessment_id"].'" data-toggle="modal" data-target="#confirm-delete">Delete Assessment </a>
                                     
                                     

@@ -56,6 +56,24 @@ $title = "Examinations | SLGTI";
                 </thead>
                 <tbody>
                     <tr>
+
+                        <?php
+
+                        if (isset($_GET['StudentMarks'])) {
+                            # code...
+                            $id=$_GET['StudentMarks'];
+                            $sql = "SELECT "
+                        }
+
+
+
+
+                        ?>
+
+
+
+
+
                         <th scope="row">0</th>
                         <th scope="row">1</th>
                         <td>Mark</td>
