@@ -17,7 +17,7 @@ include_once("menu.php");
     <h4 class="display-4 text-center  "><i class="fas fa-shield-alt"></i>  Security Portal</h4>
     </div>
     <div class="table-responsive-sm">
-    <table class="table table-responsive-sm w-100">
+    <table  id="tblMain" class="table table-responsive-sm w-100">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Student_id</th>
@@ -28,7 +28,7 @@ include_once("menu.php");
       <th scope="col">Time</th>
       <th scope="col">Warden's comment</th>
      <th colspan="3">Status</th>
-     <th>View</th>
+     
     </tr>
   </thead>
   <tbody>
@@ -49,30 +49,33 @@ include_once("menu.php");
       <td>'.$row["reson_for_exit"].'</td>
       <td>'.$row["status"].'</td>
       <td>
-                        <button type="button" class="btn info-btn" data-toggle="modal" data-target="#reason-'.$row["student_id"].'">
-                        <i class="fa fa-eye"></i> View
-                        </button>
-                        <div class="modal" id="reason-'.$row["student_id"].'" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title">Reason For Recommending Leave</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  <p>'.$row["name_of_applicant"].'</p>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                    </td>
+      
+      <button type="submit" class="btn info-btn" data-toggle="modal"  value="'.$row["student_id"].'" data-target="#reason">
+      <i class="fa fa-eye"></i> View
+      </button>
+      
+      
+      <!-- Modal -->
+      
 
-                    <td>
+      <div class="modal fade bd-example-modal-xl" id="reason" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="reason">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        '.$row["student_id"].'
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+                    </td>
       
     </tr>';
 
@@ -83,6 +86,7 @@ else{
 }
 
     ?>
+    
     
   </tbody>
 </table>
@@ -95,9 +99,6 @@ else{
 
     </div>
     <!-- <a href="index.php"><<< Back to off-peak request </a> -->
-
-
-
 
 
 <!--END OF YOUR COD-->
