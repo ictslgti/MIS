@@ -48,34 +48,7 @@ include_once("menu.php");
       <td>'.$row["time"].'</td>
       <td>'.$row["reson_for_exit"].'</td>
       <td>'.$row["status"].'</td>
-      <td>
       
-      <button type="submit" class="btn info-btn" data-toggle="modal"  value="'.$row["student_id"].'" data-target="#reason">
-      <i class="fa fa-eye"></i> View
-      </button>
-      
-      
-      <!-- Modal -->
-      
-
-      <div class="modal fade bd-example-modal-xl" id="reason" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="reason">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        '.$row["student_id"].'
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          
-        </div>
-      </div>
-                    </td>
       
     </tr>';
 
