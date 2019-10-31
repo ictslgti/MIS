@@ -14,9 +14,9 @@ $title = "Home | SLGTI";
 <!--END DON'T CHANGE THE ORDER--> 
 
 <!--BLOCK#2 START YOUR CODE HERE -->
+
+<!--insert Code-->
 <?PHP
-
-
 if(isset($_POST['req'])){
     
   if(!empty($_POST['student_id'])
@@ -62,9 +62,9 @@ if(isset($_POST['req'])){
 
     }
     }
-
-
 ?> 
+
+<!--Delete Code-->
 
 <?php
         
@@ -74,7 +74,7 @@ if(isset($_POST['req'])){
         if(mysqli_query($con,$sql)) {
          echo '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-             Record deleted successfully
+             <strong> Record deleted successfully </strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -336,7 +336,7 @@ if(isset($_POST['req'])){
                      <td>'. $row["onpeak_request_status"]. '</td>
                     <td>'. $row["request_date_time"]. '</td>
                     <td> 
-                        <a href="RequestOnpeak.php?edit='.$row["id"].'"> <button type="button" class="btn btn-warning"> Edit </button> </a>  
+                        <a href="RequestOnpeakEdit.php?edit='.$row["id"].'"> <button type="button" class="btn btn-warning"> Edit </button> </a>  
                         <a href="?delete='. $row["id"].'"> <button type="button" class="btn btn-danger"> Delete </button> </a>
                      </td>
                  </tr>
