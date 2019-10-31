@@ -403,12 +403,12 @@ if(isset($_POST['Edit']))
 
         <div class="col-md-3 mb-3">
           <label for="enrolldate">Enroll Date:</label>
-          <input type="text" class="form-control" value="<?php echo $enroll; ?>" id="enrolldate" name="enrolldate" placeholder="" aria-describedby="enrolldatePrepend" required>
+          <input type="date" class="form-control" value="<?php echo $enroll; ?>" id="enrolldate" name="enrolldate" placeholder="" aria-describedby="enrolldatePrepend" required>
         </div>
 
         <div class="col-md-3 mb-3">
           <label for="exitdate">Exit Date:</label>
-          <input type="text" class="form-control" value="<?php echo $exit; ?>" id="exitdate" name="exitdate" placeholder="" aria-describedby="exitdatePrepend" required>
+          <input type="date" class="form-control" value="<?php echo $exit; ?>" id="exitdate" name="exitdate" placeholder="" aria-describedby="exitdatePrepend" required>
         </div>
     </div>
 
