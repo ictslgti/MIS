@@ -5,200 +5,319 @@ include_once("head.php");
 include_once("menu.php");
 ?>
 <!-- dont change -->
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-<title>examinations</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/styles.min.css">
-<style>
-</style>
-</head>
-<body>
-<h1 class="text-center display-3">SLGTI Payment Modify Portal</h1>
-<br>
-<div class="row"> 
-    <div class="col-sm-9"></div>
-    <div class="col-sm-3">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search ID" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-outline-primary" type="button" id="button-addon2">payment ID</button>
-            </div>
-          </div>
-    </div>
-</div>
-<div class="row">
-<div class="col-sm-4"> <img src="img/user.png" alt="..." width="100px" height="100px"><br>
 
-  <form>
-      <div class="form-row">
-      <div class="form-group col-md-12"><i class="fas fa-id-card-alt"></i>&nbsp;
-      <label for="inputEmail4">ID</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="ID">
-      </div>
-      <div class="form-group col-md-12"><i class="fas fa-user"></i>&nbsp;
-        <label for="inputEmail4">Name</label>
-        <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
-        </div>
-      <div class="form-group col-md-12"><i class="fas fa-building"></i>&nbsp;
-      <label for="inputEmail4">Department</label>
-      <input type="Department" class="form-control" id="inputEmail4" placeholder="Department">
-      </div>
-      </div>
+    <div class="shadow p-3 mb-s bg-white rounded">
+        <h1 class="text-center display-3">SLGTI Student Payment Portal</h1> 
+        
+    </div>
       
-      </form>
-</div>
-<div class="col-sm-4">
-
-
-    <form>
-  
-        <div class="form-row">
-        
-        <div class="input-group mb-3 col-md-12">
-          
-        <div class="input-group-prepend">
-        
-        <label class="input-group-text" for="inputGroupSelect01"><i class="fas
-        fa-swatchbook"></i>&nbsp;Payment Type&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        </div>
-        <select class="custom-select" id="inputGroupSelect01">
-        <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-        </select>
-        </div>
-        
-        
-        <div class="input-group mb-3 col-md-12 ">
-        <div class="input-group-prepend">
-          
-        <label class="input-group-text" for="inputGroupSelect01"><i class="fas
-        fa-swatchbook"></i>&nbsp;Payment Reason</label>
-        </div>
-        <br>
-        <select class="custom-select" id="inputGroupSelect01">
-        <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-        </select>
-        </div>
-        
-          <div class="form-group col-md-12"><i class="fas fa-th"></i>&nbsp;
-            <label for="inputEmail4">Qty</label>
-            <input type="Amount" class="form-control" id="inputEmail4" placeholder="Qty">
-            </div>
-            <div class="form-group col-md-12 "><i class="fas fa-sticky-note"></i>&nbsp;
-              <label for="inputEmail4">Note</label>
-              <input type="Amount" class="form-control" id="inputEmail4" placeholder="Note">
-              </div>
-              <div class="form-group col-md-12"><i class="fas fa-coins"></i>&nbsp;
-                <label for="inputEmail4">Amount</label>
-                <input type="Amount" class="form-control" id="inputEmail4" placeholder="Amount">
-                </div>
-        </div>
-        </form>
-
-
-
-</div>
-<div class="col-sm-4">
-    <!-- <table class="table table-sm">
-        <thead>
-        <tr>
-        <th scope="col">#</th>
-        <th scope="col">Reason</th>
-        <th scope="col">Amount</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        </tr>
-        <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            </tr>
-        <tr>
-        <th scope="row">4</th>
-        <th>Total:</th>
-        <td>@twitter</td>
-        </tr>
-        </tbody>
-        </table> -->
-        
-        <h2>
-        <button type="button" class="btn btn-primary btn-block"><h1>Update Payment
-        </button> </h1>
-        <button type="button" class="btn btn-secondary btn-sm"><i class="fas
-        fa-redo-alt"></i>&nbsp;Reset</button>&nbsp;
-        <button type="button" class="btn btn-danger btn-sm"><i class="fas
-        fa-times"></i>&nbsp;Close</button>
-        </div>
-        <br>
-        </form>
-</div>
-</div>
-
-
-<div class="row">
-    <div class="col-sm-4">
+    <?php
     
+    
+$student_id=$student_name=$student_profile_img =$payment_id=$pays_reason=$payment_note=$pays_amount=$payment_id=$pays_date=$department=null;
+
+
+if(isset($_POST['Add'])){
+
+//   if(!empty($_POST['student_id'])
+//   && !empty($_POST['student_name'])
+//   && !empty($_POST['pays_depatment'])
+//   && !empty($_POST['payment_type'])
+// && !empty($_POST['payment_reason'])
+// && !empty($_POST['payment_qty'])
+// && !empty($_POST['payment_note'])
+// && !empty($_POST['payment_amount'])){
+    
+
+     echo $student_id=$_POST['student_id'];
+     echo $pays_department=$_POST['pays_department'];
+     echo $pays_reason=$_POST['payment_reason'];
+     echo $pays_qty=$_POST['payment_qty'];
+     echo $pays_note=$_POST['payment_note'];
+     echo $pays_amount=$_POST['payment_amount'];
+     echo $payment_type=$_POST['payment_type'];
+     
+     
+      
+      $sql="INSERT INTO `pays` (`student_id`,`payment_type`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_department`) 
+      VALUES ('$student_id','$payment_type','$pays_reason','$pays_note','$pays_amount','$pays_qty','$pays_department')";
+        // $sql="INSERT INTO `pays`(`student_id`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_department`) 
+        // VALUES ('$student_id','$pays_reason','$pays_note','$pays_amount','$pays_qty','$pays_department')";
+
+    
+
+
+if(mysqli_query($con,$sql)){
+        echo '
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>'.$student_name.'</strong> <h4 class="text-center display-3">PAID</h4> 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>    
+        ';
+      }
+      else{
+        
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$student_name.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
+
+
+      }
+    
+}
+
+?>
+<?php
+$student_id=$student_name=$student_profile_img =$payment_id=$pays_reason=$payment_note=$pays_amount=$payment_id=$pays_date=$department=null;
+
+if(isset($_GET['upt'])){
+$id=$_GET['upt'];
+$sql="SELECT * FROM `pays` WHERE `pays_id`='$id'";
+$result = mysqli_query($con ,$sql);
+         if(mysqli_num_rows($result)== 1){
+              $row = mysqli_fetch_assoc($result);
+              echo $student_id=$row['student_id'];
+              echo $department=$row['pays_department'];
+              echo $pays_reason=$row['payment_reason'];
+              echo $pays_qty=$row['pays_qty'];
+              echo $pays_note=$row['pays_note'];
+              echo $pays_amount=$row['pays_amount'];
+              echo $payment_type=$row['payment_type'];
+              
+              
+          }
+      }
+
+?>
+    <?php
+
+if(isset($_POST['edit'])){
+      $id=$_GET['upt'];
+     echo $payment_type=$_POST['payment_type'];
+      $pays_reason=$_POST['payment_reason'];
+      $pays_note=$_POST['payment_note'];
+      $pays_amount=$_POST['payment_amount'];
+      $pays_qty=$_POST['payment_qty'];
+
+      $sql="UPDATE `pays` SET `payment_type`='$payment_type',
+      `payment_reason`='$pays_reason',`pays_note`=' $pays_note',`pays_amount`='$pays_amount',`pays_qty`='$pays_qty' WHERE `pays_id`='$id'";
+      
+
+     if(mysqli_query($con,$sql)){
+
+          echo
+            '<div class="alert alert-success">
+            <strong>Success!</strong> Your data was Updated.</a>
+          </div>';
+          
+      }
+      else{
+        echo "Error".$sql."<br>".mysqli_error($con);
+      }
+  }
+
+?>
+    <!-- Search ID -->
+
+
+
+
+    <div class="row">
+       
+        
+    <form method="POST" action="#">
+  
+        <div class="row">
+        <div class="col-sm-4"><?php if($student_profile_img!=null) { ?> <img src="<?php echo $student_profile_img; ?>"
+                alt="..." width="100px" height="100px"> <?php }?><br>
+
+            
+                <div class="form-row">
+                    <div class="form-group col-md-12"><i class="fas fa-id-card-alt"></i>&nbsp;
+                        <label for="inputEmail4">ID</label>
+                        <input type="text" name="student_id" value="<?php echo  $student_id;?>"
+                            class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['student_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_id'])){echo ' is-valid';} ?>"
+                            id="inputEmail4" placeholder="ID" disabled>
+                    </div>
+                    
+                    <div class="form-group col-md-12"><i class="fas fa-building"></i>&nbsp;
+                        <label for="inputEmail4">Department</label>
+                        <input type="Department" 
+                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['pays_department'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['pays_department'])){echo ' is-valid';} ?>"" id="
+                            inputEmail4" placeholder="Department" name="pays_department" value="<?php echo  $department;?>" disabled>
+                    </div>
+                    <div class="input-group mb-3 col-md-12">
+
+                        <div class="input-group-prepend">
+
+                            <label class="input-group-text" for="inputGroupSelect01"><i class="fas
+                        fa-swatchbook"></i>&nbsp;Payment Type&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        </div>
+                        <select class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_type'])){echo ' is-valid';} ?> "
+                            id="payment_type" name="payment_type" onchange="showpaymentreason(this.value)"  value="<?php echo $payment_type;?>">
+
+                            <?php
+                                $sql = "select DISTINCT payment_type from payment";
+                                $result = mysqli_query($con, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    echo '<option  value="'.$row["payment_type"].'" required>'.$row["payment_type"].'</option>';
+                                    
+                                }
+                                }else{
+                                    echo '<option value="null"   selected disabled>-- No Course --</option>';
+                                }
+                                
+                                ?>
+                                        </select>
+                                        
+                                </div>
+
+
+                    <div class="input-group mb-3 col-md-12 ">
+                        <div class="input-group-prepend">
+
+                            <label class="input-group-text" for="inputGroupSelect01"><i class="fas
+        fa-swatchbook"></i>&nbsp;Payment Reason</label>
+                        </div>
+                        
+                        <select class="custom-select  <?php  if(isset($_POST['Add']) && empty($_POST['payment_reason'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_reason'])){echo ' is-valid';} ?>
+                        " id="payment_reason" name="payment_reason">
+                             <option value="null" selected disabled>-- Select a Payment Reason --</option>
+                         </select>
+                    </div>
+
+                    <div class="form-group col-md-12"><i class="fas fa-th"></i>&nbsp;
+                        <label for="text">Qty</label>
+                        <input type="text" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['payment_qty'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_qty'])){echo ' is-valid';} ?>"
+                            placeholder="Qty" name="payment_qty" value="<?php echo $pays_qty;?>">
+                    </div>
+                    <div class="form-group col-md-12 "><i class="fas fa-sticky-note"></i>&nbsp;
+                        <label for="inputEmail4">Note</label>
+                        <input type="text"  value="<?php echo $pays_note;?>"
+                        class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['payment_note'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_note'])){echo ' is-valid';} ?>" 
+                             placeholder="Note" name="payment_note"> 
+                    </div>
+                    <div class="form-group col-md-12"><i class="fas fa-coins"></i>&nbsp;
+                        <label for="inputEmail4">Amount</label>
+                        <input type="text" value="<?php echo $pays_amount;?>"
+                        class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['payment_amount'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_amount'])){echo ' is-valid';} ?>"
+                             placeholder="Amount" name="payment_amount" >
+
+
+                    </div>
+
+                    <button type="submit" name="edit" value="Add" class="btn btn-primary btn-block">
+                    <h1>UPDATE&nbsp;
+                </button> </h1>
+               <br>
+                
+                </div>
+            
+
+
+
+        </div>
+                </div>
+
+           
+        </div>
+        <div class="col-sm-4">
+
+
+            
+
+                <div class="form-row">
+
+                    
+        <div class="col-sm-4">
+        
+           
+        <h2>
+                 <div class="row">
+        <div class="col-sm-12"> 
+        
+
+        
+
+
+
+
+
+
+
+        </div>
+        </div>
+        </div>
+        <br>
+    </form>
     </div>
-    <div class="col-sm-8"></div>
-</div>
-
-<div class="row">
-<div class="col-sm-4">
+    </div>
 
 
+    <div class="row">
+        <div class="col-sm-4">
+
+        </div>
+        
+
+    <div class="row">
+        <div class="col-sm-4">
 
 
-</div>
-<!--
+
+
+        </div>
+        <!--
 -------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------- -->
-<div class="col-sm-4">
- 
-
-</div>
-<div class="col-sm-4">
+        <div class="col-sm-4">
 
 
+        </div>
+        <div class="col-sm-4">
+
+
+        </div>
+        <!-- colom3........start -->
+        <div class="col-sm-4">
+
+        </div>
+        <!-- colom3........ end -->
+    </div>
+    <br>
+    </div>
+    <!-- dont change -->
+    
+
+
 </div>
-<!-- colom3........start -->
-<div class="col-sm-4">
-  
-</div>
-<!-- colom3........ end -->
-</div>
-<br>
-</div>
+
+<script>
+function showpaymentreason(val) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("payment_reason").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("POST", "controller/getPaymentReason", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("payment_type=" + val);
+}
+</script>
 <!-- dont change -->
 <?php
-include_once("footer.php");
-?>
-</body>
-</html>
-    
-    
-
-     </div>
- <!-- dont change -->
- <?php
     include_once("footer.php");
     ?>
-    </body>
-    </html>
+</body>
+
+</html>
