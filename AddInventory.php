@@ -117,7 +117,46 @@ if(isset($_GET['edits'])){
         }
     }
 
+    
+    if(isset($_POST['edit']))
+     {
+      
+       'inventoryid'.$_POST['inventoryid'];
+       'Departmentid'.$_POST['Departmentid'];
+       'itemid'.$_POST['itemid'];
+       'inventorystatus'.$_POST['inventorystatus'];
+       'inventoryquantity'.$_POST['inventoryquantity'];
+       
+      
+       if(!empty($_POST['inventory_id']) && !empty($_POST['Departmentid']) && !empty($_POST['itemid']) && !empty($_POST['inventorystatus'])
+         && !empty($_POST['inventoryquantity']) 
+         && !empty($_GET['edits']))
+       {
+        
+        $inventoryid=$_GET['edits'];
+        $Departmentid=$_POST['Departmentid'];
+        $itemid=$_POST['itemid'];
+        $inventorystatus=$_POST['inventorystatus'];
+        $inventoryquantity=$_POST['inventoryquantity'];
+        
+        
+
+        $sql2 = "UPDATE `inventory` SET `inventory_department_id`='$Departmentid',`item_id`='$itemid',`inventory_status`='$inventorystatus',`inventory_quantity`='$inventoryquantity' WHERE `inventory_id`='$inventoryid'";
+        
+
+            if(mysqli_query($con,$sql2))
+            {
+              echo "Record Updated Successfully";
+            }
+            else
+            {
+              echo "Error: ".$sql2 . "<br>" . mysqli_error($con);
+              echo "Fill the required field";
+            }
+          }
+    }
 ?>
+
 
 
 <form method="POST" action="#">

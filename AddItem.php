@@ -11,7 +11,6 @@ $title = "Department Details | SLGTI";
 
 <?PHP
 
-// Add coding
 $itemid=$supplierid=$inventoryitempurchase=$inventoryitemwarranty=$inventoryitemdescription=$itemcode=null;
 
 if(isset($_POST['Add']))
@@ -87,7 +86,6 @@ if(isset($_GET['edits'])){
     }
 
 ?>
-
 
 
 
