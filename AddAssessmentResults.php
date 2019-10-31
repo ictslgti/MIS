@@ -20,8 +20,7 @@ $title = "Examinations | SLGTI";
                     <div class="intro">
                         <h1 class="display-4 text-center">Asignments Portal</h1>
 
-                        <p class="text-center">Welcome to examinations portal for lectures or admin. This section to add
-                            examinations and assignments/asessments results&nbsp;</p>
+                        <p class="text-center">Welcome <?php echo $_SESSION["user_name"];?> to examinations portal </p>
 
                     </div>
                 </div>
@@ -48,6 +47,7 @@ $title = "Examinations | SLGTI";
                     <tr>
                         <th scope="col">Assessment ID</th>
                         <th scope="col">Student Roll Number</th>
+                        <th scope="col">Module</th>
                         
                         <th scope="col">Marks</th>
                         <th scope="col">Attempt</th>
@@ -62,10 +62,10 @@ $title = "Examinations | SLGTI";
                         if (isset($_GET['StudentMarks'])) {
                             # code...
                             $id=$_GET['StudentMarks'];
-                            $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id 
+                         $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id
                              
-                            FROM `assessments_marks`,student_enroll,assessments  
-                            WHERE student_enroll.student_id =assessments_marks.student_id AND assessments.course_id ='$id' group by student_id";
+                            FROM `assessments_marks`,student_enroll,assessments
+                            WHERE student_enroll.course_id =assessments.course_id AND assessments.assessment_id ='$id' group by student_id";
 
                             $result = mysqli_query($con, $sql);
                             if (mysqli_num_rows($result)>0) {
@@ -76,6 +76,7 @@ $title = "Examinations | SLGTI";
                                     <tr>
                                     <th scope="row">' . $row ["assessment_id"].'</th>
                         <th scope="row">' . $row ["student_id"].'</th>
+                        <th scope="row">' . $row ["module_id"].'</th>
                         
                         <td>
                             <div class="input-group mb-3">
