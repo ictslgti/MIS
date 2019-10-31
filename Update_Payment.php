@@ -163,7 +163,8 @@ if(isset($_POST['edit'])){
                         </div>
                         <select class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_type'])){echo ' is-valid';} ?> "
                             id="payment_type" name="payment_type" onchange="showpaymentreason(this.value)"  value="<?php echo $payment_type;?>">
-                            <option value="null" selected disabled>-- Select a Payment Type --</option>
+                            <option value="null" selected disabled>-- Select a Payment Reason --</option>
+                    
                             <?php
                                 $sql = "select DISTINCT payment_type from payment";
                                 $result = mysqli_query($con, $sql);
