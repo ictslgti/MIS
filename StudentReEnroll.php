@@ -58,7 +58,7 @@ include_once("menu.php");
       
       if(!empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['mode']) && !empty($_POST['edate']) && !empty($_POST['exdate']) && !empty($_GET['Edit']))
        {
-        //echo "SUCCESS";
+        echo "SUCCESS";
         $stid=$_GET['stid'];
         $coid=$_GET['coid'];
         $mode=$_POST['mode'];
