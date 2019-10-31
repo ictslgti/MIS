@@ -8,30 +8,6 @@ $title = "Department Details | SLGTI";
  <!-- end default code -->
 
 <!-- start my code -->
-<!-- edit coding -->
-<?php
-$supplierid=$suppliername=$supplierphonenumber=$supplieremail=$supplieraddress=null;
-if(isset($_GET['edits'])){
-        $supplierid=$_GET['edits'];
-        $sql="SELECT * FROM `inventory_item_supplier` WHERE `supplier_id`='$supplierid'";
-        $result=mysqli_query($con,$sql);
-        if(mysqli_num_rows($result)==1){
-            $row=mysqli_fetch_assoc($result);
-            $supplierid=$row['supplier_id'];
-            $suppliername=$row['supplier_name'];
-            $supplierphonenumber=$row['supplier_phone_number'];
-            $supplieremail=$row['supplier_email'];
-            $supplieraddress=$row['supplier_address'];
-           
-        }
-        else{
-          echo "Error".$sql."<br>".mysqli_error($con);
-        }
-    }
-
-?>
-
-
 
 
 <?PHP
@@ -87,6 +63,30 @@ if(isset($_POST['Add'])){
 
 }
 ?>
+<!-- edit coding -->
+<?php
+$supplierid=$suppliername=$supplierphonenumber=$supplieremail=$supplieraddress=null;
+if(isset($_GET['edits'])){
+        $supplierid=$_GET['edits'];
+        $sql="SELECT * FROM `inventory_item_supplier` WHERE `supplier_id`='$supplierid'";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+            $supplierid=$row['supplier_id'];
+            $suppliername=$row['supplier_name'];
+            $supplierphonenumber=$row['supplier_phone_number'];
+            $supplieremail=$row['supplier_email'];
+            $supplieraddress=$row['supplier_address'];
+           
+        }
+        else{
+          echo "Error".$sql."<br>".mysqli_error($con);
+        }
+    }
+
+?>
+
+
 
 
 
