@@ -105,7 +105,7 @@ if(isset($_GET['edit']))
         $gender=$_POST['gender'];
         $civil=$_POST['civil'];
         $email=$_POST['email'];
-        $email = test_input($_POST["email"]);
+        $email =($_POST["email"]);
           // check if e-mail address is well-formed
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
         {

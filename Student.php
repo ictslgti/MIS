@@ -69,7 +69,7 @@ include_once("menu.php");
           <td>'. $row["student_phone"]."<br>".'</td>
           <td>'. $row["student_address"]."<br>".'</td>
           <td>
-          <a href="AddStudent.php? edit='.$row["student_id"]. '" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
+          <a href="AddStudent.php? edit='.$row["student_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
           <a href="?Student_Id='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
           </td>
        </tr> ';
