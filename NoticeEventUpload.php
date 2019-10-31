@@ -5,6 +5,25 @@ include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
 
+$eid = $e_name = $e_venue=$e_date=$e_chief_guest=$e_comment = $e_time = $e_d_url = $e_sta =null;
+if(isset($_GET['edit'])){
+    $eid = $_GET['edit'];
+    $sql = "SELECT * FROM `notice_event` WHERE `event_id` = $eid";
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_assoc($result);
+        $e_name = $row['event_name'];
+        $e_venue = $row['event_venue'];
+        $e_date = $row['event_date'];
+        $e_chief_guest = $row['event_chief_guest'];
+        $e_comment = $row['event_comment'];
+        $e_time = $row['event_time'];
+        $e_d_url = $row['event_docs_url'];
+        $e_sta = $row['status'];
+    }
+}
+
+
 ?>
 
 <!--END DON'T CHANGE THE ORDER-->
@@ -20,56 +39,71 @@ include_once("menu.php");
                 <br>
                 <br>
                 <blockquote class="blockquote text-center">
-                    <h1 class="display-4">ADD EVENT</h1> 
-                    <p class="mb-0">Srilanka German Training Institute</p>
-                    <footer class="blockquote-footer">Event Description<cite title="Source Title"></cite></footer>
+                    <h1 class="display-4 text-primary">Event Description Part</h1> 
+                    <h4 class="mb-0 ">Srilanka German Training Institute</h4>
+                    <h6 class="">This section to Add Details and Edit Details.<cite title="Source Title"></cite></h6>
                 </blockquote>
                 </div>
         </div>
 
+        <!-- <a href="NoticeTable.php">View</a> -->
+        
 
-
-
-        <a href="NoticeTable.php">View</a>
+        <div class="input-group mb-3 ">
+            <div class="input-group-prepend">
+            <a href="NoticeTable.php"  name="add" class="btn btn-success" role="button" ><i class="fas fa-eye"></i>&nbsp;&nbsp;View</a> 
+            </div>
+        </div>
+ 
         <div class="input-group mb-3 ">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01"> 
-                <i class="fas fa-award"></i> </i>&nbsp;&nbsp;Event Name&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <i class="fas fa-award text-primary"></i> </i>&nbsp;&nbsp;Event Name&nbsp;&nbsp;&nbsp;&nbsp;</label>
             </div>
-            <input type="text" class="form-control"  name="event_name" placeholder="Event Name" >
+            <input type="text" class="form-control"  name="event_name" placeholder="Event Name" value="<?php echo $e_name; ?>" >
         </div>
 
         <div class="input-group mb-3 ">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01"> 
-                <i class="fas fa-map-marker-alt"></i>  </i>&nbsp;&nbsp;Venue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <i class="fas fa-map-marker-alt text-primary" ></i>  </i>&nbsp;&nbsp;Venue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             </div>
-            <input type="text" class="form-control"  name="event_venue" placeholder="Venue" >
+            <input type="text" class="form-control"  name="event_venue" placeholder="Venue" value="<?php echo $e_venue; ?>" >
         </div>
 
         <div class="input-group mb-3 ">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01"> 
-                <i class="far fa-calendar-alt"></i></i>&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <i class="far fa-calendar-alt text-primary"></i></i>&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             </div>
-            <input type="date" class="form-control" name="event_date" >
+            <input type="date" class="form-control" name="event_date"  value="<?php echo $e_date; ?>">
         </div>
+
+        <div class="input-group mb-3 ">
+            <div class="input-group-prepend">  
+                <label class="input-group-text" for="inputGroupSelect01"> 
+                    <i class="far fa-clock"> </i>&nbsp;&nbsp;Event Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+                    <input class="form-control" type="time" name="event_time"  value="<?php echo $e_time; ?>">
+        </div>
+        
+        <div class="input-group mb-3 ">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"> 
+                    <i class="fas fa-user text-primary"> </i>&nbsp;&nbsp;cheif Guest&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+            <input type="text" class="form-control"  name="event_chief_guest" placeholder="cheif Guest" value="<?php echo $e_chief_guest; ?>">
+        </div>
+
 
         <div class="input-group mb-3 ">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01"> 
-                    <i class="fas fa-user"> </i>&nbsp;&nbsp;cheif Guest&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <i class="fab fa-audible text-primary" ></i> </i>&nbsp;&nbsp;Comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             </div>
-            <input type="text" class="form-control"  name="event_chief_guest" placeholder="cheif Guest" >
-        </div>
-
-
-        <div class="input-group mb-3 ">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01"> 
-                <i class="fab fa-audible"></i> </i>&nbsp;&nbsp;Comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            </div>
-            <input type="text" class="form-control"  name="event_comment" placeholder="Comment" >
+            <!-- <input type="text" class="form-control"  name="event_comment" placeholder="Comment" value="<?php //echo $e_comment; ?>"> -->
+            
+            <textarea class="form-control" rows="3" id="comment" name="event_comment"><?php echo $e_comment; ?></textarea>
             <!-- <textarea class="form-control"   placeholder="event_comment" name="event_comment" value=""></textarea> -->
         </div>
 
@@ -77,13 +111,15 @@ include_once("menu.php");
                 <div class="form-group">
                 <label> <i class="fas fa-university text-primary"> </i> Event</label>
                 <select class="browser-default custom-select" name="status" id="Departmentx"  onchange="showCouese(this.value)" required>
-                <option value="null" selected disabled >---- Select the Event ---- </option>
+                <option value="null" selected disabled >---- Select the Department ---- </option>
                 <?php
                 $sql="select * from `notice_event_stutas`";
                 $result = mysqli_query($con,$sql);
                 if (mysqli_num_rows($result) > 0 ) {
                 while($row=mysqli_fetch_assoc($result)){
-                    echo '<option  value="'.$row["id"].'" required>'.$row["status"].'</option>';
+                    echo '<option  value="'.$row["id"].'" required';
+                    if($row["id"]== $e_sta) echo ' selected';
+                    echo '>'.$row["status"].'</option>';
                 }}   
                 ?>
                 </select>
@@ -93,15 +129,23 @@ include_once("menu.php");
     <div class="input-group mb-3 ">
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01"> 
-            <i class="fas fa-plus"></i>  </i>&nbsp;&nbsp;Add File&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <i class="fas fa-plus text-primary"></i>  </i>&nbsp;&nbsp;Add File&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         </div>
-         <input type="file" name='ima' class="form-control" id="customFile" required/>
+         <input type="file" name='ima' class="form-control" id="customFile">
 
     </div>
 
     <div class="input-group mb-3 ">
             <div class="input-group-prepend">
-                <input type="submit"  value="ADD" name="add" class="btn btn-outline-primary">
+                <!-- <input type="submit"  value="ADD" name="add" class="btn btn-outline-primary"> -->
+               
+                <?php
+                if(isset($_GET['edit'])){
+                    echo ' <button type="submit" value="Add" name="update" class="btn btn-primary mr-2"><i class="fas fa-minus"></i>&nbsp;&nbsp;Edit New Event</button>';
+                }else{
+                    echo '<button type="submit" value="Add" name="add" class="btn btn-primary mr-2"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Event</button>';
+                }
+                ?>
             </div>
             <div class="input-group-prepend"> 
               
@@ -113,38 +157,87 @@ include_once("menu.php");
 
 
 <?php
+
 if(isset($_POST['add'])){
-     if(!empty($_POST['event_name'])&&
-      !empty($_POST['event_venue'])&&
-       !empty($_POST['event_date'])&& 
-       !empty($_POST['event_chief_guest'])&& 
-       !empty($_POST['event_comment'])&&
-       !empty($_POST['status'])){
-        $event_name=$_POST['event_name'];
-        $event_venue=$_POST['event_venue'];
-        $event_date=$_POST['event_date'];
-        $event_chief_guest=$_POST['event_chief_guest'];
-        $event_comment=$_POST['event_comment'];
-        $status=$_POST['status'];
+    if(!empty($_POST['event_name'])&&
+     !empty($_POST['event_venue'])&&
+      !empty($_POST['event_date'])&& 
+      !empty($_POST['event_chief_guest'])&& 
+      !empty($_POST['event_comment'])&&
+      !empty($_POST['event_time'])&&
+      !empty($_POST['status'])){
+       $event_name=$_POST['event_name'];
+       $event_venue=$_POST['event_venue'];
+       $event_date=$_POST['event_date'];
+       $event_chief_guest=$_POST['event_chief_guest'];
+       $event_comment=$_POST['event_comment'];
+       $event_time=$_POST['event_time'];
+       $status=$_POST['status'];
 
-
-
-        $t_name = $_FILES["ima"]["tmp_name"];
-        $name = basename($_FILES["ima"]["name"]);
-        $test_dir = 'img/doc/event';
-        move_uploaded_file($t_name, $test_dir.'/'.$name);
        
-        $sql="INSERT INTO `notice_event` (`event_name`,`event_venue`,`event_date`,`event_chief_guest`,`event_comment`,`status`,`file_name`) values('$event_name','$event_venue','$event_date','$event_chief_guest','$event_comment','$status','$name')";
-        if(mysqli_query($con,$sql)){
-            $message ="New record created successfully";
-            echo "<script type='text/javascript'> alert('$message');</script>";
-        }else{
-            echo "Error :-".$sql.
-          "<br>"  .mysqli_error($con);
-        }
-    }
+       $t_name = $_FILES["ima"]["tmp_name"];
+       $name = basename($_FILES["ima"]["name"]);
+       $test_dir = './docs/events';
+       move_uploaded_file($t_name, $test_dir.'/'.$name);
+       
+       $sql="INSERT INTO `notice_event` (`event_name`,`event_venue`,`event_date`,`event_chief_guest`,`event_comment`,`event_time`,`event_docs_url`,`status`) values('$event_name','$event_venue','$event_date','$event_chief_guest','$event_comment','$event_time','$name','$status')";
+       if(mysqli_query($con,$sql)){
+           $message ="<h4 class='text-success' >New record created successfully</h4>";
+           echo "'$message';";
+       }else{
+           echo "Error :-".$sql.
+         "<br>"  .mysqli_error($con);
+       }
+   }
 }
+
+if(isset($_POST['update'])){
+    if(!empty($_POST['event_name'])&&
+    !empty($_POST['event_venue'])&&
+    !empty($_POST['event_date'])&&
+    !empty($_POST['event_chief_guest'])&&
+    !empty($_POST['event_comment'])&&
+    !empty($_POST['event_time'])&&
+    !empty($_POST['status'])
+    ){
+          $event_id = $_GET['edit'];
+          $event_name = $_POST['event_name'];
+          $event_venue = $_POST['event_venue'];
+          $event_date = $_POST['event_date'];
+          $event_chief_guest = $_POST['event_chief_guest'];
+          $event_comment = $_POST['event_comment'];
+          $event_time = $_POST['event_time'];
+          $status = $_POST['status'];
+           
+       $t_name = $_FILES["ima"]["tmp_name"];
+       $name = basename($_FILES["ima"]["name"]);
+       $test_dir = './docs/events';
+       move_uploaded_file($t_name, $test_dir.'/'.$name);
+
+         $sql =" UPDATE `notice_event` SET
+         `event_name`='$event_name',
+         `event_venue`='$event_venue',
+         `event_date`='$event_date',
+         `event_chief_guest`='$event_chief_guest',
+         `event_comment`='$event_comment',
+         `event_time`='$event_time',
+         `event_docs_url`='$name',
+         `status`='$status'
+
+         WHERE `notice_event`.`event_id` = $event_id";
+            if(mysqli_query($con,$sql)){
+                $message ="<h4 class='text-success'>Old record Edited successfully</h4>" ;
+                echo "$message";
+            }else{
+                echo "Error :-".$sql.
+            "<br>"  .mysqli_error($con);
+            }
+            }
+    }
+
 ?>
+
+
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>

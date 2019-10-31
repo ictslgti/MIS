@@ -10,9 +10,11 @@ include_once("menu.php");
 
 <br>
 <hr>
-<div class="alert bg-dark text-white text-center" role="alert"><h1>Notice Result Table</h1>
+<div class="alert bg-dark text-white text-center" role="alert"><h1>SriLanka German Training Institute<br>Notice Result Table.</h1>
 </div>
+<br>
 <hr>
+<br>
 
 <table class="table table-bordered">
   <thead>
@@ -21,7 +23,7 @@ include_once("menu.php");
       <th > Department </th>
       <th > Course </th>
       <th > Module </th>
-      <th > AcademicYear</th>
+      <th > Academic Year</th>
       <th > Upload File</th>
       <th > Option</th>
      
@@ -46,7 +48,7 @@ if(isset($_GET['delete']))
 
 <?php 
 //for insert
-$sql = "SELECT result_id,department_id,course_id,module_id,academic_year  FROM notice_result";
+$sql = "SELECT result_id,department_id,course_id,module_id,academic_year,upload  FROM notice_result";
 $result = mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0)
 { //output data of each row
@@ -59,6 +61,7 @@ if(mysqli_num_rows($result)>0)
         <td>'. $row["course_id"]."<br>".'</td>
           <td>'. $row["module_id"]."<br>".'</td>
           <td>'. $row["academic_year"]."<br>".'</td>
+          <td>'. $row["upload"]."<br>".'</td>
             <td>   
                     <a href="NoticeAddResult.php ?edit='.$row["result_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
                     <button class="btn btn-sm btn-danger" data-href="?delete='.$row["result_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>     
