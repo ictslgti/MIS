@@ -14,8 +14,8 @@ $inventoryid=$Departmentid=$itemid=$inventorystatus=$inventoryquantity=null;
 if(isset($_GET['edit']))
 
 {
-  $id = $_GET['edit'];
-  $sql = "SELECT * FROM `inventory` WHERE `inventory_id` = $id'";
+  $inventoryid = $_GET['edit'];
+  $sql = "SELECT * FROM `inventory` WHERE `inventory_id` = $inventoryid'";
   $result = mysqli_query($con, $sql);
   if (mysqli_num_rows($result)==1)
    {
@@ -25,13 +25,17 @@ if(isset($_GET['edit']))
       echo$itemid = $row['item_id'];
      echo $inventorystatus= $row['inventory_status'];
      echo $inventoryquantity = $row['inventory_quantity'];
-      
+         
+    }
+    else{
+      echo "Error".$sql."<br>".mysqli_error($con);
 
   }
 
 }
 
 ?>
+
 
 
 
@@ -91,8 +95,29 @@ if(isset($_POST['Add'])){
 
 }
 ?>
+<!-- edit coding -->
+<?php
+$inventoryid=$Departmentid=$itemid=$inventorystatus=$inventoryquantity=null;
+if(isset($_GET['edits'])){
+        $inventory_id=$_GET['edits'];
+        $sql="SELECT * FROM `inventory` WHERE `inventory_id`='$inventory_id'";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+            $inventoryid=$row['inventory_id'];
+            $Departmentid=$row['inventory_department_id'];
+            $itemid=$row['item_id'];
+            $inventorystatus=$row['inventory_status'];
+            $inventoryquantity=$row['inventory_quantity'];
+        
+          
+        }
+        else{
+          echo "Error".$sql."<br>".mysqli_error($con);
+        }
+    }
 
-
+?>
 
 
 <form method="POST" action="#">
@@ -171,26 +196,25 @@ if(isset($_POST['Add'])){
                   <small id="quantity" class="form-text text-muted"></small>
           </div>
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
-              
-          <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset"> 
-                  <button type="submit"  class="btn btn-primary ml-2 mt-3 float-right">update </button>
-                  <button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='inventory_view.php'">view </button>
-                  <button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
-                 
-                 
+        
+          <a href="Inventory_view.php" class="btn btn-primary ml-2 mt-3 float-right" >View</a>    
+           
+         
+           <?php
+                         if(isset($_GET['edits'])){
+                         echo '<button type="submit"  value="edit" name="edit"  class="btn btn-primary ml-2 mt-3 float-right">update </button>';
+                         }
+                         else{
+                        
+                         echo '<button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
+                         <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">';
+                         }
+ 
+                         ?>
 
             </div>
             </div>
       </form>
-
-
-
-
-
-
-
-
-
 
 
 

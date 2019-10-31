@@ -8,31 +8,6 @@ include_once("menu.php");
 <!--END DON'T CHANGE THE ORDER-->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-<?PHP
-$itemid=$supplierid=$inventoryitempurchase=$inventoryitemwarranty=$inventoryitemdescription=$itemcode=null;
-
-if(isset($_GET['edit']))
-
-{
-  $id = $_GET['edit'];
-  $sql = "SELECT * FROM `inventory_item` WHERE `item_id` = $id'";
-  $result = mysqli_query($con, $sql);
-  if (mysqli_num_rows($result)==1)
-   {
-      $row = mysqli_fetch_assoc($result);
-    echo  $itemid = $row['item_id'];
-     echo $supplierid = $row['supplier_id'];
-      echo$inventoryitempurchase = $row['inventory_item_purchase'];
-     echo $inventoryitemwarranty= $row['inventory_item_warranty'];
-     echo $inventoryitemdescription = $row['inventory_item_description'];
-     echo $itemcode = $row['item_code'];
-
-  }
-
-}
-
-?>
-
 
 
 

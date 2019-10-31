@@ -64,6 +64,7 @@ if(mysqli_query($con,$sql))
 
 }
 ?>
+<!-- edit coding -->
 <?php
 $itemid=$supplierid=$inventoryitempurchase=$inventoryitemwarranty=$inventoryitemdescription=$itemcode=null;
 if(isset($_GET['edits'])){
