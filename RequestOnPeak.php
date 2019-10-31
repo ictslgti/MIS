@@ -307,7 +307,7 @@ if(isset($_POST['req'])){
         
 
       <div class=row >
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                   <tr>
                     <th scope="col">EXIT DATE</th>
