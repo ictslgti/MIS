@@ -27,6 +27,68 @@ $title = "Examinations | SLGTI";
             </div>
         </div>
 
+        <!--  -->
+
+        <?php
+        $assessment_id=$student_id=$module_id=$assessments_marks=$assessment_attempt=null;
+
+        if (isset($_POST['save'])) {
+
+            # code...
+            if (!empty($_POST['assessment_id'])) 
+                # code...
+               echo $student_id=$_POST['student_id'];
+               echo $module_id=$_POST['module_id'];
+        echo $assessments_marks=$_POST['assessments_marks'];
+        echo $assessment_attempt=$_POST['assessment_attempt'];
+
+
+          echo $sql = "INSERT INTO `assessments_marks` (`assessment_id`,`student_id`,`module_id`,`assessment_attempt`,`assessment_marks`)
+         VALUES ('$assessment_id','$student_id','$module_id','$assessments_marks','$assessment_attempt')";
+
+if(mysqli_query($con,$sql))
+{
+  echo '
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>'.$assessment_id.'</strong> Assessment Type details inserted!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>   
+  ';
+}
+else{
+  
+  echo '
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>'.$assessment_id.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  
+  ';
+}
+
+
+
+
+            
+        }
+
+
+
+
+
+
+
+
+
+
+        ?>
+
+
+
 
 
 
@@ -40,7 +102,7 @@ $title = "Examinations | SLGTI";
                 <br>
             </div>
             <br>
-
+            <form class="needs-validation" novalidate method="POST" action="#">
             <!-- table -->
             <table class="table">
                 <thead>
@@ -48,7 +110,7 @@ $title = "Examinations | SLGTI";
                         <th scope="col">Assessment ID</th>
                         <th scope="col">Student Roll Number</th>
                         <th scope="col">Module</th>
-                        
+
                         <th scope="col">Marks</th>
                         <th scope="col">Attempt</th>
                         <th scope="col">Grade</th>
@@ -74,20 +136,20 @@ $title = "Examinations | SLGTI";
                                     # code...
                                     echo '
                                     <tr>
-                                    <th scope="row">' . $row ["assessment_id"].'</th>
-                        <th scope="row">' . $row ["student_id"].'</th>
-                        <th scope="row">' . $row ["module_id"].'</th>
+                                    <th scope="row" id="assessment_id" name="assessment_id">' . $row ["assessment_id"].'</th>
+                        <th scope="row" id="student_id" name="student_id">' . $row ["student_id"].'</th>
+                        <th scope="row" id="module_id" name="module_id" >' . $row ["module_id"].'</th>
                         
                         <td>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Enter the Marks"
-                                    aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Enter the Marks" 
+                                    aria-label="Username" aria-describedby="basic-addon1" id="assessments_marks" name="M' . $row ["student_id"].'" required>
                             </div>
                         </td>
                         <td>
                             <div class="input-group mb-3">
 
-                                <select class="custom-select" id="inputGroupSelect01">
+                                <select class="custom-select" id="assessment_attempt" name="A' . $row ["student_id"].'">
                                     <option selected>Choose...</option>
                                     <option value="1">1st</option>
                                     <option value="2">Repeat</option>
@@ -103,7 +165,9 @@ $title = "Examinations | SLGTI";
                                     
                                     
                                     
-                                    </tr>';
+                                    </tr>
+                                   
+                                   ';
                                 }
                             }
                             else {
@@ -127,7 +191,7 @@ $title = "Examinations | SLGTI";
 
                 </tbody>
             </table>
-
+            </form>
             <!-- end of add table -->
             <br>
             <!-- save button start -->
@@ -139,7 +203,7 @@ $title = "Examinations | SLGTI";
 
                 </div>
                 <div class="col col-lg-2">
-                    <button type="button" class="btn btn-outline-primary">&nbsp;&nbsp;&nbsp;<i
+                    <button type="submit" class="btn btn-outline-primary" name="save" id="save">&nbsp;&nbsp;&nbsp;<i
                             class="fas fa-save"></i>&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;</button>
                 </div>
             </div>
@@ -297,41 +361,9 @@ $title = "Examinations | SLGTI";
         </div>
         <!-- end mode  -->
         <script>
-        function showAssessments(val) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("assessmentsType").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("POST", "controller/getAssessmentType", true);
-            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xmlhttp.send("assessmentType=" + val);
-        }
 
-        function showAcademyYear(val) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("AcademyYear").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("POST", "controller/getAssessmentType", true);
-            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xmlhttp.send("academyYear=" + val);
-        }
 
-        function showStudents(val) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("students").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("POST", "controller/getAssessmentType", true);
-            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xmlhttp.send("academyYear=" + val);
-        }
+
         </script>
 
 
