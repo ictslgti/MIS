@@ -53,8 +53,8 @@ include_once("menu.php");
   </thead>
   <tbody>
   <?php
-   $sql ="SELECT student_id,student_title,student_fullname,student_ininame,student_gender,student_email,student_nic,student_dob,student_phone,student_address 
-   FROM student where student_status='Active'";
+   $sql ="SELECT s.student_id,student_title,student_fullname,student_ininame,student_gender,student_email,student_nic,student_dob,student_phone,student_address 
+   FROM student s inner join student_enroll e on s.student_id=e.student_id and student_status='Active' and student_enroll_status='Following'";
    $result = mysqli_query($con, $sql);
    if (mysqli_num_rows($result)>0)
    {
@@ -69,7 +69,7 @@ include_once("menu.php");
           <td>'. $row["student_phone"]."<br>".'</td>
           <td>'. $row["student_address"]."<br>".'</td>
           <td>
-          <a href="AddStudent.php? edit='.$row["student_id"]. '" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
+          <a href="AddStudent.php?edit='.$row["student_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
           <a href="?Student_Id='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
           </td>
        </tr> ';

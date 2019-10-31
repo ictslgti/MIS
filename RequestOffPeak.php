@@ -50,7 +50,7 @@ date_default_timezone_set("Asia/colombo");
             
             
             $sql= "INSERT INTO `off_peak` (`student_id`, `name_of_applicant`, `department`, `contact_no`, `date`, `time`, `reson_for_exit`, `warden's_comment`, `status`) 
-            VALUES (' $student_id', '$name', '$dept', '$tel', '$date', '$time', ' $ref', '', '');";
+            VALUES (' $student_id', '$name', '$dept', '$tel', '$date', '$time', ' $ref', '', '')";
             if(mysqli_query($con,$sql)){
               echo
               '<div class="alert alert-success">

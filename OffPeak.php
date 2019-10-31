@@ -93,7 +93,7 @@ if(isset($_GET['reject'])){
   </thead>
   <tbody>
   <?php
-  $sql = "SELECT * FROM `off_peak` where `status`=''";
+  $sql = "SELECT * FROM  `off_peak`  where `status`=''";
 
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
