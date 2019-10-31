@@ -23,7 +23,7 @@ include_once("menu.php");
 </div>
     <form class="form-inline" method="GET">
               <div class="form-group mx-sm-3 mb-2">
-              <input class="form-control mr-2" type="search" name="search" placeholder="Order ID">  
+              <input type="number"  min=1 class="form-control mr-2" type="search"  name="search" placeholder="Order ID">  
               </div>
               <div class="pb-2">
                 <button type="submit" class="btn btn-primary">Search</button>
@@ -75,11 +75,10 @@ include_once("menu.php");
               <?php
               }
               
-              $sql1="SELECT  food_order_user_name ,food_name,food_order_details_food_qty,food_order_details_unit_price 
-              FROM food,food_order,food_order_details 
-              WHERE  food_order_details_food_order_id=food_order_id 
-              AND food_order_details_food_id=food_id 
-                AND food_order_details_food_order_id='$oid'";
+              $sql1="SELECT distinct`food_order_details_food_order_id`as id,`food_order_user_name` as uname,food_name,`food_order_details_food_id` as fid,`food_order_details_food_qty`as qty,
+              (food_order_details_food_qty*food_order_details_unit_price) as price 
+              FROM `food_order`,food_order_details ,food 
+               where`food_order_details_food_order_id`=food_order_id and `food_order_details_food_id`=food_id and `food_order_details_food_order_id`=$oid";
    
                 $result=mysqli_query($con,$sql1);
                 if(mysqli_num_rows($result)>0){
@@ -88,8 +87,8 @@ include_once("menu.php");
 
                     
                       $foodname=$row['food_name'];
-                      $orderesfoodqty=$row['food_order_details_food_qty'];
-                      $unitprice=$row['food_order_details_unit_price'];?>
+                      $orderesfoodqty=$row['qty'];
+                      $unitprice=$row['price'];?>
 
                             <div class="row">
                                   <div class="col-9">

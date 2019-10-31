@@ -112,8 +112,8 @@ else{
             </div>
             <!-- module -->
             <div class="col-md-3 mb-2">
-            <label for="validationCustom02">Module</label>
-            <select
+                <label for="validationCustom02">Module</label>
+                <select
                     class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['module'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module'])){echo ' is-valid';} ?>"
                     id="module" name="module" onchange="showAssessments(this.value)" required>
                     <option selected>Choose...</option>
@@ -124,10 +124,10 @@ else{
                 </div>
 
 
-            
-            
-            
-            
+
+
+
+
             </div>
 
 
@@ -207,6 +207,27 @@ else{
 
 </form>
 <!--  -->
+
+<?php
+
+if(isset($_GET['delete'])){
+    $assessment_id = $_GET['delete'];
+     $sql = "DELETE FROM `assessments` WHERE `assessment_id` = '$assessment_id'";
+    
+    if (mysqli_query($con, $sql)){
+
+        
+        
+        echo '<a class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
+
+    }else{
+        echo "Error deleting record:" . mysqli_error($con);
+    }
+}
+
+?>
+
+<!--  -->
 <div>
 
 
@@ -277,27 +298,9 @@ else{
 
 
 ?>
-
-
-
                             </tbody>
-
-
                         </table>
-
-
-
                     </div>
-
-
-
-
-
-
-
-
-
-                    ...
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -315,38 +318,41 @@ else{
 
 
 <div class="container">
-        <div class="mx-auto" style="width: 200px;">
-                <h3 class="display-5">Assessments</h3>
-              </div>
+    <div class="mx-auto" style="width: 200px;">
+        <h3 class="display-5">Assessments</h3>
+    </div>
 
 
-              <div>
-                  <table class="table">
-                      <thead>
-                          <th>
-                              <center>Assessment Type</center>
-                          </th>
-                          <th>
-                              <center>Course</center>
-                            
-                          </th>
-                          <th>
-                          <center>Module</center>
-                          </th>
-                          <th>
-                              <center>Academy Year</center>
-                          </th>
-                          <th>
-                              <center>Assessment Date</center>
-                          </th>
-                          <th>
-                          <center>Action</center>
-                          
-                          </th>
-                      </thead>
-                      <tbody>
-                            <?php
-                            $sql = "SELECT assessment_type_id,course_id,module_id,academic_year,assessment_date FROM assessments";
+    <div>
+        <table class="table">
+            <thead>
+                <th>
+                    <center>Assessment ID</center>
+                </th>
+                <th>
+                    <center>Assessment Type</center>
+                </th>
+                <th>
+                    <center>Course</center>
+
+                </th>
+                <th>
+                    <center>Module</center>
+                </th>
+                <th>
+                    <center>Academy Year</center>
+                </th>
+                <th>
+                    <center>Assessment Date</center>
+                </th>
+                <th>
+                    <center>Action</center>
+
+                </th>
+            </thead>
+            <tbody>
+                <?php
+                            $sql = "SELECT assessment_id,assessment_type_id,course_id,module_id,academic_year,assessment_date FROM assessments";
                             $result = mysqli_query($con, $sql);
                             if (mysqli_num_rows($result)>0) {
             
@@ -357,6 +363,7 @@ else{
                                     # code...
                                     echo '
                                     <tr>
+                                    <td><center>'. $row["assessment_id"]."<br>".'</center></td>
                                     <td><center>'. $row["assessment_type_id"]."<br>".'</center></td>
                                     <td><center>'. $row["course_id"]."<br>".'</center></td>
                                     <td><center>'. $row["module_id"]."<br>".'</center></td>
@@ -364,7 +371,8 @@ else{
                                     <td><center>'. $row["assessment_date"]."<br>".'</center></td>
                                     <td>
                                     <center>
-                                    <a href="AddAssessmentResults.php?" class="btn btn-sm btn-success"">Add Assessment Results</a>
+                                    <a href="AddAssessmentResults.php?StudentMarks='.$row["assessment_id"].'" class="btn btn-sm btn-success">Add Assessment Results</a>
+                                    <a  class="btn btn-sm btn-danger" data-href="?delete='.$row["assessment_id"].'" data-toggle="modal" data-target="#confirm-delete">Delete Assessment </a>
                                     
                                     
                                     </center>
@@ -389,35 +397,18 @@ else{
 
 
 
-                      </tbody>
+            </tbody>
 
 
-                  </table>
+        </table>
 
 
-              </div>
-
-        
-
-
-
-
-
+    </div>
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
 </div>
+
 
 
 
@@ -470,7 +461,6 @@ function showAssessments(val) {
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send("assessmentType=" + val);
 }
-
 </script>
 
 

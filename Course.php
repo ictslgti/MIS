@@ -4,6 +4,8 @@ $title="Course details | SLGTI";
 include_once ("config.php");
 include_once ("head.php");
 include_once ("menu.php");
+
+
 ?>
 	<!-- end dont change the order-->
 
@@ -21,8 +23,8 @@ include_once ("menu.php");
     <div class="col-sm-8"></div>
 	<div class="col-sm-4">
     <form class="form-inline md-form form-sm mt-4" method="GET">
-    <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="search" placeholder="Search_ID" aria-label="Search"  name="query" > 
-    <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button>
+    <input class="form-control" type="text" placeholder="Search_ID" aria-label="Search"  name="search"/> 
+    <!-- <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button> -->
     </form><br>
     </div>
     </div>
@@ -30,7 +32,7 @@ include_once ("menu.php");
 	<div class="row">
 	    <div class="col-md-12 col-sm-12">
 	        <div class="table-responsive table-responsive-sm">
-	            <table class="table table-hover">
+	            <table class="table table-hover" id="employee_table">
 	                <thead class="thead-dark">
 	                    <tr>
                             <th scope="col">No.</th>
@@ -74,22 +76,9 @@ include_once ("menu.php");
                     ?>
 
                     <?php
-                    if(isset($_GET['query']))
-                    {                
-                        $query = $_GET['query'];
-
-                        $query = "SELECT * FROM course WHERE (`course_name` LIKE '%".$c_id."%')";
-
-                        if(mysqli_query($con,$query))
-                        {
-                          echo 'yes value';
-                        }
-                        else
-                        {
-                          echo 'no value';               
-                         
-                        }
-                    }
+                                  
+                     $query = "SELECT * from `course` order by course_id desc" ;
+                     $result =mysqli_query($con,$query);
                     ?>
 
 	                <tbody>
@@ -133,6 +122,7 @@ include_once ("menu.php");
                                        
                                     <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["course_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>                                    
                                     </td> 
+                                    
                                 </tr>';
                                 $count=$count+1;
                             }
@@ -141,24 +131,38 @@ include_once ("menu.php");
                         {
                             echo "0 results";
                         }
+                        
                     ?>
-
 	                </tbody>
 	            </table>
+                <a href="AddCourse.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD COURSE</a></i>
+                <script>
+                $(document).ready(function(){
+                    $('#search').keyup(function(){
+                        search_table($(this).val());
+                    });
+                    function search_table(value){
+                        $('#employee_table tr').each(function(){
+                            var found ='false';
+                            $(this).each(function(){
+                                if($(this).text().toLowercase().indexOf(value.toLowerCase()) >=0)
+                                {
+                                    found ='true';
+                                }
+                            });
+                            if(found == 'true')
+                            {
+                                $(this).show();
+                            }
+                            else{
+                                $(this).hide();
+                            }
+                        });
+                    }
+                });
+                </script>
 
-	            <nav aria-label="Page navigation example">
-	                <ul class="pagination justify-content-end">
-	                    <li class="page-item disabled">
-	                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-	                    </li>
-	                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-	                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-	                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	                    <li class="page-item">
-	                        <a class="page-link" href="#">Next Page</a>
-	                    </li>
-	                </ul>
-	            </nav>
+	            
 	        </div>
 	    </div>
 	</div>
