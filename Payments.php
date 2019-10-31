@@ -11,10 +11,11 @@ include_once("menu.php");
 
 
 
-
+<div class="shadow p-3 mb-s bg-white rounded">
   <h1 class="text-center display-3">SLGTI Payment Information</h1><br>
-  <a href="Update_Payment.php" class="btn btn-warning" role="button" aria-pressed="true" style="text-align: right">Edit</a>
+  </div>
   </body>
+  <br>
 	<!-- <?php
   include_once("config.php");
 if(isset($_GET['delete'])){
@@ -72,6 +73,10 @@ if(mysqli_num_rows($result)>0){
         <td>'.$row['pays_qty'].'</td>
         <td>'.$row['pays_date'].'</td>
         <td>'.$row['pays_department'].'</td>
+        <td> <a href="Update_Payment.php ?upt='.$row["pays_id"].'" >
+        <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
+        <i class="far fa-edit"></i>
+        </button></a> </td>
         
         </tr>';
 
