@@ -113,7 +113,10 @@ include_once("menu.php");
           <td>'. $row["inventory_status"]."<br>".'</td>
           <td>'. $row["inventory_quantity"]."<br>".'</td>
           <td> 
-          <a href="AddInventory.php ?edits='.$row["inventory_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+          
+          <a href="AddInventory.php?edits='.$row["inventory_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+
+
           <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["inventory_id"].'" 
           data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
           </td>
