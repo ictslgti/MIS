@@ -28,15 +28,15 @@ include_once("menu.php");
         </div>
     </div>
   
-    <div class="card bg-dark">
-    <div class="card-header text-white"><h1>Events</h1></div>
+    <div class="card bg-dark text-white">
+    <div class="card-header"><h1>Events</h1></div>
         <div class="card-body">
-        <div class="alert alert-light"><a href="NoticeEventUpload.php">Certificate Awarding Ceremony</a></div>
-        <div class="alert alert-light" role="alert"><a href="NoticeEventUpload.php">Celebration</a></div>
-        <div class="alert alert-light" role="alert"><a href="NoticeEventUpload.php">Visitor's Visit</a></div>
-        <div class="alert alert-light" role="alert"><a href="NoticeEventUpload.php">Volunteer</a></div>
-        <div class="alert alert-light" role="alert"><a href="NoticeEventUpload.php">Other Events</a></div>
-      </div>
+        <p class="card-text">
+        <a href="NoticeAddResult.php">
+        <h1>Add New Events<h1></a></p>
+        </div>
+    </div>
+    
     
     </div>
 </div>
