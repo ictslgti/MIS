@@ -11,10 +11,11 @@ include_once("menu.php");
 
 
 
-
+<div class="shadow p-3 mb-s bg-white rounded">
   <h1 class="text-center display-3">SLGTI Payment Information</h1><br>
-  
+  </div>
   </body>
+  <br>
 	<!-- <?php
   include_once("config.php");
 if(isset($_GET['delete'])){
