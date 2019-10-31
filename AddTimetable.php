@@ -16,17 +16,17 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
 if(isset($_GET['edit']))
 
 {
-  $id = $_GET['edit'];
-  $sql = "SELECT * FROM `timetable` WHERE `time_id` = '$id'";
+  $tid = $_GET['edit'];
+  $sql = "SELECT * FROM `timetable` WHERE `time_id` =$tid";
   $result = mysqli_query($con, $sql);
   if (mysqli_num_rows($result)==1)
+
    {
       $row = mysqli_fetch_assoc($result);
-      echo $time_id = $row['time_id'];
       echo $department_id = $row['department_id'];
       echo $course_id = $row['course_id'];
       echo $module_id = $row['module_id'];
-      echo $academic_year= $row['academic_year'];
+      echo $academic_year= $row['academic_year'];   
       echo $staff_id = $row['staff_id'];
       echo $weekdays = $row['weekdays'];
       echo $weekdays = $row['timep'];

@@ -102,11 +102,11 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
 </form>
 
 
-<!--entries
+
 <label>Show Entries <select name="dtHorizontalVerticalExample_length"
  aria-controls="dtHorizontalVerticalExample" class="custom-select custom-select-sm form-control form-control-sm">
     <option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label>
--->
+
 
 <?php
 
@@ -124,9 +124,17 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
                          $weeks = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
 
                         foreach ($weeks as $value) {
+
+
+                   
+                           
                           ?>
                          <th scope="col" class="p-3 <?php if(date('l')==$value) echo ' bg-warning'; ?>" style="width: 6%;"> 
-                         <?php echo $value; ?></th>
+                         <?php echo $value; ?>
+
+
+
+                        </th>
                     
                         <?php
                         }
@@ -229,13 +237,16 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
 
     <td>
          
-    <td>
+    <!-- <td>
           <a href="AddTimetable.php? edit='.$row["department_id"].'"> Edit </a> |
           <a href="?Student_Id='.$row["department_id"].'"> View More
           </td>     
-         </td>
+         </td> -->
         
 <script>
+
+
+
 function showModule(val) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {

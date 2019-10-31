@@ -24,7 +24,8 @@
  ?>
 
 <!-- navbar and search bar -->
-<h1 class="text-center display-3">SLGTI Student Payment Report Portal</h1><br>
+<div class="shadow p-3 mb-s bg-white rounded">
+<h1 class="text-center display-3">SLGTI Student Payment Report Portal</h1></div><br>
  <div class=" rounded-top bg-light pt-2 mt-2 pb-2">
           <a class="navbar-brand font-weight-bold ml-2"> Payment Details</a>
           

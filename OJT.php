@@ -8,65 +8,82 @@ $title ="Home | SLGTI";
  <!--END Don't CHANGE THE ORDER-->
 
  <!--START YOUR CODER HERE-->
- <div class=row>
-        <div class="col">
-          <br>
-          <br>
-          <h1>On-The-Job-Training Informations</h1>
-          <br>
-          <br>
-          </div>
-  </div>
-        <div class=row>
-        <div class="col">
- <table class="table table-hover table-light">
-  <thead>
-    <tr>
-      <th scope="col" class="bg-primary"><i class="fas fa-address-card">..</i>Student ID</th>
-      <th scope="col" class="bg-primary"><i class="fas fa-address-card">..</i>Student Name</th>
-      <th scope="col" class="bg-primary"><i class="fas fa-phone-volume"></i>Phone number</th>
-      <th scope="col" class="bg-primary"><i class="far fa-envelope">..</i>E-mail</th>
-      <th scope="col" class="bg-primary"><i class="far fa-building">..</i>Department</th>
-      <th scope="col" class="bg-primary"><i class="fas fa-industry">..</i>Requested Place / company</th>
-      <th scope="col" class="bg-primary"><i class="fas fa-map-marker-alt">..</i>Requested Place Address</th>
-      <th scope="col" class="bg-primary"><i class="fas fa-industry">..</i>Final Place / company</th>
-      <th scope="col" class="bg-primary"><i class="fas fa-map-marker-alt">..</i>Final Place Address</th>
-      <th scope="col" class="bg-primary">Action</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-  <?php
-   $sql ="SELECT `student_id`, `student_name`, `phone_no`, `e_mail`, `department_name`, `requested_place`, `requested_address`, `final_place`, `final_address`, FROM `ojt` where student_id ='Active'";
-   $result = mysqli_query($con, $sql);
-   if (mysqli_num_rows($result)>0)
-   {
-     while($row = mysqli_fetch_assoc($result))
-     {
-       echo '
-       <tr style="text-align:left";>
-          <td>'. $row["student_id"]."<br>".'</td>
-          <td>'. $row["student_name"]."<br>".'</td>
-          <td>'. $row["phone_no"]."<br>".'</td>
-          <td>'. $row["e_mail"]."<br>".'</td>
-          <td>'. $row["department_name"]."<br>".'</td>
-          <td>'. $row["requested_place"]."<br>".'</td>
-          <td>'. $row["requested_address"]."<br>".'</td>
-          <td>'. $row["final_place"]."<br>".'</td>
-          <td>'. $row["final_address"]."<br>".'</td>
-          <td>
-          <a href="AddTrainingPlace.php? edit='.$row["student_id"]. '" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> 
-          </td>
-       </tr> ';
-     }
-   }
-   else
-   {
-     echo "0 results";
-   }
-    
-  ?>
-  </tbody>
-</table>
-</div>
-</div>
+
+
+
+<div class="shadow  p-3 mb-1 bg-white rounded">
+	    <div class="highlight-blue">
+	        <h1 class="display-4 text-center">Student's Final Training Place Details</h1>
+	        <!-- <p class="text-center"></p> -->
+	    </div>
+	</div>
+
+	<div class="row">
+	    <div class="col-md-12 col-sm-12">
+	        <div class="table-responsive table-responsive-sm">
+	            <table class="table table-hover">
+	                <thead class="thead-dark">
+	                    <tr>
+                      <th scope="col">NO.</th>
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Phone number</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Final Place</th>
+                    <th scope="col">Final Place Address</th>
+                    <th scope="col">Starting Date</th>
+                    <th scope="col">Ending Date</th>
+	                    </tr>
+	                </thead>
+
+
+
+
+	                <tbody>
+	                    <?php 
+                    $sql = "SELECT `student_id`, `student_name`, `phone_no`, `e_mail`, `department_id`,
+                    `final_place`, `final_address`,`starting`,`ending` FROM `ojt`";
+                   $result = mysqli_query($con, $sql);
+
+                    if(mysqli_num_rows($result)>0)
+                        { 
+                            $count=1;
+                          //output data of each row
+                            while($row = mysqli_fetch_assoc($result))
+                            {
+                                echo '
+                                <tr>
+                                    <td>'. $count.'.'. "<br>" .'</td>
+                                    <td scope="row">'. $row["student_id"] . "<br>" .'</td>
+                                    <td>'. $row["student_name"] .  "<br>" .'</td>
+                                    <td>'. $row["phone_no"] .  "<br>" .'</td>
+                                    <td>'. $row["e_mail"] .  "<br>" .'</td>
+                                    <td>'. $row["department_id"] .  "<br>" .'</td>
+                                    <td>'. $row["final_place"] .  "<br>" .'</td>
+                                    <td>'. $row["final_address"] .  "<br>" .'</td>
+                                    <td>'. $row["starting"] .  "<br>" .'</td>
+                                    <td>'. $row["ending"] .  "<br>" .'</td>
+                                     
+                                    <td> 
+                                    
+
+                                    <a href="OJTReport.php ?student_id='.$row["student_id"].' " class="btn btn-sm btn-primary btn-icon-split"> <span class="text">Requests</span> </a>
+
+                                    <a href="AddTrainingPlace.php ?edit='.$row["student_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+
+                                       
+                                    <button class="btn btn-sm btn-danger" data-href="?delete='.$row["student_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>                                    
+                                    </td> 
+                                </tr>';
+                                $count=$count+1;
+                            }
+                        }
+                        else
+                        {
+                            echo "0 results";
+                        }
+                    ?>
+
+	                </tbody>
+	            </table>
