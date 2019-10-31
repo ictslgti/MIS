@@ -210,6 +210,7 @@ else{
 
 <?php
 
+
 if(isset($_GET['delete'])){
     $assessment_id = $_GET['delete'];
      $sql = "DELETE FROM `assessments` WHERE `assessment_id` = '$assessment_id'";
