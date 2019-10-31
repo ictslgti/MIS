@@ -13,7 +13,7 @@ include_once("menu.php");
 
 
   <h1 class="text-center display-3">SLGTI Payment Information</h1><br>
-  <a href="Update_Payment.php" class="btn btn-warning" role="button" aria-pressed="true" style="text-align: right">Edit</a>
+  
   </body>
 	<!-- <?php
   include_once("config.php");
@@ -72,6 +72,10 @@ if(mysqli_num_rows($result)>0){
         <td>'.$row['pays_qty'].'</td>
         <td>'.$row['pays_date'].'</td>
         <td>'.$row['pays_department'].'</td>
+        <td> <a href="Update_Payment.php ?upt='.$row["pays_id"].'" >
+        <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
+        <i class="far fa-edit"></i>
+        </button></a> </td>
         
         </tr>';
 
