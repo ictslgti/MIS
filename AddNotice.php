@@ -32,7 +32,7 @@ include_once("menu.php");
     <div class="card-header"><h1>Events</h1></div>
         <div class="card-body">
         <p class="card-text">
-        <a href="NoticeAddResult.php">
+        <a href="NoticeEventUpload.php">
         <h1>Add New Events<h1></a></p>
         </div>
     </div>
