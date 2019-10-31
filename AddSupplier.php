@@ -8,6 +8,30 @@ $title = "Department Details | SLGTI";
  <!-- end default code -->
 
 <!-- start my code -->
+<!-- edit coding -->
+<?php
+$supplierid=$suppliername=$supplierphonenumber=$supplieremail=$supplieraddress=null;
+if(isset($_GET['edits'])){
+        $supplierid=$_GET['edits'];
+        $sql="SELECT * FROM `inventory_item_supplier` WHERE `supplier_id`='$supplierid'";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+            $supplierid=$row['supplier_id'];
+            $suppliername=$row['supplier_name'];
+            $supplierphonenumber=$row['supplier_phone_number'];
+            $supplieremail=$row['supplier_email'];
+            $supplieraddress=$row['supplier_address'];
+           
+        }
+        else{
+          echo "Error".$sql."<br>".mysqli_error($con);
+        }
+    }
+
+?>
+
+
 
 
 <?PHP
@@ -110,13 +134,23 @@ if(isset($_POST['Add'])){
 
           
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
+          <a href="item_view.php" class="btn btn-primary ml-2 mt-3 float-right" >View</a>   
               
-          <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
+          
          
-                        
-                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">update </button>
-                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='Supplier_view.php'">view </button>
-                        <button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
+                  
+<?php
+             if(isset($_GET['edits'])){
+             echo '<button type="submit"  value="edit" name="edit"  class="btn btn-primary ml-2 mt-3 float-right">update </button>';
+             }
+             else{
+            
+             echo '<button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
+             <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">';
+             }
+
+             ?>
+
             </div>
             </div>
       </form>
@@ -126,6 +160,9 @@ if(isset($_POST['Add'])){
 
 
 
+
+           
+ 
 
 
 
