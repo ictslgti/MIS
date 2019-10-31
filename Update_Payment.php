@@ -7,7 +7,7 @@ include_once("menu.php");
 <!-- dont change -->
 
     <div class="shadow p-3 mb-s bg-white rounded">
-        <h1 class="text-center display-3">SLGTI Student Payment Portal</h1> 
+        <h1 class="text-center display-3">SLGTI Student Payment Modify Portal</h1> 
         
     </div>
       
@@ -50,7 +50,7 @@ if(isset($_POST['Add'])){
 if(mysqli_query($con,$sql)){
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$student_name.'</strong> <h4 class="text-center display-3">PAID</h4> 
+          <strong>'.$student_id.'</strong> <h4 class="text-center display-3">PAID</h4> 
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -61,7 +61,7 @@ if(mysqli_query($con,$sql)){
         
         echo '
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>'.$student_name.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <strong>'.$student_id.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -115,7 +115,7 @@ if(isset($_POST['edit'])){
 
           echo
             '<div class="alert alert-success">
-            <strong>Success!</strong> Your data was Updated.</a>
+            <strong>Success!</strong> <h4 class="text-center display-3">Modified</h4></a>
           </div>';
           
       }
@@ -163,7 +163,7 @@ if(isset($_POST['edit'])){
                         </div>
                         <select class="custom-select <?php  if(isset($_POST['Add']) && empty($_POST['payment_type'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_type'])){echo ' is-valid';} ?> "
                             id="payment_type" name="payment_type" onchange="showpaymentreason(this.value)"  value="<?php echo $payment_type;?>">
-
+                            <option value="null" selected disabled>-- Select a Payment Type --</option>
                             <?php
                                 $sql = "select DISTINCT payment_type from payment";
                                 $result = mysqli_query($con, $sql);
