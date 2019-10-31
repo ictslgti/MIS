@@ -62,7 +62,7 @@ $title = "Examinations | SLGTI";
                         if (isset($_GET['StudentMarks'])) {
                             # code...
                             $id=$_GET['StudentMarks'];
-                            $sql = "SELECT assessments.assessment_id,course_id, academic_year,module_id ,student_enroll.student_id 
+                            $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id 
                              
                             FROM `assessments_marks`,student_enroll,assessments  
                             WHERE student_enroll.student_id =assessments_marks.student_id AND assessments.course_id ='$id' group by student_id";
