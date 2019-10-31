@@ -11,7 +11,7 @@ $title = "Examinations | SLGTI";
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-4 text-center">Asignments Portal</h1>
+                    <h1 class="display-4 text-center">Students Marks</h1>
                 </div>
             </div>
         </div>
@@ -30,7 +30,8 @@ $title = "Examinations | SLGTI";
   <thead class="thead-dark">
     <tr>
         <div class="col-sm-10">
-      <th scope="col"><i class="fab fa-discourse"></i>&nbsp;&nbsp;Course</th>
+      <th scope="col"><i class="fab fa-discourse"></i>&nbsp;&nbsp;Student ID</th>
+      <th scope="col">Student Name</th>
       <th scope="col"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;Academy Year</th>
       <th scope="col"><i class="fas fa-book-open"></i>&nbsp;&nbsp;Module</th>
       <th scope="col"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Asessment</th>
@@ -41,27 +42,16 @@ $title = "Examinations | SLGTI";
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td><button type="button" class="btn btn-outline-success"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add marks</button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-outline-success"><i class="far fa-edit"></i>&nbsp;&nbsp;Edit</button>&nbsp;&nbsp;
-    </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+
+
+
+
+
+
+
+
+
+    
   </tbody>
 </table>
 
