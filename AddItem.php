@@ -64,6 +64,28 @@ if(mysqli_query($con,$sql))
 
 }
 ?>
+<?php
+$itemid=$supplierid=$inventoryitempurchase=$inventoryitemwarranty=$inventoryitemdescription=$itemcode=null;
+if(isset($_GET['edits'])){
+        $item_id=$_GET['edits'];
+        $sql="SELECT * FROM `inventory_item` WHERE `item_id`='$item_id'";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+            $row=mysqli_fetch_assoc($result);
+            $itemid=$row['item_id'];
+            $supplierid=$row['supplier_id'];
+            $inventoryitempurchase=$row['inventory_item_purchase'];
+            $inventoryitemwarranty=$row['inventory_item_warranty'];
+            $inventoryitemdescription=$row['inventory_item_description'];
+            $itemcode=$row['item_code'];
+          
+        }
+        else{
+          echo "Error".$sql."<br>".mysqli_error($con);
+        }
+    }
+
+?>
 
 
 
@@ -132,12 +154,23 @@ if(mysqli_query($con,$sql))
                   
                   </div>
           <div class="col-md-12 col-sm-12 form-group pl-3 pr-3 container">
-              
-          <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">
+
+           
+           <a href="item_view.php" class="btn btn-primary ml-2 mt-3 float-right" >View</a>    
+           
+         
+          <?php
+                        if(isset($_GET['edits'])){
+                        echo '<button type="submit"  value="edit" name="edit"  class="btn btn-primary ml-2 mt-3 float-right">update </button>';
+                        }
+                        else{
+                       
+                        echo '<button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
+                        <input class="btn btn-dark ml-2 mt-3 float-right" type="reset" value="Reset">';
+                        }
+
+                        ?>
                         
-                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right">update </button>
-                        <button type="submit" class="btn btn-primary ml-2 mt-3 float-right"  onclick="location.href='item_view.php'">view </button>
-                        <button type="submit" value="Add" name="Add"  class="btn btn-primary ml-2 mt-3 float-right">Add </button>
             </div>
             </div>
       </form>
