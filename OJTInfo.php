@@ -19,12 +19,12 @@ $StudentID=$Department_id=$StudentName=$DepartmentName=$Finalplace=$Address=null
 
   if(isset($_GET['edit'])){
         $StudentID=$_GET['edit'];
-        $sql="SELECT `student_name`, `department_name`, `final_place`, `final_address` FROM `ojt` WHERE `student_id`='$StudentID'";
+        $sql="SELECT `student_name`, `department_id`, `final_place`, `final_address` FROM `ojt` WHERE `student_id`='$StudentID'";
         $result=mysqli_query($con,$sql);
         if(mysqli_num_rows($result)==1){
             $row=mysqli_fetch_assoc($result);
             $StudentName=$row['student_name']; 
-            $DepartmentName=$row['department_name'];
+            $DepartmentName=$row['department_id'];
             $Finalplace=$row['final_place'];
             $Address=$row['final_address'];
         }
@@ -93,7 +93,9 @@ $StudentID=$Department_id=$StudentName=$DepartmentName=$Finalplace=$Address=null
 
                     <p> This is your final Traing Place. Approved by Student affair's, SLGTI.</p>
                     <br>
-                    <button type="button" class="btn btn-outline-success">Okay</button>
+                    <button type="submit" class="btn btn-outline-success" onclick="location.href='index.php'">Okay</button>
+
+                    
                    
 
                     <div class="form-row pt-3">

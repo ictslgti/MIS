@@ -256,6 +256,15 @@ $title = "Home | SLGTI";
                         </div>
                     </div>
 
+<br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mx-auto" style="width: 200px;">
+                                <a href= "RequestOnPeak.php"> back </a>
+                            </div>
+                        </div>
+                    </div>
+
 
        
                

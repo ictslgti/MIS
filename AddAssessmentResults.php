@@ -11,7 +11,7 @@ $title = "Examinations | SLGTI";
 
     <body style="background-color: rgb(255,255,255);">
 
-        
+
 
         <div class="shadow p-3 mb-5 bg-white rounded">
 
@@ -19,50 +19,162 @@ $title = "Examinations | SLGTI";
                 <div class="container">
                     <div class="intro">
                         <h1 class="display-4 text-center">Asignments Portal</h1>
-                        
-                        <p class="text-center">Welcome to examinations portal for lectures or admin. This section to add
-                            examinations and assignments/asessments results&nbsp;</p>
+
+                        <p class="text-center">Welcome <?php echo $_SESSION["user_name"];?> to examinations portal </p>
 
                     </div>
                 </div>
             </div>
         </div>
 
+        <!--  -->
+
+        <?php
+        $assessment_id=$student_id=$module_id=$assessments_marks=$assessment_attempt=null;
+
+        if (isset($_POST['save'])) {
+
+            # code...
+            if (!empty($_POST['assessment_id'])) 
+                # code...
+               echo $student_id=$_POST['student_id'];
+               echo $module_id=$_POST['module_id'];
+        echo $assessments_marks=$_POST['assessments_marks'];
+        echo $assessment_attempt=$_POST['assessment_attempt'];
+
+
+          echo $sql = "INSERT INTO `assessments_marks` (`assessment_id`,`student_id`,`module_id`,`assessment_attempt`,`assessment_marks`)
+         VALUES ('$assessment_id','$student_id','$module_id','$assessments_marks','$assessment_attempt')";
+
+if(mysqli_query($con,$sql))
+{
+  echo '
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>'.$assessment_id.'</strong> Assessment Type details inserted!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>   
+  ';
+}
+else{
+  
+  echo '
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>'.$assessment_id.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  
+  ';
+}
+
+
+
+
             
+        }
 
 
-            <!-- main area start-->
-            <div class="container">
-                    <div class="card">
-                            <br>
-                                <div class="intro">
-                                    <h3 class="display-5 text-center">Enter Students Asignments Marks</h3>
-                                </div>
-                            <br>
-                        </div>
-                        <br>
 
+
+
+
+
+
+
+
+        ?>
+
+
+
+
+
+
+        <!-- main area start-->
+        <div class="container">
+            <div class="card">
+                <br>
+                <div class="intro">
+                    <h3 class="display-5 text-center">Enter Students Asignments Marks</h3>
+                </div>
+                <br>
+            </div>
+            <br>
+            <form class="needs-validation" novalidate method="POST" action="#">
             <!-- table -->
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Assessment ID</th>
                         <th scope="col">Student Roll Number</th>
-                        <th scope="col">Student Full Name</th>
+                        <th scope="col">Module</th>
+
                         <th scope="col">Marks</th>
                         <th scope="col">Attempt</th>
                         <th scope="col">Grade</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
 
-                        <?php
+
+                    <?php
 
                         if (isset($_GET['StudentMarks'])) {
                             # code...
                             $id=$_GET['StudentMarks'];
-                            $sql = "SELECT assessments.assessment_id,course_id, academic_year,module_id ,student.student_id ,student_fullname FROM `assessments_marks`,student,assessments  WHERE student.student_id =assessments_marks.student_id and assessments.course_id ="5it" group by student_id "
+                         $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id
+                             
+                            FROM `assessments_marks`,student_enroll,assessments
+                            WHERE student_enroll.course_id =assessments.course_id AND assessments.assessment_id ='$id' group by student_id";
+
+                            $result = mysqli_query($con, $sql);
+                            if (mysqli_num_rows($result)>0) {
+                                # code...
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    # code...
+                                    echo '
+                                    <tr>
+                                    <th scope="row" id="assessment_id" name="assessment_id">' . $row ["assessment_id"].'</th>
+                        <th scope="row" id="student_id" name="student_id">' . $row ["student_id"].'</th>
+                        <th scope="row" id="module_id" name="module_id" >' . $row ["module_id"].'</th>
+                        
+                        <td>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Enter the Marks" 
+                                    aria-label="Username" aria-describedby="basic-addon1" id="assessments_marks" name="M' . $row ["student_id"].'" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-group mb-3">
+
+                                <select class="custom-select" id="assessment_attempt" name="A' . $row ["student_id"].'">
+                                    <option selected>Choose...</option>
+                                    <option value="1">1st</option>
+                                    <option value="2">Repeat</option>
+                                </select>
+                            </div>
+
+
+                        </td>
+                        <td scope="row">
+                            <h3 class="text-success">Pass</h3>
+                        </td>
+
+                                    
+                                    
+                                    
+                                    </tr>
+                                   
+                                   ';
+                                }
+                            }
+                            else {
+                                # code...
+                                echo "0 results";
+                            }
+
                         }
 
 
@@ -74,35 +186,12 @@ $title = "Examinations | SLGTI";
 
 
 
-                        <th scope="row">0</th>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Enter the Marks"
-                                    aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                        </td>
-                        <td>
-                                <div class="input-group mb-3">
-                                        
-                                        <select class="custom-select" id="inputGroupSelect01">
-                                          <option selected>Choose...</option>
-                                          <option value="1">1st</option>
-                                          <option value="2">Repeat</option>
-                                        </select>
-                                      </div>
 
 
-                        </td>
-                        <td scope="row">
-                            <h3 class="text-success">Pass</h3>
-                        </td>
-                    </tr>
-                    
+
                 </tbody>
             </table>
-
+            </form>
             <!-- end of add table -->
             <br>
             <!-- save button start -->
@@ -114,7 +203,7 @@ $title = "Examinations | SLGTI";
 
                 </div>
                 <div class="col col-lg-2">
-                    <button type="button" class="btn btn-outline-primary">&nbsp;&nbsp;&nbsp;<i
+                    <button type="submit" class="btn btn-outline-primary" name="save" id="save">&nbsp;&nbsp;&nbsp;<i
                             class="fas fa-save"></i>&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;</button>
                 </div>
             </div>
@@ -266,49 +355,12 @@ $title = "Examinations | SLGTI";
                 </div>
             </div>
         </div>
-            <!-- small view table end -->
+        <!-- small view table end -->
 
-            <!-- main table container end below -->
+        <!-- main table container end below -->
         </div>
         <!-- end mode  -->
         <script>
-        function showAssessments(val) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("assessmentsType").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("POST", "controller/getAssessmentType", true);
-            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xmlhttp.send("assessmentType=" + val);
-        }
-
-        function showAcademyYear(val) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("AcademyYear").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("POST", "controller/getAssessmentType", true);
-            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xmlhttp.send("academyYear=" + val);
-        }
-
-        function showStudents(val) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("students").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("POST", "controller/getAssessmentType", true);
-            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xmlhttp.send("academyYear=" + val);
-        }
-
-
 
 
 

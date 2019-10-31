@@ -11,7 +11,7 @@ include_once ("menu.php");
 
 <!-- Block#2 start your code -->
 <?php
-$gcourse_id=$sum=$mid=$cid=null;
+$gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
 ?>
 	<div class="shadow  p-3 mb-1 bg-white rounded">
 	    <div class="highlight-blue">
@@ -19,6 +19,37 @@ $gcourse_id=$sum=$mid=$cid=null;
 	        <!-- <p class="text-center"></p> -->
 	    </div>
 	</div>
+
+<form method="GET">
+  <div class="form-row">
+        <div class="col-5">
+            <div class="form-row align-items-center">
+                <select class="selectpicker mr-sm-2" id="search"  name="course_id" data-live-search="true" data-width="100%">
+                    <option value="null" selected disabled>-- Select a Course --</option>
+                    
+                    <?php
+                    $sql = "SELECT * FROM `course` ORDER BY `course_id` ASC";
+                    $result = mysqli_query($con, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                      echo '<option  value="'.$row["course_id"].'" required>'.$row["course_name"].'</option>';
+                    }
+                    }else{
+                      echo '<option value="null"  selected disabled>-- 0 Position --</option>';
+                    }
+                    ?>
+                          </select>
+                      </div>
+                  </div>
+                  
+                  <div class="col-1">
+                      <div class="form-row align-items-center">
+                  <button  type="submit" class="btn btn-primary btn-block" ><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+</form>
+
 
   <div class="row">
 	    <div class="col-md-12 col-sm-12">
@@ -36,7 +67,9 @@ $gcourse_id=$sum=$mid=$cid=null;
                     </tr>
                   </thead>
 
-                  <?php
+            
+
+                <?php
                 
                 if(isset($_GET['dlt']))
                 {
@@ -68,8 +101,74 @@ $gcourse_id=$sum=$mid=$cid=null;
                 ?>
 
                   <tbody>
+
+                  
+                  <?php
+                if(isset($_GET['search']))
+                {
+                    $gcourse_id = $_GET['search'];
+
+                    $sql = "SELECT `module_id`,
+                    `module_name`,
+                    `module_learning_hours`,
+                    `semester_id`,
+                    `module`.`course_id` AS `course_id`,
+                    `module_relative_unit`,
+                    `module_lecture_hours`,
+                    `module_practical_hours`,
+                    `module_self_study_hours`,
+                    course.course_name as course_name FROM `module`,
+                    `course` WHERE module.course_id = course.course_id";
+                      if(isset($_GET['course_id']))
+                      {
+                          $gcourse_id=$_GET['course_id'];
+                          $sql.="AND `module`.`course_id`= '$gcourse_id'";
+                      }
                     
-                    <?php
+                    $result = mysqli_query($con,$sql);
+                    
+                    if(mysqli_num_rows($result)>0)
+                    {
+                      $count=1;
+                      while($row = mysqli_fetch_assoc($result))
+                      { 
+                          $mid = $row["module_id"];
+                          $cid = $row["course_id"];
+                          
+                          $sql_r = "SELECT SUM(module_self_study_hours+module_lecture_hours+module_practical_hours) as 'value_sum' FROM module  WHERE module_id='$mid' and course_id='$cid'"; 
+                          $result_r = mysqli_query($con,$sql_r);
+                          if(mysqli_num_rows($result_r)==1)
+                          {
+                          $row_r = mysqli_fetch_assoc($result_r);
+                          $sum = $row_r['value_sum'];
+                          }
+                          echo'
+                          <tr style="text-align:center">
+                            <td>'.$count.'.'. "<br>" .' </td>
+                            <td>'. $row["module_id"] . "<br>" .' </td>
+                            <td>'. $row["module_name"] . "<br>" .' </td>
+                            <td>'. $row["course_name"] . "<br>" .'</td>
+                            <td>'. $row["semester_id"] . "<br>" .'</td>
+                            <td>'. "$sum". "<br>" .'</td>
+                             
+                            <td> 
+                            <a href=" AddModule.php ?edits='.$row["module_id"].'  &&  ?edits='.$row["course_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                            <button data-href=" ?dlt='.$row["module_id"].' &&  ?dlt='.$row["course_id"].' " class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
+                            </td> 
+                          </tr>';
+                          $count=$count+1;
+                          
+                      }
+                    }
+                    else
+                    {
+                        echo "0 results";
+                    }
+                  
+                  }
+                  else
+                  {
+
                       $sql = "SELECT `module_id`,
                       `module_name`,
                       `module_learning_hours`,
@@ -88,7 +187,6 @@ $gcourse_id=$sum=$mid=$cid=null;
                         }
                       
                       $result = mysqli_query($con,$sql);
-                      
                       if(mysqli_num_rows($result)>0)
                       {
                         $count=1;
@@ -114,6 +212,7 @@ $gcourse_id=$sum=$mid=$cid=null;
                               <td>'. "$sum". "<br>" .'</td>
                                
                               <td> 
+                              
                                     <a href=" AddModule.php ?edits='.$row["module_id"].'  &&  ?edits='.$row["course_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
  
                                     <button data-href=" ?dlt='.$row["module_id"].' &&  ?dlt='.$row["course_id"].' " class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
@@ -126,13 +225,12 @@ $gcourse_id=$sum=$mid=$cid=null;
                       {
                           echo "0 results";
                       }
-                     
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                     ?>
                      </tbody>
                     </table>
                     <a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i>
-                
+                    
             </div>
       </div>
  </div>
@@ -145,4 +243,3 @@ $gcourse_id=$sum=$mid=$cid=null;
 <!--Block#3 start dont change the order-->
 <?php include_once ("footer.php"); ?>  
 <!--  end dont change the order-->
-    

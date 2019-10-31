@@ -179,7 +179,14 @@ if(isset($_POST['add'])){
        $name = basename($_FILES["ima"]["name"]);
        $test_dir = './docs/events';
        move_uploaded_file($t_name, $test_dir.'/'.$name);
-       
+
+
+       if( $name ) {
+        echo "Successfully uploaded";         
+      } else {
+        echo "Not uploaded because of error #".$_FILES["ima"]["error"];
+      }
+
        $sql="INSERT INTO `notice_event` (`event_name`,`event_venue`,`event_date`,`event_chief_guest`,`event_comment`,`event_time`,`event_docs_url`,`status`) values('$event_name','$event_venue','$event_date','$event_chief_guest','$event_comment','$event_time','$name','$status')";
        if(mysqli_query($con,$sql)){
            $message ="<h4 class='text-success' >New record created successfully</h4>";
