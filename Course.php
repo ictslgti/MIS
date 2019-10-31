@@ -23,8 +23,6 @@ include_once ("menu.php");
     <div class="col-sm-8"></div>
 	<div class="col-sm-4">
     <form class="form-inline md-form form-sm mt-4" method="GET">
-    <input class="form-control" type="text" placeholder="Search_ID" aria-label="Search"  name="search"/> 
-    <!-- <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button> -->
     </form><br>
     </div>
     </div>
@@ -75,11 +73,6 @@ include_once ("menu.php");
                     }
                     ?>
 
-                    <?php
-                                  
-                     $query = "SELECT * from `course` order by course_id desc" ;
-                     $result =mysqli_query($con,$query);
-                    ?>
 
 	                <tbody>
 	                    <?php 
@@ -136,33 +129,7 @@ include_once ("menu.php");
 	                </tbody>
 	            </table>
                 <a href="AddCourse.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD COURSE</a></i>
-                <script>
-                $(document).ready(function(){
-                    $('#search').keyup(function(){
-                        search_table($(this).val());
-                    });
-                    function search_table(value){
-                        $('#employee_table tr').each(function(){
-                            var found ='false';
-                            $(this).each(function(){
-                                if($(this).text().toLowercase().indexOf(value.toLowerCase()) >=0)
-                                {
-                                    found ='true';
-                                }
-                            });
-                            if(found == 'true')
-                            {
-                                $(this).show();
-                            }
-                            else{
-                                $(this).hide();
-                            }
-                        });
-                    }
-                });
-                </script>
-
-	            
+           
 	        </div>
 	    </div>
 	</div>
