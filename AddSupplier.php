@@ -134,7 +134,7 @@ if(isset($_POST['Add'])){
 
           
           <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
-          <a href="item_view.php" class="btn btn-primary ml-2 mt-3 float-right" >View</a>   
+          <a href="Supplier_view.php" class="btn btn-primary ml-2 mt-3 float-right" >View</a>   
               
           
          
