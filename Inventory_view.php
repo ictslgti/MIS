@@ -113,7 +113,7 @@ include_once("menu.php");
           <td>'. $row["inventory_status"]."<br>".'</td>
           <td>'. $row["inventory_quantity"]."<br>".'</td>
           <td> 
-          
+         
           <a href="AddInventory.php?edits='.$row["inventory_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
 
 
