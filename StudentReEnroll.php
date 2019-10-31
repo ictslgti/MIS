@@ -53,12 +53,12 @@ include_once("menu.php");
     if(isset($_POST['Edit']))
      {
       // echo "welcome Edit"; 
-      echo 'stid'.$_POST['stid'];echo 'mode'.$_POST['mode']; echo 'status'.$_POST['status'];
+      echo 'stid'.$_POST['stid']; echo 'mode'.$_POST['mode']; echo 'status'.$_POST['status'];
       echo 'ayear'.$_POST['ayear'];echo 'edate'.$_POST['edate']; echo 'exdate'.$_POST['exdate'];
       
-     if(!empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['mode']) && !empty($_POST['edate']) && !empty($_POST['exdate']) && !empty($_GET['Edit']))
+      if(!empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['mode']) && !empty($_POST['edate']) && !empty($_POST['exdate']) && !empty($_GET['Edit']))
        {
-        echo "SUCCESS";
+        //echo "SUCCESS";
         $stid=$_GET['stid'];
         $coid=$_GET['coid'];
         $mode=$_POST['mode'];
