@@ -10,6 +10,7 @@ $title = "Home | SLGTI";
 //  $user_type = $_SESSION['user_type'];
 //  echo $department_id = $_SESSION['department_code'];
 //  if($user_type == 'ADM'){
+    if($_SESSION['user_type']=='STU' ){
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
 
@@ -260,7 +261,8 @@ $title = "Home | SLGTI";
                     <div class="row">
                         <div class="col">
                             <div class="mx-auto" style="width: 200px;">
-                                <a href= "RequestOnPeak.php"> back </a>
+                               <strong> <a href= "RequestOnPeak.php"> <!-- <button type="submit" class="btn btn-secondary" name="back">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-circle-left"></i> 
+                                                                    &nbsp;&nbsp;&nbsp;back&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> --> back </a>
                             </div>
                         </div>
                     </div>
@@ -288,7 +290,7 @@ $title = "Home | SLGTI";
 
 
 <!--END OF YOUR COD-->
- <!-- <?php //} ?> -->
+<?php } ?> 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->  

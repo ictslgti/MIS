@@ -459,13 +459,13 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li>
+                <li> <?php if($_SESSION['user_type']=='ADM' || $_SESSION['user_type']=='HOD' ){ ?>
                   <a href="OnPeak">On-Peak Info</a>
-                </li>
-                <li>
+                </li> <?php } ?>
+                <li> <?php if($_SESSION['user_type']=='STU' ){ ?>
                   <a href="RequestOnPeak">Request a On-Peak</a>
                   <hr>
-                </li>              
+                </li> <?php } ?>             
                 <li>
                   <a href="OffPeak">Off-Peak Info</a>
                 </li>

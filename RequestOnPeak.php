@@ -10,6 +10,7 @@ $title = "Home | SLGTI";
 //  $user_type = $_SESSION['user_type'];
 //  echo $department_id = $_SESSION['department_code'];
 //  if($user_type == 'ADM'){
+    if($_SESSION['user_type']=='STU' ){
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
 
@@ -361,7 +362,7 @@ if(isset($_POST['req'])){
 
 
 <!--END OF YOUR COD-->
- <!-- <?php //} ?> -->
+  <?php } ?> 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->  

@@ -4,6 +4,8 @@ $title = "Home | SLGTI";
  include_once("config.php"); 
  include_once("head.php"); 
  include_once("menu.php"); 
+
+ if($_SESSION['user_type']=='ADM' || $_SESSION['user_type']=='HOD' ){
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
 
@@ -11,11 +13,17 @@ $title = "Home | SLGTI";
    <!-- Content here -->
 
    <?php
-   if(isset($_POST['Approved'])){
-     echo $id=$_POST['Approved'];
+   if(isset($_POST['approved'])){
+    $id=$_POST['approved'];
+      
+    $result = mysqli_query($con ,$sql);
+ if(mysqli_num_rows($result)== 1){
+      $row = mysqli_fetch_assoc($result);
+
     $sql = "UPDATE `onpeak_request` 
     SET `onpeak_request_status`='Approved'
-     WHERE `onpeak_request`. `id`= $id";
+     WHERE `onpeak_request`.`id`= '$id'";
+    
 if (mysqli_query($con, $sql)) {
     echo '
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -31,6 +39,39 @@ if (mysqli_query($con, $sql)) {
     "<br>" . mysqli_error($con);
 }
    }
+  }
+
+   ?>
+
+
+   <?php
+   if(isset($_POST['NotApproved'])){
+    $id=$_POST['NotApproved'];
+     
+    $result = mysqli_query($con ,$sql);
+ if(mysqli_num_rows($result)== 1){
+      $row = mysqli_fetch_assoc($result);
+
+    $sql = "UPDATE `onpeak_request` 
+    SET `onpeak_request_status`='Not Approved'
+     WHERE `onpeak_request`.`id`= '$id'";
+    
+if (mysqli_query($con, $sql)) {
+    echo '
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>  New record Updated </strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>    
+    ';
+    //echo " New record Updated";
+} else {
+     echo " Error : ". $sql . 
+    "<br>" . mysqli_error($con);
+}
+   }
+  }
 
    ?>
 
@@ -97,10 +138,13 @@ if (mysqli_query($con, $sql)) {
                     <td>'. $row["exit_time"]. '</td>
                     <td>'. $row["return_date"].'</td>
                     <td>'. $row["return_time"]. '</td>
+                    
                     <td> 
                     <form method="POST">
-                        <input type="submit" name="Approved'.$row["student_id"].'" class="btn btn-outline-primary" value="Approved"> 
-                         <input type="submit" name="Not Approved" class="btn btn-outline-danger" value="Not Approved">
+                        
+                        <button type="submit" class="btn btn-outline-primary" value="'.$row["id"].'" name="approved">Approved</button>
+                        <button type="submit" class="btn btn-outline-danger"  value="'.$row["id"].'" name="NotApproved">Not Approved</button>  
+                         
                      </td>
                      </form>
                      <td> <pre> '. $row["request_date_time"]. ' </pre> </td>
@@ -117,7 +161,11 @@ if (mysqli_query($con, $sql)) {
       </div>
     </div>
   </div>
+
+
  
+
+
 
 
   <div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
@@ -129,24 +177,7 @@ if (mysqli_query($con, $sql)) {
                  <nav class="navbar navbar-light bg-light">
                         <form class="form-inline">
                         <div class="pr-5 pl-2 ml-auto text-info">History</div>
-
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input class="form-control mr-sm-2" type="search" placeholder="Registration No" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> </button>
-
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input class="form-control mr-sm-2" type="search" placeholder="Date" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                        
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input class="form-control mr-sm-2" type="search" placeholder="Reference" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                       
                         </form>
                 </nav>
                 <br>
@@ -162,15 +193,49 @@ if (mysqli_query($con, $sql)) {
                   <tr>
                     <th scope="col">REGISTRATION NO </th>
                     <th scope="col">REASON FOR EXIT</th>
+                    <th scope="col">CONTACT NO </th>
                     <th scope="col">EXIT DATE</th>
                     <th scope="col">EXIT TIME</th>
                     <th scope="col">RETURN DATE</th>
                     <th scope="col">RETURN TIME</th>
-                    <th scope="col">CONTACT NO </th>
                     <th scope="col">REFERENCE</th>
                     
                   </tr>
             </thead>
+            <?php
+            if(isset($_GET['sea'])){
+               $id= $_GET['sear'];
+               
+              $sql = "SELECT * FROM `onpeak_request` WHERE `student_id`='$id' ";
+              $result = mysqli_query($con, $sql);
+              if (mysqli_num_rows($result) > 0) {
+              while($row = mysqli_fetch_assoc($result)) {
+
+              echo '
+                <tbody> 
+                  <tr>
+                    <th scope="row">'. $row["student_id"].'</th>
+                    <td>'. $row["reason"]. '</td>
+                    <td>'. $row["contact_no"]. '</td>
+                    <td>'. $row["exit_date"]. '</td>
+                    <td>'. $row["exit_time"]. '</td>
+                    <td>'. $row["return_date"].'</td>
+                    <td>'. $row["return_time"]. '</td>
+                    <td>'. $row["onpeak_request_status"]. '</td>
+                   </tr> 
+              </tbody>
+              ';
+              }
+                  } else {
+                      echo "No more Requests";
+                  }
+
+              
+              
+            }
+
+
+            ?> 
             
                 <?php
                     $sql = "SELECT * FROM `onpeak_request` WHERE `onpeak_request_status`= 'Approved' OR `onpeak_request_status`= 'Not Approved'  ";
@@ -188,7 +253,6 @@ if (mysqli_query($con, $sql)) {
                           <td>'. $row["exit_time"]. '</td>
                           <td>'. $row["return_date"].'</td>
                           <td>'. $row["return_time"]. '</td>
-                          <td>'. $row["contact_no"]. '</td>
                           <td>'. $row["onpeak_request_status"]. '</td>
                          </tr> 
                     </tbody>
@@ -203,7 +267,147 @@ if (mysqli_query($con, $sql)) {
       </div>
     </div>
   </div>
-    
+ 
+
+
+
+
+
+
+  <div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
+      <div class="col">
+        <div class=row>
+            <div class="col">
+                <br>
+                <br>
+                 <nav class="navbar navbar-light bg-light">
+                        <form class="form-inline">
+                        <div class="pr-5 pl-2 ml-auto text-info">History</div>
+                        <form method="GET">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                        <input class="form-control mr-sm-2" type="search" placeholder="Registration No" aria-label="Search" name="sear">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="sea"><i class="fas fa-search"></i> </button>
+                          
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="form-control mr-sm-2" type="search" placeholder="Date" aria-label="Search" name="seard">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search_d"><i class="fas fa-search"></i></button>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="form-control mr-sm-2" type="search" placeholder="Reference" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name=search_ref><i class="fas fa-search"></i></button>
+                        </form>
+                        </form>
+                </nav>
+                <br>
+                <br>
+            </div>
+        </div>
+        
+        
+
+      <div class=row >
+        <table class="table table-hover">
+            <thead>
+                  <tr>
+                    <th scope="col">REGISTRATION NO </th>
+                    <th scope="col">REASON FOR EXIT</th>
+                    <th scope="col">CONTACT NO </th>
+                    <th scope="col">EXIT DATE</th>
+                    <th scope="col">EXIT TIME</th>
+                    <th scope="col">RETURN DATE</th>
+                    <th scope="col">RETURN TIME</th>
+                    <th scope="col">REFERENCE</th>
+                    
+                  </tr>
+            </thead>
+            <?php
+            if(isset($_GET['sea'])){
+               $id= $_GET['sear'];
+               
+              $sql = "SELECT * FROM `onpeak_request` WHERE `student_id`='$id' ";
+              $result = mysqli_query($con, $sql);
+              if (mysqli_num_rows($result) > 0) {
+              while($row = mysqli_fetch_assoc($result)) {
+
+              echo '
+                <tbody> 
+                  <tr>
+                    <th scope="row">'. $row["student_id"].'</th>
+                    <td>'. $row["reason"]. '</td>
+                    <td>'. $row["contact_no"]. '</td>
+                    <td>'. $row["exit_date"]. '</td>
+                    <td>'. $row["exit_time"]. '</td>
+                    <td>'. $row["return_date"].'</td>
+                    <td>'. $row["return_time"]. '</td>
+                    <td>'. $row["onpeak_request_status"]. '</td>
+                   </tr> 
+              </tbody>
+              ';
+              }
+                  } else {
+                      echo "No more Requests";
+                  }
+
+              
+              
+            }
+
+
+            ?> 
+
+
+
+        <?php
+            if(isset($_GET['search_d'])){
+               $exit_date= $_GET['seard'];
+               
+              $sql = "SELECT * FROM `onpeak_request` WHERE `exit_date`='$id' ";
+              $result = mysqli_query($con, $sql);
+              if (mysqli_num_rows($result) > 0) {
+              while($row = mysqli_fetch_assoc($result)) {
+
+              echo '
+                <tbody> 
+                  <tr>
+                    <th scope="row">'. $row["student_id"].'</th>
+                    <td>'. $row["reason"]. '</td>
+                    <td>'. $row["contact_no"]. '</td>
+                    <td>'. $row["exit_date"]. '</td>
+                    <td>'. $row["exit_time"]. '</td>
+                    <td>'. $row["return_date"].'</td>
+                    <td>'. $row["return_time"]. '</td>
+                    <td>'. $row["onpeak_request_status"]. '</td>
+                   </tr> 
+              </tbody>
+              ';
+              }
+                  } else {
+                      echo "No more Requests";
+                  }
+
+              
+              
+            }
+
+
+            ?> 
+            
+                
+           
+        </table> 
+      </div>
+    </div>
+  </div>
+
+
+
 
 <br>
 <br>
@@ -253,7 +457,7 @@ if (mysqli_query($con, $sql)) {
  
 
 <!--END OF YOUR COD-->
-
+<?php } ?> 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->  
