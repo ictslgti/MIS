@@ -29,10 +29,10 @@ if(isset($_POST["add_to_cart"]))
 	else
 	{
 		$item_array = array(
-			$itemid='im_ited'			=>	$_POST["hidden_id"],
-			$itemid1='item_name'			=>	$_POST["hidden_name"],
-			$itemid2='item_price'		=>	$_POST["hidden_price"],
-			$itemid3='item_quantity'		=>	$_POST["quantity"]
+			'im_ited'			=>	$_POST["hidden_id"],
+			'item_name'			=>	$_POST["hidden_name"],
+			'item_price'		=>	$_POST["hidden_price"],
+			'item_quantity'		=>	$_POST["quantity"]
 		);
 		$cart_data[] = $item_array;
 	}
@@ -138,7 +138,7 @@ $sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
              $orderid=$row['food_order_id'];
 
             $sql2="INSERT INTO `food_order_details`(`food_order_details_food_order_id`, `food_order_details_food_id`, `food_order_details_food_qty`, `food_order_details_unit_price`)
-             VALUES ('$orderid','$itemid','$itemid1','$itemid3')";
+             VALUES ('$orderid','','','')";
              if(mysqli_query($con,$sql2)){
                  echo "success";
 
