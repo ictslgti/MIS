@@ -167,8 +167,10 @@ if(isset($_GET['edit']))
 echo '<div class="btn-group-horizontal">';
 if(isset($_GET['edit']))
     {
-      echo '<button type="edit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+      echo ' <button type="submit" value="Add" name="update" class="btn btn-primary mr-2"><i class="fas fa-user-edit">
+      </i>&nbsp;&nbsp;Edit</button>';
+      //echo '<button type="edit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>&nbsp;&nbsp;Refresh</button>';
 
     }
   if(isset($_GET['delete']))
