@@ -458,8 +458,8 @@ if($u_ta=='staff'){
               <!-- <span class="badge badge-pill badge-danger">3</span> -->
             </a>
             <div class="sidebar-submenu">
-              <ul>
-                <li> <?php if($_SESSION['user_type']=='ADM' || $_SESSION['user_type']=='HOD' ){ ?>
+              <ul> <?php if($_SESSION['user_type']!='STU'){ ?>
+                <li>
                   <a href="OnPeak">On-Peak Info </a>
                 </li> <?php } ?>
                 <li> <?php if($_SESSION['user_type']=='STU' ){ ?>
