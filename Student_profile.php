@@ -137,7 +137,7 @@ include_once("menu.php");
             <div class="col-md-2 col-sm-4">
                 <h6> Address: </h6>
             </div>
-            <div class="col-md-4 col-sm-4">
+            <div class="col-md-10 col-sm-4">
                 <h6 class="text-muted"> No-117, Vipulananda South Road, Karaitivu-06 </h6>
             </div>
 
@@ -160,6 +160,37 @@ include_once("menu.php");
             </div>
             <div class="col-md-4 col-sm-4">
                 <h6 class="text-muted"> 4000 </h6>
+            </div>
+        </div><br><br>
+
+            <h5 style="border-bottom: 2px solid #aaa;"> Emergency Contact Information </h5><br>
+          <div class="row container" id="personal info">
+            <div class="col-md-2 col-sm-4">
+            <h6> Name: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> Mr.Ravinthiran.Thanujah </h6>
+            </div>
+
+            <div class="col-md-2 col-sm-4">
+                <h6> Phone No: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> 0776452733 </h6>
+            </div>
+
+            <div class="col-md-2 col-sm-4">
+                <h6> Address: </h6>
+            </div>
+            <div class="col-md-10 col-sm-4">
+                <h6 class="text-muted"> No-117, Vipulananda South Road, Karaitivu-06 </h6>
+            </div>
+
+            <div class="col-md-2 col-sm-4">
+            <h6> Relationship  </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> Father </h6>
             </div>
         </div>
         
