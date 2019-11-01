@@ -243,6 +243,8 @@ else{
 
         <!--  -->
 
+        <!--  -->
+
 
 
         <!-- main div -->
@@ -271,6 +273,8 @@ else{
 
         </div>
         <br>
+
+        
         
 
 
@@ -284,6 +288,9 @@ else{
 
             <table class="table">
                 <thead>
+                <th>
+                <center>Assessment Type ID</center>
+                </th>
 
 
 
@@ -299,6 +306,7 @@ else{
                     <th>
                         <center>Assessment Percentage</center>
                     </th>
+                    
 
 
 
@@ -306,7 +314,7 @@ else{
                 <tbody>
 
                     <?php
-                $sql = "SELECT module_id,course_id,assessment_name,assessment_percentage FROM assessments_type";
+                $sql = "SELECT assessment_type_id,module_id,course_id,assessment_name,assessment_percentage FROM assessments_type";
                 $result = mysqli_query($con, $sql);
                 if (mysqli_num_rows($result)>0) {
 
@@ -317,10 +325,12 @@ else{
                         # code...
                         echo '
                         <tr>
+                        <td><center>'. $row["assessment_type_id"]."<br>".'</center></td>
                         <td><center>'. $row["module_id"]."<br>".'</center></td>
                         <td><center>'. $row["course_id"]."<br>".'</center></td>
                         <td><center>'. $row["assessment_name"]."<br>".'</center></td>
                         <td><center>'. $row["assessment_percentage"]."<br>".'</center></td>
+                        
                         
                         </tr>';
                     }
