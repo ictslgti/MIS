@@ -195,9 +195,9 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="Assessment">Assessments</a>
+                  <a href="Assessment">Assessments Results</a>
                 </li>
-                <li>
+                <?php if($_SESSION['user_type']!='STU'){ ?> <li>
                   <a href="AddAssessment">Add Assessment</a>
                 </li>
                 <li>
@@ -205,7 +205,7 @@ if($u_ta=='staff'){
                 </li>
                 <li>
                   <a href="AddAssessmentResults">Add a Assessment Results</a>
-                </li>
+                </li> <?php } ?>
                 <li>
                   <a href="AssessmentReport">Assessment Report</a>
                 </li>
