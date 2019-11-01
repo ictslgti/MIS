@@ -101,8 +101,6 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                 ?>
 
                   <tbody>
-
-                  
                   <?php
                 if(isset($_GET['search']))
                 {
