@@ -14,11 +14,12 @@ include_once ("menu.php");
  
  $sum=$mid = $m_name = $m_aim = $m_learning_h =  $m_resources = $m_l_outcomes =  $sid = $m_references= $m_r_unit= $m_lecture_h = $m_practical_h = $m_selfstudy_h = $cid= null;
 
-  if(isset($_GET['edits']))
+
+  if((isset($_GET['edits'])) && (isset($_GET['editc'])))
   {
-    $mid = $_GET['edits'];
-    $cid = $_GET['edits'];
-    $sql = "SELECT * FROM module WHERE module_id = '$mid'";
+    echo $mid = $_GET['edits'];
+    echo $cid = $_GET['editc'];
+    $sql = "SELECT * FROM module WHERE module_id ='$mid' and course_id='$cid'";
     $result = mysqli_query($con,$sql);
     
     if(mysqli_num_rows($result)==1)
@@ -191,7 +192,6 @@ if(isset($_POST['Adding']))
   }
 
 }
-
 ?>
 <hr class="mb-8 mt-4">
   
@@ -209,7 +209,6 @@ if(isset($_POST['Adding']))
 <br>
 <form method="POST">
             <div class="row">
-
               <div class="col-md-6 mb-3">
                 <label for="ID">Module ID</label>
                 <input type="text" class="form-control" id="ID" placeholder="" value="<?php echo $mid ?>" name="mid" required>
@@ -219,15 +218,10 @@ if(isset($_POST['Adding']))
               <div class="col-md-6 mb-3">
                 <label for="Name">Module Name</label>
                 <input type="text" class="form-control" id="Name" placeholder="" value="<?php echo $m_name ?>" name="mname" required>
-              
               </div>
-
             </div>
 
-
             <div class="row">
-
-              
               <div class="col-md-6 mb-3">
                 <label for="Self">Learning Hours</label>
                 <div class="input-group">
