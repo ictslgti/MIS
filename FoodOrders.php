@@ -29,7 +29,7 @@ if(isset($_POST["add_to_cart"]))
 	else
 	{
 		$item_array = array(
-			'im_ited'			=>	$_POST["hidden_id"],
+			'item_id'			=>	$_POST["hidden_id"],
 			'item_name'			=>	$_POST["hidden_name"],
 			'item_price'		=>	$_POST["hidden_price"],
 			'item_quantity'		=>	$_POST["quantity"]
@@ -215,11 +215,11 @@ $sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
                 <div class="row">
 
                 <?php if($id=="fd004"){?>
-                    <div class="col-md-8"><input type="number"  min=0.5 step="any" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
+                    <div class="col-md-8"><input type="number"  min=0.5  step="any" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
                 <?php }
 
                 else{?>
-                <div class="col-md-8"><input type="number"  min=1 name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
+                <div class="col-md-8"><input type="number"  min=1   name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
                <?php }?>
 
 
