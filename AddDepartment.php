@@ -11,7 +11,10 @@ include_once("menu.php");
 
 
 
-<div class="shadow p-3 mb-5 bg-white rounded">
+<!-- <div class="shadow p-3 mb-5 bg-white rounded"> -->
+<div class="shadow p-3 mb-5  alert bg-dark rounded  text-white text-center" role="alert">
+
+<!-- </div> -->
 
         <div class="highlight-blue">
             <div class="container">
