@@ -18,6 +18,7 @@ $student_id=$student_name=$student_profile_img =$payment_id=$pays_reason=$paymen
 
 
 if(isset($_POST['Add'])){
+    
 
 //   if(!empty($_POST['student_id'])
 //   && !empty($_POST['student_name'])
@@ -50,7 +51,7 @@ if(isset($_POST['Add'])){
 if(mysqli_query($con,$sql)){
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$student_name.'</strong> <h4 class="text-center display-3">PAID</h4> 
+          <strong>'.$student_id.'</strong> <h4 class="text-center display-3">PAID</h4> 
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -61,7 +62,7 @@ if(mysqli_query($con,$sql)){
         
         echo '
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>'.$student_name.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <strong>'.$student_id.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
