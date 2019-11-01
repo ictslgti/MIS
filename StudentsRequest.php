@@ -149,6 +149,7 @@ if(isset($_POST['Add'])){
                   echo '>'.$row["department_name"].'</option>';
                   }
                   }
+                  
                   ?>
                     </select>
                     <div class="invalid-feedback" style="width: 80%;">
