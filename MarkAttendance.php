@@ -8,17 +8,13 @@ include_once ("attendancenav.php");
 ?>
 <!-- end dont change the order-->
 <?php
-
 $stid=$stname=$attendance_status=$date=$tid=null;
 
 
 if(isset($_POST['Add'])){
     
     if(!empty($_POST['student_id'])
-    &&!empty($_POST['student_fullname'])
-    )
-    echo "ok2";
-    { 
+    &&!empty($_POST['student_fullname'])){ 
       
        echo $stid   =  $_POST['student_id'];
        echo $stname   =  $_POST['student_fullname'];
@@ -28,7 +24,7 @@ if(isset($_POST['Add'])){
        
       echo "ok2";
     
-       echo $sql = "INSERT INTO `attendance` (`student_id`,`student_fullname`)
+      $sql = "INSERT INTO `attendance` (`student_id`,`student_fullname`)
         VALUES ('$stid','$stname')";
      
         if (mysqli_query($con, $sql)) {
@@ -71,7 +67,8 @@ if(isset($_POST['Add'])){
 
 <form method="POST" action="#" >
 <input class="selectpicker" multiple data-live-search="true" type="date" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['date']))
-    {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['date'])){echo ' is-valid';} ?>"  id="date" name="date">
+    {echo ' is-invalid';}
+    if(isset($_POST['Add']) && !empty($_POST['date'])){echo ' is-valid';} ?>"  id="date" name="date">
 
 
 
