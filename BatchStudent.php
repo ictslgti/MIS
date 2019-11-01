@@ -14,7 +14,7 @@ include_once("menu.php");
             <div class="container">
                 <div class="intro">
                     <h1 class="display-3 text-center">Student Details</h1>
-                    <h3 class="display-5 text-center">Department Of Information & Communication Technology</h3>
+                    <!-- <h3 class="display-5 text-center">Department Of Information & Communication Technology</h3> -->
                     <!-- <p class="text-center"></p> -->
 
                 </div>
@@ -45,6 +45,11 @@ include_once("menu.php");
   <tr class="table-light">
   <?php
 
+if(isset($_GET['BSt'])&& isset($_GET['AcY']))
+{
+  $C_id= $_GET['BSt'];
+$academic_year= $_GET['AcY'];
+
 $sql = "SELECT `student_enroll`.`student_enroll_date`,`student`.`student_fullname`,
 `student`.`student_id`,`student_enroll`.`student_enroll_status`
 
@@ -55,8 +60,8 @@ FROM
 LEFT JOIN  `student` ON
 `student`.`student_id` = `student_enroll`.`student_id`
 
-WHERE `student_enroll`.`course_id` = '5IT' 
-AND `student_enroll`.`academic_year` = '2018/2019'";
+WHERE `student_enroll`.`course_id` = '$C_id' 
+AND `student_enroll`.`academic_year` = '$academic_year'";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)>0){
     while ($row = mysqli_fetch_assoc($result)){
@@ -80,7 +85,7 @@ if (mysqli_num_rows($result)>0){
 echo "0 results";
 }
 
-
+}
 ?>
      
       <!-- <td>2018/ICT/5IT/15</td>

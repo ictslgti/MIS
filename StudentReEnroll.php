@@ -53,12 +53,13 @@ include_once("menu.php");
     if(isset($_POST['Edit']))
      {
       // echo "welcome Edit"; 
-      echo 'stid'.$_POST['stid']; echo 'mode'.$_POST['mode']; echo 'status'.$_POST['status'];
-      echo 'ayear'.$_POST['ayear'];echo 'edate'.$_POST['edate']; echo 'exdate'.$_POST['exdate'];
+      // echo 'stid'.$_POST['stid']; echo 'mode'.$_POST['mode']; echo 'status'.$_POST['status'];
+      // echo 'ayear'.$_POST['ayear'];echo 'edate'.$_POST['edate']; echo 'exdate'.$_POST['exdate'];
       
-      if(!empty($_POST['ayear']) && !empty($_POST['status']) && !empty($_POST['mode']) && !empty($_POST['edate']) && !empty($_POST['exdate']) && !empty($_GET['Edit']))
+      if(!empty($_POST['stid']) && !empty($_POST['coid']) && !empty($_POST['mode']) && !empty($_POST['ayear']) 
+      && !empty($_POST['status']) && !empty($_POST['edate']) && !empty($_POST['exdate']))
        {
-        echo "SUCCESS";
+        //echo "SUCCESS";
         $stid=$_GET['stid'];
         $coid=$_GET['coid'];
         $mode=$_POST['mode'];
@@ -67,7 +68,7 @@ include_once("menu.php");
         $enroll=$_POST['edate'];
         $exit=$_POST['exdate'];
 
-        echo $sql2 = "UPDATE `student_enroll` SET `course_mode`='$mode',`academic_year`='$year',`student_enroll_date`='$enstatus',
+        $sql2 = "UPDATE `student_enroll` SET `course_mode`='$mode',`academic_year`='$year',`student_enroll_date`='$enstatus',
         `student_enroll_exit_date`='$enroll',`student_enroll_status`='$exit' WHERE `student_id`='$stid' and `course_id`='$coid'";
 
             if(mysqli_query($con,$sql2))
@@ -91,7 +92,7 @@ include_once("menu.php");
       if(!empty($_POST['stid']) && !empty($_POST['coid']) && !empty($_POST['mode']) && !empty($_POST['ayear']) 
       && !empty($_POST['status']) && !empty($_POST['edate']) && !empty($_POST['exdate']))
         {
-        echo "SUCCESS";
+        //echo "SUCCESS";
         $stid=$_POST['stid'];
         $coid=$_POST['coid'];
         $mode=$_POST['mode'];
@@ -116,11 +117,27 @@ include_once("menu.php");
             }
     }
   }
+
+  if(isset($_GET['delete']))
+{
+    $stid=$_POST['stid'];
+    $coid=$_POST['coid'];
+    $sql = "DELETE FROM `student_enroll` WHERE `student_id`='$stid' and `course_id`='$coid'"; 
+    if(mysqli_query($con,$sql))
+    {
+        echo "Recorde Delete Successfully";
+    }
+    else
+    {
+    echo "Error Deleteing Record: ". mysqli_error($con);
+    }
+}
 ?>
 
 <div class="ROW">
-        <div class="col text-center">
-            <h2>StudentReEnrollment</h2>   
+        <div class="col text-center shadow p-5 mb-5 bg-white rounded ">
+            <h1>Students ReEnrollment Information </h1>
+            <h2>Students ReEnroll</h2>
         </div>
     </div><BR>
 
@@ -138,7 +155,7 @@ include_once("menu.php");
         
         <div class="col-md-5 mb-3">
           <label for="coid"> Course Name : </label>
-          <select name="coid" id="coid" class="custom-select" value="<?php echo $coid; ?>" required>
+          <select name="coid" id="coid" class="custom-select" value="<?php echo $coid; ?>" onchange="showUser(this.value)" required>
           <option selected disabled> ........select the Course .......</option>
               <?php 
                 $sql="SELECT * from course";
@@ -160,8 +177,24 @@ include_once("menu.php");
         <div class="col-md-1 mb-3"></div>
 
         <div class="col-md-5 mb-3">
-          <label for="stid"> Student Id : </label>
-          <input type="text" class="form-control" id="stid" name="stid" value="<?php echo $stid; ?>" placeholder="" aria-describedby="stidPrepend" required>
+          <label for="type"> Academic Year : </label>
+          <select name="ayear" id="ayear" class="selectpicker show-tick" data-live-search="true" data-width="100%" value="<?php echo $year; ?>" onchange="showUser(this.value)" required>
+          <option selected disabled>--Academic Year--</option>
+          <?php
+            $sql = "SELECT * FROM `academic` ORDER BY `academic_year`  DESC ";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)){
+            echo '<option  value="'.$row ['academic_year'].'" data-subtext="'.$row ['academic_year_status'].'"';
+            if($row ["academic_year"] == $year)
+            {
+              echo 'selected';
+            }
+            echo '>'.$row ['academic_year'].'</option>';
+            }
+            }
+            ?>
+          </select>
         </div>
 
       </div>
@@ -181,24 +214,8 @@ include_once("menu.php");
         <div class="col-md-1 mb-3"></div>
 
         <div class="col-md-5 mb-3">
-          <label for="type"> Academic Year : </label>
-          <select name="ayear" id="ayear" class="selectpicker show-tick" data-live-search="true" data-width="100%" value="<?php echo $year; ?>" required>
-          <option selected disabled>--Academic Year--</option>
-          <?php
-            $sql = "SELECT * FROM `academic` ORDER BY `academic_year`  DESC ";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-            while($row = mysqli_fetch_assoc($result)){
-            echo '<option  value="'.$row ['academic_year'].'" data-subtext="'.$row ['academic_year_status'].'"';
-            if($row ["academic_year"] == $year)
-            {
-              echo 'selected';
-            }
-            echo '>'.$row ['academic_year'].'</option>';
-            }
-            }
-            ?>
-          </select>
+          <label for="stid"> Student Id : </label>
+          <input type="text" class="form-control" id="stid" name="stid" value="<?php echo $stid; ?>" placeholder="" aria-describedby="stidPrepend" required>
         </div>
       
       </div>
@@ -241,7 +258,7 @@ include_once("menu.php");
               {
                 
                 echo '<button type="submit" value="Edit" name="Edit" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-                
+                echo '<button class="btn btn-sm btn-danger" value="delete" name="delete" data-toggle="modal" data-target="#confirm-delete"> <i class="fas fa-trash"></i> </button>';
               }
               else
               {
@@ -309,54 +326,31 @@ include_once("menu.php");
            }
         ?>
         </tbody>
-    </table>
-
-    
-    <!-- <script>
-
-        function addtable()
-        {
-
-          // grt the table by id & insert part
-          // get value from input & set the value into row
-          var table = document.getElementById("table"),
-              newRow = table.insertRow(table.length),
-              cell1 = newRow.insertCell(0),
-              cell2 = newRow.insertCell(1),
-              cell3 = newRow.insertCell(2),
-              cell4 = newRow.insertCell(3),
-              cell5 = newRow.insertCell(4),
-              cell6 = newRow.insertCell(5),
-
-              stid = document.getElementById("stid").value = this.cells[0].innerText;
-              coid = document.getElementById("coid").value = this.cells[1].innerText;
-              mode = document.getElementById("mode").value = this.cells[2].innerText;
-              ayear = document.getElementById("ayear").value = this.cells[3].innerText;
-              edate = document.getElementById("edate").value = this.cells[4].innerText;
-              exdate = document.getElementById("exdate").value = this.cells[5].innerText; 
-
-        }
-        </script> -->
-    <!-- <script>
-                var table = document.getElementById('table');
-                
-                for(var i = 1; i < table.rows.length; i++)
-                {
-                    table.rows[i].onclick = function()
-                    {
-                         document.getElementById("coid").value = this.cells[0].innerText;
-                         document.getElementById("stid").value = this.cells[1].innerText;
-                         document.getElementById("mode").value = this.cells[2].innerText;
-                         document.getElementById("ayear").value = this.cells[3].innerText;
-                         document.getElementById("edate").value = this.cells[4].innerText;
-                         document.getElementById("exdate").value = this.cells[5].innerText;
-                    };
-                }
-    
-         </script> -->
-        
+    </table>  
 </div>
 </div>
+
+<script>
+function showUser(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","StudentReEnroll.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
 
 
 

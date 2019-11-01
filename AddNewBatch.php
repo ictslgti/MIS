@@ -63,12 +63,12 @@ if (mysqli_num_rows($result)==1){
 }
 }
 if(isset($_POST['Add'])){
-    echo "ok";
+    
    if (!empty($_POST['batch_id']) && !empty ($_POST['course_id']) && !empty ($_POST['academic_year'])){
        $batch_id = $_POST['batch_id'];
        $c_id = $_POST['course_id'];
        $academic_year = $_POST['academic_year'];
-       $sql = "INSERT INTO `batch` (`batch_id`,`course_id`,`academic_year`) VALUE ('$batch_id','$c_id','$academic_year')";
+      $sql = "INSERT INTO `batch`(`batch_id`, `course_id`, `academic_year`) VALUES ('$batch_id ','$c_id','$academic_year')";
        if (mysqli_query($con, $sql)){
            echo '<a class = "text-success"><div class="fa-1.5x"><i class="fas fa-spinner fa-pulse "></i>Insert Success</div></a>';
        }else{
@@ -86,7 +86,7 @@ if(isset($_POST['Edit']))
     && !empty($_POST['academic_year']) 
     && !empty($_GET['edit']))
   //{/
-    echo "SUCCESS";
+    
         //$c_id = $_POST['course_id'];
         $academic_year = $_POST['academic_year'];
         $batch_id = $_GET['edit'];
@@ -115,14 +115,14 @@ if(isset($_POST['Edit']))
 
 <div class ="col-6">
 <label for="Duration-Institute Training">Course ID</label>
-<select class="custom-select mr-sm-2"  name="course_id" value ="<?php echo $c_id;?>" required >
-        <option selected disabled>Select Course ID</option>
+<select class="custom-select mr-sm-2"  name="course_id" required >
+        <option  value="null" selected disabled>Select Course ID</option>
             <?php          
             $sql = "SELECT * FROM `course`";
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
-                echo '<option  value="'.$row["course_id "].'"';
+                echo '<option  value="'.$row["course_id"].'"required';
                 if($row["course_id"]==$c_id) echo ' selected';
                 echo '>'.$row["course_id"].'</option>';
                 }

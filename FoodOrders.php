@@ -29,7 +29,7 @@ if(isset($_POST["add_to_cart"]))
 	else
 	{
 		$item_array = array(
-			'item_id'			=>	$_POST["hidden_id"],
+			'im_ited'			=>	$_POST["hidden_id"],
 			'item_name'			=>	$_POST["hidden_name"],
 			'item_price'		=>	$_POST["hidden_price"],
 			'item_quantity'		=>	$_POST["quantity"]
@@ -125,6 +125,8 @@ $username=$_SESSION['user_name'];
 
 $sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
  VALUES ('$username','Pending')";
+//  $sql.="INSERT INTO `food_order_details`( `food_order_details_food_id`, `food_order_details_food_qty`, `food_order_details_unit_price`) 
+//  VALUES ('fd001','10','15')";
 
  if(mysqli_query($con,$sql)){
             
@@ -133,10 +135,14 @@ $sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
       if(mysqli_num_rows($result)==1){
           $row=mysqli_fetch_assoc($result);
           
-            $orderid=$row['food_order_id'];
+             $orderid=$row['food_order_id'];
 
             $sql2="INSERT INTO `food_order_details`(`food_order_details_food_order_id`, `food_order_details_food_id`, `food_order_details_food_qty`, `food_order_details_unit_price`)
-             VALUES ()";
+             VALUES ('$orderid','','','')";
+             if(mysqli_query($con,$sql2)){
+                 echo "success";
+
+             }
         //      echo ' <div class="s alert-dismissible fade show" role="alert">
         //      <strong>'.$orderid.'</strong> Order ID
         //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

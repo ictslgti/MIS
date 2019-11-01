@@ -96,6 +96,10 @@ if(isset($_POST['req'])){
     }
 ?>
 
+
+
+
+<!--Form Deign Start-->
 <br>
 <form method="post" >  
 <div class="row border border-light shadow p-3 mb-5 bg-white rounded">
@@ -119,13 +123,7 @@ if(isset($_POST['req'])){
    
         <div class="intro">
 
-        <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01"> 
-                            <i class="fas fa-user"> </i>&nbsp;&nbsp;Full Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    </div>
-                    <input class="form-control" name="student_id" type="text"  >
-        </div>
+        
 
 <br>
 
@@ -334,7 +332,7 @@ if(isset($_POST['req'])){
                     <td>'. $row["return_time"]. '</td>
                      <td>'. $row["reason"]. '</td>
                      <td>'. $row["onpeak_request_status"]. '</td>
-                    <td>'. $row["request_date_time"]. '</td>
+                    <td> <pre> '. $row["request_date_time"]. ' </pre> </td>
                     <td> 
                         <a href="RequestOnpeakEdit.php?edit='.$row["id"].'"> <button type="button" class="btn btn-warning"> Edit </button> </a>  
                         <a href="?delete='. $row["id"].'"> <button type="button" class="btn btn-danger"> Delete </button> </a>
