@@ -53,20 +53,17 @@ include_once("menu.php");
     </div> -->
 </div>
 
-<div class="form-row shadow p-2 mb-4 bg-white rounded">
-    <div class="col-md mb-3 " style="height:800px;"> 
-    <nav>
-     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-personal-tab" data-toggle="tab" href="#nav-personal" role="tab" aria-controls="nav-personal" aria-selected="true">Personal Info</a>
-        <a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">Password</a>
-        <a class="nav-item nav-link" id="nav-qualification-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-     </div>
-    </nav>
-
-     <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab"><br><br>
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Personal Tnfo</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Password</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><br>
         <h5 style="border-bottom: 2px solid #aaa;"> Personal Information </h5><br>
-          <div class="row container" id="personal info">
+        <div class="row" id="personal info">
             <div class="col-md-2 col-sm-4">
             <h6> Name with Initials: </h6>
             </div>
@@ -87,7 +84,6 @@ include_once("menu.php");
             <div class="col-md-4 col-sm-4">
                 <h6 class="text-muted"> 21st April 1996 </h6>
             </div>
-
 
             <div class="col-md-2 col-sm-4">
                 <h6> Civil Status: </h6>
@@ -116,10 +112,10 @@ include_once("menu.php");
             <div class="col-md-4 col-sm-4">
                 <h6 class="text-muted"> B+ </h6>
             </div>
-          </div><br>
+    </div><br>
 
-          <h5 style="border-bottom: 2px solid #aaa;"> Contact Information </h5><br>
-          <div class="row container" id="personal info">
+            <h5 style="border-bottom: 2px solid #aaa;"> Contact Information </h5><br>
+            <div class="row container" id="personal info">
             <div class="col-md-2 col-sm-4">
             <h6> Email: </h6>
             </div>
@@ -161,9 +157,9 @@ include_once("menu.php");
             <div class="col-md-4 col-sm-4">
                 <h6 class="text-muted"> 4000 </h6>
             </div>
-        </div><br><br>
+        </div><br>
 
-            <h5 style="border-bottom: 2px solid #aaa;"> Emergency Contact Information </h5><br>
+        <h5 style="border-bottom: 2px solid #aaa;"> Emergency Contact Information </h5><br>
           <div class="row container" id="personal info">
             <div class="col-md-2 col-sm-4">
             <h6> Name: </h6>
@@ -193,10 +189,9 @@ include_once("menu.php");
                 <h6 class="text-muted"> Father </h6>
             </div>
         </div>
-        
-        <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab"><br><br>
-        <div class="tab-pane container" id="password">
-                <form role="form" >
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <form role="form" >
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Current Password</label>
                         <div class="col-lg-6">
@@ -223,13 +218,14 @@ include_once("menu.php");
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="nav-qualification" role="tabpanel" aria-labelledby="nav-qualification-tab">
-        ...
-        </div>
-    </div>
+   </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">she</div>
 </div>
+
+
+
+
+
 
 </form>
 </div>
