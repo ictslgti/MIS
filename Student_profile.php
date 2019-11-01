@@ -18,8 +18,9 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <!-- form start---->
-<div>
-<h1 style="text-align:center" class="col text-center shadow p-5 mb-5 bg-white rounded" > SLGTI Student Profile  </h1>
+<div class="col text-center shadow p-5 mb-5 bg-white rounded">
+<h1 style="text-align:center"  > SRI LANKA GERMAN TRAINING INSTITUTE  </h1>
+<h5 style="text-align:center"> Killinochchi </h5>
 </div>
 
 <div class="container">
@@ -53,14 +54,15 @@ include_once("menu.php");
     </div> -->
 </div>
 
+<!-- <div class="form-row shadow p-2 mb-4 bg-white rounded"> -->
 <nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Personal Tnfo</a>
+  <div class="nav nav-tabs shadow p-2 mb-4 bg-white rounded" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Personal Info</a>
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Password</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Mosules Info</a>
   </div>
 </nav>
-<div class="tab-content" id="nav-tabContent">
+<div class="tab-content shadow p-2 mb-4 bg-white rounded" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><br>
         <h5 style="border-bottom: 2px solid #aaa;"> Personal Information </h5><br>
         <div class="row" id="personal info">
@@ -112,10 +114,10 @@ include_once("menu.php");
             <div class="col-md-4 col-sm-4">
                 <h6 class="text-muted"> B+ </h6>
             </div>
-    </div><br>
+        </div><br>
 
-            <h5 style="border-bottom: 2px solid #aaa;"> Contact Information </h5><br>
-            <div class="row container" id="personal info">
+        <h5 style="border-bottom: 2px solid #aaa;"> Contact Information </h5><br>
+        <div class="row" id="personal info">
             <div class="col-md-2 col-sm-4">
             <h6> Email: </h6>
             </div>
@@ -160,7 +162,7 @@ include_once("menu.php");
         </div><br>
 
         <h5 style="border-bottom: 2px solid #aaa;"> Emergency Contact Information </h5><br>
-          <div class="row container" id="personal info">
+        <div class="row container" id="personal info">
             <div class="col-md-2 col-sm-4">
             <h6> Name: </h6>
             </div>
@@ -189,42 +191,41 @@ include_once("menu.php");
                 <h6 class="text-muted"> Father </h6>
             </div>
         </div>
-    </div>
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-    <form role="form" >
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">Current Password</label>
-                        <div class="col-lg-6">
-                            <input class="form-control" type="password" name="password">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">New Password</label>
-                        <div class="col-lg-6">
-                            <input class="form-control" type="password" name="npassword">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">Confirm new password</label>
-                        <div class="col-lg-6">
-                            <input class="form-control" type="password" name="cpassword">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label"></label>
-                        <div class="col-lg-6">
-                            <input type="button" class="btn btn-primary" value="Save Changes">
-                            <input type="reset" class="btn btn-light" value="Cancel">
-                        </div>
-                    </div>
-                </form>
-   </div>
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">she</div>
+  </div>
+
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <!-- <form role="form" > -->
+        <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Current Password</label>
+            <div class="col-lg-6">
+                <input class="form-control" type="password" name="password">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">New Password</label>
+            <div class="col-lg-6">
+                <input class="form-control" type="password" name="npassword">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Confirm new password</label>
+            <div class="col-lg-6">
+                <input class="form-control" type="password" name="cpassword">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label"></label>
+            <div class="col-lg-6">
+                <input type="button" class="btn btn-primary" value="Save Changes">
+                <input type="reset" class="btn btn-light" value="Cancel">
+            </div>
+        </div>
+        <!-- </form>        -->
+  </div>
+
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">she</div>
 </div>
-
-
-
-
+</div>
 
 
 </form>
