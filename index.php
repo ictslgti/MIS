@@ -303,6 +303,41 @@ while($row = mysqli_fetch_assoc($result)){
         </div>
     </div>
     <!-- <col2-end -->
+        <div class="col-md-4 col-sm-12">
+        <div class="card">
+            <h6 class="card-header font-weight-lighter">Students Course Following Distribution </h6>
+            <div class="card-body">
+                <?php
+$sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result) > 0) {
+while($row = mysqli_fetch_assoc($result)){
+
+    $cid = $row['course_id'];
+    $cname = $row['course_name'];
+    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Following' ";
+    $result_c = mysqli_query($con, $sql_c);
+    $row_c = mysqli_fetch_assoc($result_c);
+    $course_count =  $row_c['c_count'];
+    $student_percentage = 0;
+    $student_percentage = round ( ($course_count/$total_students)*100); 
+    // echo $total_students;
+    echo '
+    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
+    <p class="card-text">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
+                aria-valuemin="0" aria-valuemax="100">'.$student_percentage.'%</div>
+        </div>
+    </p>
+    ';
+}
+}
+?>
+            </div>
+        </div>
+    </div>
+    <!-- <col2-end -->
     <div class="col-md-4 col-sm-12">
         <div class="card">
             <h6 class="card-header font-weight-lighter">Students Course Completion Distribution</h6>
@@ -409,6 +444,7 @@ function showStudent(val) {
     var course_total_count = [];
     var course_completed_count = [];
     var course_droupout_count = [];
+    var course_following_count = [];
 
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -419,6 +455,7 @@ function showStudent(val) {
                 course_total_count.push(data_students_count[i].t_count);
                 course_completed_count.push(data_students_count[i].c_count);
                 course_droupout_count.push(data_students_count[i].d_count);
+                course_following_count.push(data_students_count[i].d_count);
             }
             
             var ctx = document.getElementById('myChart1');
@@ -438,6 +475,10 @@ function showStudent(val) {
                         label: "Completed Students ",
                         backgroundColor: "#28a745",
                         data: course_completed_count
+                    },{
+                        label: "Following Students ",
+                        backgroundColor: "#dc3545",
+                        data: course_droupout_count
                     }]
                 },
                 options: {

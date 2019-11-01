@@ -23,14 +23,10 @@ include_once("menu.php");
 <h5 style="text-align:center"> Killinochchi </h5>
 </div>
 
-<div class="container">
-<form method="POST">
-
-<div class="form-row shadow p-2 mb-4 bg-white rounded">
-    <div class="col-md-3 mb-3 " > 
-    <img src="img/user.png" alt="..." class="img-thumbnail" style="width:200px;height:200px;">
-    <!-- <button type="button" class="btn btn-outline-success">Success</button> -->
-    </div>
+<div class="col-md-4 mb-3"></div>
+<div class="col-md-8 mb-3">
+<div class="row"></div>
+</div>
     <div class="col-md-7 col-sm-4">
         <h5 class="text-muted"><b>Miss.Ravinthiran.Thanujah</b></h5>
         <h6 class="text-muted">2017/ICT/BIT-06</h6>
@@ -54,24 +50,6 @@ include_once("menu.php");
     </div> -->
 </div>
 
-<!-- <div class="form-row shadow p-2 mb-4 bg-white rounded"> -->
-<nav>
-  <div class="nav nav-tabs shadow p-2 mb-4 bg-white rounded" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Personal Info</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Password</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Mosules Info</a>
-  </div>
-</nav>
-<div class="tab-content shadow p-2 mb-4 bg-white rounded" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><br>
-        <h5 style="border-bottom: 2px solid #aaa;"> Personal Information </h5><br>
-        <div class="row" id="personal info">
-            <div class="col-md-2 col-sm-4">
-            <h6> Name with Initials: </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> Miss.R.Thanujah </h6>
-            </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Gender: </h6>
