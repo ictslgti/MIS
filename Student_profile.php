@@ -67,56 +67,78 @@ include_once("menu.php");
         <h5 style="border-bottom: 2px solid #aaa;"> Personal Information </h5><br>
           <div class="row container" id="personal info">
             <div class="col-md-2 col-sm-4">
-                            <h6> Name with Initials: </h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"> Miss.R.Thanujah </h6>
-                        </div>
+            <h6> Name with Initials: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> Miss.R.Thanujah </h6>
+            </div>
 
-                        <div class="col-md-2 col-sm-4">
-                            <h6> Gender: </h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"> Female </h6>
-                        </div>
+            <div class="col-md-2 col-sm-4">
+                <h6> Gender: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> Female </h6>
+            </div>
 
-                        <div class="col-md-2 col-sm-4">
-                            <h6> Date of Birth: </h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"> 21st April 1996 </h6>
-                        </div>
+            <div class="col-md-2 col-sm-4">
+                <h6> Date of Birth: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> 21st April 1996 </h6>
+            </div>
 
 
-                        <div class="col-md-2 col-sm-4">
-                            <h6> Civil Status: </h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"> Single </h6>
-                        </div>
+            <div class="col-md-2 col-sm-4">
+                <h6> Civil Status: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> Single </h6>
+            </div>
 
-                        <div class="col-md-2 col-sm-4">
-                            <h6> Enroll Date:  </h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"> 1st November 2018 </h6>
-                        </div>
+            <div class="col-md-2 col-sm-4">
+                <h6> Enroll Date:  </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> 1st November 2018 </h6>
+            </div>
 
-                        <div class="col-md-2 col-sm-4">
-                            <h6>Exit Date:</h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"> 1st November 2018 </h6>
-                        </div>
+            <div class="col-md-2 col-sm-4">
+                <h6>Exit Date:</h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> 1st November 2018 </h6>
+            </div>
 
-                        <div class="col-md-2 col-sm-4">
-                            <h6> Blood Group: </h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"> B+ </h6>
-                        </div>
+            <div class="col-md-2 col-sm-4">
+                <h6> Blood Group: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> B+ </h6>
+            </div>
           </div><br>
+          
           <h5 style="border-bottom: 2px solid #aaa;"> Contact Information </h5><br>
+          <div class="row container" id="personal info">
+            <div class="col-md-2 col-sm-4">
+            <h6> Name with Initials: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> Miss.R.Thanujah </h6>
+            </div>
+
+            <div class="col-md-2 col-sm-4">
+                <h6> Gender: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> Female </h6>
+            </div>
+
+            <div class="col-md-2 col-sm-4">
+                <h6> Date of Birth: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> 21st April 1996 </h6>
+            </div>
         </div>
         
         <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab"><br><br>
