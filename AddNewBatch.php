@@ -8,7 +8,7 @@ include_once("menu.php");
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
-<div class="shadow p-3 mb-5 bg-white rounded">
+<div class="shadow p-3 mb-5  alert bg-dark rounded  text-white text-center" role="alert">
 
         <div class="highlight-blue">
             <div class="container">
