@@ -35,7 +35,7 @@ if(isset($_POST['Add'])){
       $ending=$_POST['ending'];
       
 
-      $sql="INSERT INTO `ojt`(`student_id`, `student_name`,  `phone_no`, `e_mail`, `department_id`, `final_place`, `final_address`,`starting`,`ending`) 
+      $sql="INSERT INTO `ojt`(`student_id`, `student_name`,  `phone_no`, `e_mail`, `department_name`, `final_place`, `final_address`,`starting`,`ending`) 
       VALUES ('$StudentID', '$StudentName', '$PNO', '$Email', '$DepartmentName','$Finalplace','$Address','$starting','$ending')";
 
       if(mysqli_query($con,$sql))
@@ -73,7 +73,7 @@ if(isset($_POST['Add'])){
 <?php
  if(isset($_GET['edit'])) {
   $StudentID = $_GET['edit'];
-  $sql = "SELECT `student_id`, `student_name`, `phone_no`, `e_mail`, `department_id`, `final_place`, `final_address`, `starting`, `ending` FROM `ojt` where `student_id` = $StudentID";
+  $sql = "SELECT `student_id`, `student_name`, `phone_no`, `e_mail`, `department_name`, `final_place`, `final_address`, `starting`, `ending` FROM `ojt` where `student_id` = $StudentID";
   $result = mysqli_query($con, $sql);
       if (mysqli_num_rows($result)==1) {
       $row = mysqli_fetch_assoc($result);
@@ -81,7 +81,7 @@ if(isset($_POST['Add'])){
       $StudentName=$row['student_name']; 
       $PNO=$row['phone_no'];
       $Email=$row['e_mail'];
-      $DepartmentName=$row['department_id'];
+      $DepartmentName=$row['department_name'];
       $Finalplace=$row['final_place'];
       $Address=$row['final_address'];
       $starting=$row['starting'];
@@ -92,32 +92,34 @@ if(isset($_POST['Add'])){
 
   
   if(isset($_POST['upt'])){
-
-    if(!empty($_POST['StudentID'])
-      &&!empty($_POST['StudentName'])
-      &&!empty($_POST['PNO'])
-      &&!empty($_POST['Email'])
-      &&!empty($_POST['DepartmentName'])
-      &&!empty($_POST['Finalplace'])
-      &&!empty($_POST['Address'])
-      &&!empty($_POST['starting'])
-      &&!empty($_POST['ending'])){
-      
+    
+    
+    // if(!empty($_POST['StudentID'])
+    //   &&!empty($_POST['StudentName'])
+    //   &&!empty($_POST['PNO'])
+    //   &&!empty($_POST['Email'])
+    //   &&!empty($_POST['DepartmentName'])
+    //   &&!empty($_POST['Finalplace'])
+    //   &&!empty($_POST['Address'])
+    //   &&!empty($_POST['starting'])
+    //   &&!empty($_POST['ending'])){
+        
     $StudentID = $_GET['edit'];
-    $StudentName=$row['student_name']; 
-    $PNO=$row['phone_no'];
-    $Email=$row['e_mail'];
-    $DepartmentName=$row['department_id'];
-    $Finalplace=$row['final_place'];
-    $Address=$row['final_address'];
-    $starting=$row['starting'];
-    $ending=$row['ending'];
+    $StudentName=$_POST['StudentName']; 
+    $PNO=$_POST['PNO'];
+    $Email=$_POST['Email'];
+    $DepartmentName=$_POST['DepartmentName'];
+    $Finalplace=$_POST['Finalplace'];
+    $Address=$_POST['Address'];
+    $starting=$_POST['starting'];
+    $ending=$_POST['ending'];
+    
 
-        $sql = "UPDATE `ojt`
-         SET `student_name`='$StudentName',
+        $sql = "UPDATE `ojt` SET
+          `student_name`='$StudentName',
          `phone_no`='$PNO' ,
          `e_mail`='$Email',
-         `department_id`='$DepartmentName',
+         `department_name`='$DepartmentName',
          `final_place`='$Finalplace',
          `final_address`='$Address',
          `starting`='$starting',
@@ -138,7 +140,7 @@ if(isset($_POST['Add'])){
              echo " Error : ". $sql . 
             "<br>" . mysqli_error($con);
         }
- }
+      
 } 
 ?>
 
@@ -233,7 +235,7 @@ if(isset($_POST['Add'])){
                   while($row = mysqli_fetch_assoc($result)) {
                   echo '<option  value="'.$row["department_id"].'" required';
                   if($row["department_id"]==$Department_id) echo ' selected';
-                  echo '>'.$row["department_id"].'</option>';
+                  echo '>'.$row["department_name"].'</option>';
                   }
                   }
                   ?>
@@ -292,7 +294,7 @@ if(isset($_POST['Add'])){
   echo '<div class="btn-group-horizontal">';
 
     if(isset($_GET['edit'])){
-      echo '<button type="submit"  name="upt" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+      echo '<button type="submit" value="upt" name="upt" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i> UPDATE</button>'; 
       
 
     }if(isset($_GET['delete']))
