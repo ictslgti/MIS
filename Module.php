@@ -72,7 +72,7 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                     $m_id = $_GET['dlt'];
                     $cid = $_GET['dllt'];
 
-                    echo $sql = "DELETE from module where module_id ='$m_id' AND course_id ='$cid'";
+                    $sql = "DELETE from module where module_id ='$m_id' AND course_id ='$cid'";
                     if(mysqli_query($con,$sql)){
                     echo '
                     <div class="alert alert-sucess alert-dismissible fade show" role="alert">
@@ -130,7 +130,7 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                      <td>'. $row["course_name"] . "<br>" .'</td>
                      <td>'. $row["semester_id"] . "<br>" .'</td>
                      <td>'.getTotal($cid,$mid). "<br>" .'</td>
-                     <td> 
+                     <td>
                       <a href="AddModule.php ?edits='.$row["module_id"].'&&editc='.$row["course_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
                      <button class="btn btn-sm btn-danger" data-href=" ?dlt='.$row["module_id"].'&&dllt='.$row["course_id"].' " data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
                      </td> 
@@ -146,7 +146,7 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
               </div>
   <div class="form-row">
       <div class="col-md-12">
-        <a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i>
+      <a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i>
       </div>
   </div>
       </div>
