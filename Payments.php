@@ -4,6 +4,8 @@ $title = "Home | SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
+
+ if($_SESSION['user_type']=='ACC'){ 
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
@@ -123,7 +125,7 @@ if(mysqli_num_rows($result)>0){
     </div>
     <div class="col-sm-6">
 
-    <!-- <table class="table">
+    <table class="table">
 
     <tr>
         <th>payment_reason</th>
@@ -148,12 +150,12 @@ if(mysqli_num_rows($result)>0){
 }
 
 ?>
-</table> -->
+</table>
     </div>
   </div>
 
 <!--END OF YOUR COD-->
-
+<?php } ?>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->

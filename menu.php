@@ -436,18 +436,18 @@ if($u_ta=='staff'){
               <!-- <span class="badge badge-pill badge-danger">3</span> -->
             </a>
             <div class="sidebar-submenu">
-              <ul>
-                <li>
+              <ul> 
+                <li> <?php if($_SESSION['user_type']=='ACC'){ ?>
                   <a href="Payments">Payments Info</a>
                 </li>
-                <li>
+                <li> 
                   <a href="Payment">Make a Payment</a>
                   <hr>
-                </li>              
+                </li>           
                 <li>
                   <a href="PaymentsReport">Payments Report</a>
-                </li>
-              </ul>
+                </li> <?php } ?> 
+                  </ul>
             </div>
           </li>
 
