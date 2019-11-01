@@ -73,7 +73,7 @@ $title = "Home | SLGTI";
             if (mysqli_query($con, $sql)) {
                 echo '
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>  New record Updated </strong>
+                <strong> <h5>  Your Request is Update Successfully </h5> </strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -81,8 +81,16 @@ $title = "Home | SLGTI";
                 ';
                 //echo " New record Updated";
             } else {
-                 echo " Error : ". $sql . 
-                "<br>" . mysqli_error($con);
+                 //echo " Error : ". $sql . 
+                //"<br>" . mysqli_error($con);
+                echo '  
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong> <h5> Fill out the empty Field then update the request </h5> </strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                ' ;
             }
      }
 
