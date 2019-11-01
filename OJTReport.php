@@ -38,7 +38,7 @@ if(isset($_GET['delete'])){
     if(isset($_GET['edit']))
     {
       echo $student_id =$_GET['edit'];
-      echo $sql = "SELECT `student_id`, `student_name`, `phone_no`, `e_mail`, `department_id`, `final_place`, `final_address` FROM `ojt` WHERE `student_id`='$StudentID'";
+      echo $sql = "SELECT `student_id`, `student_name`, `phone_no`, `e_mail`, `department_name`, `final_place`, `final_address` FROM `ojt` WHERE `student_id`='$StudentID'";
       $result = mysqli_query($con,$sql);
 
       if(mysqli_num_rows($result)==1)
@@ -49,7 +49,7 @@ if(isset($_GET['delete'])){
         $StudentName=$row['student_name']; 
         $PNO=$row['phone_no'];
         $Email=$row['e_mail'];
-        $DepartmentName=$row['department_id'];
+        $DepartmentName=$row['department_name'];
         $Finalplace=$row['final_place'];
         $Address=$row['final_address'];;
       }
@@ -93,7 +93,7 @@ if(isset($_GET['delete'])){
 
 	                <tbody>
 	                    <?php 
-                    $sql = "SELECT `student_id`, `student_name`, `department_id`,`requested_place`, `requested_address`, 
+                    $sql = "SELECT `student_id`, `student_name`, `department_name`,`requested_place`, `requested_address`, 
                     `requested_district1`, `requested_district2`, `comment_1` FROM `ojt`";
                    $result = mysqli_query($con, $sql);
 
@@ -108,7 +108,7 @@ if(isset($_GET['delete'])){
                                     <td>'. $count.'.'. "<br>" .'</td>
                                     <td scope="row">'. $row["student_id"] . "<br>" .'</td>
                                     <td>'. $row["student_name"] .  "<br>" .'</td>
-                                    <td>'. $row["department_id"] .  "<br>" .'</td>
+                                    <td>'. $row["department_name"] .  "<br>" .'</td>
                                     <td>'. $row["requested_place"] .  "<br>" .'</td>
                                     <td>'. $row["requested_address"] .  "<br>" .'</td>
                                     <td>'. $row["requested_district1"] .  "<br>" .'</td>
