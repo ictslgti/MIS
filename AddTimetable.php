@@ -384,8 +384,8 @@ if(isset($_POST['Add'])){
 
          <div class="col-12">
 
-         <h1 class="text-right">
-
+         <h1 class="text-center">
+        
          <?PHP 
   echo '<div class="btn-group-horizontal">';
 
@@ -401,12 +401,15 @@ if(isset($_POST['Add'])){
 
     }
     if(!isset($_GET['delete']) && !isset($_GET['edit'])){
-      echo '<button type="submit" value="Add" name="Add" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i>   ADD</button>';
+      echo '    ';
 
     }
       
       echo '</div>';
       ?>
+      <div class="btn-group">
+      <button type="submit" value="Add" name="Add" class="btn btn-primary">ADD</button>
+    <a href="Timetable.php" class="btn btn-primary ">View</a>  
                     </div>
 
 
