@@ -1,57 +1,72 @@
-<!-- BLOCK#1 START DON'T CHANGE THE ORDER -->
-<?php 
-$title = "Add Department | SLGTI" ;
-include_once("config.php"); 
-include_once("head.php"); 
+<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
+<?php
+$title = "InventoryReport | SLGTI";
+include_once("config.php");
+include_once("head.php");
 include_once("menu.php");
- ?>
-<!-- END DON'T CHANGE THE ORDER -->
+$today = date('Y-m-d');
+?>
+<!--END DON'T CHANGE THE ORDER-->
 
-<!-- BLOCK#2 START YOUR CODER HERE -->
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <h3 class="text-center">InventoryReport</h3>
+    </div>
+</div>
 
-
-
-<!-- <div class="shadow p-3 mb-5 bg-white rounded"> -->
-<div class="shadow p-3 mb-5  alert bg-dark rounded  text-white text-center" role="alert">
-
-<!-- </div> -->
-
-        <div class="highlight-blue">
-            <div class="container">
-                <div class="intro">
-                    <h1 class="display-3 text-center">Inventory Report</h1>
-                    
-
-                </div>
+<form method="GET">
+    <div class="form-row pb-4">
+        <div class="col-3">
+            <div class="form-row align-items-center">
+                <select class="selectpicker mr-sm-2" id="TeacherName" name="staff_id" data-live-search="true"
+                    data-width="100%">
+                    <option value="null" selected disabled>-- Select a Teacher --</option>
+                    <?php
+          $sql = "SELECT * FROM `staff`";
+          $result = mysqli_query($con, $sql);
+          if (mysqli_num_rows($result) > 0) {
+          while($row = mysqli_fetch_assoc($result)) {
+            echo '<option  value="'.$row["staff_id"].'"'; 
+            if($_SESSION['user_name']==$row["staff_id"]) echo 'selected ';
+            echo 'required>('.$row["staff_epf"].') '.$row["staff_name"].'</option>';
+          }
+          }else{
+            echo '<option value="null"   selected disabled>-- No Teacher --</option>';
+          }
+          ?>
+                </select>
             </div>
         </div>
-    </div>
 
+        <div class="col-md-3 col-sm-12">
+            <div class="form-row align-items-center">
+                <select class="selectpicker mr-sm-2" id="Course" onchange="showModule(this.value)" name="course_id"
+                    data-live-search="true" data-width="100%">
+                    <option value="null" selected disabled>-- Select a Course --</option>
+                    <?php
+          $sql = "SELECT * FROM `course`";
+          $result = mysqli_query($con, $sql);
+          if (mysqli_num_rows($result) > 0) {
+          while($row = mysqli_fetch_assoc($result)) {
+            echo '<option  value="'.$row["course_id"].'" required>('.$row["course_id"].') '.$row["course_name"].'</option>';
+          }
+          }else{
+            echo '<option value="null"   selected disabled>-- No Teacher --</option>';
+          }
+          ?>
+                </select>
+            </div>
+        </div>
 
+        <div class="col-md-3 col-sm-12">
+            <div class="form-row align-items-center">
+                
+            <button type="submit" value="Add" name="Add" class="btn btn-primary">ADD</button>
+            </div>
+        </div>
+        
 
-<table class="table table-hover">
-  <thead class="thead-dark">
- 
-  
-  </thead>
-  <tbody>
- 
-  
-
-
-  </tbody>
-  </form>
-</table>
-
-
-
-</form>
-
-
-<!-- END YOUR CODER HERE -->
-
-    <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->
-    <?php 
-    include_once("footer.php");
-    ?>
-    <!-- END DON'T CHANGE THE ORDER -->
+     
+<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
+<?php include_once("footer.php"); ?>
+<!--END DON'T CHANGE THE ORDER-->
