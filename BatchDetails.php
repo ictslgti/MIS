@@ -8,7 +8,7 @@ include_once("menu.php");
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
-<div class="shadow p-3 mb-5 bg-white rounded">
+<div class="shadow p-3 mb-5  alert bg-dark rounded  text-white text-center" role="alert">
 
         <div class="highlight-blue">
             <div class="container">
@@ -71,7 +71,7 @@ include_once("menu.php");
         <td>' .$row["academic_year"].'</td>
         <td>
         
-    <a href="BatchStudent.php?BSt='.$row["course_id"].'&AcY='.$row["academic_year"].'"" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-user-graduate">&nbsp;&nbsp;Students</i></a>
+    <a href="BatchStudent.php?BSt='.$row["course_id"].'&AcY='.$row["academic_year"].'" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-user-graduate">&nbsp;&nbsp;Students</i></a>
     <a href="AddNewBatch.php?edit='.$row["batch_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
     <button class="btn btn-sm btn-danger" data-href="?delete='.$row["batch_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
       </tr>';
