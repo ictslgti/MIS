@@ -103,7 +103,7 @@ if($u_ta=='staff'){
                 <a  href="Course">Courses Info</a>
                 </li>
                 <li>
-                <?php if(($_SESSION['user_type']=='HOD') || ($_SESSION['user_type']=='ADM')){ ?><a href="AddCourse">Add a Course
+                <a href="AddCourse">Add a Course
                 </a>
                 </li><?php }?>
 
@@ -111,7 +111,7 @@ if($u_ta=='staff'){
                 <a  href="Module">Modules Info</a>
                 </li>
                 <li>
-                <?php if(($_SESSION['user_type']=='HOD') || ($_SESSION['user_type']=='ADM')){ ?><a href="addModule">Add a Module
+                <a href="addModule">Add a Module
                 </a>
                 </li><?php }?>
 
