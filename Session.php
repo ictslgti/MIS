@@ -38,7 +38,7 @@ $username = $_SESSION['user_name'];
       <th scope="col">#</th>
       <th scope="col">Staff Name</th>
       <th scope="col">Course Name</th>
-      <th scope="col">Moduke Name</th>
+      <th scope="col">Module  Name</th>
       <th scope="col">Academic Year</th>
       <th scope="col">Options</th>
     </tr>
@@ -58,7 +58,7 @@ $username = $_SESSION['user_name'];
         <th scope="row">'.$row_m['module_id'].'</th> 
         <th scope="row">'.$row_m['academic_year'].'</th>
         <th scope="row">
-            <a href="AddAttendance?id='.$row_m['staff_module_enrollment_id'].'&mid='.$row_m['module_id'].'&cid='.$row_m['course_id'].'&ay='.$row_m['academic_year'].'" class="btn btn-sm btn-info"><i class="far fa-info"></i></a>
+            <a href="MarkAttendance?id='.$row_m['staff_module_enrollment_id'].'&mid='.$row_m['module_id'].'&cid='.$row_m['course_id'].'&ay='.$row_m['academic_year'].'&staff='.$row_m['staff_id'].'" class="btn btn-sm btn-info"><i class="far fa-info"></i></a>
         </th>
         </tr>
         ';
