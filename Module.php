@@ -46,8 +46,6 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
         </div>
   </div>
 </form>
-
-
   <div class="row">
 	    <div class="col-md-12 col-sm-12">
               <div class="table-responsive table-responsive-sm">
@@ -88,14 +86,7 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                   <tbody>
                     <?php
                     {  
-                    function getTotal($cid,$mid){
-                    $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-                    $sql_r = "CALL notionalhours ('$cid','$mid')";
-                    $result_r = mysqli_query($con,$sql_r);
-                    while ($row_r = mysqli_fetch_array($result_r)){ 
-                    $x = $row_r[0];
-                    }
-                    return $x;}
+                    
                     $sql = "SELECT `module_id`,
                     `module_name`,
                     `module_learning_hours`,
@@ -126,7 +117,7 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                      <td>'. $row["semester_id"] . "<br>" .'</td>
                      <td>'.getTotal($cid,$mid). "<br>" .'</td>
                      <td> 
-                      <a href=" AddModule.php ?edits='.$row["module_id"].'  &&  ?edits='.$row["course_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                      <a href="AddModule.php ?edits='.$row["module_id"].'&&editc='.$row["course_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
                       <button data-href=" ?dlt='.$row["module_id"].' &&  ?dlt='.$row["course_id"].' " class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
                      </td> 
                      </tr>';

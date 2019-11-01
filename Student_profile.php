@@ -33,6 +33,7 @@ include_once("menu.php");
     <div class="col-md-7 col-sm-4">
         <h5 class="text-muted"><b>Miss.Ravinthiran.Thanujah</b></h5>
         <h6 class="text-muted">2017/ICT/BIT-06</h6>
+        <h6 class="text-muted">NIC: 966122145v</h6>
         <h6 class="text-muted"> Department of Information & Communication Technology</h6>
         <h6 class="text-muted"> National Diploma in Information & Communication Technology</h6>
         <p class="text-muted" style="font-size:15px;"> (NVQ-05) </P>
@@ -52,19 +53,68 @@ include_once("menu.php");
     </div> -->
 </div>
 
-<div class="form-row">
-    <div class="col-md mb-3 border border-success" style="width:1200px;height:100px;"> 
+<div class="form-row shadow p-2 mb-4 bg-white rounded">
+    <div class="col-md mb-3 " style="width:1200px;height:600px;"> 
     <nav>
      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+        <a class="nav-item nav-link active" id="nav-personal-tab" data-toggle="tab" href="#nav-personal" role="tab" aria-controls="nav-personal" aria-selected="true">Personal Info</a>
+        <a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">Password</a>
+        <a class="nav-item nav-link" id="nav-qualification-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
      </div>
     </nav>
      <div class="tab-content" id="nav-tabContent">
-     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
-     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+        <div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab">
+          <div class="col-md-7 col-sm-4">
+          <h5 style="border-bottom: 2px solid #aaa;"> Personal Information </h5>
+            <h6 class="text-muted"> Name with Initials: R.Thanujah </h6>
+            <h6 class="text-muted"> Address: No-117,Vipulananda South road, Karaitivu -06</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab"><br><br>
+        <div class="tab-pane container" id="edit">
+                <form role="form" >
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Current Password</label>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="password" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">New Password</label>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="password" name="npassword">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Confirm new password</label>
+                        <div class="col-lg-6">
+                            <input class="form-control" type="password" name="cpassword">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"></label>
+                        <div class="col-lg-6">
+                            <input type="button" class="btn btn-primary" value="Save Changes">
+                            <input type="reset" class="btn btn-light" value="Cancel">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-qualification" role="tabpanel" aria-labelledby="nav-qualification-tab">
+        ...
+        </div>
     </div>
 </div>
 
