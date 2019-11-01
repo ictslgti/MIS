@@ -10,6 +10,7 @@ $title = "Home | SLGTI";
 //  $user_type = $_SESSION['user_type'];
 //  echo $department_id = $_SESSION['department_code'];
 //  if($user_type == 'ADM'){
+    if($_SESSION['user_type']=='STU' ){
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
 
@@ -49,7 +50,7 @@ if(isset($_POST['req'])){
       {
         echo '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>'.$student_id.'</strong> Request Submitted 
+            <strong> <h5> '.$student_id.'</strong> Request Submitted </h5> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -74,7 +75,7 @@ if(isset($_POST['req'])){
         if(mysqli_query($con,$sql)) {
          echo '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-             <strong> Record deleted successfully </strong>
+             <strong> <h5> Your Request is delete successfully </h5> </strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -361,7 +362,7 @@ if(isset($_POST['req'])){
 
 
 <!--END OF YOUR COD-->
- <!-- <?php //} ?> -->
+  <?php } ?> 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->  

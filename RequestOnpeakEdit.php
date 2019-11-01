@@ -10,6 +10,7 @@ $title = "Home | SLGTI";
 //  $user_type = $_SESSION['user_type'];
 //  echo $department_id = $_SESSION['department_code'];
 //  if($user_type == 'ADM'){
+    if($_SESSION['user_type']=='STU' ){
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
 
@@ -72,7 +73,7 @@ $title = "Home | SLGTI";
             if (mysqli_query($con, $sql)) {
                 echo '
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>  New record Updated </strong>
+                <strong> <h5>  Your Request is Update Successfully </h5> </strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -80,8 +81,16 @@ $title = "Home | SLGTI";
                 ';
                 //echo " New record Updated";
             } else {
-                 echo " Error : ". $sql . 
-                "<br>" . mysqli_error($con);
+                 //echo " Error : ". $sql . 
+                //"<br>" . mysqli_error($con);
+                echo '  
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong> <h5> Fill out the empty Field then update the request </h5> </strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                ' ;
             }
      }
 
@@ -260,7 +269,8 @@ $title = "Home | SLGTI";
                     <div class="row">
                         <div class="col">
                             <div class="mx-auto" style="width: 200px;">
-                                <a href= "RequestOnPeak.php"> back </a>
+                               <strong> <a href= "RequestOnPeak.php"> <!-- <button type="submit" class="btn btn-secondary" name="back">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-circle-left"></i> 
+                                                                    &nbsp;&nbsp;&nbsp;back&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> --> back </a>
                             </div>
                         </div>
                     </div>
@@ -288,7 +298,7 @@ $title = "Home | SLGTI";
 
 
 <!--END OF YOUR COD-->
- <!-- <?php //} ?> -->
+<?php } ?> 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->  

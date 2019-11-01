@@ -117,7 +117,7 @@ if($u_ta=='staff'){
               </ul>
             </div>
           </li>
-          <li class="sidebar-dropdown">
+          <?php if($_SESSION['user_type']!='STU'){ ?> <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-user-tie"></i>
               <span>Staffs</span>
@@ -140,7 +140,7 @@ if($u_ta=='staff'){
                 </li>
               </ul>
             </div>
-          </li>
+          </li>          <?php } ?>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-user-graduate"></i>
@@ -195,9 +195,9 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="Assessment">Assessments</a>
+                  <a href="Assessment">Assessments Results</a>
                 </li>
-                <li>
+                <?php if($_SESSION['user_type']!='STU'){ ?> <li>
                   <a href="AddAssessment">Add Assessment</a>
                 </li>
                 <li>
@@ -205,7 +205,7 @@ if($u_ta=='staff'){
                 </li>
                 <li>
                   <a href="AddAssessmentResults">Add a Assessment Results</a>
-                </li>
+                </li> <?php } ?>
                 <li>
                   <a href="AssessmentReport">Assessment Report</a>
                 </li>
@@ -232,7 +232,7 @@ if($u_ta=='staff'){
                   <a href="Attendance">Attendances Info </a>
                 </li>
                 <li>
-                  <a href="AddAttendance">Add a Attendance </a>
+                  <a href="MarkAttendance">Add a Attendance </a>
                   <hr>
                 </li>              
                 <li>
@@ -458,14 +458,14 @@ if($u_ta=='staff'){
               <!-- <span class="badge badge-pill badge-danger">3</span> -->
             </a>
             <div class="sidebar-submenu">
-              <ul>
+              <ul> <?php if($_SESSION['user_type']!='STU'){ ?>
                 <li>
-                  <a href="OnPeak">On-Peak Info</a>
-                </li>
-                <li>
+                  <a href="OnPeak">On-Peak Info </a>
+                </li> <?php } ?>
+                <li> <?php if($_SESSION['user_type']=='STU' ){ ?>
                   <a href="RequestOnPeak">Request a On-Peak</a>
                   <hr>
-                </li>              
+                </li> <?php } ?>             
                 <li>
                   <a href="OffPeak">Off-Peak Info</a>
                 </li>

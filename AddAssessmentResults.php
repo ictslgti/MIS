@@ -263,7 +263,7 @@ if(isset($_GET['delete'])){
 
         
         
-        echo '<a class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
+        echo '<button class = "btn btn-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></button>';
 
     }else{
         echo "Error deleting record:" . mysqli_error($con);
@@ -314,7 +314,7 @@ if(isset($_GET['delete'])){
                                     <td>
                                     <center>
                                     
-                                    <a  type="button" class="btn btn-danger" data-href="?delete='.$row["assessment_id"].'" data-toggle="modal" data-target="#confirm-delete">Delete Assessment </a>
+                                    <button  type="button" class="btn btn-danger" data-href="?delete='.$row["assessment_id"].'" data-toggle="modal" data-target="#confirm-delete">Delete Marks </button>
                                     
                                     
                                     </center>
