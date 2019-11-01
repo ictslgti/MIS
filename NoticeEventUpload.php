@@ -111,7 +111,7 @@ if(isset($_GET['edit'])){
                 <div class="form-group">
                 <label> <i class="fas fa-university text-primary"> </i> Event</label>
                 <select class="browser-default custom-select" name="status" id="Departmentx"  onchange="showCouese(this.value)" required>
-                <option value="null" selected disabled >---- Select the Department ---- </option>
+                <option value="null" selected disabled >---- Select the Event ---- </option>
                 <?php
                 $sql="select * from `notice_event_stutas`";
                 $result = mysqli_query($con,$sql);
