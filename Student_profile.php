@@ -66,19 +66,19 @@ include_once("menu.php");
         <div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab">
           <div class="col-md-7 col-sm-4">
           <h5 style="border-bottom: 2px solid #aaa;"> Personal Information </h5>
-            <h6 class="text-muted">Name with Initials: R.Thanujah </h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
-            <h6 class="text-muted">NIC: 966122145v</h6>
+            <h6 class="text-muted"> Name with Initials: R.Thanujah </h6>
+            <h6 class="text-muted"> Address: No-117,Vipulananda South road, Karaitivu -06</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
+            <h6 class="text-muted"> NIC: 966122145v</h6>
           </div>
         </div>
         <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab"><br><br>
