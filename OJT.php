@@ -42,7 +42,7 @@ $title ="Home | SLGTI";
 
 	                <tbody>
 	                    <?php 
-                    $sql = "SELECT `student_id`, `student_name`, `phone_no`, `e_mail`, `department_id`,
+                    $sql = "SELECT `student_id`, `student_name`, `phone_no`, `e_mail`, `department_name`,
                     `final_place`, `final_address`,`starting`,`ending` FROM `ojt`";
                    $result = mysqli_query($con, $sql);
 
@@ -59,7 +59,7 @@ $title ="Home | SLGTI";
                                     <td>'. $row["student_name"] .  "<br>" .'</td>
                                     <td>'. $row["phone_no"] .  "<br>" .'</td>
                                     <td>'. $row["e_mail"] .  "<br>" .'</td>
-                                    <td>'. $row["department_id"] .  "<br>" .'</td>
+                                    <td>'. $row["department_name"] .  "<br>" .'</td>
                                     <td>'. $row["final_place"] .  "<br>" .'</td>
                                     <td>'. $row["final_address"] .  "<br>" .'</td>
                                     <td>'. $row["starting"] .  "<br>" .'</td>

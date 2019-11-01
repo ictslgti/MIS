@@ -31,6 +31,11 @@ include_once("menu.php");
   </thead>
 
   <?php 
+
+//for edit
+
+
+
 // for delete
 if(isset($_GET['delete']))
 {
@@ -56,14 +61,15 @@ if(mysqli_num_rows($result)>0)
     {
         echo '
         <tr>
-        <td>'. $row["result_id"] . "<br>" .'</td>
-        <td>'. $row["department_id"]."<br>".'</td>
-        <td>'. $row["course_id"]."<br>".'</td>
+          <td>'. $row["result_id"] . "<br>" .'</td>
+          <td>'. $row["department_id"]."<br>".'</td>
+          <td>'. $row["course_id"]."<br>".'</td>
           <td>'. $row["module_id"]."<br>".'</td>
           <td>'. $row["academic_year"]."<br>".'</td>
           <td>'. $row["upload"]."<br>".'</td>
             <td>   
-                    <a href="NoticeAddResult.php ?edit='.$row["result_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                    <a href="NoticeResultView.php?id='. $row["result_id"].'" class="btn btn-primary btn-sm btn-icon-split"> <span class="text"><i class="fas fa-eye"></i>&nbsp;&nbsp;View</span>  </a>  
+                    <a href="NoticeAddResult.php?edit='.$row["result_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
                     <button class="btn btn-sm btn-danger" data-href="?delete='.$row["result_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>     
             </td>     
         </tr>';
@@ -73,6 +79,7 @@ else {
         echo "0 results";
     }
 ?>
+<a href="NoticeAddResult.php"> back</a>
 </table>
 
 
