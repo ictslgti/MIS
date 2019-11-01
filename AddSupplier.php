@@ -3,6 +3,7 @@ $title = "Department Details | SLGTI";
  include_once("config.php"); 
  include_once("head.php"); 
  include_once("menu.php"); 
+ if($_SESSION['user_type']!='STU'){
  ?>
 
  <!-- end default code -->
@@ -136,16 +137,16 @@ if(isset($_GET['edits'])){
             <div class="col-md-12 col-sm-12  form-group  container bg-info">
                 <h2  class="pt-2" style="color:white">ADD SUPPLIER</h2>
               </div>
-              <div class="w-100"></div>
+              <!-- <div class="w-100"></div> -->
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 pt-2 container">
                       <label class="font-weight-bold" for="">01.SUPPLIER ID</label> <span style="color:red;">*</span></label>
-                      <input type="text" name="supplierid" value="<?php echo $supplierid;?> "class="form-control <?php if(isset($_POST['Add']) && empty($_POST['supplierid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['supplierid'])&& !empty($_POST['supplierid'])){echo '  is-valid';} ?>"  id="supplierid" aria-describedby="supplierid" placeholder="SUPPLIERID" required="required">
+                      <input type="text" name="supplierid" value="<?php echo $supplierid;?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['supplierid'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['supplierid'])&& !empty($_POST['supplierid'])){echo '  is-valid';} ?>" id="" aria-describedby="supplierid" placeholder="supplierid" required="required">
                       <small id="" class="form-text text-muted"></small>
               </div>
               
               <div class="col-md-6 col-sm-12 form-group pl-3 pr-3 container">
                   <label class="font-weight-bold" for="">02.SUPPLIER NAME</label> <span style="color:red;">*</span></label>
-                  <input type="text" name="suppliername" value="<?php echo $suppliername;?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['suppliername'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['suppliername'])&& !empty($_POST['suppliername'])){echo '  is-valid';} ?>" id="" aria-describedby="suppliername" placeholder=" Name" required="required">
+                  <input type="text" name="suppliername" value="<?php echo $suppliername;?>" class="form-control<?php if(isset($_POST['Add']) && empty($_POST['suppliername'])){echo 'is-invalid';}if(isset($_POST['Add']) &&!empty($_POST['suppliername'])&& !empty($_POST['suppliername'])){echo '  is-valid';} ?>" id="" aria-describedby="suppliername" placeholder="Name" required="required">
                   <small id="" class="form-text text-muted"></small>
               </div>
               
@@ -216,7 +217,7 @@ if(isset($_GET['edits'])){
 
 
 <!-- end my code\ -->
-
+            <?php }?>
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
