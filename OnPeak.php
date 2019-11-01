@@ -5,7 +5,7 @@ $title = "Home | SLGTI";
  include_once("head.php"); 
  include_once("menu.php"); 
 
- if($_SESSION['user_type']=='ADM' || $_SESSION['user_type']=='HOD' ){
+ if($_SESSION['user_type']!='STU'){
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
 
@@ -27,7 +27,7 @@ $title = "Home | SLGTI";
 if (mysqli_query($con, $sql)) {
     echo '
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>  New record Updated </strong>
+    <strong> <h5>  Approved </h5> </strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>
@@ -59,7 +59,7 @@ if (mysqli_query($con, $sql)) {
 if (mysqli_query($con, $sql)) {
     echo '
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>  New record Updated </strong>
+    <strong> <h5> Not Approved </h5> </strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>
