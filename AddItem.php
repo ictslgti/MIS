@@ -89,7 +89,7 @@ if(isset($_GET['edits'])){
 
     if(isset($_POST['edit']))
      {
-       echo"sssss";
+    
       
        'itemid'.$_POST['itemid'];
        'supplierid'.$_POST['supplierid'];
@@ -195,7 +195,7 @@ if(isset($_GET['edits'])){
           <div class="col-md-12 col-sm-12 form-group pl-3 pr-3 container">
 
            
-           <a href="item_view.php" class="btn btn-primary ml-2 mt-3 float-right" >View</a>    
+           <a href="Item_view.php" class="btn btn-primary ml-2 mt-3 float-right" >View</a>    
            
          
           <?php
