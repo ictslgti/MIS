@@ -3,6 +3,7 @@ $title="payment |SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
+ if($_SESSION['user_type']=='ACC'){ 
 ?>
 <!-- dont change -->
 
@@ -247,162 +248,7 @@ if(isset($_POST['edit'])){
         <div class="col-sm-12"> 
         
 
-        <!-- <html>
-	<head>
-		
-		<title>A simple calculator</title>
-	</head>
-	<body><h3>calculator </h3>
-		<div id="container">
-			<div id="calculator">
-				<div id="result">
-					<div id="history">
-						<p id="history-value"></p>
-					</div>
-					<div id="output">
-						<p id="output-value"></p>
-					</div>
-				</div>
-				<div id="keyboard"> 
-					<table class="table table-info">
-						<tr class="table-primary">
-							<td><button class="number" id="1">1&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="2">2&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="3">3&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="4">4&nbsp;&nbsp;</button></td>
-							<td><button class="operator" id="+">+&nbsp;</button></td>
-							<td> <button class="operator" id="/">&#247;&nbsp;</button></td>
-						
-						</tr>
-						<tr class="table-secondary">
-							<td><button class="number" id="5">5&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="6">6&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="7">7&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="8">8&nbsp;&nbsp;</button></td>
-							<td><button class="operator" id="-">-&nbsp;&nbsp;</button></td>
-							<td><button class="operator" id="%">%</button>
-						</tr class="table-success">
-					
-                        
-                       
-                        
-
-						<tr>
-						<td><button class="number" id="9">9&nbsp;&nbsp;</button></td>
-					    <td><button class="number" id="0">0&nbsp;&nbsp;</button></td>
-						<td><button class="operator" id="clear">C&nbsp;</button></td>
-					    <td><button class="operator" id="backspace">CE</button></td>
-                        <td><button class="operator" id="*">&times;&nbsp;</button></td>
-                        <td><button class="operator" id="=">=&nbsp;</button></td>
-					</tr>
-					
-					</table>
-					
-					
-					
-					
-					
-					
-				</div>
-			</div>
-		</div>
-		<script>
-			function getHistory(){
-	return document.getElementById("history-value").innerText;
-}
-function printHistory(num){
-	document.getElementById("history-value").innerText=num;
-}
-function getOutput(){
-	return document.getElementById("output-value").innerText;
-}
-function printOutput(num){
-	if(num==""){
-		document.getElementById("output-value").innerText=num;
-	}
-	else{
-		document.getElementById("output-value").innerText=getFormattedNumber(num);
-	}	
-}
-function getFormattedNumber(num){
-	if(num=="-"){
-		return "";
-	}
-	var n = Number(num);
-	var value = n.toLocaleString("en");
-	return value;
-}
-function reverseNumberFormat(num){
-	return Number(num.replace(/,/g,''));
-}
-var operator = document.getElementsByClassName("operator");
-for(var i =0;i<operator.length;i++){
-	operator[i].addEventListener('click',function(){
-		if(this.id=="clear"){
-			printHistory("");
-			printOutput("");
-		}
-		else if(this.id=="backspace"){
-			var output=reverseNumberFormat(getOutput()).toString();
-			if(output){//if output has a value
-				output= output.substr(0,output.length-1);
-				printOutput(output);
-			}
-		}
-		else{
-			var output=getOutput();
-			var history=getHistory();
-			if(output==""&&history!=""){
-				if(isNaN(history[history.length-1])){
-					history= history.substr(0,history.length-1);
-				}
-			}
-			if(output!="" || history!=""){
-				output= output==""?output:reverseNumberFormat(output);
-				history=history+output;
-				if(this.id=="="){
-					var result=eval(history);
-					printOutput(result);
-					printHistory("");
-				}
-				else{
-					history=history+this.id;
-					printHistory(history);
-					printOutput("");
-				}
-			}
-		}
-		
-	});
-}
-var number = document.getElementsByClassName("number");
-for(var i =0;i<number.length;i++){
-	number[i].addEventListener('click',function(){
-		var output=reverseNumberFormat(getOutput());
-		if(output!=NaN){ //if output is a number
-			output=output+this.id;
-			printOutput(output);
-		}
-	});
-}
-		</script>
-	</body>
-</html>
-
-
-
-
-
-
-
-
-
-        </div>
-        </div>
-        </div>
-        <br>
-    </form>
-    </div> -->
+      
     </div>
 
 
@@ -461,6 +307,7 @@ function showpaymentreason(val) {
 <?php
     include_once("footer.php");
     ?>
+    <?php } ?>
 </body>
 
 </html>
