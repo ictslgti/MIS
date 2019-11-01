@@ -397,7 +397,31 @@ if(isset($_POST['Edit']))
 
         <div class="col-md-3 mb-3">
           <label for="sid">Student ID:</label>
-          <input type="text" class="form-control" name="sid" value="<?php echo $stid; ?>" id="sid"   required>
+          <input type="text" class="form-control" name="sid" value="
+          <?php 
+          if(isset($_GET['edit']))
+          {
+            echo $stid; 
+          }
+          else if((isset($_GET['ayear'])) && (isset($_GET['coid'])))
+          {
+            $year =$_GET['ayear'];
+            $coid =$_GET['coid'];
+            
+            $Sql="select Student_id from student_enroll where course_id='$coid' and academic_year='$year'";
+            $result = mysqli_query($con,$sql);
+
+            if(mysqli_num_rows($result)==1)
+            {
+              $row =mysqli_fetch_assoc($result);
+              $stid = $row['student_id'];
+            }
+            else
+            {
+              $stid = $row['student_id'];
+            }
+          }
+          ?>" id="sid"   required>
         </div>
 
         <div class="col-md-3 mb-3">
