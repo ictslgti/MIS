@@ -7,7 +7,10 @@ include_once("config.php");
 $title ="STUDENT PROFILE | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
 include_once("head.php");
 include_once("menu.php");
+if($_SESSION['user_type'] ='ADM')
+{
 
+}
 ?>
 <!----END DON'T CHANGE THE ORDER---->
 
