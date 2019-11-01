@@ -33,18 +33,20 @@ include_once("menu.php");
               
 
       <?php
-      $username=null;
+      $username=$oid=null;
         if(isset($_GET['search'])){
           
             $oid=$_GET['search'];
-            $sql="SELECT DISTINCT food_order_user_name FROM food_order,food_order_details 
-            WHERE food_order_details_food_order_id=food_order_id AND food_order_details_food_order_id='$oid'";
+            
+            $sql="SELECT DISTINCT food_order_user_name, sum(food_order_details_food_qty*food_order_details_unit_price) as total FROM food_order,food_order_details 
+            WHERE food_order_details_food_order_id=food_order_id AND food_order_details_food_order_id =' $oid'";
 
             $result=mysqli_query($con,$sql);
             if(mysqli_num_rows($result)==1){
               $row=mysqli_fetch_assoc($result);
 
-              $username=$row['food_order_user_name'];?> 
+              $username=$row['food_order_user_name'];
+              $total=$row['total'];?> 
               
               <div class="mx-auto" >
 
@@ -68,6 +70,14 @@ include_once("menu.php");
                 </div>
                 <div class ="col-3" >
                     <p><h4><?php echo $username;?></h4></p>
+                </div>
+              </div>
+              <div class ="row">
+                <div class ="col-3" >
+                  <p><h4>Total</h4></p>
+                </div>
+                <div class ="col-3" >
+                    <p><h4>Rs&nbsp;<?php echo $total;?></h4></p>
                 </div>
               </div>
             
@@ -99,14 +109,18 @@ include_once("menu.php");
                                           <th scope="col">Item Qty</th>
                                           <th scope="col">Amount</th>
                                         </tr>
+                                        
                                       </thead>
                                       <tbody>
                                       <tr>
                                         <td><?php echo $foodname;?></td>
                                         <td><?php echo $orderesfoodqty;?></td>
-                                        <td><?php echo $unitprice;?></td>
+                                        <td>Rs &nbsp;<?php echo $unitprice;?></td>
                                         </tr>
+
+                                          
                                       </tbody>
+
                                   </table>
                                   </div>
                             </div>
@@ -117,12 +131,7 @@ include_once("menu.php");
                   }
           else{
             echo '
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>'.$oid.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
+                no result
                 
                 ';
           }
