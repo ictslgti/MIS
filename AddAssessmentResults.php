@@ -314,7 +314,7 @@ if(isset($_GET['delete'])){
                                     <td>
                                     <center>
                                     
-                                    <a  type="button" class="btn btn-danger" data-href="?delete='.$row["assessment_id"].'" data-toggle="modal" data-target="#confirm-delete">Delete Assessment </a>
+                                    <button  type="button" class="btn btn-danger" data-href="?delete='.$row["assessment_id"].'" data-toggle="modal" data-target="#confirm-delete">Delete Marks </button>
                                     
                                     
                                     </center>
