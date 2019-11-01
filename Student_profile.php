@@ -62,6 +62,7 @@ include_once("menu.php");
         <a class="nav-item nav-link" id="nav-qualification-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
      </div>
     </nav>
+
      <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-personal" role="tabpanel" aria-labelledby="nav-personal-tab"><br><br>
         <h5 style="border-bottom: 2px solid #aaa;"> Personal Information </h5><br>
@@ -116,28 +117,49 @@ include_once("menu.php");
                 <h6 class="text-muted"> B+ </h6>
             </div>
           </div><br>
-          
+
           <h5 style="border-bottom: 2px solid #aaa;"> Contact Information </h5><br>
           <div class="row container" id="personal info">
             <div class="col-md-2 col-sm-4">
-            <h6> Name with Initials: </h6>
+            <h6> Email: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> Miss.R.Thanujah </h6>
+                <h6 class="text-muted"> thanujah@gmail.com </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
-                <h6> Gender: </h6>
+                <h6> Phone No: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> Female </h6>
+                <h6 class="text-muted"> 0776452733 </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
-                <h6> Date of Birth: </h6>
+                <h6> Address: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> 21st April 1996 </h6>
+                <h6 class="text-muted"> No-117, Vipulananda South Road, Karaitivu-06 </h6>
+            </div>
+
+            <div class="col-md-2 col-sm-4">
+            <h6> District:  </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> Ampara </h6>
+            </div>
+
+            <div class="col-md-2 col-sm-4">
+                <h6> Province: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> Eastern </h6>
+            </div>
+
+            <div class="col-md-2 col-sm-4">
+                <h6> Zip Code: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> 4000 </h6>
             </div>
         </div>
         
