@@ -25,14 +25,7 @@ $title = "Home | SLGTI";
      WHERE `onpeak_request`.`id`= '$id'";
     
 if (mysqli_query($con, $sql)) {
-    echo '
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong> <h5>  Approved </h5> </strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </button>
-    </div>    
-    ';
+   
     //echo " New record Updated";
 } else {
      echo " Error : ". $sql . 
@@ -57,14 +50,7 @@ if (mysqli_query($con, $sql)) {
      WHERE `onpeak_request`.`id`= '$id'";
     
 if (mysqli_query($con, $sql)) {
-    echo '
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong> <h5> Not Approved </h5> </strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </button>
-    </div>    
-    ';
+   
     //echo " New record Updated";
 } else {
      echo " Error : ". $sql . 
@@ -112,11 +98,11 @@ if (mysqli_query($con, $sql)) {
                   <tr>
                     <th scope="col">REGISTRATION NO </th>
                     <th scope="col"> CONTACT NO </th>
-                    <th scope="col">REASON FOR EXIT</th>
                     <th scope="col">EXIT DATE</th>
                     <th scope="col">EXIT TIME</th>
                     <th scope="col">RETURN DATE</th>
                     <th scope="col">RETURN TIME</th>
+                    <th scope="col">COMMENT</th>
                     <th scope="col">ACTION</th>
                     
                   </tr>
@@ -133,11 +119,11 @@ if (mysqli_query($con, $sql)) {
                 <tr>
                     <th scope="row">'. $row["student_id"].'</th>
                     <td>'. $row["contact_no"]. '</td>
-                    <td>'. $row["reason"]. '</td>
                     <td>'. $row["exit_date"]. '</td>
                     <td>'. $row["exit_time"]. '</td>
                     <td>'. $row["return_date"].'</td>
                     <td>'. $row["return_time"]. '</td>
+                    <td>'. $row["comment"]. '</td>
                     
                     <td> 
                     <form method="POST">
