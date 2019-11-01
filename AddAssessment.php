@@ -92,7 +92,7 @@ else{
 
                     <option selected>Choose Course...</option>
                     <?php
-                  $sql = "SELECT * FROM `assessments_type`";
+                  $sql = "SELECT DISTINCT * FROM `assessments_type` ";
                   $result = mysqli_query($con, $sql);
                   if (mysqli_num_rows($result) > 0) {
                   while($row = mysqli_fetch_assoc($result)) {

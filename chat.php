@@ -39,6 +39,26 @@ function time_elapsed_string($datetime, $full = false) {
 ?>
 
 
+<?php
+$chat_group_member_id= $chat_group_member= $chat_group_id= null;
+if(isset($_GET['Yes'])){
+  
+$username=$_SESSION['user_name'];
+
+
+$sql="INSERT INTO `chat_group_member`( `chat_group_member`,`chat_group_id`)
+VALUES ('$username','5')";
+ if(mysqli_query($con,$sql)){
+
+
+}
+
+}
+else{
+echo "Error".$sql."<br>".mysqli_error($con);
+}
+
+?>
 
 
 <div class="row">
@@ -255,7 +275,7 @@ echo "0 results";
       
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary">Yes</button>
+        <button type="submit" name="Yes" class="btn btn-primary">Yes</button>
       </div>
     
   </div>

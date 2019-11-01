@@ -11,16 +11,20 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 
-<div class="intro p-5 mb-5 border border-dark rounded">
+<div class="intro p-5 mb-5 border border-light rounded">
 <div class="shadow p-3 mb-5 bg-white rounded"> 
   <h1 class="display-4 text-center  "><i class="fas fa-hand-holding-usd"></i> Donation Info</h1>
   </div>
+
+
+
+
 <div class="row">
 
 <div class="col-sm-6 " ></div>
 <div class="col-sm-3 " > 
 <form class="form-inline md-form form-sm mt-4">
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="search" placeholder="Search_id" aria-label="Search"id="search"> 
+  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="search" placeholder="Search_id" aria-label="Search" id="search" name="edit"> 
  <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button>
 </form>
 </div>
@@ -91,10 +95,10 @@ include_once("menu.php");
 ?>
 
 
-  <button type="submit" class="btn btn-danger" onclick="location.href='index.php'"   ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
+ </DIV> 
 
 
-</div>
+
 
 <!--END OF YOUR COD-->
 
