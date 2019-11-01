@@ -1,23 +1,13 @@
-<!------START DON'T CHANGE ORDER HEAD,MANU,FOOTER----->
-<!---BLOCK 01--->
-<?php 
-   
+<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
+<?php
+$title = "Home | SLGTI";
 include_once("config.php");
-
-$title ="STUDENT PROFILE | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
 include_once("head.php");
 include_once("menu.php");
-
 ?>
-<!----END DON'T CHANGE THE ORDER---->
+<!--END DON'T CHANGE THE ORDER-->
 
-
-<!---BLOCK 02--->
-<!---START YOUR CODER HERE----->
-
-
-<!-----END YOUR CODE----->
-<!-- form start---->
+<!--BLOCK#2 START YOUR CODE HERE -->
 <div class="row">
     <div class=" col-sm-8">
         <p style="font-size: 45px; font-weight: 700; "> Inventory Information</p>
