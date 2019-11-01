@@ -117,7 +117,7 @@ if($u_ta=='staff'){
               </ul>
             </div>
           </li>
-          <li class="sidebar-dropdown">
+          <?php if($_SESSION['user_type']!='STU'){ ?> <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-user-tie"></i>
               <span>Staffs</span>
@@ -140,7 +140,7 @@ if($u_ta=='staff'){
                 </li>
               </ul>
             </div>
-          </li>
+          </li>          <?php } ?>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-user-graduate"></i>
