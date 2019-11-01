@@ -84,6 +84,44 @@ if(isset($_GET['edits'])){
         }
     }
 
+    
+    if(isset($_POST['edit']))
+     {
+      
+       'supplierid'.$_POST['supplierid'];
+       'suppliername'.$_POST['suppliername'];
+       'supplierphonenumber'.$_POST['supplierphonenumber'];
+       
+       'supplieremail'.$_POST['supplieremail'];
+       'supplieraddress'.$_POST['supplieraddress'];
+      
+       if(!empty($_POST['supplierid']) && !empty($_POST['suppliername']) && !empty($_POST['supplierphonenumber']) 
+         && !empty($_POST['supplieremail']) && !empty($_POST['supplieraddress']) 
+         && !empty($_GET['edits']))
+       {
+        
+        $supplierid=$_GET['edits'];
+        $suppliername=$_POST['suppliername'];
+        $supplierphonenumber=$_POST['supplierphonenumber'];
+        
+        $supplieremail=$_POST['supplieremail'];
+        $supplieraddress=$_POST['supplieraddress'];
+        
+
+        $sql2 = "UPDATE `inventory_item_supplier` SET `supplier_name`='$suppliername',`supplier_phone_number`='$supplierphonenumber',`supplier_email`='$supplieremail',`supplier_address`='$supplieraddress' WHERE `supplier_id`='$supplierid'";
+
+            if(mysqli_query($con,$sql2))
+            {
+              echo "Record Updated Successfully";
+            }
+            else
+            {
+              echo "Error: ".$sq2 . "<br>" . mysqli_error($con);
+              echo "Fill the required field";
+            }
+          }
+    }
+
 ?>
 
 

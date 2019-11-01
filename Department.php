@@ -79,7 +79,7 @@ if(isset($_GET['delete'])){
     $sql = "DELETE FROM `department` WHERE `department_id` = '$department_id'";
     
     if (mysqli_query($con, $sql)){
-        echo '<a class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
+        echo '<a  class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
     }else{
         echo "Error deleting record:" . mysqli_error($con);
     }

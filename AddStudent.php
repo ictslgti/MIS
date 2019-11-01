@@ -27,7 +27,7 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
 if(isset($_GET['edit']))
 {
   $stid =$_GET['edit'];
-  $sql = "SELECT s.`student_id`,`student_title`,`student_fullname`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,
+  echo $sql = "SELECT s.`student_id`,`student_title`,`student_fullname`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,
   `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,
   `student_em_address`,`student_em_phone`,`student_em_relation`,`course_id`,`course_mode`,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
   `student_enroll_status` FROM `student` s INNER join student_enroll e on s.student_id=e.student_id and `student_enroll_status`='Following' and s.`student_id`='$stid'";
@@ -35,10 +35,11 @@ if(isset($_GET['edit']))
 
   if(mysqli_num_rows($result)==1)
   {
+    echo "success";
     $row =mysqli_fetch_assoc($result);
     //$stid = $row['student_id'];
-    $title = $row['student_title'];
-    $fname = $row['student_fullname'];
+    echo $title = $row['student_title'];
+    echo $fname = $row['student_fullname'];
     $ininame = $row['student_ininame'];
     $gender = $row['student_gender'];
     $civil = $row['student_civil'];
@@ -105,7 +106,7 @@ if(isset($_GET['edit']))
         $gender=$_POST['gender'];
         $civil=$_POST['civil'];
         $email=$_POST['email'];
-        $email = test_input($_POST["email"]);
+        $email =($_POST["email"]);
           // check if e-mail address is well-formed
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
         {
@@ -273,21 +274,24 @@ if(isset($_POST['Edit']))
                         }
                 }
 
-                if(isset($_POST['editqu']))
+                if(isset($_POST['UPDATEQ']))
                   {
-                    if(!empty($_POST['qualification']) && !empty($_POST['examy']) && !empty($_POST['result']) 
-                      && !empty($_POST['indexno']) && !empty($_POST['subject']) && !empty($_GET['editqu']))
+                    ECHO 'qualification'.$_POST['qualification']; ECHO 'examy'.$_POST['examy']; ECHO 'result'.$_POST['result'];
+                    ECHO 'indexno'.$_POST['indexno']; ECHO 'subject'.$_POST['subject']; 
+
+                    if(!empty($_POST['qualification']) && !empty($_POST['examy']) && !empty($_POST['result'])
+                    && !empty($_POST['indexno']) && !empty($_POST['subject']))
                     {
                     echo "SUCCESS";
-                    $stid=$_GET['editqu'];
-                    $qutype=$_POST['qualification'];
+                    //$stid=$_GET['stid'];
                     $index=$_POST['indexno'];
-                    $yoe=$_POST['examy'];
                     $subject=$_POST['subject'];
+                    $yoe=$_POST['examy'];
+                    $qutype=$_POST['qualification'];
                     $result=$_POST['result'];
 
-                    $sql3 = "UPDATE `student_qualification` SET `qualification_type`='$qutype',`qualification_index_no`='$index',`qualification_year`='$yoe',
-                    qualification_description='$subject',`qualification_results`='$result' WHERE `qualification_student_id`= '$stid'";
+                    $sql3 = "UPDATE `student_qualification` SET `qualification_type`='$qutype',`qualification_year`='$yoe',`qualification_results`='$result'
+                     WHERE`qualification_index_no`='$index' AND `qualification_description`='$subject'";
 
                         if(mysqli_query($con,$sql3))
                         {
@@ -627,7 +631,7 @@ if(isset($_POST['Edit']))
         <div class="col-md-6 mb-3"></div>
         
         <div class="btn-group-horizontal col-md-3 mb-3"> 
-           <button type="submit" style="margin-top:35px" value="editqu" name="editqu" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>EDIT</button>  
+           <button type="submit" style="margin-top:35px" value="UPDATEQ" name="UPDATEQ" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>EDIT</button>  
            <button type="submit" value="qualAdd" style="margin-top:35px" name="qualAdd"  class="btn btn-primary mr-2" style="float:right"><i class="fas fa-user-plus"></i>ADD</button>
         </div>
   
@@ -668,7 +672,7 @@ if(isset($_POST['Edit']))
                           <td>'. $row["qualification_description"].'</td>
                           <td>'. $row["qualification_results"].'</td>
                           <td>
-                          <a href="?edit='.$stid.'&quali='.$row["qualification_description"].'&deinde='.$row["qualification_index_no"].'"class="btn btn-outline-danger btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a>
+                          <a href="?DELETE='.$stid.'&quali='.$row["qualification_description"].'&deinde='.$row["qualification_index_no"].'"class="btn btn-outline-danger btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a>
                           </td>
                       </tr> ';
                     }
