@@ -4,8 +4,7 @@ $title = "Department Details | SLGTI" ;
 include_once("config.php"); 
 include_once("head.php"); 
 include_once("menu.php");
-
- ?>
+?>
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
@@ -16,14 +15,15 @@ include_once("menu.php");
 
 
 
-<div class="shadow  p-3 mb-5 bg-white rounded">
+<div class="shadow  p- mb-5 bg-white rounded"><img src="img/SDD.png" class="img-fluid" alt="Responsive image">
 
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-4 text-center">SLGTI Department Details</h1>
+                
+                <!-- <h1 class="display-4 text-center">SLGTI Department Details</h1>
                     
-                    <p class="text-center">Welcome to department page. This section to view course & batch details.&nbsp;</p>
+                    <p class="text-center">Welcome to department page. This section to view course & batch details.&nbsp;</p> -->
 
                 </div>
             </div>
