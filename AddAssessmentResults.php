@@ -30,35 +30,45 @@ $title = "Examinations | SLGTI";
         <!--  -->
 
         <?php
-         echo $assessment_id=$student_id=$module_id=$assessments_marks=$assessment_attempt;
+         echo $assessment_id=$student_id=$module_id=$assessments_marks=$assessment_attempt=null;
 
         if (isset($_POST['save'])) {
+$sql = null;
+//start
+if (isset($_GET['StudentMarks'])) {
+# code...
+$id_x=$_GET['StudentMarks'];
+$sql_x = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id
 
-            # code...
-            if (!empty($_POST['assessment_id'])) 
-                # code...
-                $assessment_id=$_POST['assessment_id'];
-               echo $student_id=$_POST['student_id'];
-               echo $module_id=$_POST['module_id'];
-               echo $assessments_marks=$_POST['assessments_marks'];
-               echo $assessment_attempt=$_POST['assessment_attempt'];
+FROM `assessments_marks`,student_enroll,assessments
+WHERE student_enroll.course_id =assessments.course_id AND assessments.assessment_id ='$id_x' group by student_id";
 
-
-        //   echo $sql = "INSERT INTO `assessments_marks` (`assessment_id`,`student_id`,`module_id`,`assessment_attempt`,`assessment_marks`)
-        //   VALUES ('$assessment_id','$student_id','$module_id','$assessments_marks','$assessment_attempt')";
-
-echo $sql = "INSERT INTO `assessments_marks` (`assessment_marks_id`, `assessment_id`, `student_id`, `assessment_attempt`, `assessment_marks`, `assessment_marks_grade`, `assessment_marks_date`) 
-VALUES ";
-
-for ($i=0; $i < $_POST['assessment_id']; $i++) { 
-    # code...
-    $sql ="('$assessment_id','$student_id','$student_id','$module_id','$assessments_marks','$assessment_attempt')";
+$result_x = mysqli_query($con, $sql_x);
+if (mysqli_num_rows($result_x)>0) {
+# code...
+while ($row_x = mysqli_fetch_assoc($result_x)) {
+     $postnamem = "M".$row_x['student_id'];
+     $postnamea = "A".$row_x['student_id'];
+     $postnames = "S".$row_x['student_id'];
+     $postnamemo = "MO".$row_x['module_id'];
+     echo $assessments_marks = $_POST[$postnamem];
+     echo $assessment_attempt = $_POST[$postnamea];
+     echo $student_id=$_POST[$postnames];
+     echo $module_id=$_POST[$postnamemo];
+     //insert 
+     $sql .= "INSERT INTO `assessments_marks` 
+     (`assessment_id`,`module_id`, `student_id`, `assessment_attempt`, `assessment_marks`) 
+     VALUES ('$id_x','$module_id','$student_id','$assessment_attempt','$assessments_marks');";
+     //end insert
 
 }
+}
+}
+echo $sql;
 
-        
+//end
 
-if(mysqli_query($con,$sql))
+if(mysqli_multi_query($con,$sql))
 {
   echo '
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -82,11 +92,7 @@ else{
   ';
 }
 
-
-
-
-            
-        }
+}
 
 
 
@@ -114,7 +120,7 @@ else{
                 <br>
             </div>
             <br>
-            <form class="needs-validation" novalidate method="POST" action="#">
+            <form  method="POST">
                 <!-- table -->
                 <table class="table">
                     <thead>
@@ -135,8 +141,8 @@ else{
 
                         if (isset($_GET['StudentMarks'])) {
                             # code...
-                            $id=$_GET['StudentMarks'];
-                         $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id
+                           echo  $id=$_GET['StudentMarks'];
+                         echo $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id
                              
                             FROM `assessments_marks`,student_enroll,assessments
                             WHERE student_enroll.course_id =assessments.course_id AND assessments.assessment_id ='$id' group by student_id";
@@ -149,8 +155,12 @@ else{
                                     echo '
                                     <tr>
                                     <th scope="row" id="assessment_id" name="assessment_id">' . $row ["assessment_id"].'</th>
-                        <th scope="row" id="student_id" name="student_id">' . $row ["student_id"].'</th>
-                        <th scope="row" id="module_id" name="module_id" >' . $row ["module_id"].'</th>
+                        <th scope="row" id="student_id" name="student_id">' . $row ["student_id"].'
+                        <input type="hidden" name="S' . $row ["student_id"].'" value="' . $row ["student_id"].'" />
+                        </th>
+                        <th scope="row" id="module_id" name="module_id" >' . $row ["module_id"].'
+                        <input type="hidden" name="MO' . $row ["module_id"].'" value="' . $row ["module_id"].'" />
+                        </th>
                         
                         <td>
                             <div class="input-group mb-3">
@@ -162,9 +172,10 @@ else{
                             <div class="input-group mb-3">
 
                                 <select class="custom-select" id="assessment_attempt" name="A' . $row ["student_id"].'">
-                                    <option selected>Choose...</option>
-                                    <option value="1">1st</option>
-                                    <option value="2">Repeat</option>
+                                    <option selected>----Choose Attempt--- </option>
+                                    <option value="1">Attempt 1</option>
+                                    <option value="2">Attempt 2</option>
+                                    <option value="3">Attempt 3</option>
                                 </select>
                             </div>
 
