@@ -31,13 +31,13 @@ $title = "Examinations | SLGTI";
     <tr>
         <div class="col-sm-10">
       <th scope="col"><i class="fab fa-discourse"></i>&nbsp;&nbsp;Student ID</th>
-      <th scope="col">Student Name</th>
+      <th scope="col"><i class="fas fa-user-graduate"></i>&nbsp;&nbsp;Student Name</th>
       <th scope="col"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;Academy Year</th>
       <th scope="col"><i class="fas fa-book-open"></i>&nbsp;&nbsp;Module</th>
       <th scope="col"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;Asessment</th>
     </div>
       <div class="col-sm-2">
-      <th><i class="fas fa-angle-down"></i>&nbsp;&nbsp;Actions</th>
+      <th><i class="fas fa-angle-down"></i>&nbsp;&nbsp;Assessment Marks</th>
     </div>
     </tr>
   </thead>
