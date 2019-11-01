@@ -16,10 +16,9 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
 	<div class="shadow  p-3 mb-1 bg-white rounded">
 	    <div class="highlight-blue">
 	        <h1 class="display-4 text-center">Module Details</h1>
-	        <!-- <p class="text-center"></p> -->
 	    </div>
 	</div>
-  <br>
+<br>
 <form method="GET">
   <div class="form-row">
         <div class="col-5">
@@ -29,31 +28,30 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                     <?php
                     $sql = "SELECT * FROM `course` ORDER BY `course_id` ASC";
                     $result = mysqli_query($con, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                    while($row = mysqli_fetch_assoc($result)) {
+                    if (mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_assoc($result)){
                       echo '<option  value="'.$row["course_id"].'" required>'.$row["course_name"].'</option>';
                     }
                     }else{
                       echo '<option value="null"  selected disabled>-- 0 Position --</option>';
                     }
                     ?>
-                          </select>
-                      </div>
-                  </div>
-                  
-                  <div class="col-1">
-                      <div class="form-row align-items-center">
-                  <button  type="submit" class="btn btn-primary btn-block" ><i class="fas fa-search"></i></button>
+                 </select>
             </div>
+          </div>
+        <div class="col-1">
+          <div class="form-row align-items-center">
+            <button  type="submit" class="btn btn-primary btn-block" ><i class="fas fa-search"></i></button>
+          </div>
         </div>
-    </div>
+  </div>
 </form>
 
 
   <div class="row">
 	    <div class="col-md-12 col-sm-12">
               <div class="table-responsive table-responsive-sm">
-                <table class="table table-hover">
+                  <table class="table table-hover">
                   <thead class="thead-dark">
                     <tr style="text-align:center">
                     <th scope="col">NO.</th>
@@ -65,46 +63,39 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                     <th scope="col">Options</th>
                     </tr>
                   </thead>
-
-            
-
-                <?php
-                
-                if(isset($_GET['dlt']))
-                {
-                    
+                    <?php
+                    if(isset($_GET['dlt']))
+                    {
                     $m_id = $_GET['dlt'];
                     $sql = "DELETE from module where module_id = '$m_id'";
-                    if(mysqli_query($con,$sql))
-                    {
-                      echo '
-                      <div class="alert alert-sucess alert-dismissible fade show" role="alert">
-                      <strong>'.$m_id.' </strong> Record has been Deleted Succesfully 
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                    if(mysqli_query($con,$sql)){
+                    echo '
+                    <div class="alert alert-sucess alert-dismissible fade show" role="alert">
+                    <strong>'.$m_id.' </strong> Record has been Deleted Succesfully 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                     </div>  ';
-                    }
-                    else
-                    {
-                      echo '
-                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      <strong> '.$m_id.' </strong> Cannot delete or update a parent row (foreign key constraint fails)
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>  ';               
-                     
-                    }
-                }
-                ?>
-                <br>
+                    }else{
+                    echo '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong> '.$m_id.' </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>  ';}}?>
+                    <br>
                   <tbody>
-                  <?php
-                if(isset($_GET['search']))
-                {
-                    // $gcourse_id = $_GET['search'];
-
+                    <?php
+                    {  
+                    function getTotal($cid,$mid){
+                    $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+                    $sql_r = "CALL notionalhours ('$cid','$mid')";
+                    $result_r = mysqli_query($con,$sql_r);
+                    while ($row_r = mysqli_fetch_array($result_r)){ 
+                    $x = $row_r[0];
+                    }
+                    return $x;}
                     $sql = "SELECT `module_id`,
                     `module_name`,
                     `module_learning_hours`,
@@ -116,79 +107,51 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                     `module_self_study_hours`,
                     course.course_name as course_name FROM `module`,
                     `course` WHERE module.course_id = course.course_id";
-                      if(isset($_GET['course_id']))
-                      {
-                          $gcourse_id=$_GET['course_id'];
-                          $sql.="AND `module`.`course_id`= '$gcourse_id'";
-                      }
-                    
-                    $result = mysqli_query($con,$sql);
-                    
-                    if(mysqli_num_rows($result)>0)
-                    {
-                      $count=1;
-                      while($row = mysqli_fetch_assoc($result))
-                      { 
-                          $mid = $row["module_id"];
-                          $cid = $row["course_id"];
-                          
-                          $sql_r = "SELECT SUM(module_self_study_hours+module_lecture_hours+module_practical_hours) as 'value_sum' FROM module  WHERE module_id='$mid' and course_id='$cid'"; 
-                          $result_r = mysqli_query($con,$sql_r);
-                          if(mysqli_num_rows($result_r)==1)
-                          {
-                          $row_r = mysqli_fetch_assoc($result_r);
-                          $sum = $row_r['value_sum'];
-                          }
-                          echo'
-                          <tr style="text-align:center">
-                            <td>'.$count.'.'. "<br>" .' </td>
-                            <td>'. $row["module_id"] . "<br>" .' </td>
-                            <td>'. $row["module_name"] . "<br>" .' </td>
-                            <td>'. $row["course_name"] . "<br>" .'</td>
-                            <td>'. $row["semester_id"] . "<br>" .'</td>
-                            <td>'. "$sum". "<br>" .'</td>
-                             
-                            <td> 
-                            <a href=" AddModule.php ?edits='.$row["module_id"].'  &&  ?edits='.$row["course_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-                            <button data-href=" ?dlt='.$row["module_id"].' &&  ?dlt='.$row["course_id"].' " class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
-                            </td> 
-                          </tr>';
-                          $count=$count+1;
-                          
-                      }
+                     if(isset($_GET['course_id'])){
+                      $gcourse_id=$_GET['course_id'];
+                      $sql.=" AND `module`.`course_id`= '$gcourse_id'";
                     }
-                    else
-                    {
-                        echo "0 results";
-                    }
-                  
-                  }
-                  else
-                  {
-                    include_once("modd.php");
-                  }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                     $result = mysqli_query($con,$sql);
+                     if(mysqli_num_rows($result)>0){
+                     $count=1;
+                     while($row = mysqli_fetch_assoc($result)){ 
+                     $mid = $row["module_id"];
+                     $cid = $row["course_id"];
+                     echo'
+                     <tr style="text-align:center">
+                     <td>'.$count.'.'. "<br>" .' </td>
+                     <td>'. $row["module_id"] . "<br>" .' </td>
+                     <td>'. $row["module_name"] . "<br>" .' </td>
+                     <td>'. $row["course_name"] . "<br>" .'</td>
+                     <td>'. $row["semester_id"] . "<br>" .'</td>
+                     <td>'.getTotal($cid,$mid). "<br>" .'</td>
+                     <td> 
+                      <a href=" AddModule.php ?edits='.$row["module_id"].'  &&  ?edits='.$row["course_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                      <button data-href=" ?dlt='.$row["module_id"].' &&  ?dlt='.$row["course_id"].' " class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
+                     </td> 
+                     </tr>';
+                     $count=$count+1;
+                     }}
+                     else{
+                     echo "0 results";
+                     }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                     ?>
-                     </tbody>
-                     
-                    </table>
-             
-            </div>
-            <div class="form-row">
-              <div class="col-md-6 col-sm-6">
-              <a href="Module.php" style="text-align:center;font-weight: 650;font-size:15px;" class="text-primary page-link">VIEW ALL MODULES</a>
+                </tbody>
+              </table>
               </div>
-              <div class="col-md-6 col-sm-6">
-              <a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i>
-              </div>
-            </div> 
+  <div class="form-row">
+      <div class="col-md-6 col-sm-6">
+        <a href="Module.php" style="text-align:center;font-weight: 650;font-size:15px;" class="text-primary page-link">VIEW ALL MODULES</a>
       </div>
- </div>
+      <div class="col-md-6 col-sm-6">
+        <a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i>
+      </div>
+  </div>
+      </div>
+  </div>
 <body>
-
 </body>
 <!-- end your code -->
-
-
 <!--Block#3 start dont change the order-->
 <?php include_once ("footer.php"); ?>  
 <!--  end dont change the order-->
