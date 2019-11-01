@@ -11,20 +11,38 @@ $title = "Examinations | SLGTI";
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-4 text-center">Students Marks</h1>
+                    <h1 class="display-4 text-center">View Students Marks</h1>
+                    <h4 class="display-5 text-center">Welcome <?php echo $_SESSION["user_name"];?></h4>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- <div class="container"> -->
-  <!-- <div class="row">
-    <div class="col-sm-10">col-sm-10</div>
-    <div class="col-sm-2">
-            <button type="button" class="btn btn-outline-success">Success</button>
-    </div>
-  </div> -->
-<!-- </div> -->
+
+    
+        <div class="row">
+            <div class="col">
+                <h3 class="display-5 text-center">Overall Module Marks</h3>
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Student's Index Number"
+                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button"
+                            id="button-addon2">&nbsp;&nbsp;&nbsp;<i
+                                class="fas fa-search"></i>&nbsp;&nbsp;&nbsp;Search&nbsp;&nbsp;&nbsp;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    
+
+    
 
     <table class="table">
   <thead class="thead-dark">
