@@ -222,16 +222,17 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
 
                 </tbody>
             </table>
+    
         </div>
     </div>
 </div>
 
          
-    <!-- <td>
-          <a href="AddTimetable.php? edit='.$row["department_id"].'"> Edit </a> |
-          <a href="?Student_Id='.$row["department_id"].'"> View More
+  
+<a href="AddTimetable.php" class="btn btn-primary ">View</a> 
+         
           </td>     
-         </td> -->
+     
         
 <script>
 

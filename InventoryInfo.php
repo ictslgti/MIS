@@ -4,6 +4,7 @@ $title = "Home | SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
+if($_SESSION['user_type']!='STU'){
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
@@ -98,3 +99,4 @@ include_once("menu.php");
 <?php 
 include_once("FOOTER.PHP"); 
 ?>
+<?php }?>
