@@ -215,11 +215,11 @@ $sql="INSERT INTO `food_order`( `food_order_user_name`, `food_order_status`)
                 <div class="row">
 
                 <?php if($id=="fd004"){?>
-                    <div class="col-md-8"><input type="number"  min=0.5 step="any" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
+                    <div class="col-md-8"><input type="number"  min=0.5  step="any" name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
                 <?php }
 
                 else{?>
-                <div class="col-md-8"><input type="number"  min=1 name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
+                <div class="col-md-8"><input type="number"  min=1   name="quantity" class="form-control"  id="validationDefault05" placeholder="QTY"  required></div>
                <?php }?>
 
 

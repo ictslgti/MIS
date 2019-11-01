@@ -263,7 +263,7 @@ if(isset($_GET['delete'])){
 
         
         
-        echo '<a class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
+        echo '<button class = "btn btn-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></button>';
 
     }else{
         echo "Error deleting record:" . mysqli_error($con);

@@ -213,18 +213,27 @@ if(isset($_POST['Add'])){
   &&!empty($_POST['module_id'])
   &&!empty($_POST['academic_year']))
   { 
-     echo $department_id   =  $_POST['department_id'];
-     echo $course_id   =  $_POST['course_id'];
-     echo $module_id  =   $_POST['module_id'];
-     echo $academic_year  =   $_POST['academic_year'];
+      $department_id   =  $_POST['department_id'];
+      $course_id   =  $_POST['course_id'];
+      $module_id  =   $_POST['module_id'];
+      $academic_year  =   $_POST['academic_year'];
 
      $t_name = $_FILES["pdf"]["tmp_name"];
      $name = basename($_FILES["pdf"]["name"]);
      $test_dir = './docs/result';
      move_uploaded_file($t_name, $test_dir.'/'.$name);
-   
+
+     if ($name){
+      echo "Successfully uploaded";
+     }else{
+      echo "Not uploaded because of error #".$_FILES["ima"]["error"];
+     }
   
-     echo $sql = "INSERT INTO `notice_result` (`department_id`, `academic_year`,`course_id`, `module_id` ,`upload`)
+
+
+
+  
+     $sql = "INSERT INTO `notice_result` (`department_id`, `academic_year`,`course_id`, `module_id` ,`upload`)
       VALUES ('$department_id','$course_id','$module_id','$academic_year','$name')";
    
       if (mysqli_query($con, $sql)) {
