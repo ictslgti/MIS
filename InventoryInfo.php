@@ -10,7 +10,7 @@ include_once("menu.php");
 <!--BLOCK#2 START YOUR CODE HERE -->
 <div class="row">
     <div class=" col-sm-8">
-        <p style="font-size: 45px; font-weight: 700; "> Inventory Information</p>
+        <p style="font-size: 45px; font-weight: 700; "> SLGTI INVENTORY INFORMATION</p>
     </div>
 
     <div class="col-sm-3 pt-4"> 
