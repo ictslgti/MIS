@@ -269,8 +269,10 @@ $title = "Home | SLGTI";
                     <div class="row">
                         <div class="col">
                             <div class="mx-auto" style="width: 200px;">
-                               <strong> <a href= "RequestOnPeak.php"> <!-- <button type="submit" class="btn btn-secondary" name="back">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-circle-left"></i> 
-                                                                    &nbsp;&nbsp;&nbsp;back&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> --> back </a>
+                               <strong> <a href= "RequestOnPeak.php"> 
+                               <!-- <button type="submit" class="btn btn-secondary" name="back">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-circle-left"></i> 
+                                &nbsp;&nbsp;&nbsp;back&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> --> <h6> <<<<<< back <<<<<<< </h6> </a>
+                                </strong>
                             </div>
                         </div>
                     </div>

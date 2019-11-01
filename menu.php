@@ -141,7 +141,7 @@ if($u_ta=='staff'){
               </ul>
             </div>
           </li>          <?php } ?>
-          <li class="sidebar-dropdown">
+          <?php if($_SESSION['user_type'] =='ADM'){ ?> <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-user-graduate"></i>
               <span>Students</span>
@@ -163,7 +163,7 @@ if($u_ta=='staff'){
                 </li>
               </ul>
             </div>
-          </li>
+          </li>  <?php } ?>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-calendar-alt"></i>
@@ -436,18 +436,18 @@ if($u_ta=='staff'){
               <!-- <span class="badge badge-pill badge-danger">3</span> -->
             </a>
             <div class="sidebar-submenu">
-              <ul>
-                <li>
+              <ul> 
+                <li> <?php if($_SESSION['user_type']=='ACC'){ ?>
                   <a href="Payments">Payments Info</a>
                 </li>
-                <li>
+                <li> 
                   <a href="Payment">Make a Payment</a>
                   <hr>
-                </li>              
+                </li>           
                 <li>
                   <a href="PaymentsReport">Payments Report</a>
-                </li>
-              </ul>
+                </li> <?php } ?> 
+                  </ul>
             </div>
           </li>
 
