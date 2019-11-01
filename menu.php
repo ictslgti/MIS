@@ -141,7 +141,7 @@ if($u_ta=='staff'){
               </ul>
             </div>
           </li>          <?php } ?>
-          <li class="sidebar-dropdown">
+          <?php if($_SESSION['user_type'] =='ADM'){ ?> <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-user-graduate"></i>
               <span>Students</span>
@@ -163,7 +163,7 @@ if($u_ta=='staff'){
                 </li>
               </ul>
             </div>
-          </li>
+          </li>  <?php } ?>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-calendar-alt"></i>
