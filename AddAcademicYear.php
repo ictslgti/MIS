@@ -119,8 +119,10 @@ if(isset($_POST['Edit'])){
 <div class ="col-6"><label for="Duration-Institute Training">Second Semester End Date</label><input class="form-control" type = "date" name= "second_semi_end_date" value ="<?php echo $second_semi_end_date;?>" placeholder="Second Semester End Date" required></div>
 <br><br>
 </div>
+<br>
 <?php
 if(isset($_GET['edit'])){
+    
     echo '<input type = "submit" value="Edit" name="Edit"<a href="" class="btn btn-sm btn-success" role="button" aria-pressed="true"></a> '; 
     echo '<a href="AcademicYear" class="btn btn-sm btn-primary" role="button" aria-pressed="true">Back</a>';
 }else{
