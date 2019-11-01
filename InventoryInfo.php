@@ -22,14 +22,14 @@ include_once("menu.php");
     <div class=" col-sm-8">
         <p style="font-size: 45px; font-weight: 700; ">SLGTI INVENTORY INFORMATION</p>
     </div>
-
+</div>
     <div class="col-sm-3 pt-4"> 
       <form class="form-inline" method="GET">
         <input class="form-control mr-2" type="search" name="edit" placeholder="Supplier_id">  
         <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
       </form>
     </div>  
-</div>
+
 
 <div class="row">
   <div class="col-sm-12" >
