@@ -105,7 +105,7 @@ if($u_ta=='staff'){
                 <li>
                 <a href="AddCourse">Add a Course
                 </a>
-                </li><?php }?>
+                </li>
 
                 <li>
                 <a  href="Module">Modules Info</a>
@@ -113,7 +113,7 @@ if($u_ta=='staff'){
                 <li>
                 <a href="addModule">Add a Module
                 </a>
-                </li><?php }?>
+                </li>
 
               </ul>
             </div>
