@@ -137,7 +137,7 @@
                     $datePick=$_POST['datePick'];
 
 
-                    $sql="INSERT INTO `book_copies` (`serial`, `book_id`, `date`) VALUES ('$bookSerialNo', '$bookSerialCopy', '$datePick')";
+                    $sql="INSERT INTO `book_copies` (`book_serial`, `book_id`, `date`) VALUES ('$bookSerialNo', '$bookSerialCopy', '$datePick')";
                     if(mysqli_query($con,$sql))
                     {
                         echo '<div class="alert alert-success alert-dismissible mt-2 mr-5 ml-5" role="alert">  <strong>Sucess &#128512; </strong>
