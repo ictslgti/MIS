@@ -358,5 +358,5 @@ function showUser(str) {
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->
 <?php 
-include_once("FOOTER.PHP"); 
+include_once("footer.php"); 
 ?>

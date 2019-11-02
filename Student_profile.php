@@ -127,7 +127,7 @@ if(isset($_POST["insert"]))
     $result=mysqli_query($con,$query);
     if(mysqli_num_rows($result)==1)
     {
-    echo '<img src="img/profile/<?php echo $img;?>" alt="user image" class="img-thumbnail" style="width:200px;height:200px;">';
+    echo '<img src="img/profile/<?php echo $img;?>" <img alt="user image" class="img-thumbnail" style="width:200px;height:200px;">';
     }
     ?>
     <input type="file" name="image" id="image"/><br><br>
@@ -401,8 +401,7 @@ if(isset($_POST["insert"]))
   </div>
 
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-  <div class="form-row">
-        <div id="results-student_education" class="form-group table-responsive">               
+          <div id="results-student_education" class="form-group table-responsive">               
             <table class="table table-hover" width="100%" id="table">
               <thead>
               <tr>
@@ -446,13 +445,11 @@ if(isset($_POST["insert"]))
               </tbody>
             </table>  
       </div>
-      </div>
   </div>
 
 
 <div class="tab-pane fade" id="nav-modules" role="tabpanel" aria-labelledby="nav-modules-tab">
-  <div class="form-row">
-        <div id="results-student_education" class="form-group table-responsive">               
+         <div id="results-student_education" class="form-group table-responsive">               
             <table class="table table-hover" width="100%" id="table">
               <thead>
               <tr>
@@ -500,8 +497,6 @@ if(isset($_POST["insert"]))
       </div>
       </div>
   </div>
-</div>
-</div>
 </form>
 </div>
 <script>
@@ -531,5 +526,5 @@ $(document).ready(function(){
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->
 <?php 
-include_once("FOOTER.PHP"); 
+include_once("footer.php");
 ?>
