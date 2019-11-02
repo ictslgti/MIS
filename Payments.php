@@ -14,7 +14,7 @@ include_once("menu.php");
 
 
 <div class="shadow p-3 mb-s bg-white rounded">
-  <h1 class="text-center display-3">SLGTI Payment Information</h1><br>
+  <h1 class="text-center display-3">SLGTI Student Payment Information</h1><br>
   </div>
   </body>
 

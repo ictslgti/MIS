@@ -18,7 +18,6 @@ include_once ("menu.php");
 	        <!-- <p class="text-center"></p> -->
 	    </div>
 	</div>
-
     <div class="row">
     <div class="col-sm-8"></div>
 	<div class="col-sm-4">
@@ -26,7 +25,6 @@ include_once ("menu.php");
     </form><br>
     </div>
     </div>
-
 	<div class="row">
 	    <div class="col-md-12 col-sm-12">
 	        <div class="table-responsive table-responsive-sm">
@@ -104,7 +102,7 @@ include_once ("menu.php");
                                     <td>'. $row["department_name"] .  "<br>" .'</td>
                                     <td>'. $row["course_nvq_level"] .  "<br>" .'</td>';?>
                                     
-                                    <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'<a href="Module.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-sm btn-icon-split"> <span class="text">Modules</span>  </a>
+                                    <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'<td><a href="Module.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-sm btn-icon-split"> <span class="text">Modules</span>  </a>
 
                                     <a href="BatchDetails.php ?course_id='.$row["course_id"].' " class="btn btn-sm btn-primary btn-icon-split"> <span class="text">Batch</span> </a>
 
