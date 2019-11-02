@@ -93,7 +93,7 @@ include_once("menu.php");
             <td>'.$row["reference_id"].'</td>
             <td> 
            
-            <a href=" donor.php ?edit='.$row["reference_id"].' "class="btn btn-outline-success btn-icon-split""><i class="far fa-edit"></i>&nbsp;&nbsp;  </a>  
+            <a href=" donor.php ?edit='.$row["d_id"].' "class="btn btn-outline-success btn-icon-split""><i class="far fa-edit"></i>&nbsp;&nbsp;  </a>  
             <button class="btn btn-outline-danger btn-icon-split" data-href="?delete='.$row["d_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
            
             </td>
@@ -112,9 +112,19 @@ if(isset($_GET['delete'])){
     $id = $_GET['delete'];
     $sql = "DELETE FROM `donor` WHERE`d_id`='$id'";
     if (mysqli_query($con, $sql)){
-        echo "deleted successfully";
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>'.$id.'</strong>  Has Been Succesfully deleted
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div> ';
     }else{
-        echo "Error deleting record:" . mysqli_error($con);
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>'.$id.'</strong>  Has Been Succesfully deleted
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div> ';
     }
 }
 
