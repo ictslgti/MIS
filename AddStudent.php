@@ -22,12 +22,12 @@ include_once("menu.php");
 //echo $_SESSION['user_name'];  
 $stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $mode =
 $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = null;
-
+$stid = $_SESSION['user_name'];
 // edit
 if(isset($_GET['edit']))
 {
   $stid =$_GET['edit'];
-  echo $sql = "SELECT s.`student_id`,`student_title`,`student_fullname`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,
+  $sql = "SELECT s.`student_id`,`student_title`,`student_fullname`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,
   `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,
   `student_em_address`,`student_em_phone`,`student_em_relation`,`course_id`,`course_mode`,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
   `student_enroll_status` FROM `student` s INNER join student_enroll e on s.student_id=e.student_id and `student_enroll_status`='Following' and s.`student_id`='$stid'";
@@ -35,11 +35,11 @@ if(isset($_GET['edit']))
 
   if(mysqli_num_rows($result)==1)
   {
-    echo "success";
+   // echo"success";
     $row =mysqli_fetch_assoc($result);
     //$stid = $row['student_id'];
-    echo $title = $row['student_title'];
-    echo $fname = $row['student_fullname'];
+    $title = $row['student_title'];
+    $fname = $row['student_fullname'];
     $ininame = $row['student_ininame'];
     $gender = $row['student_gender'];
     $civil = $row['student_civil'];
@@ -59,7 +59,7 @@ if(isset($_GET['edit']))
     $erelation = $row['student_em_relation'];
     $coid = $row['course_id'];
     $mode = $row['course_mode'];
-    $year = $row['academic_year'];
+    echo $year = $row['academic_year'];
     $enstatus =$row['student_enroll_status'];
     $enroll = $row['student_enroll_date'];
     $exit = $row['student_enroll_exit_date'];
@@ -365,7 +365,6 @@ if(isset($_POST['Edit']))
           <label for="ayear"> Academic Year: </label>
           <select name="ayear" id="ayear" class="selectpicker show-tick" data-live-search="true" data-width="100%" value="<?php echo $year; ?>" required>
           <option selected disabled>--Academic Year--</option>
-
           <?php
             $sql = "SELECT * FROM `academic` ORDER BY `academic_year`  DESC ";
             $result = mysqli_query($con, $sql);
@@ -379,7 +378,7 @@ if(isset($_POST['Edit']))
             echo '>'.$row ['academic_year'].'</option>';
             }
             }
-            ?>
+            ?> 
           </select>
         </div>
 
