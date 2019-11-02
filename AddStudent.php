@@ -396,30 +396,29 @@ if(isset($_POST['Edit']))
 
         <div class="col-md-3 mb-3">
           <label for="sid">Student ID:</label>
-          <input type="text" class="form-control" name="sid" value="
-           <?php //echo $stid; 
-          if(isset($_GET['edit']))
-          {
-            echo $stid; 
-          }
-          else if((isset($_GET['ayear'])) && (isset($_GET['coid'])))
-          {
-            $year =$_GET['ayear'];
-            $coid =$_GET['coid'];
-            
-            $Sql="SELECT MAX(student_id) from student_enroll where `course_id`='$coid' and`academic_year`='$year' ORDER by student_id ASC";
-            $result = mysqli_query($con,$sql);
+          <input type="text" class="form-control" name="sid" 
+          value="<?php echo $stid; 
+          // if(isset($_GET['edit']))
+          // {
+          //   echo $stid; 
+          // }
+          // echo $year =$_GET['ayear'];
+          //   echo $coid =$_GET['coid'];
+          // else ((isset($_GET['ayear'])) && (isset($_GET['coid'])))
+          // {
+          //   echo $Sql="SELECT MAX(student_id) from student_enroll where `course_id`='$coid' and`academic_year`='$year' ORDER by student_id ASC";
+          //   $result = mysqli_query($con,$sql);
 
-            if(mysqli_num_rows($result)==1)
-            {
-              $row =mysqli_fetch_assoc($result);
-              $stid = $row['student_id'];
-            }
-            else
-            {
-              $stid = $row['student_id'];
-            }
-          }
+          //   if(mysqli_num_rows($result)==1)
+          //   {
+          //     $row =mysqli_fetch_assoc($result);
+          //     $stid = $row['student_id'];
+          //   }
+          //   else
+          //   {
+          //     $stid = $row['student_id'];
+          //   }
+          // }
           ?>" id="sid" required>
         </div>
 
@@ -705,7 +704,6 @@ if(isset($_POST['Edit']))
                     echo "0 results";
                   }
                }
-
                ?>
               </tbody>
             </table>  
