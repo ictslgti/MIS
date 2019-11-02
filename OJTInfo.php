@@ -104,7 +104,8 @@ $StudentID=$Department_id=$StudentName=$DepartmentName=$Finalplace=$Address=null
                     echo '<div class="btn-group-horizontal">';
   
                     if(isset($_GET['edit'])){
-                   
+                  
+                      
                     }
                     ?>
                     </div>
