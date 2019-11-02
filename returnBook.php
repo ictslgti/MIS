@@ -107,7 +107,7 @@ $title = "Home | SLGTI";
 
 <script>
 function shomd(){ 
-  window.location.href = 'ViewBooks.php';
+  window.location.href = 'IssuedBook.php';
 } 
 </script>
 <!--END OF YOUR COD-->
