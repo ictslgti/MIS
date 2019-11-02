@@ -110,8 +110,8 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                     `module_lecture_hours`,
                     `module_practical_hours`,
                     `module_self_study_hours`,
-                    course.course_name as course_name FROM `module`,
-                    `course` WHERE module.course_id = course.course_id";
+                    course.course_name as course_name FROM `module` INNER JOIN `course`
+                    ON module.course_id = course.course_id";
                      if(isset($_GET['course_id'])){
                       $gcourse_id=$_GET['course_id'];
                       $sql.=" AND `module`.`course_id`= '$gcourse_id'";
