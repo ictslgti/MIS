@@ -364,7 +364,7 @@ function showName(){
         //call ajax
         var ajax = new XMLHttpRequest();
 
-        ajax.open("POST", "controller/getBookName", true);
+        ajax.open("POST", "controller/getBookNameUpdate", true);
 
         //sending ajax request
         ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
