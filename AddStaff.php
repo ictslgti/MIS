@@ -203,7 +203,7 @@ if(isset($_POST['Add'])){
   <div class="form-row">
     <div class="form-group col-lg-4">
         <label for="text" class="font-weight-bolder pl-1" >Staff_ID :</label>
-        <input type="text" name="StaffID" value="<?php echo $StaffID; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['StaffID'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffID'])){echo ' is-valid';} ?>" placeholder="Staff ID">
+        <input type="text" id="StaffID" name="StaffID" value="<?php echo $StaffID; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['StaffID'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffID'])){echo ' is-valid';} ?>" placeholder="Staff ID">
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Department</label><br>
@@ -343,7 +343,7 @@ if(isset($_POST['Add'])){
 
     if(isset($_GET['edit'])){
       echo '<button type="submit"  value="Update" name="Update" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+      echo'<button  class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 
     }if(isset($_GET['delete']))
     {
@@ -367,12 +367,6 @@ if(isset($_POST['Add'])){
   }
 </script>
 
-<script>
-  function reset(){
-
-    
-  }
-</script>
 
 
 
