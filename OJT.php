@@ -4,6 +4,7 @@ $title ="Home | SLGTI";
  include_once("config.php");
  include_once("head.php");
  include_once("menu.php");
+ if($_SESSION['user_type']=='ADM'){
  ?>
  <!--END Don't CHANGE THE ORDER-->
 
@@ -87,3 +88,11 @@ $title ="Home | SLGTI";
 
 	                </tbody>
 	            </table>
+
+                    <?php } ?>
+
+<!--START Don't CHANGE THE ORDER-->   
+<?php 
+ include_once("footer.php");
+?>
+ <!--Don't CHANGE THE ORDER-->

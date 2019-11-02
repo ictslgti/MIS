@@ -254,28 +254,28 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li>
+                <li><?php if($_SESSION['user_type']=='ADM'){ ?>
                   <a href="OJT">On-the-job Training Info</a>
-                </li>
-                <li>
+                </li><?php } ?>
+                <li><?php if($_SESSION['user_type']=='ADM'){ ?>
                   <a href="AddTrainingPlace">Add a Training Place</a>
                   <hr>
-                </li>              
-                <li>
+                </li> <?php } ?>             
+                <li><?php if($_SESSION['user_type']=='STU'){ ?>
                   <a href="StudentsRequest">Students Request</a>
-                </li>
-                <li>
+                </li><?php } ?>
+                <li> <?php if($_SESSION['user_type']=='STU'){ ?>
                   <a href="PlacementRequest">Student Placement Request</a>
-                </li>
-                <li>
+                </li> <?php } ?>
+                <li><?php if($_SESSION['user_type']=='STU'){ ?>
                   <a href="OJTInfo">Training Place Info</a>
-                </li>
-                <li>
+                </li><?php } ?>
+                <li><?php if($_SESSION['user_type']=='ADM'){ ?>
                   <a href="OJTChange">Placement Change</a>
-                </li>
-                <li>
+                </li><?php } ?>
+                <li><?php if($_SESSION['user_type']=='ADM'){ ?>
                   <a href="OJTReport">OJT Report</a>
-                </li>
+                </li><?php } ?>
               </ul>
             </div>
           </li>
