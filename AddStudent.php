@@ -59,7 +59,7 @@ if(isset($_GET['edit']))
     $erelation = $row['student_em_relation'];
     $coid = $row['course_id'];
     $mode = $row['course_mode'];
-    echo $year = $row['academic_year'];
+    $year = $row['academic_year'];
     $enstatus =$row['student_enroll_status'];
     $enroll = $row['student_enroll_date'];
     $exit = $row['student_enroll_exit_date'];
@@ -276,13 +276,13 @@ if(isset($_POST['Edit']))
 
                 if(isset($_POST['UPDATEQ']))
                   {
-                    ECHO 'qualification'.$_POST['qualification']; ECHO 'examy'.$_POST['examy']; ECHO 'result'.$_POST['result'];
-                    ECHO 'indexno'.$_POST['indexno']; ECHO 'subject'.$_POST['subject']; 
+                    // ECHO 'qualification'.$_POST['qualification']; ECHO 'examy'.$_POST['examy']; ECHO 'result'.$_POST['result'];
+                    // ECHO 'indexno'.$_POST['indexno']; ECHO 'subject'.$_POST['subject']; 
 
                     if(!empty($_POST['qualification']) && !empty($_POST['examy']) && !empty($_POST['result'])
                     && !empty($_POST['indexno']) && !empty($_POST['subject']))
                     {
-                    echo "SUCCESS";
+                    "SUCCESS";
                     //$stid=$_GET['stid'];
                     $index=$_POST['indexno'];
                     $subject=$_POST['subject'];
@@ -295,7 +295,7 @@ if(isset($_POST['Edit']))
 
                         if(mysqli_query($con,$sql3))
                         {
-                          echo "Record Updated Successfully";
+                          echo "Upadate Successfully";
                         }
                         else
                         {
