@@ -468,9 +468,9 @@ if($u_ta=='staff'){
                 <li>
                   <a href="OffPeak">Off-Peak Info</a>
                 </li>
-                <li>
+                <li><?php if($_SESSION['user_type']=='STU' ){ ?>
                   <a href="RequestOffPeak">Request a Off-Peak</a>
-                </li>
+                </li><?php } ?> 
               </ul>
             </div>
           </li>
