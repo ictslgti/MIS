@@ -53,14 +53,14 @@ include_once("menu.php");
 ?><br>
   <form method="POST " class="shadow p-3 mb-s bg-white rounded" action="#">
   <div class="form-group col-md-4 shadow p-3 mb-s bg-white rounded"><h4><i class="fas fa-folder-plus"></i>&nbsp;
-                        <label for="inputEmail4">Add Payment Type</label></h4>
+                        <label for="inputEmail4">Add Payment Category</label></h4>
                         <input type="Department" 
                             class="form-control" id="
                             inputEmail4" placeholder="Typing Very Carefully" name="payment_reason">
                     </div>
 
                     <div class="form-group col-md-4 shadow p-3 mb-s bg-white rounded"><h4><i class="fas fa-folder-plus"></i>&nbsp;
-                        <label for="inputEmail4">Add Payment Category</label></h4>
+                        <label for="inputEmail4">Add Payment Reason</label></h4>
                         <input type="Department" 
                             class="form-control" id="
                             inputEmail4" placeholder="Typing Very Carefully" name="payment_type">
