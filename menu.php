@@ -253,7 +253,7 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li><?php if($_SESSION['user_type']=='ADM'){ ?>
+                <li><?php if($_SESSION['user_type']=='ADM'){ ?> 
                   <a href="OJT">On-the-job Training Info</a>
                 </li>
                 <li>
