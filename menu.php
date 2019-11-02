@@ -288,7 +288,7 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li>
+                <li><?php if($_SESSION['user_type']!='WAR' ){ ?>
                   <a href="Hostel">Hostels Info</a>
                 </li>
                 <li>
@@ -297,7 +297,7 @@ if($u_ta=='staff'){
                 <li>
                   <a href="AddRoom">Add a Room</a>
                   <hr>
-                </li>
+                </li><?php } ?>
                 <li>
                   <a href="RequestHostel">Request Hostel</a>
                 </li>
@@ -466,9 +466,9 @@ if($u_ta=='staff'){
                   <a href="RequestOnPeak">Request a On-Peak</a>
                   <hr>
                 </li> <?php } ?>             
-                <li>
+                <li><?php if($_SESSION['user_type']!='WAR' ){ ?>
                   <a href="OffPeak">Off-Peak Info</a>
-                </li>
+                </li><?php } ?>
                 <li><?php if($_SESSION['user_type']=='STU' ){ ?>
                   <a href="RequestOffPeak">Request a Off-Peak</a>
                 </li><?php } ?> 
