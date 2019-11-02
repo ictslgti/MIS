@@ -245,7 +245,6 @@ if($u_ta=='staff'){
             </div>
           </li>
 
-
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-briefcase"></i>
@@ -256,8 +255,8 @@ if($u_ta=='staff'){
               <ul>
                 <li><?php if($_SESSION['user_type']=='ADM'){ ?>
                   <a href="OJT">On-the-job Training Info</a>
-                </li><?php } ?>
-                <li><?php if($_SESSION['user_type']=='ADM'){ ?>
+                </li>
+                <li>
                   <a href="AddTrainingPlace">Add a Training Place</a>
                   <hr>
                 </li> <?php } ?>             
@@ -272,8 +271,8 @@ if($u_ta=='staff'){
                 </li><?php } ?>
                 <li><?php if($_SESSION['user_type']=='ADM'){ ?>
                   <a href="OJTChange">Placement Change</a>
-                </li><?php } ?>
-                <li><?php if($_SESSION['user_type']=='ADM'){ ?>
+                </li>
+                <li>
                   <a href="OJTReport">OJT Report</a>
                 </li><?php } ?>
               </ul>
