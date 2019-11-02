@@ -29,7 +29,7 @@
                                    <td>'.$row["copies"].'</td>
                                    <td>
                                    <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["book_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
-                                   <a href="addBook.php?bookIdEdit='. $row["book_id"].'" class="btn btn-sm btn-success"><i class=" text-light fas fa-edit" ></i></a>
+                                   <a href="AddBook.php?bookIdEdit='. $row["book_id"].'" class="btn btn-sm btn-success"><i class=" text-light fas fa-edit" ></i></a>
                                    <button  onclick="viewCopies(this.id)" class="btn btn-sm btn-warning" id="'.$row["book_id"].'" data-toggle="modal" data-target="#viewModal"><i class="fas fa-eye"></i> </button> 
                                    </td>
                               </tr>
