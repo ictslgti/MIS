@@ -113,7 +113,6 @@ $title = "Department Details | SLGTI";
            $mod= $row['module_id'];
            $mar=$row['assessment_marks'];
            $marg=$row['assessment_marks_grade'];
-           echo $mod;
             
            
            
