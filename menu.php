@@ -249,7 +249,7 @@ if($u_ta=='staff'){
             <a href="#">
               <i class="fas fa-briefcase"></i>
               <span>On-the-job Training</span>
-              <!-- <span class="badge badge-pill badge-danger">3</span> --> 
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->  
             </a>
             <div class="sidebar-submenu">
               <ul>
