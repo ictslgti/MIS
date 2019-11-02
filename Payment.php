@@ -3,7 +3,7 @@ $title="payment |SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
- if($_SESSION['user_type']=='ACC'){ 
+ if($_SESSION['user_type']=='ACC'||'ADM'){ 
 ?>
 <!-- dont change -->
 
@@ -30,14 +30,22 @@ if(isset($_POST['Add'])){
 // && !empty($_POST['payment_note'])
 // && !empty($_POST['payment_amount'])){
     
+    if(!empty($_POST['student_id'])
+    &&!empty($_POST['student_name'])
+    &&!empty($_POST['pays_depatment'])
+    &&!empty($_POST['payment_type'])
+    &&!empty($_POST['payment_reason'])
+    &&!empty($_POST['payment_qty'])
+    &&!empty($_POST['payment_note'])
+    &&!empty($_POST['payment_amount'])){
 
-     echo $student_id=$_POST['student_id'];
-     echo $pays_department=$_POST['pays_department'];
-     echo $pays_reason=$_POST['payment_reason'];
-     echo $pays_qty=$_POST['payment_qty'];
-     echo $pays_note=$_POST['payment_note'];
-     echo $pays_amount=$_POST['payment_amount'];
-     echo $payment_type=$_POST['payment_type'];
+      $student_id=$_POST['student_id'];
+      $pays_department=$_POST['pays_department'];
+      $pays_reason=$_POST['payment_reason'];
+      $pays_qty=$_POST['payment_qty'];
+      $pays_note=$_POST['payment_note'];
+      $pays_amount=$_POST['payment_amount'];
+      $payment_type=$_POST['payment_type'];
      
      
       
@@ -71,7 +79,7 @@ if(mysqli_query($con,$sql)){
         
         ';
 
-
+      }
       }
     
 }
