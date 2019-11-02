@@ -4,6 +4,7 @@ $title ="Home | SLGTI";
  include_once("config.php");
  include_once("head.php");
  include_once("menu.php");
+ if($_SESSION['user_type']=='STU'){
  ?>
  <!--END Don't CHANGE THE ORDER-->
 
@@ -103,7 +104,8 @@ $StudentID=$Department_id=$StudentName=$DepartmentName=$Finalplace=$Address=null
                     echo '<div class="btn-group-horizontal">';
   
                     if(isset($_GET['edit'])){
-                   
+                  
+                      
                     }
                     ?>
                     </div>
@@ -115,6 +117,7 @@ $StudentID=$Department_id=$StudentName=$DepartmentName=$Finalplace=$Address=null
     
 
 <!--END OF YOUR CODER-->
+                  <?php } ?>
 
   <!--START Don't CHANGE THE ORDER-->   
 <?php 

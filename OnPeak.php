@@ -107,12 +107,13 @@ if (mysqli_query($con, $sql)) {
                     <th scope="col">RETURN TIME</th>
                     <th scope="col">COMMENT</th>
                     <th scope="col">ACTION</th>
+                    <th scope="col"></th>
                     
                   </tr>
             </thead>
            
              <?php
-                $sql = "SELECT * FROM `onpeak_request` WHERE `onpeak_request_status`= 'Pending' ";
+                $sql = "call request_onpeak('Pending')";
                 $result = mysqli_query($con, $sql);
                 if (mysqli_num_rows($result) > 0) {
                  while($row = mysqli_fetch_assoc($result)) {
@@ -203,8 +204,8 @@ if (mysqli_query($con, $sql)) {
   </thead>
   <tbody>
   <?php
-  $sql = "SELECT * FROM `onpeak_request` where `onpeak_request_status`='Approved'";
-
+  $sql = "call request_onpeak('Approved')";
+  $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
@@ -249,8 +250,8 @@ else{
   </thead>
   <tbody>
   <?php
-  $sql = "SELECT * FROM `onpeak_request` where `onpeak_request_status`='Not Approved'";
-
+  $sql = "call request_onpeak('Not Approved')";
+  $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
@@ -422,6 +423,7 @@ else{
                $id= $_GET['sear'];
                
               $sql = "SELECT * FROM `onpeak_request` WHERE `student_id`='$id' ";
+              $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
               $result = mysqli_query($con, $sql);
               if (mysqli_num_rows($result) > 0) {
               while($row = mysqli_fetch_assoc($result)) {

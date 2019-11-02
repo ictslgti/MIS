@@ -40,10 +40,14 @@ include_once("menu.php");
             echo
             '<div class="alert alert-success">
             <strong>Success!</strong> Your data was inserted.</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
           </div>';
           }else{
               echo '<div class="alert alert-warning">
               <strong>Warning!</strong> Invalid data. Please Check Your Data !
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
             </div>';
           }
         }
@@ -102,10 +106,14 @@ include_once("menu.php");
             echo
             '<div class="alert alert-success">
             <strong>Success!</strong> Your data was Updated.</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
           </div>';
           }else{
             echo '<div class="alert alert-warning">
             <strong>Warning!</strong> Invalid data. Please Check Your Data !
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
           </div>';
           }
       }

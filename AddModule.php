@@ -223,7 +223,7 @@ if(isset($_POST['Adding']))
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="ID">Module ID</label>
-                <input type="text" class="form-control" id="ID" placeholder="" value="<?php echo $mid ?>" name="mid" required>
+                <input type="text" class="form-control" id="ID" placeholder="" value="<?php echo $mid ?>" name="mid" required <?php if(isset($_GET['edits'])) { echo "disabled='true'"; } ?>>
               
               </div>
 
@@ -248,7 +248,7 @@ if(isset($_POST['Adding']))
               <div class="col-md-6 mb-3">
                   <label for="Department">Course Name</label>
                   <select class="custom-select d-block w-100"  name="cname" required>
-                    <option selected  disabled selected>Select Course Name...</option>
+                    <option disabled selected >Select Course Name...</option>
                     <?php
                      $sql = "SELECT * FROM course";
                      $result = mysqli_query($con, $sql);

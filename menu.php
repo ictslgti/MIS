@@ -102,15 +102,15 @@ if($u_ta=='staff'){
                 <a  href="Course">Courses Info</a>
                 </li>
                 <li>
-                <a href="AddCourse">Add a Course
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?><a href="AddCourse">Add a Course<?php }?>
                 </a>
                 </li>
 
                 <li>
-                <a  href="Module">Modules Info</a>
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?><a  href="Module">Modules Info</a><?php }?>
                 </li>
                 <li>
-                <a href="addModule">Add a Module
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?><a href="addModule">Add a Module<?php }?>
                 </a>
                 </li>
 
@@ -245,37 +245,36 @@ if($u_ta=='staff'){
             </div>
           </li>
 
-
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-briefcase"></i>
               <span>On-the-job Training</span>
-              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->  
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li>
+                <li><?php if($_SESSION['user_type']=='ADM'){ ?> 
                   <a href="OJT">On-the-job Training Info</a>
                 </li>
                 <li>
                   <a href="AddTrainingPlace">Add a Training Place</a>
                   <hr>
-                </li>              
-                <li>
+                </li> <?php } ?>             
+                <li><?php if($_SESSION['user_type']=='STU'){ ?>
                   <a href="StudentsRequest">Students Request</a>
-                </li>
-                <li>
+                </li><?php } ?>
+                <li> <?php if($_SESSION['user_type']=='STU'){ ?>
                   <a href="PlacementRequest">Student Placement Request</a>
-                </li>
-                <li>
+                </li> <?php } ?>
+                <li><?php if($_SESSION['user_type']=='STU'){ ?>
                   <a href="OJTInfo">Training Place Info</a>
-                </li>
-                <li>
+                </li><?php } ?>
+                <li><?php if($_SESSION['user_type']=='ADM'){ ?>
                   <a href="OJTChange">Placement Change</a>
                 </li>
                 <li>
                   <a href="OJTReport">OJT Report</a>
-                </li>
+                </li><?php } ?>
               </ul>
             </div>
           </li>

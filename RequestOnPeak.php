@@ -233,6 +233,7 @@ if(isset($_POST['req'])){
                             </div>
                             
                             <input class="form-control" type="date" name="return_date" id="return_date">
+                            
                 </div>
 
 <br>
@@ -250,7 +251,7 @@ if(isset($_POST['req'])){
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Comment : </label>
-                        <textarea class="form-control" name="comment"  rows="3" id="comment"></textarea>
+                        <textarea class="form-control" name="comment"  rows="3" id="comment" placeholder="Use only Alphbet"></textarea>
                     </div>
 
 

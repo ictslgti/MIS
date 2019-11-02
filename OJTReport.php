@@ -4,6 +4,7 @@ $title ="Home | SLGTI";
  include_once("config.php");
  include_once("head.php");
  include_once("menu.php");
+ if($_SESSION['user_type']=='ADM'){
  ?>
  <!--END Don't CHANGE THE ORDER-->
 
@@ -12,7 +13,7 @@ $title ="Home | SLGTI";
  <?php 
 if(isset($_GET['delete'])){
   $student_id = $_GET['delete'];
-  $sql = "DELETE FROM `ojt` WHERE `student_id`=$student_id";
+  $sql = "DELETE FROM `manage_final_place` WHERE `student_id`=$student_id";
  if(mysqli_query($con ,$sql)){
      echo '
      <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -94,7 +95,7 @@ if(isset($_GET['delete'])){
 	                <tbody>
 	                    <?php 
                     $sql = "SELECT `student_id`, `student_name`, `department_name`,`requested_place`, `requested_address`, 
-                    `requested_district1`, `requested_district2`, `comment_1` FROM `ojt`";
+                    `requested_district1`, `requested_district2`, `comment_1` FROM `manage_final_place`";
                    $result = mysqli_query($con, $sql);
 
                     if(mysqli_num_rows($result)>0)
@@ -146,10 +147,10 @@ if(isset($_GET['delete'])){
 
 
 
-
     
 
 <!--END OF YOUR CODER-->
+                      <?php } ?>
 
   <!--START Don't CHANGE THE ORDER-->   
 <?php 
