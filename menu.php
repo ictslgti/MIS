@@ -375,25 +375,19 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="Library">Library Info</a>
+                  <a href="LibraryHome">Library Home</a>
                 </li>
                 <li>
                   <a href="AddBook">Add a Book</a>
-                </li>  
+                </li>
                 <li>
-                  <a href="AddBookCategory">Add a Category</a>
-                  <hr>
-                </li>  
-
+                  <a href="IssueBook">Issue a Book</a>
+                </li>
+                <li>
+                  <a href="ViewBooks">All Book</a>
+                </li>
                 <li>
                   <a href="IssuedBook">Issued Books Info</a>
-                </li>
-                <li>
-                  <a href="IssueBook">Issue a Book</a>
-                  <hr>
-                </li>
-                <li>
-                  <a href="IssueBook">Issue a Book</a>
                 </li>
               </ul>
             </div>
