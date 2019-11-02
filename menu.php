@@ -102,15 +102,15 @@ if($u_ta=='staff'){
                 <a  href="Course">Courses Info</a>
                 </li>
                 <li>
-                <a href="AddCourse">Add a Course
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?><a href="AddCourse">Add a Course<?php }?>
                 </a>
                 </li>
 
                 <li>
-                <a  href="Module">Modules Info</a>
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?><a  href="Module">Modules Info</a><?php }?>
                 </li>
                 <li>
-                <a href="addModule">Add a Module
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?><a href="addModule">Add a Module<?php }?>
                 </a>
                 </li>
 
