@@ -322,8 +322,7 @@ if(isset($_POST['Add'])){
     
 
 <!--END OF YOUR CODER-->
-<?php { ?>
-
+<?php } ?>
   <!--START Don't CHANGE THE ORDER-->   
 <?php 
  include_once("footer.php");
