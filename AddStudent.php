@@ -366,7 +366,7 @@ if(isset($_POST['Edit']))
           <select name="ayear" id="ayear" class="selectpicker show-tick" data-live-search="true" data-width="100%" value="<?php echo $year; ?>" required>
           <option selected disabled>--Academic Year--</option>
           <?php
-            $sql = "SELECT * FROM `academic` ORDER BY `academic_year`  DESC ";
+            echo $sql = "SELECT * FROM `academic` ORDER BY `academic_year`  DESC ";
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)){
