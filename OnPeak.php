@@ -84,8 +84,12 @@ if (mysqli_query($con, $sql)) {
             <div class="col">
                 <br>
                 <br>
-                <pre> Pending Requests </pre>
-                
+                <nav class="navbar navbar-light bg-light">
+                        <form class="form-inline">
+                        <div class="pr-5 pl-2 ml-auto text-info"> <h6> <strong> Pending Requests </strong> </h6> </div>
+                       </form>
+                </nav>
+                <br>
             </div>
         </div>
         
@@ -93,7 +97,7 @@ if (mysqli_query($con, $sql)) {
 
       <div class=row >
         <table class="table table-hover">
-            <thead>
+            <thead class="thead-dark">
                   <tr>
                     <th scope="col">REGISTRATION NO </th>
                     <th scope="col"> CONTACT NO </th>
@@ -157,11 +161,10 @@ if (mysqli_query($con, $sql)) {
                 <br>
                  <nav class="navbar navbar-light bg-light">
                         <form class="form-inline">
-                        <div class="pr-5 pl-2 ml-auto text-info">History</div>
+                        <div class="pr-5 pl-2 ml-auto text-info"> <h6> <strong>  History  </strong> </h6> </div>
                        
                         </form>
                 </nav>
-                <br>
                 <br>
             </div>
         </div>
@@ -177,14 +180,14 @@ if (mysqli_query($con, $sql)) {
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-thumbs-up"></i> Approved Onpeaks</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-thumbs-down"></i> Rejected onpeaks</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-thumbs-down"></i> Not Approved onpeaks</a>
   </li>
   
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  <table class="table table-responsive-sm">
+  <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
     <th scope="col">REGISTRATION NO</th>
@@ -372,7 +375,8 @@ else{
 
 
 
-
+<br>
+<br>
 
 
   <div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
@@ -385,21 +389,10 @@ else{
                         <form class="form-inline">
                         
                         <form method="GET">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input class="form-control mr-sm-2" type="search" placeholder="Registration No" aria-label="Search" name="sear">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="sea"><i class="fas fa-search"></i> </button>
-                          
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input class="form-control mr-sm-2" type="search" placeholder="Date" aria-label="Search" name="seard">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search_d"><i class="fas fa-search"></i></button>
-                        
-                        </form>
+                       </form>
                         </form>
                 </nav>
                 <br>
@@ -410,8 +403,8 @@ else{
         
 
       <div class=row >
-        <table class="table table-hover">
-            <thead>
+        <table class="table table-hover ">
+            <thead class="thead-dark">
                   <tr>
                     <th scope="col">REGISTRATION NO </th>
                     <th scope="col">REASON FOR EXIT</th>
