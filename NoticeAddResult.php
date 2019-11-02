@@ -19,7 +19,7 @@ include_once("menu.php");
 <hr>
 <br>
 <?PHP
-$department_id=$course_id=$module_id=$academic_year=$upload=$tid=null;
+$department_id=$course_id=$module_id=$academic_year=$tid=null;
 
 if(isset($_GET['edit']))
 
@@ -41,12 +41,16 @@ if(isset($_GET['edit']))
 
 }
 
+// Add coding
+
+
+
 
 
   ?>
 
 
-<!-- Add notice view design  -->
+<!-- Add timetable design  -->
 
 <form method="POST" action="" enctype="multipart/form-data">
 
@@ -165,14 +169,13 @@ if(isset($_GET['edit']))
 
        <?PHP 
 echo '<div class="btn-group-horizontal">';
-if(isset($_GET['edit']))
-    {
-      echo ' <button type="submit" value="Add" name="update" class="btn btn-primary mr-2"><i class="fas fa-user-edit">
-      </i>&nbsp;&nbsp;Edit</button>';
-      //echo '<button type="edit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>&nbsp;&nbsp;Refresh</button>';
 
-    }
+  if(isset($_GET['edit']))
+  {
+    echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+    echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+
+  }
   if(isset($_GET['delete']))
   {
     echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
@@ -191,13 +194,19 @@ if(isset($_GET['edit']))
 
 
 
+
+
+
+
+
+
+
+
   </div>
 </div>
 
 </form>
 <?php
-// Add coding
-
 if(isset($_POST['Add'])){
   if(!empty($_POST['department_id'])
   &&!empty($_POST['course_id'])
@@ -209,54 +218,7 @@ if(isset($_POST['Add'])){
       $module_id  =   $_POST['module_id'];
       $academic_year  =   $_POST['academic_year'];
 
-    
-      $t_name = "uploads/";
-      $name = $t_name . basename($_FILES["pdf"]["name"]);
-      $uploadOk = 1;
-      $imageFileType = strtolower(pathinfo($name,PATHINFO_EXTENSION));
-      // Check if image file is a actual image or fake image
-      if(isset($_POST["submit"])) {
-          $check = getimagesize($_FILES["pdf"]["tmp_name"]);
-          if($check !== false) {
-              echo "File is an image - " . $check["mime"] . ".";
-              $uploadOk = 1;
-          } else {
-              echo "File is not an image.";
-              $uploadOk = 0;
-          }
-      }
-      // Check if file already exists
-      if (file_exists($name)) {
-          echo "Sorry, file already exists.";
-          $uploadOk = 0;
-      }
-      // Check file size
-      if ($_FILES["pdf"]["size"] > 500000) {
-          echo "Sorry, your file is too large.";
-          $uploadOk = 0;
-      }
-      // Allow certain file formats
-      if($imageFileType != "pdf" && $imageFileType != "docx"  ) {
-          echo "Sorry, only  pdf & doc files are allowed.";
-          $uploadOk = 0;
-      }
-      // Check if $uploadOk is set to 0 by an error
-      if ($uploadOk == 0) {
-          echo "Sorry, your file was not uploaded.";
-      // if everything is ok, try to upload file
-      } else {
-          if (move_uploaded_file($_FILES["pdf"]["tmp_name"], $t_name)) {
-              echo "". basename( $_FILES["pdf"]["name"]). " has been uploaded.";
-          } else {
-              echo "Sorry, there was an error uploading your file.";
-          }
-      }
-      
-
-
-
-
-     /*$t_name = $_FILES["pdf"]["tmp_name"];
+     $t_name = $_FILES["pdf"]["tmp_name"];
      $name = basename($_FILES["pdf"]["name"]);
      $test_dir = './docs/result';
      move_uploaded_file($t_name, $test_dir.'/'.$name);
@@ -265,19 +227,22 @@ if(isset($_POST['Add'])){
       echo "Successfully uploaded";
      }else{
       echo "Not uploaded because of error #".$_FILES["ima"]["error"];
-     }*/
+     }
   
+
+
+
   
-     $sql = "INSERT INTO `notice_result` (`department_id`,`course_id`, `module_id` , `academic_year`,`upload`)
-      VALUES ('$department_id','$course_id','$module_id','$academic_year','$name')";
+     $sql = "INSERT INTO `notice_result` (`department_id`, `academic_year`,`course_id`, `module_id` ,`upload`)
+      VALUES ('$department_id','$academic_year','$course_id','$module_id','$name')";
    
       if (mysqli_query($con, $sql)) {
-       echo "record add";
+        echo "record add";
     
 
       } else {
          echo "Error: " . $sql .
-       "<br>" . 	mysqli_error($con);
+        "<br>" . 	mysqli_error($con);
       
         
 
@@ -285,8 +250,6 @@ if(isset($_POST['Add'])){
   }
 }
 
-
- 
 ?>
-   
+        
 <?php include_once("footer.php"); ?>
