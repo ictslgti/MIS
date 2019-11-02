@@ -116,9 +116,10 @@ if(isset($_POST['Add'])){
 
   
   <div class="form-group row"  >
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Department</label>
+ 
+    <label  label="Picnic"for="inputEmail3" class="col-sm-2 control-label">Department</label>
     <div class="col-sm-10"> 
-    <select required  id="inputState" class="selectpicker" data-live-search="true" <?php  if(isset($_POST['Add']) && empty($_POST['department_id']))
+    <select required class="selectpicker" multiple data-live-search="true" id="inputState" data-live-search="true" <?php  if(isset($_POST['Add']) && empty($_POST['department_id']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['department_id'])){echo ' is-valid';} ?>" id="department_id" name="department_id">
 
 
@@ -146,9 +147,9 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Course</label>
     <div class="col-sm-10">
-  <select id="inputState" class="selectpicker" data-live-search="true"  class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['course_id']))
+  <select id="inputState" class="selectpicker" multiple data-live-search="true"  class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['course_id']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['course_id'])){echo ' is-valid';} ?>"  id="course_id" name="course_id">
-        <option selected disabled required>Course</option>
+       
         <?php          
             $sql = "SELECT * FROM `course`";
             $result = mysqli_query($con, $sql);
@@ -169,9 +170,9 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Module</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="selectpicker" data-live-search="true"  class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['module_id']))
+    <select id="inputState" class="selectpicker" multiple data-live-search="true" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['module_id']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['module_id'])){echo ' is-valid';} ?>"  id="module_id" name="module_id">
-        <option selected disabled required >Module</option>
+        
         <?php          
             $sql = "SELECT * FROM `module`";
             $result = mysqli_query($con, $sql);
@@ -194,9 +195,9 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">AcademicYear</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="selectpicker" data-live-search="true"  class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['academic_year']))
+    <select id="inputState" class="selectpicker" multiple data-live-search="true"  class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['academic_year']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['academic_year'])){echo ' is-valid';} ?>"  id="academic_year" name="academic_year">
-        <option selected disabled required >AcademicYear</option>
+  
 
         <?php          
             $sql = "SELECT * FROM `academic`";
@@ -217,9 +218,9 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Lecture</label>
     <div class="col-sm-10"> 
-    <select id="inputState" class="selectpicker" data-live-search="true"  class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['staff_id']))
+    <select id="inputState" class="selectpicker" multiple data-live-search="true" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['staff_id']))
     {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['staff_id'])){echo ' is-valid';} ?>"  id="staff_id" name="staff_id">
-        <option selected disabled required >Lecture</option>
+       
 
         <?php          
             $sql = "SELECT * FROM `staff`";
@@ -324,9 +325,9 @@ if(isset($_POST['Add'])){
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">ClassRoom</label>
     <div class="col-sm-10"> 
-    <select name="classroom" class="selectpicker" data-live-search="true"  class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['classroom']))
+    <select name="classroom" class="selectpicker"multiple data-live-search="true"  class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['classroom']))
                   {echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['classroom'])){echo ' is-valid';} ?>" name="classroom">
-        <option selected disabled required >ClassRoom</option>
+        
 
         <option  value="LAP-01"
 
