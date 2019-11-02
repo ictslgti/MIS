@@ -11,7 +11,7 @@ include_once("menu.php");
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
 
-<form method="post">
+
 <div class="shadow  p-3 mb-1 bg-white rounded">
 	    <div class="highlight-blue col-md-12 col-sm-12">
 	        <h2 class="display-4 text-center  text-primary">Event  info list</h2>
@@ -104,7 +104,7 @@ include_once("menu.php");
 
 	                </tbody>
 	            </table>
-  </form>
+ 
 
 
 <!-- END YOUR CODER HERE -->
