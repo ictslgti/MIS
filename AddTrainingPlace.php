@@ -69,6 +69,7 @@ if(isset($_POST['Add'])){
 }
 ?>
 
+
 <!-- search coding -->
 <?php
  if(isset($_GET['edit'])) {
@@ -88,6 +89,7 @@ if(isset($_POST['Add'])){
       $ending=$row['ending'];
   }
 }
+
 
 
   

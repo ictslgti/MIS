@@ -47,7 +47,7 @@ $username=$_SESSION['user_name'];
 
 
 $sql="INSERT INTO `chat_group_member`( `chat_group_member`,`chat_group_id`)
-VALUES ('$username','5')";
+VALUES ('$username','4')";
  if(mysqli_query($con,$sql)){
 
 

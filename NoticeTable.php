@@ -103,6 +103,7 @@ include_once("menu.php");
                     
 
 	                </tbody>
+                    <a href="NoticeEventUpload.php"> back</a>
 	            </table>
 
 
