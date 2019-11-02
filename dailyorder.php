@@ -143,6 +143,8 @@ include_once("menu.php");
 </form>
 </div>
 
+
+
 <div class="col-3">
 
 <table class="table table-borderless">
@@ -152,12 +154,45 @@ include_once("menu.php");
 <th scope="col">Item QTY</th>
 
     </tr>
+    
+
   </thead>
-  <tbody>
-    <tr class="table-light" >
+ <?php
+   $sql_1 = null;
+  $sql='call food()';
+  $result=(mysqli_query($con,$sql));
+    while($row_y=mysqli_fetch_assoc($result)){
+      $ID=$row_y['food_id'];
+      
+      $sql_1 .="SELECT food_name,sum(`food_order_details_food_qty`) as total FROM `food_order_details`,food where `food_order_details_food_id`=food_id and food_id=$ID;";
+      $result_1 = mysqli_query($con, $sql_1);
+      var_dump($sql_1);
+      if (mysqli_num_rows($result)>0){
+
+      while ($row= mysqli_fetch_assoc($result_1)){
+        
+        
+        
+        $Fname=$row_y['food_name'];
+        $total=$row_y['total'];
+
+     
+
+     
+
+      echo '
+      <tr style="text-align:left";>
+       
+         
+          <td>'. $row["food_id"]."<br>".'</td>
    
-    </tr>
-  </tbody>
+          </tr>     
+      ';
+    }
+  }
+     
+  }
+ ?>
 </table>
 
 <input class="btn btn-primary" type="submit" name="search" value="Check"> 
