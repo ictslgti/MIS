@@ -151,7 +151,7 @@ if(isset($_POST["insert"]))
         }
         else
         {
-            echo "Course has been Completed";
+          echo "Course has been Completed";
         }
 
         ?>
