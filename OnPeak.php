@@ -443,9 +443,10 @@ else{
               </tbody>
               ';
               }
-                  } else {
-                      echo "No more Requests";
-                  }
+              else {
+                echo "No more Requests";
+            }
+                  } 
 
               
               

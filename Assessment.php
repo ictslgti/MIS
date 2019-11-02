@@ -25,15 +25,21 @@ $title = "Examinations | SLGTI";
                 <h3 class="display-5 text-center">Overall Module Marks</h3>
             </div>
             <div class="col">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Student's Index Number"
-                        aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button"
-                            id="button-addon2">&nbsp;&nbsp;&nbsp;<i
-                                class="fas fa-search"></i>&nbsp;&nbsp;&nbsp;Search&nbsp;&nbsp;&nbsp;</button>
-                    </div>
-                </div>
+            <form method="GET">
+                    <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Student's Index Number"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit"
+                                    id="button-addon2" name="search">&nbsp;&nbsp;&nbsp;<i class="fas fa-search"></i>&nbsp;&nbsp;&nbsp;Search&nbsp;&nbsp;&nbsp;</button>
+                            </div>
+                        </div>
+
+
+
+            </form>
+        
+                
             </div>
         </div>
 
@@ -60,6 +66,46 @@ $title = "Examinations | SLGTI";
     </tr>
   </thead>
   <tbody>
+
+    <?php
+
+    if (isset($_GET['search'])) {
+        # code...
+        $id= $_GET['search'];
+
+        $sql = "SELECT * FROM `assessment_results` WHERE `student_id`='$id'";
+        $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+              $result = mysqli_query($con, $sql);
+              if (mysqli_num_rows($result)>0) {
+                  # code...
+                  while ($row =mysqli_fetch_assoc($result)) {
+                      # code...
+                      echo '<tr>
+                      <th scope="row">'. $row["student_id"].'</th>
+                      <td>'. $row["student_name"].'</td>
+                      <td>'. $row["module_id"].'</td>
+                      <td>'. $row["assessment_id"].'</td>
+                      <td>'. $row["assessment_marks"].'</td>
+                      
+                      
+                      
+                      
+                      </tr>';
+                  }
+                  
+              }
+
+              else{
+                echo "No more Requests";
+            }
+
+
+
+    }
+
+
+
+    ?>
 
 
 
