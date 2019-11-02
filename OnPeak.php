@@ -422,6 +422,7 @@ else{
                $id= $_GET['sear'];
                
               $sql = "SELECT * FROM `onpeak_request` WHERE `student_id`='$id' ";
+              $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
               $result = mysqli_query($con, $sql);
               if (mysqli_num_rows($result) > 0) {
               while($row = mysqli_fetch_assoc($result)) {
