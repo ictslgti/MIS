@@ -16,7 +16,7 @@ include_once("menu.php");
                     <div class="card text-white bg-primary mb-3 mt-5" style="max-width: 18rem;">
                         <div class="card-header">
                             <div class="row">
-                            <div class="col-6"> <h5>TIMETABLE </h5> </div>
+                            <div class="col-6" data-toggle="tooltip" data-placement="top" title="Tooltip on top"> <h5>TIMETABLE </h5> </div>
                             <div class="col-3"></div>
                             <div class="col-3"> <h2> <i class="fas fa-edit"></i>  </h2> </div>
                             </div>
@@ -51,8 +51,8 @@ include_once("menu.php");
                 
                     <div class="list-group">
                         <form action="NoticeEventView" method="POST">   
-                            <input type="submit"  name='evName' value='AwardingCeremony' class="btn btn-success"><br> <a href="NoticeEventView.php?id='AwardingCeremony'"></a>
-                            <input type="submit"  name='evName' value='Celebration' class="btn btn-success"><br><a href="NoticeEventView.php?id='SportMeet'" ></a>
+                            <input type="submit"  name='evName' value='AwardingCeremony' class="btn btn-success"><br> 
+                            <input type="submit"  name='evName' value='Celebration' class="btn btn-success"><br>
                             
                         </form>
                         <form action="" method="POST">   
