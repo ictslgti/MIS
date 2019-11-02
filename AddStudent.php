@@ -22,7 +22,7 @@ include_once("menu.php");
 //echo $_SESSION['user_name'];  
 $stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $mode =
 $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = null;
-$stid = $_SESSION['user_name'];
+//$stid = $_SESSION['user_name'];
 // edit
 if(isset($_GET['edit']))
 {
@@ -60,7 +60,7 @@ if(isset($_GET['edit']))
     $erelation = $row['student_em_relation'];
     $coid = $row['course_id'];
     $mode = $row['course_mode'];
-    echo $year = $row['academic_year'];
+    $year = $row['academic_year'];
     $enstatus =$row['student_enroll_status'];
     $enroll = $row['student_enroll_date'];
     $exit = $row['student_enroll_exit_date'];
@@ -327,8 +327,7 @@ if(isset($_POST['Edit']))
          <h1 style="text-align:center"> STUDENTS' REGISTRATION FORM </h1>
          <h5 style="text-align:center"> SRI LANKA GERMAN TRAINING INSTITUTE</h5>
      </div>
-</div><br><br>
-
+</div><br>
 
 <div class="container">
 <form class="needs-validation" action="" method="POST">
@@ -398,29 +397,29 @@ if(isset($_POST['Edit']))
         <div class="col-md-3 mb-3">
           <label for="sid">Student ID:</label>
           <input type="text" class="form-control" name="sid" value="
-           <?php echo $stid; 
-          // if(isset($_GET['edit']))
-          // {
-          //   echo $stid; 
-          // }
-          // else if((isset($_GET['ayear'])) && (isset($_GET['coid'])))
-          // {
-          //   //$year =$_GET['ayear'];
-          //   $coid =$_GET['coid'];
+           <?php //echo $stid; 
+          if(isset($_GET['edit']))
+          {
+            echo $stid; 
+          }
+          else if((isset($_GET['ayear'])) && (isset($_GET['coid'])))
+          {
+            $year =$_GET['ayear'];
+            $coid =$_GET['coid'];
             
-          //   $Sql="select Student_id from student_enroll where course_id='$coid' and academic_year='$year'";
-          //   $result = mysqli_query($con,$sql);
+            $Sql="SELECT MAX(student_id) from student_enroll where `course_id`='$coid' and`academic_year`='$year' ORDER by student_id ASC";
+            $result = mysqli_query($con,$sql);
 
-          //   if(mysqli_num_rows($result)==1)
-          //   {
-          //     $row =mysqli_fetch_assoc($result);
-          //     $stid = $row['student_id'];
-          //   }
-          //   else
-          //   {
-          //     $stid = $row['student_id'];
-          //   }
-          // }
+            if(mysqli_num_rows($result)==1)
+            {
+              $row =mysqli_fetch_assoc($result);
+              $stid = $row['student_id'];
+            }
+            else
+            {
+              $stid = $row['student_id'];
+            }
+          }
           ?>" id="sid" required>
         </div>
 
