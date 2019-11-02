@@ -41,8 +41,8 @@ if($u_ta=='staff'){
           </span>
           <span class="user-role"><?php echo $_SESSION['user_type'];?> | <?php echo $_SESSION['department_code'];?> </span>
           <span class="user-status">
-            <i class="fa fa-circle"></i>
-            <span>Online</span>
+            <i class="fa fa-user"></i>
+            <span><a href="<?php if($_SESSION['user_type']=='STU'){echo 'Student_profile';}else{echo 'Profile';}  ?>">Profile</a></span>
           </span>
         </div>
       </div>
@@ -529,7 +529,7 @@ if($u_ta=='staff'){
         <i class="fab fa-facebook-messenger"></i>
         <span class="badge badge-pill badge-success notification">7</span>
       </a>
-      <a href="#">
+      <a href="<?php if($_SESSION['user_type']=='STU'){echo 'Student_profile';}else{echo 'Profile';}  ?>">
         <i class="fa fa-cog"></i>
         <span class="badge-sonar"></span>
       </a>
