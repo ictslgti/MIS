@@ -181,7 +181,7 @@ if($u_ta=='staff'){
                 <li>
                   <a href="Notice">Notice Info</a>
                 </li>
-                <?php if($_SESSION['user_type']!='STU'){ ?>
+                
                 <li>
                   <a href="AddNotice">Add a Notice</a>
                 </li>
