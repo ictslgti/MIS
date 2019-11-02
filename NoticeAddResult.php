@@ -19,7 +19,7 @@ include_once("menu.php");
 <hr>
 <br>
 <?PHP
-$department_id=$course_id=$module_id=$academic_year=$tid=null;
+$department_id=$course_id=$module_id=$academic_year=$upload=$tid=null;
 
 if(isset($_GET['edit']))
 
@@ -46,7 +46,7 @@ if(isset($_GET['edit']))
   ?>
 
 
-<!-- Add timetable design  -->
+<!-- Add notice view design  -->
 
 <form method="POST" action="" enctype="multipart/form-data">
 
@@ -272,12 +272,12 @@ if(isset($_POST['Add'])){
       VALUES ('$department_id','$course_id','$module_id','$academic_year','$name')";
    
       if (mysqli_query($con, $sql)) {
-        echo "record add";
+       echo "record add";
     
 
       } else {
          echo "Error: " . $sql .
-        "<br>" . 	mysqli_error($con);
+       "<br>" . 	mysqli_error($con);
       
         
 
