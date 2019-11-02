@@ -66,7 +66,7 @@ $title ="Home | SLGTI";
                                     <td>'. $row["ending"] .  "<br>" .'</td>
                                      
                                     <td> 
-                                    
+                                
 
                                     <a href="OJTReport.php ?student_id='.$row["student_id"].' " class="btn btn-sm btn-primary btn-icon-split"> <span class="text">Reqs</span> </a>
 
