@@ -408,23 +408,23 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li>
+                <li><?php if($_SESSION['user_type']!='STU'){ ?>
                   <a href="FoodItems">Food Items</a>
-                </li>
-                <li>
+                </li> <?php } ?>
+                <li><?php if($_SESSION['user_type']!='STU'){ ?>
                   <a href="AddFoodItem">Add a Food Item</a>
                   <hr>
-                </li>              
+                </li>  <?php } ?>             
                 <li>
                   <a href="FoodOrders">Food Orders</a>
                   <hr>
                 </li>
-                <li>
+                <li> <?php if($_SESSION['user_type']!='STU'){ ?>
                   <a href="CanteenReport">Daily Report</a>
-                </li>
-                <li>
+                </li> <?php } ?> 
+                <li><?php if($_SESSION['user_type']!='STU'){ ?>
                   <a href="dailyorder">Daily Orders</a>
-                </li>
+                </li> <?php } ?>
               </ul>
             </div>
           </li>
