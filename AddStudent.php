@@ -33,6 +33,7 @@ if(isset($_GET['edit']))
   `student_enroll_status` FROM `student` s INNER join student_enroll e on s.student_id=e.student_id and `student_enroll_status`='Following' and s.`student_id`='$stid'";
   $result = mysqli_query($con,$sql);
 
+  echo 'academic_year'.$row['academic_year'];
   if(mysqli_num_rows($result)==1)
   {
    // echo"success";
@@ -59,7 +60,7 @@ if(isset($_GET['edit']))
     $erelation = $row['student_em_relation'];
     $coid = $row['course_id'];
     $mode = $row['course_mode'];
-    $year = $row['academic_year'];
+    echo $year = $row['academic_year'];
     $enstatus =$row['student_enroll_status'];
     $enroll = $row['student_enroll_date'];
     $exit = $row['student_enroll_exit_date'];
@@ -366,7 +367,7 @@ if(isset($_POST['Edit']))
           <select name="ayear" id="ayear" class="selectpicker show-tick" data-live-search="true" data-width="100%" value="<?php echo $year; ?>" required>
           <option selected disabled>--Academic Year--</option>
           <?php
-            echo $sql = "SELECT * FROM `academic` ORDER BY `academic_year`  DESC ";
+            $sql = "SELECT * FROM `academic` ORDER BY `academic_year` DESC ";
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)){
@@ -397,30 +398,30 @@ if(isset($_POST['Edit']))
         <div class="col-md-3 mb-3">
           <label for="sid">Student ID:</label>
           <input type="text" class="form-control" name="sid" value="
-          <?php 
-          if(isset($_GET['edit']))
-          {
-            echo $stid; 
-          }
-          else if((isset($_GET['ayear'])) && (isset($_GET['coid'])))
-          {
-            $year =$_GET['ayear'];
-            $coid =$_GET['coid'];
+           <?php echo $stid; 
+          // if(isset($_GET['edit']))
+          // {
+          //   echo $stid; 
+          // }
+          // else if((isset($_GET['ayear'])) && (isset($_GET['coid'])))
+          // {
+          //   //$year =$_GET['ayear'];
+          //   $coid =$_GET['coid'];
             
-            $Sql="select Student_id from student_enroll where course_id='$coid' and academic_year='$year'";
-            $result = mysqli_query($con,$sql);
+          //   $Sql="select Student_id from student_enroll where course_id='$coid' and academic_year='$year'";
+          //   $result = mysqli_query($con,$sql);
 
-            if(mysqli_num_rows($result)==1)
-            {
-              $row =mysqli_fetch_assoc($result);
-              $stid = $row['student_id'];
-            }
-            else
-            {
-              $stid = $row['student_id'];
-            }
-          }
-          ?>" id="sid"   required>
+          //   if(mysqli_num_rows($result)==1)
+          //   {
+          //     $row =mysqli_fetch_assoc($result);
+          //     $stid = $row['student_id'];
+          //   }
+          //   else
+          //   {
+          //     $stid = $row['student_id'];
+          //   }
+          // }
+          ?>" id="sid"   required> -->
         </div>
 
         <div class="col-md-3 mb-3">
@@ -794,5 +795,5 @@ echo '</div>';
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->
 <?php 
-include_once("FOOTER.PHP"); 
+include_once("footer.php"); 
 ?>
