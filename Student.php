@@ -18,8 +18,9 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <!-- form start---->
-
-
+<?php
+$stid = $_SESSION['user_name'];
+?>
 <br>
 <h1 style="text-align:center"> SLGTI STUDENTS' INFORMATION </h1>
 <br><br>
@@ -70,7 +71,7 @@ include_once("menu.php");
           <td>'. $row["student_address"]."<br>".'</td>
           <td>
           <a href="AddStudent.php?edit='.$row["student_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
-          <a href="?Student_Id='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
+          <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
           </td>
        </tr> ';
      }
