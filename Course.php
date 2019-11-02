@@ -18,7 +18,6 @@ include_once ("menu.php");
 	        <!-- <p class="text-center"></p> -->
 	    </div>
 	</div>
-
     <div class="row">
     <div class="col-sm-8"></div>
 	<div class="col-sm-4">
@@ -26,7 +25,6 @@ include_once ("menu.php");
     </form><br>
     </div>
     </div>
-
 	<div class="row">
 	    <div class="col-md-12 col-sm-12">
 	        <div class="table-responsive table-responsive-sm">
