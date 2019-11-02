@@ -129,7 +129,7 @@
                </thead>
                <tbody id="BookData">
                <?php
-               include_once("getViewBooksData.php");
+               include_once("controller/getViewBooksData.php");
                ?>
                <tbody>             
           </table>
