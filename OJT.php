@@ -11,7 +11,6 @@ $title ="Home | SLGTI";
  <!--START YOUR CODER HERE-->
 
 
-
 <div class="shadow  p-3 mb-1 bg-white rounded">
 	    <div class="highlight-blue">
 	        <h1 class="display-4 text-center">Student's Final Training Place Details</h1>

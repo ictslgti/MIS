@@ -220,6 +220,7 @@ if(isset($_POST['Add'])){
 
                     <button type="submit" class="btn btn-outline-danger" onclick="location.href='index.php'" >&nbsp;&nbsp;cancel</button>
                    
+                   
                     
                 </form>
 
