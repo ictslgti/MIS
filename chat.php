@@ -39,17 +39,37 @@ function time_elapsed_string($datetime, $full = false) {
 ?>
 
 
+<?php
+$chat_group_member_id= $chat_group_member= $chat_group_id= null;
+if(isset($_GET['Yes'])){
+  
+$username=$_SESSION['user_name'];
+
+
+$sql="INSERT INTO `chat_group_member`( `chat_group_member`,`chat_group_id`)
+VALUES ('$username','4')";
+ if(mysqli_query($con,$sql)){
+
+
+}
+
+}
+else{
+echo "Error".$sql."<br>".mysqli_error($con);
+}
+
+?>
 
 
 <div class="row">
-<div class="col-6">
-<div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+<div class="col-7">
 
 
-<div class="my-3 p-3 bg-white rounded shadow-sm">
-                <h5 class=" border-gray pb-2 mb-0">Messages</h5>
+
+<div class="card-body p-4 mb-2 bg-primary text-white rounded">
+                <h5 class=" border-white pb-2 mb-0">Messages</h5><i class="fas fa-exclamation-circle float-right" >&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fas fa-phone float-right" >&nbsp;&nbsp;&nbsp;&nbsp;</i><i class="fas fa-video float-right">&nbsp;&nbsp;&nbsp;&nbsp;</i>
 </div>
-</div>
+
 <?php
 
 if(isset($_GET['chat_group'])){              
@@ -89,14 +109,18 @@ if(isset($_GET['chat_group'])){
   }
 }
 ?>
+<div class="card bg-white" >
+
+
+
     <div class="card-body">
                 <div class="d-flex mt-1">
                 <form method="POST"z>
-                    <textarea name="typeMessage" dir="auto" data-region="send-message-txt" class="form-control bg-light" rows="3"
+                    <textarea name="typeMessage" style="width: 40rem;"  dir="auto" data-region="send-message-txt" class=" form-control  bg-white" rows="3"
                         data-auto-rows="" data-min-rows="3" data-max-rows="5" role="textbox"
                         aria-label="Write a message..." placeholder="Write a message..."
                         style="resize: none" id="chatBox"></textarea>
-                        <button type="submit" name="send" class="btn btn-info mt-2 float-right" onclick="sendStatus()">SEND</button>
+                        <button type="submit" name="send" class="btn btn-info mt-2 float-right "  onclick="sendStatus()">SEND</button>
                         
                         </form>
                         
@@ -106,7 +130,7 @@ if(isset($_GET['chat_group'])){
             </div>
             
 
-
+</div>
 
     <?php
     if(isset($_POST['send'])){
@@ -140,20 +164,18 @@ if(isset($_GET['chat_group'])){
 
 
 
-<div class="col-6">
-<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
 
-<div class="card-body p-3 mb-2 bg-dark text-white">
-<p class="card-text ">
-<form class="form-inline md-form form-sm mt-4" method="">
-<input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search"aria-label="Search" id="search">
-<i class="fas fa-search ml-3" aria-hidden="true"></i>
+<div class="col-5">
+
+
+<div class="card-body p-3 mb-2 bg-primary text-white rounded">
+<p class="card-text folat-right "><h5>Group</h5>
 
 
 
 </form>
 
-</div>
+
 </div>
 <!-- <button type="button" name="Join"  class="btn text-dark float-right" data-toggle="modal" data-target="#exampleModal">
 Join </button> -->
@@ -204,8 +226,8 @@ $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)> 0){
     while ($row = mysqli_fetch_assoc($result)){
       
-        echo'<i class="fas fa-user-circle"></i> <button type="button" name="Join"  class="btn text-dark float-right" data-toggle="modal" data-target="#exampleModal">
-        Join </button><a href="?chat_group='.$row ["chat_group_id"].'" onclick="changeTextFD()">
+        echo'<i class="fas fa-user-circle"></i> <button type="button " name="Join"  class="btn text-white btn-sm float-right bg-secondary" data-toggle="modal" data-target="#exampleModal">
+        <i class="fas fa-user-plus"></i> </button><a href="?chat_group='.$row ["chat_group_id"].'" onclick="changeTextFD()">
         <tr> 
        
         <td>' . $row ["chat_group_name"].'</td>
@@ -249,20 +271,15 @@ echo "0 results";
 
       <div class="modal-body">
      <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">full name</label>
-    <input type="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your name with anyone else.</small>
-
-      </div>
+  <h5>Do you want to join this group</h5>
       
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="submit" name="Yes" class="btn btn-primary">Yes</button>
       </div>
-    </div>
+    
   </div>
-</div>
+
 
 
 

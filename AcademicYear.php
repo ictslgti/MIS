@@ -9,7 +9,7 @@ include_once("menu.php");
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
-<div class="shadow  p-3 mb-5 bg-white rounded">
+<div class="shadow p-3 mb-5  alert bg-dark rounded  text-white text-center" role="alert">
 
         <div class="highlight-blue">
             <div class="container">
@@ -45,6 +45,20 @@ include_once("menu.php");
       </tr>
       <?php
 
+if(isset($_GET['delete'])){
+    $academic_year = $_GET['delete'];
+    $sql = "DELETE FROM `academic` WHERE `academic_year` = '$academic_year'";
+    
+    if (mysqli_query($con, $sql)){
+        echo '<a class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
+    }else{
+        echo "Error deleting record:" . mysqli_error($con);
+    }
+}
+
+?>
+      <?php
+
 $sql = "call academic() ";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result)>0){
@@ -78,20 +92,7 @@ echo "0 results";
   </form>
 </table>
 </div>
-<?php
 
-if(isset($_GET['delete'])){
-    $academic_year = $_GET['delete'];
-    $sql = "DELETE FROM `academic` WHERE `academic_year` = '$academic_year'";
-    
-    if (mysqli_query($con, $sql)){
-        echo '<a class = "text-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></a>';
-    }else{
-        echo "Error deleting record:" . mysqli_error($con);
-    }
-}
-
-?>
 <!-- END YOUR CODER HERE -->
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->

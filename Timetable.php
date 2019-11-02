@@ -103,10 +103,6 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
 
 
 
-<label>Show Entries <select name="dtHorizontalVerticalExample_length"
- aria-controls="dtHorizontalVerticalExample" class="custom-select custom-select-sm form-control form-control-sm">
-    <option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label>
-
 
 <?php
 
@@ -226,22 +222,17 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
 
                 </tbody>
             </table>
+    
         </div>
     </div>
 </div>
-<ul class="pagination"><li class="paginate_button page-item previous disabled" id="dtHorizontalExample_previous">
-    <a href="#" aria-controls="dtHorizontalExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active">
-        <a href="#" aria-controls="dtHorizontalExample" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-    </li><li class="paginate_button page-item next disabled" id="dtHorizontalExample_next">
-    <a href="#" aria-controls="dtHorizontalExample" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul>
 
-    <td>
          
-    <!-- <td>
-          <a href="AddTimetable.php? edit='.$row["department_id"].'"> Edit </a> |
-          <a href="?Student_Id='.$row["department_id"].'"> View More
+  
+<a href="AddTimetable.php" class="btn btn-primary ">View</a> 
+         
           </td>     
-         </td> -->
+     
         
 <script>
 

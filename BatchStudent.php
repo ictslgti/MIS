@@ -8,7 +8,7 @@ include_once("menu.php");
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
-<div class="shadow p-3 mb-5 bg-white rounded">
+<div class="shadow p-3 mb-5  alert bg-dark rounded  text-white text-center" role="alert">
 
         <div class="highlight-blue">
             <div class="container">
@@ -34,7 +34,7 @@ include_once("menu.php");
       <th scope="col">Student Name</th>
       <th scope="col">Enroll Date</th>
       <th scope="col">Status</th>
-      <th scope="col">Profile</th>
+      <!-- <th scope="col">Profile</th> -->
 
      
       <!-- cid=5IT&ay=2017/2018 -->
@@ -72,8 +72,8 @@ if (mysqli_num_rows($result)>0){
         <td>' . $row ["student_enroll_date"].'</td>
         <td>' . $row ["student_enroll_status"].'</td>
       
-        <td>
-        <a href="Student" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-file-alt">&nbsp;&nbsp;View</i></a>
+       
+        
         
     </td>
     
@@ -87,7 +87,8 @@ echo "0 results";
 
 }
 ?>
-     
+     <!-- <td> -->
+     <!-- <a href="Student.php?S_Id='.$row["student_id"].'" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-file-alt">&nbsp;&nbsp;View</i></a> -->
       <!-- <td>2018/ICT/5IT/15</td>
       <td>N.Abdullah</td>
         <td>2018.10.15 </td> 

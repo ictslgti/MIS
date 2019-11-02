@@ -10,6 +10,7 @@ $title = "Home | SLGTI";
 //  $user_type = $_SESSION['user_type'];
 //  echo $department_id = $_SESSION['department_code'];
 //  if($user_type == 'ADM'){
+    if($_SESSION['user_type']=='STU' ){
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
 
@@ -72,7 +73,7 @@ $title = "Home | SLGTI";
             if (mysqli_query($con, $sql)) {
                 echo '
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>  New record Updated </strong>
+                <strong> <h5>  Your Request is Update Successfully </h5> </strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -80,8 +81,16 @@ $title = "Home | SLGTI";
                 ';
                 //echo " New record Updated";
             } else {
-                 echo " Error : ". $sql . 
-                "<br>" . mysqli_error($con);
+                 //echo " Error : ". $sql . 
+                //"<br>" . mysqli_error($con);
+                echo '  
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong> <h5> Fill out the empty Field then update the request </h5> </strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                ' ;
             }
      }
 
@@ -94,7 +103,6 @@ $title = "Home | SLGTI";
 <div class="row border border-light shadow p-3 mb-5 bg-white rounded">
           <div class="col">
           <br>
-          <br>
             <blockquote class="blockquote text-center">
                 <div class="alert alert-warning" role="alert">
                    <strong> Onpeak Request Update View </strong>
@@ -106,14 +114,11 @@ $title = "Home | SLGTI";
 <!-- card start here-->
 
 <div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
-<br>    
-<div class="table container">    
-    <div class="container">
-   
-        <div class="intro">
+<div class="container">
+<div class="row no-gutters">
 
-        
-
+            <div class="col-12 col-sm-6 col-md-8">
+            <div class="intro">
 <br>
 
                 <div class="input-group mb-3">
@@ -225,12 +230,12 @@ $title = "Home | SLGTI";
                     </div>
 
 
-<br>
+
         
                     <div class=row>
                         <div class="col">
                             <blockquote class="blockquote text-center">
-                                <p class="mb-0">I have read and understand the terms and conditions. I have agreed by the abide by the rules and regulations of SLGTI.</p>
+                                <p> I have read and understand the terms and conditions. I have agreed by the abide by the rules and regulations of SLGTI.</p>
                             </blockquote>
                         </div>
                     </div>
@@ -260,25 +265,60 @@ $title = "Home | SLGTI";
                     <div class="row">
                         <div class="col">
                             <div class="mx-auto" style="width: 200px;">
-                                <a href= "RequestOnPeak.php"> back </a>
+                               <strong> <a href= "RequestOnPeak.php"> 
+                               <!-- <button type="submit" class="btn btn-secondary" name="back">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrow-circle-left"></i> 
+                                &nbsp;&nbsp;&nbsp;back&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button> --> <h6> <<<<<< back <<<<<<< </h6> </a>
+                                </strong>
                             </div>
                         </div>
                     </div>
 
+            </div>
+            </div>
 
-       
-               
 
+
+                    <div class="col-6 col-md-4 ">
+                    <div class="table container  "> 
+                    <div class="container ">
+                    <div class="row mx-auto " >
+          
+                        <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;" >
+                            <div class="card-body">
+                                <h5 class="card-title">Leave of Absence </h5>
+                                <p class="card-text">A LOA is an extended period of time off from their studies. 
+                                 there may be a formal process you need to follow to get approved for a leave.</p>
+                            </div>
+                        </div>
+          
+
+          
+                        <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Time Schedule</h5>
+                                <p class="card-text">This form must be submitted to the guards, when students wants to exit SLGTI during scgool hours/ on peak (8.15 am- 4.15 pm)</p>
+                            </div>
+                        </div>
+          
+
+          
+                        <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Jurisdiction of the Code</h5>
+                                <p class="card-text">Please note that students fail within the jurisdiction of the code of conduct and honor for off-campus conduct.</p>
+                            </div>
+                        </div>
+          
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
+
+</div>   
 </div>
-</div>
-</div>
-</div>
-
-
-
-
-   
-</div>
+<br>
+<br>
 </div>
 </form>
 
@@ -288,7 +328,7 @@ $title = "Home | SLGTI";
 
 
 <!--END OF YOUR COD-->
- <!-- <?php //} ?> -->
+<?php } ?> 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->  

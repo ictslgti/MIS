@@ -4,6 +4,8 @@ $title = "Home | SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
+
+ if($_SESSION['user_type']=='ACC'){ 
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
@@ -15,24 +17,64 @@ include_once("menu.php");
   <h1 class="text-center display-3">SLGTI Payment Information</h1><br>
   </div>
   </body>
-  <br>
-	<!-- <?php
-  include_once("config.php");
-if(isset($_GET['delete'])){
-    $module_id=$_GET['delete'];
-    $sql="DELETE FROM `module` WHERE `module_id`=$module_id";
-    if (mysqli_query($con,$sql)){
-        echo" your delete data";
-    }
-    else{ echo"error delete record:".mysqli_error($con);
-    }
+
+ <?php
+ $payment_type=$payment_reason=null;
+ if(isset($_POST['Add'])){
+    echo $payment_type=$_POST['payment_reason'];
+    echo $payment_reason=$_POST['payment_type'];
+    $sql="INSERT INTO `payment` (`payment_reason`, `payment_type`) VALUES ('$payment_reason', '$payment_type')";
+    if(mysqli_query($con,$sql)){
+        echo '
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>'.$payment_type.'</strong> <h6 class="text-center display-3">Add</h6> 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>    
+        ';
+      }
+      else{
+        
+        echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$payment_type.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
+
+
+      }
+    
 }
-?>  -->
+?>
+  <form method="POST" action="#">
+  <div class="form-group col-md-4"><h4><i class="fas fa-folder-plus"></i>&nbsp;
+                        <label for="inputEmail4">Add Payment Type</label></h4>
+                        <input type="Department" 
+                            class="form-control" id="
+                            inputEmail4" placeholder="Typing Very Carefully" name="payment_reason">
+                    </div>
 
+                    <div class="form-group col-md-4"><h4><i class="fas fa-folder-plus"></i>&nbsp;
+                        <label for="inputEmail4">Add Payment Reason</label></h4>
+                        <input type="Department" 
+                            class="form-control" id="
+                            inputEmail4" placeholder="Typing Very Carefully" name="payment_type">
+                            <br>
+                            <button type="submit"name="Add" value="Add" class="btn btn-outline-warning">ADD+</button>
+                    </div>
+                    
+  </form>
+  <br>
+	
 
-
-
-<table class="table">
+<div class="row">
+    <div class="col-sm-12">
+    <table class="table">
 
     <tr>
         <th>PAYMENT ID</th>
@@ -51,14 +93,7 @@ if(isset($_GET['delete'])){
 
 
 <?php 
-// $sql="SELECT`module`.`moudule_id` AS `moudule_id`,
-// `course`.`course_name` AS `course_name`,
-// `module`.`moudule_code` AS `moudule_code`,
-// `module`.`moudule_name` AS `moudule_name`,
 
-// "
-
-// $sql="SELECT * FROM `pays` ORDER BY `pays_id` DESC";//SELECT * FROM `department`
 $sql="CALL `getin`()";
 $result=mysqli_query($con,$sql);
 if(mysqli_num_rows($result)>0){
@@ -78,10 +113,7 @@ if(mysqli_num_rows($result)>0){
         
         </tr>';
 
-        // "id:".$row['department_id'].
-        // "code:".$row['department_code'].
-        // "name:".$row['department_name'].
-        // "<br>";
+        
     }
 }else{
     $result=0;
@@ -89,14 +121,41 @@ if(mysqli_num_rows($result)>0){
 
 ?>
 
-
 </table>
+    </div>
+    <div class="col-sm-6">
 
+    <table class="table">
 
-            
+    <tr>
+        <th>payment_reason</th>
+        <th>payment_type</th>
+    </tr>
+
+<?php 
+
+$sql="SELECT * FROM `payment`";
+$result=mysqli_query($con,$sql);
+if(mysqli_num_rows($result)>0){
+    while($row=mysqli_fetch_assoc($result)){
+        echo'
+        <tr>
+        <td>'.$row['payment_reason'].'</td>
+        <td>'.$row['payment_type'].'</td>
+         </tr>';
+
+    }
+}else{
+    $result=0;
+}
+
+?>
+</table>
+    </div>
+  </div>
 
 <!--END OF YOUR COD-->
-
+<?php } ?>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->

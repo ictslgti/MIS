@@ -9,7 +9,7 @@ include_once("menu.php");
 <!-- END DON'T CHANGE THE ORDER -->
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
-<div class="shadow  p-3 mb-5 bg-white rounded">
+<div class="shadow p-3 mb-5  alert bg-dark rounded  text-white text-center" role="alert">
 
         <div class="highlight-blue">
             <div class="container">
@@ -119,8 +119,10 @@ if(isset($_POST['Edit'])){
 <div class ="col-6"><label for="Duration-Institute Training">Second Semester End Date</label><input class="form-control" type = "date" name= "second_semi_end_date" value ="<?php echo $second_semi_end_date;?>" placeholder="Second Semester End Date" required></div>
 <br><br>
 </div>
+<br>
 <?php
 if(isset($_GET['edit'])){
+    
     echo '<input type = "submit" value="Edit" name="Edit"<a href="" class="btn btn-sm btn-success" role="button" aria-pressed="true"></a> '; 
     echo '<a href="AcademicYear" class="btn btn-sm btn-primary" role="button" aria-pressed="true">Back</a>';
 }else{

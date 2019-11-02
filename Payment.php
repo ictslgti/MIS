@@ -3,6 +3,7 @@ $title="payment |SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
+ if($_SESSION['user_type']=='ACC'){ 
 ?>
 <!-- dont change -->
 
@@ -18,6 +19,7 @@ $student_id=$student_name=$student_profile_img =$payment_id=$pays_reason=$paymen
 
 
 if(isset($_POST['Add'])){
+    
 
 //   if(!empty($_POST['student_id'])
 //   && !empty($_POST['student_name'])
@@ -50,7 +52,7 @@ if(isset($_POST['Add'])){
 if(mysqli_query($con,$sql)){
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$student_name.'</strong> <h4 class="text-center display-3">PAID</h4> 
+          <strong>'.$student_id.'</strong> <h4 class="text-center display-3">PAID</h4> 
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -61,7 +63,7 @@ if(mysqli_query($con,$sql)){
         
         echo '
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>'.$student_name.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <strong>'.$student_id.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -106,30 +108,29 @@ if(isset($_POST['edit'])){
 
 <br>
     <div class="row ">
-        <div class="col-sm-6"> </div>
-        <div class="col-sm-0"> </div>
-        <div class="col-sm-6 " >
+    <div class="col-sm-8"></div>
+        <div class="col-sm-4">
+        <!-- <div class="col-sm-2"> </div>
+        <div class="col-sm-4" > -->
 
             <form method="POST" action="#" class="form-inline"> 
-                <div class="input-group   ">
+                <div class="input-group  ">
                     <div class="input-group-prepend ">
                         <div class="input-group-text "><i class="fas fa-user"></i></div>
                     </div>
-                    <input type="text" class="form-control" name="edit" placeholder=" Student Username">
+                    <div class="">
+                    <input type="text" class="form-control" name="edit" placeholder=" Student ID">
+                    <button type="submit" class="btn btn-primary">&nbsp;Search&nbsp;&nbsp;</button>
+                    </div>
                 </div>
-                <div>
                 
-                <button type="submit" class="btn btn-primary text-right">Search </button>
+                
+                
             </form>
 
-            <!-- <div class="input-group mb-3">
-        <form method="GET">
-            <input type="text" name="edit" class="form-control" placeholder="Search ID" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search ID</button> 
-            </form>
-            </div> -->
-
-        </div>
+            
+            </div>
+        
     </div>
     <br>
     <form method="POST" action="#">
@@ -246,162 +247,7 @@ if(isset($_POST['edit'])){
         <div class="col-sm-12"> 
         
 
-        <!-- <html>
-	<head>
-		
-		<title>A simple calculator</title>
-	</head>
-	<body><h3>calculator </h3>
-		<div id="container">
-			<div id="calculator">
-				<div id="result">
-					<div id="history">
-						<p id="history-value"></p>
-					</div>
-					<div id="output">
-						<p id="output-value"></p>
-					</div>
-				</div>
-				<div id="keyboard"> 
-					<table class="table table-info">
-						<tr class="table-primary">
-							<td><button class="number" id="1">1&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="2">2&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="3">3&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="4">4&nbsp;&nbsp;</button></td>
-							<td><button class="operator" id="+">+&nbsp;</button></td>
-							<td> <button class="operator" id="/">&#247;&nbsp;</button></td>
-						
-						</tr>
-						<tr class="table-secondary">
-							<td><button class="number" id="5">5&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="6">6&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="7">7&nbsp;&nbsp;</button></td>
-							<td><button class="number" id="8">8&nbsp;&nbsp;</button></td>
-							<td><button class="operator" id="-">-&nbsp;&nbsp;</button></td>
-							<td><button class="operator" id="%">%</button>
-						</tr class="table-success">
-					
-                        
-                       
-                        
-
-						<tr>
-						<td><button class="number" id="9">9&nbsp;&nbsp;</button></td>
-					    <td><button class="number" id="0">0&nbsp;&nbsp;</button></td>
-						<td><button class="operator" id="clear">C&nbsp;</button></td>
-					    <td><button class="operator" id="backspace">CE</button></td>
-                        <td><button class="operator" id="*">&times;&nbsp;</button></td>
-                        <td><button class="operator" id="=">=&nbsp;</button></td>
-					</tr>
-					
-					</table>
-					
-					
-					
-					
-					
-					
-				</div>
-			</div>
-		</div>
-		<script>
-			function getHistory(){
-	return document.getElementById("history-value").innerText;
-}
-function printHistory(num){
-	document.getElementById("history-value").innerText=num;
-}
-function getOutput(){
-	return document.getElementById("output-value").innerText;
-}
-function printOutput(num){
-	if(num==""){
-		document.getElementById("output-value").innerText=num;
-	}
-	else{
-		document.getElementById("output-value").innerText=getFormattedNumber(num);
-	}	
-}
-function getFormattedNumber(num){
-	if(num=="-"){
-		return "";
-	}
-	var n = Number(num);
-	var value = n.toLocaleString("en");
-	return value;
-}
-function reverseNumberFormat(num){
-	return Number(num.replace(/,/g,''));
-}
-var operator = document.getElementsByClassName("operator");
-for(var i =0;i<operator.length;i++){
-	operator[i].addEventListener('click',function(){
-		if(this.id=="clear"){
-			printHistory("");
-			printOutput("");
-		}
-		else if(this.id=="backspace"){
-			var output=reverseNumberFormat(getOutput()).toString();
-			if(output){//if output has a value
-				output= output.substr(0,output.length-1);
-				printOutput(output);
-			}
-		}
-		else{
-			var output=getOutput();
-			var history=getHistory();
-			if(output==""&&history!=""){
-				if(isNaN(history[history.length-1])){
-					history= history.substr(0,history.length-1);
-				}
-			}
-			if(output!="" || history!=""){
-				output= output==""?output:reverseNumberFormat(output);
-				history=history+output;
-				if(this.id=="="){
-					var result=eval(history);
-					printOutput(result);
-					printHistory("");
-				}
-				else{
-					history=history+this.id;
-					printHistory(history);
-					printOutput("");
-				}
-			}
-		}
-		
-	});
-}
-var number = document.getElementsByClassName("number");
-for(var i =0;i<number.length;i++){
-	number[i].addEventListener('click',function(){
-		var output=reverseNumberFormat(getOutput());
-		if(output!=NaN){ //if output is a number
-			output=output+this.id;
-			printOutput(output);
-		}
-	});
-}
-		</script>
-	</body>
-</html>
-
-
-
-
-
-
-
-
-
-        </div>
-        </div>
-        </div>
-        <br>
-    </form>
-    </div> -->
+      
     </div>
 
 
@@ -460,6 +306,8 @@ function showpaymentreason(val) {
 <?php
     include_once("footer.php");
     ?>
+    <?php } ?>
 </body>
 
 </html>
+

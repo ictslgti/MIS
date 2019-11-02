@@ -1,31 +1,22 @@
-<!------START DON'T CHANGE ORDER HEAD,MANU,FOOTER----->
-<!---BLOCK 01--->
-<?php 
-   
+<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
+<?php
+$title = "Home | SLGTI";
 include_once("config.php");
-
-$title ="STUDENT PROFILE | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
 include_once("head.php");
 include_once("menu.php");
-
+if($_SESSION['user_type']!='STU'){
 ?>
-<!----END DON'T CHANGE THE ORDER---->
+<!--END DON'T CHANGE THE ORDER-->
 
-
-<!---BLOCK 02--->
-<!---START YOUR CODER HERE----->
-
-
-<!-----END YOUR CODE----->
-<!-- form start---->
+<!--BLOCK#2 START YOUR CODE HERE -->
 <div class="row">
     <div class=" col-sm-8">
-        <p style="font-size: 45px; font-weight: 700; ">SLGTI INVENTORY INFORMATION</p>
+        <p style="font-size: 45px; font-weight: 700; "> SLGTI INVENTORY INFORMATION</p>
     </div>
 
     <div class="col-sm-3 pt-4"> 
       <form class="form-inline" method="GET">
-        <input class="form-control mr-2" type="search" name="edit" placeholder="Supplier_id">  
+        <input class="form-control mr-2" type="search" name="edit" placeholder="Inventory_Id">  
         <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
       </form>
     </div>  
@@ -108,3 +99,4 @@ include_once("menu.php");
 <?php 
 include_once("FOOTER.PHP"); 
 ?>
+<?php }?>
