@@ -188,7 +188,7 @@ $title = "Home | SLGTI";
     </a>
   </div>
 
-  <a href="library_books.php" class="text-white" style ="text-decoration: none">
+  <a href="ViewBooks.php" class="text-white" style ="text-decoration: none">
   <div class="card text-white bg-info" style="max-height: 14rem;">
   <div class="card-header">Manage books</div>
     <div class="card-body">
