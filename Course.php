@@ -38,7 +38,7 @@ include_once ("menu.php");
 	                        <th scope="col">Course</th>
 	                        <th scope="col">Department</th>
 	                        <th scope="col">Level (NVQ)</th>
-	                        <th scope="col">Actions</th>
+	                        <?php if(($_SESSION['user_type'] =='ADM')) { ?><th scope="col">Actions</th> <?php }?>
 	                    </tr>
 	                </thead>
 
@@ -102,11 +102,9 @@ include_once ("menu.php");
                                     <td scope="row">'. $row["course_id"] . "<br>" .'</td>
                                     <td>'. $row["course_name"] .  "<br>" .'</td>
                                     <td>'. $row["department_name"] .  "<br>" .'</td>
-                                    <td>'. $row["course_nvq_level"] .  "<br>" .'</td>
+                                    <td>'. $row["course_nvq_level"] .  "<br>" .'</td>';?>
                                     
-                                    
-                                    <td> 
-                                    <a href="Module.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-sm btn-icon-split"> <span class="text">Modules</span>  </a>  
+                                    <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'<a href="Module.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-sm btn-icon-split"> <span class="text">Modules</span>  </a>
 
                                     <a href="BatchDetails.php ?course_id='.$row["course_id"].' " class="btn btn-sm btn-primary btn-icon-split"> <span class="text">Batch</span> </a>
 
@@ -114,21 +112,18 @@ include_once ("menu.php");
 
                                        
                                     <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["course_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>                                    
-                                    </td> 
-                                    
-                                </tr>';
+                                    </td>';?> <?php }?> 
+                                    <?php echo'</tr>';
                                 $count=$count+1;
                             }
                         }
                         else
                         {
                             echo "0 results";
-                        }
-                        
-                    ?>
+                        }?>
 	                </tbody>
 	            </table>
-                <a href="AddCourse.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD COURSE</a></i>
+                    <?php if(($_SESSION['user_type'] =='ADM')) { ?><a href="AddCourse.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD COURSE</a></i><?php }?>
            
 	        </div>
 	    </div>
