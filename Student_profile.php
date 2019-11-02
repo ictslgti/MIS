@@ -125,7 +125,7 @@ $result = mysqli_query($con,$sql);
 
         if(mysqli_num_rows($result)==1)
         {
-        echo "Department of ".$level; 
+        echo "( Level- ".$level.")"; 
         }
         // else
         // {
@@ -182,49 +182,49 @@ $result = mysqli_query($con,$sql);
             <h6> Name with Initials: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> Miss.R.Thanujah </h6>
+                <h6 class="text-muted"> <?php echo $title.".".$ininame; ?> </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Gender: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> Female </h6>
+                <h6 class="text-muted"> <?php echo $gender; ?> </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Date of Birth: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> 21st April 1996 </h6>
+                <h6 class="text-muted"> <?php echo $dob; ?> </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Civil Status: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> Single </h6>
+                <h6 class="text-muted"> <?php echo $civil; ?> </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Enroll Date:  </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> 1st November 2018 </h6>
+                <h6 class="text-muted"> <?php echo $enroll; ?> </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6>Exit Date:</h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> 1st November 2018 </h6>
+                <h6 class="text-muted"> <?php echo $exit; ?> </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Blood Group: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> B+ </h6>
+                <h6 class="text-muted"> <?php echo $blood; ?>  </h6>
             </div>
         </div><br>
 
@@ -234,42 +234,49 @@ $result = mysqli_query($con,$sql);
             <h6> Email: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> thanujah@gmail.com </h6>
+                <h6 class="text-muted"> <?php echo $email; ?>  </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Phone No: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> 0776452733 </h6>
+                <h6 class="text-muted"> <?php echo $phone; ?>  </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Address: </h6>
             </div>
             <div class="col-md-10 col-sm-4">
-                <h6 class="text-muted"> No-117, Vipulananda South Road, Karaitivu-06 </h6>
+                <h6 class="text-muted"> <?php echo $address; ?>  </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
             <h6> District:  </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> Ampara </h6>
+                <h6 class="text-muted"> <?php echo $district; ?>  </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Province: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> Eastern </h6>
+                <h6 class="text-muted"> <?php echo $province; ?>  </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Zip Code: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> 4000 </h6>
+                <h6 class="text-muted"> <?php echo $zip; ?>  </h6>
+            </div>
+
+            <div class="col-md-2 col-sm-4">
+                <h6> Divisional Secretariat: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> <?php echo $division; ?>  </h6>
             </div>
         </div><br>
 
@@ -279,28 +286,28 @@ $result = mysqli_query($con,$sql);
             <h6> Name: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> Mr.Ravinthiran.Thanujah </h6>
+                <h6 class="text-muted"> <?php echo $ename; ?> </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Phone No: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> 0776452733 </h6>
+                <h6 class="text-muted"> <?php echo $ephone; ?></h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
                 <h6> Address: </h6>
             </div>
             <div class="col-md-10 col-sm-4">
-                <h6 class="text-muted"> No-117, Vipulananda South Road, Karaitivu-06 </h6>
+                <h6 class="text-muted"> <?php echo $eaddress; ?> </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
             <h6> Relationship  </h6>
             </div>
             <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> Father </h6>
+                <h6 class="text-muted"> <?php echo $erelation; ?> </h6>
             </div>
         </div>
   </div>
