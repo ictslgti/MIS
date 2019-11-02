@@ -248,7 +248,7 @@
                   <label class="font-weight-bold" for="datePic">08. Purchesed Date</label> <span style="color:red;">*</span></label>
                   <input type="date" value="'.$purch_date.'" class="form-control" name="datePic" aria-describedby="datePicHelp" required="required">
                   <small id="datePicHelp" class="form-text text-muted">Purchesed Date or donated date.</small>
-                  <a href="library_books.php" class=" ml-2 mt-2 btn btn-danger float-right"><strong>BACK</strong></a>                 
+                  <a href="ViewBooks.php" class=" ml-2 mt-2 btn btn-danger float-right"><strong>BACK</strong></a>                 
                 <button type="submit" class="btn btn-info mt-2 float-right" value="update" name="update"><strong>UPDATE</strong></button>
             </div>';
             }}else{
