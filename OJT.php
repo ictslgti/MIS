@@ -68,7 +68,7 @@ $title ="Home | SLGTI";
                                     <td> 
                                     
 
-                                    <a href="OJTReport.php ?student_id='.$row["student_id"].' " class="btn btn-sm btn-primary btn-icon-split"> <span class="text">Requests</span> </a>
+                                    <a href="OJTReport.php ?student_id='.$row["student_id"].' " class="btn btn-sm btn-primary btn-icon-split"> <span class="text">Reqs</span> </a>
 
                                     <a href="AddTrainingPlace.php ?edit='.$row["student_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
 
