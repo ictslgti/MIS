@@ -223,7 +223,59 @@ include_once("menu.php");
         <!-- </form>        -->
   </div>
 
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">she</div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+  <div class="form-row">
+        <div id="results-student_education" class="form-group table-responsive">               
+            <table class="table table-hover" width="100%" id="table">
+              <thead>
+              <tr>
+              <th width="15%"> Qualification Type </th>
+              <th width="20%"> Index No </th>
+              <th width="15%"> Year of Exam </th>
+              <th width="30%"> Subject </th>
+              <th width="10%"> Result </th>
+              <th width="10%"> Action </th>
+              </tr>
+              </head>
+              <tbody>
+              <?php
+               if(isset($_GET['edit']))
+               {
+                  //$stid =$_GET['edit'];WHERE `qualification_student_id`= '$stid'"
+                  //include_once("mysqli_connect.php");
+                  $stid =$_GET['edit'];
+                  $sql ="SELECT `qualification_type`,`qualification_index_no`,`qualification_year`,`qualification_description`,`qualification_results` 
+                  FROM `student_qualification` where `qualification_student_id`= '$stid' ";
+                  $result = mysqli_query ($con, $sql);
+                  if (mysqli_num_rows($result)>0)
+                  {
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                      echo '
+                      <tr style="text-align:left";>
+                          <td>'. $row["qualification_type"].'</td>
+                          <td>'. $row["qualification_index_no"].'</td>
+                          <td>'. $row["qualification_year"].'</td>
+                          <td>'. $row["qualification_description"].'</td>
+                          <td>'. $row["qualification_results"].'</td>
+                          <td>
+                          <a href="?DELETE='.$stid.'&quali='.$row["qualification_description"].'&deinde='.$row["qualification_index_no"].'"class="btn btn-outline-danger btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a>
+                          </td>
+                      </tr> ';
+                    }
+                  }
+                  else
+                  {
+                    echo "0 results";
+                  }
+               }
+
+               ?>
+              </tbody>
+            </table>  
+      </div>
+      </div>
+  </div>
 </div>
 </div>
 
