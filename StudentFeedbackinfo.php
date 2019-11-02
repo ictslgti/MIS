@@ -5,19 +5,6 @@ include_once("config.php");
 include_once("head.php"); 
 include_once("menu.php");
 
-if(isset($_GET['delete'])){
-
-    $survey_id = $_GET['delete'];
-   $sql="DELETE FROM `feedback_survey` where `survey_id`=$survey_id";
-   if (mysqli_query($con, $sql)) {
-    $message =" Record deleted successfully";
-            echo "<script type='text/javascript'> alert('$message');</script>";
-    } else {
-    echo "Error deleting record: " .
-    mysqli_error($con);
-    }
-    
-}
 ?>
 
 <!-- END DON'T CHANGE THE ORDER -->
