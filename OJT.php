@@ -10,6 +10,28 @@ $title ="Home | SLGTI";
 
  <!--START YOUR CODER HERE-->
 
+ <?php 
+if(isset($_GET['delete'])){
+  $student_id = $_GET['delete'];
+  $sql = "DELETE FROM `ojt` WHERE `student_id`=$student_id";
+ if(mysqli_query($con ,$sql)){
+     echo '
+     <div class="alert alert-success alert-dismissible fade show" role="alert">
+     Student details Deleted successfully
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+     </button>
+     </div>    
+   ';
+   
+ }else{
+   echo "error deleting record : ". mysqli_error($con);
+ }
+ }
+
+
+?>
+
 
 <div class="shadow  p-3 mb-1 bg-white rounded">
 	    <div class="highlight-blue">
