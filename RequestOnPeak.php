@@ -250,7 +250,7 @@ if(isset($_POST['req'])){
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Comment : </label>
-                        <textarea class="form-control" name="comment"  rows="3" id="comment"></textarea>
+                        <textarea class="form-control" name="comment"  rows="3" id="comment" placeholder="Use only Alphbet"></textarea>
                     </div>
 
 
