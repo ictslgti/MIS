@@ -104,7 +104,7 @@ include_once ("menu.php");
                                     <td>'. $row["department_name"] .  "<br>" .'</td>
                                     <td>'. $row["course_nvq_level"] .  "<br>" .'</td>';?>
                                     
-                                    <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'<a href="Module.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-sm btn-icon-split"> <span class="text">Modules</span>  </a>
+                                    <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'<td><a href="Module.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-sm btn-icon-split"> <span class="text">Modules</span>  </a>
 
                                     <a href="BatchDetails.php ?course_id='.$row["course_id"].' " class="btn btn-sm btn-primary btn-icon-split"> <span class="text">Batch</span> </a>
 
