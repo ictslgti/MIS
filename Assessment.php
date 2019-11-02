@@ -3,6 +3,7 @@ $title = "Examinations | SLGTI";
  include_once("config.php"); 
  include_once("head.php"); 
  include_once("menu.php"); 
+ if($_SESSION['user_type']=='STU' || 'HOD' || 'ADM'){ 
  ?>
 <!--END DON'T CHANGE THE ORDER-->
 
@@ -149,6 +150,6 @@ $title = "Examinations | SLGTI";
 
 
 
-
+<?php } ?>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>
