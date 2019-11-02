@@ -3,7 +3,7 @@ $title="payment |SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
- if($_SESSION['user_type']=='ACC'){ 
+ if($_SESSION['user_type']=='ACC'||'ADM'){ 
 ?>
 <!-- dont change -->
 
@@ -108,30 +108,29 @@ if(isset($_POST['edit'])){
 
 <br>
     <div class="row ">
-        <div class="col-sm-6"> </div>
-        <div class="col-sm-0"> </div>
-        <div class="col-sm-6 " >
+    <div class="col-sm-8"></div>
+        <div class="col-sm-4">
+        <!-- <div class="col-sm-2"> </div>
+        <div class="col-sm-4" > -->
 
             <form method="POST" action="#" class="form-inline"> 
-                <div class="input-group   ">
+                <div class="input-group  ">
                     <div class="input-group-prepend ">
                         <div class="input-group-text "><i class="fas fa-user"></i></div>
                     </div>
-                    <input type="text" class="form-control" name="edit" placeholder=" Student Username">
+                    <div class="">
+                    <input type="text" class="form-control" name="edit" placeholder=" Student ID">
+                    <button type="submit" class="btn btn-primary">&nbsp;Search&nbsp;&nbsp;</button>
+                    </div>
                 </div>
-                <div>
                 
-                <button type="submit" class="btn btn-primary text-right">Search </button>
+                
+                
             </form>
 
-            <!-- <div class="input-group mb-3">
-        <form method="GET">
-            <input type="text" name="edit" class="form-control" placeholder="Search ID" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search ID</button> 
-            </form>
-            </div> -->
-
-        </div>
+            
+            </div>
+        
     </div>
     <br>
     <form method="POST" action="#">
@@ -311,3 +310,4 @@ function showpaymentreason(val) {
 </body>
 
 </html>
+
