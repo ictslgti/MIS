@@ -11,9 +11,6 @@ include_once("menu.php");
 
 
 
-
-
-
 <?php
 
 
@@ -23,8 +20,8 @@ $id =  $fullname= $address = $email = $dob= $blood_group = $designation =$joint_
 if(isset($_GET['edit']))
 {
     $reference_id = $_GET['edit'];
-    $sql = " SELECT * from donor WHERE reference_id= '$reference_id'";
-    $result = mysqli_query($con,$sql);
+    $sql_o = " SELECT * from donor WHERE reference_id= '$reference_id'";
+    $result = mysqli_query($con,$sql_o);
     if(mysqli_num_rows($result)==1)                                               
         {
          
@@ -42,9 +39,18 @@ if(isset($_GET['edit']))
           $reference_id= $row['reference_id'];
         }
         else{
-          echo "Error".$sql."<br>".mysqli_error($con);
+          echo "Error".$sql_o."<br>".mysqli_error($con);
         }
 }
+
+
+
+
+
+
+
+
+
 
 
                                     
@@ -57,8 +63,8 @@ if(isset($_GET['submit']))
 
    if($designation=='staff'){
   
-      $sql="SELECT * FROM staff WHERE staff_id='$reference_id'";
-      $result=mysqli_query($con,$sql);
+      $sql_t="SELECT * FROM staff WHERE staff_id='$reference_id'";
+      $result=mysqli_query($con,$sql_t);
         if(mysqli_num_rows($result)==1){
           $row=mysqli_fetch_assoc($result);
 
@@ -71,8 +77,8 @@ if(isset($_GET['submit']))
         }
    }
    else{
-    $sql="SELECT * FROM  student WHERE student_id='$reference_id'";
-    $result=mysqli_query($con,$sql);
+     $sql_f="SELECT * FROM  student WHERE student_id='$reference_id'";
+    $result=mysqli_query($con,$sql_f);
         if(mysqli_num_rows($result)==1){
           $row=mysqli_fetch_assoc($result);
           
@@ -81,7 +87,7 @@ if(isset($_GET['submit']))
           $email = $row['student_email'];
           $dob = $row['student_dob'];
           $gender = $row['student_address'];
-          $blood = $row['student_blood'];
+          $blood_group = $row['student_blood'];
         }
      
    }
@@ -94,64 +100,74 @@ if(isset($_GET['submit']))
 
 
 
+?>
 
 
-
-
-
-
-
-
+<?php
 // Add coding
 
-if(isset($_POST['Add']))
-echo"jg";
-{
-  //  echo 'id'.$_POST['id'];
-   
+
+
+if(isset($_GET['Add'])){
+  $sql_y = "INSERT INTO `donor`(`address`,`email`, `dob`, `blood_group`, `designation`, `joint_date`, `gender`, `weight`, `reference_id`, `fullname`) 
+
+  VALUES ('$address','$email','$dob','$blood_group','$designation',
+  '$joint_date','$gender','$weight','$reference_id','$fullname');";
   
-   if( !empty($_POST['id']) 
-  && !empty($_POST['fullname']) 
-  && !empty($_POST['address']) 
-  && !empty($_POST['email'])
-  && !empty($_POST['dob'])
-  && !empty($_POST['blood_group'])
-  && !empty($_POST['designation'])
-  && !empty($_POST['joint_date'])
-  && !empty($_POST['gender'])
-  && !empty($_POST['weight'])
-  && !empty($_POST['reference_id'])){
+  $result = mysqli_query ($con, $sql_y);
+  if (mysqli_num_rows($result)>0)
+   {
+    while($row_y = mysqli_fetch_assoc($result))
+    { 
   
-   echo"welcome";
-     $id = $_POST['id'];
-     $fullname = $_POST['fullname'];
-     $address = $_POST['address'];
-     $email = $_POST['email'];
-     $dob = $_POST['dob'];
-     $blood_group = $_POST['blood_group'];
-     $designation = $_POST['designation'];
-     $joint_date = $_POST['joint_date'];
-     $gender = $_POST['gender'];
-     $weight = $_POST['weight'];
-     $reference_id = $_POST['reference_id'];
-      $sql = "INSERT INTO `donor`(`d_id`, `address`, `email`, `dob`, `blood_group`, `designation`, `joint_date`, `gender`, `weight`, `reference_id`, `fullname`) 
-     VALUES (null,'$fullname','$address','$email','$dob','$blood_group','$designation','$joint_date','$gender','$weight','$reference_id')";
-     if(mysqli_query($con,$sql))
+     
+      $weight = $_POST['weight'];
+      $joint_date = $_POST['joint_date'];
+  $fullname = $_POST['fullname'];
+  $address = $_POST['address'];
+  $email = $_POST['email'];
+  $dob = $_POST['dob'];
+  $blood_group = $_POST['blood_group'];
+  $designation = $_POST['designation'];
+  
+  $gender = $_POST['gender'];
+
+   $reference_id = $_POST['reference_id'];
+    }}
+     
+     if(mysqli_query($con,$sql_y))
      {
-         echo "Record has been Inserted succesfully";
+      echo '
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>'.$id.'</strong> Staff details inserted
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+      </div>    
+    ';
      }
      else{
-      echo "Error:" .$sql. "<br>". mysqli_error($con);                                                                                                                                                                        
+      
+    echo '
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>'.$id.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    
+    ';                                                                                                                                                                
       }
    }
+  
+  
+   ?>
 
-  }
-
-
-
-
+<?php 
 // for edit
-if(isset($_POST['Edit'])){
+
+if(isset($_GET['Edit'])){
+  echo 'gdf';
   if (!empty($_POST['id']) 
   && !empty($_POST['fullname'])
   && !empty($_POST['address'])
@@ -163,9 +179,9 @@ if(isset($_POST['Edit'])){
   && !empty($_POST['gender']) 
   && !empty($_POST['weight'])
   && !empty($_POST['reference_id']) 
-  && !empty($_GET['edit']))
+  && !empty($_GET['edit'])){
   
-    {
+    
     
      $id = $_POST['id'];
      $fullname = $_POST['fullname'];
@@ -207,10 +223,22 @@ if(isset($_POST['Edit'])){
         
         ';
       }
-  
+    }
 }
-}
+
+
+
+
+
+
+
+
 ?>
+
+
+
+
+
 
 
 
@@ -269,7 +297,7 @@ if(isset($_POST['Edit'])){
 <input type="text" value="<?php echo $reference_id; ?>" class="form-control"  name="submit" placeholder="reference_id" required >
 
 </div>
-<div class="col-3">
+<div class="col-3" >
   
 <button type="submit"  class="btn btn-outline-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Submit</button>
 </div>
@@ -352,7 +380,7 @@ if(isset($_POST['Edit'])){
     echo '<input id="button" type = "submit" value="Update" name="Edit" class="btn btn-outline-success btn-icon-split" >'; 
    
 }else{
-    echo '<input id="button" type="submit"  value = "Add Info" name="Add"  class="btn btn-outline-primary" >';
+    echo '<button type="submit" value="Add" name="Add" class="btn btn-primary">ADD</button>';
    
 }
 ?>

@@ -121,7 +121,7 @@ include_once ("menu.php");
                         }?>
 	                </tbody>
 	            </table>
-                    <?php if(($_SESSION['user_type'] =='ADM')) { ?><a href="AddCourse.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD COURSE</a></i><?php }?>
+                    <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="AddCourse.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD COURSE</a></i><?php }?>
            
 	        </div>
 	    </div>

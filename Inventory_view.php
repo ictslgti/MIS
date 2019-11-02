@@ -65,6 +65,35 @@ include_once("menu.php");
     }
   
 ?>
+<!-- search coding -->
+<?php
+  if(isset($_GET['edits'])){
+        $id=$_GET['edits'];
+        $sql="SELECT * FROM `inventory` WHERE `inventory_id`='$id'";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+      $row=mysqli_fetch_assoc($result);
+      $inventoryid=$row['inventory_id'];
+      $Departmentid=$row['inventory_department_id'];
+      $itemid=$row['item_id'];
+      $inventorystatus=$row['inventory_status'];
+      $inventoryquantity=$row['inventory_quantity'];
+      
+        }
+        else{
+          echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$inventory_id.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
+        }
+    }
+  
+?>
 
 
 

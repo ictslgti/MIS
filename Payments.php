@@ -21,8 +21,8 @@ include_once("menu.php");
  <?php
  $payment_type=$payment_reason=null;
  if(isset($_POST['Add'])){
-    echo $payment_type=$_POST['payment_reason'];
-    echo $payment_reason=$_POST['payment_type'];
+     $payment_type=$_POST['payment_reason'];
+     $payment_reason=$_POST['payment_type'];
     $sql="INSERT INTO `payment` (`payment_reason`, `payment_type`) VALUES ('$payment_reason', '$payment_type')";
     if(mysqli_query($con,$sql)){
         echo '
@@ -53,7 +53,7 @@ include_once("menu.php");
 ?><br>
   <form method="POST " class="shadow p-3 mb-s bg-white rounded" action="#">
   <div class="form-group col-md-4 shadow p-3 mb-s bg-white rounded"><h4><i class="fas fa-folder-plus"></i>&nbsp;
-                        <label for="inputEmail4">Add Payment Type</label></h4>
+                        <label for="inputEmail4">Add Payment Category</label></h4>
                         <input type="Department" 
                             class="form-control" id="
                             inputEmail4" placeholder="Typing Very Carefully" name="payment_reason">
