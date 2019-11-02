@@ -107,6 +107,7 @@ if (mysqli_query($con, $sql)) {
                     <th scope="col">RETURN TIME</th>
                     <th scope="col">COMMENT</th>
                     <th scope="col">ACTION</th>
+                    <th scope="col"></th>
                     
                   </tr>
             </thead>
