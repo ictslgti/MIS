@@ -102,15 +102,15 @@ if($u_ta=='staff'){
                 <a  href="Course">Courses Info</a>
                 </li>
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="AddCourse">Add a Course<?php }?>
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?><a href="AddCourse">Add a Course<?php }?>
                 </a>
                 </li>
 
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a  href="Module">Modules Info</a><?php }?>
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?><a  href="Module">Modules Info</a><?php }?>
                 </li>
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="addModule">Add a Module<?php }?>
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?><a href="addModule">Add a Module<?php }?>
                 </a>
                 </li>
 
@@ -174,14 +174,14 @@ if($u_ta=='staff'){
                 <li>
                   <a href="Timetable">Timetable</a>
                 </li>
-                <li><?php if($_SESSION['user_type']=="HOD") { ?>
+                <li>
                   <a href="AddTimetable">Add a Timetable</a>
-                </li><?php } ?>
+                </li>
                 <hr>
                 <li>
                   <a href="Notice">Notice Info</a>
                 </li>
-                 <li><?php if($_SESSION['user_type']=='ADM'){ ?>
+                <li>
                   <a href="AddNotice">Add a Notice</a>
                 </li>
               </ul>
@@ -287,7 +287,7 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li><?php if($_SESSION['user_type']=='WAR' ){ ?>
+                <li>
                   <a href="Hostel">Hostels Info</a>
                 </li>
                 <li>
@@ -296,10 +296,10 @@ if($u_ta=='staff'){
                 <li>
                   <a href="AddRoom">Add a Room</a>
                   <hr>
-                </li><?php } ?>
-                <li><?php if($_SESSION['user_type']=='STU' ){ ?>
+                </li>
+                <li>
                   <a href="RequestHostel">Request Hostel</a>
-                </li><?php } ?>
+                </li>
               </ul>
             </div>
           </li>
@@ -337,7 +337,7 @@ if($u_ta=='staff'){
           </li>
 
 
-          <li class="sidebar-dropdown"><?php if($_SESSION['user_type']!='STU' ){ ?>
+          <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-file-alt"></i>
               <span>Inventory</span>
@@ -363,7 +363,7 @@ if($u_ta=='staff'){
                 </li>
               </ul>
             </div>
-          </li><?php } ?>   
+          </li>
 
 
           <li class="sidebar-dropdown">
@@ -465,12 +465,12 @@ if($u_ta=='staff'){
                   <a href="RequestOnPeak">Request a On-Peak</a>
                   <hr>
                 </li> <?php } ?>             
-                <li><?php if($_SESSION['user_type']=='WAR' ){ ?>
+                <li>
                   <a href="OffPeak">Off-Peak Info</a>
-                </li><?php } ?>
-                <li><?php if($_SESSION['user_type']=='STU' ){ ?>
+                </li>
+                <li>
                   <a href="RequestOffPeak">Request a Off-Peak</a>
-                </li><?php } ?> 
+                </li>
               </ul>
             </div>
           </li>
