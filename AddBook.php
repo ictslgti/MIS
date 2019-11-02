@@ -141,7 +141,7 @@
                     if(mysqli_query($con,$sql))
                     {
                         echo '<div class="alert alert-success alert-dismissible mt-2 mr-5 ml-5" role="alert">  <strong>Sucess &#128512; </strong>
-                        New Copy Added Sucessfuly!'.$sql.'
+                        New Copy Added Sucessfuly!
                         <button onclick="shomd()" type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
