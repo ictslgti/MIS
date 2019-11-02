@@ -146,7 +146,7 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
               </div>
   <div class="form-row">
       <div class="col-md-12">
-      <a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i>
+                    <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i><?php }?>
       </div>
   </div>
       </div>
