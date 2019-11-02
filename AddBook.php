@@ -119,7 +119,7 @@
                     {
 
                     $lastNumber=null;
-                    $thisBook=$_POST['bookSerials'];;
+                    $thisBook=$_POST['bookSerial'];;
                     $bookSerialNo=null;
 
                     $sql1="SELECT count(book_id) AS lastNumber FROM book_copies WHERE book_id='$thisBook'";
