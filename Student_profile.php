@@ -19,11 +19,11 @@ include_once("menu.php");
 <!-----END YOUR CODE----->
 <?php
 $stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $mode =
-$ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = null;
+$ename = $eaddress = $ephone = $id =$erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = null;
 
 $username = $_SESSION['user_name'];
 
-$sql = "SELECT user_name,`student_title`,`student_fullname`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,`student_profile_img`,
+$sql = "SELECT user_name,e.course_id,`student_title`,`student_fullname`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,`student_profile_img`,
 `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,`student_em_address`,
 `student_em_phone`,`student_em_relation`,`student_status`,`course_name`,`department_name`,`course_mode`,course_nvq_level,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
 `student_enroll_status` FROM `student` as s, student_enroll as e, user as u, course as c, department as d WHERE user_name=s.student_id and s.student_id=e.student_id 
@@ -32,7 +32,7 @@ $result = mysqli_query($con,$sql);
 
   if(mysqli_num_rows($result)==1)
   {
-    echo "success";
+    //echo "success";
     $row =mysqli_fetch_assoc($result);
     //$stid = $row['student_id'];
     $title = $row['student_title'];
@@ -62,6 +62,7 @@ $result = mysqli_query($con,$sql);
     $enstatus =$row['student_enroll_status'];
     $enroll = $row['student_enroll_date'];
     $exit = $row['student_enroll_exit_date'];
+    $id=$row['course_id'];
   }
 
 ?>
@@ -172,6 +173,7 @@ $result = mysqli_query($con,$sql);
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Personal Info</a>
     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Password</a>
     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Qualification Info</a>
+    <a class="nav-item nav-link" id="nav-modules-tab" data-toggle="tab" href="#nav-modules" role="tab" aria-controls="nav-modules" aria-selected="false">Modules Info</a>
   </div>
 </nav>
 <div class="tab-content shadow p-2 mb-4 bg-white rounded" id="nav-tabContent">
@@ -376,6 +378,58 @@ $result = mysqli_query($con,$sql);
                           <td>'. $row["qualification_year"].'</td>
                           <td>'. $row["qualification_description"].'</td>
                           <td>'. $row["qualification_results"].'</td>
+                      </tr> ';
+                    }
+                  }
+                  else
+                  {
+                    echo "0 results";
+                  }
+
+               ?>
+              </tbody>
+            </table>  
+      </div>
+      </div>
+  </div>
+
+
+<div class="tab-pane fade" id="nav-modules" role="tabpanel" aria-labelledby="nav-modules-tab">
+  <div class="form-row">
+        <div id="results-student_education" class="form-group table-responsive">               
+            <table class="table table-hover" width="100%" id="table">
+              <thead>
+              <tr>
+              <th width="15%"> Module ID </th>
+              <th width="20%"> Module Name </th>
+              <th width="15%"> Semester ID </th>
+              <th width="30%"> Learning Hours</th>
+              <th width="30%"> Assessment </th>
+              </tr>
+              </head>
+              <tbody>
+              <?php
+            //    if(isset($_GET['edit']))
+            //    {
+                  //$stid =$_GET['edit'];WHERE `qualification_student_id`= '$stid'"
+                  //include_once("mysqli_connect.php");
+                  //$username = $_SESSION['user_name'];
+                  $sql ="SELECT `module_id`, `module_name`, `module_aim`, `module_learning_hours`, `module_resources`, `module_learning_outcomes`, `semester_id`, `module_reference`, `module_relative_unit`, `module_lecture_hours`, `module_practical_hours`, `module_self_study_hours` 
+                  FROM `module` as m, course as c WHERE c.course_id=m.course_id and c.course_id='$id'";
+                  $result = mysqli_query ($con, $sql);
+                  if (mysqli_num_rows($result)>0)
+                  {
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                      echo '
+                      <tr style="text-align:left";>
+                          <td>'. $row["module_id"].'</td>
+                          <td>'. $row["module_name"].'</td>
+                          <td>'. $row["semester_id"].'</td>
+                          <td>'. $row["module_learning_hours"].'</td>
+                          <td>
+                          '. $row["module_learning_hours"].'
+                          </td>
                       </tr> ';
                     }
                   }
