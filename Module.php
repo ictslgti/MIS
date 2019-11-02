@@ -131,7 +131,7 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                      <td>'. $row["semester_id"] . "<br>" .'</td>
                      <td>'.getTotal($cid,$mid). "<br>" .'</td>
                      <td>
-                      <a href="AddModule.php ?edits='.$row["module_id"].'&&editc='.$row["course_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                     <a href="AddModule.php ?edits='.$row["module_id"].'&&editc='.$row["course_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
                      <button class="btn btn-sm btn-danger" data-href=" ?dlt='.$row["module_id"].'&&dllt='.$row["course_id"].' " data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
                      </td> 
                      </tr>';
