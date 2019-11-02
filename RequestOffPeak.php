@@ -158,7 +158,7 @@ date_default_timezone_set("Asia/colombo");
     </div>
     </div>
     <br>
-    <a href="index.php"><<< Back to home </a>
+    
     </div>
     
    </form>
