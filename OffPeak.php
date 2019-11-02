@@ -27,6 +27,9 @@ if(isset($_GET['approve'])){
             echo
             '<div class="alert alert-success">
             <strong>Success!</strong> Student has approved to exit! </a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+
           </div>';
           }else{
               echo "error :" .$sql."<br>".mysqli_error($con);
@@ -54,6 +57,8 @@ if(isset($_GET['reject'])){
           if(mysqli_query($con,$sql)){
             echo '<div class="alert alert-danger">
             <strong>Success!</strong> Student has rejected to exit! </a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
           </div>';
           }else{
               echo "error :" .$sql."<br>".mysqli_error($con);
@@ -140,7 +145,7 @@ else{
 </table>
 
 </div>
-<a href="index.php"><<< Back to home </a>
+
   
 
 <!--END OF YOUR COD-->

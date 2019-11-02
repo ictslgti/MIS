@@ -30,7 +30,8 @@ if(isset($_POST['Add'])){
     &&!empty($_POST['Gender'])
     &&!empty($_POST['EPF'])
     &&!empty($_POST['Position'])
-    &&!empty($_POST['Type'])){
+    &&!empty($_POST['Type'])
+    &&!empty($_POST['status'])){
 
      
       $StaffID=$_POST['StaffID'];
@@ -46,9 +47,10 @@ if(isset($_POST['Add'])){
       $EPF=$_POST['EPF'];
       $Position=$_POST['Position'];
       $Type=$_POST['Type'];
+      $status=$_POST['status'];
     
-       $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf`, `staff_position`, `staff_type`) 
-      VALUES ('$StaffID','$Department_id','$StaffName','$Address','$DOB','$NIC','$Email','$PNO','$DOJ','$Gender','$EPF','$Position','$Type')";
+       $sql="INSERT INTO `staff`(`staff_id`, `department_id`, `staff_name`, `staff_address`, `staff_dob`, `staff_nic`, `staff_email`, `staff_pno`, `staff_date_of_join`, `staff_gender`, `staff_epf`, `staff_position`, `staff_type`, `staff_status`) 
+      VALUES ('$StaffID','$Department_id','$StaffName','$Address','$DOB','$NIC','$Email','$PNO','$DOJ','$Gender','$EPF','$Position','$Type','$status')";
 
       if(mysqli_query($con,$sql))
       {
@@ -83,26 +85,7 @@ if(isset($_POST['Add'])){
 <!-- update coding -->
 <?PHP
   if(isset($_POST['Update'])){
-   
-    
-    if(
-    !empty($_POST['Department_id'])
-    &&!empty($_POST['StaffName'])
-    &&!empty($_POST['Address'])
-    &&!empty($_POST['DOB'])
-    &&!empty($_POST['NIC'])
-    &&!empty($_POST['Email'])
-    &&!empty($_POST['PNO'])
-    &&!empty($_POST['DOJ'])
-    &&!empty($_POST['Gender'])
-    &&!empty($_POST['EPF'])
-    &&!empty($_POST['Position'])
-    &&!empty($_POST['Type'])
-    &&!empty($_POST['status'])
-    &&!empty($_POST['StaffID'])){ 
-
-echo "adad";
-     
+  
       $Department_id=$_POST['Department_id'];
       $StaffName=$_POST['StaffName'];
       $Address=$_POST['Address'];
@@ -115,14 +98,13 @@ echo "adad";
       $EPF=$_POST['EPF'];
       $Position=$_POST['Position'];
       $Type=$_POST['Type'];
-      $status=$row['staff_status'];
+      $status=$_POST['status'];
       $StaffID=$_POST['StaffID'];
 
 
-      $sql="UPDATE `staff` SET `department_id`='$Department_id',`staff_name`='$StaffName',
-      `staff_address`='$Address',`staff_dob`='$DOB'`staff_nic`='$NIC',`staff_email`='$Email',
-      `staff_pno`='$PNO',`staff_date_of_join`='$DOJ',`staff_gender`='$Gender',
-      `staff_epf`='$EPF',`staff_position`='$Position',`staff_type`='$Type',`staff_status`='$status' WHERE `staff_id`='$StaffID'";
+      $sql="UPDATE staff SET department_id='$Department_id', staff_name='$StaffName', staff_address='$Address', staff_dob='$DOB',staff_nic='$NIC',staff_email='$Email',
+      staff_pno='$PNO',staff_date_of_join='$DOJ',staff_gender='$Gender',staff_epf='$EPF',staff_position='$Position',staff_type='$Type',
+      staff_status='$status' WHERE staff_id='$StaffID'";
 
       if(mysqli_query($con,$sql))
       {
@@ -150,7 +132,7 @@ echo "adad";
 
 
     }
-  }
+  
 ?>
 
 
@@ -338,7 +320,7 @@ echo "adad";
     <div class="form-group col-lg-4 pt-2">
       <label for="text" class="font-weight-bolder pl-1">Status :</label><br>
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Status</label>
-      <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['status'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['status'])){echo ' is-valid';} ?>"  id="status" name="status">
+      <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['status'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['status'])){echo ' is-valid';} ?>"  name="status">
             <option selected disabled>Choose Status</option>
             <option value="Working"
             <?php if($status=="Working")  echo 'selected';?>
@@ -384,6 +366,14 @@ echo "adad";
   document.getElementById("name").disabled = false;
   }
 </script>
+
+<script>
+  function reset(){
+
+    
+  }
+</script>
+
 
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
