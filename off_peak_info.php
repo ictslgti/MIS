@@ -24,9 +24,7 @@ include_once("menu.php");
   <li class="nav-item">
     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-thumbs-down"></i> Rejected Off-peaks</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false"><i class="fas fa-sync"></i> Pending Off-peaks</a>
-  </li>
+  
   
 </ul>
 
@@ -122,49 +120,7 @@ else{
   </tbody>
 </table>
 </div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab"><table class="table table-responsive-sm">
-  <thead class="thead-dark">
-    <tr>
-    <th scope="col">Student_id</th>
-      <th scope="col">Name of applicant</th>
-      
-      <th scope="col">Department</th>
-      <th scope="col">Contact No</th>
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col">Reason for exit</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-  <?php
-  $sql = "SELECT * FROM `off_peak`  where `status`=''";
-
-  $result = mysqli_query($con, $sql);
-  if(mysqli_num_rows($result) > 0){
-    while($row = mysqli_fetch_assoc($result)){
-    echo '<tr>
-      
-      <td>'.$row["student_id"].'</td>
-      <td>'.$row["name_of_applicant"].'</td>
-      <td>'.$row["department"].'</td>
-      <td>'.$row["contact_no"].'</td>
-      <td>'.$row["date"].'</td>
-      <td>'.$row["time"].'</td>
-      <td>'.$row["reson_for_exit"].'</td>
-      
-    </tr>';
-
-  }
-}
-else{
-  echo "0 result";
-}
-
-    ?>
-    </tbody>
-    </table>
-    
+ 
 
 <script>
   $(function () {
