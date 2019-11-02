@@ -228,12 +228,46 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
 </div>
 
          
-  
-<a href="AddTimetable.php" class="btn btn-primary ">View</a> 
+<div class="text-right">
+<a href="AddTimetable.php" class="btn btn-primary ">Add</a> 
          
-          </td>     
-     
-        
+</div>
+
+<html>
+<head>
+<style>
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
+</head>
+<body>
+
+<div class="pagination">
+  <a href="#">❮</a>
+  <a href="#">❯</a>
+</div>
+
+
+</body>
+
+
+
 <script>
 
 

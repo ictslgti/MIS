@@ -3,7 +3,7 @@ $title="payment |SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
-if($_SESSION['user_type']=='ACC'){
+if($_SESSION['user_type']=='ACC'||'ADM'){
 ?>
 <!-- dont change -->
 
@@ -11,7 +11,7 @@ if($_SESSION['user_type']=='ACC'){
         <h1 class="text-center display-3">SLGTI Student Payment Modify Portal</h1> 
         
     </div>
-      
+      <br>
     <?php
     
     
@@ -30,13 +30,13 @@ if(isset($_POST['Add'])){
 // && !empty($_POST['payment_amount'])){
     
 
-     echo $student_id=$_POST['student_id'];
-     echo $pays_department=$_POST['pays_department'];
-     echo $pays_reason=$_POST['payment_reason'];
-     echo $pays_qty=$_POST['payment_qty'];
-     echo $pays_note=$_POST['payment_note'];
-     echo $pays_amount=$_POST['payment_amount'];
-     echo $payment_type=$_POST['payment_type'];
+      $student_id=$_POST['student_id'];
+      $pays_department=$_POST['pays_department'];
+      $pays_reason=$_POST['payment_reason'];
+      $pays_qty=$_POST['payment_qty'];
+      $pays_note=$_POST['payment_note'];
+     $pays_amount=$_POST['payment_amount'];
+      $payment_type=$_POST['payment_type'];
      
      
       
@@ -85,13 +85,13 @@ $sql="SELECT * FROM `pays` WHERE `pays_id`='$id'";
 $result = mysqli_query($con ,$sql);
          if(mysqli_num_rows($result)== 1){
               $row = mysqli_fetch_assoc($result);
-              echo $student_id=$row['student_id'];
-              echo $department=$row['pays_department'];
-              echo $pays_reason=$row['payment_reason'];
-              echo $pays_qty=$row['pays_qty'];
-              echo $pays_note=$row['pays_note'];
-              echo $pays_amount=$row['pays_amount'];
-              echo $payment_type=$row['payment_type'];
+               $student_id=$row['student_id'];
+               $department=$row['pays_department'];
+             $pays_reason=$row['payment_reason'];
+               $pays_qty=$row['pays_qty'];
+               $pays_note=$row['pays_note'];
+               $pays_amount=$row['pays_amount'];
+               $payment_type=$row['payment_type'];
               
               
           }
@@ -102,7 +102,7 @@ $result = mysqli_query($con ,$sql);
 
 if(isset($_POST['edit'])){
       $id=$_GET['upt'];
-     echo $payment_type=$_POST['payment_type'];
+      $payment_type=$_POST['payment_type'];
       $pays_reason=$_POST['payment_reason'];
       $pays_note=$_POST['payment_note'];
       $pays_amount=$_POST['payment_amount'];
@@ -129,14 +129,14 @@ if(isset($_POST['edit'])){
     <!-- Search ID -->
 
 
+    <div class="container">
 
-
-    <div class="row">
+    <div class="row shadow p-3 mb-s bg-white rounded">
        
         
     <form method="POST" action="#">
   
-        <div class="row">
+        <div class="row shadow p-3 mb-s bg-white rounded ">
         <div class="col-sm-4"><?php if($student_profile_img!=null) { ?> <img src="<?php echo $student_profile_img; ?>"
                 alt="..." width="100px" height="100px"> <?php }?><br>
 
@@ -320,7 +320,7 @@ function showpaymentreason(val) {
 <?php
     include_once("footer.php");
     ?>
-<?php }?> 
+<?php }?> </div>
 </body>
 
 </html>

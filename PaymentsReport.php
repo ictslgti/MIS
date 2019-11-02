@@ -4,7 +4,7 @@
  include_once("config.php"); 
  include_once("head.php"); 
  include_once("menu.php"); 
-  if($_SESSION['user_type']=='ACC'||'ADM'){ 
+  if($_SESSION['user_type']=='ACC'){ 
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
 
@@ -27,8 +27,8 @@
 <!-- navbar and search bar -->
 <div class="shadow p-3 mb-s bg-white rounded">
 <h1 class="text-center display-3">SLGTI Student Payment Report Portal</h1></div><br>
- <div class=" rounded-top bg-light pt-2 mt-2 pb-2">
-          <a class="navbar-brand font-weight-bold ml-2"> Payment Details</a>
+ <div class=" rounded-top bg-light pt-2 mt-2 pb-2 shadow p-3 mb-s bg-white rounded">
+          <a class="navbar-brand font-weight-bold ml-2 "> Payment Details</a>
           
                <input class=" float-right btn btn-outline-success my-2 my-sm-0 mr-2" id="searchBtn" value="Search" type="button" onclick="search();">
                <input  style="width: 15%" class="float-right form-control mr-sm-2 mb-2" id="searchFld" type="search" placeholder="Search" aria-label="Search">
@@ -36,9 +36,10 @@
 </div>
 
 <!-- print header of the thable -->
-     <div class="table-responsive">  
-          <table id="books" class="table">  
-               <thead>  
+     <div class="table-responsive shadow p-3 mb-s bg-white rounded">  
+          <table id="books" class="table shadow p-3 mb-s bg-white rounded">  
+               <thead> 
+               <br> 
                     <tr>
                         <th>PAYMENT ID</th>
                         <th>STUDENT ID</th>

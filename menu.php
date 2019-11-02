@@ -181,6 +181,7 @@ if($u_ta=='staff'){
                 <li>
                   <a href="Notice">Notice Info</a>
                 </li>
+                
                 <li>
                   <a href="AddNotice">Add a Notice</a>
                 </li>
