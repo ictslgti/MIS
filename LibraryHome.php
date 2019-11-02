@@ -164,7 +164,7 @@ $title = "Home | SLGTI";
   <div class="card text-white bg-primary" style="max-height: 14rem;">
   <div class="card-header"><b>Add Book</b></div>
     <div class="card-body">
-      <p class="card-text">By clicking here you can add new books and their copies to the libarary. And also add categories</p>
+      <p class="card-text">By clicking here you can add new books and their new copies to the libarary quickly.</p>
       <button type="submit" class="btn btn-light">Add Book</button>
     </div>
 </a>
