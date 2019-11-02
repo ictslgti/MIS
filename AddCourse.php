@@ -210,9 +210,7 @@ if(isset($_POST['Adding']))
               </div>
             
                 
-                </form >
-              
-              
+                </form >      
 <br><br>
 <?php
       if(isset($_GET['edits']))
