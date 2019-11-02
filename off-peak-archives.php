@@ -21,9 +21,7 @@ include_once("menu.php");
   <thead class="thead-dark">
     <tr>
     
-    <th scope="col">Student_id</th>
-      <th scope="col">Name of applicant</th>
-      <th scope="col">Department</th>
+    
       <th scope="col">Date</th>
       <th scope="col">Time</th>
       <th scope="col">Warden's comment</th>
@@ -41,10 +39,7 @@ include_once("menu.php");
     while($row = mysqli_fetch_assoc($result)){
     echo '<tr>
       
-      <td>'.$row["student_id"].'</td>
-      <td>'.$row["name_of_applicant"].'</td>
-      <td>'.$row["department"].'</td>
-    
+      
       <td>'.$row["date"].'</td>
       <td>'.$row["time"].'</td>
       <td>'.$row["warden's_comment"].'</td>
