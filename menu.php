@@ -298,9 +298,9 @@ if($u_ta=='staff'){
                   <a href="AddRoom">Add a Room</a>
                   <hr>
                 </li><?php } ?>
-                <li>
+                <li><?php if($_SESSION['user_type']=='STU' ){ ?>
                   <a href="RequestHostel">Request Hostel</a>
-                </li>
+                </li><?php } ?>
               </ul>
             </div>
           </li>
