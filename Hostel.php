@@ -16,6 +16,8 @@ if(isset($_GET['delete'])){
   echo
   '<div class="alert alert-danger">
   <strong>Success!</strong> Your data was Deleted.</a>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
 </div>';
    
  }else{

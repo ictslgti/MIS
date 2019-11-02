@@ -17,22 +17,38 @@ $title = "Home | SLGTI";
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 <!--insert Code-->
+<?php
+ 
+ $s_id =  $_SESSION['user_name'];
+ $u_type =  $_SESSION['user_type'];
+
+ $student_id=$name= $department_id=null;
+ if($_SESSION['user_type']=='STU'){
+   $sql ="SELECT 
+   `onpeak_request`.`student_id`,
+   `student`.`student_id`,
+   `department`.`department_id`
+  FROM `onpeak_request`
+   LEFT JOIN `student` ON `onpeak_request`.`student_id`=`student`.`student_id` 
+   LEFT JOIN `department` ON `department`.`department_id`=`onpeak_request`.`department_id` WHERE `onpeak_request`.`student_id` = '$s_id'";
+   $result = mysqli_query($con ,$sql);
+  if(mysqli_num_rows($result)== 1){
+   $row = mysqli_fetch_assoc($result);
+//    $student_id = $row['student_id'];
+   
+   $department_id = $row['department_id'];
+  }
+}
+?>
+
 <?PHP
 if(isset($_POST['req'])){
     
-  if(!empty($_POST['student_id'])
-    &&!empty($_POST['department_id'])
-    &&!empty($_POST['contact_no'])
-    &&!empty($_POST['reason'])
-    &&!empty($_POST['exit_date'])
-    &&!empty($_POST['exit_time'])
-    &&!empty($_POST['return_date'])
-    &&!empty($_POST['return_time'])
-    &&!empty($_POST['comment'])){
+
 
      
-      $student_id=$_POST['student_id'];
-      $department_id=$_POST['department_id'];
+      $s_id=$_POST['student_id'];
+      $d_id=$_POST['department_id'];
       $contact_no=$_POST['contact_no'];
       $reason=$_POST['reason'];
       $exit_date=$_POST['exit_date'];
@@ -43,14 +59,14 @@ if(isset($_POST['req'])){
       
      
     
-       $sql= "INSERT INTO `onpeak_request`(`student_id`,`department_id`, `contact_no`, `reason`, `exit_date`, `exit_time`, `return_date`, `return_time`, `comment`) 
-       VALUES ('$student_id','$department_id','$contact_no','$reason','$exit_date','$exit_time','$return_date','$return_time','$comment')";
+      $sql= "INSERT INTO `onpeak_request`(`student_id`,`department_id`, `contact_no`, `reason`, `exit_date`, `exit_time`, `return_date`, `return_time`, `comment`) 
+       VALUES ('$s_id','$d_id','$contact_no','$reason','$exit_date','$exit_time','$return_date','$return_time','$comment')";
 
       if(mysqli_query($con,$sql))
       {
         echo '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong> <h5> '.$student_id.'</strong> Request Submitted </h5> 
+            <strong><h5> '.$student_id.'</strong> Request Submitted </h5>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -61,7 +77,7 @@ if(isset($_POST['req'])){
         echo "Error deleting record: " . 	mysqli_error($con);
     }
 
-    }
+    
     }
 ?> 
 
@@ -75,7 +91,7 @@ if(isset($_POST['req'])){
         if(mysqli_query($con,$sql)) {
          echo '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-             <strong> <h5> Your Request is delete successfully </h5> </strong>
+             <strong> <h5> Record deleted successfully </h5> </strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -99,10 +115,9 @@ if(isset($_POST['req'])){
 
 
 
-
 <!--Form Deign Start-->
 <br>
-<form method="post" >  
+<form method="POST" >  
 <div class="row border border-light shadow p-3 mb-5 bg-white rounded">
           <div class="col">
           <br>
@@ -133,7 +148,7 @@ if(isset($_POST['req'])){
                         <label class="input-group-text" for="inputGroupSelect01"> 
                             <i class="fas fa-fingerprint"> </i>&nbsp;&nbsp;Registration No&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" name="student_id" type="text" >
+                    <input class="form-control" id="student_id" name="student_id" type="text" value="<?php if($_SESSION['user_type']=='STU') echo $s_id;?>" >
                  </div> 
 
 <br>       
@@ -143,7 +158,8 @@ if(isset($_POST['req'])){
                         <label class="input-group-text" for="inputGroupSelect01">
                             <i class="fas fa-school"></i>&nbsp;&nbsp;Department ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <select class="browser-default custom-select" name="department_id"    required>
+                    
+                    <select class="browser-default custom-select" name="department_id"  id="department_id"  required>
                        <option value="1"> Select the Department ID </option> 
                                 <?php
                                     $sql="select * from `department`";
@@ -154,6 +170,7 @@ if(isset($_POST['req'])){
                                     }}   
                                 ?>
                     </select>
+                   
                 </div>
 
 
@@ -165,7 +182,7 @@ if(isset($_POST['req'])){
                         <label class="input-group-text" for="inputGroupSelect01"> 
                             <i class="fas fa-phone-alt"> </i>&nbsp;&nbsp;Contact no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" name="contact_no" type="text" placeholder="Mobile or Home number">
+                    <input class="form-control" name="contact_no" type="text" id="contact_no" placeholder="Mobile or Home number">
                 </div>
 
 <br>
@@ -175,7 +192,7 @@ if(isset($_POST['req'])){
                         <label class="input-group-text" for="inputGroupSelect01">
                             <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Reason for Exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01" name="reason">
+                    <select class="custom-select" id="reason" name="reason" >
                         <option selected>Choose...</option>
                         <option >Hospital </option>
                         <option >Family issues </option>
@@ -192,7 +209,7 @@ if(isset($_POST['req'])){
                         <i class="far fa-calendar-alt"></i>&nbsp;&nbsp;Exit Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
                     
-                    <input class="form-control" type="date" name="exit_date">
+                    <input class="form-control" type="date" name="exit_date" id="exit_date">
                     
                 </div>
 
@@ -204,7 +221,7 @@ if(isset($_POST['req'])){
                                     <i class="far fa-clock"> </i>&nbsp;&nbsp;Exit Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
                             
-                            <input class="form-control" type="time" name="exit_time">
+                            <input class="form-control" type="time" name="exit_time" id="exit_time">
                 </div>
 
 <br>
@@ -215,7 +232,8 @@ if(isset($_POST['req'])){
                                 <i class="fas fa-calendar-check"></i>&nbsp;&nbsp;Return Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
                             
-                            <input class="form-control" type="date" name="return_date">
+                            <input class="form-control" type="date" name="return_date" id="return_date">
+                            
                 </div>
 
 <br>
@@ -226,14 +244,14 @@ if(isset($_POST['req'])){
                                     <i class="fas fa-history"> </i>&nbsp;&nbsp;Return Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             </div>
                             
-                            <input class="form-control" type="time" name="return_time">
+                            <input class="form-control" type="time" name="return_time" id="return_time">
                 </div>
 
 <br>
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Comment : </label>
-                        <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" name="comment"  rows="3" id="comment" placeholder="Use only Alphbet"></textarea>
                     </div>
 
 
@@ -252,7 +270,7 @@ if(isset($_POST['req'])){
                     <div class="row">
                         <div class="col">
                             <div class="mx-auto" style="width: 200px;">
-                              <button type="submit" class="btn btn-primary " name="req"> <i class="fab fa-telegram"></i>&nbsp;&nbsp;&nbsp;Request to approval</button>  
+                              <button type="submit" class="btn btn-primary " name="req"> <i class="fab fa-telegram"></i><strong> Request to approval </strong></button>  
                             <!-- <input type="submit" name="req" class="btn btn-primary " > -->
                             </div>
                         </div>
@@ -263,7 +281,15 @@ if(isset($_POST['req'])){
                     <div class="row">
                         <div class="col">
                             <div class="mx-auto" style="width: 200px;">
-                            <button type="button" name="reset" class="btn btn-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-redo-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;Reset
+                            <button type="button" name="reset" class="btn btn-secondary" onclick="document.getElementById('contact_no').value = '';
+                                                                                        document.getElementById('department_id').value = '';
+                                                                                        document.getElementById('reason').value = '';
+                                                                                        document.getElementById('exit_date').value = '';
+                                                                                        document.getElementById('exit_time').value = '';
+                                                                                        document.getElementById('return_date').value = '';
+                                                                                        document.getElementById('return_time').value = '';
+                                                                                        document.getElementById('comment').value = '';">
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-redo-alt"></i>&nbsp;&nbsp;<strong> Reset </strong>
                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                                         
                             </div>
@@ -297,7 +323,7 @@ if(isset($_POST['req'])){
             <div class="col">
                 <br>
                 <br>
-                <div class="pr-5 pl-2 ml-auto text-info">History</div>
+                <div class="pr-5 pl-2 ml-auto text-info"> <strong> History </strong> </div>
                 <br>
                 <br>
             </div>
@@ -320,7 +346,8 @@ if(isset($_POST['req'])){
             </thead>
 
             <?php
-                 $sql = "SELECT * FROM `onpeak_request`";
+                 $s_id =  $_SESSION['user_name'];
+                 $sql = "SELECT * FROM `onpeak_request` where `student_id`='$s_id'";
                  $result = mysqli_query($con, $sql);
                 if (mysqli_num_rows($result) > 0) {
                  while($row = mysqli_fetch_assoc($result)) {

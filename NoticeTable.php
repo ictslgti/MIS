@@ -11,6 +11,7 @@ include_once("menu.php");
 
 <!-- BLOCK#2 START YOUR CODER HERE -->
 
+<form method="post">
 <div class="shadow  p-3 mb-1 bg-white rounded">
 	    <div class="highlight-blue col-md-12 col-sm-12">
 	        <h2 class="display-4 text-center  text-primary">Event  info list</h2>
@@ -37,12 +38,12 @@ include_once("menu.php");
                     
                   
                     if(isset($_GET['delete'])){
-                        $e_id = $_GET['delete'];
-                        $sql = "DELETE FROM `notice_event` WHERE `event_id`='$e_id'";
+                        $event_id = $_GET['delete'];
+                        $sql = "DELETE FROM `notice_event` WHERE `event_id`=$event_id";
                         if(mysqli_query($con,$sql)){
                             echo '
                             <div class="alert alert-sucess alert-dismissible fade show" role="alert">
-                            <strong> '.$e_id.' </strong> Record has been Deleted Succesfully 
+                            <strong> '.$event_id.' </strong> Record has been Deleted Succesfully 
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -50,7 +51,7 @@ include_once("menu.php");
                         }else{ 
                             echo'
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong> '.$e_id.' </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                            <strong> '.$event_id.' </strong> Cannot delete or update a parent row (foreign key constraint fails)
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -86,8 +87,7 @@ include_once("menu.php");
                                         <td> 
                                         <a href="NoticeEventView.php?id='. $row["event_id"].'" class="btn btn-primary btn-sm btn-icon-split"> <span class="text"><i class="fas fa-eye"></i>&nbsp;&nbsp;View</span>  </a>  
                                         <a href="NoticeEventUpload.php?edit='. $row["event_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a> 
-                                   
-                                        <button class="btn btn-sm btn-danger" data-href="?delete='.$row["event_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>                                    
+                                        <a href=?delete='. $row["event_id"].'" class="btn btn-sm btn-danger" ><i class="fas fa-trash"></i></a> 
                                 
                                     </td> 
                                 </tr>';
@@ -104,7 +104,7 @@ include_once("menu.php");
 
 	                </tbody>
 	            </table>
-
+  </form>
 
 
 <!-- END YOUR CODER HERE -->

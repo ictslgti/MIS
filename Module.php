@@ -40,8 +40,13 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
             </div>
           </div>
         <div class="col-1">
-          <div class="form-row align-items-center">
+          <div class="form-row align-items-center" style="float:left">
             <button  type="submit" class="btn btn-primary btn-block" ><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-row align-items-center" style="float:right;">
+          <a href="Module.php" style="text-align:center;font-weight: 650;font-size:15px;background-color:#e8e3e3;" class="text-primary page-link">VIEW ALL MODULES</a>
           </div>
         </div>
   </div>
@@ -62,10 +67,12 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                     </tr>
                   </thead>
                     <?php
-                    if(isset($_GET['dlt']))
+                    if((isset($_GET['dlt']))&&(isset($_GET['dllt'])))
                     {
                     $m_id = $_GET['dlt'];
-                    $sql = "DELETE from module where module_id = '$m_id'";
+                    $cid = $_GET['dllt'];
+
+                    $sql = "DELETE from module where module_id ='$m_id' AND course_id ='$cid'";
                     if(mysqli_query($con,$sql)){
                     echo '
                     <div class="alert alert-sucess alert-dismissible fade show" role="alert">
@@ -86,7 +93,14 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                   <tbody>
                     <?php
                     {  
-                    
+                    function getTotal($cid,$mid){
+                    $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+                    $sql_r = "CALL notionalhours ('$cid','$mid')";
+                    $result_r = mysqli_query($con,$sql_r);
+                    while ($row_r = mysqli_fetch_array($result_r)){ 
+                    $x = $row_r[0];
+                    }
+                    return $x;}
                     $sql = "SELECT `module_id`,
                     `module_name`,
                     `module_learning_hours`,
@@ -116,9 +130,9 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                      <td>'. $row["course_name"] . "<br>" .'</td>
                      <td>'. $row["semester_id"] . "<br>" .'</td>
                      <td>'.getTotal($cid,$mid). "<br>" .'</td>
-                     <td> 
-                      <a href="AddModule.php ?edits='.$row["module_id"].'&&editc='.$row["course_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-                      <button data-href=" ?dlt='.$row["module_id"].' &&  ?dlt='.$row["course_id"].' " class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
+                     <td>
+                     <a href="AddModule.php ?edits='.$row["module_id"].'&&editc='.$row["course_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                     <button class="btn btn-sm btn-danger" data-href=" ?dlt='.$row["module_id"].'&&dllt='.$row["course_id"].' " data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
                      </td> 
                      </tr>';
                      $count=$count+1;
@@ -131,11 +145,8 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
               </table>
               </div>
   <div class="form-row">
-      <div class="col-md-6 col-sm-6">
-        <a href="Module.php" style="text-align:center;font-weight: 650;font-size:15px;" class="text-primary page-link">VIEW ALL MODULES</a>
-      </div>
-      <div class="col-md-6 col-sm-6">
-        <a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i>
+      <div class="col-md-12">
+      <a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i>
       </div>
   </div>
       </div>

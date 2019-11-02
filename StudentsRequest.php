@@ -4,6 +4,7 @@ $title = "Home | SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
+if($_SESSION['user_type']=='STU'){
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
@@ -149,6 +150,7 @@ if(isset($_POST['Add'])){
                   echo '>'.$row["department_name"].'</option>';
                   }
                   }
+                  
                   ?>
                     </select>
                     <div class="invalid-feedback" style="width: 80%;">
@@ -213,6 +215,7 @@ if(isset($_POST['Add'])){
 
                     <button type="submit" class="btn btn-outline-danger" onclick="location.href='index.php'" >&nbsp;&nbsp;cancel</button>
                    
+                   
                     
                 </form>
 
@@ -221,6 +224,7 @@ if(isset($_POST['Add'])){
         <br>
 
 <!--END OF YOUR COD-->
+                  <?php } ?>
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("footer.php"); ?>

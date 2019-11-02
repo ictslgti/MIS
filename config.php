@@ -26,8 +26,8 @@ if (mysqli_connect_errno()){
 define("EMAIL_USE_SMTP", true);
 define("EMAIL_SMTP_HOST", 'smtp.gmail.com');
 define("EMAIL_SMTP_AUTH", true); // leave this true until your SMTP can be used without login
-define("EMAIL_SMTP_USERNAME", '');
-define("EMAIL_SMTP_PASSWORD", '');
+define("EMAIL_SMTP_USERNAME", 'slgtimis@gmail.com');
+define("EMAIL_SMTP_PASSWORD", 'slgtimis123$');
 define("EMAIL_SMTP_PORT", 587);
 define("EMAIL_SMTP_ENCRYPTION", 'tls');
 /**

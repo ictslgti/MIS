@@ -4,6 +4,7 @@ $title ="Home | SLGTI";
  include_once("config.php");
  include_once("head.php");
  include_once("menu.php");
+ if($_SESSION['user_type']=='STU'){
  ?>
  <!--END Don't CHANGE THE ORDER-->
 
@@ -19,12 +20,12 @@ $StudentID=$Department_id=$StudentName=$DepartmentName=$Finalplace=$Address=null
 
   if(isset($_GET['edit'])){
         $StudentID=$_GET['edit'];
-        $sql="SELECT `student_name`, `department_id`, `final_place`, `final_address` FROM `ojt` WHERE `student_id`='$StudentID'";
+        $sql="SELECT `student_name`, `department_name`, `final_place`, `final_address` FROM `ojt` WHERE `student_id`='$StudentID'";
         $result=mysqli_query($con,$sql);
         if(mysqli_num_rows($result)==1){
             $row=mysqli_fetch_assoc($result);
             $StudentName=$row['student_name']; 
-            $DepartmentName=$row['department_id'];
+            $DepartmentName=$row['department_name'];
             $Finalplace=$row['final_place'];
             $Address=$row['final_address'];
         }
@@ -103,7 +104,8 @@ $StudentID=$Department_id=$StudentName=$DepartmentName=$Finalplace=$Address=null
                     echo '<div class="btn-group-horizontal">';
   
                     if(isset($_GET['edit'])){
-                   
+                  
+                      
                     }
                     ?>
                     </div>
@@ -115,6 +117,7 @@ $StudentID=$Department_id=$StudentName=$DepartmentName=$Finalplace=$Address=null
     
 
 <!--END OF YOUR CODER-->
+                  <?php } ?>
 
   <!--START Don't CHANGE THE ORDER-->   
 <?php 

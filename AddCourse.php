@@ -137,7 +137,7 @@ if(isset($_POST['Adding']))
 
               <div class="col-md-6 mb-3">
                 <label for="Course ID">Course ID</label>
-                <input type="text" name="co_id" class="form-control"  placeholder=""  value="<?php echo $cid ?>" required>
+                <input type="text" name="co_id" class="form-control"  placeholder=""  value="<?php echo $cid ?>" required  <?php if(isset($_GET['edits'])) { echo "disabled='true'"; } ?>>
                
               </div>
 

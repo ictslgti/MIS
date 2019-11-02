@@ -17,8 +17,8 @@ include_once ("menu.php");
 
   if((isset($_GET['edits'])) && (isset($_GET['editc'])))
   {
-    echo $mid = $_GET['edits'];
-    echo $cid = $_GET['editc'];
+    $mid = $_GET['edits'];
+    $cid = $_GET['editc'];
     $sql = "SELECT * FROM module WHERE module_id ='$mid' and course_id='$cid'";
     $result = mysqli_query($con,$sql);
     
@@ -60,7 +60,8 @@ if(isset($_POST['Editing']))
   &&!empty($_POST['practical'])
   &&!empty($_POST['selfstudy'])
   &&!empty($_POST['cname'])
-  &&!empty($_GET['edits']))
+  &&!empty($_GET['edits'])
+  &&!empty($_GET['editc']))
   {
   
   $m_name = $_POST['mname'];
@@ -76,10 +77,21 @@ if(isset($_POST['Editing']))
   $m_selfstudy_h = $_POST['selfstudy'];
   $cid = $_POST['cname'];
   $mid =$_GET['edits'];
+  $cid =$_GET['editc'];
 
   
 
-   $sql="UPDATE `module` SET `module_name`='$m_name',`module_aim`= '$m_aim',`module_learning_hours`='$m_learning_h',`module_resources`='$m_resources',`module_learning_outcomes`='$m_l_outcomes',`semester_id`='$sid',`module_reference`='$m_references',`module_relative_unit`='$m_r_unit',`module_lecture_hours`='$m_lecture_h',`module_practical_hours`='$m_practical_h',`module_self_study_hours`='$m_selfstudy_h',`course_id`='$cid' WHERE `module_id`='$mid'";
+   $sql="UPDATE `module` SET `module_name`='$m_name',
+   `module_aim`= '$m_aim',
+   `module_learning_hours`='$m_learning_h',
+   `module_resources`='$m_resources',
+   `module_learning_outcomes`='$m_l_outcomes',
+   `semester_id`='$sid',`module_reference`='$m_references',
+   `module_relative_unit`='$m_r_unit',
+   `module_lecture_hours`='$m_lecture_h',
+   `module_practical_hours`='$m_practical_h',
+   `module_self_study_hours`='$m_selfstudy_h',
+   `course_id`='$cid' WHERE `module_id`='$mid' and course_id='$cid'";
 
    if(mysqli_query($con,$sql))
    {
@@ -211,7 +223,7 @@ if(isset($_POST['Adding']))
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="ID">Module ID</label>
-                <input type="text" class="form-control" id="ID" placeholder="" value="<?php echo $mid ?>" name="mid" required>
+                <input type="text" class="form-control" id="ID" placeholder="" value="<?php echo $mid ?>" name="mid" required <?php if(isset($_GET['edits'])) { echo "disabled='true'"; } ?>>
               
               </div>
 
@@ -236,7 +248,7 @@ if(isset($_POST['Adding']))
               <div class="col-md-6 mb-3">
                   <label for="Department">Course Name</label>
                   <select class="custom-select d-block w-100"  name="cname" required>
-                    <option selected  disabled selected>Select Course Name...</option>
+                    <option disabled selected >Select Course Name...</option>
                     <?php
                      $sql = "SELECT * FROM course";
                      $result = mysqli_query($con, $sql);

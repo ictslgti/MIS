@@ -234,7 +234,7 @@ if(isset($_POST['Add'])){
 
   
      $sql = "INSERT INTO `notice_result` (`department_id`, `academic_year`,`course_id`, `module_id` ,`upload`)
-      VALUES ('$department_id','$course_id','$module_id','$academic_year','$name')";
+      VALUES ('$department_id','$academic_year','$course_id','$module_id','$name')";
    
       if (mysqli_query($con, $sql)) {
         echo "record add";

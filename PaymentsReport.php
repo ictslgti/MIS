@@ -4,6 +4,7 @@
  include_once("config.php"); 
  include_once("head.php"); 
  include_once("menu.php"); 
+  if($_SESSION['user_type']=='ACC'||'ADM'){ 
  ?>
 <!--END DON'T CHANGE THE ORDER--> 
 
@@ -226,7 +227,7 @@
      }
 </script>
 <!--END OF YOUR COD-->
-
+<?php } ?>
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
 <?php include_once("footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->  
