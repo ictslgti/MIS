@@ -421,7 +421,7 @@ if(isset($_POST['Edit']))
           //     $stid = $row['student_id'];
           //   }
           // }
-          ?>" id="sid"   required> -->
+          ?>" id="sid" required>
         </div>
 
         <div class="col-md-3 mb-3">
