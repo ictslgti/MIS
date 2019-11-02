@@ -338,7 +338,7 @@ if($u_ta=='staff'){
           </li>
 
 
-          <li class="sidebar-dropdown"><?php if(!$_SESSION['user_type']=='STU' ){ ?>
+          <li class="sidebar-dropdown"><?php if($_SESSION['user_type']!='STU' ){ ?>
             <a href="#">
               <i class="fas fa-file-alt"></i>
               <span>Inventory</span>
