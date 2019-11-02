@@ -47,6 +47,38 @@ include_once("menu.php");
 
 
 
+<!-- search coding -->
+<?php
+  if(isset($_GET['edits'])){
+        $id=$_GET['edits'];
+        $sql="SELECT * FROM `inventory_item` WHERE `item_id`='$id'";
+        $result=mysqli_query($con,$sql);
+        if(mysqli_num_rows($result)==1){
+      $row=mysqli_fetch_assoc($result);
+      $itemid=$row['item_id'];
+      $supplierid=$row['supplier_id'];
+      $inventoryitempurchase=$row['inventory_item_purchase'];
+      $inventoryitemwarranty=$row['inventory_item_warranty'];
+      $inventoryitemdescription=$row['inventory_item_description'];
+      $itemcode=$row['item_code'];
+      
+        }
+        else{
+          echo '
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$item_id.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        
+        ';
+        }
+    }
+  
+?>
+
+
 
 
 
@@ -57,7 +89,7 @@ include_once("menu.php");
 
     <div class="col-sm-3 pt-4"> 
       <form class="form-inline" method="GET">
-        <input class="form-control mr-2" type="search" name="edit" placeholder="Inventory_Id">  
+        <input class="form-control mr-2" type="search" name="edits" placeholder="item_id">  
         <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
       </form>
     </div>  

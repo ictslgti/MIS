@@ -131,8 +131,7 @@ if(isset($_POST['Adding']))
       </div>
     </div>
  <br>
- <br>
-        <form method="POST">
+ <br>  <form method="POST">
             <div class="row">
 
               <div class="col-md-6 mb-3">
@@ -206,13 +205,11 @@ if(isset($_POST['Adding']))
 
               <div class="col-md-6 mb-3">
                 <label for="Level">NVQ Level</label>
-              <input type="text" class="form-control" id="unit" placeholder="NVQ are only '3-6' and 'BRI' for Bridging"   name="n_level" value="<?php echo $nvq ?>" min="3" max="6" maxlength="1" required>
+              <input type="text" class="form-control" id="unit" placeholder="NVQ are only '3-6' and 'BRI' for Bridging"   name="n_level" value="<?php echo $nvq ?>" min="3" max="6" maxlength="3" required>
               </div>
             
                 
-                </form >
-              
-              
+                </form >      
 <br><br>
 <?php
       if(isset($_GET['edits']))

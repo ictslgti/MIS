@@ -5,7 +5,7 @@ include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
 
- if($_SESSION['user_type']=='ACC'){ 
+ if($_SESSION['user_type']=='ACC'||'ADM'){ 
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
@@ -14,15 +14,15 @@ include_once("menu.php");
 
 
 <div class="shadow p-3 mb-s bg-white rounded">
-  <h1 class="text-center display-3">SLGTI Payment Information</h1><br>
+  <h1 class="text-center display-3">SLGTI Student Payment Information</h1><br>
   </div>
   </body>
 
  <?php
  $payment_type=$payment_reason=null;
  if(isset($_POST['Add'])){
-    echo $payment_type=$_POST['payment_reason'];
-    echo $payment_reason=$_POST['payment_type'];
+     $payment_type=$_POST['payment_reason'];
+     $payment_reason=$_POST['payment_type'];
     $sql="INSERT INTO `payment` (`payment_reason`, `payment_type`) VALUES ('$payment_reason', '$payment_type')";
     if(mysqli_query($con,$sql)){
         echo '
@@ -50,29 +50,29 @@ include_once("menu.php");
       }
     
 }
-?>
-  <form method="POST" action="#">
-  <div class="form-group col-md-4"><h4><i class="fas fa-folder-plus"></i>&nbsp;
-                        <label for="inputEmail4">Add Payment Type</label></h4>
+?><br>
+  <form method="POST " class="shadow p-3 mb-s bg-white rounded" action="#">
+  <div class="form-group col-md-4 shadow p-3 mb-s bg-white rounded"><h4><i class="fas fa-folder-plus"></i>&nbsp;
+                        <label for="inputEmail4">Add Payment Category</label></h4>
                         <input type="Department" 
                             class="form-control" id="
                             inputEmail4" placeholder="Typing Very Carefully" name="payment_reason">
                     </div>
 
-                    <div class="form-group col-md-4"><h4><i class="fas fa-folder-plus"></i>&nbsp;
+                    <div class="form-group col-md-4 shadow p-3 mb-s bg-white rounded"><h4><i class="fas fa-folder-plus"></i>&nbsp;
                         <label for="inputEmail4">Add Payment Reason</label></h4>
                         <input type="Department" 
                             class="form-control" id="
                             inputEmail4" placeholder="Typing Very Carefully" name="payment_type">
                             <br>
-                            <button type="submit"name="Add" value="Add" class="btn btn-outline-warning">ADD+</button>
+                            
                     </div>
-                    
+                    <button type="submit"name="Add" value="Add" class="btn btn-outline-success ">ADD+</button>
   </form>
   <br>
 	
 
-<div class="row">
+<div class="row shadow p-3 mb-s bg-white rounded">
     <div class="col-sm-12">
     <table class="table">
 
@@ -125,7 +125,7 @@ if(mysqli_num_rows($result)>0){
     </div>
     <div class="col-sm-6">
 
-    <table class="table">
+    <!-- <table class="table">
 
     <tr>
         <th>payment_reason</th>
@@ -150,7 +150,7 @@ if(mysqli_num_rows($result)>0){
 }
 
 ?>
-</table>
+</table> -->
     </div>
   </div>
 
