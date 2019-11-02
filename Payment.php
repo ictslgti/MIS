@@ -109,7 +109,7 @@ if(isset($_POST['edit'])){
 <br>
     <div class="row ">
     <div class="col-sm-8"></div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 shadow p-3 mb-s bg-white rounded">
         <!-- <div class="col-sm-2"> </div>
         <div class="col-sm-4" > -->
 
@@ -135,7 +135,7 @@ if(isset($_POST['edit'])){
     <br>
     <form method="POST" action="#">
   
-        <div class="row">
+        <div class="row shadow p-3 mb-s bg-white rounded">
         <div class="col-sm-6"><?php if($student_profile_img!=null) { ?> <img src="<?php echo $student_profile_img; ?>"
                 alt="..." width="150px" height="150px"> <?php }?><br>
 
