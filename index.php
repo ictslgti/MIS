@@ -26,7 +26,7 @@ if($_SESSION['user_type']  == 'STU'){
             if (mysqli_num_rows($result4)>0) {
                  while($row=mysqli_fetch_assoc($result4)){
                       $module=$row["module_id"];
-                     $sql2="SELECT survey_id FROM feedback_survey where module_id='$module' and end_date > curdate() and start_date <= curdate()";
+                     $sql2="SELECT survey_id FROM feedback_survey where  course_id='$course' and module_id='$module' and end_date > curdate() and start_date <= curdate()";
                      $result5 = mysqli_query($con,$sql2);
                      if (mysqli_num_rows($result5)>0) {
                           while($row=mysqli_fetch_assoc($result5)){
