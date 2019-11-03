@@ -77,7 +77,7 @@ include_once("menu.php");
             }
             else
             {
-              echo "Error: ".$sq2. "<br>" . mysqli_error($con);
+              echo "Error: ".$sql. "<br>" . mysqli_error($con);
               echo "Fill the required field";
             }
           }
@@ -314,7 +314,7 @@ include_once("menu.php");
                         <td>'.$row["student_enroll_status"]."<br>".'</td>
                         <td>
                         <a href="StudentReEnroll.php?stid='.$row["student_id"].'&&coid='.$row["course_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
-                        <a href="Student_profile.php?Student_Id='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i></td>
+                        <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i></td>
                    </tr>';
                   $num=$num+1;
                 }
