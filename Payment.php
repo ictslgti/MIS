@@ -164,7 +164,7 @@ if(isset($_POST['edit'])){
                         <label for="inputEmail4">Department</label>
                         <input type="Department" 
                             class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['pays_department'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['pays_department'])){echo ' is-valid';} ?>"" id="
-                            inputEmail4" placeholder="Department"  name="pays_department disabled" value="<?php echo  $department;?>">
+                            inputEmail4" placeholder="Department"  name="pays_department" value="<?php echo  $department;?>" disabled>
                     </div>
                 </div>
 
