@@ -99,7 +99,7 @@ include_once("menu.php");
                         }
                     ?>
                            
-                    
+          <a href="NoticeEventUpload.php"> back</a>
 
 	                </tbody>
 
