@@ -148,23 +148,23 @@ if(isset($_POST['edit'])){
                 alt="..." width="150px" height="150px"> <?php }?><br>
 
             
-                <div class="form-row"><br>
+                    <div class="form-row"><br>
                     <div class="form-group col-md-12"><i class="fas fa-id-card-alt"></i>&nbsp;
                         <label for="inputEmail4">ID</label>
                         <input type="text" name="student_id" value="<?php echo  $student_id;?>"
-                            class="form-control"
-                            id="inputEmail4" placeholder="ID" disabled>
+                            class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['student_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_id'])){echo ' is-valid';} ?>"
+                            id="inputEmail4" placeholder="ID">
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-user"></i>&nbsp;
                         <label for="inputEmail4">Name</label>
                         <input type="text" value="<?php echo  $student_name; ?>" name="student_name"
-                            class="form-control " id="inputEmail4" placeholder="Name" disabled>
+                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['student_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_name'])){echo ' is-valid';} ?>" id="inputEmail4" placeholder="Name">
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-building"></i>&nbsp;
                         <label for="inputEmail4">Department</label>
                         <input type="Department" 
-                            class="form-control" id="
-                            inputEmail4" placeholder="Department"  name="pays_department" value="<?php echo  $department;?>" disabled>
+                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['pays_department'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['pays_department'])){echo ' is-valid';} ?>"" id="
+                            inputEmail4" placeholder="Department" name="pays_department" value="<?php echo  $department;?>">
                     </div>
                 </div>
 
