@@ -112,7 +112,7 @@ $result = mysqli_query($con,$sql);
     $exit = $row['student_enroll_exit_date'];
     $id=$row['course_id'];
     $pass=$row['user_password_hash'];
-    $img=$row['student_profile_img'];
+    echo $img=$row['student_profile_img'];
   }
 }
 
@@ -170,7 +170,7 @@ $result = mysqli_query($con,$sql);
 
 <div class="form-row shadow p-2 mb-4 bg-white rounded">
     <div class="col-md-3 mb-3 " > 
-    <img src="img/profile/<?php echo $img;?>" alt="user image" class="img-thumbnail" style="width:200px;height:200px;">
+    <img src="<?php echo $img;?>" alt="user image" class="img-thumbnail" style="width:200px;height:200px;">
     <?php
     // $query= "select `student_profile_img` from student where student_id='$username'";
     // $result=mysqli_query($con,$query);
