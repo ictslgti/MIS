@@ -141,8 +141,8 @@ else{
 
                         if (isset($_GET['StudentMarks'])) {
                             # code...
-                           echo  $id=$_GET['StudentMarks'];
-                         echo $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id
+                             $id=$_GET['StudentMarks'];
+                          $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id
                              
                             FROM `assessments_marks`,student_enroll,assessments
                             WHERE student_enroll.course_id =assessments.course_id AND assessments.assessment_id ='$id' group by student_id";
@@ -314,6 +314,7 @@ if(isset($_GET['delete'])){
                 <thead>
                     <tr>
                         <th scope="col">Marks ID</th>
+                     <th scope="col">Module ID</th>
                         <th scope="col">Assessment ID</th>
                         <th scope="col">Student ID</th>
                         <th scope="col">Assessment Attempt</th>
