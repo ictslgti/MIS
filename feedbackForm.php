@@ -26,9 +26,15 @@ $sql="SELECT  `feedback_survey`.`survey_id` AS `survey_id`,`course`.`course_name
         $s_edate=$row["end_date"];
         
    
+<<<<<<< HEAD
     }else{
         echo "Error :-".$sql.
         "<br>"  .mysqli_error($con);
+=======
+    }else {
+       echo "Error :-".$sql.
+              "<br>"  .mysqli_error($con);
+>>>>>>> 882b2a89e5d54b62fd0d373dc09fd782fa8a5772
     }
 
 ?>
