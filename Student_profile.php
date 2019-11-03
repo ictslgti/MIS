@@ -75,7 +75,7 @@ $sql = "SELECT user_name,e.course_id,`student_title`,`student_fullname`,`student
 `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,`student_em_address`,
 `student_em_phone`,`student_em_relation`,`student_status`,`course_name`,`department_name`,`course_mode`,course_nvq_level,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
 `student_enroll_status`,`user_password_hash` FROM `student` as s, student_enroll as e, user as u, course as c, department as d WHERE user_name=s.student_id and s.student_id=e.student_id 
- and e.course_id=c.course_id and  c.department_id=d.department_id and  user_name='$username'";
+ and e.course_id=c.course_id and  c.department_id=d.department_id and `student_enroll_status`='Following' and user_name='$username'";
 $result = mysqli_query($con,$sql);
 
   if(mysqli_num_rows($result)==1)
