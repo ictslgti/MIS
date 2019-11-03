@@ -152,7 +152,7 @@ if(isset($_POST['edit'])){
                     <div class="form-group col-md-12"><i class="fas fa-id-card-alt"></i>&nbsp;
                         <label for="inputEmail4">ID</label>
                         <input type="text" name="student_id" value="<?php echo  $student_id;?>"
-                            class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['student_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_id'])){echo ' is-valid';} ?>"
+                            class="form-control"
                             id="inputEmail4" placeholder="ID" disabled>
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-user"></i>&nbsp;
