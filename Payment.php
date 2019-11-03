@@ -88,8 +88,10 @@ if(mysqli_query($con,$sql)){
 
 if(isset($_POST['edit'])){
       $id=$_POST['edit'];
+      //$sql="SELECT student.student_id,student.student_fullname,student.student_profile_img, course.department_id from course,student where course.course_id=
+      //(select student_enroll.course_id from student_enroll where student_enroll.student_id='$id') && student.student_id = '$id'";
       $sql="SELECT student.student_id,student.student_fullname,student.student_profile_img, course.department_id from course,student where course.course_id=
-      (select student_enroll.course_id from student_enroll where student_enroll.student_id='$id') && student.student_id = '$id'";
+      (select student_enroll.course_id from student_enroll where student_enroll.student_id='$id'&&student_enroll.student_enroll_status='Following')&& student.student_id = '$id'";
       
 
       $result=mysqli_query($con,$sql);
