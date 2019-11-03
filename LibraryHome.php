@@ -227,12 +227,7 @@ $title = "Home | SLGTI";
                </thead>
                <?php
                
-               $query ="select *, books.name, student.student_ininame from issued_books 
-               INNER JOIN books
-               ON issued_books.book_serial = books.book_id
-               INNER JOIN student
-               ON issued_books.member_id = student.student_id
-               WHERE issued_date <= (SELECT DATE_ADD(now(), INTERVAL -7 DAY))";
+               $query ="select record_id, issued_books.book_serial, member_id, student.student_ininame, books.name,issued_date, issued_time, returned_date,returned_time, fine_reson, fine from issued_books INNER JOIN student ON issued_books.member_id = student.student_id INNER JOIN book_copies ON issued_books.book_serial = book_copies.book_serial INNER JOIN books ON book_copies.book_id=books.book_id WHERE issued_date <= (SELECT DATE_ADD(now(), INTERVAL -7 DAY))";
               
                if($result = mysqli_query($con, $query)){
                while($row = mysqli_fetch_array($result)){  
