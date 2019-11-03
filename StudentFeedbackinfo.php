@@ -124,7 +124,7 @@ include_once("menu.php");
                                                 <td>'. $row["end_date"]. "<br>" .'</td> 
                                                 
                                                 <td> 
-                                                <a href="feedbackForm.php?id='. $row["survey_id"].'" class="btn btn-primary btn-sm btn-icon-split"> <span class="text"><i class="fas fa-eye"></i>&nbsp;&nbsp;View</span>  </a>  
+                                                <a href="feedbackFormadd.php?id='. $row["survey_id"].'" class="btn btn-primary btn-sm btn-icon-split"> <span class="text"><i class="fas fa-eye"></i>&nbsp;&nbsp;View</span>  </a>  
                                                 <a href="AddStudentFeedback.php?edit='. $row["survey_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a> 
                                                 <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["survey_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
                                                 <a href="feedbacksurveysummery.php?id='. $row["survey_id"].'" class="btn btn-sm btn-success btn-icon-split"> <span class="text"><i class="fas fa-chart-bar"></i>Summary</span> </a>
