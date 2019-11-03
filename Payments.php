@@ -22,6 +22,10 @@ include_once("menu.php");
 	 
  $payment_type=$payment_reason=null;
  if(isset($_POST['Add'])){ 
+	 if
+    (!empty($_POST['payment_type'])
+    &&!empty($_POST['payment_reason'])){
+		 
     $payment_type=$_POST['payment_reason'];
      $payment_reason=$_POST['payment_type'];
     $sql="INSERT INTO `payment`(`payment_reason`, `payment_type`) VALUES ('$payment_reason', '$payment_type')";
@@ -46,7 +50,7 @@ include_once("menu.php");
         </div>
         
         ';
-
+      }
 
       }
     
