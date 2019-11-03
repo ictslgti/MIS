@@ -366,7 +366,7 @@ if($u_ta=='staff'){
           </li><?php } ?>   
 
 
-          <li class="sidebar-dropdown">
+          <li class="sidebar-dropdown"><?php if($_SESSION['user_type']=='ADM'){ ?> 
             <a href="#">
               <i class="fas fa-book-open"></i>
               <span>Library</span>
@@ -391,7 +391,7 @@ if($u_ta=='staff'){
                 </li>
               </ul>
             </div>
-          </li>
+          </li><?php } ?>  
 
           <li class="sidebar-dropdown">
             <a href="#">
