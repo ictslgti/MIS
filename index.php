@@ -47,19 +47,16 @@ if($_SESSION['user_type']  == 'STU'){
                      
                           }}
                         }else{
-                            echo "Error :-".$sql2.
-                            "<br>"  .mysqli_error($con);
+                           
                         }
                      
                  }
                 }else{
-                    echo "Error :-".$sql1.
-                    "<br>"  .mysqli_error($con);
+                   
                 }
 
     }}else{
-        echo "Error :-".$sql.
-        "<br>"  .mysqli_error($con);
+       
     }
 }else{
    // echo 'your not a student'.$_SESSION['user_type'];
