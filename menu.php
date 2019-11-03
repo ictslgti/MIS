@@ -178,12 +178,12 @@ if($u_ta=='staff'){
                   <a href="AddTimetable">Add a Timetable</a>
                 </li><?php } ?>
                 <hr>
-                <li>
+                <li><?php if($_SESSION['user_type']=='STU'){ ?> 
                   <a href="Notice">Notice Info</a>
-                </li>
-                 <li>
+                </li><?php } ?>
+                 <li><?php if($_SESSION['user_type']=='ADM'){ ?> 
                   <a href="AddNotice">Add a Notice</a>
-                </li>
+                </li><?php } ?>
               </ul>
             </div>
           </li>
