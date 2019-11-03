@@ -131,7 +131,7 @@ else{
 
                             <th scope="col">Marks</th>
                             <th scope="col">Attempt</th>
-                            <th scope="col">Grade</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -181,9 +181,7 @@ else{
 
 
                         </td>
-                        <td scope="row">
-                            <h3 class="text-success">Pass</h3>
-                        </td>
+                       
 
                                     
                                     
