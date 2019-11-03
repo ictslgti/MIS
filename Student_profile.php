@@ -149,15 +149,15 @@ $result = mysqli_query($con,$sql);
 
 ?>
 <?php
-if(isset($_POST["insert"]))
-{
-    $file = addcslashes(file_get_contents($_FILES["image"]["tmp_name"]));
-    $query = "UPDATE `student` SET `student_profile_img`='$file' WHERE `student_id`='$username'";
-    if(mysqli_query($con,$query))
-    {
-        echo '<script> alert("Images Insert into Databases") </script>';
-    }
-}
+// if(isset($_POST["insert"]))
+// {
+//     $file = addcslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+//     $query = "UPDATE `student` SET `student_profile_img`='$file' WHERE `student_id`='$username'";
+//     if(mysqli_query($con,$query))
+//     {
+//         echo '<script> alert("Images Insert into Databases") </script>';
+//     }
+// }
 ?>
 <!-- form start---->
 <div class="col text-center shadow p-5 mb-5 bg-white rounded">
@@ -170,16 +170,17 @@ if(isset($_POST["insert"]))
 
 <div class="form-row shadow p-2 mb-4 bg-white rounded">
     <div class="col-md-3 mb-3 " > 
+    <img src="img/profile/<?php echo $img;?>" alt="user image" class="img-thumbnail" style="width:200px;height:200px;">
     <?php
-    $query= "select `student_profile_img` from student where student_id='$username'";
-    $result=mysqli_query($con,$query);
-    if(mysqli_num_rows($result)==1)
-    {
-    echo '<img src="img/profile/<?php echo $img;?>" <img alt="user image" class="img-thumbnail" style="width:200px;height:200px;">';
-    }
+    // $query= "select `student_profile_img` from student where student_id='$username'";
+    // $result=mysqli_query($con,$query);
+    // if(mysqli_num_rows($result)==1)
+    // {
+    // echo '';
+    // }
     ?>
-    <input type="file" name="image" id="image"/><br><br>
-    <input type="submit" value="Insert" name="insert" id="insert">
+    <!-- <input type="file" name="image" id="image"/><br><br>
+    <input type="submit" value="Insert" name="insert" id="insert"> -->
     
     <!-- <button type="button" class="btn btn-outline-success">Success</button> -->
     </div>
@@ -525,7 +526,7 @@ if(isset($_POST["insert"]))
                           <td>'. $row["semester_id"].'</td>
                           <td>'. $row["module_learning_hours"].'</td>
                           <td>
-                          <a href="Assessment.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
+                          <a href="Assessment.php?Mid='.$row["module_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
                           </td>
                       </tr> ';
                     }
