@@ -7,6 +7,66 @@ include_once("menu.php");
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
+
+
+<?php
+// echo $_SESSION['user_table'];
+// echo $_SESSION['user_name'];
+if($_SESSION['user_type']  == 'STU'){
+   $u_type= $_SESSION['user_name'];
+   $table = $_SESSION['user_table'];
+    $sql ="SELECT course_id from student_enroll where  student_id= '$u_type'";
+
+    $result = mysqli_query($con,$sql);
+    if (mysqli_num_rows($result)>0) {
+         while($row=mysqli_fetch_assoc($result)){
+            $course=$row["course_id"];
+            $sql1="SELECT module_id from module where course_id='$course'";
+            $result4 = mysqli_query($con,$sql1);
+            if (mysqli_num_rows($result4)>0) {
+                 while($row=mysqli_fetch_assoc($result4)){
+                      $module=$row["module_id"];
+                     $sql2="SELECT survey_id FROM feedback_survey where module_id='$module' and end_date > curdate() and start_date <= curdate()";
+                     $result5 = mysqli_query($con,$sql2);
+                     if (mysqli_num_rows($result5)>0) {
+                          while($row=mysqli_fetch_assoc($result5)){
+                           $survey_id=$row["survey_id"];
+                           $sql3="SELECT survey_id,student_id FROM feedback_done where survey_id='$survey_id' and student_id='$u_type'";
+                           $result6 = mysqli_query($con,$sql3);
+                           if (mysqli_num_rows($result6)==0) {
+
+                           echo '
+                           <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong > New Notification! <span style="font-size:20px;">&#129335;</span> </strong> New Survey Added For <strong> '.$module.' </strong>&nbsp;Pleace Give Your Feedback &nbsp;
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                                </button>
+                            <a href="feedbackForm.php?id='. $row["survey_id"].'" class="btn btn-sm btn-warning float-right mr-5"><i class="fas fa-eye"></i></a> 
+                                </div>
+                           ';
+                     
+                          }}
+                        }else{
+                            echo "Error :-".$sql2.
+                            "<br>"  .mysqli_error($con);
+                        }
+                     
+                 }
+                }else{
+                    echo "Error :-".$sql1.
+                    "<br>"  .mysqli_error($con);
+                }
+
+    }}else{
+        echo "Error :-".$sql.
+        "<br>"  .mysqli_error($con);
+    }
+}else{
+   // echo 'your not a student'.$_SESSION['user_type'];
+}
+
+?>
+
 <!--BLOCK#2 START YOUR CODE HERE -->
 <!-- <form onsubmit="showTeacher()">
     <div class="row p-3">
