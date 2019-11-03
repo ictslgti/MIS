@@ -225,7 +225,7 @@
                       <option value="ict">ICT</option>
                       <option value="construction">Construction</option>
                       <option value="mechanical">Mechanical</option>
-                      <option value="autoMobile">Auto Mobile</option>
+                      <option value="auto Mobile">Auto Mobile</option>
                       <option value="food">Food Tech</option>
                       <option value="electronic">Electronic</option>
                       <option value="common">Common</option>
