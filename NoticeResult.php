@@ -93,7 +93,7 @@ include_once("menu.php");
      $edid=$_GET["department_id"];
      $cid=$_GET["course_id"];
      $ay=$_GET["academic_year"];
-     $sql="SELECT notice_result.module_id as module_id ,
+     $sql="SELECT DISTINCT notice_result.module_id as module_id ,
      module.module_name as module_name,
      notice_result.upload as upload 
      from notice_result,module 
