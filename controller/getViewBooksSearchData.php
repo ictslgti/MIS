@@ -7,7 +7,7 @@
                     $postchar = $_POST['text'];
                     //echo $postchar;
                     //multiply the id value by 10 to set SQL OFFSET value 
-                    $query= "SELECT books.book_id,books.name, books.author, books.publisher, books.ISBN, books.category, books.year, books.cost, books.purch_date, COUNT(book_copies.book_serial) AS copies FROM books LEFT JOIN book_copies on books.book_id=book_copies.book_id where books.name like '%$postchar%' or books.book_id like '%$postchar%' or books.author like '%$postchar%' GROUP BY book_id";               
+                    $query= "SELECT books.book_id,books.name, books.author, books.publisher, books.ISBN, books.category, books.year, books.cost, books.purch_date, COUNT(book_copies.book_serial) AS copies FROM books LEFT JOIN book_copies on books.book_id=book_copies.book_id where books.name like '%$postchar%' or books.book_id like '%$postchar%' or books.author like '%$postchar%' or books.category like '%$postchar%' GROUP BY book_id";               
                      //$query ="SELECT * FROM books LIMIT 10 OFFSET $postchar";
                 }
                 $result = mysqli_query($con, $query);
