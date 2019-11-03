@@ -20,7 +20,7 @@
                         $thisYear=date("Y");
                         $bookSerialNo=null;
                    
-                        $sql1="SELECT SUBSTRING((SELECT book_id FROM books ORDER BY book_id DESC LIMIT 1) FROM 16) AS lastNumber";
+                        $sql1="SELECT SUBSTRING((SELECT book_id FROM `books` ORDER BY numbering DESC LIMIT 1) FROM 16) AS lastNumber";
                         $result=mysqli_query($con,$sql1);
                         if(mysqli_num_rows($result) == 1)
                         {
