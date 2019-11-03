@@ -13,7 +13,7 @@ $sql="SELECT  `feedback_survey`.`survey_id` AS `survey_id`,`course`.`course_name
  if(isset($_GET['id'])){
     $get_survey_id=$_GET['id'];
     $sql.="WHERE `feedback_survey`.`course_id`=`course`.`course_id` and `feedback_survey`.`module_id`=`module`.`module_id` and `feedback_survey`.`staff_id`=`staff`.`staff_id` and `feedback_survey`.`survey_id`= $get_survey_id"; 
-}
+
     $result = mysqli_query($con,$sql);
    if (mysqli_num_rows($result) == 1) {
         $row=mysqli_fetch_assoc($result);
@@ -24,8 +24,12 @@ $sql="SELECT  `feedback_survey`.`survey_id` AS `survey_id`,`course`.`course_name
         $s_edate=$row["end_date"];
         
    
+    }else {
+        echo 'sql error';
     }
-
+}else{
+    echo 'no id';
+}
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
