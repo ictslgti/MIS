@@ -694,7 +694,7 @@ if(isset($_POST['Edit']))
                           <td>'. $row["qualification_description"].'</td>
                           <td>'. $row["qualification_results"].'</td>
                           <td>
-                          <a href="?DELETE='.$stid.'&quali='.$row["qualification_description"].'&deinde='.$row["qualification_index_no"].'"class="btn btn-outline-danger btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a>
+                          <a href="DELETE='.$stid.'&quali='.$row["qualification_description"].'&deinde='.$row["qualification_index_no"].'"class="btn btn-outline-danger btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a>
                           </td>
                       </tr> ';
                     }

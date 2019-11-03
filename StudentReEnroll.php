@@ -68,8 +68,8 @@ include_once("menu.php");
         $enroll=$_POST['edate'];
         $exit=$_POST['exdate'];
 
-        $sql2 = "UPDATE `student_enroll` SET `course_mode`='$mode',`academic_year`='$year',`student_enroll_date`='$enstatus',
-        `student_enroll_exit_date`='$enroll',`student_enroll_status`='$exit' WHERE `student_id`='$stid' and `course_id`='$coid'";
+        $sql2 = "UPDATE `student_enroll` SET `course_mode`='$mode',`academic_year`='$year',`student_enroll_date`='$exit',
+        `student_enroll_exit_date`='$enroll',`student_enroll_status`='$enstatus' WHERE `student_id`='$stid' and `course_id`='$coid'";
 
             if(mysqli_query($con,$sql2))
             {
@@ -137,9 +137,9 @@ include_once("menu.php");
 <div class="ROW">
         <div class="col text-center shadow p-5 mb-5 bg-white rounded ">
             <h1>Students ReEnrollment Information </h1>
-            <h2>Students ReEnroll</h2>
+            <h2>SLGTI</h2>
         </div>
-    </div><BR>
+    </div>
 
     <form class="needs-validation" action="" method="POST">
 
@@ -314,7 +314,7 @@ include_once("menu.php");
                         <td>'.$row["student_enroll_status"]."<br>".'</td>
                         <td>
                         <a href="StudentReEnroll.php?stid='.$row["student_id"].'&&coid='.$row["course_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
-                        <a href="?Student_Id='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i></td>
+                        <a href="Student_profile.php?Student_Id='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i></td>
                    </tr>';
                   $num=$num+1;
                 }
