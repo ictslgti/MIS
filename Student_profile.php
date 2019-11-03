@@ -525,7 +525,7 @@ if(isset($_POST["insert"]))
                           <td>'. $row["semester_id"].'</td>
                           <td>'. $row["module_learning_hours"].'</td>
                           <td>
-                          '. $row["module_learning_hours"].'
+                          <a href="Assessment.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
                           </td>
                       </tr> ';
                     }
