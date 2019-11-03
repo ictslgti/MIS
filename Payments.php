@@ -21,7 +21,7 @@ include_once("menu.php");
  <?php
 echo "0";	 
  $payment_type=$payment_reason=null;
- if(isset($_POST['Add'])){
+ if(isset($_POST['Add'])){ echo "10";
     echo $payment_type=$_POST['payment_reason'];
      echo $payment_reason=$_POST['payment_type'];
     $sql="INSERT INTO `payment`(`payment_reason`, `payment_type`) VALUES ('$payment_reason', '$payment_type')";
