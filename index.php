@@ -41,7 +41,7 @@ if($_SESSION['user_type']  == 'STU'){
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                                 </button>
-                            <a href="feedbackForm.php?id='. $row["survey_id"].'" class="btn btn-sm btn-warning float-right mr-5"><i class="fas fa-eye"></i></a> 
+                            <a href="feedbackFormadd.php?id='. $row["survey_id"].'" class="btn btn-sm btn-warning float-right mr-5"><i class="fas fa-eye"></i></a> 
                                 </div>
                            ';
                      
