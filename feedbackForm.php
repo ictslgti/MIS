@@ -25,7 +25,7 @@ $sql="SELECT  `feedback_survey`.`survey_id` AS `survey_id`,`course`.`course_name
         
    
     }else {
-       echo "Error :-".$sql2.
+       echo "Error :-".$sql.
               "<br>"  .mysqli_error($con);
     }
 }else{
