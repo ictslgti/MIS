@@ -57,6 +57,8 @@ $sql="SELECT  `feedback_survey`.`survey_id` AS `survey_id`,`course`.`course_name
 
 <?php 
 $C_date=date('Y-m-d');
+if($_SESSION['user_type']  == 'STU'){
+
 echo $s_edate < $C_date ?
 
         '<h3 class="text-danger border-bottom"> Your Feedback Submit Date Closed !! &nbsp;&nbsp;<i class="far fa-frown"></i></h3>       
@@ -747,7 +749,12 @@ echo $s_edate < $C_date ?
 
 
 
-';
+'; }
+else{
+     $message ="<h1 class='text-secondary mt-5'  align='center'>This Feedback Survey was create for every Student</h1> <h1 align='center'>&#128528; &nbsp;  &#128549; &nbsp; &#128512;</h1>";
+     echo "$message";
+  
+}
  ?>
 
 </form>
@@ -797,8 +804,8 @@ $survey_id=$eid;
            $uname= $_SESSION["user_name"];
             $sql2="INSERT into feedback_done (survey_id,student_id,s_date,s_time) values ($survey_id,'$uname',curdate(),curtime())";
             if(mysqli_query($con,$sql2)){
-                $message ="<h4 class='text-success' >New record created successfully</h4>";
-                echo "$message";
+                // $message ="<h4 class='text-success' >New record created successfully</h4>";
+                // echo "$message";
             }else{
                 echo "Error :-".$sql2.
               "<br>"  .mysqli_error($con);
