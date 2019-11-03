@@ -66,56 +66,54 @@ $result = mysqli_query($con,$sql);
     $img=$row['student_profile_img'];
   }
 }
-else
-{
+// else
+// {
+// $username = $_SESSION['user_name'];
 
+// $sql = "SELECT user_name,e.course_id,`student_title`,`student_fullname`,`student_profile_img`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,`student_profile_img`,
+// `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,`student_em_address`,
+// `student_em_phone`,`student_em_relation`,`student_status`,`course_name`,`department_name`,`course_mode`,course_nvq_level,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
+// `student_enroll_status`,`user_password_hash` FROM `student` as s, student_enroll as e, user as u, course as c, department as d WHERE user_name=s.student_id and s.student_id=e.student_id 
+//  and e.course_id=c.course_id and  c.department_id=d.department_id and  user_name='$username'";
+// $result = mysqli_query($con,$sql);
 
-$username = $_SESSION['user_name'];
-
-$sql = "SELECT user_name,e.course_id,`student_title`,`student_fullname`,`student_profile_img`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,`student_profile_img`,
-`student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,`student_em_address`,
-`student_em_phone`,`student_em_relation`,`student_status`,`course_name`,`department_name`,`course_mode`,course_nvq_level,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
-`student_enroll_status`,`user_password_hash` FROM `student` as s, student_enroll as e, user as u, course as c, department as d WHERE user_name=s.student_id and s.student_id=e.student_id 
- and e.course_id=c.course_id and  c.department_id=d.department_id and  user_name='$username'";
-$result = mysqli_query($con,$sql);
-
-  if(mysqli_num_rows($result)==1)
-  {
-    //echo "success";
-    $row =mysqli_fetch_assoc($result);
-    //$stid = $row['student_id'];
-    $title = $row['student_title'];
-    $fname = $row['student_fullname'];
-    $ininame = $row['student_ininame'];
-    $gender = $row['student_gender'];
-    $civil = $row['student_civil'];
-    $email = $row['student_email'];
-    $nic = $row['student_nic'];
-    $dob = $row['student_dob'];
-    $phone = $row['student_phone'];
-    $address = $row['student_address'];
-    $zip = $row['student_zip'];
-    $district = $row['student_district'];
-    $division = $row['student_divisions'];
-    $province = $row['student_provice'];
-    $blood = $row['student_blood'];
-    $ename = $row['student_em_name'];
-    $eaddress = $row['student_em_address'];
-    $ephone = $row['student_em_phone'];
-    $erelation = $row['student_em_relation'];
-    $coid = $row['course_name'];
-    $depth = $row['department_name'];
-    $level = $row['course_nvq_level'];
-    $mode = $row['course_mode'];
-    $year = $row['academic_year'];
-    $enstatus =$row['student_enroll_status'];
-    $enroll = $row['student_enroll_date'];
-    $exit = $row['student_enroll_exit_date'];
-    $id=$row['course_id'];
-    $pass=$row['user_password_hash'];
-    $img=$row['student_profile_img'];
-  }
-}
+//   if(mysqli_num_rows($result)==1)
+//   {
+//     //echo "success";
+//     $row =mysqli_fetch_assoc($result);
+//     //$stid = $row['student_id'];
+//     $title = $row['student_title'];
+//     $fname = $row['student_fullname'];
+//     $ininame = $row['student_ininame'];
+//     $gender = $row['student_gender'];
+//     $civil = $row['student_civil'];
+//     $email = $row['student_email'];
+//     $nic = $row['student_nic'];
+//     $dob = $row['student_dob'];
+//     $phone = $row['student_phone'];
+//     $address = $row['student_address'];
+//     $zip = $row['student_zip'];
+//     $district = $row['student_district'];
+//     $division = $row['student_divisions'];
+//     $province = $row['student_provice'];
+//     $blood = $row['student_blood'];
+//     $ename = $row['student_em_name'];
+//     $eaddress = $row['student_em_address'];
+//     $ephone = $row['student_em_phone'];
+//     $erelation = $row['student_em_relation'];
+//     $coid = $row['course_name'];
+//     $depth = $row['department_name'];
+//     $level = $row['course_nvq_level'];
+//     $mode = $row['course_mode'];
+//     $year = $row['academic_year'];
+//     $enstatus =$row['student_enroll_status'];
+//     $enroll = $row['student_enroll_date'];
+//     $exit = $row['student_enroll_exit_date'];
+//     $id=$row['course_id'];
+//     $pass=$row['user_password_hash'];
+//     $img=$row['student_profile_img'];
+//   }
+// }
 
 //<!-- password change -->
 
