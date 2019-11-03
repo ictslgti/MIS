@@ -5,7 +5,7 @@ include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
 $eid =$s_staffname = $s_dept = $s_module = $s_edate =null;
-$sql="SELECT  DISTINCT `feedback_survey`.`survey_id` AS `survey_id`,`course`.`course_name` AS `course_name` ,
+$sql="SELECT  `feedback_survey`.`survey_id` AS `survey_id`,`course`.`course_name` AS `course_name` ,
     `module`.`module_name` AS `module_name`,
     `staff`.`staff_name` AS  `staff_name`,
     `feedback_survey`.`end_date` AS  `end_date`
@@ -26,7 +26,7 @@ $sql="SELECT  DISTINCT `feedback_survey`.`survey_id` AS `survey_id`,`course`.`co
         $s_edate=$row["end_date"];
     }else{
         echo "Error :-".$sql.
-        "<br>".mysqli_error($con).;
+        "<br>"  .mysqli_error($con);
     }
 
 ?>
