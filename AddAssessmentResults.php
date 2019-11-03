@@ -314,6 +314,7 @@ if(isset($_GET['delete'])){
                 <thead>
                     <tr>
                         <th scope="col">Marks ID</th>
+                     <th scope="col">Module ID</th>
                         <th scope="col">Assessment ID</th>
                         <th scope="col">Student ID</th>
                         <th scope="col">Assessment Attempt</th>
