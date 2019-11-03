@@ -229,7 +229,7 @@ $title = "Home | SLGTI";
                
                $query ="select *, books.name, student.student_ininame from issued_books 
                INNER JOIN books
-               ON issued_books.book_serial = books.id
+               ON issued_books.book_serial = books.book_id
                INNER JOIN student
                ON issued_books.member_id = student.student_id
                WHERE issued_date <= (SELECT DATE_ADD(now(), INTERVAL -7 DAY))";
