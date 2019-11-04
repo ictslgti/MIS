@@ -12,15 +12,12 @@ include_once("menu.php");
 
 
 <?php
-
-
-
 // retrive data for edit 
 $id =  $fullname= $address = $email = $dob= $blood_group = $designation =$joint_date = $gender =$weight =$reference_id =null ;
 if(isset($_GET['edit']))
 {
-    $reference_id = $_GET['edit'];
-    $sql_o = " SELECT * from donor WHERE reference_id= '$reference_id'";
+    $id = $_GET['edit'];
+    $sql_o = " SELECT * from donor WHERE d_id= '$id'";
     $result = mysqli_query($con,$sql_o);
     if(mysqli_num_rows($result)==1)                                               
         {
@@ -42,17 +39,6 @@ if(isset($_GET['edit']))
           echo "Error".$sql_o."<br>".mysqli_error($con);
         }
 }
-
-
-
-
-
-
-
-
-
-
-
                                     
 // retrive data
 if(isset($_GET['submit']))
@@ -60,20 +46,17 @@ if(isset($_GET['submit']))
   
    $designation=$_GET['designation'];
    $reference_id = $_GET['submit'];
-
    if($designation=='staff'){
   
       $sql_t="SELECT * FROM staff WHERE staff_id='$reference_id'";
       $result=mysqli_query($con,$sql_t);
         if(mysqli_num_rows($result)==1){
           $row=mysqli_fetch_assoc($result);
-
           $fullname = $row['staff_name'];
           $address =  $row['staff_address'];
-          $email = $row['staff_dob'];
-          $dob = $row['staff_email'];
+          $email = $row['staff_email'];
+          $dob = $row['staff_dob'];
           $gender = $row['staff_gender'];
-
         }
    }
    else{
@@ -95,22 +78,13 @@ if(isset($_GET['submit']))
  
     
   
-
-
-
-
-
 ?>
 
 
 <?php
 // Add coding
-
-
-
 if(isset($_GET['Add'])){
   $sql_y = "INSERT INTO `donor`(`address`,`email`, `dob`, `blood_group`, `designation`, `joint_date`, `gender`, `weight`, `reference_id`, `fullname`) 
-
   VALUES ('$address','$email','$dob','$blood_group','$designation',
   '$joint_date','$gender','$weight','$reference_id','$fullname');";
   
@@ -121,18 +95,18 @@ if(isset($_GET['Add'])){
     { 
   
      
-      $weight = $_POST['weight'];
-      $joint_date = $_POST['joint_date'];
+     
+      
   $fullname = $_POST['fullname'];
   $address = $_POST['address'];
   $email = $_POST['email'];
   $dob = $_POST['dob'];
   $blood_group = $_POST['blood_group'];
   $designation = $_POST['designation'];
-  
+  $joint_date = $_POST['joint_date'];
   $gender = $_POST['gender'];
-
-   $reference_id = $_POST['reference_id'];
+  $weight = $_POST['weight'];
+  $reference_id = $_POST['reference_id'];
     }}
      
      if(mysqli_query($con,$sql_y))
@@ -165,7 +139,6 @@ if(isset($_GET['Add'])){
 
 <?php 
 // for edit
-
 if(isset($_GET['Edit'])){
   echo 'gdf';
   if (!empty($_POST['id']) 
@@ -195,11 +168,9 @@ if(isset($_GET['Edit'])){
       $weight = $_POST['weight']; 
       $reference_id = $_POST['reference_id'];
        $reference_id = $_GET['edit'];
-
       $sql = "UPDATE `donor` SET `d_id`='$id',`address`='$address',`email`='$email',`dob`='$dob',`blood_group`='$blood_group',`designation`='$designation',
       `joint_date`='$joint_date',`gender`='$gender',`weight`='$weight',
       `fullname`='$fullname' WHERE reference_id= '$reference_id'";
-
       if(mysqli_query($con,$sql))
       {
         echo '
@@ -225,14 +196,6 @@ if(isset($_GET['Edit'])){
       }
     }
 }
-
-
-
-
-
-
-
-
 ?>
 
 
@@ -311,7 +274,7 @@ if(isset($_GET['Edit'])){
 <div class="row">   
 <div class="col-12">
 <label for="inputEmail4"><i class="far fa-id-card"></i>&nbsp;D_id</label>
-<input type="text" value="<?php echo $id; ?>" class="form-control"  name="id" placeholder="D_id" >
+<input type="text" value="<?php echo $id; ?>" class="form-control"  name="id" placeholder="D_id" disabled placeholder="disabled" >
 </div>
 </div>
 
@@ -343,7 +306,7 @@ if(isset($_GET['Edit'])){
 
 <div class="col-4">
 <label for="inputAddress"><i class="fas fa-calendar-alt"></i>&nbsp;DOB</label>
-<input type="text" value="<?php echo $dob; ?>"class="form-control" name="dob" disabled placeholder="disabled">
+<input type="date" value="<?php echo $dob; ?>"class="form-control" name="dob" disabled placeholder="disabled">
 </div>
 <div class="col-2">
 <label for="inputAddress2"><i class="fas fa-map-marker"></i>&nbsp;Blood group</label>
@@ -356,7 +319,7 @@ if(isset($_GET['Edit'])){
 <div class="form-row">
 <div class="form-group col-md-6">
 <label for="inputCity"><i class="fas fa-calendar-alt"></i>&nbsp;join date</label>
-<input type="date" value="<?php echo $joint_date; ?>"class="form-control" name="joint_date" >
+<input type="date" value="<?php echo $joint_date; ?>" class="form-control"  name="joint_date"   >
 </div>
 
 <div class="form-group col-md-4">
@@ -374,7 +337,6 @@ if(isset($_GET['Edit'])){
 </div>
 
 <?php
-
   if(isset($_GET['edit']))
   {
     echo '<input id="button" type = "submit" value="Update" name="Edit" class="btn btn-outline-success btn-icon-split" >'; 
