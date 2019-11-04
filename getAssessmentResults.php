@@ -26,7 +26,7 @@
                             <td>'.$row['student_id'].'</td>
                             <td>'.$row['assessment_attempt'].'</td>
                             <td>'.$row['assessment_marks'].'</td>
-                            <td>'.$row['assessment_marks_grade'].'</td>
+                            
                             
                             <td>
                             <button  type="button" class="btn btn-danger" data-href="?delete='.$row["assessment_marks_id"].'" data-toggle="modal" data-target="#confirm-delete">Delete Marks </button> </td>
