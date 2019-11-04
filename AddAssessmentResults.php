@@ -317,7 +317,7 @@ if(isset($_GET['delete'])){
                         <th scope="col">Student ID</th>
                         <th scope="col">Assessment Attempt</th>
                         <th scope="col">Assessment Marks</th>
-                        <th scope="col">Marks Grade</th>
+                        
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
