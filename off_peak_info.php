@@ -12,7 +12,7 @@ include_once("menu.php");
 <br><br>
 
 
-<div class="intro p-5 mb-5 border border-dark rounded">
+<div class="intro container-fluid shadow p-3 mb-5 bg-white rounded">
 <div class="shadow p-3 mb-5 bg-white rounded"> 
 <h1 class="display-4 text-center "><i class="fas fa-file-alt"></i>   Off-peak Info</h1>
 <br>
@@ -51,6 +51,14 @@ include_once("menu.php");
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
+      
+     
+      
+        $y="bg-success text-white text-center";
+  
+      
+        
+     
     echo '<tr>
       
       <td>'.$row["student_id"].'</td>
@@ -60,7 +68,7 @@ include_once("menu.php");
       <td>'.$row["date"].'</td>
       <td>'.$row["time"].'</td>
       <td>'.$row["reson_for_exit"].'</td>
-      <td>'.$row["status"].'</td>
+      <td class="'.$y.'">'.$row["status"].'</td>
       
     </tr>';
 
@@ -97,6 +105,11 @@ else{
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
+      
+     
+        $y="bg-danger text-white text-center";
+      
+      
     echo '<tr>
       
       <td>'.$row["student_id"].'</td>
@@ -106,7 +119,7 @@ else{
       <td>'.$row["date"].'</td>
       <td>'.$row["time"].'</td>
       <td>'.$row["reson_for_exit"].'</td>
-      <td>'.$row["status"].'</td>
+      <td class="'.$y.'">'.$row["status"].'</td>
       
     </tr>';
 
