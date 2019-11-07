@@ -55,10 +55,8 @@ include_once("menu.php");
   
   
  <?php
- if (isset($_GET['search'])) 
- {
-  $id= $_GET['donation_id'];
-    $sql="SELECT * from donation where donation_id='$id'";
+ 
+    $sql="SELECT * from donation ";
     $result=mysqli_query($con,$sql);
     if(mysqli_num_rows($result)>0)
     {
@@ -105,8 +103,7 @@ if(isset($_GET['delete'])){
         </button>
         </div> ';
     }
-}
-
+  }
 ?>
       
       </table>

@@ -149,7 +149,7 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="Student">Students Info</a>
+                  <a href="Student" onclick="myFunction()">Students Info</a><script>function myFunction() { alert("Welcome to SLGTI Active & Following Students Informations");}</script>
                 </li>
                 <li>
                   <a href="AddStudent">Add a Student</a>

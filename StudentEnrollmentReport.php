@@ -28,6 +28,7 @@ include_once("menu.php");
             <th scope="col">No</th>
             <th scope="col">student Id</th>
             <th scope="col">Course Id</th>
+            <th scope="col">Course mode</th>
             <th scope="col">Accademic Year</th>
             <th scope="col">Action</th>
             </tr>
