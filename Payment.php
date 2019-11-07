@@ -153,18 +153,18 @@ if(isset($_POST['edit'])){
                         <label for="inputEmail4">ID</label>
                         <input type="text" name="student_id" value="<?php echo  $student_id;?>"
                             class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['student_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_id'])){echo ' is-valid';} ?>"
-                            id="inputEmail4" placeholder="ID">
+                            id="inputEmail4" placeholder="ID" readonly="readonly">
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-user"></i>&nbsp;
                         <label for="inputEmail4">Name</label>
                         <input type="text" value="<?php echo  $student_name; ?>" name="student_name"
-                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['student_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_name'])){echo ' is-valid';} ?>" id="inputEmail4" placeholder="Name">
+                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['student_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_name'])){echo ' is-valid';} ?>" id="inputEmail4" placeholder="Name" readonly="readonly" >
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-building"></i>&nbsp;
                         <label for="inputEmail4">Department</label>
                         <input type="Department" 
                             class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['pays_department'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['pays_department'])){echo ' is-valid';} ?>"" id="
-                            inputEmail4" placeholder="Department" name="pays_department" value="<?php echo  $department;?>">
+                            inputEmail4" placeholder="Department"  readonly="readonly" name="pays_department" value="<?php echo  $department;?>">
                     </div>
                 </div>
 
@@ -220,7 +220,7 @@ if(isset($_POST['edit'])){
 
                     <div class="form-group col-md-12"><i class="fas fa-th"></i>&nbsp;
                         <label for="text">Qty</label>
-                        <input type="text" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['payment_qty'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_qty'])){echo ' is-valid';} ?>"
+                        <input type="number"  min="1" max="50"class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['payment_qty'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_qty'])){echo ' is-valid';} ?>"
                             placeholder="Qty" name="payment_qty">
                     </div>
                     <div class="form-group col-md-12 "><i class="fas fa-sticky-note"></i>&nbsp;
@@ -231,7 +231,7 @@ if(isset($_POST['edit'])){
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-coins"></i>&nbsp;
                         <label for="inputEmail4">Amount</label>
-                        <input type="text"
+                        <input type="number" min="1" 
                         class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['payment_amount'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_amount'])){echo ' is-valid';} ?>"
                              placeholder="Amount" name="payment_amount">
                     </div>
@@ -318,4 +318,5 @@ function showpaymentreason(val) {
 </body>
 
 </html>
+
 
