@@ -7,7 +7,7 @@ include_once("head.php");
 include_once("menu.php");
 ?>
 
-
+ 
 
 
 <?PHP
@@ -23,16 +23,16 @@ if(isset($_GET['edit']))
 
    {
       $row = mysqli_fetch_assoc($result);
-      echo $department_id = $row['department_id'];
-      echo $course_id = $row['course_id'];
-      echo $module_id = $row['module_id'];
-      echo $academic_year= $row['academic_year'];   
-      echo $staff_id = $row['staff_id'];
-      echo $weekdays = $row['weekdays'];
-      echo $weekdays = $row['timep'];
-      echo $classroom = $row['classroom'];
-      echo $start_date = $row['start_date'];
-      echo $end_date = $row['end_date'];
+      $department_id = $row['department_id'];
+      $course_id = $row['course_id'];
+      $module_id = $row['module_id'];
+      $academic_year= $row['academic_year'];   
+      $staff_id = $row['staff_id'];
+      $weekdays = $row['weekdays'];
+      $timep = $row['timep'];
+      $classroom = $row['classroom'];
+      $start_date = $row['start_date'];
+      $end_date = $row['end_date'];
 
   }
 
