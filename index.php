@@ -429,6 +429,7 @@ while($row = mysqli_fetch_assoc($result)){
             </div>
         </div>
     </div>
+    <!-- COL-3 END -->
 
     <div class="col-md-4 col-sm-12">
         <div class="card">
@@ -442,7 +443,7 @@ while($row = mysqli_fetch_assoc($result)){
 
     $cid = $row['course_id'];
     $cname = $row['course_name'];
-    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'LongAbsent' ";
+    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Dropout' ";
     $result_c = mysqli_query($con, $sql_c);
     $row_c = mysqli_fetch_assoc($result_c);
     $course_count =  $row_c['c_count'];
@@ -557,7 +558,7 @@ function showStudent(val) {
                     labels: course_id_label,
                     datasets: [{
                         label: "Total Students ",
-                        backgroundColor: "#007bff",
+                        backgroundColor: "#5a407d",
                         data: course_total_count
                     }, {
                         label: "Dropout Students ",
@@ -569,7 +570,11 @@ function showStudent(val) {
                         data: course_completed_count
                     },{
                         label: "Following Students ",
-                        backgroundColor: "#dc3545",
+                        backgroundColor: "#007bff",
+                        data: course_droupout_count
+                    },{
+                        label: "LongAbsent Students",
+                        backgroundColor: "#deb647",
                         data: course_droupout_count
                     }]
                 },
