@@ -151,7 +151,9 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
 
               
                 echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
-                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span>
+                 <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>
+                <p>';      
             }
             echo '</td>';   
         }
@@ -172,7 +174,9 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
                 echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
-                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> 
+                 <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>
+                 <p>';      
             }
             echo '</td>';   
         }
@@ -192,7 +196,10 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
                 echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
-                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span>
+               
+                 <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>
+                 <p>';     
             }
             echo '</td>';   
         }
@@ -212,13 +219,20 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
                 echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
-                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> <p>';      
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span>
+                 <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>
+                 <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["timep"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>      
+                 <br>
+                 
+                  
+                 <p>';    
+                
             }
             echo '</td>';   
         }
     ?>
                     </tr>
-
+                    
 
                 </tbody>
             </table>
@@ -227,15 +241,44 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
     </div>
 </div>
 
-  <?php 
-  if($_SESSION['user_type']=="HOD"){    
-      echo '   
+<?php
+                    if(isset($_GET['delete_id']))
+                    {                
+                        $timep = $_GET['delete_id'];
+
+                        $sql = "DELETE from timetable where timep = '$timep' ";
+
+                        if(mysqli_query($con,$sql))
+                        {
+                          echo '
+                      
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>  ';
+                        }
+                        else
+                        {
+                          echo '
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <strong> Error </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>  ';               
+                         
+                        }
+                    }
+                    ?>
+   
 <div class="text-right">
 <a href="AddTimetable.php" class="btn btn-primary ">Add</a> 
+
+
          
-</div>';
-  }
-?>
+</div>
+  
+
 <html>
 <head>
 <style>
