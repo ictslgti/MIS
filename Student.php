@@ -138,9 +138,9 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
           {
             if(isset($_GET['status']))
             {
-            echo $status = $_GET['status'];
-            echo $sql="SELECT * FROM `student` WHERE `student_id` in (select student_id from student_enroll where student_enroll_status=$status)";  
-            $result = mysqli_query($con, $sql);
+            $status = $_GET['status'];
+            $sql="SELECT * FROM `student` WHERE `student_id` in (select student_id from student_enroll where student_enroll_status='$status')";  
+            $result = mysqli_query($con,$sql);
             if (mysqli_num_rows($result)>0)
             {
               $num=1;
@@ -212,5 +212,5 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->
 <?php 
-include_once("FOOTER.PHP"); 
+include_once("footer.php"); 
 ?>
