@@ -217,10 +217,10 @@ include_once("menu.php");
 
         <div class="col-md-5 mb-3">
           <label for="stid"> Student Id : </label>
-          <select name="student_id" id="student_id" class="selectpicker show-tick ml-3 w-75" data-live-search="true" data-width="100%" value="">
+          <select name="student_id" id="student_id" class="selectpicker show-tick" data-live-search="true" data-width="100%" value="<?php echo $stid; ?>">
           <option selected disabled>--Student Id--</option>
           <?php
-            $sql = "SELECT * FROM `student` ORDER BY `student_id` DESC ";
+            $sql = "SELECT * FROM `student_enroll` ORDER BY `student_id` DESC ";
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) 
             {

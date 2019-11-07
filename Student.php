@@ -23,7 +23,7 @@ include_once("menu.php");
 <?php
 //$stid = $_SESSION['user_name'];
 $stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $mode =
-$ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = $status = null;
+$ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = $status = $id =null;
 ?>
 
 <div class="ROW">
@@ -37,18 +37,19 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
   <div class="form-row form-inline">
       <div class="col-md-3 mb-3">
         <!-- <input type="text" class="form-control ml-3 w-75" placeholder="Student Id"  name="stid"> -->
-        <select name="stid" id="stid" class="selectpicker show-tick form-control ml-3 w-75" data-live-search="true" data-width="100%" value="<?php echo $id; ?>">
+        <select name="student_id" id="student_id" class="selectpicker show-tick ml-3 w-75" data-live-search="true" data-width="100%" value="">
           <option selected disabled>--Student Id--</option>
           <?php
             $sql = "SELECT * FROM `student` ORDER BY `student_id` DESC ";
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) 
             {
-            while($row = mysqli_fetch_assoc($result))
-            {
-            echo '<option  value="'.$row ['student-id'].'">'.$row ['student_id'].'</option>';
-            }
-            }
+              while($row = mysqli_fetch_assoc($result)){
+                echo '<option  value="'.$row["student_id"].'" required>'.$row["student_id"].'</option>';
+              }
+              }else{
+                echo '<option value="null"  selected disabled>-- 0 Position --</option>';
+              }
             ?> 
         </select>
         <button  type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill" name="search" ><i class="fas fa-search"></i></button>
@@ -57,7 +58,7 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
 
       <div class="col-md-4 mb-3" style="margin-right:0px;">
         <a href="AddStudent.php"><button type="button" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i></button><a>
-        <select name="status" id="status" class="custom-select" value="<?php echo $enstatus; ?>" >
+        <select name="status" id="status" class="custom-select" value="" >
             <option selected disabled>Choose Student Status</option>
             <?php
             $sql = "SELECT DISTINCT `student_enroll_status` FROM `student_enroll`;";
@@ -72,17 +73,8 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
               }
             ?> 
         </select> 
+        <button  type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill" name="search2" ><i class="fas fa-search"></i></button>
       </div>
-  </div>
-</form>
-
-  <div class="form-row">
-
-    <div class="col-md-9 mb-3"></div>
-
-    <div class="col-md-3 mb-3" style="margin-right:-10px;">
-        <button type="submit" value="inactive" name="inactive" class="btn btn-danger mr-2"><i class="fas fa-user-edit"></i>Inactive Students</button>
-    </div>
   </div>
 </form>
 
