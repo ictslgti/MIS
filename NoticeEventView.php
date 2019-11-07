@@ -9,12 +9,8 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
-<?php
-$eid =$e_name = $e_venue = $e_date = $e_time =$e_cguest = $e_comm=null;
 
 
-
-?>
 
 
 <form method ="post"  action="NoticeEventUpload">
@@ -33,7 +29,7 @@ $eid =$e_name = $e_venue = $e_date = $e_time =$e_cguest = $e_comm=null;
             <?php  
             if(isset($_POST["evName"])){
                 $eid=$_POST["evName"];
-                $sql="SELECT * from `notice_event` e,`notice_event_stutas` s  WHERE e.status=s.id and s.`status`='$eid'";
+                $sql="SELECT * from `notice_event` e,`notice_event_stutas` s  WHERE e.status=s.id and s.`status`='$eid' order by event_date > curdate() desc";
                 $result = mysqli_query($con,$sql);
                if (mysqli_num_rows($result)>0) {
                     while($row=mysqli_fetch_assoc($result)){
@@ -105,7 +101,64 @@ $eid =$e_name = $e_venue = $e_date = $e_time =$e_cguest = $e_comm=null;
                     }
                 }}
 ?>
+
 </form>
+
+<?php
+$eid =$e_name = $e_venue = $e_date = $e_time =$e_cguest = $e_comm= $file_name=null;
+if(isset($_GET['id'])){
+    $eid=$_GET['id'];
+    $sql="SELECT * FROM `notice_event` WHERE  `event_id`= $eid";
+    $result = mysqli_query($con,$sql);
+   if (mysqli_num_rows($result) == 1) {
+        $row=mysqli_fetch_assoc($result);
+        $e_name=$row['event_name'];
+        $e_venue=$row['event_venue'];
+        $e_date=$row['event_date'];
+        $e_cguest=$row['event_chief_guest'];
+        $e_comm=$row['event_comment'];
+        $file_name=$row['event_docs_url'];
+    }
+}
+
+if(isset($_GET['id'])){
+    echo '
+    <div class="row">
+
+        <div class="col-md-5 col-sm-12">
+            <div>
+                <img src="docs/events/'.$file_name.'"  class="img-fluid img-thumbnail" alt="Event Image">
+            </div>
+        </div>
+    
+        <div class="col-md-7 col-sm-12">
+    
+            <div class="row">
+                <div class="col-12"> <h3 class="mb-4 text-danger">Event For:&nbsp;'.$e_name.'</h3></div>
+                
+                <div class="w-100"></div>
+                <div class="col"><h5 class="border-bottom mb-4">  <i class="fas fa-map-marker-alt text-primary"></i>  </i>&nbsp;&nbsp;Venue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></div>
+                <div class="col"><h5 class="border-bottom mb-4">' .  $e_venue . '</h5></div>
+                <div class="w-100"></div>
+                <div class="col"><h5 class="border-bottom mb-4"> <i class="far fa-calendar-alt text-primary"></i></i>&nbsp;&nbsp;Date / Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></div>
+                <div class="col"><h5 class="border-bottom mb-4">' .  $e_date .'&nbsp;&nbsp;/&nbsp;&nbsp;' .$e_time. '</h5></div>
+                <div class="w-100"></div>
+                <div class="col"><h5 class="border-bottom mb-4"> <i class="fas fa-user text-primary"> </i>&nbsp;&nbsp;Cheif Guest&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5></div>
+                <div class="col"><h5 class="border-bottom mb-4">' .  $e_cguest . '</h5></div>    
+                <div class="w-100"></div>
+                <div class="col-12"> <h5 class=""><i class="fab fa-audible text-primary"></i> </i>&nbsp;Comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5><br> 
+                <h5 >' .  $e_comm . '</h5></div>
+            </div>
+    
+           
+        </div>
+    </div>
+    
+    ';
+}
+
+?>
+
    
 
 

@@ -18,16 +18,16 @@ include_once("menu.php");
 
 <!-----END YOUR CODE----->
 <?php
-$stid = $title = $fname = $ininame = $gender = $civil = $img = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $mode =
+$stid = $title = $fname = $ininame = $gender = $civil = $img = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $mode = $depth = $level =
 $ename = $eaddress = $ephone = $id =$erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = $pass = $npass = $cpass =null;
-
-$username = $_SESSION['user_name'];
-
-$sql = "SELECT user_name,e.course_id,`student_title`,`student_fullname`,`student_profile_img`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,`student_profile_img`,
+if(isset($_GET['Sid']))
+{
+ $username =$_GET['Sid'];
+ $sql = "SELECT user_name,e.course_id,`student_title`,`student_fullname`,`student_profile_img`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,`student_profile_img`,
 `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,`student_em_address`,
 `student_em_phone`,`student_em_relation`,`student_status`,`course_name`,`department_name`,`course_mode`,course_nvq_level,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
 `student_enroll_status`,`user_password_hash` FROM `student` as s, student_enroll as e, user as u, course as c, department as d WHERE user_name=s.student_id and s.student_id=e.student_id 
- and e.course_id=c.course_id and  c.department_id=d.department_id and  user_name='$username'";
+ and e.course_id=c.course_id and  c.department_id=d.department_id and `student_enroll_status`='Following' and user_name='$username '";
 $result = mysqli_query($con,$sql);
 
   if(mysqli_num_rows($result)==1)
@@ -66,7 +66,55 @@ $result = mysqli_query($con,$sql);
     $pass=$row['user_password_hash'];
     $img=$row['student_profile_img'];
   }
+}
+else
+{
+$username = $_SESSION['user_name'];
 
+$sql = "SELECT user_name,e.course_id,`student_title`,`student_fullname`,`student_profile_img`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,`student_profile_img`,
+`student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,`student_em_address`,
+`student_em_phone`,`student_em_relation`,`student_status`,`course_name`,`department_name`,`course_mode`,course_nvq_level,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
+`student_enroll_status`,`user_password_hash` FROM `student` as s, student_enroll as e, user as u, course as c, department as d WHERE user_name=s.student_id and s.student_id=e.student_id 
+ and e.course_id=c.course_id and  c.department_id=d.department_id and `student_enroll_status`='Following' and user_name='$username'";
+$result = mysqli_query($con,$sql);
+
+  if(mysqli_num_rows($result)==1)
+  {
+    //echo "success";
+    $row =mysqli_fetch_assoc($result);
+    //$stid = $row['student_id'];
+    $title = $row['student_title'];
+    $fname = $row['student_fullname'];
+    $ininame = $row['student_ininame'];
+    $gender = $row['student_gender'];
+    $civil = $row['student_civil'];
+    $email = $row['student_email'];
+    $nic = $row['student_nic'];
+    $dob = $row['student_dob'];
+    $phone = $row['student_phone'];
+    $address = $row['student_address'];
+    $zip = $row['student_zip'];
+    $district = $row['student_district'];
+    $division = $row['student_divisions'];
+    $province = $row['student_provice'];
+    $blood = $row['student_blood'];
+    $ename = $row['student_em_name'];
+    $eaddress = $row['student_em_address'];
+    $ephone = $row['student_em_phone'];
+    $erelation = $row['student_em_relation'];
+    $coid = $row['course_name'];
+    $depth = $row['department_name'];
+    $level = $row['course_nvq_level'];
+    $mode = $row['course_mode'];
+    $year = $row['academic_year'];
+    $enstatus =$row['student_enroll_status'];
+    $enroll = $row['student_enroll_date'];
+    $exit = $row['student_enroll_exit_date'];
+    $id=$row['course_id'];
+    $pass=$row['user_password_hash'];
+    echo $img=$row['student_profile_img'];
+  }
+}
 
 //<!-- password change -->
 
@@ -101,15 +149,15 @@ $result = mysqli_query($con,$sql);
 
 ?>
 <?php
-if(isset($_POST["insert"]))
-{
-    $file = addcslashes(file_get_contents($_FILES["image"]["tmp_name"]));
-    $query = "UPDATE `student` SET `student_profile_img`='$file' WHERE `student_id`='$username'";
-    if(mysqli_query($con,$query))
-    {
-        echo '<script> alert("Images Insert into Databases") </script>';
-    }
-}
+// if(isset($_POST["insert"]))
+// {
+//     $file = addcslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+//     $query = "UPDATE `student` SET `student_profile_img`='$file' WHERE `student_id`='$username'";
+//     if(mysqli_query($con,$query))
+//     {
+//         echo '<script> alert("Images Insert into Databases") </script>';
+//     }
+// }
 ?>
 <!-- form start---->
 <div class="col text-center shadow p-5 mb-5 bg-white rounded">
@@ -122,16 +170,17 @@ if(isset($_POST["insert"]))
 
 <div class="form-row shadow p-2 mb-4 bg-white rounded">
     <div class="col-md-3 mb-3 " > 
+    <img src="<?php echo $img;?>" alt="user image" class="img-thumbnail" style="width:200px;height:200px;">
     <?php
-    $query= "select `student_profile_img` from student where student_id='$username'";
-    $result=mysqli_query($con,$query);
-    if(mysqli_num_rows($result)==1)
-    {
-    echo '<img src="img/profile/<?php echo $img;?>" alt="user image" class="img-thumbnail" style="width:200px;height:200px;">';
-    }
+    // $query= "select `student_profile_img` from student where student_id='$username'";
+    // $result=mysqli_query($con,$query);
+    // if(mysqli_num_rows($result)==1)
+    // {
+    // echo '';
+    // }
     ?>
-    <input type="file" name="image" id="image"/><br><br>
-    <input type="submit" value="Insert" name="insert" id="insert">
+    <!-- <input type="file" name="image" id="image"/><br><br>
+    <input type="submit" value="Insert" name="insert" id="insert"> -->
     
     <!-- <button type="button" class="btn btn-outline-success">Success</button> -->
     </div>
@@ -401,8 +450,7 @@ if(isset($_POST["insert"]))
   </div>
 
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-  <div class="form-row">
-        <div id="results-student_education" class="form-group table-responsive">               
+          <div id="results-student_education" class="form-group table-responsive">               
             <table class="table table-hover" width="100%" id="table">
               <thead>
               <tr>
@@ -415,11 +463,7 @@ if(isset($_POST["insert"]))
               </head>
               <tbody>
               <?php
-            //    if(isset($_GET['edit']))
-            //    {
-                  //$stid =$_GET['edit'];WHERE `qualification_student_id`= '$stid'"
-                  //include_once("mysqli_connect.php");
-                  $username = $_SESSION['user_name'];
+            
                   $sql ="SELECT`qualification_type`,`qualification_index_no`,`qualification_year`,`qualification_description`,`qualification_results`
                   FROM `user`,student_qualification WHERE `user_name`= qualification_student_id and `user_name`='$username'";
                   $result = mysqli_query ($con, $sql);
@@ -446,13 +490,11 @@ if(isset($_POST["insert"]))
               </tbody>
             </table>  
       </div>
-      </div>
   </div>
 
 
 <div class="tab-pane fade" id="nav-modules" role="tabpanel" aria-labelledby="nav-modules-tab">
-  <div class="form-row">
-        <div id="results-student_education" class="form-group table-responsive">               
+         <div id="results-student_education" class="form-group table-responsive">               
             <table class="table table-hover" width="100%" id="table">
               <thead>
               <tr>
@@ -484,7 +526,7 @@ if(isset($_POST["insert"]))
                           <td>'. $row["semester_id"].'</td>
                           <td>'. $row["module_learning_hours"].'</td>
                           <td>
-                          '. $row["module_learning_hours"].'
+                          <a href="Assessment.php?Mid='.$row["module_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
                           </td>
                       </tr> ';
                     }
@@ -500,8 +542,6 @@ if(isset($_POST["insert"]))
       </div>
       </div>
   </div>
-</div>
-</div>
 </form>
 </div>
 <script>
@@ -531,5 +571,5 @@ $(document).ready(function(){
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->
 <?php 
-include_once("FOOTER.PHP"); 
+include_once("footer.php");
 ?>

@@ -22,7 +22,7 @@ include_once("menu.php");
 //echo $_SESSION['user_name'];  
 $stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $mode =
 $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = null;
-$stid = $_SESSION['user_name'];
+//$stid = $_SESSION['user_name'];
 // edit
 if(isset($_GET['edit']))
 {
@@ -33,6 +33,7 @@ if(isset($_GET['edit']))
   `student_enroll_status` FROM `student` s INNER join student_enroll e on s.student_id=e.student_id and `student_enroll_status`='Following' and s.`student_id`='$stid'";
   $result = mysqli_query($con,$sql);
 
+  echo 'academic_year'.$row['academic_year'];
   if(mysqli_num_rows($result)==1)
   {
    // echo"success";
@@ -326,8 +327,7 @@ if(isset($_POST['Edit']))
          <h1 style="text-align:center"> STUDENTS' REGISTRATION FORM </h1>
          <h5 style="text-align:center"> SRI LANKA GERMAN TRAINING INSTITUTE</h5>
      </div>
-</div><br><br>
-
+</div><br>
 
 <div class="container">
 <form class="needs-validation" action="" method="POST">
@@ -366,7 +366,7 @@ if(isset($_POST['Edit']))
           <select name="ayear" id="ayear" class="selectpicker show-tick" data-live-search="true" data-width="100%" value="<?php echo $year; ?>" required>
           <option selected disabled>--Academic Year--</option>
           <?php
-            $sql = "SELECT * FROM `academic` ORDER BY `academic_year`  DESC ";
+            $sql = "SELECT * FROM `academic` ORDER BY `academic_year` DESC ";
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)){
@@ -396,31 +396,30 @@ if(isset($_POST['Edit']))
 
         <div class="col-md-3 mb-3">
           <label for="sid">Student ID:</label>
-          <input type="text" class="form-control" name="sid" value="
-          <?php 
-          if(isset($_GET['edit']))
-          {
-            echo $stid; 
-          }
-          else if((isset($_GET['ayear'])) && (isset($_GET['coid'])))
-          {
-            $year =$_GET['ayear'];
-            $coid =$_GET['coid'];
-            
-            $Sql="select Student_id from student_enroll where course_id='$coid' and academic_year='$year'";
-            $result = mysqli_query($con,$sql);
+          <input type="text" class="form-control" name="sid" 
+          value="<?php echo $stid; 
+          // if(isset($_GET['edit']))
+          // {
+          //   echo $stid; 
+          // }
+          // echo $year =$_GET['ayear'];
+          //   echo $coid =$_GET['coid'];
+          // else ((isset($_GET['ayear'])) && (isset($_GET['coid'])))
+          // {
+          //   echo $Sql="SELECT MAX(student_id) from student_enroll where `course_id`='$coid' and`academic_year`='$year' ORDER by student_id ASC";
+          //   $result = mysqli_query($con,$sql);
 
-            if(mysqli_num_rows($result)==1)
-            {
-              $row =mysqli_fetch_assoc($result);
-              $stid = $row['student_id'];
-            }
-            else
-            {
-              $stid = $row['student_id'];
-            }
-          }
-          ?>" id="sid"   required>
+          //   if(mysqli_num_rows($result)==1)
+          //   {
+          //     $row =mysqli_fetch_assoc($result);
+          //     $stid = $row['student_id'];
+          //   }
+          //   else
+          //   {
+          //     $stid = $row['student_id'];
+          //   }
+          // }
+          ?>" id="sid" required>
         </div>
 
         <div class="col-md-3 mb-3">
@@ -695,7 +694,7 @@ if(isset($_POST['Edit']))
                           <td>'. $row["qualification_description"].'</td>
                           <td>'. $row["qualification_results"].'</td>
                           <td>
-                          <a href="?DELETE='.$stid.'&quali='.$row["qualification_description"].'&deinde='.$row["qualification_index_no"].'"class="btn btn-outline-danger btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a>
+                          <a href="DELETE='.$stid.'&quali='.$row["qualification_description"].'&deinde='.$row["qualification_index_no"].'"class="btn btn-outline-danger btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a>
                           </td>
                       </tr> ';
                     }
@@ -705,7 +704,6 @@ if(isset($_POST['Edit']))
                     echo "0 results";
                   }
                }
-
                ?>
               </tbody>
             </table>  
@@ -794,5 +792,5 @@ echo '</div>';
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->
 <?php 
-include_once("FOOTER.PHP"); 
+include_once("footer.php"); 
 ?>

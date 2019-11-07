@@ -19,11 +19,16 @@ include_once("menu.php");
   </body>
 
  <?php
+	 
  $payment_type=$payment_reason=null;
- if(isset($_POST['Add'])){
-     $payment_type=$_POST['payment_reason'];
+ if(isset($_POST['Add'])){ 
+	 if
+    (!empty($_POST['payment_type'])
+    &&!empty($_POST['payment_reason'])){
+		 
+    $payment_type=$_POST['payment_reason'];
      $payment_reason=$_POST['payment_type'];
-    $sql="INSERT INTO `payment` (`payment_reason`, `payment_type`) VALUES ('$payment_reason', '$payment_type')";
+    $sql="INSERT INTO `payment`(`payment_reason`, `payment_type`) VALUES ('$payment_reason', '$payment_type')";
     if(mysqli_query($con,$sql)){
         echo '
           <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -45,13 +50,13 @@ include_once("menu.php");
         </div>
         
         ';
-
+      }
 
       }
     
 }
 ?><br>
-  <form method="POST " class="shadow p-3 mb-s bg-white rounded" action="#">
+  <form method="POST"  action="#">
   <div class="form-group col-md-4 shadow p-3 mb-s bg-white rounded"><h4><i class="fas fa-folder-plus"></i>&nbsp;
                         <label for="inputEmail4">Add Payment Category</label></h4>
                         <input type="Department" 

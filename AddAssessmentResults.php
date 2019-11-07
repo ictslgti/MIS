@@ -131,7 +131,7 @@ else{
 
                             <th scope="col">Marks</th>
                             <th scope="col">Attempt</th>
-                            <th scope="col">Grade</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -141,8 +141,8 @@ else{
 
                         if (isset($_GET['StudentMarks'])) {
                             # code...
-                           echo  $id=$_GET['StudentMarks'];
-                         echo $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id
+                             $id=$_GET['StudentMarks'];
+                          $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id
                              
                             FROM `assessments_marks`,student_enroll,assessments
                             WHERE student_enroll.course_id =assessments.course_id AND assessments.assessment_id ='$id' group by student_id";
@@ -181,9 +181,7 @@ else{
 
 
                         </td>
-                        <td scope="row">
-                            <h3 class="text-success">Pass</h3>
-                        </td>
+                       
 
                                     
                                     
@@ -314,11 +312,12 @@ if(isset($_GET['delete'])){
                 <thead>
                     <tr>
                         <th scope="col">Marks ID</th>
+                     <th scope="col">Module ID</th>
                         <th scope="col">Assessment ID</th>
                         <th scope="col">Student ID</th>
                         <th scope="col">Assessment Attempt</th>
                         <th scope="col">Assessment Marks</th>
-                        <th scope="col">Marks Grade</th>
+                        
                         <th scope="col">Action</th>
                     </tr>
                 </thead>

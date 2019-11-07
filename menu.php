@@ -41,8 +41,8 @@ if($u_ta=='staff'){
           </span>
           <span class="user-role"><?php echo $_SESSION['user_type'];?> | <?php echo $_SESSION['department_code'];?> </span>
           <span class="user-status">
-            <i class="fa fa-circle"></i>
-            <span>Online</span>
+            <i class="fa fa-user"></i>
+            <span><a href="<?php if($_SESSION['user_type']=='STU'){echo 'Student_profile';}else{echo 'Profile';}  ?>">Profile</a></span>
           </span>
         </div>
       </div>
@@ -178,13 +178,12 @@ if($u_ta=='staff'){
                   <a href="AddTimetable">Add a Timetable</a>
                 </li>
                 <hr>
-                <li>
+                <li><?php if($_SESSION['user_type']=='STU'){ ?> 
                   <a href="Notice">Notice Info</a>
-                </li>
-                
-                <li>
+                </li><?php } ?>
+                 <li><?php if($_SESSION['user_type']=='ADM'){ ?> 
                   <a href="AddNotice">Add a Notice</a>
-                </li>
+                </li><?php } ?>
               </ul>
             </div>
           </li>
@@ -306,7 +305,7 @@ if($u_ta=='staff'){
           </li>
 
 
-          <li class="sidebar-dropdown">
+          <li class="sidebar-dropdown"><?php if($_SESSION['user_type']=='ADM'){ ?> 
             <a href="#">
               <i class="far fa-grin"></i>
               <span>Feedbacks</span>
@@ -335,7 +334,7 @@ if($u_ta=='staff'){
                 </li>
               </ul>
             </div>
-          </li>
+          </li><?php } ?>
 
 
           <li class="sidebar-dropdown"><?php if($_SESSION['user_type']!='STU' ){ ?>
@@ -367,7 +366,7 @@ if($u_ta=='staff'){
           </li><?php } ?>   
 
 
-          <li class="sidebar-dropdown">
+          <li class="sidebar-dropdown"><?php if($_SESSION['user_type']=='ADM'){ ?> 
             <a href="#">
               <i class="fas fa-book-open"></i>
               <span>Library</span>
@@ -376,29 +375,23 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="Library">Library Info</a>
+                  <a href="LibraryHome">Library Home</a>
                 </li>
                 <li>
                   <a href="AddBook">Add a Book</a>
-                </li>  
+                </li>
                 <li>
-                  <a href="AddBookCategory">Add a Category</a>
-                  <hr>
-                </li>  
-
+                  <a href="IssueBook">Issue a Book</a>
+                </li>
+                <li>
+                  <a href="ViewBooks">All Book</a>
+                </li>
                 <li>
                   <a href="IssuedBook">Issued Books Info</a>
                 </li>
-                <li>
-                  <a href="IssueBook">Issue a Book</a>
-                  <hr>
-                </li>
-                <li>
-                  <a href="IssueBook">Issue a Book</a>
-                </li>
               </ul>
             </div>
-          </li>
+          </li><?php } ?>  
 
           <li class="sidebar-dropdown">
             <a href="#">
@@ -530,7 +523,7 @@ if($u_ta=='staff'){
         <i class="fab fa-facebook-messenger"></i>
         <span class="badge badge-pill badge-success notification">7</span>
       </a>
-      <a href="#">
+      <a href="<?php if($_SESSION['user_type']=='STU'){echo 'Student_profile';}else{echo 'Profile';}  ?>">
         <i class="fa fa-cog"></i>
         <span class="badge-sonar"></span>
       </a>

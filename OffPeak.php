@@ -16,12 +16,11 @@ if(isset($_GET['approve'])){
    $cmt = $_GET['cmt'];
   
   $result = mysqli_query($con ,$sql);
- if(mysqli_num_rows($result)== 1){
-      $row = mysqli_fetch_assoc($result);
+ 
      
       
 
-       $sql = "UPDATE `off_peak` SET `status` = 'Approved',`warden's_comment`= '$cmt' WHERE `off_peak`.`student_id` = '$reg' AND `off_peak`.`date` = '$da'";
+     $sql = "UPDATE `off_peak` SET `status` = 'Approved',`warden's_comment`= '$cmt' WHERE `off_peak`.`student_id` = '$reg' AND `off_peak`.`date` = '$da'";
       
           if(mysqli_query($con,$sql)){
             echo
@@ -34,7 +33,7 @@ if(isset($_GET['approve'])){
           }else{
               echo "error :" .$sql."<br>".mysqli_error($con);
           }
-      }
+      
  }
 
 
@@ -47,15 +46,13 @@ if(isset($_GET['reject'])){
   $cmt = $_GET['cmt'];
   
   $result = mysqli_query($con ,$sql);
- if(mysqli_num_rows($result)== 1){
-      $row = mysqli_fetch_assoc($result);
-
+ 
       $sql = "UPDATE `off_peak` SET `status` = 'Rejected',`warden's_comment`= '$cmt' WHERE `off_peak`.`student_id` = '$reg' AND `off_peak`.`date` = '$da'";
      
      
         
           if(mysqli_query($con,$sql)){
-            echo '<div class="alert alert-danger">
+            echo '<div class="alert alert-success">
             <strong>Success!</strong> Student has rejected to exit! </a>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
@@ -63,7 +60,7 @@ if(isset($_GET['reject'])){
           }else{
               echo "error :" .$sql."<br>".mysqli_error($con);
           }
-      }
+      
  }
 
 
@@ -72,14 +69,15 @@ if(isset($_GET['reject'])){
 <br><br>
 
 
-<div class="intro p-5 mb-5 border border-dark rounded">
+<div class="intro container-fluid shadow p-3 mb-5 bg-white rounded">
 <div class="shadow p-3 mb-5 bg-white rounded"> 
   <h1 class="display-4 text-center  "><i class="fas fa-inbox"></i> Off-peak Requests</h1>
   </div>
   <div class="col-md-1 col-sm-12   float-right ">
 <input type="button" class="btn btn-info " onclick="window.location.href='off_peak_info.php'" id="btn" name="off-peak info" value="off-peak info">
+<br>
 </div>
-<br><br>
+<br><br><br>
     <div class="table-responsive-sm">
     <table class="table table-responsive-sm w-100">
   <thead class="thead-dark">
@@ -98,7 +96,7 @@ if(isset($_GET['reject'])){
   </thead>
   <tbody>
   <?php
-  $sql = "SELECT * FROM  `off_peak`  where `status`=''";
+  $sql = "SELECT * FROM  `off_peak`  where `status`='Pending'";
 
   $result = mysqli_query($con, $sql);
   if(mysqli_num_rows($result) > 0){
