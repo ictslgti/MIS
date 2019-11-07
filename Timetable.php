@@ -273,7 +273,7 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
    
 <div class="text-right">
 <a href="AddTimetable.php" class="btn btn-primary ">Add</a> 
-<a href="DeleteTimetable.php" class="btn btn-primary ">Delete</a> 
+
 
          
 </div>
