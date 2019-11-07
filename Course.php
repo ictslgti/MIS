@@ -61,7 +61,7 @@ include_once ("menu.php");
                         {
                           echo '
                           <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                          <strong> '.$c_id.' </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                          <strong> '.$c_id.' </strong> Is Used In Another Table
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
