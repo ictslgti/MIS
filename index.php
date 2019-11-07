@@ -430,6 +430,41 @@ while($row = mysqli_fetch_assoc($result)){
         </div>
     </div>
 
+    <div class="col-md-4 col-sm-12">
+        <div class="card">
+            <h6 class="card-header font-weight-lighter">Students Course Dropout Distribution </h6>
+            <div class="card-body">
+                <?php
+$sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result) > 0) {
+while($row = mysqli_fetch_assoc($result)){
+
+    $cid = $row['course_id'];
+    $cname = $row['course_name'];
+    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'LongAbsent' ";
+    $result_c = mysqli_query($con, $sql_c);
+    $row_c = mysqli_fetch_assoc($result_c);
+    $course_count =  $row_c['c_count'];
+    $student_percentage = 0;
+    $student_percentage = round ( ($course_count/$total_students)*100); 
+    // echo $total_students;
+    echo '
+    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
+    <p class="card-text">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
+                aria-valuemin="0" aria-valuemax="100">'.$student_percentage.'%</div>
+        </div>
+    </p>
+    ';
+}
+}
+?>
+            </div>
+        </div>
+    </div>
+    <!-- <col2-end -->
 </div>
 <hr>
 
