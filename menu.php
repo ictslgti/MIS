@@ -174,9 +174,9 @@ if($u_ta=='staff'){
                 <li>
                   <a href="Timetable">Timetable</a>
                 </li>
-                <li><?php if($_SESSION['user_type']=="HOD") { ?>
+                <li>
                   <a href="AddTimetable">Add a Timetable</a>
-                </li><?php } ?>
+                </li>
                 <hr>
                 <li>
                   <a href="Notice">Notice Info</a>
