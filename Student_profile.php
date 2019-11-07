@@ -27,7 +27,7 @@ if(isset($_GET['Sid']))
 `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,`student_em_address`,
 `student_em_phone`,`student_em_relation`,`student_status`,`course_name`,`department_name`,`course_mode`,course_nvq_level,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
 `student_enroll_status`,`user_password_hash` FROM `student` as s, student_enroll as e, user as u, course as c, department as d WHERE user_name=s.student_id and s.student_id=e.student_id 
- and e.course_id=c.course_id and  c.department_id=d.department_id and `student_enroll_status`='Following' and user_name='$username '";
+ and e.course_id=c.course_id and  c.department_id=d.department_id and `student_enroll_status`='Following' and user_name='$username'";
 $result = mysqli_query($con,$sql);
 
   if(mysqli_num_rows($result)==1)
@@ -274,7 +274,6 @@ $result = mysqli_query($con,$sql);
 <nav>
   <div class="nav nav-tabs shadow p-2 mb-4 bg-white rounded" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Personal Info</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Password</a>
     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Qualification Info</a>
     <a class="nav-item nav-link" id="nav-modules-tab" data-toggle="tab" href="#nav-modules" role="tab" aria-controls="nav-modules" aria-selected="false">Modules Info</a>
   </div>
@@ -415,38 +414,6 @@ $result = mysqli_query($con,$sql);
                 <h6 class="text-muted"> <?php echo $erelation; ?> </h6>
             </div>
         </div>
-  </div>
-
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-    <!-- <form role="form" > -->
-    <form name="frmChange" method="post" action="" >
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label form-control-label">Current Password</label>
-            <div class="col-lg-6">
-                <input class="form-control" type="password" name="currentPassword">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label form-control-label">New Password</label>
-            <div class="col-lg-6">
-                <input class="form-control" type="password" name="newPassword">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label form-control-label">Confirm new password</label>
-            <div class="col-lg-6">
-                <input class="form-control" type="password" name="confirmPassword">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label form-control-label"></label>
-            <div class="col-lg-6">
-                <input type="submit" name="submit" value="Submit" class="btnSubmit">
-                <input type="reset" class="btn btn-light" value="Cancel">
-            </div>
-        </div>
-        </form>
-        <!-- </form>-->
   </div>
 
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">

@@ -519,7 +519,7 @@ if(isset($_POST['Edit']))
 
           <div class="col-md-3 mb-3">
             <label for="phone"> Phone No: </label>
-            <input type="text" class="form-control" id="phone" name="phone" maxlength="10" minlength="10" value="<?php echo $phone; ?>" placeholder=""  required>
+            <input type="number" class="form-control" id="phone" name="phone" maxlength="10" minlength="10" value="<?php echo $phone; ?>" placeholder=""  required>
           </div>
     </div>    
 
