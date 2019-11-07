@@ -13,7 +13,7 @@ include_once("menu.php");
 <div class="shadow  p-3 mb-5 bg-white rounded">
         <div class="highlight-blue">        
                 <div class="intro">
-<h1 class="text-center">Donor Details</h1>
+<h1 class="text-center">Donor Request Details</h1>
 </div>
 </div>
 </div>
