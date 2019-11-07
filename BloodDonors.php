@@ -13,7 +13,7 @@ include_once("menu.php");
         <div class="highlight-blue">          
                 <div class="intro">
 
-<h1 class="text-center"><i class="fas fa-user-plus"></i>Donor Details</h1>
+<h1 class="text-center"><i class="fas fa-user-plus"></i>Donor Request Details</h1>
 <br>
 </div>
   </div>
@@ -22,17 +22,22 @@ include_once("menu.php");
 <div class="row">
 
 <div class="col-sm-6 " ></div>
-<div class="col-sm-3 " > 
-<form class="form-inline md-form form-sm mt-4">
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search D_ID" name="edit aria-label="Search id="search"> 
+<div class="col-sm-3 search-box "  > 
+<form class="form-inline md-form form-sm mt-4" method="GET" >
+  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="search" placeholder="Search D_ID" aria-label="Search" name="search" Search id="search"> 
   <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button>
+  
 </form>
 </div>
 </div>
 
-<button type="button" class="btn btn-light" ><div class="spinner-grow" role="status">
+
+
+
+
+<button type="button" class="btn btn-light" type="reset" value="Reset"><div class="spinner-grow" role="status">
   <span class="sr-only">Loading...</span>
-</div> </button>
+</div> </button> 
   
 
 
