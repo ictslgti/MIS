@@ -108,7 +108,7 @@ if(isset($_POST['Editing']))
      
      echo '
      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-     <strong>'.$mid.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+     <strong>'.$mid.'</strong> Is Used In Another Table
      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
      <span aria-hidden="true">&times;</span>
      </button>
@@ -192,7 +192,7 @@ if(isset($_POST['Adding']))
                         {
                           echo '
                           <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                          <strong> '.$mid.' </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                          <strong> '.$mid.' </strong>  Module ID Is Already Exist!
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
