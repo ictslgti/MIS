@@ -56,7 +56,7 @@ include_once("menu.php");
       // echo "welcome Edit"; 
       // echo 'stid'.$_POST['stid']; echo 'mode'.$_POST['mode']; 
       // echo 'ayear'.$_POST['ayear'];echo 'edate'.$_POST['edate']; echo 'exdate'.$_POST['exdate'];
-      echo 'status'.$_POST['status'];
+      //'status'.$_POST['status'];
       
       if(!empty($_POST['stid']) && !empty($_POST['coid']) && !empty($_POST['mode']) && !empty($_POST['ayear']) 
       && !empty($_POST['status']) && !empty($_POST['edate']) && !empty($_POST['exdate']))
@@ -66,12 +66,11 @@ include_once("menu.php");
         $coid=$_GET['coid'];
         $mode=$_POST['mode'];
         $year=$_POST['ayear'];
-        echo $enstatus=$_POST['status'];
+        $enstatus=$_POST['status'];
         $enroll=$_POST['edate'];
         $exit=$_POST['exdate'];
 
-        $sql2 = "UPDATE `student_enroll` SET `course_mode`='$mode',`student_enroll_date`='$enroll',
-        `student_enroll_exit_date`='$exit',`student_enroll_status`='$enstatus' WHERE `student_id`='$stid' and `course_id`='$coid' AND `academic_year`='$year'";
+        $sql2 = "UPDATE `student_enroll` SET `course_mode`='$mode',`student_enroll_date`='$enroll',`student_enroll_exit_date`='$exit',`student_enroll_status`='$enstatus' WHERE `student_id`='$stid' AND `course_id`='$coid' AND `academic_year`= '$coid'";
 
             if(mysqli_query($con,$sql2))
             {
@@ -115,7 +114,7 @@ include_once("menu.php");
             // echo "Error: ".$sqlstudent . "<br>" . mysqli_error($con);
               echo "Error: ".$sqlenroll . "<br>" . mysqli_error($con);
               //echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
-              echo "Fill the required field";
+              //echo "Fill the required field";
             }
     }
   }
@@ -329,7 +328,7 @@ include_once("menu.php");
                         <td>'.$row["student_enroll_exit_date"]."<br>".'</td>
                         <td>'.$row["student_enroll_status"]."<br>".'</td>
                         <td>
-                        <a href="StudentReEnroll.php?stid='.$row["student_id"].'&&coid='.$row["course_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
+                        <a href="StudentReEnroll.php?stid='.$row["student_id"].'&&coid='.$row["course_id"].'&&ayear='.$row["academic_year"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
                         <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i></td>
                    </tr>';
                   $num=$num+1;
