@@ -109,7 +109,7 @@ if(isset($_GET['delete'])){
       </table>
            <!-- <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add </button> -->
            <button type="submit" class="btn btn-primary"  onclick="location.href='edit.php'" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Add</button>
-           <button type="submit" class="btn btn-outline-danger"  onclick="location.href='DonateBlood.php'" ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
+           <button type="submit" class="btn btn-outline-danger"  onclick="location.href='donationInfo.php'" ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
            
 </div>
 
