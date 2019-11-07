@@ -110,7 +110,7 @@ if($u_ta=='staff'){
                 <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a  href="Module">Modules Info</a><?php }?>
                 </li>
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="addModule">Add a Module<?php }?>
+                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="AddModule">Add a Module<?php }?>
                 </a>
                 </li>
 
