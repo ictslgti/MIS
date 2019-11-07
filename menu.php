@@ -110,7 +110,7 @@ if($u_ta=='staff'){
                 <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a  href="Module">Modules Info</a><?php }?>
                 </li>
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="addModule">Add a Module<?php }?>
+                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="AddModule">Add a Module<?php }?>
                 </a>
                 </li>
 
@@ -174,9 +174,9 @@ if($u_ta=='staff'){
                 <li>
                   <a href="Timetable">Timetable</a>
                 </li>
-                <li><?php if($_SESSION['user_type']=="HOD") { ?>
+                <li>
                   <a href="AddTimetable">Add a Timetable</a>
-                </li><?php } ?>
+                </li>
                 <hr>
                 <li><?php if($_SESSION['user_type']=='STU'){ ?> 
                   <a href="Notice">Notice Info</a>
@@ -477,16 +477,16 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li>
+                <li>  <?php if((($_SESSION['user_type'] =='WAR') || ($_SESSION['user_type'] =='HOD') || ($_SESSION['user_type'] =='STU'))) { ?>
                   <a href="BloodDonations">Blood Donations Info</a>
-                </li>
-                <li>
+                </li> <?php } ?> 
+                <li><?php if((($_SESSION['user_type'] =='WAR') || ($_SESSION['user_type'] =='HOD') || ($_SESSION['user_type'] =='STU'))) { ?>
                   <a href="BloodDonors">Blood Donors</a>
                   <hr>
-                </li>              
-                <li>
+                </li>  <?php } ?>             
+                <li><?php if($_SESSION['user_type'] =='ADM') { ?>
                   <a href="DonateBlood">Donate Blood</a>
-                </li>          
+                </li>  <?php } ?>         
               </ul>
             </div>
           </li>
