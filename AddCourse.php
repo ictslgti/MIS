@@ -63,7 +63,7 @@ if(isset($_POST['Editing']))
    {
      echo '
      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-     <strong> '.$cid.' </strong> Cannot update a parent row (foreign key constraint fails)
+     <strong> '.$cid.' </strong> Is Used In Another Table
      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
        <span aria-hidden="true">&times;</span>
      </button>
@@ -92,7 +92,7 @@ if(isset($_POST['Adding']))
      {
        echo '
          <div class="alert alert-success alert-dismissible fade show" role="alert">
-         <strong>'.$cid.'</strong> Succesfully Has Been Added
+         <strong>'.$cid.'</strong>Succesfully Has Been Added
          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
          <span aria-hidden="true">&times;</span>
          </button>
@@ -103,7 +103,7 @@ if(isset($_POST['Adding']))
        
        echo '
        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-       <strong>'.$cid.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+       <strong>'.$cid.'</strong> Course ID Is Already Exist!
        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
        <span aria-hidden="true">&times;</span>
        </button>
