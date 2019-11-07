@@ -37,7 +37,7 @@ include_once("menu.php");
          <div class="row">   
          <div class="col-12">
          <form>
-         <p style="font-size:20px;">AddDonor_Info <hr color ="black" style="height:1px;"></p><br>
+         <p style="font-size:20px;">Donor Request_Info <hr color ="black" style="height:1px;"></p><br>
          </form>
 </div>
 </div>
@@ -92,7 +92,7 @@ include_once("menu.php");
             <td>'.$row["weight"].'</td>
             <td>'.$row["reference_id"].'</td>
             <td> 
-           
+            
             <a href=" donor.php ?edit='.$row["d_id"].' "class="btn btn-outline-success btn-icon-split""><i class="far fa-edit"></i>&nbsp;&nbsp;  </a>  
             <button class="btn btn-outline-danger btn-icon-split" data-href="?delete='.$row["d_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
            

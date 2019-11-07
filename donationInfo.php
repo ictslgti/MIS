@@ -10,7 +10,7 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
-<div class="intro p-5 mb-5 border border-dark rounded">
+<div class="intro p-5 mb-5 border border-light rounded">
 <div class="shadow p-3 mb-5 bg-white rounded"> 
   <h1 class="display-4 text-center  "><i class="fas fa-hand-holding-usd"></i> Donation Info</h1>
   </div>
@@ -23,7 +23,7 @@ include_once("menu.php");
 <div class="col-sm-6 " ></div>
 <div class="col-sm-3 " > 
 <form class="form-inline md-form form-sm mt-4">
-  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_date" aria-label="Search"id="search"> 
+  <input class="form-control form-control-sm ml-3 w-75 rounded-pill" type="text" placeholder="Search_date" aria-label="Search" name="search" id="search"> 
   <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button>
 </form>
 </div>
@@ -55,7 +55,10 @@ include_once("menu.php");
   
   
  <?php
-    $sql="SELECT * from donation";
+ if (isset($_GET['search'])) 
+ {
+  $id= $_GET['donation_id'];
+    $sql="SELECT * from donation where donation_id='$id'";
     $result=mysqli_query($con,$sql);
     if(mysqli_num_rows($result)>0)
     {
@@ -69,7 +72,7 @@ include_once("menu.php");
             <td> 
            
             <a href=" edit.php ?edit='.$row["donation_id"].' "class="btn btn-outline-success btn-icon-split"""><i class="far fa-edit"></i>&nbsp;&nbsp;  </a>  
-            <a href=" ?delete='.$row["donation_id"].'"class="btn btn-outline-danger btn-icon-split"""> <i class="far fa-trash-alt"></i> &nbsp;&nbsp;</a> 
+            <button class="btn btn-outline-danger" data-href="?delete='.$row["donation_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
            
             </td>
         </tr>';
@@ -87,9 +90,20 @@ if(isset($_GET['delete'])){
     $id = $_GET['delete'];
     $sql = "DELETE FROM `donation` WHERE`donation_id`='$id'";
     if (mysqli_query($con, $sql)){
-        echo "deleted successfully";
+      // for design
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$id.'</strong>  Has Been Succesfully deleted
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div> ';
     }else{
-        echo "Error deleting record:" . mysqli_error($con);
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>'.$id.'</strong> cannot be done
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div> ';
     }
 }
 
@@ -98,7 +112,7 @@ if(isset($_GET['delete'])){
       </table>
            <!-- <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add </button> -->
            <button type="submit" class="btn btn-primary"  onclick="location.href='edit.php'" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Add</button>
-           <button type="submit" class="btn btn-danger"  onclick="location.href='DonateBlood.php'" ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
+           <button type="submit" class="btn btn-outline-danger"  onclick="location.href='DonateBlood.php'" ><i class="fas fa-backspace"></i>&nbsp;&nbsp;cancel</button>
            
 </div>
 

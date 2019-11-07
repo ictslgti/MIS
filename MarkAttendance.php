@@ -55,7 +55,7 @@ if(isset($_POST['Add'])){
 
     $AttendanceStatus = $_POST[$post_stid];
 
-    $sql_y .= "INSERT INTO `attendance` (`student_id`, `module_name`, `staff_name`, `attendance_status`, `date`) VALUES ( '$student_id', '$mid', '$staff_id', '$AttendanceStatus', '$date');";
+    $sql_y .= "INSERT INTO `attendance` (`student_id`, `module_name`, `staff_name`, `attendance_status`, `date`) VALUES ( '$student_id', '$mid', '$staff_id', '$AttendanceStatus', '$date')";
     }
   }
 
