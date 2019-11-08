@@ -23,7 +23,7 @@ include_once("menu.php");
     </div>
 <!-- <h1>Batch Details of ICT Department</h1> -->
 
-<a href="AddNewBatch" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add New Batch </a>
+<?php if(($_SESSION['user_type'] =='ADM')) { ?> <a href="AddNewBatch" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add New Batch </a><?php }?> 
 <!-- <button type="button" class="btn btn-success">+ Add New Batch</button> -->
 <br><br>
 <table class="table table-hover">
@@ -33,7 +33,7 @@ include_once("menu.php");
     <th scope="col">Batch_ID</th>
       <th scope="col">Course_ID</th>
       <th scope="col">Academic Year</th>
-      <th scope="col">Options</th>
+      <?php if(($_SESSION['user_type'] =='ADM')) { ?> <th scope="col">Options</th><?php }?> 
 
      
       
@@ -69,13 +69,13 @@ include_once("menu.php");
         <td>' . $row ["batch_id"].'</td>
         <td>' . $row ["course_id"].'</td>
         <td>' .$row["academic_year"].'</td>
-        <td>
-        
+        <td>';?>
+        <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'
     <a href="BatchStudent.php?BSt='.$row["course_id"].'&AcY='.$row["academic_year"].'" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-user-graduate">&nbsp;&nbsp;Students</i></a>
     <a href="AddNewBatch.php?edit='.$row["batch_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
     <button class="btn btn-sm btn-danger" data-href="?delete='.$row["batch_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
-      </tr>';
-
+    ';?><?php }?> 
+    <?php echo'</tr>';
     }
 }
 else{
