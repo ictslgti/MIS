@@ -176,7 +176,7 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
                 echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
                  <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> 
                  <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>
-                 <p>';      
+                ';      
             }
             echo '</td>';   
         }
@@ -221,7 +221,7 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
                 echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
                  <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span>
                  <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>
-                 <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["timep"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>      
+                  
                  <br>
                  
                   

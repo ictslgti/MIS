@@ -23,16 +23,16 @@ if(isset($_GET['edit']))
 
    {
       $row = mysqli_fetch_assoc($result);
-      $department_id = $row['department_id'];
-      $course_id = $row['course_id'];
-      $module_id = $row['module_id'];
-      $academic_year= $row['academic_year'];   
-      $staff_id = $row['staff_id'];
-      $weekdays = $row['weekdays'];
-      $timep = $row['timep'];
-      $classroom = $row['classroom'];
-      $start_date = $row['start_date'];
-      $end_date = $row['end_date'];
+      echo  $department_id = $row['department_id'];
+      echo  $course_id = $row['course_id'];
+      echo  $module_id = $row['module_id'];
+      echo  $academic_year= $row['academic_year'];   
+      echo  $staff_id = $row['staff_id'];
+      echo  $weekdays = $row['weekdays'];
+      echo $timep = $row['timep'];
+      echo $classroom = $row['classroom'];
+      echo $start_date = $row['start_date'];
+      echo $end_date = $row['end_date'];
 
   }
 
@@ -388,25 +388,25 @@ if(isset($_POST['Add'])){
          <h1 class="text-center">
         
          <?PHP 
-  echo '<div class="btn-group-horizontal">';
+  // echo '<div class="btn-group-horizontal">';
 
-    if(isset($_GET['edit']))
-    {
-      echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
-      echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
+  //   if(isset($_GET['edit']))
+  //   {
+  //     echo '<button type="submit"  class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
+  //     echo'<button type="reset" value="Reset" class="btn btn-primary mr-2"><i class="fas fa-redo"></i>REFRESH</button>';
 
-    }
-    if(isset($_GET['delete']))
-    {
-      echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
+  //   }
+  //   if(isset($_GET['delete']))
+  //   {
+  //     echo '<button type="submit"  class="btn btn-danger mr-2"><i class="fas fa-user-slash"></i>DELETE</button>';
 
-    }
-    if(!isset($_GET['delete']) && !isset($_GET['edit'])){
-      echo '    ';
+  //   }
+  //   if(!isset($_GET['delete']) && !isset($_GET['edit'])){
+  //     echo '    ';
 
-    }
+  //   }
       
-      echo '</div>';
+  //     echo '</div>';
       ?>
       <div class="btn-group">
       <button type="submit" value="Add" name="Add" class="btn btn-primary">ADD</button>
