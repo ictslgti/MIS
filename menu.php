@@ -87,14 +87,14 @@ if($u_ta=='staff'){
                 <a  href="Department">Departments Info</a>
                 </li>
                 <li>
-                <a href="AddDepartment">Add a Department
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?>  <a href="AddDepartment">Add a Department<?php }?>
                 </a>
                 </li>
                 <li>
                 <a  href="AcademicYear">Academic Years Info</a>
                 </li>
                 <li>
-                <a href="AddAcademicYear">Add a Academic Year
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?>  <a href="AddAcademicYear">Add a Academic Year<?php }?>
                 </a>
                 </li>
 
