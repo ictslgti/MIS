@@ -41,8 +41,8 @@ if($u_ta=='staff'){
           </span>
           <span class="user-role"><?php echo $_SESSION['user_type'];?> | <?php echo $_SESSION['department_code'];?> </span>
           <span class="user-status">
-            <i class="fa fa-circle"></i>
-            <span>Online</span>
+            <i class="fa fa-user"></i>
+            <span><a href="<?php if($_SESSION['user_type']=='STU'){echo 'Student_profile';}else{echo 'Profile';}  ?>">Profile</a></span>
           </span>
         </div>
       </div>
@@ -102,15 +102,15 @@ if($u_ta=='staff'){
                 <a  href="Course">Courses Info</a>
                 </li>
                 <li>
-                <a href="AddCourse">Add a Course
+                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="AddCourse">Add a Course<?php }?>
                 </a>
                 </li>
 
                 <li>
-                <a  href="Module">Modules Info</a>
+                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a  href="Module">Modules Info</a><?php }?>
                 </li>
                 <li>
-                <a href="addModule">Add a Module
+                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="AddModule">Add a Module<?php }?>
                 </a>
                 </li>
 
@@ -149,7 +149,7 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="Student">Students Info</a>
+                  <a href="Student" onclick="myFunction()">Students Info</a><script>function myFunction() { alert("Welcome to SLGTI Active & Following Students Informations");}</script>
                 </li>
                 <li>
                   <a href="AddStudent">Add a Student</a>
@@ -178,12 +178,12 @@ if($u_ta=='staff'){
                   <a href="AddTimetable">Add a Timetable</a>
                 </li>
                 <hr>
-                <li>
+                <li><?php if($_SESSION['user_type']=='STU'){ ?> 
                   <a href="Notice">Notice Info</a>
-                </li>
-                <li>
+                </li><?php } ?>
+                 <li><?php if($_SESSION['user_type']=='ADM'){ ?> 
                   <a href="AddNotice">Add a Notice</a>
-                </li>
+                </li><?php } ?>
               </ul>
             </div>
           </li>
@@ -245,37 +245,36 @@ if($u_ta=='staff'){
             </div>
           </li>
 
-
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-briefcase"></i>
               <span>On-the-job Training</span>
-              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->  
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li>
+                <li><?php if($_SESSION['user_type']=='ADM'){ ?> 
                   <a href="OJT">On-the-job Training Info</a>
                 </li>
                 <li>
                   <a href="AddTrainingPlace">Add a Training Place</a>
                   <hr>
-                </li>              
-                <li>
+                </li> <?php } ?>             
+                <li><?php if($_SESSION['user_type']=='STU'){ ?>
                   <a href="StudentsRequest">Students Request</a>
-                </li>
-                <li>
+                </li><?php } ?>
+                <li> <?php if($_SESSION['user_type']=='STU'){ ?>
                   <a href="PlacementRequest">Student Placement Request</a>
-                </li>
-                <li>
+                </li> <?php } ?>
+                <li><?php if($_SESSION['user_type']=='STU'){ ?>
                   <a href="OJTInfo">Training Place Info</a>
-                </li>
-                <li>
+                </li><?php } ?>
+                <li><?php if($_SESSION['user_type']=='ADM'){ ?>
                   <a href="OJTChange">Placement Change</a>
                 </li>
                 <li>
                   <a href="OJTReport">OJT Report</a>
-                </li>
+                </li><?php } ?>
               </ul>
             </div>
           </li>
@@ -288,7 +287,7 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li>
+                <li><?php if($_SESSION['user_type']=='WAR' ){ ?>
                   <a href="Hostel">Hostels Info</a>
                 </li>
                 <li>
@@ -297,16 +296,16 @@ if($u_ta=='staff'){
                 <li>
                   <a href="AddRoom">Add a Room</a>
                   <hr>
-                </li>
-                <li>
+                </li><?php } ?>
+                <li><?php if($_SESSION['user_type']=='STU' ){ ?>
                   <a href="RequestHostel">Request Hostel</a>
-                </li>
+                </li><?php } ?>
               </ul>
             </div>
           </li>
 
 
-          <li class="sidebar-dropdown">
+          <li class="sidebar-dropdown"><?php if($_SESSION['user_type']=='ADM'){ ?> 
             <a href="#">
               <i class="far fa-grin"></i>
               <span>Feedbacks</span>
@@ -335,10 +334,10 @@ if($u_ta=='staff'){
                 </li>
               </ul>
             </div>
-          </li>
+          </li><?php } ?>
 
 
-          <li class="sidebar-dropdown">
+          <li class="sidebar-dropdown"><?php if($_SESSION['user_type']!='STU' ){ ?>
             <a href="#">
               <i class="fas fa-file-alt"></i>
               <span>Inventory</span>
@@ -364,10 +363,10 @@ if($u_ta=='staff'){
                 </li>
               </ul>
             </div>
-          </li>
+          </li><?php } ?>   
 
 
-          <li class="sidebar-dropdown">
+          <li class="sidebar-dropdown"><?php if($_SESSION['user_type']=='ADM'){ ?> 
             <a href="#">
               <i class="fas fa-book-open"></i>
               <span>Library</span>
@@ -376,29 +375,23 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="Library">Library Info</a>
+                  <a href="LibraryHome">Library Home</a>
                 </li>
                 <li>
                   <a href="AddBook">Add a Book</a>
-                </li>  
+                </li>
                 <li>
-                  <a href="AddBookCategory">Add a Category</a>
-                  <hr>
-                </li>  
-
+                  <a href="IssueBook">Issue a Book</a>
+                </li>
+                <li>
+                  <a href="ViewBooks">All Book</a>
+                </li>
                 <li>
                   <a href="IssuedBook">Issued Books Info</a>
                 </li>
-                <li>
-                  <a href="IssueBook">Issue a Book</a>
-                  <hr>
-                </li>
-                <li>
-                  <a href="IssueBook">Issue a Book</a>
-                </li>
               </ul>
             </div>
-          </li>
+          </li><?php } ?>  
 
           <li class="sidebar-dropdown">
             <a href="#">
@@ -408,23 +401,23 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li>
+                <li><?php if($_SESSION['user_type']!='STU'){ ?>
                   <a href="FoodItems">Food Items</a>
-                </li>
-                <li>
+                </li> <?php } ?>
+                <li><?php if($_SESSION['user_type']!='STU'){ ?>
                   <a href="AddFoodItem">Add a Food Item</a>
                   <hr>
-                </li>              
+                </li>  <?php } ?>             
                 <li>
                   <a href="FoodOrders">Food Orders</a>
                   <hr>
                 </li>
-                <li>
+                <li> <?php if($_SESSION['user_type']!='STU'){ ?>
                   <a href="CanteenReport">Daily Report</a>
-                </li>
-                <li>
+                </li> <?php } ?> 
+                <li><?php if($_SESSION['user_type']!='STU'){ ?>
                   <a href="dailyorder">Daily Orders</a>
-                </li>
+                </li> <?php } ?>
               </ul>
             </div>
           </li>
@@ -466,12 +459,12 @@ if($u_ta=='staff'){
                   <a href="RequestOnPeak">Request a On-Peak</a>
                   <hr>
                 </li> <?php } ?>             
-                <li>
+                <li><?php if($_SESSION['user_type']=='WAR' ){ ?>
                   <a href="OffPeak">Off-Peak Info</a>
-                </li>
-                <li>
+                </li><?php } ?>
+                <li><?php if($_SESSION['user_type']=='STU' ){ ?>
                   <a href="RequestOffPeak">Request a Off-Peak</a>
-                </li>
+                </li><?php } ?> 
               </ul>
             </div>
           </li>
@@ -484,16 +477,16 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li>
+                <li>  <?php if((($_SESSION['user_type'] =='WAR') || ($_SESSION['user_type'] =='HOD') || ($_SESSION['user_type'] =='STU'))) { ?>
                   <a href="BloodDonations">Blood Donations Info</a>
-                </li>
-                <li>
+                </li> <?php } ?> 
+                <li><?php if((($_SESSION['user_type'] =='WAR') || ($_SESSION['user_type'] =='HOD') || ($_SESSION['user_type'] =='STU'))) { ?>
                   <a href="BloodDonors">Blood Donors</a>
                   <hr>
-                </li>              
-                <li>
+                </li>  <?php } ?>             
+                <li><?php if($_SESSION['user_type'] =='ADM') { ?>
                   <a href="DonateBlood">Donate Blood</a>
-                </li>          
+                </li>  <?php } ?>         
               </ul>
             </div>
           </li>
@@ -530,7 +523,7 @@ if($u_ta=='staff'){
         <i class="fab fa-facebook-messenger"></i>
         <span class="badge badge-pill badge-success notification">7</span>
       </a>
-      <a href="#">
+      <a href="<?php if($_SESSION['user_type']=='STU'){echo 'Student_profile';}else{echo 'Profile';}  ?>">
         <i class="fa fa-cog"></i>
         <span class="badge-sonar"></span>
       </a>

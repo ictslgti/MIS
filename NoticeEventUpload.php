@@ -90,9 +90,9 @@ if(isset($_GET['edit'])){
         <div class="input-group mb-3 ">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01"> 
-                    <i class="fas fa-user text-primary"> </i>&nbsp;&nbsp;cheif Guest&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <i class="fas fa-user text-primary"> </i>&nbsp;&nbsp;chief Guest&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             </div>
-            <input type="text" class="form-control"  name="event_chief_guest" placeholder="cheif Guest" value="<?php echo $e_chief_guest; ?>">
+            <input type="text" class="form-control"  name="event_chief_guest" placeholder="chief Guest" value="<?php echo $e_chief_guest; ?>">
         </div>
 
 
@@ -111,7 +111,7 @@ if(isset($_GET['edit'])){
                 <div class="form-group">
                 <label> <i class="fas fa-university text-primary"> </i> Event</label>
                 <select class="browser-default custom-select" name="status" id="Departmentx"  onchange="showCouese(this.value)" required>
-                <option value="null" selected disabled >---- Select the Department ---- </option>
+                <option value="null" selected disabled >---- Select the Event---- </option>
                 <?php
                 $sql="select * from `notice_event_stutas`";
                 $result = mysqli_query($con,$sql);
@@ -179,14 +179,7 @@ if(isset($_POST['add'])){
        $name = basename($_FILES["ima"]["name"]);
        $test_dir = './docs/events';
        move_uploaded_file($t_name, $test_dir.'/'.$name);
-
-
-       if( $name ) {
-        echo "Successfully uploaded";         
-      } else {
-        echo "Not uploaded because of error #".$_FILES["ima"]["error"];
-      }
-
+       
        $sql="INSERT INTO `notice_event` (`event_name`,`event_venue`,`event_date`,`event_chief_guest`,`event_comment`,`event_time`,`event_docs_url`,`status`) values('$event_name','$event_venue','$event_date','$event_chief_guest','$event_comment','$event_time','$name','$status')";
        if(mysqli_query($con,$sql)){
            $message ="<h4 class='text-success' >New record created successfully</h4>";

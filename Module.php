@@ -41,7 +41,7 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
           </div>
         <div class="col-1">
           <div class="form-row align-items-center" style="float:left">
-            <button  type="submit" class="btn btn-primary btn-block" ><i class="fas fa-search"></i></button>
+            <button  type="submit" class="btn btn-primary btn-block" name="search" ><i class="fas fa-search"></i></button>
           </div>
         </div>
         <div class="col-6">
@@ -84,7 +84,7 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                     }else{
                     echo '
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong> '.$m_id.' </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                    <strong> '.$m_id.' </strong> Is Used In Another Table
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -92,7 +92,7 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                     <br>
                   <tbody>
                     <?php
-                    {  
+                    
                     function getTotal($cid,$mid){
                     $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
                     $sql_r = "CALL notionalhours ('$cid','$mid')";
@@ -110,8 +110,8 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                     `module_lecture_hours`,
                     `module_practical_hours`,
                     `module_self_study_hours`,
-                    course.course_name as course_name FROM `module`,
-                    `course` WHERE module.course_id = course.course_id";
+                    course.course_name as course_name FROM `module` INNER JOIN `course`
+                    ON module.course_id = course.course_id";
                      if(isset($_GET['course_id'])){
                       $gcourse_id=$_GET['course_id'];
                       $sql.=" AND `module`.`course_id`= '$gcourse_id'";
@@ -131,7 +131,7 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                      <td>'. $row["semester_id"] . "<br>" .'</td>
                      <td>'.getTotal($cid,$mid). "<br>" .'</td>
                      <td>
-                      <a href="AddModule.php ?edits='.$row["module_id"].'&&editc='.$row["course_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                     <a href="AddModule.php ?edits='.$row["module_id"].'&&editc='.$row["course_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
                      <button class="btn btn-sm btn-danger" data-href=" ?dlt='.$row["module_id"].'&&dllt='.$row["course_id"].' " data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
                      </td> 
                      </tr>';
@@ -139,14 +139,14 @@ $gcourse_id=$gcourse_i=$sum=$mid=$cid=null;
                      }}
                      else{
                      echo "0 results";
-                     }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                     ?>
                 </tbody>
               </table>
               </div>
   <div class="form-row">
       <div class="col-md-12">
-      <a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i>
+                    <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="AddModule.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD MODULE</a></i><?php }?>
       </div>
   </div>
       </div>

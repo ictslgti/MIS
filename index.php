@@ -7,6 +7,63 @@ include_once("menu.php");
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
+
+
+<?php
+// echo $_SESSION['user_table'];
+// echo $_SESSION['user_name'];
+if($_SESSION['user_type']  == 'STU'){
+   $u_type= $_SESSION['user_name'];
+   $table = $_SESSION['user_table'];
+    $sql ="SELECT course_id from student_enroll where  student_id= '$u_type'";
+
+    $result = mysqli_query($con,$sql);
+    if (mysqli_num_rows($result)>0) {
+         while($row=mysqli_fetch_assoc($result)){
+            $course=$row["course_id"];
+            $sql1="SELECT module_id from module where course_id='$course'";
+            $result4 = mysqli_query($con,$sql1);
+            if (mysqli_num_rows($result4)>0) {
+                 while($row=mysqli_fetch_assoc($result4)){
+                      $module=$row["module_id"];
+                     $sql2="SELECT survey_id FROM feedback_survey where  course_id='$course' and module_id='$module' and end_date > curdate() and start_date <= curdate()";
+                     $result5 = mysqli_query($con,$sql2);
+                     if (mysqli_num_rows($result5)>0) {
+                          while($row=mysqli_fetch_assoc($result5)){
+                           $survey_id=$row["survey_id"];
+                           $sql3="SELECT survey_id,student_id FROM feedback_done where survey_id='$survey_id' and student_id='$u_type'";
+                           $result6 = mysqli_query($con,$sql3);
+                           if (mysqli_num_rows($result6)==0) {
+
+                           echo '
+                           <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong > New Notification! <span style="font-size:20px;">&#129335;</span> </strong> New Survey Added For <strong> '.$module.' </strong>&nbsp;Pleace Give Your Feedback &nbsp;
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                                </button>
+                            <a href="Addfbdetail.php?id='. $row["survey_id"].'" class="btn btn-sm btn-warning float-right mr-5"><i class="fas fa-eye"></i></a> 
+                                </div>
+                           ';
+                     
+                          }}
+                        }else{
+                           
+                        }
+                     
+                 }
+                }else{
+                   
+                }
+
+    }}else{
+       
+    }
+}else{
+   // echo 'your not a student'.$_SESSION['user_type'];
+}
+
+?>
+
 <!--BLOCK#2 START YOUR CODE HERE -->
 <!-- <form onsubmit="showTeacher()">
     <div class="row p-3">
@@ -303,6 +360,41 @@ while($row = mysqli_fetch_assoc($result)){
         </div>
     </div>
     <!-- <col2-end -->
+        <div class="col-md-4 col-sm-12">
+        <div class="card">
+            <h6 class="card-header font-weight-lighter">Students Course Following Distribution </h6>
+            <div class="card-body">
+                <?php
+$sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result) > 0) {
+while($row = mysqli_fetch_assoc($result)){
+
+    $cid = $row['course_id'];
+    $cname = $row['course_name'];
+    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Following' ";
+    $result_c = mysqli_query($con, $sql_c);
+    $row_c = mysqli_fetch_assoc($result_c);
+    $course_count =  $row_c['c_count'];
+    $student_percentage = 0;
+    $student_percentage = round ( ($course_count/$total_students)*100); 
+    // echo $total_students;
+    echo '
+    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
+    <p class="card-text">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
+                aria-valuemin="0" aria-valuemax="100">'.$student_percentage.'%</div>
+        </div>
+    </p>
+    ';
+}
+}
+?>
+            </div>
+        </div>
+    </div>
+    <!-- <col2-end -->
     <div class="col-md-4 col-sm-12">
         <div class="card">
             <h6 class="card-header font-weight-lighter">Students Course Completion Distribution</h6>
@@ -337,7 +429,43 @@ while($row = mysqli_fetch_assoc($result)){
             </div>
         </div>
     </div>
+    <!-- COL-3 END -->
 
+    <div class="col-md-4 col-sm-12">
+        <div class="card">
+            <h6 class="card-header font-weight-lighter">Students Course Dropout Distribution </h6>
+            <div class="card-body">
+                <?php
+$sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result) > 0) {
+while($row = mysqli_fetch_assoc($result)){
+
+    $cid = $row['course_id'];
+    $cname = $row['course_name'];
+    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Dropout' ";
+    $result_c = mysqli_query($con, $sql_c);
+    $row_c = mysqli_fetch_assoc($result_c);
+    $course_count =  $row_c['c_count'];
+    $student_percentage = 0;
+    $student_percentage = round ( ($course_count/$total_students)*100); 
+    // echo $total_students;
+    echo '
+    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
+    <p class="card-text">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
+                aria-valuemin="0" aria-valuemax="100">'.$student_percentage.'%</div>
+        </div>
+    </p>
+    ';
+}
+}
+?>
+            </div>
+        </div>
+    </div>
+    <!-- <col2-end -->
 </div>
 <hr>
 
@@ -409,6 +537,7 @@ function showStudent(val) {
     var course_total_count = [];
     var course_completed_count = [];
     var course_droupout_count = [];
+    var course_following_count = [];
 
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -419,6 +548,7 @@ function showStudent(val) {
                 course_total_count.push(data_students_count[i].t_count);
                 course_completed_count.push(data_students_count[i].c_count);
                 course_droupout_count.push(data_students_count[i].d_count);
+                course_following_count.push(data_students_count[i].d_count);
             }
             
             var ctx = document.getElementById('myChart1');
@@ -428,7 +558,7 @@ function showStudent(val) {
                     labels: course_id_label,
                     datasets: [{
                         label: "Total Students ",
-                        backgroundColor: "#007bff",
+                        backgroundColor: "#5a407d",
                         data: course_total_count
                     }, {
                         label: "Dropout Students ",
@@ -438,6 +568,14 @@ function showStudent(val) {
                         label: "Completed Students ",
                         backgroundColor: "#28a745",
                         data: course_completed_count
+                    },{
+                        label: "Following Students ",
+                        backgroundColor: "#007bff",
+                        data: course_droupout_count
+                    },{
+                        label: "LongAbsent Students",
+                        backgroundColor: "#deb647",
+                        data: course_droupout_count
                     }]
                 },
                 options: {

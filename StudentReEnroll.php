@@ -24,14 +24,15 @@ include_once("menu.php");
 
     // edit coding
     
-    if((isset($_GET['stid'])) && (isset($_GET['coid'])))
+    if((isset($_GET['stid'])) && (isset($_GET['coid'])) && (isset($_GET['ayear'])))
     {
       $stid =$_GET['stid'];
       $coid =$_GET['coid'];
+      $year =$_GET['ayear'];
      
       //echo 'coid'.$_POST['coid'];
-      $sql = "SELECT `student_id`,`course_id`,`course_mode`,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,`student_enroll_status` 
-      FROM `student_enroll` WHERE `student_id`='$stid' AND `course_id`='$coid'";
+      $sql = "SELECT `student_id`,`course_id`,`course_mode`,`student_enroll_date`,`student_enroll_exit_date`,`student_enroll_status`,`academic_year`
+      FROM `student_enroll` WHERE `student_id`='$stid'  AND `course_id`='$coid' AND `academic_year`='$year'";
       $result = mysqli_query($con,$sql);
 
       if(mysqli_num_rows($result)==1)
@@ -53,8 +54,9 @@ include_once("menu.php");
     if(isset($_POST['Edit']))
      {
       // echo "welcome Edit"; 
-      // echo 'stid'.$_POST['stid']; echo 'mode'.$_POST['mode']; echo 'status'.$_POST['status'];
+      // echo 'stid'.$_POST['stid']; echo 'mode'.$_POST['mode']; 
       // echo 'ayear'.$_POST['ayear'];echo 'edate'.$_POST['edate']; echo 'exdate'.$_POST['exdate'];
+      //'status'.$_POST['status'];
       
       if(!empty($_POST['stid']) && !empty($_POST['coid']) && !empty($_POST['mode']) && !empty($_POST['ayear']) 
       && !empty($_POST['status']) && !empty($_POST['edate']) && !empty($_POST['exdate']))
@@ -68,8 +70,7 @@ include_once("menu.php");
         $enroll=$_POST['edate'];
         $exit=$_POST['exdate'];
 
-        $sql2 = "UPDATE `student_enroll` SET `course_mode`='$mode',`academic_year`='$year',`student_enroll_date`='$enstatus',
-        `student_enroll_exit_date`='$enroll',`student_enroll_status`='$exit' WHERE `student_id`='$stid' and `course_id`='$coid'";
+        $sql2 = "UPDATE `student_enroll` SET `course_mode`='$mode',`student_enroll_date`='$enroll',`student_enroll_exit_date`='$exit',`student_enroll_status`='$enstatus' WHERE `student_id`='$stid' AND `course_id`='$coid' AND `academic_year`= '$coid'";
 
             if(mysqli_query($con,$sql2))
             {
@@ -77,8 +78,8 @@ include_once("menu.php");
             }
             else
             {
-              echo "Error: ".$sq2. "<br>" . mysqli_error($con);
-              echo "Fill the required field";
+              echo "Error: ".$sql2. "<br>" . mysqli_error($con);
+              //echo "Fill the required field";
             }
           }
     }
@@ -113,7 +114,7 @@ include_once("menu.php");
             // echo "Error: ".$sqlstudent . "<br>" . mysqli_error($con);
               echo "Error: ".$sqlenroll . "<br>" . mysqli_error($con);
               //echo "Error: ".$sqlqualification . "<br>" . mysqli_error($con);
-              echo "Fill the required field";
+              //echo "Fill the required field";
             }
     }
   }
@@ -137,9 +138,9 @@ include_once("menu.php");
 <div class="ROW">
         <div class="col text-center shadow p-5 mb-5 bg-white rounded ">
             <h1>Students ReEnrollment Information </h1>
-            <h2>Students ReEnroll</h2>
+            <h2>SLGTI</h2>
         </div>
-    </div><BR>
+    </div>
 
     <form class="needs-validation" action="" method="POST">
 
@@ -215,7 +216,21 @@ include_once("menu.php");
 
         <div class="col-md-5 mb-3">
           <label for="stid"> Student Id : </label>
-          <input type="text" class="form-control" id="stid" name="stid" value="<?php echo $stid; ?>" placeholder="" aria-describedby="stidPrepend" required>
+          <select name="student_id" id="student_id" class="selectpicker show-tick" data-live-search="true" data-width="100%" value="<?php echo $stid; ?>">
+          <option selected disabled>--Student Id--</option>
+          <?php
+            $sql = "SELECT * FROM `student_enroll` ORDER BY `student_id` DESC ";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) 
+            {
+              while($row = mysqli_fetch_assoc($result)){
+                echo '<option  value="'.$row["student_id"].'" required>'.$row["student_id"].'</option>';
+              }
+              }else{
+                echo '<option value="null"  selected disabled>-- 0 Position --</option>';
+              }
+            ?> 
+        </select>
         </div>
       
       </div>
@@ -224,17 +239,17 @@ include_once("menu.php");
 
         <div class="col-md-5 mb-3">   
           <label for="edate"> ReEntroll Date : </label>
-          <input type="text" class="form-control" id="edate" name="edate" value="<?php echo $enroll; ?>" placeholder="" aria-describedby="edatePrepend" required>
+          <input type="date" class="form-control" id="edate" name="edate" value="<?php echo $enroll; ?>" placeholder="" aria-describedby="edatePrepend" required>
         </div>
 
         <div class="col-md-1 mb-3"></div>
    
         <div class="col-md-5 mb-3">
           <label for="exdate"> ReExit Date : </label>
-          <input type="text" class="form-control" id="exdate" name="exdate" value="<?php echo $exit; ?>" placeholder="" aria-describedby="ExdatePrepend" required>
+          <input type="date" class="form-control" id="exdate" name="exdate" value="<?php echo $exit; ?>" placeholder="" aria-describedby="ExdatePrepend" required>
         </div>
   
-      </div>
+      </div>  
       
       <div class="form-row">
       <div class="col-md-5 mb-3">
@@ -313,8 +328,8 @@ include_once("menu.php");
                         <td>'.$row["student_enroll_exit_date"]."<br>".'</td>
                         <td>'.$row["student_enroll_status"]."<br>".'</td>
                         <td>
-                        <a href="StudentReEnroll.php?stid='.$row["student_id"].'&&coid='.$row["course_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
-                        <a href="?Student_Id='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i></td>
+                        <a href="StudentReEnroll.php?stid='.$row["student_id"].'&&coid='.$row["course_id"].'&&ayear='.$row["academic_year"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
+                        <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info "> <i class="fas fa-angle-double-right"></i></td>
                    </tr>';
                   $num=$num+1;
                 }
@@ -358,5 +373,5 @@ function showUser(str) {
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->
 <?php 
-include_once("FOOTER.PHP"); 
+include_once("footer.php"); 
 ?>

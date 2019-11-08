@@ -4,11 +4,33 @@ $title ="Home | SLGTI";
  include_once("config.php");
  include_once("head.php");
  include_once("menu.php");
+ if($_SESSION['user_type']=='ADM'){
  ?>
  <!--END Don't CHANGE THE ORDER-->
 
  <!--START YOUR CODER HERE-->
 
+ <?php 
+if(isset($_GET['delete'])){
+  $student_id = $_GET['delete'];
+  $sql = "DELETE FROM `ojt` WHERE `student_id`=$student_id";
+ if(mysqli_query($con ,$sql)){
+     echo '
+     <div class="alert alert-success alert-dismissible fade show" role="alert">
+     Student details Deleted successfully
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+     </button>
+     </div>    
+   ';
+   
+ }else{
+   echo "error deleting record : ". mysqli_error($con);
+ }
+ }
+
+
+?>
 
 
 <div class="shadow  p-3 mb-1 bg-white rounded">
@@ -66,9 +88,9 @@ $title ="Home | SLGTI";
                                     <td>'. $row["ending"] .  "<br>" .'</td>
                                      
                                     <td> 
-                                    
+                                
 
-                                    <a href="OJTReport.php ?student_id='.$row["student_id"].' " class="btn btn-sm btn-primary btn-icon-split"> <span class="text">Requests</span> </a>
+                                    <a href="OJTReport.php ?student_id='.$row["student_id"].' " class="btn btn-sm btn-primary btn-icon-split"> <span class="text">Reqs</span> </a>
 
                                     <a href="AddTrainingPlace.php ?edit='.$row["student_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
 
@@ -87,3 +109,11 @@ $title ="Home | SLGTI";
 
 	                </tbody>
 	            </table>
+
+                    <?php } ?>
+
+<!--START Don't CHANGE THE ORDER-->   
+<?php 
+ include_once("footer.php");
+?>
+ <!--Don't CHANGE THE ORDER-->

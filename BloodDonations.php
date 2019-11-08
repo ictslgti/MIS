@@ -19,7 +19,7 @@ include_once("menu.php");
 
 
 
-<div class="row">
+<!-- <div class="row">
 
 <div class="col-sm-6 " ></div>
 <div class="col-sm-3 " > 
@@ -28,7 +28,7 @@ include_once("menu.php");
  <button type="submit" class="btn btn-outline-thead-light  form-control form-control-sm rounded-pill"> <i class="fas fa-search ml-3" aria-hidden="true"></i></button>
 </form>
 </div>
-</div>
+</div> -->
 
 
 
@@ -51,6 +51,8 @@ include_once("menu.php");
     </tr>
   </thead>
 
+  
+
   <?php
   
     $sql="SELECT * from donation";
@@ -71,6 +73,8 @@ include_once("menu.php");
     else {
         echo "0 results";
     }
+//   }
+// }
     ?>
   </table>
 <!-- search  -->
@@ -91,14 +95,11 @@ include_once("menu.php");
           echo "Error".$sql."<br>".mysqli_error($con);
         }
     }
-  
+            // 
 ?>
 
-
- </DIV> 
-
-
-
+ </div> 
+ 
 
 <!--END OF YOUR COD-->
 

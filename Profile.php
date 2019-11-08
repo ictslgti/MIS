@@ -238,7 +238,7 @@ function time_elapsed_string($datetime, $full = false) {
                 <table class="table table-hover table-striped">
                     <tbody>
                         <?php
-                            
+                            $username = $_SESSION['user_name'];
                             $sql_m = "SELECT `staff_module_enrollment`.`course_id`, `staff_module_enrollment`.`module_id`, `staff_module_enrollment`.`academic_year`,`staff_module_enrollment`.`staff_module_enrollment_date`,`module`.`module_name` FROM `staff_module_enrollment` LEFT JOIN `module` ON `module`.`module_id` = `staff_module_enrollment`.`module_id` AND `module`.`course_id` = `staff_module_enrollment`.`course_id` WHERE `staff_module_enrollment`.`staff_id` = '$username'  ORDER BY `staff_module_enrollment`.`staff_module_enrollment_date` DESC";
                             $result_m = mysqli_query($con,$sql_m);
                             while($row_m = mysqli_fetch_assoc($result_m)){

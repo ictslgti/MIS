@@ -13,7 +13,7 @@ include_once("menu.php");
 <div class="shadow  p-3 mb-5 bg-white rounded">
         <div class="highlight-blue">        
                 <div class="intro">
-<h1 class="text-center">Donor Details</h1>
+<h1 class="text-center">Donor Request Details</h1>
 </div>
 </div>
 </div>
@@ -37,7 +37,7 @@ include_once("menu.php");
          <div class="row">   
          <div class="col-12">
          <form>
-         <p style="font-size:20px;">AddDonor_Info <hr color ="black" style="height:1px;"></p><br>
+         <p style="font-size:20px;">Donor Request_Info <hr color ="black" style="height:1px;"></p><br>
          </form>
 </div>
 </div>
@@ -92,8 +92,8 @@ include_once("menu.php");
             <td>'.$row["weight"].'</td>
             <td>'.$row["reference_id"].'</td>
             <td> 
-           
-            <a href=" donor.php ?edit='.$row["reference_id"].' "class="btn btn-outline-success btn-icon-split""><i class="far fa-edit"></i>&nbsp;&nbsp;  </a>  
+            
+            <a href=" donor.php ?edit='.$row["d_id"].' "class="btn btn-outline-success btn-icon-split""><i class="far fa-edit"></i>&nbsp;&nbsp;  </a>  
             <button class="btn btn-outline-danger btn-icon-split" data-href="?delete='.$row["d_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
            
             </td>
@@ -112,9 +112,19 @@ if(isset($_GET['delete'])){
     $id = $_GET['delete'];
     $sql = "DELETE FROM `donor` WHERE`d_id`='$id'";
     if (mysqli_query($con, $sql)){
-        echo "deleted successfully";
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>'.$id.'</strong>  Has Been Succesfully deleted
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div> ';
     }else{
-        echo "Error deleting record:" . mysqli_error($con);
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>'.$id.'</strong>  Has Been Succesfully deleted
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div> ';
     }
 }
 

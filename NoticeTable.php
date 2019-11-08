@@ -36,8 +36,8 @@ include_once("menu.php");
                     <?php
                     
                   
-                    if(isset($_GET['delete'])){
-                        $e_id = $_GET['delete'];
+                    if(isset($_GET['delete_id'])){
+                        $e_id = $_GET['delete_id'];
                         $sql = "DELETE FROM `notice_event` WHERE `event_id`='$e_id'";
                         if(mysqli_query($con,$sql)){
                             echo '
@@ -86,9 +86,8 @@ include_once("menu.php");
                                         <td> 
                                         <a href="NoticeEventView.php?id='. $row["event_id"].'" class="btn btn-primary btn-sm btn-icon-split"> <span class="text"><i class="fas fa-eye"></i>&nbsp;&nbsp;View</span>  </a>  
                                         <a href="NoticeEventUpload.php?edit='. $row["event_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a> 
-                                   
-                                        <button class="btn btn-sm btn-danger" data-href="?delete='.$row["event_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>                                    
-                                
+                                        
+                                        <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["event_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
                                     </td> 
                                 </tr>';
                                 
@@ -100,10 +99,9 @@ include_once("menu.php");
                         }
                     ?>
                            
-                    
+          <a href="NoticeEventUpload.php"> back</a>
 
 	                </tbody>
-	            </table>
 
 
 

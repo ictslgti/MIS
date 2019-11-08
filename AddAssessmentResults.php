@@ -131,7 +131,7 @@ else{
 
                             <th scope="col">Marks</th>
                             <th scope="col">Attempt</th>
-                            <th scope="col">Grade</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -141,8 +141,8 @@ else{
 
                         if (isset($_GET['StudentMarks'])) {
                             # code...
-                           echo  $id=$_GET['StudentMarks'];
-                         echo $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id
+                             $id=$_GET['StudentMarks'];
+                          $sql = "SELECT assessments.assessment_id, assessments.course_id, assessments.academic_year,assessments.module_id,student_enroll.student_id
                              
                             FROM `assessments_marks`,student_enroll,assessments
                             WHERE student_enroll.course_id =assessments.course_id AND assessments.assessment_id ='$id' group by student_id";
@@ -181,9 +181,7 @@ else{
 
 
                         </td>
-                        <td scope="row">
-                            <h3 class="text-success">Pass</h3>
-                        </td>
+                       
 
                                     
                                     
@@ -272,9 +270,15 @@ if(isset($_GET['delete'])){
     
     if (mysqli_query($con, $sql)){
 
+        echo '<div class="alert alert-danger">
+        <strong>Success!</strong> Assessment Marks was Deleted.</a>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+      </div>';
+
         
         
-        echo '<button class = "btn btn-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></button>';
+        // echo '<button class = "btn btn-danger"><div class="fa-1.5x"><i class="fas fa-trash fa-pulse "></i>&nbsp;&nbsp;Delete Success</div></button>';
 
     }else{
         echo "Error deleting record:" . mysqli_error($con);
@@ -282,6 +286,20 @@ if(isset($_GET['delete'])){
 }
 
 ?>
+
+<?php
+     $noOfRows=null;
+     $sql1="SELECT COUNT(assessment_marks_id) AS NumberOfAssessments FROM assessments_marks";
+     $result=mysqli_query($con,$sql1);
+     if(mysqli_num_rows($result) == 1)
+     {
+          $row=mysqli_fetch_assoc($result);
+          $noOfRows=$row["NumberOfAssessments"];
+
+          //in a single view table only show 10 entry so devid total number of rows by 10. this says how many buttons want to print
+          $noOFButtions= round($noOfRows/10)+1;
+     }
+ ?>
 
 
 
@@ -294,144 +312,191 @@ if(isset($_GET['delete'])){
                 <thead>
                     <tr>
                         <th scope="col">Marks ID</th>
+                     <th scope="col">Module ID</th>
                         <th scope="col">Assessment ID</th>
                         <th scope="col">Student ID</th>
                         <th scope="col">Assessment Attempt</th>
                         <th scope="col">Assessment Marks</th>
-                        <th scope="col">Marks Grade</th>
+                        
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    <?php
-                            $sql = "SELECT assessment_marks_id,assessment_id,student_id,assessment_attempt,assessment_marks,assessment_marks_grade FROM assessments_marks";
-                            $result = mysqli_query($con, $sql);
-                            if (mysqli_num_rows($result)>0) {
-            
-            
-                                # code...
-                                while ($row = mysqli_fetch_assoc($result)) {
-            
-                                    # code...
-                                    echo '
-                                    <tr>
-                                    <td><center>'. $row["assessment_marks_id"]."<br>".'</center></td>
-                                    <td><center>'. $row["assessment_id"]."<br>".'</center></td>
-                                    <td><center>'. $row["student_id"]."<br>".'</center></td>
-                                    <td><center>'. $row["assessment_attempt"]."<br>".'</center></td>
-                                    <td><center>'. $row["assessment_marks"]."<br>".'</center></td>
-                                    <td><center>'. $row["assessment_marks_grade"]."<br>".'</center></td>
-                                    <td>
-                                    <center>
-                                    
-                                    <button  type="button" class="btn btn-danger" data-href="?delete='.$row["assessment_id"].'" data-toggle="modal" data-target="#confirm-delete">Delete Marks </button>
-                                    
-                                    
-                                    </center>
-                                    
-                                    </td>
-                                    
-                                    </tr>';
-                                }
-                            }
-                            else {
-                                
-                                echo "0 results";
-                            }
-            
-            
-            
-            ?>
+                <?php
+               include_once("getAssessmentResults.php");
+               ?>
+               <tbody>             
+          </table>
 
-
-
-
-
-
-                </tbody>
-            </table>
-            <!-- small view table end -->
-            <!-- print mode start -->
-
-            <br>
-            <br>
-            <br>
-            <br>
-
-
-            <!-- sinna table -->
-            <div class="card">
-                <br>
-                <div class="container">
-                    <div class="intro">
-                        <!-- <h3 class="display-5 text-center">Overall Module Marks</h3> -->
-                        <div class="row">
-                            <div class="col">
-                                <h3 class="display-5 text-center">Overall Module Marks</h3>
-                            </div>
-                            <div class="col">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Student's Index Number"
-                                        aria-label="Recipient's username" aria-describedby="button-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button"
-                                            id="button-addon2">&nbsp;&nbsp;&nbsp;<i
-                                                class="fas fa-search"></i>&nbsp;&nbsp;&nbsp;Search&nbsp;&nbsp;&nbsp;</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
+          <div class="clearfix float-right mr-2">
+                <ul class="pagination">
+                <li class="page-item"  id="0" value="0" onclick="showName(this.id);"><a class="text-primary page-link">First</a></li>
+                <?php
+                    $count=1;
+                    while($noOFButtions>$count){
+               ?>
+               <li class="page-item"  id="<?php echo $count;?>" value="<?php echo $count+1;?>" onclick="showName(this.id);"><a class="text-primary page-link"><?php echo $count+1;?></a></li>
+               <?php            
+               $count=$count+1;
+               }
+               ?>
+                    <li class="page-item"  id="<?php echo $count;?>" value="<?php echo $count+1;?>" onclick="showName(this.id);"><a class="text-primary page-link">Last</a></li>
+                </ul>
+                <ul class="pagination">
+                <li class="page-item rounded"  id="all" value="all" onclick="showName('0');"><a class="text-primary page-link">All Entries</a></li>
+                </ul>
             </div>
-            <br>
+
+     </div>
 
 
-            <!-- sinna table thodakkam -->
+<!-- java script & ajax to get button values and set to a PHP variable -->
+<script>
+     function showName(idOfButton){
+         //document.getElementById(idOfButton).style.background='red';
 
-            <table class="table table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Student Index Number</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Module Marks</th>
-                    </tr>
-                </thead>
-                <tbody>
+        //call ajax
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "getAssessmentResults", true);
 
-                
-                    
-                </tbody>
-            </table>
-            <br>
-            <div class="row">
-                <div class="col">
+        //sending ajax request
+        ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        ajax.send("id="+idOfButton);
 
-                </div>
-                <div class="col-md-auto">
-                    <button type="button" class="btn btn-outline-primary">&nbsp;&nbsp;&nbsp;<i
-                            class="far fa-edit"></i>&nbsp;&nbsp;Update&nbsp;&nbsp;&nbsp;</button>
+        //reciving responce from data.php
+        ajax.onreadystatechange = function(){
+          if (this.readyState == 4 && this.status == 200){
+               document.getElementById("BookData").innerHTML = this.responseText;
+          }
+        }
 
-                </div>
-                <div class="col col-lg-2">
-                    <button type="button" class="btn btn-outline-primary">&nbsp;&nbsp;&nbsp;<i
-                            class="fas fa-print"></i>&nbsp;&nbsp;Print&nbsp;&nbsp;&nbsp;</button>
-                </div>
-            </div>
-        </div>
-        <!-- small view table end -->
+        var butCount = <?php echo $noOFButtions ?>;
+        while (butCount>=0){
+          var x = document.getElementById(butCount);
+          x.style.display = "none";
+          butCount=butCount-1;
+     }
 
-        <!-- main table container end below -->
-        </div>
-        <!-- end mode  -->
-        <script>
+     butCount = <?php echo $noOFButtions ?>;
+     if(idOfButton==butCount){
+        var x = document.getElementById(idOfButton);
+        var afterId = parseInt(idOfButton)-2;
+        var beforId = parseInt(idOfButton)-1;
+        var y = document.getElementById(afterId);
+        var w = document.getElementById(beforId);
+        var first = document.getElementById('0');
+        var last = document.getElementById(butCount);
+
+        //document.write(beforId);
+        x.style.display = "inline";
+        y.style.display = "inline";
+        w.style.display = "inline";
+        first.style.display = "inline";
+        last.style.display = "inline";
 
 
+     }else if (idOfButton==0){
+     var x = document.getElementById(idOfButton);
+        var afterId = parseInt(idOfButton)+1;
+        var beforId = parseInt(idOfButton)+2;
+        var w = document.getElementById(beforId);
+        var y = document.getElementById(afterId);
+        var first = document.getElementById('0');
+        var last = document.getElementById(butCount);
+        //document.write(beforId);
+        x.style.display = "inline";
+        y.style.display = "inline";
+        w.style.display = "inline";
+        first.style.display = "inline";
+        last.style.display = "inline";
 
-        </script>
+     }else
+     {
+        var x = document.getElementById(idOfButton);
+        var afterId = parseInt(idOfButton)+1;
+        var beforId = parseInt(idOfButton)-1;
+        var w = document.getElementById(beforId);
+        var y = document.getElementById(afterId);
+        var first = document.getElementById('0');
+        var last = document.getElementById(butCount);
+        //document.write(beforId);
+        x.style.display = "inline";
+        w.style.display = "inline";
+        y.style.display = "inline";
+        first.style.display = "inline";
+        last.style.display = "inline";
+
+        var a = document.getElementById(idOfButton);
+        var b = parseInt(idOfButton)+1;
+        var beforId = parseInt(idOfButton)-1;
+        var w = document.getElementById(beforId);
+        var y = document.getElementById(afterId);
+        var first = document.getElementById('0');
+        var last = document.getElementById(butCount);      
+     }
+        var all = document.getElementById("all");
+        all.style.display = "none";
+     }
+
+     var butCount = <?php echo $noOFButtions ?>;
+        while (butCount>=0){
+          var x = document.getElementById(butCount);
+          x.style.cursor = "pointer";
+          x.style.display = "none";
+          butCount=butCount-1;    
+     }
+     var all = document.getElementById("all");
+     all.style.display = "none";
+
+     var butCount = <?php echo $noOFButtions ?>;
+     var one = document.getElementById('0');
+     var two = document.getElementById('1');
+     var three = document.getElementById('2');
+     var first = document.getElementById('0');
+     var last = document.getElementById(butCount);
+
+     one.style.display = "inline";
+     two.style.display = "inline";
+     three.style.display = "inline";
+     first.style.display = "inline";
+     last.style.display = "inline";
+
+
+     function search(){
+        var cheackText = document.getElementById('searchFld').value;
+        if  (cheackText!=""){
+
+          //call ajax
+          var ajax = new XMLHttpRequest();
+          ajax.open("POST", "getAssessmentResultsSearch", true);
+
+          //sending ajax request
+          ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          var text =  document.getElementById('searchFld').value;
+          //document.write(text);
+          ajax.send("text="+text);
+
+          //reciving responce from data.php
+          ajax.onreadystatechange = function(){
+               if (this.readyState == 4 && this.status == 200){
+                    document.getElementById("BookData").innerHTML = this.responseText;
+               }
+          }
+
+          var butCount = <?php echo $noOFButtions ?>;
+          while (butCount>=0){
+               var x = document.getElementById(butCount);
+               x.style.cursor = "pointer";
+               x.style.display = "none";
+               butCount=butCount-1;
+          
+               }
+        var all = document.getElementById("all");
+        all.style.display = "inline";
+          }
+     }
+</script>
 
 
 

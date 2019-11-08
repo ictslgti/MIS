@@ -9,92 +9,140 @@ include_once("menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 
-<div class="border border-primary rounded">
+                  <div class="col-md-12 col-sm-12 shadow  p-3 mb-5 bg-white rounded">
+                  <div class="highlight-blue">
+                              <div class="container">
+                                  <div class="intro">
+                                      <h2 class="display-4 text-center text-primary">Student View Results </h2>
+                                      
+                                      <p class="text-center">  This section to Results  &nbsp;</p>
 
-
-        <div class="row ">
-            <div class="col-sm-12">
-                <div class="bg-primary text-warning">
-                <h1  style="color:white;"> <i class="fas fa-chart-line"></i> View Result </h1>
-                </div>
-            </div> 
-        </div>
-
-        
-                  <div class="row ml-2 mr-2 mb-2">
-
-                     
-
-                                                        
-
-                      
-
-                      <div class="col-6">
+                                  </div>
+                              </div>
+                          </div>
+                  </div>
+<form method="get" action="">
+                  <div class="row">
+                      <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Department</label>
-                            <select class="browser-default custom-select">
-                              <option selected>Open this select menu</option>
-                              <option value="1">Constrution Technology</option>
-                              <option value="2">Electrical & Electronic Technology</option>
-                              <option value="3">Food Technology</option>
-                              <option value="4">Mechanical Technology</option>
-                              <option value="5">Information & Communication Technology </option>
-                            </select>
+                          <select class="browser-default custom-select" name="department_id" id="Departmentx"  onchange="showCouese(this.value)" required>
+                          <option value="null" selected disabled >---- Select the Department ---- </option>
+                          <?php
+               
+                          $sql="select * from `department`";
+                          $result = mysqli_query($con,$sql);
+                          if (mysqli_num_rows($result) > 0 ) {
+                          while($row=mysqli_fetch_assoc($result)){
+                              echo '<option  value="'.$row["department_id"].'" requird >'.$row["department_name"].'</option>';
+               
+                            }
+                
+                          }   
+                ?>
+                   
+                </select>
+        
                         </div>                              
                       </div>
 
-                      <div class="col-6">
+                      <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Level</label>
-                            <select class="browser-default custom-select">
-                                <option selected>Open this select menu</option>
-                                <option value="1">Bridging </option>
-                                <option value="2">Level-04</option>
-                                <option value="3">Level-05</option>
-                              </select>
+                            <label for="exampleInputEmail1">Coure</label>
+                            <select class="browser-default custom-select" id="course" name="course_id" placeholder="---- Select the Department ---- "
+                        required>
+                  
+                    </select>
                           </div>   
                       </div>
 
                       <div class="w-100"></div>
-                      <div class="col-6">
+                      <div class="col-md-6 col-sm-12">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Batch</label>
-                            <select class="browser-default custom-select">
-                                <option selected>Open this select menu</option>
-                                <option value="1">Batch-01(2016/2017) </option>
-                                <option value="2">Batch-02(2017/2018)</option>
-                                <option value="3">Batch-03(2018/2019)</option>
-                              </select>
+                            <label for="exampleInputEmail1">Academic Year</label>
+                            <select class="browser-default custom-select" name="academic_year" id="AcademinYear"   required>
+                            <option value="null" selected disabled >---- Select the Academin Year ---- </option>
+                            <?php
+                            $sql="select * from `academic`";
+                            $result = mysqli_query($con,$sql);
+                            if (mysqli_num_rows($result) > 0 ) {
+                            while($row=mysqli_fetch_assoc($result)){
+                                echo '<option  value="'.$row["academic_year"].'" required >'.$row["academic_year"].'</option>';
+                            }}   
+                            ?>
+                            </select>
                           </div>   
                       </div>
                      
-                      <div class="col-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Semister</label>
-                            <select class="browser-default custom-select">
-                                <option selected>Open this select menu</option>
-                                <option value="1">Semi I </option>
-                                <option value="2">Semi II</option>
-                              
-                              </select>
-                          </div>   
-                      </div>
+                      
 
-                    <div class="w-100"></div>
+                   
 
-                        <div class="col-6">
-                          <button type="button" class="btn btn-outline-primary"><a href="NoticeResultView.php">View</button> </a>
-          
+                        <div class="col-12">
+                         
+                          
+                          <button type="submit"  class="btn btn-outline-primary">View</button>
+                       
                         </div>  
                   </div>
-
- 
-</div>
-
- 
-<div class="mod-indent-outer">
-</div>
-
+</form>
+<br><br>
+<?php
+    $eid=$cid=$m_id=$ay=$m_name=$f_upld=null;
+ if(isset($_GET["department_id"])&& isset($_GET["course_id"])&& isset($_GET["academic_year"])){
+     $edid=$_GET["department_id"];
+     $cid=$_GET["course_id"];
+     $ay=$_GET["academic_year"];
+     $sql="SELECT DISTINCT notice_result.module_id as module_id ,
+     module.module_name as module_name,
+     notice_result.upload as upload 
+     from notice_result,module 
+     where notice_result.module_id=module.module_id and 
+     notice_result.department_id='$edid' and notice_result.academic_year='$ay' and notice_result.course_id='$cid'";
+     $result = mysqli_query($con,$sql);
+    if (mysqli_num_rows($result) > 0) {
+         while($row=mysqli_fetch_assoc($result)){
+            $m_id=$row['module_id'];
+            $m_name=$row['module_name'];
+            $f_upld=$row['upload'];
+      
+      
+       echo '
+       <div class="row">
+         <div class="col-sm-12">
+           <div class="card">
+             <div class="card-body">
+               <h4 class="card-title">'.$m_id.'</h4>
+               <p class="card-text"> '.$m_name.'</p>
+               <img src="https://img.icons8.com/color/48/000000/pdf-2.png"> <a href="docs/result/'.$f_upld.'" > '.$row['upload'].' </a> 
+             </div>
+           </div>
+         </div>
+       </div>
+       <br>
+       ';
+        
+     
+        
+         }
+        
+        }
+      } 
+?>
+<script>   
+function showCouese(val) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            $courst_option=this.responseText.trim();
+            document.getElementById("course").innerHTML = this.responseText;
+        }
+    }
+    xmlhttp.open("POST", "controller/getCourse", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send("department=" + val);
+}
+</script>   
 <!--END OF YOUR COD-->
 
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->

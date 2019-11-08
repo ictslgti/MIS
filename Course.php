@@ -18,7 +18,6 @@ include_once ("menu.php");
 	        <!-- <p class="text-center"></p> -->
 	    </div>
 	</div>
-
     <div class="row">
     <div class="col-sm-8"></div>
 	<div class="col-sm-4">
@@ -26,7 +25,6 @@ include_once ("menu.php");
     </form><br>
     </div>
     </div>
-
 	<div class="row">
 	    <div class="col-md-12 col-sm-12">
 	        <div class="table-responsive table-responsive-sm">
@@ -38,7 +36,7 @@ include_once ("menu.php");
 	                        <th scope="col">Course</th>
 	                        <th scope="col">Department</th>
 	                        <th scope="col">Level (NVQ)</th>
-	                        <th scope="col">Actions</th>
+	                        <?php if(($_SESSION['user_type'] =='ADM')) { ?><th scope="col">Actions</th> <?php }?>
 	                    </tr>
 	                </thead>
 
@@ -63,7 +61,7 @@ include_once ("menu.php");
                         {
                           echo '
                           <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                          <strong> '.$c_id.' </strong> Cannot delete or update a parent row (foreign key constraint fails)
+                          <strong> '.$c_id.' </strong> Is Used In Another Table
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -102,11 +100,9 @@ include_once ("menu.php");
                                     <td scope="row">'. $row["course_id"] . "<br>" .'</td>
                                     <td>'. $row["course_name"] .  "<br>" .'</td>
                                     <td>'. $row["department_name"] .  "<br>" .'</td>
-                                    <td>'. $row["course_nvq_level"] .  "<br>" .'</td>
+                                    <td>'. $row["course_nvq_level"] .  "<br>" .'</td>';?>
                                     
-                                    
-                                    <td> 
-                                    <a href="Module.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-sm btn-icon-split"> <span class="text">Modules</span>  </a>  
+                                    <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'<td><a href="Module.php ?course_id='.$row["course_id"].' " class="btn btn-primary btn-sm btn-icon-split"> <span class="text">Modules</span>  </a>
 
                                     <a href="BatchDetails.php ?course_id='.$row["course_id"].' " class="btn btn-sm btn-primary btn-icon-split"> <span class="text">Batch</span> </a>
 
@@ -114,21 +110,18 @@ include_once ("menu.php");
 
                                        
                                     <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["course_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>                                    
-                                    </td> 
-                                    
-                                </tr>';
+                                    </td>';?> <?php }?> 
+                                    <?php echo'</tr>';
                                 $count=$count+1;
                             }
                         }
                         else
                         {
                             echo "0 results";
-                        }
-                        
-                    ?>
+                        }?>
 	                </tbody>
 	            </table>
-                <a href="AddCourse.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD COURSE</a></i>
+                    <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="AddCourse.php" style="text-align:center;font-weight: 900;font-size:15px;" class="text-primary page-link"><i class="fas fa-plus">&nbsp;&nbsp;ADD COURSE</a></i><?php }?>
            
 	        </div>
 	    </div>

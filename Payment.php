@@ -30,14 +30,20 @@ if(isset($_POST['Add'])){
 // && !empty($_POST['payment_note'])
 // && !empty($_POST['payment_amount'])){
     
+    if
+    (!empty($_POST['payment_type'])
+    &&!empty($_POST['payment_reason'])
+    &&!empty($_POST['payment_qty'])
+    &&!empty($_POST['payment_note'])
+    &&!empty($_POST['payment_amount'])){
 
-     echo $student_id=$_POST['student_id'];
-     echo $pays_department=$_POST['pays_department'];
-     echo $pays_reason=$_POST['payment_reason'];
-     echo $pays_qty=$_POST['payment_qty'];
-     echo $pays_note=$_POST['payment_note'];
-     echo $pays_amount=$_POST['payment_amount'];
-     echo $payment_type=$_POST['payment_type'];
+      $student_id=$_POST['student_id'];
+      $pays_department=$_POST['pays_department'];
+      $pays_reason=$_POST['payment_reason'];
+      $pays_qty=$_POST['payment_qty'];
+      $pays_note=$_POST['payment_note'];
+      $pays_amount=$_POST['payment_amount'];
+      $payment_type=$_POST['payment_type'];
      
      
       
@@ -70,10 +76,10 @@ if(mysqli_query($con,$sql)){
         </div>
         
         ';
-
-
+      
       }
-    
+      
+    }
 }
 
 ?>
@@ -82,8 +88,10 @@ if(mysqli_query($con,$sql)){
 
 if(isset($_POST['edit'])){
       $id=$_POST['edit'];
+      //$sql="SELECT student.student_id,student.student_fullname,student.student_profile_img, course.department_id from course,student where course.course_id=
+      //(select student_enroll.course_id from student_enroll where student_enroll.student_id='$id') && student.student_id = '$id'";
       $sql="SELECT student.student_id,student.student_fullname,student.student_profile_img, course.department_id from course,student where course.course_id=
-      (select student_enroll.course_id from student_enroll where student_enroll.student_id='$id') && student.student_id = '$id'";
+      (select student_enroll.course_id from student_enroll where student_enroll.student_id='$id'&&student_enroll.student_enroll_status='Following')&& student.student_id = '$id'";
       
 
       $result=mysqli_query($con,$sql);
@@ -108,56 +116,55 @@ if(isset($_POST['edit'])){
 
 <br>
     <div class="row ">
-        <div class="col-sm-6"> </div>
-        <div class="col-sm-0"> </div>
-        <div class="col-sm-6 " >
+    <div class="col-sm-8"></div>
+        <div class="col-sm-4 shadow p-3 mb-s bg-white rounded">
+        <!-- <div class="col-sm-2"> </div>
+        <div class="col-sm-4" > -->
 
             <form method="POST" action="#" class="form-inline"> 
-                <div class="input-group   ">
+                <div class="input-group  ">
                     <div class="input-group-prepend ">
                         <div class="input-group-text "><i class="fas fa-user"></i></div>
                     </div>
-                    <input type="text" class="form-control" name="edit" placeholder=" Student Username">
+                    <div class="">
+                    <input type="text" class="form-control" name="edit" placeholder=" Student ID">
+                    <button type="submit" class="btn btn-primary">&nbsp;Search&nbsp;&nbsp;</button>
+                    </div>
                 </div>
-                <div>
                 
-                <button type="submit" class="btn btn-primary text-right">Search </button>
+                
+                
             </form>
 
-            <!-- <div class="input-group mb-3">
-        <form method="GET">
-            <input type="text" name="edit" class="form-control" placeholder="Search ID" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search ID</button> 
-            </form>
-            </div> -->
-
-        </div>
+            
+            </div>
+        
     </div>
     <br>
     <form method="POST" action="#">
   
-        <div class="row">
+        <div class="row shadow p-3 mb-s bg-white rounded">
         <div class="col-sm-6"><?php if($student_profile_img!=null) { ?> <img src="<?php echo $student_profile_img; ?>"
                 alt="..." width="150px" height="150px"> <?php }?><br>
 
             
-                <div class="form-row"><br>
+                    <div class="form-row"><br>
                     <div class="form-group col-md-12"><i class="fas fa-id-card-alt"></i>&nbsp;
                         <label for="inputEmail4">ID</label>
                         <input type="text" name="student_id" value="<?php echo  $student_id;?>"
                             class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['student_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_id'])){echo ' is-valid';} ?>"
-                            id="inputEmail4" placeholder="ID">
+                            id="inputEmail4" placeholder="ID" readonly="readonly">
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-user"></i>&nbsp;
                         <label for="inputEmail4">Name</label>
                         <input type="text" value="<?php echo  $student_name; ?>" name="student_name"
-                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['student_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_name'])){echo ' is-valid';} ?>" id="inputEmail4" placeholder="Name">
+                            class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['student_name'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['student_name'])){echo ' is-valid';} ?>" id="inputEmail4" placeholder="Name" readonly="readonly" >
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-building"></i>&nbsp;
                         <label for="inputEmail4">Department</label>
                         <input type="Department" 
                             class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['pays_department'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['pays_department'])){echo ' is-valid';} ?>"" id="
-                            inputEmail4" placeholder="Department" name="pays_department" value="<?php echo  $department;?>">
+                            inputEmail4" placeholder="Department"  readonly="readonly" name="pays_department" value="<?php echo  $department;?>">
                     </div>
                 </div>
 
@@ -213,7 +220,7 @@ if(isset($_POST['edit'])){
 
                     <div class="form-group col-md-12"><i class="fas fa-th"></i>&nbsp;
                         <label for="text">Qty</label>
-                        <input type="text" class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['payment_qty'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_qty'])){echo ' is-valid';} ?>"
+                        <input type="number"  min="1" max="50"class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['payment_qty'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_qty'])){echo ' is-valid';} ?>"
                             placeholder="Qty" name="payment_qty">
                     </div>
                     <div class="form-group col-md-12 "><i class="fas fa-sticky-note"></i>&nbsp;
@@ -224,7 +231,7 @@ if(isset($_POST['edit'])){
                     </div>
                     <div class="form-group col-md-12"><i class="fas fa-coins"></i>&nbsp;
                         <label for="inputEmail4">Amount</label>
-                        <input type="text"
+                        <input type="number" min="1" 
                         class="form-control <?php  if(isset($_POST['Add']) && empty($_POST['payment_amount'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['payment_amount'])){echo ' is-valid';} ?>"
                              placeholder="Amount" name="payment_amount">
                     </div>
@@ -311,3 +318,5 @@ function showpaymentreason(val) {
 </body>
 
 </html>
+
+

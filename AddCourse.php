@@ -63,7 +63,7 @@ if(isset($_POST['Editing']))
    {
      echo '
      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-     <strong> '.$cid.' </strong> Cannot update a parent row (foreign key constraint fails)
+     <strong> '.$cid.' </strong> Is Used In Another Table
      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
        <span aria-hidden="true">&times;</span>
      </button>
@@ -92,7 +92,7 @@ if(isset($_POST['Adding']))
      {
        echo '
          <div class="alert alert-success alert-dismissible fade show" role="alert">
-         <strong>'.$cid.'</strong> Succesfully Has Been Added
+         <strong>'.$cid.'</strong>Succesfully Has Been Added
          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
          <span aria-hidden="true">&times;</span>
          </button>
@@ -103,7 +103,7 @@ if(isset($_POST['Adding']))
        
        echo '
        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-       <strong>'.$cid.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+       <strong>'.$cid.'</strong> Course ID Is Already Exist!
        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
        <span aria-hidden="true">&times;</span>
        </button>
@@ -131,13 +131,12 @@ if(isset($_POST['Adding']))
       </div>
     </div>
  <br>
- <br>
-        <form method="POST">
+ <br>  <form method="POST">
             <div class="row">
 
               <div class="col-md-6 mb-3">
                 <label for="Course ID">Course ID</label>
-                <input type="text" name="co_id" class="form-control"  placeholder=""  value="<?php echo $cid ?>" required>
+                <input type="text" name="co_id" class="form-control"  placeholder=""  value="<?php echo $cid ?>" required  <?php if(isset($_GET['edits'])) { echo "disabled='true'"; } ?>>
                
               </div>
 
@@ -158,7 +157,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Months</span>
               </div>
-                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_training" value ="<?php echo $ctraining ?>" maxlength="4" required>
+                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_training" value ="<?php echo $ctraining ?>" onkeypress="Number(event)" min="1" maxlength="4" required>
               
               </div>
               </div>
@@ -169,7 +168,7 @@ if(isset($_POST['Adding']))
               <div class="input-group-prepend">
                 <span class="input-group-text">Months</span>
               </div>
-                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_ojt" value="<?php echo $cojt ?>" maxlength="2"required>
+                <input type="text" class="form-control"  placeholder="Month in Digits" name="co_ojt" value="<?php echo $cojt ?>" onkeypress="Number(event)" min="1"  maxlength="2"required>
               
               </div>
               </div>
@@ -206,13 +205,11 @@ if(isset($_POST['Adding']))
 
               <div class="col-md-6 mb-3">
                 <label for="Level">NVQ Level</label>
-              <input type="text" class="form-control" id="unit" placeholder="NVQ are only '3-6' and 'BRI' for Bridging"   name="n_level" value="<?php echo $nvq ?>" min="3" max="6" maxlength="1" required>
+              <input type="text" class="form-control" id="unit" placeholder="NVQ are only '3-6' and 'BRI' for Bridging"   name="n_level" value="<?php echo $nvq ?>" onkeypress="NumberR(event)" min="3" max="6" maxlength="3" required>
               </div>
             
                 
-                </form >
-              
-              
+                </form >      
 <br><br>
 <?php
       if(isset($_GET['edits']))
@@ -225,6 +222,27 @@ if(isset($_POST['Adding']))
       }
       ?>
             </div>
+            <script>
+            function Number(evt) {
+            var num = String.fromCharCode(evt.which);
+
+            if (!(/[1-9]/.test(num))) {
+                evt.preventDefault();
+                alert("Duration must be above 0");
+            } else if ((/[1-9]/.test(num))) {
+            }
+        }
+
+        function NumberR(evtT) {
+            var numb = String.fromCharCode(evtT.which);
+
+            if (!(/[3-6]/.test(numb))&& !(/["BRI"]/.test(numb))) {
+                evtT.preventDefault();
+                alert("NVQ Level must be 3-5 and BRI for Bridging!");
+            } else if ((/[3-6]/.test(numb))) {
+            }
+        }
+        </script>
 <br>
      
 

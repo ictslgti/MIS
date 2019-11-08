@@ -9,7 +9,7 @@ include_once("homenav.php");
 
 
 
-
+Hello
  
 <!-- END DON'T CHANGE THE ORDER -->
 <!-- Sidebar -->
