@@ -21,10 +21,10 @@ include_once("menu.php");
             </div>
         </div>
     </div>
-    <a href="AddAcademicYear" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add Academic Year </a>
+    <?php if(($_SESSION['user_type'] =='ADM')) { ?><a href="AddAcademicYear" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add Academic Year </a>
 
 
-
+    <?php }?>
 <!-- <h1 class="col text-center">Department Details</h1> -->
 <br><br>
 <table class="table table-hover">
@@ -37,7 +37,7 @@ include_once("menu.php");
       <th scope="col">Second Semi Start Date</th>
       <th scope="col">Second Semi End Date</th>
       <th scope="col">Academic Year Status</th>
-      <th scope="col">Option</th>
+      <?php if(($_SESSION['user_type'] =='ADM')) { ?><th scope="col">Option</th><?php }?>
       </tr>
       </thead>
       <tbody>
@@ -70,15 +70,19 @@ if (mysqli_num_rows($result)>0){
         <td>' . $row ["first_semi_end_date"].'</td>
         <td>' . $row ["second_semi_start_date"].'</td>
         <td>' . $row ["second_semi_end_date"].'</td>
-        <td>' . $row ["academic_year_status"].'</td>
-        <td>
+        <td><span class="badge badge-success">
+        ' . $row ["academic_year_status"].'</span></td>
+        <td>';?>
+        <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'
         <a href="AddAcademicYear.php?edit='.$row["academic_year"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
     <button class="btn btn-sm btn-danger" data-href="?delete='.$row["academic_year"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>
+    ';?>
+         <?php }?>
     
 
     
       
-        </tr>';
+         <?php echo'</tr>';
     }
 }else{
 echo "0 results";
