@@ -100,8 +100,8 @@ if (mysqli_num_rows($result)>0){
         <a href="Course.php?id='.$row["department_id"].'" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-book">&nbsp;&nbsp;Course</i></a>
         <a href="BatchDetails.php?batch='.$row["department_id"].'" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-id-badge">&nbsp;&nbsp;Batch</i></a>'; ?>
         <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'<a href="AddDepartment.php?edit='.$row["department_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-        <button class="btn btn-sm btn-danger" data-href="?delete='.$row["department_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
-        ';?> <?php }?> 
+        <button class="btn btn-sm btn-danger" data-href="?delete='.$row["department_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> ';?>
+         <?php }?> 
       <?php echo'</tr>';
     }
 }else{
