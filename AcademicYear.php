@@ -70,8 +70,7 @@ if (mysqli_num_rows($result)>0){
         <td>' . $row ["first_semi_end_date"].'</td>
         <td>' . $row ["second_semi_start_date"].'</td>
         <td>' . $row ["second_semi_end_date"].'</td>
-        <td><span class="badge badge-success">
-        ' . $row ["academic_year_status"].'</span></td>
+        <td><span class="badge badge-success">' . $row ["academic_year_status"].'</span></td>
         <td>';?>
         <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'
         <a href="AddAcademicYear.php?edit='.$row["academic_year"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
