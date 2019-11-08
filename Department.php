@@ -14,8 +14,8 @@ include_once("menu.php");
 
 
 
-
-<div class="shadow  p- mb-5 bg-white rounded"><img src="img/SDD.png" class="img-fluid" alt="Responsive image">
+<!-- <div class="shadow p-3 mb-5  alert bg-dark rounded  text-white text-center" role="alert"> -->
+<div class="shadow  p- mb-5 bg-white rounded"><img src="docs/department/SDD.png" class="img-fluid" alt="Responsive image">
 
         <div class="highlight-blue">
             <div class="container">
@@ -29,7 +29,7 @@ include_once("menu.php");
             </div>
         </div>
     </div>
-    <a href="AddDepartment" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add New Department </a>
+    <?php if(($_SESSION['user_type'] =='ADM')) { ?><a href="AddDepartment" button type="button" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Add New Department </a><?php }?>
 
 
 
@@ -98,10 +98,11 @@ if (mysqli_num_rows($result)>0){
         <td>' . $row ["department_name"].'</td>
         <td>
         <a href="Course.php?id='.$row["department_id"].'" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-book">&nbsp;&nbsp;Course</i></a>
-        <a href="BatchDetails.php?batch='.$row["department_id"].'" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-id-badge">&nbsp;&nbsp;Batch</i></a>
-        <a href="AddDepartment.php?edit='.$row["department_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+        <a href="BatchDetails.php?batch='.$row["department_id"].'" class="btn btn-sm btn-primary" role="button"  aria-pressed="true"><i class="fas fa-id-badge">&nbsp;&nbsp;Batch</i></a>'; ?>
+        <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'<a href="AddDepartment.php?edit='.$row["department_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
         <button class="btn btn-sm btn-danger" data-href="?delete='.$row["department_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
-        </tr>';
+        ';?> <?php }?> 
+      <?php echo'</tr>';
     }
 }else{
 echo "0 results";
