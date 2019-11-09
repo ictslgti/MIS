@@ -158,40 +158,40 @@ include_once("menu.php");
 
   </thead>
  <?php
-   $sql_1 = null;
-  $sql='call food()';
-  $result=(mysqli_query($con,$sql));
-    while($row_y=mysqli_fetch_assoc($result)){
-      $ID=$row_y['food_id'];
+  //  $sql_1 = null;
+  // $sql='call food()';
+  // $result=(mysqli_query($con,$sql));
+  //   while($row_y=mysqli_fetch_assoc($result)){
+  //     $ID=$row_y['food_id'];
       
-      $sql_1 .="SELECT food_name,sum(`food_order_details_food_qty`) as total FROM `food_order_details`,food where `food_order_details_food_id`=food_id and food_id=$ID;";
-      $result_1 = mysqli_query($con, $sql_1);
-      var_dump($sql_1);
-      if (mysqli_num_rows($result)>0){
+  //     $sql_1 .="SELECT food_name,sum(`food_order_details_food_qty`) as total FROM `food_order_details`,food where `food_order_details_food_id`=food_id and food_id=$ID;";
+  //     $result_1 = mysqli_query($con, $sql_1);
+  //     var_dump($sql_1);
+  //     if (mysqli_num_rows($result)>0){
 
-      while ($row= mysqli_fetch_assoc($result_1)){
+  //     while ($row= mysqli_fetch_assoc($result_1)){
         
         
         
-        $Fname=$row_y['food_name'];
-        $total=$row_y['total'];
+  //       $Fname=$row_y['food_name'];
+  //       $total=$row_y['total'];
 
      
 
      
 
-      echo '
-      <tr style="text-align:left";>
+  //     echo '
+  //     <tr style="text-align:left";>
        
          
-          <td>'. $row["food_id"]."<br>".'</td>
+  //         <td>'. $row["food_id"]."<br>".'</td>
    
-          </tr>     
-      ';
-    }
-  }
+  //         </tr>     
+  //     ';
+  //   }
+  // }
      
-  }
+  // }
  ?>
 </table>
 
