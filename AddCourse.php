@@ -238,7 +238,7 @@ if(isset($_POST['Adding']))
 
             if (!(/[3-6]/.test(numb))&& !(/["BRI"]/.test(numb))) {
                 evtT.preventDefault();
-                alert("NVQ Level must be 3-5 and BRI for Bridgingg!");
+                alert("NVQ Level must be 3-5 and BRI for Bridging  !");
             } else if ((/[3-6]/.test(numb))) {
             }
         }
