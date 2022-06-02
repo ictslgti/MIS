@@ -14,7 +14,7 @@ include_once("menu.php");
         <div class="highlight-blue">
             <div class="container">
                 <div class="intro">
-                    <h1 class="display-4 text-center">SLGTI Academic Year</h1>
+                    <h1 class="display-4 text-center">SLGTI Acadmic Year</h1>
                     
                    
                 </div>
