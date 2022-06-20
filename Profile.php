@@ -202,7 +202,7 @@ function time_elapsed_string($datetime, $full = false) {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <strong>Abby</strong> joined ACME Project Team in
+                                        <strong>ACHCHUTHAN</strong> joined ACME Project Team in
                                         <strong>`Collaboration`</strong>
                                     </td>
                                 </tr>
