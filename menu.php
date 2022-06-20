@@ -287,7 +287,7 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li><?php if($_SESSION['user_type']=='WAR' ){ ?>
+                <li><?php if($_SESSION['user_type']=='WAR'||'ADM' ){ ?>
                   <a href="Hostel">Hostels Info</a>
                 </li>
                 <li>
