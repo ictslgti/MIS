@@ -430,7 +430,7 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul> 
-                <li> <?php if($_SESSION['user_type']=='ACC'){ ?>
+                <li> <?php if($_SESSION['user_type']=='ACC'||'ADM'){ ?>
                   <a href="Payments">Payments Info</a>
                 </li>
                 <li> 
