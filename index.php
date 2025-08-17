@@ -1,651 +1,285 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
 <?php
-$title = "Home | SLGTI";
+$title = "Sign in to continue to MIS @ SLGTI";
 include_once("config.php");
-include_once("head.php");
-include_once("menu.php");
 ?>
 <!--END DON'T CHANGE THE ORDER-->
-
-
-
 <?php
-// echo $_SESSION['user_table'];
-// echo $_SESSION['user_name'];
-if($_SESSION['user_type']  == 'STU'){
-   $u_type= $_SESSION['user_name'];
-   $table = $_SESSION['user_table'];
-    $sql ="SELECT course_id from student_enroll where  student_id= '$u_type'";
 
-    $result = mysqli_query($con,$sql);
-    if (mysqli_num_rows($result)>0) {
-         while($row=mysqli_fetch_assoc($result)){
-            $course=$row["course_id"];
-            $sql1="SELECT module_id from module where course_id='$course'";
-            $result4 = mysqli_query($con,$sql1);
-            if (mysqli_num_rows($result4)>0) {
-                 while($row=mysqli_fetch_assoc($result4)){
-                      $module=$row["module_id"];
-                     $sql2="SELECT survey_id FROM feedback_survey where  course_id='$course' and module_id='$module' and end_date > curdate() and start_date <= curdate()";
-                     $result5 = mysqli_query($con,$sql2);
-                     if (mysqli_num_rows($result5)>0) {
-                          while($row=mysqli_fetch_assoc($result5)){
-                           $survey_id=$row["survey_id"];
-                           $sql3="SELECT survey_id,student_id FROM feedback_done where survey_id='$survey_id' and student_id='$u_type'";
-                           $result6 = mysqli_query($con,$sql3);
-                           if (mysqli_num_rows($result6)==0) {
+//loginWithCookieData
+if (isset($_COOKIE['rememberme'])) {
+  list ($user_name, $token, $hash) = explode(':', $_COOKIE['rememberme']);
+  if ($hash == hash('sha256', $user_name . ':' . $token . COOKIE_SECRET_KEY) && !empty($token)) {
 
-                           echo '
-                           <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong > New Notification! <span style="font-size:20px;">&#129335;</span> </strong> New Survey Added For <strong> '.$module.' </strong>&nbsp;Pleace Give Your Feedback &nbsp;
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                                </button>
-                            <a href="Addfbdetail.php?id='. $row["survey_id"].'" class="btn btn-sm btn-warning float-right mr-5"><i class="fas fa-eye"></i></a> 
-                                </div>
-                           ';
-                     
-                          }}
-                        }else{
-                           
-                        }
-                     
-                 }
-                }else{
-                   
-                }
+  $sql = "SELECT user_id, user_table, staff_position_type_id, user_name, user_email FROM user WHERE user_name = '$user_name'
+  AND user_remember_me_token = '$token' AND user_remember_me_token IS NOT NULL";
+  $result = mysqli_query($con,$sql);
+  if(mysqli_num_rows($result)==1){
+    $row = mysqli_fetch_assoc($result);
+//set session data
+    $username = $row['user_name'];
+    $_SESSION['user_name'] =  $row['user_name'];
+    $_SESSION['user_table'] =  $row['user_table'];
+    $_SESSION['user_type'] =  $row['staff_position_type_id'];
+//end session data
 
-    }}else{
-       
+//update cookie
+     $random_token_string = hash('sha256', mt_rand());
+     $sql = "UPDATE user SET user_remember_me_token = '$random_token_string' WHERE user_name = '$user_name'";
+      // generate cookie string that consists of userid, randomstring and combined hash of both
+    $result = mysqli_query($con,$sql) or die();
+    $cookie_string_first_part = $_SESSION['user_name'] . ':' . $random_token_string;
+    $cookie_string_hash = hash('sha256', $cookie_string_first_part . COOKIE_SECRET_KEY);
+    $cookie_string = $cookie_string_first_part . ':' . $cookie_string_hash;
+    // set cookie
+    setcookie('rememberme', $cookie_string, time() + COOKIE_RUNTIME, "/", COOKIE_DOMAIN);
+//end update cookie
+
+//set department session data
+    if($row['user_table']=='staff'){
+        $sql_u = "SELECT * FROM `staff` WHERE `staff_id` = ?";
+        $stmt = mysqli_prepare($con, $sql_u);
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        mysqli_stmt_execute($stmt);
+        $result_u = mysqli_stmt_get_result($stmt);
+        
+        if(mysqli_num_rows($result_u)==1){
+            $row_u = mysqli_fetch_assoc($result_u);
+            $_SESSION['department_code'] = $row_u['department_id'];
+        }
+        mysqli_stmt_close($stmt);
     }
-}else{
-   // echo 'your not a student'.$_SESSION['user_type'];
-}
+    if($row['user_table']=='student'){
+        $sql_s = "SELECT `course`.`department_id` AS `department_id` FROM `student_enroll` 
+                  LEFT JOIN `course` ON `student_enroll`.`course_id` = `course`.`course_id` 
+                  WHERE `student_enroll`.`student_id` = ?";
+        $stmt = mysqli_prepare($con, $sql_s);
+        mysqli_stmt_bind_param($stmt, "s", $_SESSION['user_name']);
+        mysqli_stmt_execute($stmt);
+        $result_s = mysqli_stmt_get_result($stmt);
+        
+        if(mysqli_num_rows($result_s)==1){
+            $row_s = mysqli_fetch_assoc($result_s);
+            $_SESSION['department_code'] = $row_s['department_id'];
+        }
+        mysqli_stmt_close($stmt);
+    }
+//end department session
 
-?>
+// Check if user is active
+$sql_active = "SELECT `user_active` FROM `user` WHERE `user_name` = ?";
+$stmt = mysqli_prepare($con, $sql_active);
+mysqli_stmt_bind_param($stmt, "s", $username);
+mysqli_stmt_execute($stmt);
+$result_active = mysqli_stmt_get_result($stmt);
 
-<!--BLOCK#2 START YOUR CODE HERE -->
-<!-- <form onsubmit="showTeacher()">
-    <div class="row p-3">
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <div class="form-group">
-                <select class="form-control custom-select" id="Departmentx" name="Department"
-                    onchange="showCouese(this.value)" required>
-                    <option value="null" selected disabled>--Select Department--</option>
-                    <?php          
-$sql = "SELECT * FROM `department`";
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-    echo '<option  value="'.$row["department_id"].'" required>'.$row["department_name"].'</option>';
+if(mysqli_num_rows($result_active) == 1) {
+    $row_active = mysqli_fetch_assoc($result_active);
+    if($row_active['user_active'] == 1) {
+        header("Location: dashboard/");
+        exit();
+    } else {
+        $msg = 'Your account is inactive. Please contact the administrator.';
     }
 }
-?>
-                 </select>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <div class="form-group">
-                <select class="form-control custom-select" id="Course" name="Course" onchange="showModule(this.value)"
-                    required>
-                    <option value="null" selected disabled>--Select Department--</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <div class="form-group">
-                <select class="form-control custom-select" id="Module" name="module" required>
-                    <option value="null" selected disabled>--Select Course--</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <button type="submit" id="submit" class="btn btn-primary btn-block"><i
-                    class="fa fa-user-tie text-light"></i> Search Teachers</button>
-        </div>
-    </div>
-</form>
-<div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12 table-responsive">
-        <table class="table table-sm table-striped ">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Staff ID</th>
-                    <th scope="col">Course ID</th>
-                    <th scope="col">Module ID</th>
-                    <th scope="col">Academic Year</th>
-                    <th scope="col">Options</th>
-                </tr>
-            </thead>
-            <tbody id="Teacher">
+mysqli_stmt_close($stmt);
 
-            </tbody>
-        </table>
-    </div>
-</div> -->
-
-<?php
-$total_course = 0;
-$total_students = 0;
-?>
-
-<div class="row mt-3">
-    <div class="col-md-2 col-sm-12">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Departments</h5>
-                <p class="card-text display-2 ">
-                    <?php          
-                    $sql = "SELECT COUNT(`department_id`) AS `d_count` FROM `department`";
-                    $result = mysqli_query($con, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                        echo $row['d_count'];
-                    }
-                ?>
-                </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2 col-sm-12">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Courses</h5>
-                <p class="card-text display-2 ">
-                    <?php          
-                    $sql = "SELECT COUNT(`course_id`) AS `d_count` FROM `course`";
-                    $result = mysqli_query($con, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                        echo $row['d_count'];
-                        $total_course = $row['d_count'];
-                    }
-                ?>
-                </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2 col-sm-12">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Modules</h5>
-                <p class="card-text display-2 ">
-                    <?php          
-                    $sql = "SELECT COUNT(`module_id`) AS `d_count` FROM `module`";
-                    $result = mysqli_query($con, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                        echo $row['d_count'];
-                    }
-                ?>
-                </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2 col-sm-12">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Academic Years</h5>
-                <p class="card-text display-2 ">
-                    <?php          
-                    $sql = "SELECT COUNT(`academic_year`) AS `d_count` FROM `academic`";
-                    $result = mysqli_query($con, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                        echo $row['d_count'];
-                    }
-                ?>
-                </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-2 col-sm-12">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Staff</h5>
-                <p class="card-text display-2 ">
-                    <?php          
-                    $sql = "SELECT COUNT(`staff_id`) AS `d_count` FROM `staff`";
-                    $result = mysqli_query($con, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                        echo $row['d_count'];
-                    }
-                ?>
-                </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2 col-sm-12">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Students</h5>
-                <p class="card-text display-2 font-weight-lighter">
-                    <?php          
-                    $sql = "SELECT COUNT(`student_id`) AS `d_count` FROM `student`";
-                    $result = mysqli_query($con, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                        echo $row['d_count'];
-                        $total_students = $row['d_count'];
-                    }
-                ?>
-                </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-</div>
-<hr>
-
-
-
-
-<div class="row">
-<div class="col-md-2">
-    Academic Year is : 
-                </div>
-    <div class="col-md-3">
-        <select class="mb-2 selectpicker show-tick custom-select-sm" required onchange="showStudent(this.value)" data-live-search="true" data-width="100%">
-            <option value="ALL" selected>ALL</option>
-            <?php
-            $sql = "SELECT * FROM `academic` ORDER BY `academic_year`  DESC ";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-            while($row = mysqli_fetch_assoc($result)){
-            echo '<option  value="'.$row ['academic_year'].'" data-subtext="'.$row ['academic_year_status'].'">'.$row ['academic_year'].'</option>';
-            }
-            }
-            ?>
-        </select>
-    </div>
-</div>
-<div class="text-center loading">
-  <div class="spinner-border text-primary" role="completed">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div>
-<div class="row m-2">
-    <div class="col-md-12">
-        <canvas id="myChart1"></canvas>
-    </div>
-</div>
-<hr>
-
-
-
-
-
-
-<div class="row">
-    <div class="col-md-4 col-sm-12">
-        <!-- <button type="button" class="btn btn-primary btn-sm btn-block mb-2">Small button</button> -->
-
-        <div class="card overflow-auto mh-20">
-            <h6 class="card-header font-weight-lighter">Students Course Enrollment Distribution</h6>
-            <div class="card-body">
-                <?php
-$sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result) > 0) {
-while($row = mysqli_fetch_assoc($result)){
-
-    $cid = $row['course_id'];
-    $cname = $row['course_name'];
-    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' ";
-    $result_c = mysqli_query($con, $sql_c);
-    $row_c = mysqli_fetch_assoc($result_c);
-    $course_count =  $row_c['c_count'];
-    $student_percentage = 0;
-    $student_percentage = round ( ($course_count/$total_students)*100); 
-    // echo $total_students;
-    echo '
-    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
-    <p class="card-text">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
-                aria-valuemin="0" aria-valuemax="100">'.$student_percentage.'%</div>
-        </div>
-    </p>
-    ';
-}
-}
-?>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- COL-1 END -->
-
-    <div class="col-md-4 col-sm-12">
-        <div class="card">
-            <h6 class="card-header font-weight-lighter">Students Course Dropout Distribution </h6>
-            <div class="card-body">
-                <?php
-$sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result) > 0) {
-while($row = mysqli_fetch_assoc($result)){
-
-    $cid = $row['course_id'];
-    $cname = $row['course_name'];
-    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Dropout' ";
-    $result_c = mysqli_query($con, $sql_c);
-    $row_c = mysqli_fetch_assoc($result_c);
-    $course_count =  $row_c['c_count'];
-    $student_percentage = 0;
-    $student_percentage = round ( ($course_count/$total_students)*100); 
-    // echo $total_students;
-    echo '
-    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
-    <p class="card-text">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
-                aria-valuemin="0" aria-valuemax="100">'.$student_percentage.'%</div>
-        </div>
-    </p>
-    ';
-}
-}
-?>
-            </div>
-        </div>
-    </div>
-    <!-- <col2-end -->
-        <div class="col-md-4 col-sm-12">
-        <div class="card">
-            <h6 class="card-header font-weight-lighter">Students Course Following Distribution </h6>
-            <div class="card-body">
-                <?php
-$sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result) > 0) {
-while($row = mysqli_fetch_assoc($result)){
-
-    $cid = $row['course_id'];
-    $cname = $row['course_name'];
-    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Following' ";
-    $result_c = mysqli_query($con, $sql_c);
-    $row_c = mysqli_fetch_assoc($result_c);
-    $course_count =  $row_c['c_count'];
-    $student_percentage = 0;
-    $student_percentage = round ( ($course_count/$total_students)*100); 
-    // echo $total_students;
-    echo '
-    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
-    <p class="card-text">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
-                aria-valuemin="0" aria-valuemax="100">'.$student_percentage.'%</div>
-        </div>
-    </p>
-    ';
-}
-}
-?>
-            </div>
-        </div>
-    </div>
-    <!-- <col2-end -->
-    <div class="col-md-4 col-sm-12">
-        <div class="card">
-            <h6 class="card-header font-weight-lighter">Students Course Completion Distribution</h6>
-            <div class="card-body">
-                <?php
-$sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result) > 0) {
-while($row = mysqli_fetch_assoc($result)){
-
-    $cid = $row['course_id'];
-    $cname = $row['course_name'];
-    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Completed'";
-    $result_c = mysqli_query($con, $sql_c);
-    $row_c = mysqli_fetch_assoc($result_c);
-    $course_count =  $row_c['c_count'];
-    $student_percentage = 0;
-    $student_percentage = round ( ($course_count/$total_students)*100); 
-    // echo $total_students;
-    echo '
-    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
-    <p class="card-text">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
-                aria-valuemin="0" aria-valuemax="100">'.$student_percentage.'%</div>
-        </div>
-    </p>
-    ';
-}
-}
-?>
-            </div>
-        </div>
-    </div>
-    <!-- COL-3 END -->
-
-    <div class="col-md-4 col-sm-12">
-        <div class="card">
-            <h6 class="card-header font-weight-lighter">Students Course Dropout Distribution </h6>
-            <div class="card-body">
-                <?php
-$sql = "SELECT * FROM `course` ORDER BY `course_name` ASC ";
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result) > 0) {
-while($row = mysqli_fetch_assoc($result)){
-
-    $cid = $row['course_id'];
-    $cname = $row['course_name'];
-    $sql_c = "SELECT COUNT(`student_id`) AS `c_count` FROM `student_enroll` WHERE `course_id` = '$cid' AND `student_enroll_status` = 'Dropout' ";
-    $result_c = mysqli_query($con, $sql_c);
-    $row_c = mysqli_fetch_assoc($result_c);
-    $course_count =  $row_c['c_count'];
-    $student_percentage = 0;
-    $student_percentage = round ( ($course_count/$total_students)*100); 
-    // echo $total_students;
-    echo '
-    <h6 class="card-title font-weight-lighter"><small>'.$cname.'</small></h6>
-    <p class="card-text">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: '.$student_percentage.'%;" aria-valuenow="'.$student_percentage.'"
-                aria-valuemin="0" aria-valuemax="100">'.$student_percentage.'%</div>
-        </div>
-    </p>
-    ';
-}
-}
-?>
-            </div>
-        </div>
-    </div>
-    <!-- <col2-end -->
-</div>
-<hr>
-
-
-
-
-
-<!-- 
-<div class="row m-2">
-    <div class="col-md-12  ">
-        <canvas id="myChart"></canvas>
-    </div>
-</div> -->
-
-
-<!-- 
-<script>
-function showCouese(val) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("Course").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("POST", "controller/getCourse", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("department=" + val);
+    }
+  }
 }
 
-function showModule(val) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("Module").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("POST", "controller/getModule", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("course=" + val);
-}
 
-function showTeacher() {
-    var did = document.getElementById("Departmentx").value;
-    var cid = document.getElementById("Course").value;
-    var mid = document.getElementById("Module").value;
-    var aid = null;
-    var tid = null;
+//-----------------------------------------------------------------------------------------------
 
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("Teacher").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("POST", "controller/getTeacher", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("StaffModuleEnrollment=1&staff_id=" + tid + "&course_id=" + cid + "&module_id=" + mid +
-        "&academic_year=" + aid);
-}
-</script>
-
- -->
-
-<script>
-showStudent('ALL');
-
-function showStudent(val) {
-    var course_id_label = [];
-    var course_total_count = [];
-    var course_completed_count = [];
-    var course_droupout_count = [];
-    var course_following_count = [];
-
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var data_students_count = JSON.parse(this.responseText);
-            for (var i in data_students_count) {
-                course_id_label.push(data_students_count[i].course_id);
-                course_total_count.push(data_students_count[i].t_count);
-                course_completed_count.push(data_students_count[i].c_count);
-                course_droupout_count.push(data_students_count[i].d_count);
-                course_following_count.push(data_students_count[i].d_count);
-            }
+// SIGNIN WITH SESSION AND COOKIE
+$msg = null;
+if (isset($_POST['SignIn']) && !empty($_POST['username']) && !empty($_POST['password'])) {
+    $username = trim(htmlspecialchars($_POST['username']));
+    $password = $_POST['password'];
+    
+    // Hash the password using SHA-256
+    $password_hash = hash('sha256', $password);
+    
+    // Prepare and execute the query
+    $sql = "SELECT * FROM `user` WHERE `user_name` = ? LIMIT 1";
+    $stmt = mysqli_prepare($con, $sql);
+    
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        
+        if (mysqli_num_rows($result) == 1) {
+            $row = mysqli_fetch_assoc($result);
             
-            var ctx = document.getElementById('myChart1');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: course_id_label,
-                    datasets: [{
-                        label: "Total Students ",
-                        backgroundColor: "#5a407d",
-                        data: course_total_count
-                    }, {
-                        label: "Dropout Students ",
-                        backgroundColor: "#dc3545",
-                        data: course_droupout_count
-                    }, {
-                        label: "Completed Students ",
-                        backgroundColor: "#28a745",
-                        data: course_completed_count
-                    },{
-                        label: "Following Students ",
-                        backgroundColor: "#007bff",
-                        data: course_droupout_count
-                    },{
-                        label: "LongAbsent Students",
-                        backgroundColor: "#deb647",
-                        data: course_droupout_count
-                    }]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'Course vs Students Enrollments Distribution'
-                    },
-                    legend: {
-                        display: true,
-                        labels: {
-                            fontColor: 'rgb(0, 0, 0)'
+            // Verify password using SHA-256
+            if ($password_hash === $row['user_password_hash']) {
+                // Password is correct
+                $_SESSION['user_name'] = $row['user_name'];
+                $_SESSION['user_table'] = $row['user_table'];
+                $_SESSION['user_type'] = $row['staff_position_type_id'];
+                
+                // Handle remember me
+                if (!empty($_POST['rememberme'])) {
+                    $random_token = bin2hex(random_bytes(32));
+                    $cookie_value = $row['user_name'] . ':' . $random_token;
+                    $cookie_hash = hash('sha256', $cookie_value . COOKIE_SECRET_KEY);
+                    $cookie_string = $cookie_value . ':' . $cookie_hash;
+                    
+                    // Update database with new token
+                    $update_sql = "UPDATE `user` SET `user_remember_me_token` = ? WHERE `user_name` = ?";
+                    $update_stmt = mysqli_prepare($con, $update_sql);
+                    mysqli_stmt_bind_param($update_stmt, "ss", $random_token, $row['user_name']);
+                    mysqli_stmt_execute($update_stmt);
+                    
+                    // Set cookie
+                    setcookie('rememberme', $cookie_string, time() + COOKIE_RUNTIME, "/", COOKIE_DOMAIN, false, true);
+                }
+                
+                // Check if user is active
+                if ($row['user_active'] == 1) {
+                    // Set department session data if needed
+                    if ($row['user_table'] == 'staff') {
+                        $dept_sql = "SELECT `department_id` FROM `staff` WHERE `staff_id` = ?";
+                        $dept_stmt = mysqli_prepare($con, $dept_sql);
+                        mysqli_stmt_bind_param($dept_stmt, "s", $username);
+                        mysqli_stmt_execute($dept_stmt);
+                        $dept_result = mysqli_stmt_get_result($dept_stmt);
+                        if ($dept_row = mysqli_fetch_assoc($dept_result)) {
+                            $_SESSION['department_code'] = $dept_row['department_id'];
                         }
+                        mysqli_stmt_close($dept_stmt);
                     }
+                    
+                    // Redirect to dashboard
+                    header("Location: dashboard/");
+                    exit();
+                } else {
+                    $msg = 'Your account is not active. Please contact the administrator.';
                 }
-            });
-
-            document.getElementsByClassName('loading')[0].style.visibility = 'hidden';
-        }
-    };
-    xmlhttp.open("POST", "controller/StudentsCourseDistribution", true);
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send("AcademicYear=" + val);
-}
-</script>
-<!-- <script>
-var course_id = [];
-var c_count = [];
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var datax = JSON.parse(this.responseText);
-        for (var i in datax) {
-            c_count.push(parseInt(datax[i].c_count, 10));
-            course_id.push(datax[i].course_id);
-
-        }
-        var ctx = document.getElementById('myChart');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: course_id,
-                datasets: [{
-                    label: '# of Students',
-                    data: c_count,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ]
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
+            } else {
+                // Wrong password
+                $msg = 'Invalid username or password';
             }
-        });
+        } else {
+            // User not found
+            $msg = 'Invalid username or password';
+        }
+        
+        mysqli_stmt_close($stmt);
+    } else {
+        // Database error
+        $msg = 'System error. Please try again later.';
+        error_log("Database error: " . mysqli_error($con));
     }
-};
-xmlhttp.open("POST", "controller/getChartData", true);
-xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-xmlhttp.send("x=1");
-</script> -->
-<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
-<?php include_once("footer.php"); ?>
-<!--END DON'T CHANGE THE ORDER-->
+}
+?>
+
+<!-- SignOut -->
+<?php
+if (isset($_GET['signout'])) {
+  // delete remember me cookie (match original params)
+  setcookie('rememberme', '', time() - 3600, '/', COOKIE_DOMAIN, false, true);
+
+  // clear all session data and destroy session
+  if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
+  $_SESSION = array();
+  if (ini_get('session.use_cookies')) {
+      $params = session_get_cookie_params();
+      setcookie(session_name(), '', time() - 42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+  }
+  session_destroy();
+  session_write_close();
+  session_regenerate_id(true);
+
+  // redirect to sign-in page (index)
+  header('Location: index');
+  exit();
+
+}
+?>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/signin.css">
+    <link href="css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <title><?php echo $title; ?></title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <!-- The image half -->
+            <div class="col-md-6 d-none d-md-flex bg-image"></div>
+
+
+            <!-- The content half -->
+            <div class="col-md-6 bg-light">
+                <div class="login d-flex align-items-center py-5">
+
+                    <!-- Demo content-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 col-xl-7 mx-auto">
+                                <h3 class="display-4 text-center">MIS@SLGTI</h3>
+                                <p class="text-muted text-center mb-4 blockquote-footer">Management Information System
+                                </p>
+                                <form  method="post">
+                                    <?php
+                                    if (!empty($msg))
+                                    echo '<div class="alert alert-danger rounded-pill border-0 shadow-sm px-4" >' . $msg . '</div>';
+                                    ?>
+                                    <div class="form-group mb-3">
+                                        <input id="inputEmail" type="text" name="username" placeholder="Username" required=""
+                                            autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input id="inputPassword" type="password" name="password" placeholder="Password" required=""
+                                            class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input id="customCheck1" name="rememberme" value="yes" type="checkbox" checked class="custom-control-input">
+                                        <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                    </div>
+                                    <button type="submit" name="SignIn"
+                                        class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign
+                                        in</button>
+
+                                    <div class="form-group mb-3 text-center">
+                                    <a href="passwordrecovery" class="font-italic text-muted pr-1">Forgot password?</a>
+                                    Don't have an account?
+                                    <a href="signup"class="font-italic text-muted text-right">Sign Up</a>
+                                    </div>
+                                    <div class="text-center d-flex justify-content-between mt-4">
+                                        <p>All Rights Reserved. Designed and Developed by Department of Information and
+                                            Communication Technology, <a href="http://slgti.com"
+                                                class="font-italic text-muted">
+                                                Sri Lanka-German Training Institute.</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- End -->
+
+                </div>
+            </div><!-- End -->
+
+        </div>
+    </div>
+</body>
+
+</html>

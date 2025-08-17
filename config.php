@@ -1,26 +1,41 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
 date_default_timezone_set('Asia/Colombo');
 //database connection
-define('DB_HOST','mis.achchuthan.org');
-define('DB_USER','misuser');
-define('DB_PASS','mIs@SlgT1');
+define('DB_HOST','localhost');  // Changed from 'mis.achchuthan.org'
+define('DB_USER','root');       // Default WAMP MySQL username
+// Try these passwords one at a time:
+// 1. Empty password (default for new WAMP installations)
+define('DB_PASS','');
+// 2. Common WAMP default password
+// define('DB_PASS','root');
+// 3. No password (uncomment if above don't work)
+// define('DB_PASS',null);
 define('DB_NAME','mis');
+
+// First try without database name to test connection
+$con = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
+
+if (mysqli_connect_errno()) {
+    die("Failed to connect to MySQL: " . mysqli_connect_error());
+} else {
+   // echo "Successfully connected to MySQL server<br>";
+    
+    // Check if database exists
+    $result = mysqli_query($con, "SHOW DATABASES LIKE 'mis'");
+    if (mysqli_num_rows($result) > 0) {
+        //echo "Database 'mis' exists<br>";
+        mysqli_select_db($con, 'mis');
+    } else {
+        die("Error: Database 'mis' does not exist. Please create it first.");
+    }
+}
 
 //cookie
 define('COOKIE_RUNTIME', 1209600); // 1209600 seconds = 2 weeks
 define('COOKIE_DOMAIN','mis.achchuthan.org'); // the domain where the cookie is valid for, like '.mydomain.com'
 define('COOKIE_SECRET_KEY', '1Wp@TMPS{+$78sppMJFe-92s'); // use to salt cookie content and when changed, can invalidate all databases users cookies
   
-
-
-$con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
-if (mysqli_connect_errno()){
-      //echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }else{
-    //echo "Connected successfully";
-  }
-
 
 
 define("EMAIL_USE_SMTP", true);

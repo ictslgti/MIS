@@ -1,8 +1,10 @@
 <?php
-$u_n = $_SESSION['user_name'];
-$u_ta = $_SESSION['user_table'];
-$u_t = $_SESSION['user_type'];
-$d_c = $_SESSION['department_code'];
+// Ensure session and safely read session variables
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
+$u_n  = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
+$u_ta = isset($_SESSION['user_table']) ? $_SESSION['user_table'] : '';
+$u_t  = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
+$d_c  = isset($_SESSION['department_code']) ? $_SESSION['department_code'] : '';
 
 $username = null;
 if($u_ta=='staff'){
@@ -39,10 +41,10 @@ if($u_ta=='staff'){
           <span class="user-name">
             <strong><?php echo $u_n;?></strong>
           </span>
-          <span class="user-role"><?php echo $_SESSION['user_type'];?> | <?php echo $_SESSION['department_code'];?> </span>
+          <span class="user-role"><?php echo htmlspecialchars($u_t ?: ''); ?> | <?php echo htmlspecialchars($d_c ?: ''); ?> </span>
           <span class="user-status">
             <i class="fa fa-user"></i>
-            <span><a href="<?php if($_SESSION['user_type']=='STU'){echo 'Student_profile';}else{echo 'Profile';}  ?>">Profile</a></span>
+            <span><a href="<?php echo ($_SESSION['user_type']=='STU') ? '/MIS/student/Student_profile.php' : '/MIS/Profile.php'; ?>">Profile</a></span>
           </span>
         </div>
       </div>
@@ -66,7 +68,7 @@ if($u_ta=='staff'){
             <span>General</span>
           </li>
           <li>
-            <a href="index">
+            <a href="../dashboard/index.php">
               <i class="fa fa-home"></i>
               <span>Dashboard</span>
               <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
@@ -84,35 +86,35 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                <a  href="Department">Departments Info</a>
+                <a  href="../department/Department.php">Departments Info</a>
                 </li>
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM')) { ?>  <a href="AddDepartment">Add a Department<?php }?>
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?>  <a href="../department/AddDepartment.php">Add a Department<?php }?>
                 </a>
                 </li>
                 <li>
-                <a  href="AcademicYear">Academic Years Info</a>
+                <a  href="../academic/AcademicYear.php">Academic Years Info</a>
                 </li>
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM')) { ?>  <a href="AddAcademicYear">Add a Academic Year<?php }?>
-                </a>
-                </li>
-
-                <li>
-                <a  href="Course">Courses Info</a>
-                </li>
-                <li>
-                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="AddCourse">Add a Course<?php }?>
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?>  <a href="../academic/AddAcademicYear.php">Add a Academic Year<?php }?>
                 </a>
                 </li>
 
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a  href="Module">Modules Info</a><?php }?>
+                <a  href="../Course/course.php">Courses Info</a>
                 </li>
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="AddModule">Add a Module<?php }?>
+                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="../Course/Addcourse.php">Add a Course<?php }?>
                 </a>
                 </li>
+
+                <li>
+                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a  href="../module/Module.php">Modules Info</a><?php }?>
+                </li>
+                <!-- <li>
+                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="../module/ModuleEnrollement.php">Add a Module<?php }?>
+                </a>
+                </li> -->
 
               </ul>
             </div>
@@ -126,21 +128,22 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="Staff">Staffs Info</a>
+                  <a href="../Staff/staff.php">Staffs Info</a>
                 </li>
                 <li>
-                  <a href="AddStaff">Add a Staff</a>
+                  <a href="../staff/AddStaff.php">Add a Staff</a>
                   <hr>
                 </li>              
                 <li>
-                  <a href="StaffModuleEnrollment">Module Enrollment</a>
+                  <a href="../staff/StaffModuleEnrollment.php">Module Enrollment</a>
                 </li>
-                <li>
-                  <a href="StaffExit">Staff Exit</a>
-                </li>
+                <!-- <li>
+                  <a href="../staff/StaffExit">Staff Exit</a>
+                </li> -->
               </ul>
             </div>
-          </li>          <?php } ?>
+          </li>       
+           <?php } ?>
           <?php if($_SESSION['user_type'] =='ADM'){ ?> <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-user-graduate"></i>
@@ -149,17 +152,20 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="Student" onclick="myFunction()">Students Info</a><script>function myFunction() { alert("Welcome to SLGTI Active & Following Students Informations");}</script>
+                  <a href="../student/Studentinfo.php" onclick="myFunction()">Students Info</a><script>function myFunction() { alert("Welcome to SLGTI Active & Following Students Informations");}</script>
                 </li>
                 <li>
-                  <a href="AddStudent">Add a Student</a>
+                  <a href="../student/AddStudent.php">Add a Student</a>
                 </li>
                 <hr>
                 <li>
-                  <a href="StudentReEnroll">Student Re Enroll</a>
+                  <a href="../student/StudentReEnroll.php">Student Re Enroll</a>
                 </li>
                 <li>
-                  <a href="StudentEnrollmentReport">Student Enrollment Report</a>
+                  <a href="../student/StudentEnrollmentReport.php">Student Enrollment Report</a>
+                </li>
+                <li>
+                  <a href="../student/ImportStudentEnroll.php">Import Student Enrollment</a>
                 </li>
               </ul>
             </div>
@@ -172,17 +178,17 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="Timetable">Timetable</a>
+                  <a href="../timetable/Timetable.php">Timetable</a>
                 </li>
                 <li>
-                  <a href="AddTimetable">Add a Timetable</a>
+                  <a href="../timetable/AddTimetable">Add a Timetable</a>
                 </li>
                 <hr>
                 <li><?php if($_SESSION['user_type']=='STU'){ ?> 
-                  <a href="Notice">Notice Info</a>
+                  <a href="../notices/Notice.php">Notice Info</a>
                 </li><?php } ?>
                  <li><?php if($_SESSION['user_type']=='ADM'){ ?> 
-                  <a href="AddNotice">Add a Notice</a>
+                  <a href="../notices/AddNotice.php">Add a Notice</a>
                 </li><?php } ?>
               </ul>
             </div>
@@ -195,27 +201,27 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="Assessment">Assessments Results</a>
+                  <a href="../assessment/Assessments Results"></a>
                 </li>
                 <?php if($_SESSION['user_type']!='STU'){ ?> <li>
-                  <a href="AddAssessment">Add Assessment</a>
+                  <a href="../assessement/AddAssessment.php">Add Assessment</a>
                 </li>
                 <li>
-                  <a href="AddAssessmentType">Add a Assessment Type</a>
+                  <a href="../assessement/AddAssessmentType.php">Add a Assessment Type</a>
                 </li>
                 <li>
-                  <a href="AddAssessmentResults">Add a Assessment Results</a>
+                  <a href="../assessement/AddAssessmentResults.php">Add a Assessment Results</a>
                 </li> <?php } ?>
                 <li>
-                  <a href="AssessmentReport">Assessment Report</a>
+                  <a href="../assessement/AssessmentReport.php">Assessment Report</a>
                 </li>
                 <hr>
-                <li>
+                <!-- <li>
                   <a href="TVECExamination">TVEC Examinations Info</a>
                 </li>
                 <li>
                   <a href="AddTVECExamination">Add TVEC Examination</a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </li>
@@ -527,7 +533,7 @@ if($u_ta=='staff'){
         <i class="fa fa-cog"></i>
         <span class="badge-sonar"></span>
       </a>
-      <a href="signin?signout">
+      <a href="/MIS/index?signout">
         <i class="fa fa-power-off"></i>
       </a>
     </div>
