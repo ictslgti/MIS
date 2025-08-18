@@ -4,13 +4,13 @@ $title =" notices| SLGTI";
 include_once("../config.php");
 include_once("../head.php");
 include_once("../menu.php");
+// Restrict students to view-only
+$isSTU = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'STU';
+if ($isSTU) {
+  header('Location: NoticeResult.php');
+  exit;
+}
 ?>
-<!-- end don't change the order-->
-
-
-
-<!-- bLOCK#2 start your code here & u can change -->
-
 <br>
 <hr>
 <div class="alert bg-dark text-white text-center" role="alert"><h1>SriLanka German Training Institute<br>Notice Add Result.</h1>

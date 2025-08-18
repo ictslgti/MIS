@@ -2,6 +2,11 @@
 <?php 
 $title = "Academic Year Details | SLGTI" ;
 include_once("../config.php"); 
+// Restrict students from accessing academic year details
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'STU') {
+    header('Location: ../dashboard/index.php');
+    exit;
+}
 include_once("../head.php"); 
 include_once("../menu.php");
 

@@ -3,6 +3,11 @@
 $title = "Department Details | SLGTI" ;
 // Removed session_start() since it's already in config.php
 include_once("../config.php"); 
+// Only admins can access this page
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'ADM') {
+    header('Location: ../dashboard/index.php');
+    exit;
+}
 include_once("../head.php"); 
 include_once("../menu.php");
 ?>

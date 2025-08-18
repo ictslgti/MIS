@@ -4,6 +4,8 @@ $title = "notices | SLGTI";
 include_once("../config.php");
 include_once("../head.php");
 include_once("../menu.php");
+// Role: student view-only
+$isSTU = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'STU';
 ?>
 <!-- end don't change the order-->
 
@@ -39,14 +41,22 @@ include_once("../menu.php");
 // for delete
 if(isset($_GET['delete']))
 {
-    $result_id = $_GET['delete'];
-    // echo 'Your sql code is here'.$result_id;
-    $sql = "Delete From `notice_result` where result_id = $result_id";
-    if(mysqli_query($con,$sql)){
-        echo"Record has been deleted succesfully";
-    }
-    else {
-        echo "Error deleting" . mysqli_error($con);
+    if ($isSTU) {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">'
+            .'<strong>Access denied</strong> Students cannot delete results.'
+            .'<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+            .'<span aria-hidden="true">&times;</span>'
+            .'</button>'
+            .'</div>';
+    } else {
+        $result_id = $_GET['delete'];
+        $sql = "Delete From `notice_result` where result_id = $result_id";
+        if(mysqli_query($con,$sql)){
+            echo"Record has been deleted succesfully";
+        }
+        else {
+            echo "Error deleting" . mysqli_error($con);
+        }
     }
 }
 ?>
@@ -69,8 +79,8 @@ if(mysqli_num_rows($result)>0)
           <td>'. $row["upload"]."<br>".'</td>
             <td>   
                     <a href="NoticeResultView.php?id='. $row["result_id"].'" class="btn btn-primary btn-sm btn-icon-split"> <span class="text"><i class="fas fa-eye"></i>&nbsp;&nbsp;View</span>  </a>  
-                    <a href="NoticeAddResult.php?edit='.$row["result_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
-                    <button class="btn btn-sm btn-danger" data-href="?delete='.$row["result_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>     
+                    '; if(!$isSTU){ echo '<a href="NoticeAddResult.php?edit='.$row["result_id"].' " class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
+                    <button class="btn btn-sm btn-danger" data-href="?delete='.$row["result_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button>'; } echo '     
             </td>     
         </tr>';
     }

@@ -11,6 +11,19 @@ $today = date('Y-m-d');
 
 <?php
 $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$classroom=$start_date=$end_date=$tid=null;
+// Determine if current user is a student and fetch their current course for scoping
+$isSTU = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'STU';
+$studentCourseId = null;
+if ($isSTU && isset($_SESSION['user_name'])) {
+    $sid = mysqli_real_escape_string($con, $_SESSION['user_name']);
+    // Try to get most recent enrollment (optionally could join academic for Active year)
+    $q = "SELECT course_id FROM student_enroll WHERE student_id = '$sid' ORDER BY academic_year DESC LIMIT 1";
+    $r = mysqli_query($con, $q);
+    if ($r && mysqli_num_rows($r) > 0) {
+        $row = mysqli_fetch_assoc($r);
+        $studentCourseId = $row['course_id'];
+    }
+}
 ?>
 <div class="row">
     <div class="col-md-12 col-sm-12">
@@ -18,7 +31,9 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
     </div>
 </div>
 
+<?php if (!$isSTU) { ?>
 <form method="GET">
+
     <div class="form-row pb-4">
         <div class="col-3">
             <div class="form-row align-items-center">
@@ -100,8 +115,7 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
         </div>
     </div>
 </form>
-
-
+<?php } ?>
 
 
 <?php
@@ -145,15 +159,16 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
         foreach ($weeks as $value) {
             echo '<td class="align-middle ">';
             $sql = "SELECT * FROM `timetable` WHERE `weekdays` = '$value' AND `timep` = 'P1' AND `end_date` >= '$today'";
+            if ($isSTU && $studentCourseId) { $esc = mysqli_real_escape_string($con, $studentCourseId); $sql .= " AND `course_id` = '".$esc."'"; }
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
 
               
                 echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
-                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span>
-                 <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>
-                <p>';      
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span>';
+                if (!$isSTU) { echo ' <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>'; }
+                echo '<p>';
             }
             echo '</td>';   
         }
@@ -170,13 +185,14 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
         foreach ($weeks as $value) {
             echo '<td class="align-middle ">';
             $sql = "SELECT * FROM `timetable` WHERE `weekdays` = '$value' AND `timep` = 'P2' AND `end_date` >= '$today'";
+            if ($isSTU && $studentCourseId) { $esc = mysqli_real_escape_string($con, $studentCourseId); $sql .= " AND `course_id` = '".$esc."'"; }
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
                 echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
-                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span> 
-                 <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>
-                ';      
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span>';
+                if (!$isSTU) { echo ' <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>'; }
+                echo '';
             }
             echo '</td>';   
         }
@@ -192,14 +208,14 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
         foreach ($weeks as $value) {
             echo '<td class="align-middle ">';
             $sql = "SELECT * FROM `timetable` WHERE `weekdays` = '$value' AND `timep` = 'P3' AND `end_date` >= '$today'";
+            if ($isSTU && $studentCourseId) { $esc = mysqli_real_escape_string($con, $studentCourseId); $sql .= " AND `course_id` = '".$esc."'"; }
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
                 echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
-                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span>
-               
-                 <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>
-                 <p>';     
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span>';
+                if (!$isSTU) { echo ' <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>'; }
+                echo ' <p>';
             }
             echo '</td>';   
         }
@@ -215,18 +231,15 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
         foreach ($weeks as $value) {
             echo '<td class="align-middle ">';
             $sql = "SELECT * FROM `timetable` WHERE `weekdays` = '$value' AND `timep` = 'P4' AND `end_date` >= '$today'";
+            if ($isSTU && $studentCourseId) { $esc = mysqli_real_escape_string($con, $studentCourseId); $sql .= " AND `course_id` = '".$esc."'"; }
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
                 echo '<p class="text-center alert-info border border-info p-2 rounded">'. $row['course_id'].'-'.$row['module_id'] . '
-                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span>
-                 <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>
-                  
-                 <br>
-                 
-                  
-                 <p>';    
-                
+                 <span class="badge badge-dark"> '. $row['classroom'].'</span> <span class="badge badge-info"> '.$row['staff_id'] . ' </span>';
+                if (!$isSTU) { echo ' <a href="AddTimetable.php?edit='.$row["time_id"].'" class=" btn-outline-light"><i class="far fa-edit"></i>'; }
+                echo '  <br>  <p>';
+            
             }
             echo '</td>';   
         }
@@ -271,13 +284,15 @@ $department_id=$course_id=$module_id=$academic_year=$staff_id=$weekdays=$timep=$
                     }
                     ?>
    
+<?php if (!$isSTU) { ?>
 <div class="text-right">
 <a href="AddTimetable.php" class="btn btn-primary ">Add</a> 
 
 
          
 </div>
-  
+<?php } ?>
+
 
 <html>
 <head>

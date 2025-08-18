@@ -4,6 +4,12 @@ $title = "notices | SLGTI";
 include_once("../config.php");
 include_once("../head.php");
 include_once("../menu.php");
+// Students do not have access to Notices
+$isSTU = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'STU';
+if ($isSTU) {
+    echo '<script>window.location.href = "../dashboard/index.php";</script>';
+    exit;
+}
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 

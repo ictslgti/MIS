@@ -2,6 +2,11 @@
 <?php 
 $title = "Add Academic Year | SLGTI" ;
 include_once("../config.php"); 
+// Only admins can access this page; use JS redirect due to prior output
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'ADM') {
+    echo '<script>window.location.href = "../dashboard/index.php";</script>';
+    exit;
+}
 include_once("../head.php"); 
 include_once("../menu.php");
 

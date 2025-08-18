@@ -2,11 +2,11 @@
 <!---BLOCK 01--->
 <?php 
    
-include_once("config.php");
+include_once("../config.php");
 
 $title ="STUDENT INFORMATION | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
-include_once("head.php");
-include_once("menu.php");
+include_once("../head.php");
+include_once("../menu.php");
 
 ?>
 <!----END DON'T CHANGE THE ORDER---->
@@ -14,8 +14,6 @@ include_once("menu.php");
 
 <!---BLOCK 02--->
 <!---START YOUR CODER HERE----->
-
-
 <!-----END YOUR CODE----->
 <!-- form start---->
 
@@ -26,7 +24,7 @@ $stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $
 $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = $status = $id =null;
 ?>
 
-<div class="ROW">
+<div class="row">
   <div class="col text-center shadow p-5 mb-5 bg-white rounded ">
   <h1 style="text-align:center"> SLGTI STUDENTS' INFORMATION </h1>
   </div>
@@ -57,7 +55,7 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
       <div class="col-md-5 mb-3"></div>
 
       <div class="col-md-4 mb-3" style="margin-right:0px;">
-        <a href="AddStudent.php"><button type="button" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i></button><a>
+        <a href="AddStudent.php" class="btn btn-primary mr-2"><i class="fas fa-user-plus"></i></a>
         <select name="status" id="status" class="custom-select" value="" >
             <option selected disabled>Choose Student Status</option>
             <?php
@@ -117,8 +115,8 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
                 <td>'. $row["student_phone"]."<br>".'</td>
                 <td>'. $row["student_address"]."<br>".'</td>
                 <td>
-                <a href="AddStudent.php?edit='.$row["student_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
-                <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
+                <a href="AddStudent.php?edit='.$row["student_id"].'" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
+                <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i></a>
                 </td>
               </tr> ';
               $num=$num+1;
@@ -156,8 +154,8 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
                   <td>'. $row["student_phone"]."<br>".'</td>
                   <td>'. $row["student_address"]."<br>".'</td>
                   <td>
-                  <a href="AddStudent.php?edit='.$row["student_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
-                  <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
+                  <a href="AddStudent.php?edit='.$row["student_id"].'" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
+                  <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i></a>
                   </td>
                 </tr> ';
                 $num=$num+1;
@@ -190,8 +188,8 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
                   <td>'. $row["student_phone"]."<br>".'</td>
                   <td>'. $row["student_address"]."<br>".'</td>
                   <td>
-                  <a href="AddStudent.php?edit='.$row["student_id"].'" class="btn btn-sm btn-success""><i class="far fa-edit"></i></a> |
-                  <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
+                  <a href="AddStudent.php?edit='.$row["student_id"].'" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
+                  <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i></a>
                   </td>
               </tr> ';
               $num=$num+1;
@@ -212,5 +210,5 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->
 <?php 
-include_once("footer.php"); 
+include_once("../footer.php"); 
 ?>

@@ -5,6 +5,12 @@ include_once("../config.php");
 include_once("../head.php");
 include_once("../menu.php");
 
+$isSTU = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'STU';
+if ($isSTU) {
+    header('Location: ../dashboard/index.php');
+    exit;
+}
+
 $eid = $e_name = $e_venue=$e_date=$e_chief_guest=$e_comment = $e_time = $e_d_url = $e_sta =null;
 if(isset($_GET['edit'])){
     $eid = $_GET['edit'];

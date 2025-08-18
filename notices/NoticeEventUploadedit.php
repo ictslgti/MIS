@@ -5,6 +5,13 @@ include_once("../config.php");
 include_once("../head.php");
 include_once("../menu.php");
 
+// Restrict students to view-only
+$isSTU = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'STU';
+if ($isSTU) {
+    header('Location: NoticeTable.php');
+    exit;
+}
+
 $eid = $e_name = $e_venue=$e_date=$e_chief_guest=$e_comment = null;
 if(isset($_GET['edit'])){
     $eid = $_GET['edit'];

@@ -60,6 +60,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
   }
 }
+// Handle profile image upload for logged-in student (no Sid view)
+elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_upload']) && !isset($_GET['Sid'])) {
+  if (session_status() === PHP_SESSION_NONE) { session_start(); }
+  $loggedUser = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null;
+  if ($loggedUser && isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+    $tmpName = $_FILES['image']['tmp_name'];
+    $size = (int)$_FILES['image']['size'];
+    // Validate size (<= 2MB)
+    if ($size > 2 * 1024 * 1024) {
+      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">Image too large. Max 2MB.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+    } else {
+      $imgData = file_get_contents($tmpName);
+      if ($imgData !== false) {
+        // Optional: basic type check
+        $mime = null;
+        if (class_exists('finfo')) {
+          $fi = new finfo(FILEINFO_MIME_TYPE);
+          $mime = $fi ? $fi->buffer($imgData) : null;
+        }
+        $allowed = ['image/jpeg','image/png','image/gif','image/webp'];
+        if ($mime !== null && !in_array($mime, $allowed, true)) {
+          echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">Unsupported image type. Use JPG, PNG, GIF, or WEBP.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+        } else {
+          $sqlUpdImg = "UPDATE student SET student_profile_img=? WHERE student_id=?";
+          if ($stmt = mysqli_prepare($con, $sqlUpdImg)) {
+            // Bind as strings; mysqli handles binary safely in prepared statements
+            mysqli_stmt_bind_param($stmt, 'ss', $imgData, $loggedUser);
+            if (mysqli_stmt_execute($stmt)) {
+              echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Profile image updated.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            } else {
+              echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Failed to update image.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            }
+            mysqli_stmt_close($stmt);
+          }
+        }
+      }
+    }
+  }
+}
 if(isset($_GET['Sid']))
 {
  $username =$_GET['Sid'];
@@ -210,7 +249,7 @@ $result = mysqli_query($con,$sql);
 
 <div class="form-row shadow p-2 mb-4 bg-white rounded">
     <div class="col-md-3 mb-3 " > 
-    <img src="<?php echo $img;?>" alt="user image" class="img-thumbnail" style="width:200px;height:200px;">
+    <img src="get_student_image.php?Sid=<?php echo urlencode($username); ?>&t=<?php echo time(); ?>" alt="user image" class="img-thumbnail" style="width:200px;height:200px;">
     <?php
     // $query= "select `student_profile_img` from student where student_id='$username'";
     // $result=mysqli_query($con,$query);
@@ -219,8 +258,17 @@ $result = mysqli_query($con,$sql);
     // echo '';
     // }
     ?>
-    <!-- <input type="file" name="image" id="image"/><br><br>
-    <input type="submit" value="Insert" name="insert" id="insert"> -->
+    <?php if(!isset($_GET['Sid'])): ?>
+      <div class="mt-2">
+        <div class="form-group mb-2">
+          <input type="hidden" name="do_upload" value="1" />
+          <input type="file" name="image" id="image" accept="image/*" class="form-control-file" required onchange="this.form.submit();" />
+        </div>
+        <noscript>
+          <button type="submit" class="btn btn-sm btn-outline-primary">Upload</button>
+        </noscript>
+      </div>
+    <?php endif; ?>
     
     <!-- <button type="button" class="btn btn-outline-success">Success</button> -->
     </div>

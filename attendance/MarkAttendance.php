@@ -12,6 +12,7 @@ include_once ("../attendancenav.php");
 <!-- Block#2 start your code -->
 
 <div class="container" style="margin-top:30px">
+
 <div class="card">
 <div class="card-header">
 <div class="row">
@@ -30,10 +31,19 @@ include_once ("../attendancenav.php");
 <div class="col-sm-12" >
 <?php
 $student_id =  $student_fullname = null ;
-$mid = $_GET['mid'];
-$cid = $_GET['cid'];
-$ay = $_GET['ay'];
-$staff_id = $_GET['staff'];
+// Validate required GET params to avoid undefined index errors
+$mid = isset($_GET['mid']) ? $_GET['mid'] : null;
+$cid = isset($_GET['cid']) ? $_GET['cid'] : null;
+$ay = isset($_GET['ay']) ? $_GET['ay'] : null;
+$staff_id = isset($_GET['staff']) ? $_GET['staff'] : null;
+
+if ($mid === null || $cid === null || $ay === null || $staff_id === null) {
+  echo '<div class="alert alert-danger">Missing required parameters. Please navigate via the proper attendance flow.</div>';
+  // Stop rendering the rest of the page if params are missing
+  include_once ("../footer.php");
+  exit;
+}
+
    $sql = "SELECT `student_enroll`.`student_id`,`student_enroll`.`course_id`,`student`.`student_fullname`
    FROM `student_enroll` 
    LEFT JOIN `student` ON `student`.`student_id` = `student_enroll`.`student_id` 
@@ -43,8 +53,8 @@ $staff_id = $_GET['staff'];
 
 if(isset($_POST['Add'])){
 
-  $date = $_POST['date'];
-  $sql_y = null;
+  $date = isset($_POST['date']) ? $_POST['date'] : date('Y-m-d');
+  $sql_y = '';
   $result_y = mysqli_query ($con, $sql);
   if (mysqli_num_rows($result_y)>0)
   {
@@ -53,9 +63,10 @@ if(isset($_POST['Add'])){
     $student_id =    $stid=$row_y["student_id"];
     $post_stid = 'ATT'.$stid;
 
-    $AttendanceStatus = $_POST[$post_stid];
+    // Default to Absent if not set
+    $AttendanceStatus = isset($_POST[$post_stid]) ? $_POST[$post_stid] : 'Absent';
 
-    $sql_y .= "INSERT INTO `attendance` (`student_id`, `module_name`, `staff_name`, `attendance_status`, `date`) VALUES ( '$student_id', '$mid', '$staff_id', '$AttendanceStatus', '$date')";
+    $sql_y .= "INSERT INTO `attendance` (`student_id`, `module_name`, `staff_name`, `attendance_status`, `date`) VALUES ('".mysqli_real_escape_string($con,$student_id)."', '".mysqli_real_escape_string($con,$mid)."', '".mysqli_real_escape_string($con,$staff_id)."', '".mysqli_real_escape_string($con,$AttendanceStatus)."', '".mysqli_real_escape_string($con,$date)."');";
     }
   }
 
@@ -74,7 +85,7 @@ if(isset($_POST['Add'])){
     
     echo '
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>'.$mid.'</strong> echo "Error".$sql."<br>".mysqli_error($con);
+    <strong>Error:</strong> '.htmlspecialchars(mysqli_error($con)).'
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>
@@ -119,8 +130,8 @@ if(isset($_POST['Add'])){
 </thead>
 <?php
 
-$con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
    $result = mysqli_query ($con, $sql);
+
    if (mysqli_num_rows($result)>0)
    {
    

@@ -5,12 +5,17 @@ include_once("../config.php");
 include_once("../head.php");
 include_once("../menu.php");
 
+// Students do not have access to Notices
+$isSTU = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'STU';
+if ($isSTU) {
+    echo '<script>window.location.href = "../dashboard/index.php";</script>';
+    exit;
+} 
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
     <div class="row pl-5 pt-5">
        
-
             <div class="col-md-4 col-sm-12 pl-5 ">
                 <a  href="NoticeTimetable.php" style="text-decoration:none">
                     <div class="card text-white bg-primary mb-3 mt-5" style="max-width: 18rem;">

@@ -65,65 +65,89 @@ if($_SESSION['user_type']  == 'STU'){
 ?>
 
 <!--BLOCK#2 START YOUR CODE HERE -->
-<!-- <form onsubmit="showTeacher()">
-    <div class="row p-3">
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <div class="form-group">
-                <select class="form-control custom-select" id="Departmentx" name="Department"
-                    onchange="showCouese(this.value)" required>
-                    <option value="null" selected disabled>--Select Department--</option>
-                    <?php          
-$sql = "SELECT * FROM `department`";
-$result = mysqli_query($con, $sql);
-if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
-    echo '<option  value="'.$row["department_id"].'" required>'.$row["department_name"].'</option>';
-    }
-}
+<?php
+// Determine if current user is a student
+$isStudent = (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'STU');
 ?>
-                 </select>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <div class="form-group">
-                <select class="form-control custom-select" id="Course" name="Course" onchange="showModule(this.value)"
-                    required>
-                    <option value="null" selected disabled>--Select Department--</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <div class="form-group">
-                <select class="form-control custom-select" id="Module" name="module" required>
-                    <option value="null" selected disabled>--Select Course--</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <button type="submit" id="submit" class="btn btn-primary btn-block"><i
-                    class="fa fa-user-tie text-light"></i> Search Teachers</button>
-        </div>
-    </div>
-</form>
-<div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12 table-responsive">
-        <table class="table table-sm table-striped ">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Staff ID</th>
-                    <th scope="col">Course ID</th>
-                    <th scope="col">Module ID</th>
-                    <th scope="col">Academic Year</th>
-                    <th scope="col">Options</th>
-                </tr>
-            </thead>
-            <tbody id="Teacher">
 
-            </tbody>
-        </table>
+<?php if ($isStudent): ?>
+<?php
+    // Load the logged-in student's core profile data for personalized dashboard
+    $username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null;
+    $p_title = $p_fname = $p_ininame = $p_nic = $p_depth = $p_course = $p_level = $p_batch = $p_exit = null;
+    if ($username) {
+        $sql = "SELECT u.user_name, e.course_id, s.student_title, s.student_fullname, s.student_ininame, s.student_nic,
+                       d.department_name, c.course_name, c.course_nvq_level, e.academic_year, e.student_enroll_exit_date
+                  FROM student s
+                  JOIN student_enroll e ON s.student_id = e.student_id
+                  JOIN user u ON u.user_name = s.student_id
+                  JOIN course c ON c.course_id = e.course_id
+                  JOIN department d ON d.department_id = c.department_id
+                 WHERE e.student_enroll_status = 'Following' AND u.user_name = '" . mysqli_real_escape_string($con, $username) . "'";
+        $result = mysqli_query($con, $sql);
+        if ($result && mysqli_num_rows($result) === 1) {
+            $row = mysqli_fetch_assoc($result);
+            $p_title  = $row['student_title'];
+            $p_fname  = $row['student_fullname'];
+            $p_ininame= $row['student_ininame'];
+            $p_nic    = $row['student_nic'];
+            $p_depth  = $row['department_name'];
+            $p_course = $row['course_name'];
+            $p_level  = $row['course_nvq_level'];
+            $p_batch  = $row['academic_year'];
+            $p_exit   = $row['student_enroll_exit_date'];
+        }
+    }
+?>
+
+<div class="row mt-3">
+  <div class="col-md-4 col-sm-12">
+    <div class="card mb-3 text-center">
+      <div class="card-body">
+        <img src="/MIS/student/get_student_image.php?Sid=<?php echo urlencode($username); ?>&t=<?php echo time(); ?>" alt="user image" class="img-thumbnail mb-3" style="width:160px;height:160px;object-fit:cover;">
+        <h5 class="card-title mb-1"><?php echo htmlspecialchars(($p_title ? $p_title.'. ' : '').$p_fname); ?></h5>
+        <div class="text-muted">ID: <?php echo htmlspecialchars($username); ?></div>
+        <?php if ($p_nic): ?><div class="text-muted">NIC: <?php echo htmlspecialchars($p_nic); ?></div><?php endif; ?>
+        <div class="mt-3">
+          <a href="/MIS/student/Student_profile.php" class="btn btn-primary btn-sm">View Full Profile</a>
+          <a href="/MIS/student/Student_profile.php#nav-modules" class="btn btn-outline-secondary btn-sm">My Modules</a>
+        </div>
+      </div>
     </div>
-</div> -->
+  </div>
+
+  <div class="col-md-8 col-sm-12">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h6 class="card-header font-weight-lighter mb-3 bg-white px-0">My Academic Summary</h6>
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <div class="small text-uppercase text-muted">Department</div>
+            <div class="h6 mb-0"><?php echo htmlspecialchars($p_depth ?: '—'); ?></div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="small text-uppercase text-muted">Course</div>
+            <div class="h6 mb-0"><?php echo htmlspecialchars($p_course ?: '—'); ?></div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="small text-uppercase text-muted">NVQ Level</div>
+            <div class="h6 mb-0"><?php echo htmlspecialchars($p_level !== null ? ('Level - '.$p_level) : '—'); ?></div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="small text-uppercase text-muted">Batch</div>
+            <div class="h6 mb-0"><?php echo htmlspecialchars($p_batch ?: '—'); ?><?php echo $p_exit ? ' ('.$p_exit.')' : ''; ?></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info">
+      This dashboard is personalized for students. Use the sidebar to access Attendance, Assessments, Notices, and more.
+    </div>
+  </div>
+</div>
+
+<?php else: ?>
 
 <?php
 $total_course = 0;
@@ -472,7 +496,6 @@ while($row = mysqli_fetch_assoc($result)){
 
 
 
-
 <!-- 
 <div class="row m-2">
     <div class="col-md-12  ">
@@ -528,6 +551,7 @@ function showTeacher() {
 </script>
 
  -->
+
 
 <script>
 showStudent('ALL');
@@ -600,52 +624,8 @@ function showStudent(val) {
     xmlhttp.send("AcademicYear=" + val);
 }
 </script>
-<!-- <script>
-var course_id = [];
-var c_count = [];
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var datax = JSON.parse(this.responseText);
-        for (var i in datax) {
-            c_count.push(parseInt(datax[i].c_count, 10));
-            course_id.push(datax[i].course_id);
-
-        }
-        var ctx = document.getElementById('myChart');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: course_id,
-                datasets: [{
-                    label: '# of Students',
-                    data: c_count,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ]
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    }
-};
-xmlhttp.open("POST", "controller/getChartData", true);
-xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-xmlhttp.send("x=1");
-</script> -->
 <!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("../footer.php"); ?>
 <!--END DON'T CHANGE THE ORDER-->
+
+<?php endif; ?>
