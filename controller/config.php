@@ -2,14 +2,14 @@
 session_start();
 date_default_timezone_set('Asia/Colombo');
 //database connection
-define('DB_HOST','mis.achchuthan.org');
-define('DB_USER','misuser');
-define('DB_PASS','mIs@SlgT1');
+define('DB_HOST','localhost');
+define('DB_USER','root');
+define('DB_PASS','');
 define('DB_NAME','mis');
 
 //cookie
 define('COOKIE_RUNTIME', 1209600); // 1209600 seconds = 2 weeks
-define('COOKIE_DOMAIN','mis.achchuthan.org'); // the domain where the cookie is valid for, like '.mydomain.com'
+define('COOKIE_DOMAIN','sis.slgti.ac.lk'); // the domain where the cookie is valid for, like '.mydomain.com'
 define('COOKIE_SECRET_KEY', '1Wp@TMPS{+$78sppMJFe-92s'); // use to salt cookie content and when changed, can invalidate all databases users cookies
   
 

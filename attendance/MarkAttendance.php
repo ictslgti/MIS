@@ -4,7 +4,7 @@ $title="attendance | SLGTI";
 include_once ("../config.php");
 include_once ("../head.php");
 include_once ("../menu.php");
-include_once ("../attendancenav.php");
+include_once ("Attendancenav.php");
 ?>
 <!-- end dont change the order-->
 
@@ -63,18 +63,20 @@ if(isset($_POST['Add'])){
     $student_id =    $stid=$row_y["student_id"];
     $post_stid = 'ATT'.$stid;
 
-    // Default to Absent if not set
+    // Default to Absent (0) if not set
     $AttendanceStatus = isset($_POST[$post_stid]) ? $_POST[$post_stid] : 'Absent';
+    // Map to integer as per DB schema: 1 = Present, 0 = Absent
+    $AttendanceStatusInt = ($AttendanceStatus === 'Present') ? 1 : 0;
 
-    $sql_y .= "INSERT INTO `attendance` (`student_id`, `module_name`, `staff_name`, `attendance_status`, `date`) VALUES ('".mysqli_real_escape_string($con,$student_id)."', '".mysqli_real_escape_string($con,$mid)."', '".mysqli_real_escape_string($con,$staff_id)."', '".mysqli_real_escape_string($con,$AttendanceStatus)."', '".mysqli_real_escape_string($con,$date)."');";
+    $sql_y .= "INSERT INTO `attendance` (`student_id`, `module_name`, `staff_name`, `attendance_status`, `date`) VALUES ('".mysqli_real_escape_string($con,$student_id)."', '".mysqli_real_escape_string($con,$mid)."', '".mysqli_real_escape_string($con,$staff_id)."', " . intval($AttendanceStatusInt) . ", '".mysqli_real_escape_string($con,$date)."');";
     }
   }
 
-  if(mysqli_multi_query($con,$sql_y))
+  if($sql_y !== '' && mysqli_multi_query($con,$sql_y))
   {
     echo '
       <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>'.$mid.'</strong> Staff details inserted
+      Attendance for <strong>'.htmlspecialchars($mid).'</strong> has been saved.
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
       </button>

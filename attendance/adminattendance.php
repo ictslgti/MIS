@@ -1,11 +1,10 @@
-
 <!--Block#1 start dont change the order-->
 <?php 
 $title="attendance | SLGTI";    
 include_once ("../config.php");
 include_once ("../head.php");
 include_once ("../menu.php");
-include_once ("../attendancenav.php");
+include_once ("Attendancenav.php");
 ?>
 <!-- end dont change the order-->
 
