@@ -262,7 +262,7 @@ $result = mysqli_query($con,$sql);
       <div class="mt-2">
         <div class="form-group mb-2">
           <input type="hidden" name="do_upload" value="1" />
-          <input type="file" name="image" id="image" accept="image/*" class="form-control-file" required onchange="this.form.submit();" />
+          <input type="file" name="image" id="image" accept="image/*" class="form-control-file" onchange="this.form.submit();" />
         </div>
         <noscript>
           <button type="submit" class="btn btn-sm btn-outline-primary">Upload</button>
@@ -281,6 +281,11 @@ $result = mysqli_query($con,$sql);
           <a class="btn btn-sm btn-primary" href="?edit=1">Edit Profile</a>
         </div>
         <?php endif; ?>
+        <div class="mb-2">
+          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/MIS/library/pdf/student_application.php?Sid=<?php echo urlencode($username); ?>">Application PDF</a>
+          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/MIS/library/pdf/hostel_request.php?Sid=<?php echo urlencode($username); ?>">Hostel Request PDF</a>
+          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/MIS/library/pdf/student_id_card_request.php?Sid=<?php echo urlencode($username); ?>">ID Card Request (A4)</a>
+        </div>
         <h6 class="text-muted">
         <?php 
         $sql="select d.department_name from department as d, course as c, student_enroll as e, user as u where user_name=e.student_id and 

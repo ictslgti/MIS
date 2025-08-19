@@ -76,7 +76,12 @@ $result_active = mysqli_stmt_get_result($stmt);
 if(mysqli_num_rows($result_active) == 1) {
     $row_active = mysqli_fetch_assoc($result_active);
     if($row_active['user_active'] == 1) {
-        header("Location: dashboard/");
+        // Redirect based on role: students go to their profile, others to dashboard
+        if (isset($_SESSION['user_table']) && $_SESSION['user_table'] === 'student') {
+            header("Location: /MIS/student/Student_profile.php");
+        } else {
+            header("Location: dashboard/");
+        }
         exit();
     } else {
         $msg = 'Your account is inactive. Please contact the administrator.';
@@ -151,8 +156,12 @@ if (isset($_POST['SignIn']) && !empty($_POST['username']) && !empty($_POST['pass
                         mysqli_stmt_close($dept_stmt);
                     }
                     
-                    // Redirect to dashboard
-                    header("Location: dashboard/");
+                    // Redirect based on role: students to profile, others to dashboard
+                    if ($row['user_table'] === 'student') {
+                        header("Location: /MIS/student/Student_profile.php");
+                    } else {
+                        header("Location: dashboard/");
+                    }
                     exit();
                 } else {
                     $msg = 'Your account is not active. Please contact the administrator.';

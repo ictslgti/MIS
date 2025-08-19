@@ -67,6 +67,7 @@ if($u_ta=='staff'){
           <li class="header-menu">
             <span>General</span>
           </li>
+          <?php if($_SESSION['user_type'] != 'STU') { ?>
           <li>
             <a href="../dashboard/index.php">
               <i class="fa fa-home"></i>
@@ -74,6 +75,7 @@ if($u_ta=='staff'){
               <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
             </a>
           </li>
+          <?php } ?>
 
           <li class="sidebar-dropdown">
           
@@ -119,6 +121,28 @@ if($u_ta=='staff'){
               </ul>
             </div>
           </li>
+
+          <?php if($_SESSION['user_type'] == 'STU') { ?>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-file-pdf"></i>
+              <span>Downloads</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a target="_blank" href="/MIS/library/pdf/student_application.php?Sid=<?php echo urlencode($u_n); ?>">Application Form</a>
+                </li>
+                <li>
+                  <a target="_blank" href="/MIS/library/pdf/hostel_request.php?Sid=<?php echo urlencode($u_n); ?>">Hostel Request</a>
+                </li>
+                <li>
+                  <a target="_blank" href="/MIS/library/pdf/student_id_card.php?Sid=<?php echo urlencode($u_n); ?>">Student ID Card Request (A4)</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <?php } ?>
           <?php if($_SESSION['user_type']!='STU'){ ?> <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-user-tie"></i>
@@ -460,6 +484,7 @@ if($u_ta=='staff'){
             </div>
           </li>
 
+          <?php if($_SESSION['user_type'] != 'STU') { ?>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fab fa-amazon-pay"></i>
@@ -468,7 +493,7 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul> 
-                <li> <?php if($_SESSION['user_type']=='ACC'||'ADM'){ ?>
+                <li> <?php if(($_SESSION['user_type']=='ACC') || ($_SESSION['user_type']=='ADM')) { ?>
                   <a href="Payments">Payments Info</a>
                 </li>
                 <li> 
@@ -481,6 +506,7 @@ if($u_ta=='staff'){
                   </ul>
             </div>
           </li>
+          <?php } ?>
 
           <li class="sidebar-dropdown">
             <a href="#">
@@ -547,6 +573,12 @@ if($u_ta=='staff'){
               <span>Calendar</span>
             </a>
           </li>        
+          <li>
+            <a href="/MIS/password/change_password.php">
+              <i class="fa fa-key"></i>
+              <span>Change Password</span>
+            </a>
+          </li>
         </ul>
       </div>
       <!-- sidebar-menu  -->
