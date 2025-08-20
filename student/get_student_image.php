@@ -19,18 +19,34 @@ $stmt = mysqli_prepare($con, $sql);
 if ($stmt) {
     mysqli_stmt_bind_param($stmt, 's', $student_id);
     mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    
-    if ($row = mysqli_fetch_assoc($result)) {
-        // If image data exists in the database
-        if (!empty($row['student_profile_img'])) {
-            // Output the image with appropriate headers
-            header('Content-Type: image/jpeg');
-            echo $row['student_profile_img'];
+    // Buffer result to ensure full BLOB retrieval on some setups
+    mysqli_stmt_store_result($stmt);
+    // Use bind_result/fetch for compatibility when mysqlnd is not available
+    mysqli_stmt_bind_result($stmt, $imgData);
+    if (mysqli_stmt_fetch($stmt)) {
+        if (!empty($imgData)) {
+            // Some databases store base64-encoded strings. Try to detect and decode.
+            $raw = $imgData;
+            $maybeDecoded = base64_decode($imgData, true);
+            if ($maybeDecoded !== false && strlen($maybeDecoded) > 0) {
+                $raw = $maybeDecoded;
+            }
+            // Detect MIME type when possible
+            $mime = 'image/jpeg';
+            if (class_exists('finfo')) {
+                $fi = new finfo(FILEINFO_MIME_TYPE);
+                if ($fi) {
+                    $detected = $fi->buffer($raw);
+                    if ($detected) { $mime = $detected; }
+                }
+            }
+            header('Content-Type: ' . $mime);
+            header('Content-Length: ' . strlen($raw));
+            echo $raw;
+            mysqli_stmt_close($stmt);
             exit;
         }
     }
-    
     mysqli_stmt_close($stmt);
 }
 

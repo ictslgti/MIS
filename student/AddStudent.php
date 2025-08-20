@@ -31,8 +31,8 @@ if(isset($_GET['edit']))
   $stid =$_GET['edit'];
   $sql = "SELECT s.`student_id`,`student_title`,`student_fullname`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,
   `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,
-  `student_em_address`,`student_em_phone`,`student_em_relation`,`course_id`,`course_mode`,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
-  `student_enroll_status` FROM `student` s INNER join student_enroll e on s.student_id=e.student_id and `student_enroll_status`='Following' and s.`student_id`='$stid'";
+  `student_em_address`,`student_em_phone`,`student_em_relation`,e.`course_id`,e.`course_mode`,e.`academic_year`,e.`student_enroll_date`,e.`student_enroll_exit_date`,
+  e.`student_enroll_status` FROM `student` s LEFT JOIN `student_enroll` e ON s.`student_id` = e.`student_id` WHERE s.`student_id`='$stid' ORDER BY e.`student_enroll_date` DESC LIMIT 1";
   $result = mysqli_query($con,$sql);
 
   //echo 'academic_year'.$row['academic_year'];
@@ -190,44 +190,34 @@ if(isset($_POST['Edit']))
       // echo 'blood'.$_POST['blood'];echo 'qualification'.$_POST['qualification'];echo 'indexno'.$_POST['indexno'];echo 'indexno'.$_POST['indexno'];
       // echo 'indexno'.$_POST['indexno'];echo 'yoe'.$_POST['yoe'];echo 'subject'.$_POST['subject'];echo 'subject'.$_POST['subject']; echo 'district'.$_POST['district'];
       // echo 'result'.$_POST['result'];echo 'Ename'.$_POST['Ename'];echo 'addressE'.$_POST['addressE']; echo 'Ephone'.$_POST['Ephone']; echo 'relation'.$_POST['relation'];
-       if(
-         !empty($_POST['title']) && !empty($_POST['fullname']) 
-         && !empty($_POST['ini_name']) && !empty($_POST['gender']) 
-         && !empty($_POST['civil']) && !empty($_POST['email']) 
-         && !empty($_POST['nic']) && !empty($_POST['dob']) 
-         && !empty($_POST['phone']) && !empty($_POST['address'])
-         && !empty($_POST['zip']) && !empty($_POST['district']) 
-         && !empty($_POST['ds']) && !empty($_POST['province']) 
-         && !empty($_POST['blood'])&& !empty($_POST['Ename'])
-         && !empty($_POST['addressE'])&& !empty($_POST['Ephone'])
-         && !empty($_POST['relation']) && !empty($_GET['edit']))
-       {
-        //echo "SUCCESS";
-        $stid=$_GET['edit'];
-        $title=$_POST['title'];
-        $fname=$_POST['fullname'];
-        $ininame=$_POST['ini_name'];
-        $gender=$_POST['gender'];
-        $civil=$_POST['civil'];
-        $email=$_POST['email'];
-        $nic=$_POST['nic'];
-        $dob=$_POST['dob'];
-        $phone=$_POST['phone'];
-        $address=$_POST['address'];
-        $zip=$_POST['zip'];
-        $district=$_POST['district'];
-        $division=$_POST['ds'];
-        $province=$_POST['province'];
-        $blood=$_POST['blood'];
-        $ename=$_POST['Ename'];
-        $eaddress=$_POST['addressE'];
-        $ephone=$_POST['Ephone'];
-        $erelation=$_POST['relation'];
+       if (isset($_GET['edit']) && $_GET['edit'] !== '')
+        {
+         //echo "SUCCESS";
+         $stid=$_GET['edit'];
+         $title=$_POST['title'];
+         $fname=$_POST['fullname'];
+         $ininame=$_POST['ini_name'];
+         $gender=$_POST['gender'];
+         $civil=$_POST['civil'];
+         $email=$_POST['email'];
+         $nic=$_POST['nic'];
+         $dob=$_POST['dob'];
+         $phone=$_POST['phone'];
+         $address=$_POST['address'];
+         $zip=$_POST['zip'];
+         $district=$_POST['district'];
+         $division=$_POST['ds'];
+         $province=$_POST['province'];
+         $blood=$_POST['blood'];
+         $ename=$_POST['Ename'];
+         $eaddress=$_POST['addressE'];
+         $ephone=$_POST['Ephone'];
+         $erelation=$_POST['relation'];
 
-        $sql1 = "UPDATE `student` SET `student_title`='$title',`student_fullname`='$fname',`student_ininame`='$ininame',`student_gender`='$gender',
-        `student_civil`='$civil',`student_email`='$email',`student_nic`='$nic',`student_dob`='$dob',`student_phone`='$phone',`student_address`='$address',
-        `student_zip`='$zip',`student_district`='$district',`student_divisions`='$division',`student_provice`='$province',`student_blood`='$blood',
-        `student_em_name`='$ename',`student_em_address`='$eaddress',`student_em_phone`='$ephone',`student_em_relation`='$erelation' WHERE student_id = '$stid'";
+         $sql1 = "UPDATE `student` SET `student_title`='$title',`student_fullname`='$fname',`student_ininame`='$ininame',`student_gender`='$gender',
+         `student_civil`='$civil',`student_email`='$email',`student_nic`='$nic',`student_dob`='$dob',`student_phone`='$phone',`student_address`='$address',
+         `student_zip`='$zip',`student_district`='$district',`student_divisions`='$division',`student_provice`='$province',`student_blood`='$blood',
+         `student_em_name`='$ename',`student_em_address`='$eaddress',`student_em_phone`='$ephone',`student_em_relation`='$erelation' WHERE student_id = '$stid'";
         
     
             if(mysqli_query($con,$sql1))
@@ -236,11 +226,11 @@ if(isset($_POST['Edit']))
             }
             else
             {
-              echo "Error: ".$sql . "<br>" . mysqli_error($con);
+              echo "Error: ".$sql1 . "<br>" . mysqli_error($con);
               echo "Fill the required field";
             }
           }
-    }
+        }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////       
 ?>
@@ -401,8 +391,8 @@ if(isset($_POST['Edit']))
             <label for="custom-select"> Gender: </label>
             <select name="gender" id="gender" class="form-control" value="<?php echo $gender; ?>" required>
               <option selected disabled>Choose Gender</option>
-              <option value="Male"<?php if($gender=="M")  echo 'selected';?>>Male</option>
-              <option value="Female"<?php if($gender=='F') echo ' selected';?>>Female</option>
+              <option value="Male"<?php if($gender=="Male")  echo 'selected';?>>Male</option>
+              <option value="Female"<?php if($gender=='Female') echo ' selected';?>>Female</option>
             </select>
         </div>
 

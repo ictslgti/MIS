@@ -6,6 +6,12 @@ $u_ta = isset($_SESSION['user_table']) ? $_SESSION['user_table'] : '';
 $u_t  = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
 $d_c  = isset($_SESSION['department_code']) ? $_SESSION['department_code'] : '';
 
+// Normalize user_type for consistent comparisons
+if (isset($_SESSION['user_type'])) {
+  $_SESSION['user_type'] = strtoupper(trim($_SESSION['user_type']));
+  $u_t = $_SESSION['user_type'];
+}
+
 $username = null;
 if($u_ta=='staff'){
   $sql = "SELECT * FROM `staff` WHERE `staff_id` = '$u_n'";
@@ -360,7 +366,7 @@ if($u_ta=='staff'){
                   <hr>
                 </li><?php } ?>
                 <li><?php if($_SESSION['user_type']=='STU' ){ ?>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/RequestHostel.php">Request Hostel</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/RequestHostel.php">Request Hostel</a>
                 </li><?php } ?>
               </ul>
             </div>

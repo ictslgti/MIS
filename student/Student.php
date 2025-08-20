@@ -115,7 +115,7 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
                 <td>'. $row["student_phone"]."<br>".'</td>
                 <td>'. $row["student_address"]."<br>".'</td>
                 <td>
-                <a href="AddStudent.php?edit='.$row["student_id"].'" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
+                <a href="Student_profile.php?Sid='.$row["student_id"].'&edit=1" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
                 <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i></a>
                 </td>
               </tr> ';
@@ -154,7 +154,7 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
                   <td>'. $row["student_phone"]."<br>".'</td>
                   <td>'. $row["student_address"]."<br>".'</td>
                   <td>
-                  <a href="AddStudent.php?edit='.$row["student_id"].'" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
+                  <a href="Student_profile.php?Sid='.$row["student_id"].'&edit=1" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
                   <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i></a>
                   </td>
                 </tr> ';
@@ -188,7 +188,7 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
                   <td>'. $row["student_phone"]."<br>".'</td>
                   <td>'. $row["student_address"]."<br>".'</td>
                   <td>
-                  <a href="AddStudent.php?edit='.$row["student_id"].'" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
+                  <a href="Student_profile.php?Sid='.$row["student_id"].'&edit=1" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
                   <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i></a>
                   </td>
               </tr> ';

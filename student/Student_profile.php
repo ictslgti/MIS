@@ -249,7 +249,7 @@ $result = mysqli_query($con,$sql);
 
 <div class="form-row shadow p-2 mb-4 bg-white rounded">
     <div class="col-md-3 mb-3 " > 
-    <img src="get_student_image.php?Sid=<?php echo urlencode($username); ?>&t=<?php echo time(); ?>" alt="user image" class="img-thumbnail" style="width:200px;height:200px;">
+    <img src="/student/get_student_image.php?Sid=<?php echo urlencode($username); ?>&t=<?php echo time(); ?>" alt="user image" class="img-thumbnail" style="width:200px;height:200px;">
     <?php
     // $query= "select `student_profile_img` from student where student_id='$username'";
     // $result=mysqli_query($con,$query);
@@ -278,13 +278,14 @@ $result = mysqli_query($con,$sql);
         <h6 class="text-muted"><?php echo $nic; ?></h6>
         <?php if(!isset($_GET['Sid'])): ?>
         <div class="mb-2">
-          <a class="btn btn-sm btn-primary" href="?edit=1">Edit Profile</a>
+          <a class="btn btn-sm btn-primary" href="/student/Student_profile.php?edit=1">Edit Profile</a>
         </div>
         <?php endif; ?>
         <div class="mb-2">
-          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/MIS/library/pdf/student_application.php?Sid=<?php echo urlencode($username); ?>">Application PDF</a>
-          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/MIS/library/pdf/hostel_request.php?Sid=<?php echo urlencode($username); ?>">Hostel Request PDF</a>
-          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/MIS/library/pdf/student_id_card_request.php?Sid=<?php echo urlencode($username); ?>">ID Card Request (A4)</a>
+          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/library/pdf/student_application.php?Sid=<?php echo urlencode($username); ?>">Application PDF</a>
+          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/library/pdf/Student Code of Conduct.pdf">Student Code of Conduct</a>
+          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/library/pdf/hostel_request.php?Sid=<?php echo urlencode($username); ?>">Hostel Request PDF</a>
+          
         </div>
         <h6 class="text-muted">
         <?php 
@@ -372,8 +373,8 @@ $result = mysqli_query($con,$sql);
 <nav>
   <div class="nav nav-tabs shadow p-2 mb-4 bg-white rounded" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Personal Info</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Qualification Info</a>
-    <a class="nav-item nav-link" id="nav-modules-tab" data-toggle="tab" href="#nav-modules" role="tab" aria-controls="nav-modules" aria-selected="false">Modules Info</a>
+    <!-- <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Qualification Info</a>
+    <a class="nav-item nav-link" id="nav-modules-tab" data-toggle="tab" href="#nav-modules" role="tab" aria-controls="nav-modules" aria-selected="false">Modules Info</a> -->
   </div>
 </nav>
 <div class="tab-content shadow p-2 mb-4 bg-white rounded" id="nav-tabContent">
@@ -531,7 +532,7 @@ $result = mysqli_query($con,$sql);
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-success">Save Changes</button>
-              <a href="/MIS/student/Student_profile.php" class="btn btn-secondary ml-2">Cancel</a>
+              <a href="/student/Student_profile.php" class="btn btn-secondary ml-2">Cancel</a>
             </div>
           </div>
         </div>
@@ -698,7 +699,7 @@ $result = mysqli_query($con,$sql);
                           <td>'. $row["semester_id"].'</td>
                           <td>'. $row["module_learning_hours"].'</td>
                           <td>
-                          <a href="/MIS/assessment/Assessment.php?Mid='.$row["module_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
+                          <a href="/assessment/Assessment.php?Mid='.$row["module_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i>
                           </td>
                       </tr> ';
                     }
