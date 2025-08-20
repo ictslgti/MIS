@@ -18,12 +18,12 @@ define('DB_HOST','localhost');  // Changed from 'mis.achchuthan.org'
 define('DB_USER','root');       // Default WAMP MySQL username
 // Try these passwords one at a time:
 // 1. Empty password (default for new WAMP installations)
-define('DB_PASS','');
+define('DB_PASS','1234');
 // 2. Common WAMP default password
 // define('DB_PASS','root');
 // 3. No password (uncomment if above don't work)
 // define('DB_PASS',null);
-define('DB_NAME','mis');
+define('DB_NAME','sis');
 
 // First try without database name to test connection
 $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
