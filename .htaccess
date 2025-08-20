@@ -2,12 +2,12 @@ Options +FollowSymLinks -MultiViews -Indexes
 # Turn mod_rewrite on
 RewriteEngine On
 
-# IMPORTANT: App is now at domain root, set base accordingly
+# IMPORTANT: App is served at the VirtualHost root (e.g., http://sis/)
 RewriteBase /
 
-# Backward compatibility: internally strip leading /MIS/ from requests
-RewriteCond %{REQUEST_URI} ^/MIS/(.*)$ [NC]
-RewriteRule ^MIS/(.*)$ /$1 [L,QSA]
+# Backward compatibility: internally strip leading MIS/ from requests within this dir
+# This allows links like /MIS/department/Department to work when the app lives in /sis/
+RewriteRule ^MIS/(.*)$ $1 [L,QSA,NC]
 
 ## Externally redirect /foo.php to /foo (GET requests only, to avoid breaking POST forms)
 RewriteCond %{REQUEST_METHOD} =GET

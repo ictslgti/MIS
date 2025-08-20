@@ -1,6 +1,18 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 date_default_timezone_set('Asia/Colombo');
+// Base URL where the app is served, computed from filesystem path relative to DOCUMENT_ROOT
+// Result: '' when served at vhost root (e.g., http://sis/), or '/sis' when under a subdirectory (e.g., http://localhost/sis/)
+if (!defined('APP_BASE')) {
+    $docRoot = isset($_SERVER['DOCUMENT_ROOT']) ? rtrim(str_replace('\\','/', $_SERVER['DOCUMENT_ROOT']), '/') : '';
+    $appDir  = rtrim(str_replace('\\','/', realpath(__DIR__)), '/');
+    $base = '';
+    if ($docRoot && $appDir && strpos($appDir, $docRoot) === 0) {
+        $base = substr($appDir, strlen($docRoot));
+    }
+    $base = trim($base, '/');
+    define('APP_BASE', $base === '' ? '' : '/' . $base);
+}
 //database connection
 define('DB_HOST','localhost');  // Changed from 'mis.achchuthan.org'
 define('DB_USER','root');       // Default WAMP MySQL username

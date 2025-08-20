@@ -35,7 +35,7 @@ if($u_ta=='staff'){
       </div>
       <div class="sidebar-header">
         <div class="user-pic">
-          <img class="img-responsive img-rounded" src="img/user.jpg" alt="<?php echo $u_n;?> picture">
+          <img class="img-responsive img-rounded" src="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/img/user.jpg" alt="<?php echo $u_n;?> picture">
         </div>
         <div class="user-info">
           <span class="user-name">
@@ -44,7 +44,7 @@ if($u_ta=='staff'){
           <span class="user-role"><?php echo htmlspecialchars($u_t ?: ''); ?> | <?php echo htmlspecialchars($d_c ?: ''); ?> </span>
           <span class="user-status">
             <i class="fa fa-user"></i>
-            <span><a href="<?php echo ($_SESSION['user_type']=='STU') ? '/MIS/student/Student_profile.php' : '/MIS/Profile.php'; ?>">Profile</a></span>
+            <span><a href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); echo ($_SESSION['user_type']=='STU') ? '/student/Student_profile.php' : '/Profile.php'; ?>">Profile</a></span>
           </span>
         </div>
       </div>
@@ -69,7 +69,7 @@ if($u_ta=='staff'){
           </li>
           <?php if($_SESSION['user_type'] != 'STU') { ?>
           <li>
-            <a href="../dashboard/index.php">
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/dashboard/index.php">
               <i class="fa fa-home"></i>
               <span>Dashboard</span>
               <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
@@ -88,30 +88,30 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                <a  href="../department/Department.php">Departments Info</a>
+                <a  href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/department/Department.php">Departments Info</a>
                 </li>
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM')) { ?>  <a href="../department/AddDepartment.php">Add a Department<?php }?>
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?>  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/department/AddDepartment.php">Add a Department<?php }?>
                 </a>
                 </li>
                 <li>
-                <a  href="../academic/AcademicYear.php">Academic Years Info</a>
+                <a  href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/academic/AcademicYear.php">Academic Years Info</a>
                 </li>
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM')) { ?>  <a href="../academic/AddAcademicYear.php">Add a Academic Year<?php }?>
-                </a>
-                </li>
-
-                <li>
-                <a  href="../Course/course.php">Courses Info</a>
-                </li>
-                <li>
-                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="../Course/Addcourse.php">Add a Course<?php }?>
+                <?php if(($_SESSION['user_type'] =='ADM')) { ?>  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/academic/AddAcademicYear.php">Add a Academic Year<?php }?>
                 </a>
                 </li>
 
                 <li>
-                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a  href="../module/Module.php">Modules Info</a><?php }?>
+                <a  href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/course/Course.php">Courses Info</a>
+                </li>
+                <li>
+                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/course/AddCourse.php">Add a Course<?php }?>
+                </a>
+                </li>
+
+                <li>
+                <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a  href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/module/Module.php">Modules Info</a><?php }?>
                 </li>
                 <!-- <li>
                 <?php if(($_SESSION['user_type'] =='ADM') || ($_SESSION['user_type'] =='HOD')) { ?><a href="../module/ModuleEnrollement.php">Add a Module<?php }?>
@@ -131,13 +131,13 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a target="_blank" href="/MIS/library/pdf/student_application.php?Sid=<?php echo urlencode($u_n); ?>">Application Form</a>
+                  <a target="_blank" href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/library/pdf/student_application.php?Sid=<?php echo urlencode($u_n); ?>">Application Form</a>
                 </li>
                 <li>
-                  <a target="_blank" href="/MIS/library/pdf/hostel_request.php?Sid=<?php echo urlencode($u_n); ?>">Hostel Request</a>
+                  <a target="_blank" href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/library/pdf/hostel_request.php?Sid=<?php echo urlencode($u_n); ?>">Hostel Request</a>
                 </li>
                 <li>
-                  <a target="_blank" href="/MIS/library/pdf/student_id_card.php?Sid=<?php echo urlencode($u_n); ?>">Student ID Card Request (A4)</a>
+                  <a target="_blank" href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/library/pdf/student_id_card.php?Sid=<?php echo urlencode($u_n); ?>">Student ID Card Request (A4)</a>
                 </li>
               </ul>
             </div>
@@ -152,14 +152,14 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="../Staff/staff.php">Staffs Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/staff/Staff.php">Staffs Info</a>
                 </li>
                 <li>
-                  <a href="../staff/AddStaff.php">Add a Staff</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/staff/AddStaff.php">Add a Staff</a>
                   <hr>
                 </li>              
                 <li>
-                  <a href="../staff/StaffModuleEnrollment.php">Module Enrollment</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/staff/StaffModuleEnrollment.php">Module Enrollment</a>
                 </li>
                 <!-- <li>
                   <a href="../staff/StaffExit">Staff Exit</a>
@@ -176,27 +176,27 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="../student/Student.php" onclick="myFunction()">Students Info</a><script>function myFunction() { alert("Welcome to SLGTI Active & Following Students Informations");}</script>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/Student.php" onclick="myFunction()">Students Info</a><script>function myFunction() { alert("Welcome to SLGTI Active & Following Students Informations");}</script>
                 </li>
                 <li>
-                  <a href="../student/AddStudent.php">Add a Student</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/AddStudent.php">Add a Student</a>
                 </li>
                 <hr>
                 <li>
-                  <a href="../student/StudentReEnroll.php">Student Re Enroll</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentReEnroll.php">Student Re Enroll</a>
                 </li>
                 <li>
-                  <a href="../student/StudentEnrollmentReport.php">Student Enrollment Report</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentEnrollmentReport.php">Student Enrollment Report</a>
                 </li>
                 <li>
-                  <a href="../student/ImportStudentEnroll.php">Import Student Enrollment</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/ImportStudentEnroll.php">Import Student Enrollment</a>
                 </li>
               </ul>
             </div>
           </li>  <?php } ?>
           <?php if($_SESSION['user_type'] =='HOD'){ ?>
           <li>
-            <a href="/MIS/student/DepartmentStudents.php">
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/DepartmentStudents.php">
               <i class="fas fa-user-graduate"></i>
               <span>My Dept Students</span>
             </a>
@@ -210,22 +210,22 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="../timetable/Timetable.php">Timetable</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/timetable/Timetable.php">Timetable</a>
                 </li>
                 <?php if($_SESSION['user_type']!='STU'){ ?>
                 <li>
-                  <a href="../timetable/AddTimetable">Add a Timetable</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/timetable/AddTimetable.php">Add a Timetable</a>
                 </li>
                 <?php } ?>
                 <hr>
                 <?php if($_SESSION['user_type']!='STU'){ ?>
                 <li>
-                  <a href="../notices/Notice.php">Notice Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/notices/Notice.php">Notice Info</a>
                 </li>
                 <?php } ?>
                 <?php if($_SESSION['user_type']=='ADM'){ ?> 
                 <li>
-                  <a href="../notices/AddNotice.php">Add a Notice</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/notices/AddNotice.php">Add a Notice</a>
                 </li>
                 <?php } ?>
               </ul>
@@ -240,26 +240,26 @@ if($u_ta=='staff'){
               <ul>
                 <?php if($_SESSION['user_type'] == 'STU') { ?>
                 <li>
-                  <a href="/MIS/assessment/AssessmentResults.php">My Results</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/assessment/AssessmentResults.php">My Results</a>
                 </li>
                 <li>
-                  <a href="/MIS/assessment/AssessmentReport.php">Results Report</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/assessment/AssessmentReport.php">Results Report</a>
                 </li>
                 <?php } else { ?>
                 <li>
-                  <a href="../assessment/AssessmentResults.php">Assessment Results</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/assessment/AssessmentResults.php">Assessment Results</a>
                 </li>
                 <li>
-                  <a href="../assessment/AddAssessment.php">Add Assessment</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/assessment/AddAssessment.php">Add Assessment</a>
                 </li>
                 <li>
-                  <a href="../assessment/AddAssessmentType.php">Add Assessment Type</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/assessment/AddAssessmentType.php">Add Assessment Type</a>
                 </li>
                 <li>
-                  <a href="../assessment/AddAssessmentResults.php">Add Assessment Results</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/assessment/AddAssessmentResults.php">Add Assessment Results</a>
                 </li>
                 <li>
-                  <a href="../assessment/AssessmentReport.php">Assessment Report</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/assessment/AssessmentReport.php">Assessment Report</a>
                 <?php } ?>
                 </li>
                 <hr>
@@ -283,24 +283,24 @@ if($u_ta=='staff'){
               <ul>
                 <?php if($_SESSION['user_type'] == 'STU') { ?>
                 <li>
-                  <a href="/MIS/attendance/Attendance.php">My Attendance</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/Attendance.php">My Attendance</a>
                 </li>
                 <li>
-                  <a href="/MIS/attendance/AttendanceReport.php">Attendance Report</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/AttendanceReport.php">Attendance Report</a>
                 </li>
                 <?php } else { ?>
                 <li>
-                  <a href="/MIS/attendance/Attendance.php">Attendances Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/Attendance.php">Attendances Info</a>
                 </li>
                 <li>
-                  <a href="/MIS/attendance/MarkAttendance.php">Mark Attendance</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/MarkAttendance.php">Mark Attendance</a>
                   <hr>
                 </li>
                 <li>
-                  <a href="/MIS/attendance/AttendanceReport.php">Attendance Report</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/AttendanceReport.php">Attendance Report</a>
                 </li>
                 <li>
-                  <a href="/MIS/attendance/WarningsLetters.php">Warnings Letters</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/WarningsLetters.php">Warnings Letters</a>
                 </li>
                 <?php } ?>
               </ul>
@@ -316,26 +316,26 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li><?php if($_SESSION['user_type']=='ADM'){ ?> 
-                  <a href="/MIS/ojt/OJT.php">On-the-job Training Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/ojt/OJT.php">On-the-job Training Info</a>
                 </li>
                 <li>
-                  <a href="/MIS/ojt/addojt.php">Add a Training Place</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/ojt/addojt.php">Add a Training Place</a>
                   <hr>
                 </li> <?php } ?>             
                 <li><?php if($_SESSION['user_type']=='STU'){ ?>
-                  <a href="/MIS/student/StudentsRequest.php">Students Request</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentsRequest.php">Students Request</a>
                 </li><?php } ?>
                 <li> <?php if($_SESSION['user_type']=='STU'){ ?>
-                  <a href="/MIS/reguest/PlacementRequest.php">Student Placement Request</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/reguest/PlacementRequest.php">Student Placement Request</a>
                 </li> <?php } ?>
                 <li><?php if($_SESSION['user_type']=='STU'){ ?>
-                  <a href="/MIS/ojt/OJTInfo.php">Training Place Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/ojt/OJTInfo.php">Training Place Info</a>
                 </li><?php } ?>
                 <li><?php if($_SESSION['user_type']=='ADM'){ ?>
                   <a href="#">Placement Change</a>
                 </li>
                 <li>
-                  <a href="/MIS/ojt/OJTReport.php">OJT Report</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/ojt/OJTReport.php">OJT Report</a>
                 </li><?php } ?>
               </ul>
             </div>
@@ -350,17 +350,17 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li><?php if($_SESSION['user_type']=='WAR'||'ADM' ){ ?>
-                  <a href="/MIS/hostel/Hostel.php">Hostels Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Hostel.php">Hostels Info</a>
                 </li>
                 <li>
-                  <a href="/MIS/hostel/AddHostel.php">Add a Hostel</a>    
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/AddHostel.php">Add a Hostel</a>    
                 </li>              
                 <li>
                   <a href="#">Add a Room</a>
                   <hr>
                 </li><?php } ?>
                 <li><?php if($_SESSION['user_type']=='STU' ){ ?>
-                  <a href="/MIS/student/RequestHostel.php">Request Hostel</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/RequestHostel.php">Request Hostel</a>
                 </li><?php } ?>
               </ul>
             </div>
@@ -376,23 +376,23 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="StudentFeedbackinfo">Students Feedback Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentFeedbackinfo.php">Students Feedback Info</a>
                 </li>
                 <li>
-                  <a href="AddStudentFeedback">Create a Student Feedback</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/AddStudentFeedback.php">Create a Student Feedback</a>
                   <hr>
                 </li>              
                 <li>
-                  <a href="TeacherFeedback">Teacher Feedback Info</a>
+                  <a href="#">Teacher Feedback Info</a>
                 </li>
                 <li>
-                  <a href="AddTeacherFeedback">Create a Teacher Feedback</a>
+                  <a href="#">Create a Teacher Feedback</a>
                 </li>
                 <li>
-                  <a href="IndustryFeedback">Industry Feedback Info</a>
+                  <a href="#">Industry Feedback Info</a>
                 </li>
                 <li>
-                  <a href="AddIndustryFeedback">Create a Industry Feedback</a>
+                  <a href="#">Create a Industry Feedback</a>
                 </li>
               </ul>
             </div>
@@ -408,20 +408,20 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="InventoryInfo">Inventory Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/inventory/InventoryInfo.php">Inventory Info</a>
                 </li>
                 <li>
-                  <a href="AddInventory">Add a Inventory</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/inventory/AddInventory.php">Add a Inventory</a>
                   <hr>
                 </li>              
                 <li>
-                  <a href="AddItem">Add a Item</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/item/AddItem.php">Add a Item</a>
                 </li>
                 <li>
-                  <a href="AddSupplier">Add a Supplier</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/supplier/AddSupplier.php">Add a Supplier</a>
                 </li>
                 <li>
-                  <a href="InventoryReport">Inventory Report</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/inventory/InventoryReport.php">Inventory Report</a>
                 </li>
               </ul>
             </div>
@@ -437,19 +437,19 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="LibraryHome">Library Home</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/LibraryHome.php">Library Home</a>
                 </li>
                 <li>
-                  <a href="AddBook">Add a Book</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/book/AddBook.php">Add a Book</a>
                 </li>
                 <li>
-                  <a href="IssueBook">Issue a Book</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/book/IssueBook.php">Issue a Book</a>
                 </li>
                 <li>
-                  <a href="ViewBooks">All Book</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/book/ViewBooks.php">All Book</a>
                 </li>
                 <li>
-                  <a href="IssuedBook">Issued Books Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/book/IssuedBook.php">Issued Books Info</a>
                 </li>
               </ul>
             </div>
@@ -464,21 +464,21 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li><?php if($_SESSION['user_type']!='STU'){ ?>
-                  <a href="FoodItems">Food Items</a>
+                  <a href="#">Food Items</a>
                 </li> <?php } ?>
                 <li><?php if($_SESSION['user_type']!='STU'){ ?>
-                  <a href="AddFoodItem">Add a Food Item</a>
+                  <a href="#">Add a Food Item</a>
                   <hr>
                 </li>  <?php } ?>             
                 <li>
-                  <a href="FoodOrders">Food Orders</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/food/FoodOrders.php">Food Orders</a>
                   <hr>
                 </li>
                 <li> <?php if($_SESSION['user_type']!='STU'){ ?>
-                  <a href="CanteenReport">Daily Report</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/canteen/CanteenReport.php">Daily Report</a>
                 </li> <?php } ?> 
                 <li><?php if($_SESSION['user_type']!='STU'){ ?>
-                  <a href="dailyorder">Daily Orders</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/order/dailyorder.php">Daily Orders</a>
                 </li> <?php } ?>
               </ul>
             </div>
@@ -494,14 +494,14 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul> 
                 <li> <?php if(($_SESSION['user_type']=='ACC') || ($_SESSION['user_type']=='ADM')) { ?>
-                  <a href="Payments">Payments Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/payment/Payments.php">Payments Info</a>
                 </li>
                 <li> 
-                  <a href="Payment">Make a Payment</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/payment/Payment.php">Make a Payment</a>
                   <hr>
                 </li>           
                 <li>
-                  <a href="PaymentsReport">Payments Report</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/payment/PaymentsReport.php">Payments Report</a>
                 </li> <?php } ?> 
                   </ul>
             </div>
@@ -517,17 +517,17 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul> <?php if($_SESSION['user_type']!='STU'){ ?>
                 <li>
-                  <a href="OnPeak">On-Peak Info </a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/onpeak&offpeak/OnPeak.php">On-Peak Info </a>
                 </li> <?php } ?>
                 <li> <?php if($_SESSION['user_type']=='STU' ){ ?>
-                  <a href="RequestOnPeak">Request a On-Peak</a>
+                  <a href="#">Request a On-Peak</a>
                   <hr>
                 </li> <?php } ?>             
                 <li><?php if($_SESSION['user_type']=='WAR' ){ ?>
-                  <a href="OffPeak">Off-Peak Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/onpeak&offpeak/OffPeak.php">Off-Peak Info</a>
                 </li><?php } ?>
                 <li><?php if($_SESSION['user_type']=='STU' ){ ?>
-                  <a href="RequestOffPeak">Request a Off-Peak</a>
+                  <a href="#">Request a Off-Peak</a>
                 </li><?php } ?> 
               </ul>
             </div>
@@ -542,10 +542,10 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>  <?php if((($_SESSION['user_type'] =='WAR') || ($_SESSION['user_type'] =='HOD') || ($_SESSION['user_type'] =='STU'))) { ?>
-                  <a href="/MIS/blood/BloodDonations.php">Blood Donations Info</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/blood/BloodDonations.php">Blood Donations Info</a>
                 </li> <?php } ?> 
                 <li><?php if((($_SESSION['user_type'] =='WAR') || ($_SESSION['user_type'] =='HOD') || ($_SESSION['user_type'] =='STU'))) { ?>
-                  <a href="/MIS/blood/BloodDonors.php">Blood Donors</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/blood/BloodDonors.php">Blood Donors</a>
                   <hr>
                 </li>  <?php } ?>             
                 <li><?php if($_SESSION['user_type'] =='ADM') { ?>
@@ -568,13 +568,13 @@ if($u_ta=='staff'){
             </a>
           </li>
           <li>
-            <a href="Timetable.new">
+            <a href="#">
               <i class="fa fa-calendar"></i>
               <span>Calendar</span>
             </a>
           </li>        
           <li>
-            <a href="/MIS/password/change_password.php">
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/password/change_password.php">
               <i class="fa fa-key"></i>
               <span>Change Password</span>
             </a>
@@ -585,19 +585,19 @@ if($u_ta=='staff'){
     </div>
     <!-- sidebar-content  -->
     <div class="sidebar-footer">
-      <a href="notifications">
+      <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/notification/notifications.php">
         <i class="fa fa-bell"></i>
         <span class="badge badge-pill badge-warning notification">3</span>
       </a>
-      <a href="chat">
+      <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/chat/chat.php">
         <i class="fab fa-facebook-messenger"></i>
         <span class="badge badge-pill badge-success notification">7</span>
       </a>
-      <a href="<?php if($_SESSION['user_type']=='STU'){echo '/MIS/student/Student_profile.php';}else{echo '/MIS/Profile.php';}  ?>">
+      <a href="<?php if($_SESSION['user_type']=='STU'){echo (defined('APP_BASE') ? APP_BASE : '').'/student/Student_profile.php';}else{echo (defined('APP_BASE') ? APP_BASE : '').'/Profile.php';}  ?>">
         <i class="fa fa-cog"></i>
         <span class="badge-sonar"></span>
       </a>
-      <a href="/MIS/index?signout">
+      <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/index?signout">
         <i class="fa fa-power-off"></i>
       </a>
     </div>

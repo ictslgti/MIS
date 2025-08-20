@@ -123,7 +123,7 @@ if (mysqli_num_rows($result) > 0){
         <td>' . htmlspecialchars($row ["department_id"]) .'</td>
         <td>' . htmlspecialchars($row ["department_name"]) .'</td>
         <td>
-        <a href="/MIS/course/Course.php?id=' . urlencode($row["department_id"]) . '" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-book">&nbsp;&nbsp;Course</i></a>';
+        <a href="' . (defined('APP_BASE') ? APP_BASE : '') . '/course/Course.php?id=' . urlencode($row["department_id"]) . '" class="btn btn-sm btn-primary" role="button" aria-pressed="true"><i class="fas fa-book">&nbsp;&nbsp;Course</i></a>';
         ?>
         <?php if(($_SESSION['user_type'] =='ADM')) { ?><?php echo'<a href="AddDepartment.php?edit=' . urlencode($row["department_id"]) . '" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a>
         <button class="btn btn-sm btn-danger" data-href="?delete=' . urlencode($row["department_id"]) . '" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> ';?>

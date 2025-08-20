@@ -1,7 +1,7 @@
 <?php
 if(!isset($_SESSION['user_name'])){
-    // Redirect to absolute app login to work from any subdirectory
-    header('Location: /MIS/index');
+    // Redirect to app login using configured base path
+    header('Location: ' . (defined('APP_BASE') ? APP_BASE : '') . '/index');
     exit();
 }
 ?>
@@ -11,11 +11,13 @@ if(!isset($_SESSION['user_name'])){
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="/MIS/img/favicon.ico" type="image/x-icon">
+    <?php $__base = (defined('APP_BASE') ? APP_BASE : ''); if ($__base !== '' && substr($__base,-1) !== '/') { $__base .= '/'; } ?>
+    <base href="<?php echo $__base === '' ? '/' : $__base; ?>">
+    <link rel="shortcut icon" href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/MIS/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/MIS/css/signin.css">
-    <link href="/MIS/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/css/signin.css">
+    <link href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <title><?php echo $title; ?></title>
