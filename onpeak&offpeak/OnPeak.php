@@ -13,51 +13,29 @@ include_once("../menu.php");
    <!-- Content here -->
 
    <?php
-   if(isset($_POST['approved'])){
-    $id=$_POST['approved'];
-      
-    $result = mysqli_query($con ,$sql);
- if(mysqli_num_rows($result)== 1){
-      $row = mysqli_fetch_assoc($result);
-
-    $sql = "UPDATE `onpeak_request` 
-    SET `onpeak_request_status`='Approved'
-     WHERE `onpeak_request`.`id`= '$id'";
-    
-if (mysqli_query($con, $sql)) {
-   
-    //echo " New record Updated";
-} else {
-     echo " Error : ". $sql . 
-    "<br>" . mysqli_error($con);
-}
+   if (isset($_POST['approved'])) {
+     $id = mysqli_real_escape_string($con, $_POST['approved']);
+     $sql = "UPDATE `onpeak_request` SET `onpeak_request_status`='Approved' WHERE `id`='$id'";
+     if (mysqli_query($con, $sql)) {
+       echo '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Request approved.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+     } else {
+       echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Error: '.htmlspecialchars(mysqli_error($con)).'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+     }
    }
-  }
 
    ?>
 
 
    <?php
-   if(isset($_POST['NotApproved'])){
-    $id=$_POST['NotApproved'];
-     
-    $result = mysqli_query($con ,$sql);
- if(mysqli_num_rows($result)== 1){
-      $row = mysqli_fetch_assoc($result);
-
-    $sql = "UPDATE `onpeak_request` 
-    SET `onpeak_request_status`='Not Approved'
-     WHERE `onpeak_request`.`id`= '$id'";
-    
-if (mysqli_query($con, $sql)) {
-   
-    //echo " New record Updated";
-} else {
-     echo " Error : ". $sql . 
-    "<br>" . mysqli_error($con);
-}
+   if (isset($_POST['NotApproved'])) {
+     $id = mysqli_real_escape_string($con, $_POST['NotApproved']);
+     $sql = "UPDATE `onpeak_request` SET `onpeak_request_status`='Not Approved' WHERE `id`='$id'";
+     if (mysqli_query($con, $sql)) {
+       echo '<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Request not approved.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+     } else {
+       echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Error: '.htmlspecialchars(mysqli_error($con)).'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+     }
    }
-  }
 
    ?>
 

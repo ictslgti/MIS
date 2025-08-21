@@ -34,7 +34,7 @@ if($u_ta=='staff'){
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
       <div class="sidebar-brand">
-        <a href="#">MIS@SLGTI</a>
+        <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?><?php echo ($_SESSION['user_type']=='STU') ? '/home/home.php' : '/dashboard/index.php'; ?>">MIS@SLGTI</a>
         <div id="close-sidebar">
           <i class="fas fa-times"></i>
         </div>
@@ -50,7 +50,11 @@ if($u_ta=='staff'){
           <span class="user-role"><?php echo htmlspecialchars($u_t ?: ''); ?> | <?php echo htmlspecialchars($d_c ?: ''); ?> </span>
           <span class="user-status">
             <i class="fa fa-user"></i>
-            <span><a href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); echo ($_SESSION['user_type']=='STU') ? '/student/Student_profile.php' : '/Profile.php'; ?>">Profile</a></span>
+            <span>
+              <a href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); echo ($_SESSION['user_type']=='STU') ? '/student/Student_profile.php' : '/Profile.php'; ?>">Profile</a>
+              &nbsp;|&nbsp;
+              <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/logout.php">Logout</a>
+            </span>
           </span>
         </div>
       </div>
@@ -504,7 +508,7 @@ if($u_ta=='staff'){
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/onpeak&offpeak/OnPeak.php">On-Peak Info </a>
                 </li> <?php } ?>
                 <li> <?php if($_SESSION['user_type']=='STU' ){ ?>
-                  <a href="#">Request a On-Peak</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/onpeak&offpeak/RequestOnPeak.php">Request a On-Peak</a>
                   <hr>
                 </li> <?php } ?>             
                 <li><?php if($_SESSION['user_type']=='WAR' ){ ?>
@@ -568,23 +572,7 @@ if($u_ta=='staff'){
       <!-- sidebar-menu  -->
     </div>
     <!-- sidebar-content  -->
-    <div class="sidebar-footer">
-      <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/notification/notifications.php">
-        <i class="fa fa-bell"></i>
-        <span class="badge badge-pill badge-warning notification">3</span>
-      </a>
-      <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/chat/chat.php">
-        <i class="fab fa-facebook-messenger"></i>
-        <span class="badge badge-pill badge-success notification">7</span>
-      </a>
-      <a href="<?php if($_SESSION['user_type']=='STU'){echo (defined('APP_BASE') ? APP_BASE : '').'/student/Student_profile.php';}else{echo (defined('APP_BASE') ? APP_BASE : '').'/Profile.php';}  ?>">
-        <i class="fa fa-cog"></i>
-        <span class="badge-sonar"></span>
-      </a>
-      <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/index?signout">
-        <i class="fa fa-power-off"></i>
-      </a>
-    </div>
+    <div class="sidebar-footer" style="display:none;"></div>
   </nav>
 
   <main class="page-content">

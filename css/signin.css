@@ -128,11 +128,12 @@ body {
   left: 0px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
   .page-wrapper.toggled .page-content {
-    padding-left: 250px;
+    padding-left: 260px;
   }
 }
+
 /*----------------show sidebar button----------------*/
 #show-sidebar {
   position: fixed;

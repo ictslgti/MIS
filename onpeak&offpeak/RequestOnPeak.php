@@ -24,21 +24,21 @@ include_once("../menu.php");
 
  $student_id=$name= $department_id=null;
  if($_SESSION['user_type']=='STU'){
-   $sql ="SELECT 
-   `onpeak_request`.`student_id`,
-   `student`.`student_id`,
-   `department`.`department_id`
-  FROM `onpeak_request`
-   LEFT JOIN `student` ON `onpeak_request`.`student_id`=`student`.`student_id` 
-   LEFT JOIN `department` ON `department`.`department_id`=`onpeak_request`.`department_id` WHERE `onpeak_request`.`student_id` = '$s_id'";
-   $result = mysqli_query($con ,$sql);
-  if(mysqli_num_rows($result)== 1){
-   $row = mysqli_fetch_assoc($result);
-//    $student_id = $row['student_id'];
-   
-   $department_id = $row['department_id'];
-  }
-}
+   // Derive current department_id from the student's active enrollment
+   $sql = "SELECT d.department_id
+           FROM student_enroll e
+           JOIN course c ON e.course_id = c.course_id
+           JOIN department d ON c.department_id = d.department_id
+           WHERE e.student_id = '$s_id' AND e.student_enroll_status='Following'
+           LIMIT 1";
+   if ($result = mysqli_query($con, $sql)) {
+     if (mysqli_num_rows($result) >= 1) {
+       $row = mysqli_fetch_assoc($result);
+       $department_id = $row['department_id'];
+     }
+     mysqli_free_result($result);
+   }
+ }
 ?>
 
 <?PHP
@@ -46,21 +46,21 @@ if(isset($_POST['req'])){
     
 
 
-     
-      $s_id=$_POST['student_id'];
-      $d_id=$_POST['department_id'];
-      $contact_no=$_POST['contact_no'];
-      $reason=$_POST['reason'];
-      $exit_date=$_POST['exit_date'];
-      $exit_time=$_POST['exit_time'];
-      $return_date=$_POST['return_date'];
-      $return_time=$_POST['return_time'];
-      $comment=$_POST['comment'];
+     $s_id = mysqli_real_escape_string($con, $_POST['student_id']);
+     // Use derived $department_id (no user input)
+     $d_id = mysqli_real_escape_string($con, $department_id);
+     $contact_no = mysqli_real_escape_string($con, $_POST['contact_no']);
+     $reason = mysqli_real_escape_string($con, $_POST['reason']);
+     $exit_date = mysqli_real_escape_string($con, $_POST['exit_date']);
+     $exit_time = mysqli_real_escape_string($con, $_POST['exit_time']);
+     $return_date = mysqli_real_escape_string($con, $_POST['return_date']);
+     $return_time = mysqli_real_escape_string($con, $_POST['return_time']);
+     $comment = mysqli_real_escape_string($con, $_POST['comment']);
       
      
     
       $sql= "INSERT INTO `onpeak_request`(`student_id`,`department_id`, `contact_no`, `reason`, `exit_date`, `exit_time`, `return_date`, `return_time`, `comment`) 
-       VALUES ('$s_id','$d_id','$contact_no','$reason','$exit_date','$exit_time','$return_date','$return_time','$comment')";
+      VALUES ('$s_id','$d_id','$contact_no','$reason','$exit_date','$exit_time','$return_date','$return_time','$comment')";
 
       if(mysqli_query($con,$sql))
       {
@@ -148,30 +148,12 @@ if(isset($_POST['req'])){
                         <label class="input-group-text" for="inputGroupSelect01"> 
                             <i class="fas fa-fingerprint"> </i>&nbsp;&nbsp;Registration No&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" id="student_id" name="student_id" type="text" value="<?php if($_SESSION['user_type']=='STU') echo $s_id;?>" >
+                    <input class="form-control" id="student_id" name="student_id" type="text" value="<?php if($_SESSION['user_type']=='STU') echo $s_id;?>" readonly>
                  </div> 
 
 <br>       
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">
-                            <i class="fas fa-school"></i>&nbsp;&nbsp;Department ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    </div>
-                    
-                    <select class="browser-default custom-select" name="department_id"  id="department_id"  required>
-                       <option value="1"> Select the Department ID </option> 
-                                <?php
-                                    $sql="select * from `department`";
-                                    $result = mysqli_query($con,$sql);
-                                    if (mysqli_num_rows($result) > 0 ) {
-                                    while($row=mysqli_fetch_assoc($result)){
-                                    echo '<option  value="'.$row["department_id"].'" required>'.$row["department_id"].'</option>';
-                                    }}   
-                                ?>
-                    </select>
-                   
-                </div>
+                
 
 
  
@@ -282,7 +264,6 @@ if(isset($_POST['req'])){
                         <div class="col">
                             <div class="mx-auto" style="width: 200px;">
                             <button type="button" name="reset" class="btn btn-secondary" onclick="document.getElementById('contact_no').value = '';
-                                                                                        document.getElementById('department_id').value = '';
                                                                                         document.getElementById('reason').value = '';
                                                                                         document.getElementById('exit_date').value = '';
                                                                                         document.getElementById('exit_time').value = '';

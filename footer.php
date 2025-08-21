@@ -82,14 +82,34 @@ $("#show-sidebar").click(function() {
 $(".page-wrapper").addClass("toggled");
 });
 
+  // Responsive behavior: on mobile, start collapsed and auto-close after navigation
+  function isMobile() {
+    return window.matchMedia('(max-width: 991.98px)').matches; // Bootstrap lg breakpoint
+  }
 
+  // Initial state based on viewport: desktop open (fixed), mobile closed (click to open)
+  if (isMobile()) {
+    $(".page-wrapper").removeClass("toggled");
+  } else {
+    $(".page-wrapper").addClass("toggled");
+  }
 
+  // Update on resize
+  $(window).on('resize', function() {
+    if (isMobile()) {
+      $(".page-wrapper").removeClass("toggled");
+    } else {
+      $(".page-wrapper").addClass("toggled");
+    }
+  });
 
-});
+  // After clicking any sidebar link on mobile, hide the sidebar to show content
+  $('#sidebar a').on('click', function() {
+    if (isMobile()) {
+      $(".page-wrapper").removeClass("toggled");
+    }
+  });
 
-//delete model
-$('#confirm-delete').on('show.bs.modal', function(e) {
-$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
 });
 
