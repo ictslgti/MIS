@@ -1,33 +1,23 @@
-<!------START DON'T CHANGE ORDER HEAD,MANU,FOOTER----->
-<!---BLOCK 01--->
 <?php 
-  
+/** START DON'T CHANGE ORDER HEAD, MENU, FOOTER (converted to PHP comment to avoid early output) */
+// Start output buffering so we can safely send redirects after includes
+if (!headers_sent()) { ob_start(); }
+
 // Always include root-level files using absolute paths
 require_once __DIR__ . '/../config.php';
 
-$title ="STUDENT PROFILE | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
-require_once __DIR__ . '/../head.php';
-require_once __DIR__ . '/../menu.php';
 
-?>
-<!----END DON'T CHANGE THE ORDER---->
+// Check once if optional last-updated column exists
+$hasUpdatedAt = false;
+$__col = mysqli_query($con, "SHOW COLUMNS FROM `student` LIKE 'student_updated_at'");
+if ($__col && mysqli_num_rows($__col) === 1) { $hasUpdatedAt = true; }
+if ($__col) { mysqli_free_result($__col); }
 
-
-<!---BLOCK 02--->
-<!---START YOUR CODER HERE----->
-
-
-<!-----END YOUR CODE----->
-<?php
-$stid = $title = $fname = $ininame = $gender = $civil = $img = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $mode = $depth = $level =
-$ename = $eaddress = $ephone = $id =$erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = $pass = $npass = $cpass =null;
-
-// Handle profile updates for logged-in student (no Sid view)
+// Handle profile updates for logged-in student (no Sid view) BEFORE output
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'update_profile' && !isset($_GET['Sid'])) {
   if (session_status() === PHP_SESSION_NONE) { session_start(); }
   $loggedUser = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null;
   if ($loggedUser) {
-    // Personal info
     $p_title   = isset($_POST['title']) ? trim($_POST['title']) : null;
     $p_fname   = isset($_POST['fullname']) ? trim($_POST['fullname']) : null;
     $p_ininame = isset($_POST['ininame']) ? trim($_POST['ininame']) : null;
@@ -47,30 +37,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $u_eaddress= isset($_POST['eaddress']) ? trim($_POST['eaddress']) : null;
     $u_erel    = isset($_POST['erelation']) ? trim($_POST['erelation']) : null;
 
-    // Prepared update (personal + contact + emergency)
     $sqlUpd = "UPDATE student SET student_title=?, student_fullname=?, student_ininame=?, student_gender=?, student_civil=?, student_dob=?, student_blood=?, student_email=?, student_phone=?, student_address=?, student_zip=?, student_district=?, student_divisions=?, student_provice=?, student_em_name=?, student_em_phone=?, student_em_address=?, student_em_relation=? WHERE student_id=?";
     if ($stmt = mysqli_prepare($con, $sqlUpd)) {
       mysqli_stmt_bind_param($stmt, 'sssssssssssssssssss', $p_title, $p_fname, $p_ininame, $p_gender, $p_civil, $p_dob, $p_blood, $u_email, $u_phone, $u_address, $u_zip, $u_district, $u_division, $u_province, $u_ename, $u_ephone, $u_eaddress, $u_erel, $loggedUser);
       if (mysqli_stmt_execute($stmt)) {
-        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Profile updated successfully.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+        if ($hasUpdatedAt) {
+          if ($ts = mysqli_prepare($con, "UPDATE student SET student_updated_at=NOW() WHERE student_id=?")) {
+            mysqli_stmt_bind_param($ts, 's', $loggedUser);
+            mysqli_stmt_execute($ts);
+            mysqli_stmt_close($ts);
+          }
+        }
+        // Clean buffer and redirect (PRG)
+        if (!headers_sent()) {
+          header('Location: /student/Student_profile.php?updated=1');
+        } else {
+          echo '<script>window.location.href = "/student/Student_profile.php?updated=1";</script>';
+        }
+        exit;
       } else {
+        // fall-through to page render with error alert
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Failed to update profile. Please try again.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
       }
       mysqli_stmt_close($stmt);
     }
   }
 }
+
+$title ="STUDENT PROFILE | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
+require_once __DIR__ . '/../head.php';
+require_once __DIR__ . '/../menu.php';
+?>
+<?php /** END DON'T CHANGE THE ORDER (moved to PHP comment) */ ?>
+
+
+<!---BLOCK 02--->
+<!---START YOUR CODER HERE----->
+
+
+<!-----END YOUR CODE----->
+<?php
+// Show flash message after redirects (PRG pattern)
+if (isset($_GET['updated']) && $_GET['updated'] === '1' && !isset($_GET['Sid'])) {
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Profile updated successfully.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+}
+$stid = $title = $fname = $ininame = $gender = $civil = $img = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $mode = $depth = $level =
+$ename = $eaddress = $ephone = $id =$erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = $pass = $npass = $cpass = $updatedAt = null;
+
+// (removed duplicate POST handler; handled at the top before any output)
 // Handle profile image upload for logged-in student (no Sid view)
-elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_upload']) && !isset($_GET['Sid'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_upload']) && !isset($_GET['Sid'])) {
   if (session_status() === PHP_SESSION_NONE) { session_start(); }
   $loggedUser = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null;
   if ($loggedUser && isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     $tmpName = $_FILES['image']['tmp_name'];
-    $size = (int)$_FILES['image']['size'];
-    // Validate size (<= 2MB)
-    if ($size > 2 * 1024 * 1024) {
-      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">Image too large. Max 2MB.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
-    } else {
+    // No server-side size limit here; relies on PHP upload_max_filesize/post_max_size
       $imgData = file_get_contents($tmpName);
       if ($imgData !== false) {
         // Optional: basic type check
@@ -85,7 +106,7 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_upload']) && !
         } else {
           $sqlUpdImg = "UPDATE student SET student_profile_img=? WHERE student_id=?";
           if ($stmt = mysqli_prepare($con, $sqlUpdImg)) {
-            // Bind as strings; mysqli handles binary safely in prepared statements
+            // Bind and execute. MySQLi prepared statements handle BLOBs as strings.
             mysqli_stmt_bind_param($stmt, 'ss', $imgData, $loggedUser);
             if (mysqli_stmt_execute($stmt)) {
               echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Profile image updated.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
@@ -96,7 +117,6 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_upload']) && !
           }
         }
       }
-    }
   }
 }
 if(isset($_GET['Sid']))
@@ -105,7 +125,7 @@ if(isset($_GET['Sid']))
  $sql = "SELECT user_name,e.course_id,`student_title`,`student_fullname`,`student_profile_img`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,`student_profile_img`,
 `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,`student_em_address`,
 `student_em_phone`,`student_em_relation`,`student_status`,`course_name`,`department_name`,`course_mode`,course_nvq_level,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
-`student_enroll_status`,`user_password_hash` FROM `student` as s, student_enroll as e, user as u, course as c, department as d WHERE user_name=s.student_id and s.student_id=e.student_id 
+`student_enroll_status`,`user_password_hash`" . ($hasUpdatedAt ? ", `student_updated_at`" : "") . " FROM `student` as s, student_enroll as e, user as u, course as c, department as d WHERE user_name=s.student_id and s.student_id=e.student_id 
  and e.course_id=c.course_id and  c.department_id=d.department_id and `student_enroll_status`='Following' and user_name='$username'";
 $result = mysqli_query($con,$sql);
 
@@ -144,6 +164,7 @@ $result = mysqli_query($con,$sql);
     $id=$row['course_id'];
     $pass=$row['user_password_hash'];
     $img=$row['student_profile_img'];
+    if ($hasUpdatedAt && isset($row['student_updated_at'])) { $updatedAt = $row['student_updated_at']; }
   }
 }
 else
@@ -262,7 +283,16 @@ $result = mysqli_query($con,$sql);
       <div class="mt-2">
         <div class="form-group mb-2">
           <input type="hidden" name="do_upload" value="1" />
-          <input type="file" name="image" id="image" accept="image/*" class="form-control-file" onchange="this.form.submit();" />
+          <input type="file" name="image" id="image" accept="image/*" class="form-control-file" />
+        </div>
+        <div class="text-muted small mt-1">
+          <strong>Photo Guidelines:</strong>
+          <ul class="mb-0 pl-3">
+            <li>Photo Size: Standard passport size</li>
+            <li>Background: Blue</li>
+            <li>Boys' Dress Code: White shirt with black trousers, proper haircut, clean-shaven</li>
+            <li>Girls' Dress Code: White blouse with black skirt/trousers, neat hairstyle</li>
+          </ul>
         </div>
         <noscript>
           <button type="submit" class="btn btn-sm btn-outline-primary">Upload</button>
@@ -276,6 +306,9 @@ $result = mysqli_query($con,$sql);
         <h5 class="text-muted"><b><?php echo $title.".".$fname; ?></b></h5>
         <h6 class="text-muted"><?php echo $username; ?></h6>
         <h6 class="text-muted"><?php echo $nic; ?></h6>
+        <?php if ($hasUpdatedAt): ?>
+        <small class="text-muted d-block">Last Edited: <?php echo $updatedAt ? date('Y-m-d H:i', strtotime($updatedAt)) : 'N/A'; ?></small>
+        <?php endif; ?>
         <?php if(!isset($_GET['Sid'])): ?>
         <div class="mb-2">
           <a class="btn btn-sm btn-primary" href="/student/Student_profile.php?edit=1">Edit Profile</a>
@@ -379,6 +412,7 @@ $result = mysqli_query($con,$sql);
 </nav>
 <div class="tab-content shadow p-2 mb-4 bg-white rounded" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><br>
+        <?php if(!isset($_GET['edit'])): ?>
         <h5 style="border-bottom: 2px solid #aaa;"> Personal Information </h5><br>
         <div class="row" id="personal info">
             <div class="col-md-2 col-sm-4">
@@ -429,16 +463,34 @@ $result = mysqli_query($con,$sql);
             <div class="col-md-4 col-sm-4">
                 <h6 class="text-muted"> <?php echo $blood; ?>  </h6>
             </div>
+            <?php if ($hasUpdatedAt): ?>
+            <div class="col-md-2 col-sm-4">
+                <h6> Last Edited: </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> <?php echo $updatedAt ? date('Y-m-d H:i', strtotime($updatedAt)) : 'N/A'; ?> </h6>
+            </div>
+            <?php endif; ?>
         </div><br>
+        <?php endif; ?>
         <?php if(isset($_GET['edit']) && !isset($_GET['Sid'])): ?>
         <h5 style="border-bottom: 2px solid #aaa;"> Edit Personal Information </h5><br>
         <div class="row">
           <div class="col-12">
             <input type="hidden" name="action" value="update_profile" />
+            <div class="d-flex justify-content-end mb-3">
+              <button type="submit" class="btn btn-success">Save Changes</button>
+              <a href="/student/Student_profile.php" class="btn btn-secondary ml-2">Cancel</a>
+            </div>
             <div class="form-row">
               <div class="form-group col-md-3">
                 <label>Title</label>
-                <input type="text" class="form-control" name="title" value="<?php echo htmlspecialchars($title); ?>" />
+                <select class="form-control" name="title">
+                  <?php $__titles = ['Mr','Mrs','Ms']; ?>
+                  <?php foreach ($__titles as $__t): ?>
+                    <option value="<?php echo $__t; ?>" <?php echo ($title===$__t)?'selected':''; ?>><?php echo $__t; ?></option>
+                  <?php endforeach; ?>
+                </select>
               </div>
               <div class="form-group col-md-5">
                 <label>Full Name</label>
@@ -495,18 +547,55 @@ $result = mysqli_query($con,$sql);
             </div>
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label>District</label>
-                <input type="text" class="form-control" name="district" value="<?php echo htmlspecialchars($district); ?>" />
+                <label>Province</label>
+                <select class="form-control" id="provinceSelect" name="province"></select>
               </div>
               <div class="form-group col-md-4">
-                <label>Province</label>
-                <input type="text" class="form-control" name="province" value="<?php echo htmlspecialchars($province); ?>" />
+                <label>District</label>
+                <select class="form-control" id="districtSelect" name="district"></select>
               </div>
               <div class="form-group col-md-4">
                 <label>Zip</label>
                 <input type="text" class="form-control" name="zip" value="<?php echo htmlspecialchars($zip); ?>" />
               </div>
             </div>
+            <script>
+              (function(){
+                // Sri Lanka provinces and districts
+                const pd = {
+                  "Western": ["Colombo","Gampaha","Kalutara"],
+                  "Central": ["Kandy","Matale","Nuwara Eliya"],
+                  "Southern": ["Galle","Matara","Hambantota"],
+                  "Northern": ["Jaffna","Kilinochchi","Mannar","Mullaitivu","Vavuniya"],
+                  "Eastern": ["Trincomalee","Batticaloa","Ampara"],
+                  "North Western": ["Kurunegala","Puttalam"],
+                  "North Central": ["Anuradhapura","Polonnaruwa"],
+                  "Uva": ["Badulla","Monaragala"],
+                  "Sabaragamuwa": ["Kegalle","Ratnapura"]
+                };
+                const provSel = document.getElementById('provinceSelect');
+                const distSel = document.getElementById('districtSelect');
+                if (!provSel || !distSel) return;
+                const currentProv = <?php echo json_encode($province); ?> || '';
+                const currentDist = <?php echo json_encode($district); ?> || '';
+
+                function renderProvinces(){
+                  provSel.innerHTML = '<option value="">Select Province</option>' +
+                    Object.keys(pd).map(p => `<option value="${p}">${p}</option>`).join('');
+                  if (currentProv && pd[currentProv]) provSel.value = currentProv;
+                }
+                function renderDistricts(prov){
+                  const list = pd[prov] || [];
+                  distSel.innerHTML = '<option value="">Select District</option>' +
+                    list.map(d => `<option value="${d}">${d}</option>`).join('');
+                  if (prov === currentProv && list.includes(currentDist)) distSel.value = currentDist;
+                }
+                provSel.addEventListener('change', function(){ renderDistricts(this.value); });
+                // init
+                renderProvinces();
+                renderDistricts(currentProv);
+              })();
+            </script>
             <div class="form-group">
               <label>Divisional Secretariat</label>
               <input type="text" class="form-control" name="division" value="<?php echo htmlspecialchars($division); ?>" />
@@ -538,6 +627,7 @@ $result = mysqli_query($con,$sql);
         </div>
         <?php endif; ?>
 
+        <?php if(!isset($_GET['edit'])): ?>
         <h5 style="border-bottom: 2px solid #aaa;"> Contact Information </h5><br>
         <div class="row" id="personal info">
             <div class="col-md-2 col-sm-4">
@@ -562,17 +652,17 @@ $result = mysqli_query($con,$sql);
             </div>
 
             <div class="col-md-2 col-sm-4">
-            <h6> District:  </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo $district; ?>  </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
                 <h6> Province: </h6>
             </div>
             <div class="col-md-4 col-sm-4">
                 <h6 class="text-muted"> <?php echo $province; ?>  </h6>
+            </div>
+
+            <div class="col-md-2 col-sm-4">
+            <h6> District:  </h6>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <h6 class="text-muted"> <?php echo $district; ?>  </h6>
             </div>
 
             <div class="col-md-2 col-sm-4">
@@ -620,6 +710,7 @@ $result = mysqli_query($con,$sql);
                 <h6 class="text-muted"> <?php echo $erelation; ?> </h6>
             </div>
         </div>
+        <?php endif; ?>
   </div>
 
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
@@ -718,27 +809,27 @@ $result = mysqli_query($con,$sql);
 </form>
 </div>
 <script>
-
-$(document).ready(function(){
-   $('#insert').click(function(){
-      var image_name = $('#image').val();
-      if(image_name == '')
-      {
-          alert("Please Select Image");
-          return false;
-      }
-      else
-      {
-          var extension = $('#image').val().split('.').pop().toLowerCase();
-          if(jQuery.inArry(extension,['gif','png','jpg','jpeg']) == -1)
-          {
-              alert('Invalid Image File');
-              $('#image').val('');
-              return false;
-          }
-      }
-   });
-});
+// Image input validation and auto-submit
+(function(){
+  var img = document.getElementById('image');
+  if(!img) return;
+  img.addEventListener('change', function(){
+    var val = this.value || '';
+    if(!val){
+      alert('Please select an image');
+      return;
+    }
+    var ext = val.split('.').pop().toLowerCase();
+    var ok = ['gif','png','jpg','jpeg','webp'];
+    if (ok.indexOf(ext) === -1) {
+      alert('Invalid image file. Allowed: GIF, PNG, JPG, JPEG, WEBP');
+      this.value = '';
+      return;
+    }
+    // submit the parent form
+    if (this.form) this.form.submit();
+  });
+})();
 </script>
 
 <!---BLOCK 03--->

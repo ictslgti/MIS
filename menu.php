@@ -237,6 +237,7 @@ if($u_ta=='staff'){
               </ul>
             </div>
           </li>
+          <?php if($_SESSION['user_type'] != 'STU') { ?>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-award"></i>
@@ -244,14 +245,6 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <?php if($_SESSION['user_type'] == 'STU') { ?>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/assessment/AssessmentResults.php">My Results</a>
-                </li>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/assessment/AssessmentReport.php">Results Report</a>
-                </li>
-                <?php } else { ?>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/assessment/AssessmentResults.php">Assessment Results</a>
                 </li>
@@ -266,7 +259,6 @@ if($u_ta=='staff'){
                 </li>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/assessment/AssessmentReport.php">Assessment Report</a>
-                <?php } ?>
                 </li>
                 <hr>
                 <!-- <li>
@@ -278,7 +270,9 @@ if($u_ta=='staff'){
               </ul>
             </div>
           </li>
+          <?php } ?>
 
+          <?php if($_SESSION['user_type'] != 'STU') { ?>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-chalkboard-teacher"></i>
@@ -287,14 +281,6 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <?php if($_SESSION['user_type'] == 'STU') { ?>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/Attendance.php">My Attendance</a>
-                </li>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/AttendanceReport.php">Attendance Report</a>
-                </li>
-                <?php } else { ?>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/Attendance.php">Attendances Info</a>
                 </li>
@@ -308,11 +294,12 @@ if($u_ta=='staff'){
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/WarningsLetters.php">Warnings Letters</a>
                 </li>
-                <?php } ?>
               </ul>
             </div>
           </li>
+          <?php } ?>
 
+          <?php if($_SESSION['user_type'] != 'STU') { ?>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fas fa-briefcase"></i>
@@ -328,15 +315,6 @@ if($u_ta=='staff'){
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/ojt/addojt.php">Add a Training Place</a>
                   <hr>
                 </li> <?php } ?>             
-                <li><?php if($_SESSION['user_type']=='STU'){ ?>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentsRequest.php">Students Request</a>
-                </li><?php } ?>
-                <li> <?php if($_SESSION['user_type']=='STU'){ ?>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/reguest/PlacementRequest.php">Student Placement Request</a>
-                </li> <?php } ?>
-                <li><?php if($_SESSION['user_type']=='STU'){ ?>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/ojt/OJTInfo.php">Training Place Info</a>
-                </li><?php } ?>
                 <li><?php if($_SESSION['user_type']=='ADM'){ ?>
                   <a href="#">Placement Change</a>
                 </li>
@@ -346,7 +324,9 @@ if($u_ta=='staff'){
               </ul>
             </div>
           </li>
+          <?php } ?>
 
+          <?php if($_SESSION['user_type'] != 'STU') { ?>
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="far fa-building"></i>
@@ -365,12 +345,10 @@ if($u_ta=='staff'){
                   <a href="#">Add a Room</a>
                   <hr>
                 </li><?php } ?>
-                <li><?php if($_SESSION['user_type']=='STU' ){ ?>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/RequestHostel.php">Request Hostel</a>
-                </li><?php } ?>
               </ul>
             </div>
           </li>
+          <?php } ?>
 
 
           <li class="sidebar-dropdown"><?php if($_SESSION['user_type']=='ADM'){ ?> 

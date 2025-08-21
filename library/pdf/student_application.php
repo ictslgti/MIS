@@ -31,12 +31,12 @@ $pdf->SetTitle('Student Application Form');
 $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'Student Application Form', 'SLGTI');
 $pdf->setHeaderFont([PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN]);
 $pdf->setFooterFont([PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA]);
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+$pdf->SetMargins(10, 12, 10); // tighter margins for single A4
+$pdf->SetHeaderMargin(5);
+$pdf->SetFooterMargin(8);
+$pdf->SetAutoPageBreak(TRUE, 12);
 $pdf->setFontSubsetting(true);
-$pdf->SetFont('times', '', 11);
+$pdf->SetFont('helvetica', '', 10); // compact, readable font
 $pdf->AddPage();
 
 // 1) Write page header first
@@ -45,7 +45,7 @@ $header .= '<h4 style="text-align:center">Student Application Form</h4><hr/>';
 $pdf->writeHTML($header, true, false, true, false, '');
 
 // 2) Render photo at the same top Y as content (top-right)
-$imgW = 30; $imgH = 35;
+$imgW = 25; $imgH = 30; // slightly smaller to save space
 $x = $pdf->getPageWidth() - PDF_MARGIN_RIGHT - $imgW;
 $y = $pdf->GetY();
 // Removed border box around photo
@@ -66,7 +66,7 @@ $pdf->SetRightMargin(PDF_MARGIN_RIGHT);
 $html = '';
 $html .= '<table width="100%" cellpadding="0" cellspacing="0"><tr>';
 $html .= '<td width="83%" valign="top">';
-$html .= '<table cellpadding="4" cellspacing="0" border="0" width="100%">';
+$html .= '<table cellpadding="2" cellspacing="0" border="0" width="100%">';
 $rows = [
   ['Student ID', $st['student_id']],
   ['Full Name', $st['student_title'] . '. ' . $st['student_fullname']],
@@ -104,6 +104,25 @@ foreach ($erows as $r) {
   $html .= '<tr><td width="30%"><b>'.htmlspecialchars($r[0]).'</b></td><td width="70%">'.htmlspecialchars((string)$r[1]).'</td></tr>';
 }
 $html .= '</table>';
+
+$html .= '<br/>';
+$html .= '<h5>Registration</h5>';
+$html .= '<table cellpadding="4" cellspacing="0" border="0" width="100%">';
+$html .= '<tr><td width="30%"><b>Registration Fee</b></td><td width="70%">LKR 1,500 (payable at the SLGTI Finance Office)</td></tr>';
+$html .= '<tr><td width="30%"><b>Note</b></td><td width="70%">Please attach the payment bill/receipt issued by the Finance Office with this application.</td></tr>';
+$html .= '</table>';
+
+// Signature section at the bottom
+$html .= '<br/><br/>';
+$html .= '<table width="100%" cellpadding="10" cellspacing="0" border="0">';
+$html .= '<tr>';
+$html .= '<td width="33%" align="center">__________________________<br/><span style="font-size:10px;">Student Signature</span></td>';
+$html .= '<td width="34%" align="center">__________________________<br/><span style="font-size:10px;">Cashier Signature</span></td>';
+$html .= '<td width="33%" align="center">__________________________<br/><span style="font-size:10px;">Date</span></td>';
+$html .= '</tr>';
+$html .= '</table>';
+
+$html .= '<div style="font-size:10px; margin-top:6px;"><b>Attached Bill:</b> Yes / No</div>';
 
 $pdf->writeHTML($html, true, false, true, false, '');
 // Clean any previous output to avoid header issues
