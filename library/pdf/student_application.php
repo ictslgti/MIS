@@ -39,9 +39,9 @@ $pdf->setFontSubsetting(true);
 $pdf->SetFont('helvetica', '', 10); // compact, readable font
 $pdf->AddPage();
 
-// 1) Write page header first
-$header = '<h3 style="text-align:center">SRI LANKA GERMAN TRAINING INSTITUTE</h3>';
-$header .= '<h4 style="text-align:center">Student Application Form</h4><hr/>';
+// 1) Write page header first (smaller to save space)
+$header = '<h4 style="text-align:center; margin:2px 0;">SRI LANKA GERMAN TRAINING INSTITUTE</h4>';
+$header .= '<h5 style="text-align:center; margin:2px 0 6px;">Student Application Form</h5><hr style="margin:4px 0;"/>';
 $pdf->writeHTML($header, true, false, true, false, '');
 
 // 2) Render photo at the same top Y as content (top-right)
@@ -92,8 +92,8 @@ $html .= '</table>';
 $html .= '</td>';
 $html .= '<td width="17%" valign="top">&nbsp;</td>';
 $html .= '</tr></table><br/>';
-$html .= '<h5>Emergency Contact</h5>';
-$html .= '<table cellpadding="4" cellspacing="0" border="0" width="100%">';
+$html .= '<h5 style="margin:6px 0 2px;">Emergency Contact</h5>';
+$html .= '<table cellpadding="2" cellspacing="0" border="0" width="100%">';
 $erows = [
   ['Name', $st['student_em_name']],
   ['Phone', $st['student_em_phone']],
@@ -105,16 +105,35 @@ foreach ($erows as $r) {
 }
 $html .= '</table>';
 
+// Registration Fee Payment (detailed)
 $html .= '<br/>';
-$html .= '<h5>Registration</h5>';
-$html .= '<table cellpadding="4" cellspacing="0" border="0" width="100%">';
-$html .= '<tr><td width="30%"><b>Registration Fee</b></td><td width="70%">LKR 1,500 (payable at the SLGTI Finance Office)</td></tr>';
-$html .= '<tr><td width="30%"><b>Note</b></td><td width="70%">Please attach the payment bill/receipt issued by the Finance Office with this application.</td></tr>';
+$html .= '<h5 style="margin:6px 0 2px;">Registration Fee Payment</h5>';
+$html .= '<table cellpadding="2" cellspacing="0" border="0" width="100%">';
+$html .= '<tr><td width="30%"><b>Registration Fee</b></td><td width="70%">Each student must pay LKR 1,500 as the registration fee.</td></tr>';
+$html .= '<tr><td><b>Bank Name</b></td><td>People’s Bank</td></tr>';
+$html .= '<tr><td><b>Branch</b></td><td>Kilinochchi Branch</td></tr>';
+$html .= '<tr><td><b>Account Name</b></td><td>Sri Lanka – German Training Institute</td></tr>';
+$html .= '<tr><td><b>Account Number</b></td><td>048100180086726</td></tr>';
+$html .= '<tr><td><b>Accepted Methods</b></td><td>Online transfer, machine deposit, or direct bank counter payment.</td></tr>';
+$html .= '<tr><td><b>Proof of Payment</b></td><td>Students must submit a copy of the bank receipt. Bank receipts are compulsory for application processing.</td></tr>';
 $html .= '</table>';
 
+// Application Form Submission
+$html .= '<br/>';
+$html .= '<h5 style="margin:6px 0 2px;">Application Form Submission</h5>';
+$html .= '<ul style="margin:0; padding-left:14px;">';
+$html .= '<li>Download/print the application form.</li>';
+$html .= '<li>Attach the passport size photo and a copy of the bank payment receipt before submission.</li>';
+$html .= '</ul>';
+
+// Allowance Confirmation
+$html .= '<br/>';
+$html .= '<h5 style="margin:6px 0 2px;">Allowance Confirmation</h5>';
+$html .= '<div style="line-height:1.4;">Students from GS-certified families with annual income below Rs. 500,000 will receive an Allowance Confirmation Letter after verification.</div>';
+
 // Signature section at the bottom
-$html .= '<br/><br/>';
-$html .= '<table width="100%" cellpadding="10" cellspacing="0" border="0">';
+$html .= '<br/>';
+$html .= '<table width="100%" cellpadding="6" cellspacing="0" border="0">';
 $html .= '<tr>';
 $html .= '<td width="33%" align="center">__________________________<br/><span style="font-size:10px;">Student Signature</span></td>';
 $html .= '<td width="34%" align="center">__________________________<br/><span style="font-size:10px;">Cashier Signature</span></td>';
