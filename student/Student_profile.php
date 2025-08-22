@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
 $title ="STUDENT PROFILE | SLGTI"; //YOUR HEAD TITLE CREATE VARIABLE BEFORE FILE NAME
 require_once __DIR__ . '/../head.php';
-require_once __DIR__ . '/../menu.php';
+require_once __DIR__ . '/top_nav.php';
 ?>
 <?php /** END DON'T CHANGE THE ORDER (moved to PHP comment) */ ?>
 
@@ -272,41 +272,14 @@ $profileCompletion = $__total > 0 ? (int)round($__filled * 100 / $__total) : 0;
 // }
 ?>
 <!-- form start---->
-<div class="col text-center shadow p-5 mb-5 bg-white rounded">
-<h1 style="text-align:center"  > SRI LANKA GERMAN TRAINING INSTITUTE  </h1>
-<h5 style="text-align:center"> Killinochchi </h5>
-</div>
-
-<!-- Balance + Placeholder Row -->
-<div class="form-row shadow p-2 mb-4 bg-white rounded">
-  <div class="col-md-6 mb-3">
-    <div class="card border-0">
-      <div class="card-body p-3">
-        <h6 class="card-title mb-2">Balance</h6>
-        <div class="d-flex align-items-baseline">
-          <span class="h4 mb-0 mr-2">Rs. <span id="student-balance">—</span></span>
-          <a class="btn btn-sm btn-outline-primary ml-auto" href="/payment/Payments.php?Sid=<?php echo urlencode($username); ?>">View Payments</a>
-        </div>
-        <small class="text-muted d-block mt-1">Outstanding amount for current course</small>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 mb-3">
-    <div class="card border-0">
-      <div class="card-body p-3">
-        <h6 class="card-title mb-2">Summary</h6>
-        <div class="text-muted">No data available</div>
-      </div>
-    </div>
-  </div>
-</div>
-
+<!-- Top banner removed as requested -->
+<br>
 <div class="container">
 <form method="POST" enctype="multipart/form-data">
 
 <div class="form-row shadow p-2 mb-4 bg-white rounded">
-    <div class="col-md-3 mb-3 " > 
-    <img src="/student/get_student_image.php?Sid=<?php echo urlencode($username); ?>&t=<?php echo time(); ?>" alt="user image" class="img-thumbnail rounded-circle" style="width:200px;height:200px;object-fit:cover;">
+    <div class="col-md-3 mb-3 text-center"> 
+    <img src="/student/get_student_image.php?Sid=<?php echo urlencode($username); ?>&t=<?php echo time(); ?>" alt="user image" class="img-thumbnail d-block mx-auto" style="width:200px;height:200px;object-fit:cover;border-radius:40px;">
     <?php
     // $query= "select `student_profile_img` from student where student_id='$username'";
     // $result=mysqli_query($con,$query);
@@ -316,21 +289,14 @@ $profileCompletion = $__total > 0 ? (int)round($__filled * 100 / $__total) : 0;
     // }
     ?>
     <?php if(!isset($_GET['Sid'])): ?>
-      <div class="mt-2">
-        <div class="form-group mb-2">
+      <div class="mt-2 d-flex justify-content-center">
+        <div class="form-group mb-2" style="width:200px;">
           <input type="hidden" name="do_upload" value="1" />
           <input type="file" name="image" id="image" accept="image/*" class="form-control-file d-none" />
-          <button type="button" id="triggerImageUpload" class="btn btn-sm btn-outline-primary">Upload New Photo</button>
+          <button type="button" id="triggerImageUpload" class="btn btn-sm btn-outline-primary btn-block">Upload New Photo</button>
+          <a class="btn btn-sm btn-primary btn-block mt-2" href="/student/Student_profile.php?edit=1">Edit Profile</a>
         </div>
-        <div class="text-muted small mt-1">
-          <strong>Photo Guidelines:</strong>
-          <ul class="mb-0 pl-3">
-            <li>Photo Size: Standard passport size</li>
-            <li>Background: Blue</li>
-            <li>Boys' Dress Code: White shirt with black trousers, proper haircut, clean-shaven</li>
-            <li>Girls' Dress Code: White blouse with black skirt/trousers, neat hairstyle</li>
-          </ul>
-        </div>
+      
         <noscript>
           <button type="submit" class="btn btn-sm btn-outline-primary">Upload</button>
         </noscript>
@@ -356,37 +322,27 @@ $profileCompletion = $__total > 0 ? (int)round($__filled * 100 / $__total) : 0;
     <!-- <button type="button" class="btn btn-outline-success">Success</button> -->
     </div>
     <div class="col-md-7 col-sm-4">
-        <div class="d-flex justify-content-between align-items-start flex-wrap">
+        <div class="mb-2">
           <div class="mb-2">
-            <h5 class="text-muted mb-1"><b><?php echo htmlspecialchars(($title? $title.'. ' : '').$fname); ?></b></h5>
-            <div class="text-muted small">ID: <?php echo htmlspecialchars($username); ?> | NIC: <?php echo htmlspecialchars($nic); ?></div>
+            <h5 class="text-muted my-1"><b><?php echo htmlspecialchars(($title? $title.'. ' : '').$fname); ?> | Level: <?php echo htmlspecialchars($level); ?></b></h5>
+            <div class="text-muted small my-1">ID: <?php echo htmlspecialchars($username); ?> | NIC: <?php echo htmlspecialchars($nic); ?><?php if ($level): ?> <?php endif; ?></div>
             <?php if ($hasUpdatedAt): ?>
             <small class="text-muted d-block">Last Edited: <?php echo $updatedAt ? date('Y-m-d H:i', strtotime($updatedAt)) : 'N/A'; ?></small>
             <?php endif; ?>
           </div>
-          <?php if(!isset($_GET['Sid'])): ?>
-          <div class="mb-2">
-            <a class="btn btn-sm btn-primary" href="/student/Student_profile.php?edit=1">Edit Profile</a>
-          </div>
-          <?php endif; ?>
         </div>
-        <div class="mb-2">
-          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/library/pdf/student_application.php?Sid=<?php echo urlencode($username); ?>">Application PDF</a>
-          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/library/pdf/Student Code of Conduct.pdf">Student Code of Conduct</a>
-          <a class="btn btn-sm btn-outline-secondary" target="_blank" href="/library/pdf/hostel_request.php?Sid=<?php echo urlencode($username); ?>">Hostel Request PDF</a>
-        </div>
-        <div class="mb-1">
+       
+        <div class="mb-2 d-flex flex-column align-items-start py-1">
           <?php if ($depth): ?>
-            <span class="badge badge-info mr-1">Department: <?php echo htmlspecialchars($depth); ?></span>
+            <span class="badge badge-light mr-2 my-1 px-2 py-1" style="font-size: 0.95rem;">Department: <?php echo htmlspecialchars($depth); ?></span>
           <?php endif; ?>
           <?php if ($coid): ?>
-            <span class="badge badge-secondary mr-1">Course: <?php echo htmlspecialchars($coid); ?></span>
+            <span class="badge badge-light mr-2 my-1 px-2 py-1" style="font-size: 0.95rem;">Course: <?php echo htmlspecialchars($coid); ?></span>
           <?php endif; ?>
-          <?php if ($level): ?>
-            <span class="badge badge-light border mr-1">Level: <?php echo htmlspecialchars($level); ?></span>
-          <?php endif; ?>
+          
+         
           <?php if ($year): ?>
-            <span class="badge badge-light border mr-1">Batch: <?php echo htmlspecialchars($year); ?><?php echo $exit ? ' ( '.htmlspecialchars($exit).' )' : ''; ?></span>
+            <span class="badge badge-light border mr-1 my-1 px-2 py-1" style="font-size: 0.95rem;">Batch: <?php echo htmlspecialchars($year); ?><?php echo $exit ? ' ( '.htmlspecialchars($exit).' )' : ''; ?></span>
           <?php endif; ?>
         </div>
         <div class="mt-2">
@@ -408,75 +364,125 @@ $profileCompletion = $__total > 0 ? (int)round($__filled * 100 / $__total) : 0;
 </div>
 
 <!-- <div class="form-row shadow p-2 mb-4 bg-white rounded"> -->
-<nav>
-  <div class="nav nav-tabs shadow p-2 mb-4 bg-white rounded" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Personal Info</a>
-    <!-- <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Qualification Info</a>
-    <a class="nav-item nav-link" id="nav-modules-tab" data-toggle="tab" href="#nav-modules" role="tab" aria-controls="nav-modules" aria-selected="false">Modules Info</a> -->
-  </div>
-</nav>
-<div class="tab-content shadow p-2 mb-4 bg-white rounded" id="nav-tabContent">
+
+  <div class="tab-content shadow p-2 mb-4 bg-white rounded" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><br>
         <?php if(!isset($_GET['edit'])): ?>
-        <h5 style="border-bottom: 2px solid #aaa;"> Personal Information </h5><br>
-        <div class="row" id="personal info">
-            <div class="col-md-2 col-sm-4">
-            <h6> Name with Initials: </h6>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card h-100">
+              <div class="card-header text-light" style="background-color: rgba(208, 3, 3, 0.98);">Emergency Contact Information</div>
+              <div class="card-body">
+                <div class="progress mb-2 w-100" style="height: 6px;">
+                  <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $profileCompletion; ?>%;" aria-valuenow="<?php echo $profileCompletion; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small class="text-muted d-block mb-2 text-left"><?php echo $profileCompletion; ?>%</small>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Name</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($ename ?: '—'); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Phone No</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($ephone ?: '—'); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Address</small>
+                  <span class="text-dark font-weight-bold d-block" style="max-width: 80%"><?php echo htmlspecialchars($eaddress ?: '—'); ?></span>
+                </div>
+                <div class="py-1">
+                  <small class="text-muted d-block">Relationship</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($erelation ?: '—'); ?></span>
+                </div>
+              </div>
             </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo $title.".".$ininame; ?> </h6>
-            </div>
+          </div>
 
-            <div class="col-md-2 col-sm-4">
-                <h6> Gender: </h6>
+          <div class="col-md-6 mb-4">
+            <div class="card h-100">
+              <div class="card-header bg-primary text-white">Personal Information</div>
+              <div class="card-body">
+                <div class="progress mb-2 w-100" style="height: 6px;">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $profileCompletion; ?>%;" aria-valuenow="<?php echo $profileCompletion; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small class="text-muted d-block mb-2 text-left"><?php echo $profileCompletion; ?>%</small>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Name with Initials</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars(($title? $title.'.' : '').$ininame); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Gender</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($gender ?: '—'); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Date of Birth</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($dob ?: '—'); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Civil Status</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($civil ?: '—'); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Enroll Date</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($enroll ?: '—'); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Exit Date</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($exit ?: '—'); ?></span>
+                </div>
+                <div class="py-1">
+                  <small class="text-muted d-block">Blood Group</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($blood ?: '—'); ?></span>
+                </div>
+                <?php if ($hasUpdatedAt): ?>
+                <div class="py-1 border-top mt-2">
+                  <small class="text-muted d-block">Last Edited</small>
+                  <span class="text-dark font-weight-bold"><?php echo $updatedAt ? date('Y-m-d H:i', strtotime($updatedAt)) : 'N/A'; ?></span>
+                </div>
+                <?php endif; ?>
+              </div>
             </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($gender ?: '—'); ?> </h6>
-            </div>
+          </div>
 
-            <div class="col-md-2 col-sm-4">
-                <h6> Date of Birth: </h6>
+          <div class="col-md-6 mb-4">
+            <div class="card h-100">
+              <div class="card-header text-light" style="background-color: rgba(5, 139, 27, 0.98);">Contact Information</div>
+              <div class="card-body">
+                <div class="progress mb-2 w-100" style="height: 6px;">
+                  <div class="progress-bar " role="progressbar" style="width: <?php echo $profileCompletion; ?>%; background-color: rgba(5, 139, 27, 0.98);" aria-valuenow="<?php echo $profileCompletion; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small class="text-muted d-block mb-2 text-left"><?php echo $profileCompletion; ?>%</small>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Email</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($email ?: '—'); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Phone No</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($phone ?: '—'); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Address</small>
+                  <span class="text-dark font-weight-bold d-block" style="max-width: 80%"><?php echo htmlspecialchars($address ?: '—'); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Province</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($province ?: '—'); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">District</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($district ?: '—'); ?></span>
+                </div>
+                <div class="py-1 border-bottom">
+                  <small class="text-muted d-block">Zip Code</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($zip ?: '—'); ?></span>
+                </div>
+                <div class="py-1">
+                  <small class="text-muted d-block">Divisional Secretariat</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($division ?: '—'); ?></span>
+                </div>
+              </div>
             </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($dob ?: '—'); ?> </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-                <h6> Civil Status: </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($civil ?: '—'); ?> </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-                <h6> Enroll Date:  </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($enroll ?: '—'); ?> </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-                <h6>Exit Date:</h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($exit ?: '—'); ?> </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-                <h6> Blood Group: </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($blood ?: '—'); ?>  </h6>
-            </div>
-            <?php if ($hasUpdatedAt): ?>
-            <div class="col-md-2 col-sm-4">
-                <h6> Last Edited: </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo $updatedAt ? date('Y-m-d H:i', strtotime($updatedAt)) : 'N/A'; ?> </h6>
-            </div>
-            <?php endif; ?>
-        </div><br>
+          </div>
+        </div>
         <?php endif; ?>
         <?php if(isset($_GET['edit']) && !isset($_GET['Sid'])): ?>
         <h5 style="border-bottom: 2px solid #aaa;"> Edit Personal Information </h5><br>
@@ -631,91 +637,7 @@ $profileCompletion = $__total > 0 ? (int)round($__filled * 100 / $__total) : 0;
           </div>
         </div>
         <?php endif; ?>
-
-        <?php if(!isset($_GET['edit'])): ?>
-        <h5 style="border-bottom: 2px solid #aaa;"> Contact Information </h5><br>
-        <div class="row" id="personal info">
-            <div class="col-md-2 col-sm-4">
-            <h6> Email: </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($email ?: '—'); ?>  </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-                <h6> Phone No: </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($phone ?: '—'); ?>  </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-                <h6> Address: </h6>
-            </div>
-            <div class="col-md-10 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($address ?: '—'); ?>  </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-                <h6> Province: </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($province ?: '—'); ?>  </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-            <h6> District:  </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($district ?: '—'); ?>  </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-                <h6> Zip Code: </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($zip ?: '—'); ?>  </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-                <h6> Divisional Secretariat: </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($division ?: '—'); ?>  </h6>
-            </div>
-        </div><br>
-
-        <h5 style="border-bottom: 2px solid #aaa;"> Emergency Contact Information </h5><br>
-        <div class="row container" id="personal info">
-            <div class="col-md-2 col-sm-4">
-            <h6> Name: </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($ename ?: '—'); ?> </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-                <h6> Phone No: </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($ephone ?: '—'); ?></h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-                <h6> Address: </h6>
-            </div>
-            <div class="col-md-10 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($eaddress ?: '—'); ?> </h6>
-            </div>
-
-            <div class="col-md-2 col-sm-4">
-            <h6> Relationship  </h6>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <h6 class="text-muted"> <?php echo htmlspecialchars($erelation ?: '—'); ?> </h6>
-            </div>
-        </div>
-        <?php endif; ?>
+        <!-- (Removed legacy duplicate non-edit sections for contact and emergency info) -->
   </div>
 
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">

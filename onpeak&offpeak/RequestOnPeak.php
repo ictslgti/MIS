@@ -1,95 +1,93 @@
-<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->  
+<!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
 <?php
-$title = "onpeak&offpeak | SLGTI";
+$title = "OnPeak Request | SLGTI";
 include_once("../config.php");
 include_once("../head.php");
-include_once("../menu.php");
+// Use the compact student top nav and remove sidebar/menu for this page
+include_once("../student/top_nav.php");
 
 
 //  $student_id = $_SESSION['user_name'];
 //  $user_type = $_SESSION['user_type'];
 //  echo $department_id = $_SESSION['department_code'];
 //  if($user_type == 'ADM'){
-    if($_SESSION['user_type']=='STU' ){
- ?>
-<!--END DON'T CHANGE THE ORDER--> 
+if ($_SESSION['user_type'] == 'STU') {
+?>
+    <!--END DON'T CHANGE THE ORDER-->
 
-<!--BLOCK#2 START YOUR CODE HERE -->
+    <!--BLOCK#2 START YOUR CODE HERE -->
 
-<!--insert Code-->
-<?php
- 
- $s_id =  $_SESSION['user_name'];
- $u_type =  $_SESSION['user_type'];
+    <!--insert Code-->
+    <?php
 
- $student_id=$name= $department_id=null;
- if($_SESSION['user_type']=='STU'){
-   // Derive current department_id from the student's active enrollment
-   $sql = "SELECT d.department_id
+    $s_id =  $_SESSION['user_name'];
+    $u_type =  $_SESSION['user_type'];
+
+    $student_id = $name = $department_id = null;
+    if ($_SESSION['user_type'] == 'STU') {
+        // Derive current department_id from the student's active enrollment
+        $sql = "SELECT d.department_id
            FROM student_enroll e
            JOIN course c ON e.course_id = c.course_id
            JOIN department d ON c.department_id = d.department_id
            WHERE e.student_id = '$s_id' AND e.student_enroll_status='Following'
            LIMIT 1";
-   if ($result = mysqli_query($con, $sql)) {
-     if (mysqli_num_rows($result) >= 1) {
-       $row = mysqli_fetch_assoc($result);
-       $department_id = $row['department_id'];
-     }
-     mysqli_free_result($result);
-   }
- }
-?>
+        if ($result = mysqli_query($con, $sql)) {
+            if (mysqli_num_rows($result) >= 1) {
+                $row = mysqli_fetch_assoc($result);
+                $department_id = $row['department_id'];
+            }
+            mysqli_free_result($result);
+        }
+    }
+    ?>
 
-<?PHP
-if(isset($_POST['req'])){
-    
+    <?PHP
+    if (isset($_POST['req'])) {
 
 
-     $s_id = mysqli_real_escape_string($con, $_POST['student_id']);
-     // Use derived $department_id (no user input)
-     $d_id = mysqli_real_escape_string($con, $department_id);
-     $contact_no = mysqli_real_escape_string($con, $_POST['contact_no']);
-     $reason = mysqli_real_escape_string($con, $_POST['reason']);
-     $exit_date = mysqli_real_escape_string($con, $_POST['exit_date']);
-     $exit_time = mysqli_real_escape_string($con, $_POST['exit_time']);
-     $return_date = mysqli_real_escape_string($con, $_POST['return_date']);
-     $return_time = mysqli_real_escape_string($con, $_POST['return_time']);
-     $comment = mysqli_real_escape_string($con, $_POST['comment']);
-      
-     
-    
-      $sql= "INSERT INTO `onpeak_request`(`student_id`,`department_id`, `contact_no`, `reason`, `exit_date`, `exit_time`, `return_date`, `return_time`, `comment`) 
+
+        $s_id = mysqli_real_escape_string($con, $_POST['student_id']);
+        // Use derived $department_id (no user input)
+        $d_id = mysqli_real_escape_string($con, $department_id);
+        $contact_no = mysqli_real_escape_string($con, $_POST['contact_no']);
+        $reason = mysqli_real_escape_string($con, $_POST['reason']);
+        $exit_date = mysqli_real_escape_string($con, $_POST['exit_date']);
+        $exit_time = mysqli_real_escape_string($con, $_POST['exit_time']);
+        $return_date = mysqli_real_escape_string($con, $_POST['return_date']);
+        $return_time = mysqli_real_escape_string($con, $_POST['return_time']);
+        $comment = mysqli_real_escape_string($con, $_POST['comment']);
+
+
+
+        $sql = "INSERT INTO `onpeak_request`(`student_id`,`department_id`, `contact_no`, `reason`, `exit_date`, `exit_time`, `return_date`, `return_time`, `comment`) 
       VALUES ('$s_id','$d_id','$contact_no','$reason','$exit_date','$exit_time','$return_date','$return_time','$comment')";
 
-      if(mysqli_query($con,$sql))
-      {
-        echo '
+        if (mysqli_query($con, $sql)) {
+            echo '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong><h5> '.$student_id.'</strong> Request Submitted </h5>
+            <strong><h5> ' . $student_id . '</strong> Request Submitted </h5>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
             </div>    
             ';
-       // echo "insert successfully";
-    } else {
-        echo "Error deleting record: " . 	mysqli_error($con);
+            // echo "insert successfully";
+        } else {
+            echo "Error deleting record: " .     mysqli_error($con);
+        }
     }
+    ?>
 
-    
-    }
-?> 
+    <!--Delete Code-->
 
-<!--Delete Code-->
+    <?php
 
-<?php
-        
-         if(isset($_GET['delete'])) {
-        $id = $_GET ['delete'];
-        $sql = "DELETE FROM onpeak_request where `id` = $id "; 
-        if(mysqli_query($con,$sql)) {
-         echo '
+    if (isset($_GET['delete'])) {
+        $id = $_GET['delete'];
+        $sql = "DELETE FROM onpeak_request where `id` = $id ";
+        if (mysqli_query($con, $sql)) {
+            echo '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
              <strong> <h5> Record deleted successfully </h5> </strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -97,7 +95,6 @@ if(isset($_POST['req'])){
             </button>
             </div>    
             ';
-        
         } else {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -111,266 +108,212 @@ if(isset($_POST['req'])){
             //echo "Error deleting record : ". mysqli_error($con);
         }
     }
-?>
+    ?>
 
 
 
-<!--Form Deign Start-->
-<br>
-<form method="POST" >  
-<div class="row border border-light shadow p-3 mb-5 bg-white rounded">
-          <div class="col">
-          <br>
-          <br>
-            <blockquote class="blockquote text-center">
-                <h1 class="display-4">On peak Request</h1> 
-                <p class="mb-0">Department of Information and Communication Technology</p>
-                <footer class="blockquote-footer">Temporary Exit Application<cite title="Source Title"></cite></footer>
-            </blockquote>
-          </div>
-</div>
+    <!--Form Deign Start-->
+    <br>
+    <form method="POST">
+        <div class="container my-4">
+            <div class="row border border-light shadow p-3 mb-5 bg-white rounded">
+                <div class="col">
 
-<!-- card start here-->
-
-<div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
-<br>    
-<div class="table container">    
-    <div class="container">
-   
-        <div class="intro">
-
-        
-
-<br>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01"> 
-                            <i class="fas fa-fingerprint"> </i>&nbsp;&nbsp;Registration No&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    </div>
-                    <input class="form-control" id="student_id" name="student_id" type="text" value="<?php if($_SESSION['user_type']=='STU') echo $s_id;?>" readonly>
-                 </div> 
-
-<br>       
-
-                
-
-
- 
-<br>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01"> 
-                            <i class="fas fa-phone-alt"> </i>&nbsp;&nbsp;Contact no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    </div>
-                    <input class="form-control" name="contact_no" type="text" id="contact_no" placeholder="Mobile or Home number">
+                    <blockquote class="text-center">
+                        <h2 class="display-4">On peak Request</h2>
+                        <p class="mb-0">Department of Information and Communication Technology</p>
+                        <footer class="blockquote-footer">Temporary Exit Application<cite title="Source Title"></cite></footer>
+                    </blockquote>
                 </div>
+            </div>
 
-<br>
+            <!-- card start here-->
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">
-                            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Reason for Exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    </div>
-                    <select class="custom-select" id="reason" name="reason" >
-                        <option selected>Choose...</option>
-                        <option >Hospital </option>
-                        <option >Family issues </option>
-                        <option >Other Reasons</option>
-                    
-                    </select>
-                </div>
+            <div class="border border-light shadow p-3 mb-5 bg-white rounded">
+                <br>
+                <div class="table container">
+                    <div class="container">
 
-<br>
+                        <div class="intro">
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01"> 
-                        <i class="far fa-calendar-alt"></i>&nbsp;&nbsp;Exit Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    </div>
-                    
-                    <input class="form-control" type="date" name="exit_date" id="exit_date">
-                    
-                </div>
+                            <br>
 
-<br>
-
-                <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01"> 
-                                    <i class="far fa-clock"> </i>&nbsp;&nbsp;Exit Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <div class="form-group">
+                                <label for="student_id">Registration No</label>
+                                <input class="form-control" id="student_id" name="student_id" type="text" value="<?php if ($_SESSION['user_type'] == 'STU') echo $s_id; ?>" readonly aria-readonly="true" placeholder="Your Registration Number">
                             </div>
-                            
-                            <input class="form-control" type="time" name="exit_time" id="exit_time">
-                </div>
 
-<br>
 
-                <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01"> 
-                                <i class="fas fa-calendar-check"></i>&nbsp;&nbsp;Return Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <div class="form-group">
+                                <label for="contact_no">Contact Number</label>
+                                <input class="form-control" name="contact_no" type="tel" id="contact_no" placeholder="e.g., 0712345678">
                             </div>
-                            
-                            <input class="form-control" type="date" name="return_date" id="return_date">
-                            
-                </div>
 
-<br>
 
-                <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01"> 
-                                    <i class="fas fa-history"> </i>&nbsp;&nbsp;Return Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+                            <div class="form-group">
+                                <label for="reason">Reason for Exit</label>
+                                <select class="form-control" id="reason" name="reason">
+                                    <option value="" selected disabled>Select reason</option>
+                                    <option>Hospital</option>
+                                    <option>Family issues</option>
+                                    <option>Other Reasons</option>
+                                </select>
                             </div>
-                            
-                            <input class="form-control" type="time" name="return_time" id="return_time">
-                </div>
 
-<br>
 
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Comment : </label>
-                        <textarea class="form-control" name="comment"  rows="3" id="comment" placeholder="Use only Alphbet"></textarea>
+
+                            <div class="form-group">
+                                <label for="exit_date">Exit Date</label>
+                                <input class="form-control" type="date" name="exit_date" id="exit_date">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="exit_time">Exit Time</label>
+                                <input class="form-control" type="time" name="exit_time" id="exit_time">
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="return_date">Return Date</label>
+                                <input class="form-control" type="date" name="return_date" id="return_date">
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="return_time">Return Time</label>
+                                <input class="form-control" type="time" name="return_time" id="return_time">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="comment">Comments</label>
+                                <textarea class="form-control" name="comment" rows="3" id="comment" placeholder="Comments (optional)"></textarea>
+                            </div>
+
+
+
+
+                            <div class=row>
+                                <div class="col">
+                                    <blockquote class="blockquote text-center">
+                                        <p class="mb-0">I have read and understand the terms and conditions. I have agreed by the abide by the rules and regulations of SLGTI.</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mx-auto" style="width: 100%">
+                                        <button type="submit" class="btn btn-primary " name="req"> <i class="fab fa-telegram"></i><strong> Request to approval </strong></button>
+                                        <!-- <input type="submit" name="req" class="btn btn-primary " > -->
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="border border-light shadow p-3 mb-5 bg-white rounded">
+                <div class="col">
+                    <blockquote class="blockquote text-center">
+                        <p class="mb-0">Terms and Conditions of SLGTI </p>
+                        <footer class="blockquote-footer">This request must be approved by the HOD and Warden, when students want to exit SLGTI during school hours/ on peak (8.15 am - 4.15 pm) <cite title="Source Title"></cite></footer>
+                        <footer class="blockquote-footer">Please note that you fail with in the jurisdiction of the code of conduct and honor for off-campus conduct. <cite title="Source Title"></cite></footer>
+                        <footer class="blockquote-footer">Please indicate the reason for your temporary exit in the box above, state the date and seek for approval by your HEAD of the Department (HoD). <cite title="Source Title"></cite></footer>
+                    </blockquote>
+                </div>
+            </div>
 
 
-<br>
-        
+
+            <div class="border border-light shadow p-3 mb-5 bg-white rounded">
+                <div class="col">
                     <div class=row>
                         <div class="col">
-                            <blockquote class="blockquote text-center">
-                                <p class="mb-0">I have read and understand the terms and conditions. I have agreed by the abide by the rules and regulations of SLGTI.</p>
-                            </blockquote>
+                            <br>
+                            <br>
+                            <div class="pr-5 pl-2 ml-auto text-info"> <strong> History </strong> </div>
+                            <br>
+                            <br>
                         </div>
                     </div>
 
-<br>
-      
-                    <div class="row">
-                        <div class="col">
-                            <div class="mx-auto" style="width: 200px;">
-                              <button type="submit" class="btn btn-primary " name="req"> <i class="fab fa-telegram"></i><strong> Request to approval </strong></button>  
-                            <!-- <input type="submit" name="req" class="btn btn-primary " > -->
-                            </div>
-                        </div>
-                    </div>
 
-<br>
 
                     <div class="row">
-                        <div class="col">
-                            <div class="mx-auto" style="width: 200px;">
-                            <button type="button" name="reset" class="btn btn-secondary" onclick="document.getElementById('contact_no').value = '';
-                                                                                        document.getElementById('reason').value = '';
-                                                                                        document.getElementById('exit_date').value = '';
-                                                                                        document.getElementById('exit_time').value = '';
-                                                                                        document.getElementById('return_date').value = '';
-                                                                                        document.getElementById('return_time').value = '';
-                                                                                        document.getElementById('comment').value = '';">
-                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-redo-alt"></i>&nbsp;&nbsp;<strong> Reset </strong>
-                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                                                        
-                            </div>
-                        </div>
-                    </div>
-       
-       
-               
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">EXIT DATE</th>
+                                            <th scope="col">EXIT TIME</th>
+                                            <th scope="col">RETURN DATE </th>
+                                            <th scope="col">RETURN TIME</th>
+                                            <th scope="col">REASON FOR EXIT</th>
+                                            <th scope="col">REFERENCE</th>
+                                            <th scope="col">status</th>
+                                        </tr>
+                                    </thead>
 
-</div>
-</div>
-</div>
-</div>
+                                    <?php
+                                    $s_id =  $_SESSION['user_name'];
+                                    $sql = "SELECT * FROM `onpeak_request` where `student_id`='$s_id'";
+                                    $result = mysqli_query($con, $sql);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
 
-<div class="border border-light shadow p-3 mb-5 bg-white rounded" >
-    <div class="col">
-        <blockquote class="blockquote text-center">
-            <p class="mb-0">Terms and Conditions of SLGTI </p>
-            <footer class="blockquote-footer">This request must be approved by the HOD and Warden, when students want to exit SLGTI during school hours/ on peak (8.15 am - 4.15 pm)  <cite title="Source Title"></cite></footer>
-            <footer class="blockquote-footer">Please note that you fail with in the jurisdiction of the code of conduct and honor for off-campus conduct. <cite title="Source Title"></cite></footer>
-            <footer class="blockquote-footer">Please indicate the reason for your temporary exit in the box above, state the date and seek for approval by your HEAD of the Department (HoD). <cite title="Source Title"></cite></footer>
-        </blockquote> 
-    </div>
-</div>
-
-
-
-    <div class="border border-light shadow p-3 mb-5 bg-white rounded" > 
-      <div class="col">
-        <div class=row>
-            <div class="col">
-                <br>
-                <br>
-                <div class="pr-5 pl-2 ml-auto text-info"> <strong> History </strong> </div>
-                <br>
-                <br>
-            </div>
-        </div>
-        
-        
-
-      <div class=row >
-        <table class="table table-hover">
-            <thead>
-                  <tr>
-                    <th scope="col">EXIT DATE</th>
-                    <th scope="col">EXIT TIME</th>
-                    <th scope="col">RETURN DATE </th>
-                    <th scope="col">RETURN TIME</th>
-                    <th scope="col">REASON FOR EXIT</th>
-                    <th scope="col">REFERENCE</th>
-                    <th scope="col">status</th>
-                    </tr>
-            </thead>
-
-            <?php
-                 $s_id =  $_SESSION['user_name'];
-                 $sql = "SELECT * FROM `onpeak_request` where `student_id`='$s_id'";
-                 $result = mysqli_query($con, $sql);
-                if (mysqli_num_rows($result) > 0) {
-                 while($row = mysqli_fetch_assoc($result)) {
-
-                echo '
+                                            echo '
                  <tr>
-                    <td>'. $row["exit_date"].'</td>
-                    <td>'. $row["exit_time"]. '</td>
-                     <td>'. $row["return_date"].'</td>
-                    <td>'. $row["return_time"]. '</td>
-                     <td>'. $row["reason"]. '</td>
-                     <td>'. $row["onpeak_request_status"]. '</td>
-                    <td> <pre> '. $row["request_date_time"]. ' </pre> </td>
+                    <td>' . $row["exit_date"] . '</td>
+                    <td>' . $row["exit_time"] . '</td>
+                     <td>' . $row["return_date"] . '</td>
+                    <td>' . $row["return_time"] . '</td>
+                     <td>' . $row["reason"] . '</td>
+                     <td>' . $row["onpeak_request_status"] . '</td>
+                    <td> <pre> ' . $row["request_date_time"] . ' </pre> </td>
                     <td> 
-                        <a href="RequestOnpeakEdit.php?edit='.$row["id"].'"> <button type="button" class="btn btn-warning"> Edit </button> </a>  
-                        <a href="?delete='. $row["id"].'"> <button type="button" class="btn btn-danger"> Delete </button> </a>
+                        <a href="RequestOnpeakEdit.php?edit=' . $row["id"] . '"> <button type="button" class="btn btn-warning"> Edit </button> </a>  
+                        <a href="?delete=' . $row["id"] . '"> <button type="button" class="btn btn-danger"> Delete </button> </a>
                      </td>
                  </tr>
                  ';
-                  }
-                 } else {
-                     echo "No more Requests";
-                }
-            ?>
-           
-        </table> 
-    </div>
+                                        }
+                                    } else {
+                                        echo "No more Requests";
+                                    }
+                                    ?>
 
-
-
-   
-    </div>
-</div>
-</form>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
 
 
 
+                </div>
+            </div>
+        </div>
+    </form>
 
 
-<!--END OF YOUR COD-->
-  <?php } ?> 
-<!--BLOCK#3 START DON'T CHANGE THE ORDER-->   
+
+
+
+
+    <!--END OF YOUR COD-->
+<?php } ?>
+<!--BLOCK#3 START DON'T CHANGE THE ORDER-->
 <?php include_once("../footer.php"); ?>
-<!--END DON'T CHANGE THE ORDER-->  
+<!--END DON'T CHANGE THE ORDER-->
