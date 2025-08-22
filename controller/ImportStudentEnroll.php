@@ -25,6 +25,135 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// Manual add flow: process a single enrollment without CSV
+if (isset($_POST['manual']) && $_POST['manual'] === '1') {
+    include_once('../config.php');
+    $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    if (mysqli_connect_errno()) {
+        header('Location: ../student/ImportStudentEnroll.php?errors=1&msg=' . urlencode('DB connect failed: ' . mysqli_connect_error()));
+        exit;
+    }
+    mysqli_set_charset($con, 'utf8');
+
+    $student_id = trim($_POST['student_id'] ?? '');
+    $stu_full   = trim($_POST['student_fullname'] ?? '');
+    $stu_nic    = trim($_POST['student_nic'] ?? '');
+    $course_id  = trim($_POST['course_id'] ?? '');
+    $academic_year = trim($_POST['academic_year'] ?? '');
+    $enroll_date   = trim($_POST['enroll_date'] ?? '');
+    $course_mode   = trim($_POST['course_mode'] ?? 'Full');
+    $status        = trim($_POST['status'] ?? 'Following');
+
+    $allowedModes = ['Part', 'Full'];
+    $allowedStatus = ['Following', 'Dropout', 'Completed', 'Long Absent'];
+    $isDate = function($d) {
+        if ($d === '') return false;
+        $parts = explode('-', $d);
+        if (count($parts) !== 3) return false;
+        return checkdate((int)$parts[1], (int)$parts[2], (int)$parts[0]);
+    };
+
+    $errMsgs = [];
+    $inserted = 0; $updated = 0; $skipped = 0; $errors = 0;
+
+    if ($student_id === '') { $errors++; $errMsgs[] = 'Student ID is required'; }
+    if ($course_id === '')  { $errors++; $errMsgs[] = 'Course is required'; }
+    if ($academic_year === '') { $errors++; $errMsgs[] = 'Academic Year is required'; }
+    if ($enroll_date === '' || !$isDate($enroll_date)) { $errors++; $errMsgs[] = 'Valid Enroll Date is required (YYYY-MM-DD)'; }
+    if (!in_array($course_mode, $allowedModes, true)) { $errors++; $errMsgs[] = 'Invalid Course Mode'; }
+    if (!in_array($status, $allowedStatus, true)) { $errors++; $errMsgs[] = 'Invalid Enrollment Status'; }
+
+    if ($errors === 0) {
+        // Prepare statements (subset used below)
+        $selStudent = mysqli_prepare($con, 'SELECT 1 FROM student WHERE student_id = ?');
+        $selCourse  = mysqli_prepare($con, 'SELECT 1 FROM course WHERE course_id = ?');
+        $selEnroll  = mysqli_prepare($con, 'SELECT 1 FROM student_enroll WHERE student_id = ? AND course_id = ? AND academic_year = ?');
+        $insEnroll  = mysqli_prepare($con, 'INSERT INTO student_enroll (student_id, course_id, course_mode, academic_year, student_enroll_date, student_enroll_exit_date, student_enroll_status) VALUES (?,?,?,?,?,?,?)');
+        $updEnroll  = mysqli_prepare($con, 'UPDATE student_enroll SET course_mode = ?, student_enroll_date = ?, student_enroll_exit_date = ?, student_enroll_status = ? WHERE student_id = ? AND course_id = ? AND academic_year = ?');
+        $updStudent = mysqli_prepare($con, "UPDATE student 
+            SET student_fullname = COALESCE(NULLIF(?, ''), student_fullname),
+                student_nic      = COALESCE(NULLIF(?, ''), student_nic)
+            WHERE student_id = ?");
+        $insStudent = mysqli_prepare($con, 'INSERT INTO student (
+            student_id, student_title, student_fullname, student_ininame, student_gender, student_civil, student_email, student_nic, student_profile_img, student_dob, student_phone, student_address, student_zip, student_district, student_divisions, student_provice, student_blood, student_em_name, student_em_address, student_em_phone, student_em_relation, student_status
+        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+
+        // Validate course exists
+        mysqli_stmt_bind_param($selCourse, 's', $course_id);
+        mysqli_stmt_execute($selCourse);
+        mysqli_stmt_store_result($selCourse);
+        if (mysqli_stmt_num_rows($selCourse) === 0) { $errors++; $errMsgs[] = 'Unknown course_id: ' . $course_id; }
+
+        // Check student exists or create minimal
+        if ($errors === 0) {
+            mysqli_stmt_bind_param($selStudent, 's', $student_id);
+            mysqli_stmt_execute($selStudent);
+            mysqli_stmt_store_result($selStudent);
+            $student_exists = (mysqli_stmt_num_rows($selStudent) > 0);
+            if (!$student_exists) {
+                $def_title = 'Mr';
+                $def_email = $student_id . '@slgti.com';
+                $def_profile = 'img/user.jpg';
+                $def_dob = '0000-00-00';
+                $zero = '0';
+                $empty = '';
+                $ins_full = ($stu_full !== '' ? $stu_full : $student_id);
+                $ins_ini  = $ins_full;
+                mysqli_stmt_bind_param(
+                    $insStudent,
+                    'ssssssssssssssssssssss',
+                    $student_id, $def_title, $ins_full, $ins_ini, $empty, $empty, $def_email, $stu_nic, $def_profile, $def_dob, $zero, $empty, $zero, $empty, $empty, $empty, $empty, $empty, $empty, $zero, $empty, 'Active'
+                );
+                if (!mysqli_stmt_execute($insStudent)) { $errors++; $errMsgs[] = 'Student create failed: ' . mysqli_error($con); }
+            } else {
+                if ($stu_full !== '' || $stu_nic !== '') {
+                    mysqli_stmt_bind_param($updStudent, 'sss', $stu_full, $stu_nic, $student_id);
+                    if (!mysqli_stmt_execute($updStudent)) { $errors++; $errMsgs[] = 'Student update failed: ' . mysqli_error($con); }
+                }
+            }
+        }
+
+        // Upsert enrollment
+        if ($errors === 0) {
+            $exit_date = $enroll_date; // default same day
+            mysqli_stmt_bind_param($selEnroll, 'sss', $student_id, $course_id, $academic_year);
+            mysqli_stmt_execute($selEnroll);
+            mysqli_stmt_store_result($selEnroll);
+            $exists = (mysqli_stmt_num_rows($selEnroll) > 0);
+            if ($exists) {
+                mysqli_stmt_bind_param($updEnroll, 'sssssss', $course_mode, $enroll_date, $exit_date, $status, $student_id, $course_id, $academic_year);
+                if (!mysqli_stmt_execute($updEnroll)) { $errors++; $errMsgs[] = 'Update failed: ' . mysqli_error($con); } else { $updated++; }
+            } else {
+                mysqli_stmt_bind_param($insEnroll, 'sssssss', $student_id, $course_id, $course_mode, $academic_year, $enroll_date, $exit_date, $status);
+                if (!mysqli_stmt_execute($insEnroll)) { $errors++; $errMsgs[] = 'Insert failed: ' . mysqli_error($con); } else { $inserted++; }
+            }
+        }
+
+        foreach ([$selStudent,$selCourse,$selEnroll,$insEnroll,$updEnroll,$updStudent,$insStudent] as $st) { if ($st) mysqli_stmt_close($st); }
+    }
+
+    mysqli_close($con);
+
+    $_SESSION['import_flash'] = [
+        'inserted' => $inserted,
+        'updated'  => $updated,
+        'skipped'  => $skipped,
+        'errors'   => $errors,
+        'messages' => $errMsgs,
+        'hint'     => ''
+    ];
+    $q = http_build_query([
+        'inserted' => $inserted,
+        'updated'  => $updated,
+        'skipped'  => $skipped,
+        'errors'   => $errors,
+        'msg'      => ($errors? ($errMsgs[0] ?? 'Error'): 'Manual add successful'),
+    ]);
+    header('Location: ../student/ImportStudentEnroll.php?' . $q);
+    exit;
+}
+
+// CSV import flow
 if (!isset($_FILES['csv_file']) || $_FILES['csv_file']['error'] !== UPLOAD_ERR_OK) {
     header('Location: ../student/ImportStudentEnroll.php?errors=1&msg=' . urlencode('File upload failed'));
     exit;

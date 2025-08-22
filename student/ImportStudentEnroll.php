@@ -131,4 +131,69 @@ if (isset($_SESSION['import_flash'])) {
   </div>
 </div>
 
-<?php include_once("../footer.php"); ?>
+<!-- Manual Add Section -->
+<div class="card mt-4">
+  <div class="card-body">
+    <h4 class="mb-3">Manual Add (Single Student Enrollment)</h4>
+    <form method="post" action="../controller/ImportStudentEnroll.php">
+      <input type="hidden" name="manual" value="1">
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="m_student_id">Student ID</label>
+          <input type="text" class="form-control" id="m_student_id" name="student_id" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="m_student_fullname">Student Full Name</label>
+          <input type="text" class="form-control" id="m_student_fullname" name="student_fullname" placeholder="Optional">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="m_student_nic">Student NIC</label>
+          <input type="text" class="form-control" id="m_student_nic" name="student_nic" placeholder="Optional">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="m_course_id">Course</label>
+          <select class="custom-select" id="m_course_id" name="course_id" required>
+            <option value="" disabled selected>-- Select Course --</option>
+            <?php foreach ($courses as $c) { echo '<option value="'.htmlspecialchars($c['course_id']).'">'.htmlspecialchars($c['course_id'].' - '.$c['course_name']).'</option>'; } ?>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="m_academic_year">Academic Year</label>
+          <select class="custom-select" id="m_academic_year" name="academic_year" required>
+            <option value="" disabled selected>-- Select Academic Year --</option>
+            <?php foreach ($years as $y) { echo '<option value="'.htmlspecialchars($y).'">'.htmlspecialchars($y).'</option>'; } ?>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="m_enroll_date">Enroll Date</label>
+          <input type="date" class="form-control" id="m_enroll_date" name="enroll_date" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="m_course_mode">Course Mode</label>
+          <select class="custom-select" id="m_course_mode" name="course_mode">
+            <option value="Full" selected>Full</option>
+            <option value="Part">Part</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="m_status">Enrollment Status</label>
+          <select class="custom-select" id="m_status" name="status">
+            <option value="Following" selected>Following</option>
+            <option value="Completed">Completed</option>
+            <option value="Dropout">Dropout</option>
+            <option value="Long Absent">Long Absent</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-3 mb-3">
+          <button type="submit" class="btn btn-success btn-block"><i class="fas fa-user-plus"></i> Add Enrollment</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

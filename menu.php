@@ -600,7 +600,7 @@ if($u_ta=='staff'){
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/devices/DeviceDiscovery.php">Device Discovery</a>
+                  <!-- Device Discovery removed -->
                 </li>
                 <?php if($_SESSION['user_type'] == 'ADM') { ?>
                 <li>
