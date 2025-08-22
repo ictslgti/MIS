@@ -45,7 +45,7 @@ if (mysqli_connect_errno()) {
 
 //cookie
 define('COOKIE_RUNTIME', 1209600); // 1209600 seconds = 2 weeks
-define('COOKIE_DOMAIN','sis.slgti.ac.lk'); // the domain where the cookie is valid for, like '.mydomain.com'
+define('COOKIE_DOMAIN',''); // no explicit cookie domain; scope to current host
 define('COOKIE_SECRET_KEY', '1Wp@TMPS{+$78sppMJFe-92s'); // use to salt cookie content and when changed, can invalidate all databases users cookies
   
 
@@ -63,7 +63,11 @@ define("EMAIL_SMTP_ENCRYPTION", 'tls');
  * absolute URL to register.php, necessary for email password reset links 
 * */
 
-define("EMAIL_PASSWORDRESET_URL", "https://".COOKIE_DOMAIN."/passwordrecovery");
+// Build absolute URLs based on current host and APP_BASE when available
+$__host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+$__scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+$__base = (defined('APP_BASE') ? APP_BASE : '');
+define("EMAIL_PASSWORDRESET_URL", $__host ? ($__scheme.$__host.$__base.'/passwordrecovery') : ($__base.'/passwordrecovery'));
 define("EMAIL_PASSWORDRESET_FROM", "noreply@achchuthan.org");
 define("EMAIL_PASSWORDRESET_FROM_NAME", "MIS@SLGTI");
 define("EMAIL_PASSWORDRESET_SUBJECT", "[MIS@SLGTI] Password Reset");
@@ -73,7 +77,7 @@ define("EMAIL_PASSWORDRESET_CONTENT", "Please click on this link to reset your p
  * This is the place where your constants are saved
  * absolute URL to register.php, necessary for email verification links 
  * */
-define("EMAIL_VERIFICATION_URL", "https://".COOKIE_DOMAIN."/signup");
+define("EMAIL_VERIFICATION_URL", $__host ? ($__scheme.$__host.$__base.'/signup') : ($__base.'/signup'));
 define("EMAIL_VERIFICATION_FROM", "noreply@achchuthan.org");
 define("EMAIL_VERIFICATION_FROM_NAME", "MIS@SLGTI");
 define("EMAIL_VERIFICATION_SUBJECT", "[MIS@SLGT] Account Activation I");

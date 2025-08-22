@@ -13,17 +13,12 @@ $_SESSION = [];
 // Delete session cookie (if any)
 if (ini_get('session.use_cookies')) {
     $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+    // Do not specify domain so it matches current host
+    setcookie(session_name(), '', time() - 42000, $params['path'], '', $params['secure'], $params['httponly']);
 }
 
-// Also delete remember-me cookie to prevent immediate auto-login on index.php
-// Clear for configured domain and current host to be safe under different servers
-$cookiePath = '/';
-$cookieDom  = defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN : '';
-setcookie('rememberme', '', time() - 3600, $cookiePath, $cookieDom, false, true);
-if (!empty($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] !== $cookieDom) {
-    setcookie('rememberme', '', time() - 3600, $cookiePath, $_SERVER['HTTP_HOST'], false, true);
-}
+// Also delete remember-me cookie without explicit domain
+setcookie('rememberme', '', time() - 3600, '/', '', false, true);
 
 // Destroy the session
 session_destroy();

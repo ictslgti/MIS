@@ -31,8 +31,8 @@ if (isset($_COOKIE['rememberme'])) {
     $cookie_string_first_part = $_SESSION['user_name'] . ':' . $random_token_string;
     $cookie_string_hash = hash('sha256', $cookie_string_first_part . COOKIE_SECRET_KEY);
     $cookie_string = $cookie_string_first_part . ':' . $cookie_string_hash;
-    // set cookie
-    setcookie('rememberme', $cookie_string, time() + COOKIE_RUNTIME, "/", COOKIE_DOMAIN);
+    // set cookie (no explicit domain)
+    setcookie('rememberme', $cookie_string, time() + COOKIE_RUNTIME, "/");
 //end update cookie
 
 //set department session data
@@ -137,8 +137,8 @@ if (isset($_POST['SignIn']) && !empty($_POST['username']) && !empty($_POST['pass
                     mysqli_stmt_bind_param($update_stmt, "ss", $random_token, $row['user_name']);
                     mysqli_stmt_execute($update_stmt);
                     
-                    // Set cookie
-                    setcookie('rememberme', $cookie_string, time() + COOKIE_RUNTIME, "/", COOKIE_DOMAIN, false, true);
+                    // Set cookie (no explicit domain)
+                    setcookie('rememberme', $cookie_string, time() + COOKIE_RUNTIME, "/", "", false, true);
                 }
                 
                 // Check if user is active
@@ -187,8 +187,8 @@ if (isset($_POST['SignIn']) && !empty($_POST['username']) && !empty($_POST['pass
 <!-- SignOut -->
 <?php
 if (isset($_GET['signout'])) {
-  // delete remember me cookie (match original params)
-  setcookie('rememberme', '', time() - 3600, '/', COOKIE_DOMAIN, false, true);
+  // delete remember me cookie (no explicit domain)
+  setcookie('rememberme', '', time() - 3600, '/', '', false, true);
 
   // clear all session data and destroy session
   if (session_status() === PHP_SESSION_NONE) {
@@ -197,7 +197,8 @@ if (isset($_GET['signout'])) {
   $_SESSION = array();
   if (ini_get('session.use_cookies')) {
       $params = session_get_cookie_params();
-      setcookie(session_name(), '', time() - 42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+      // clear session cookie without explicit domain
+      setcookie(session_name(), '', time() - 42000, $params['path'], '', $params['secure'], $params['httponly']);
   }
   session_destroy();
   session_write_close();
