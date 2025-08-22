@@ -142,44 +142,91 @@ if ($action === 'fetch' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $dev = $dres ? mysqli_fetch_assoc($dres) : null;
     if (!$dev) {
       $errors[] = 'Device not found or disabled';
-    } else {
-      // Build URL. Many Hikvision firmwares support adding time range as query params.
-      $base = rtrim($dev['protocol'].'://'.$dev['ip'].':'.$dev['port'], '/');
-      $path = '/'.ltrim($dev['endpoint_path'], '/');
-      // Attempt to append time range if not already present
-      $queryGlue = (strpos($path, '?') === false) ? '?' : '&';
-      $url = $base.$path.$queryGlue.'startTime='.urlencode($from.'T00:00:00')."&endTime=".urlencode($to.'T23:59:59');
-
-      // cURL request with basic auth
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, $url);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($ch, CURLOPT_USERPWD, $dev['username'].':'.$dev['password']);
-      curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-      curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-      // Some devices use self-signed certs when https
-      if ($dev['protocol'] === 'https') {
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-      }
-      $resp = curl_exec($ch);
-      $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-      $curlErr = curl_error($ch);
-      curl_close($ch);
-
-      if ($resp === false || $httpCode >= 400) {
-        $errors[] = 'Device request failed (HTTP '.$httpCode.'): '.($curlErr ?: 'No response');
       } else {
+      // Build request(s). Hikvision has two common patterns:
+      // 1) GET /ISAPI/AccessControl/AcsEvent?format=json&startTime=...&endTime=...
+      // 2) POST /ISAPI/AccessControl/LogSearch?format=json with a JSON body
+      $path = '/'.ltrim($dev['endpoint_path'], '/');
+
+      // Candidate ports: use configured port first; if it is 8000 (SDK port), also try HTTP port 80.
+      $candidatePorts = [$dev['port']];
+      if ((string)$dev['port'] === '8000') { $candidatePorts[] = '80'; }
+
+      $resp = false; $httpCode = 0; $curlErr = '';
+      $lastTriedUrl = '';
+      foreach ($candidatePorts as $p) {
+        $base = rtrim($dev['protocol'].'://'.$dev['ip'].':'.$p, '/');
+        $isLogSearch = stripos($path, 'LogSearch') !== false; // POST style
+        $url = $base.$path.(strpos($path, '?')===false ? '?format=json' : '');
+        $lastTriedUrl = $url;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_USERPWD, $dev['username'].':'.$dev['password']);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        if ($dev['protocol'] === 'https') {
+          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        }
+
+        if ($isLogSearch) {
+          // POST with JSON body
+          $payload = json_encode([
+            'AcsLogSearchCond' => [
+              'searchID' => uniqid('sid_', true),
+              'searchResultPosition' => 0,
+              'maxResults' => 2000,
+              'startTime' => $from.'T00:00:00',
+              'endTime' => $to.'T23:59:59',
+            ]
+          ]);
+          curl_setopt($ch, CURLOPT_POST, true);
+          curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+          curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+        } else {
+          // Append time range to query params for AcsEvent-style endpoints
+          $queryGlue = (strpos($url, '?') === false) ? '?' : '&';
+          $urlWithTime = $url.$queryGlue.'startTime='.urlencode($from.'T00:00:00')."&endTime=".urlencode($to.'T23:59:59');
+          curl_setopt($ch, CURLOPT_URL, $urlWithTime);
+        }
+
+        $resp = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $curlErr = curl_error($ch);
+        curl_close($ch);
+
+        if ($resp !== false && $httpCode < 400 && $resp !== '') { break; }
+      }
+
+      if ($resp === false || $httpCode >= 400 || $resp === '') {
+        $hint = '';
+        if ((string)$dev['port'] === '8000') { $hint = ' Hint: port 8000 is the SDK port; try setting Web port 80/443.'; }
+        $errors[] = 'Device request failed (HTTP '.$httpCode.'): '.($curlErr ?: 'No/empty response').$hint.' URL: '.htmlspecialchars($lastTriedUrl);
+      } else {
+        // Accept JSON or XML; normalize to PHP array
         $data = json_decode($resp, true);
         if (!is_array($data)) {
-          $errors[] = 'Unexpected response from device (not JSON).';
+          // Try XML
+          libxml_use_internal_errors(true);
+          $xml = simplexml_load_string($resp, 'SimpleXMLElement', LIBXML_NOCDATA);
+          if ($xml !== false) { $data = json_decode(json_encode($xml), true); }
+        }
+        if (!is_array($data)) {
+          $errors[] = 'Unexpected response from device (not JSON/XML).';
         } else {
           // Try to locate events array; common key: "AcsEvent" or "AcsEventList" -> array of items
           $events = [];
           if (isset($data['AcsEvent'])) { $events = is_array($data['AcsEvent']) ? $data['AcsEvent'] : [$data['AcsEvent']]; }
           if (isset($data['AcsEventList'])) { $events = $data['AcsEventList']; }
           if (isset($data['Event']) && is_array($data['Event'])) { $events = $data['Event']; }
+          // LogSearch XML/JSON responses
+          if (empty($events) && isset($data['AcsLog'])) { $events = is_array($data['AcsLog']) ? $data['AcsLog'] : [$data['AcsLog']]; }
+          if (empty($events) && isset($data['AcsLogSearchResult']['MatchList']['AcsLog'])) {
+            $events = $data['AcsLogSearchResult']['MatchList']['AcsLog'];
+          }
 
           $inserted = 0; $skipped_unknown = 0; $errors_count = 0;
 

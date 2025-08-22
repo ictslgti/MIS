@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 20, 2025 at 04:54 AM
--- Server version: 8.0.31
--- PHP Version: 7.4.33
+-- Generation Time: Aug 22, 2025 at 10:26 AM
+-- Server version: 9.1.0
+-- PHP Version: 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mis`
+-- Database: `sis`
 --
 
 DELIMITER $$
@@ -281,7 +281,8 @@ CREATE TABLE IF NOT EXISTS `assessments_type` (
   KEY `course_id` (`course_id`),
   KEY `module_id` (`module_id`),
   KEY `course_id_2` (`course_id`),
-  KEY `course_id_3` (`course_id`)
+  KEY `course_id_3` (`course_id`),
+  KEY `assessments_type_ibfk_2` (`module_id`,`course_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
@@ -997,6 +998,55 @@ CREATE TABLE IF NOT EXISTS `food_order_details` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hik_devices`
+--
+
+DROP TABLE IF EXISTS `hik_devices`;
+CREATE TABLE IF NOT EXISTS `hik_devices` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `ip` varchar(100) NOT NULL,
+  `port` int NOT NULL DEFAULT '80',
+  `protocol` enum('http','https') NOT NULL DEFAULT 'http',
+  `username` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `endpoint_path` varchar(255) NOT NULL DEFAULT '/ISAPI/AccessControl/AcsEvent?format=json',
+  `connection_type` enum('lan','hik_connect') NOT NULL DEFAULT 'lan',
+  `cloud_host` varchar(150) NOT NULL DEFAULT 'litedev.sgp.hik-connect.com',
+  `device_serial` varchar(64) DEFAULT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `hik_devices`
+--
+
+INSERT INTO `hik_devices` (`id`, `name`, `ip`, `port`, `protocol`, `username`, `password`, `endpoint_path`, `connection_type`, `cloud_host`, `device_serial`, `enabled`, `created_at`) VALUES
+(2, 'SLGTI', 'litedev.sgp.hik-connect.com', 8000, 'http', 'admin', 'TCI@itgls2025#@', '/ISAPI/AccessControl/AcsEvent?format=json', 'lan', 'litedev.sgp.hik-connect.com', NULL, 1, '2025-08-22 08:58:38'),
+(3, 'SLGTI', 'litedev.sgp.hik-connect.com', 8000, 'http', 'admin', 'TCI@itgls2025#@', '/ISAPI/AccessControl/AcsEvent?format=json', 'lan', 'litedev.sgp.hik-connect.com', NULL, 1, '2025-08-22 08:58:44');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hik_user_map`
+--
+
+DROP TABLE IF EXISTS `hik_user_map`;
+CREATE TABLE IF NOT EXISTS `hik_user_map` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `device_id` int NOT NULL,
+  `employee_no` varchar(100) NOT NULL,
+  `student_id` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `device_id` (`device_id`,`employee_no`),
+  KEY `student_id` (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hostel_student_details`
 --
 
@@ -1263,6 +1313,52 @@ INSERT INTO `module` (`module_id`, `module_name`, `module_aim`, `module_learning
 ('M08', 'PHP Program', 'Text Here', 250, 'Text Here', 'Text Here', '2', 'Text Here', 'Text Here', 60, 20, 20, '5IT'),
 ('M10', 'Mathematics For Automotive Technology', 'Text Here', 23, 'Text Here', 'Text Here', '1', 'Text Here', 'Text Here', 120, 141, 11, '4AT'),
 ('M50', 'A', 'fgg', 0, 'fg', 'fg', '', 'fg', 'g', 0, 0, 0, '5IT');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `network_devices`
+--
+
+DROP TABLE IF EXISTS `network_devices`;
+CREATE TABLE IF NOT EXISTS `network_devices` (
+  `device_id` int NOT NULL AUTO_INCREMENT,
+  `device_type` varchar(50) NOT NULL,
+  `device_name` varchar(100) DEFAULT NULL,
+  `ip_address` varchar(15) NOT NULL,
+  `port` int DEFAULT '8000',
+  `mac_address` varchar(17) DEFAULT NULL,
+  `status` enum('Active','Inactive','Unknown') DEFAULT 'Unknown',
+  `software_version` varchar(50) DEFAULT NULL,
+  `device_serial` varchar(100) DEFAULT NULL,
+  `enhanced_sdk_version` varchar(50) DEFAULT NULL,
+  `ipv6_address` varchar(45) DEFAULT NULL,
+  `ipv6_gateway` varchar(45) DEFAULT NULL,
+  `ipv4_gateway` varchar(15) DEFAULT NULL,
+  `subnet_mask` varchar(15) DEFAULT NULL,
+  `http_port` int DEFAULT '80',
+  `last_discovered` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`device_id`),
+  UNIQUE KEY `unique_ip_port` (`ip_address`,`port`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `network_devices`
+--
+
+INSERT INTO `network_devices` (`device_id`, `device_type`, `device_name`, `ip_address`, `port`, `mac_address`, `status`, `software_version`, `device_serial`, `enhanced_sdk_version`, `ipv6_address`, `ipv6_gateway`, `ipv4_gateway`, `subnet_mask`, `http_port`, `last_discovered`, `created_at`) VALUES
+(1, 'DS-7604NI-Q1', NULL, '172.16.0.34', 8000, NULL, 'Active', 'V4.31.100-build 210129', NULL, '172.16.0.1', NULL, NULL, '172.16.0.1', '255.255.255.0', 80, '2025-08-22 10:18:44', '2025-08-22 10:18:44'),
+(2, 'DS-7604NI-Q1', NULL, '172.16.0.35', 8000, NULL, 'Active', 'V4.31.100-build 210129', NULL, '172.16.0.1', NULL, NULL, '172.16.0.1', '255.255.255.0', 80, '2025-08-22 10:18:44', '2025-08-22 10:18:44'),
+(3, 'DS-7104NI-Q1/M', NULL, '172.16.0.38', 8000, NULL, 'Active', 'V4.25.000-build 201129', NULL, '172.16.0.1', NULL, NULL, '172.16.0.1', '255.255.255.0', 80, '2025-08-22 10:18:44', '2025-08-22 10:18:44'),
+(4, 'DS-K1T320MFW-M', NULL, '172.16.0.230', 8000, NULL, 'Active', 'V3.5.20-build 240701', NULL, '172.16.0.1', NULL, NULL, '172.16.0.1', '255.255.255.0', 80, '2025-08-22 10:18:44', '2025-08-22 10:18:44'),
+(5, 'DS-K1T320MFW-M', NULL, '172.16.0.30', 8000, NULL, 'Active', 'V3.5.20-build 240701', NULL, '172.16.0.1', NULL, NULL, '172.16.0.1', '255.255.255.0', 80, '2025-08-22 10:18:44', '2025-08-22 10:18:44'),
+(6, 'DS-7608NI-K2/8P', NULL, '172.16.0.251', 8000, NULL, 'Active', 'V4.81.000-build 241029', NULL, '172.16.0.1', NULL, NULL, '172.16.0.1', '255.255.255.0', 80, '2025-08-22 10:18:44', '2025-08-22 10:18:44'),
+(7, 'DS-2CD1107G2H-LIUF-SL', NULL, '172.16.0.213', 8000, NULL, 'Active', 'V5.8.10-build 241029', NULL, '172.16.0.1', NULL, NULL, '172.16.0.1', '255.255.255.0', 80, '2025-08-22 10:18:44', '2025-08-22 10:18:44'),
+(8, 'DS-2CD1107G2H-LIUF-SL', NULL, '172.16.0.211', 8000, NULL, 'Active', 'V5.8.10-build 241029', NULL, '172.16.0.1', NULL, NULL, '172.16.0.1', '255.255.255.0', 80, '2025-08-22 10:18:44', '2025-08-22 10:18:44'),
+(9, 'DS-2CD1T2G0-I', NULL, '172.16.0.33', 8000, NULL, 'Active', 'V5.5.80-build 191010', NULL, '172.16.0.1', NULL, NULL, '172.16.0.1', '255.255.255.0', 80, '2025-08-22 10:18:44', '2025-08-22 10:18:44'),
+(10, 'DS-2CD1T2G0-I', NULL, '172.16.0.31', 8000, NULL, 'Active', 'V5.5.80-build 191010', NULL, '172.16.0.1', NULL, NULL, '172.16.0.1', '255.255.255.0', 80, '2025-08-22 10:18:44', '2025-08-22 10:18:44'),
+(11, 'DS-2CD1107G2H-LIUF-SL', NULL, '172.16.0.219', 8000, NULL, 'Active', 'V5.8.10-build 241029', NULL, '172.16.0.1', NULL, NULL, '172.16.0.1', '255.255.255.0', 80, '2025-08-22 10:18:44', '2025-08-22 10:18:44');
 
 -- --------------------------------------------------------
 
@@ -2132,7 +2228,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `user_email` (`user_email`),
   KEY `user_name_2` (`user_name`),
   KEY `staff_position_type_id` (`staff_position_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci COMMENT='user data';
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci COMMENT='user data';
 
 --
 -- Dumping data for table `user`
@@ -2140,7 +2236,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`user_id`, `user_table`, `staff_position_type_id`, `session_id`, `user_name`, `user_password_hash`, `user_email`, `user_active`, `user_deleted`, `user_remember_me_token`, `user_creation_timestamp`, `user_suspension_timestamp`, `user_last_login_timestamp`, `user_failed_logins`, `user_last_failed_login`, `user_activation_hash`, `user_password_reset_hash`, `user_password_reset_timestamp`) VALUES
 (1, 'staff', 'HOD', NULL, 'achchuthan', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'achchuthan@slgti.com', 1, 0, '25c09da0232c0512b4ea63007c010111617dbcc549b90197d01ec37df669ef57', NULL, NULL, NULL, 0, NULL, NULL, '2527eaaf2d8b2995543ee68ae70917062b539bf9', 1572856689),
-(5, 'staff', 'ADM', NULL, 'admin', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'admin@slgti.com', 1, 0, '9f3c15f54dd5d4772ef828f9295e03d6c827684281c0ebdacd8653ddc79f2a48', NULL, NULL, NULL, 0, NULL, NULL, '292e1e623c3535ddaec88bf9d28c0dc698c4fc59', 1586058126),
+(5, 'staff', 'ADM', NULL, 'admin', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'admin@slgti.com', 1, 0, 'b906afd526fd368e47c660034f7d1f17547606fa90b87c00d3fef985d34ecad8', NULL, NULL, NULL, 0, NULL, NULL, '292e1e623c3535ddaec88bf9d28c0dc698c4fc59', 1586058126),
 (74, 'staff', 'IN2', NULL, 'sumanan', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'sumanan@slgti.com', 1, 0, '4b0fd9a742b56306d19fcaaf6edd8d5018588714b85ed6a2339d712da8520f2d', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL),
 (77, 'staff', 'DIR', NULL, 'Keert', 'c260c3b85f283179d4f1fadd2aed421b82b799604d6aa22cf957f2ef59c752e4', 'sumangtgan@slgti.com', 1, 0, '770878fc6afa04520dee7d855ca5d6feb6bc05b9edba66dbafdb51cd58069b5d', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL),
 (79, 'student', 'STU', NULL, '2025ICT5IT01', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', '2025ICT5IT01@slgti.com', 1, 0, '48a9d2a099ae8bffee885c6a9e617a622532551ec6d2b9a011d68641d675734f', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL),
@@ -2170,7 +2266,7 @@ ALTER TABLE `assessments_marks`
 --
 ALTER TABLE `assessments_type`
   ADD CONSTRAINT `assessments_type_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `assessments_type_ibfk_2` FOREIGN KEY (`module_id`) REFERENCES `module` (`module_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `assessments_type_ibfk_2` FOREIGN KEY (`module_id`,`course_id`) REFERENCES `module` (`module_id`, `course_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `batch`
@@ -2180,148 +2276,10 @@ ALTER TABLE `batch`
   ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`);
 
 --
--- Constraints for table `chat_group_member`
+-- Constraints for table `hik_user_map`
 --
-ALTER TABLE `chat_group_member`
-  ADD CONSTRAINT `chat_group_member_ibfk_1` FOREIGN KEY (`chat_group_id`) REFERENCES `chat_group` (`chat_group_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `chat_group_member_ibfk_2` FOREIGN KEY (`chat_group_member`) REFERENCES `user` (`user_name`) ON UPDATE CASCADE;
-
---
--- Constraints for table `chat_group_message`
---
-ALTER TABLE `chat_group_message`
-  ADD CONSTRAINT `chat_group_message_ibfk_1` FOREIGN KEY (`chat_group_reciver_group_id`) REFERENCES `chat_group` (`chat_group_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `chat_group_message_ibfk_2` FOREIGN KEY (`chat_group_sender`) REFERENCES `user` (`user_name`) ON UPDATE CASCADE;
-
---
--- Constraints for table `course`
---
-ALTER TABLE `course`
-  ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `delete_feedback_survey`
---
-ALTER TABLE `delete_feedback_survey`
-  ADD CONSTRAINT `delete_feedback_survey_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `delete_feedback_survey_ibfk_2` FOREIGN KEY (`academic_year`) REFERENCES `academic` (`academic_year`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `delete_feedback_survey_ibfk_3` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `delete_feedback_survey_ibfk_4` FOREIGN KEY (`module_id`) REFERENCES `module` (`module_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `delete_feedback_survey_ibfk_5` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staff_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`survey_id`) REFERENCES `feedback_survey` (`survey_id`) ON DELETE CASCADE;
-
---
--- Constraints for table `feedback_done`
---
-ALTER TABLE `feedback_done`
-  ADD CONSTRAINT `feedback_done_ibfk_1` FOREIGN KEY (`survey_id`) REFERENCES `feedback_survey` (`survey_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `feedback_done_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `feedback_survey`
---
-ALTER TABLE `feedback_survey`
-  ADD CONSTRAINT `feedback_survey_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `feedback_survey_ibfk_2` FOREIGN KEY (`academic_year`) REFERENCES `academic` (`academic_year`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `feedback_survey_ibfk_3` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `feedback_survey_ibfk_4` FOREIGN KEY (`module_id`) REFERENCES `module` (`module_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `feedback_survey_ibfk_5` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staff_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `food_order_details`
---
-ALTER TABLE `food_order_details`
-  ADD CONSTRAINT `food_id_foreignkey` FOREIGN KEY (`food_order_details_food_id`) REFERENCES `food` (`food_id`),
-  ADD CONSTRAINT `food_order_id_foreignkey` FOREIGN KEY (`food_order_details_food_order_id`) REFERENCES `food_order` (`food_order_id`);
-
---
--- Constraints for table `hostel_student_details`
---
-ALTER TABLE `hostel_student_details`
-  ADD CONSTRAINT `hostel_student_details_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `hostel_student_details_ibfk_2` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `inventory_item`
---
-ALTER TABLE `inventory_item`
-  ADD CONSTRAINT `inventory_item_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `inventory_item_supplier` (`supplier_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `manage_final_place`
---
-ALTER TABLE `manage_final_place`
-  ADD CONSTRAINT `foreignkey` FOREIGN KEY (`student_id`) REFERENCES `ojt` (`student_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `module`
---
-ALTER TABLE `module`
-  ADD CONSTRAINT `module_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `onpeak_request`
---
-ALTER TABLE `onpeak_request`
-  ADD CONSTRAINT `onpeak_request_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `pays`
---
-ALTER TABLE `pays`
-  ADD CONSTRAINT `payment_reason_foreingkey` FOREIGN KEY (`payment_reason`) REFERENCES `payment` (`payment_reason`) ON UPDATE CASCADE;
-
---
--- Constraints for table `staff`
---
-ALTER TABLE `staff`
-  ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `staff_ibfk_2` FOREIGN KEY (`staff_position`) REFERENCES `staff_position_type` (`staff_position_type_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `staff_module_enrollment`
---
-ALTER TABLE `staff_module_enrollment`
-  ADD CONSTRAINT `staff_module_enrollment_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staff_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `staff_module_enrollment_ibfk_4` FOREIGN KEY (`academic_year`) REFERENCES `academic` (`academic_year`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `staff_module_enrollment_ibfk_5` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `staff_module_enrollment_ibfk_6` FOREIGN KEY (`module_id`) REFERENCES `module` (`module_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `staff_position`
---
-ALTER TABLE `staff_position`
-  ADD CONSTRAINT `staff_position_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staff_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `staff_position_ibfk_2` FOREIGN KEY (`staff_position_type_id`) REFERENCES `staff_position_type` (`staff_position_type_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `student_enroll`
---
-ALTER TABLE `student_enroll`
-  ADD CONSTRAINT `student_enroll_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_enroll_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_enroll_ibfk_3` FOREIGN KEY (`academic_year`) REFERENCES `academic` (`academic_year`) ON UPDATE CASCADE;
-
---
--- Constraints for table `student_qualification`
---
-ALTER TABLE `student_qualification`
-  ADD CONSTRAINT `student_qualification_ibfk_1` FOREIGN KEY (`qualification_student_id`) REFERENCES `student` (`student_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `timetable`
---
-ALTER TABLE `timetable`
-  ADD CONSTRAINT `timetable_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `department` (`department_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `timetable_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `timetable_ibfk_3` FOREIGN KEY (`module_id`) REFERENCES `module` (`module_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `timetable_ibfk_4` FOREIGN KEY (`academic_year`) REFERENCES `academic` (`academic_year`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `timetable_ibfk_5` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staff_id`) ON UPDATE CASCADE;
+ALTER TABLE `hik_user_map`
+  ADD CONSTRAINT `hik_user_map_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `hik_devices` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

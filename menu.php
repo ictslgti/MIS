@@ -591,6 +591,27 @@ if($u_ta=='staff'){
 
 
 
+          <?php if($_SESSION['user_type'] != 'STU') { ?>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-network-wired"></i>
+              <span>Network Management</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/devices/DeviceDiscovery.php">Device Discovery</a>
+                </li>
+                <?php if($_SESSION['user_type'] == 'ADM') { ?>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/devices/NetworkSettings.php">Network Settings</a>
+                </li>
+                <?php } ?>
+              </ul>
+            </div>
+          </li>
+          <?php } ?>
+
           <li class="header-menu">
             <span>Extra</span>
           </li>

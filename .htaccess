@@ -18,6 +18,10 @@ RewriteRule ^UserMap$ attendance/UserMap.php [L,NC]
 RewriteRule ^Timetable$ timetable/Timetable.php [L,NC]
 RewriteRule ^AddTimetable$ timetable/AddTimetable.php [L,NC]
 
+# Top-level routes for devices/ directory
+RewriteRule ^DeviceDiscovery$ devices/DeviceDiscovery.php [L,NC]
+RewriteRule ^devices/DeviceDiscovery$ devices/DeviceDiscovery.php [L,NC]
+
 # Backward compatibility: internally strip leading MIS/ from requests within this dir
 # This allows links like /MIS/department/Department to work when the app lives in /sis/
 RewriteRule ^MIS/(.*)$ $1 [L,QSA,NC]
