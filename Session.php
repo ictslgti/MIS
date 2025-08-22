@@ -4,7 +4,7 @@ $title = "Home | SLGTI";
 include_once("config.php");
 include_once("head.php");
 include_once("menu.php");
-include_once("attendancenav.php");
+include_once("attendance/Attendancenav.php");
 $username = $_SESSION['user_name'];
 ?>
 <!--END DON'T CHANGE THE ORDER-->
@@ -58,7 +58,7 @@ $username = $_SESSION['user_name'];
         <th scope="row">'.$row_m['module_id'].'</th> 
         <th scope="row">'.$row_m['academic_year'].'</th>
         <th scope="row">
-            <a href="MarkAttendance?id='.$row_m['staff_module_enrollment_id'].'&mid='.$row_m['module_id'].'&cid='.$row_m['course_id'].'&ay='.$row_m['academic_year'].'&staff='.$row_m['staff_id'].'" class="btn btn-sm btn-info"><i class="far fa-info"></i></a>
+            <a href="attendance/MarkAttendance.php?id='.$row_m['staff_module_enrollment_id'].'&mid='.$row_m['module_id'].'&cid='.$row_m['course_id'].'&ay='.$row_m['academic_year'].'&staff='.$row_m['staff_id'].'" class="btn btn-sm btn-info"><i class="far fa-info"></i></a>
         </th>
         </tr>
         ';

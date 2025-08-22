@@ -91,9 +91,10 @@ include_once("../menu.php");
             </thead>
            
              <?php
-                $sql = "call request_onpeak('Pending')";
+                // Replaced stored procedure call with direct SELECT to avoid DEFINER errors
+                $sql = "SELECT id, student_id, contact_no, exit_date, exit_time, return_date, return_time, comment, request_date_time, onpeak_request_status FROM onpeak_request WHERE onpeak_request_status='Pending' ORDER BY id DESC";
                 $result = mysqli_query($con, $sql);
-                if (mysqli_num_rows($result) > 0) {
+                if ($result && mysqli_num_rows($result) > 0) {
                  while($row = mysqli_fetch_assoc($result)) {
 
                 echo '
@@ -182,10 +183,10 @@ include_once("../menu.php");
   </thead>
   <tbody>
   <?php
-  $sql = "call request_onpeak('Approved')";
-  $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+  // Use direct SELECT; also reuse existing $con from config.php
+  $sql = "SELECT student_id, reason, contact_no, exit_date, exit_time, return_date, return_time, onpeak_request_status FROM onpeak_request WHERE onpeak_request_status='Approved' ORDER BY id DESC";
   $result = mysqli_query($con, $sql);
-  if(mysqli_num_rows($result) > 0){
+  if($result && mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
     echo '<tr>
       
@@ -228,10 +229,9 @@ else{
   </thead>
   <tbody>
   <?php
-  $sql = "call request_onpeak('Not Approved')";
-  $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+  $sql = "SELECT student_id, reason, contact_no, exit_date, exit_time, return_date, return_time, onpeak_request_status FROM onpeak_request WHERE onpeak_request_status='Not Approved' ORDER BY id DESC";
   $result = mysqli_query($con, $sql);
-  if(mysqli_num_rows($result) > 0){
+  if($result && mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
     echo '<tr>
       
@@ -400,8 +400,7 @@ else{
             if(isset($_GET['sea'])){
                $id= $_GET['sear'];
                
-              $sql = "SELECT * FROM `onpeak_request` WHERE `student_id`='$id' ";
-              $con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+              $sql = "SELECT * FROM `onpeak_request` WHERE `student_id`='".mysqli_real_escape_string($con, $id)."'";
               $result = mysqli_query($con, $sql);
               if (mysqli_num_rows($result) > 0) {
               while($row = mysqli_fetch_assoc($result)) {

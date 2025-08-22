@@ -1,9 +1,9 @@
 <!--START Don't CHANGE THE ORDER-->
 <?php 
  $title ="AddStudentFeedback | SLGTI";
- include_once("config.php");
- include_once("head.php");
- include_once("menu.php");
+ include_once("../config.php");
+ include_once("../head.php");
+ include_once("../menu.php");
 
  $id= $sn =$mn= $cn=$dn= $ay=$sd=  $ed=null;
  if(isset($_GET['edit'])){
@@ -72,7 +72,7 @@
             </div>
             <div class="col-md-2 col-sm-12 pl-3 pr-3 pt-2 ">
            <!-- <a href> <button type="submit" value="Add" name="add" class="btn btn-success mr-2"><i class="fas fa-eye"></i>&nbsp;&nbsp;View</button> -->
-           <a href="StudentFeedbackinfo.php"  name="add" class="btn btn-success" role="button" ><i class="fas fa-eye"></i>&nbsp;&nbsp;View</a>                                   
+           <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentFeedbackinfo"  name="add" class="btn btn-success" role="button" ><i class="fas fa-eye"></i>&nbsp;&nbsp;View</a>                                   
             </div>   
             
         <div class="w-100"></div>
@@ -300,7 +300,7 @@ function showCouese(val) {
             document.getElementById("course").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("POST", "controller/getCourse", true);
+    xmlhttp.open("POST", "<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/controller/getCourse", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send("department=" + val);
 }
@@ -312,7 +312,7 @@ function showModule(val) {
             document.getElementById("module").innerHTML = this.responseText;
         }
     };
-    xmlhttp.open("POST", "controller/getModule", true);
+    xmlhttp.open("POST", "<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/controller/getModule", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send("course=" + val);
 }
@@ -325,6 +325,6 @@ function showModule(val) {
 
 <!--START Don't CHANGE THE ORDER-->   
 <?php 
- include_once("footer.php");
+ include_once("../footer.php");
 ?>
 <!--Don't CHANGE THE ORDER-->

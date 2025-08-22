@@ -6,12 +6,23 @@
  
  <ul class="nav nav-tabs">
    <li class="nav-item">
-     <a class="nav-link" href="Attendance.php">Home</a>
+     <a class="nav-link" href="<?php echo APP_BASE; ?>/attendance/Attendance.php">Home</a>
    </li>
    <li class="nav-item">
-     <a class="nav-link" href="../Session.php">Module</a>
+     <a class="nav-link" href="<?php echo APP_BASE; ?>/Session.php">Module</a>
    </li>
    <li class="nav-item">
-     <a class="nav-link" href="MarkAttendance.php">Attendance</a>
+     <a class="nav-link" href="<?php echo APP_BASE; ?>/attendance/MarkAttendance.php">Attendance</a>
    </li>
+   <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'ADM') { ?>
+   <li class="nav-item">
+     <a class="nav-link" href="<?php echo APP_BASE; ?>/attendance/ManageAttendance.php">Admin</a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="<?php echo APP_BASE; ?>/attendance/Devices.php">Devices</a>
+   </li>
+   <li class="nav-item">
+     <a class="nav-link" href="<?php echo APP_BASE; ?>/attendance/UserMap.php">User Map</a>
+   </li>
+   <?php } ?>
  </ul>

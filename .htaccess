@@ -5,6 +5,19 @@ RewriteEngine On
 # IMPORTANT: App is served at the VirtualHost root (e.g., http://sis/)
 RewriteBase /
 
+# Legacy top-level routes mapped to files in attendance/ directory
+# Example: http://sis/MarkAttendance -> /attendance/MarkAttendance.php
+RewriteRule ^MarkAttendance$ attendance/MarkAttendance.php [L,NC]
+RewriteRule ^Attendance$ attendance/Attendance.php [L,NC]
+RewriteRule ^ManageAttendance$ attendance/ManageAttendance.php [L,NC]
+RewriteRule ^adminattendance$ attendance/adminattendance.php [L,NC]
+RewriteRule ^Devices$ attendance/Devices.php [L,NC]
+RewriteRule ^UserMap$ attendance/UserMap.php [L,NC]
+
+# Top-level routes for timetable/ directory
+RewriteRule ^Timetable$ timetable/Timetable.php [L,NC]
+RewriteRule ^AddTimetable$ timetable/AddTimetable.php [L,NC]
+
 # Backward compatibility: internally strip leading MIS/ from requests within this dir
 # This allows links like /MIS/department/Department to work when the app lives in /sis/
 RewriteRule ^MIS/(.*)$ $1 [L,QSA,NC]

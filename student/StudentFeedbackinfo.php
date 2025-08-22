@@ -1,9 +1,9 @@
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER -->
 <?php 
 $title = "Student FeedBack Info | SLGTI" ;
-include_once("config.php"); 
-include_once("head.php"); 
-include_once("menu.php");
+include_once("../config.php"); 
+include_once("../head.php"); 
+include_once("../menu.php");
 
 // if(isset($_GET['delete_id']))
 // {                
@@ -124,10 +124,10 @@ include_once("menu.php");
                                                 <td>'. $row["end_date"]. "<br>" .'</td> 
                                                 
                                                 <td> 
-                                                <a href="Addfbdetail.php?id='. $row["survey_id"].'" class="btn btn-primary btn-sm btn-icon-split"> <span class="text"><i class="fas fa-eye"></i>&nbsp;&nbsp;View</span>  </a>  
-                                                <a href="AddStudentFeedback.php?edit='. $row["survey_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a> 
+                                                <a href="'.APP_BASE.'/adding/Addfbdetail?id='. $row["survey_id"].'" class="btn btn-primary btn-sm btn-icon-split"> <span class="text"><i class="fas fa-eye"></i>&nbsp;&nbsp;View</span>  </a>  
+                                                <a href="'.APP_BASE.'/student/AddStudentFeedback?edit='. $row["survey_id"].'" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a> 
                                                 <button class="btn btn-sm btn-danger" data-href="?delete_id='.$row["survey_id"].'" data-toggle="modal" data-target="#confirm-delete"><i class="fas fa-trash"></i> </button> 
-                                                <a href="feedbacksurveysummery.php?id='. $row["survey_id"].'" class="btn btn-sm btn-success btn-icon-split"> <span class="text"><i class="fas fa-chart-bar"></i>Summary</span> </a>
+                                                <a href="'.APP_BASE.'/feedback/feedbacksurveysummery?id='. $row["survey_id"].'" class="btn btn-sm btn-success btn-icon-split"> <span class="text"><i class="fas fa-chart-bar"></i>Summary</span> </a>
                                                 
                                                 </td> 
                                             </tr>';
@@ -157,6 +157,6 @@ include_once("menu.php");
 
     <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->
     <?php 
-    include_once("footer.php");
+    include_once("../footer.php");
     ?>
     <!-- END DON'T CHANGE THE ORDER -->

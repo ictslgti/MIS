@@ -222,13 +222,13 @@ if($u_ta=='staff'){
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/timetable/Timetable.php">Timetable</a>
                 </li>
-                <?php if($_SESSION['user_type']!='STU'){ ?>
+                <?php if(isset($_SESSION['user_type']) && in_array($_SESSION['user_type'], ['WAR','HOD','ADM'])){ ?>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/timetable/AddTimetable.php">Add a Timetable</a>
                 </li>
                 <?php } ?>
                 <hr>
-                <?php if($_SESSION['user_type']!='STU'){ ?>
+                <?php if(isset($_SESSION['user_type']) && in_array($_SESSION['user_type'], ['WAR','HOD','ADM'])){ ?>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/notices/Notice.php">Notice Info</a>
                 </li>
@@ -542,6 +542,52 @@ if($u_ta=='staff'){
               </ul>
             </div>
           </li>
+          <?php if(isset($_SESSION['user_type']) && in_array($_SESSION['user_type'], ['WAR','HOD','ADM'])){ ?>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-tint"></i>
+              <span>Attendance </span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>  <?php if((($_SESSION['user_type'] =='WAR') || ($_SESSION['user_type'] =='HOD'))) { ?>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/Attendance.php">Attendance Info</a>
+                </li> <?php } ?> 
+                <li><?php if((($_SESSION['user_type'] =='WAR') || ($_SESSION['user_type'] =='HOD'))) { ?>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/Attendance.php">Attendance </a>
+                  <hr>
+                </li>  <?php } ?>             
+                <li><?php if($_SESSION['user_type'] =='ADM') { ?>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/ManageAttendance.php">Attendance (Admin)</a>
+                </li>  <?php } ?>         
+              </ul>
+            </div>
+          </li>
+          <?php } ?>
+          <?php if(isset($_SESSION['user_type']) && in_array($_SESSION['user_type'], ['WAR','HOD','ADM'])){ ?>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-tint"></i>
+              <span>Payroll System </span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>  <?php if((($_SESSION['user_type'] =='WAR') || ($_SESSION['user_type'] =='HOD'))) { ?>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/Payroll.php">Payroll Info</a>
+                </li> <?php } ?> 
+                <li><?php if((($_SESSION['user_type'] =='WAR') || ($_SESSION['user_type'] =='HOD'))) { ?>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/Payroll.php">Payroll </a>
+                  <hr>
+                </li>  <?php } ?>             
+                <li><?php if($_SESSION['user_type'] =='ADM') { ?> 
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/attendance/ManagePayroll.php">Payroll (Admin)</a>
+                </li>  <?php } ?>         
+              </ul>
+            </div>
+          </li>
+          <?php } ?>
 
 
 
