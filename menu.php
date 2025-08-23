@@ -169,6 +169,9 @@ if($u_ta=='staff'){
                   <hr>
                 </li>              
                 <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/staff/StaffPositionType.php">Staff Position Types</a>
+                </li>
+                <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/staff/StaffModuleEnrollment.php">Module Enrollment</a>
                 </li>
                 <!-- <li>
@@ -197,6 +200,9 @@ if($u_ta=='staff'){
                 </li>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentEnrollmentReport.php">Student Enrollment Report</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentIDPhoto.php">Student ID Photo</a>
                 </li>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/ImportStudentEnroll.php">Import Student Enrollment</a>
