@@ -155,6 +155,16 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_export'])) ||
     $filename = $simple ? ($db . ".sql") : ($db . "_export_" . date('Ymd_His') . ".sql");
     $sql = export_database_sql($con);
 
+    // Optionally save a copy on the server
+    $saveCopy = isset($_POST['save_to_server']) && $_POST['save_to_server'] === '1';
+    if ($saveCopy) {
+        $backupDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'backups';
+        if (!is_dir($backupDir)) { @mkdir($backupDir, 0775, true); }
+        $serverFile = $backupDir . DIRECTORY_SEPARATOR . $filename;
+        // suppress errors but try to write
+        @file_put_contents($serverFile, $sql);
+    }
+
     // Clean any buffered output and send download
     if (ob_get_length()) { @ob_clean(); }
     header('Content-Type: application/sql');
@@ -193,11 +203,15 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'ADM') {
       </p>
       <form method="post">
         <input type="hidden" name="do_export" value="1">
+        <div class="form-check d-inline-block mr-3">
+          <input class="form-check-input" type="checkbox" id="save_to_server" name="save_to_server" value="1">
+          <label class="form-check-label" for="save_to_server">Save a copy on server (backups/)</label>
+        </div>
         <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-download"></i> Export Now</button>
       </form>
       <hr>
       <p class="small mb-0">
-        Note: This export is generated directly from the active database connection. Ensure you have sufficient permissions.
+        Note: This export includes tables, data, procedures, functions, triggers, and events. Ensure you have sufficient permissions. If "Save a copy" is checked, file will be stored in <code>backups/</code>.
       </p>
     </div>
   </div>
