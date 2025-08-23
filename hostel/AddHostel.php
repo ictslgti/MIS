@@ -29,26 +29,42 @@ include_once("../menu.php");
           $dept =$_POST['dept'];
          
           $dis =$_POST['dis'];
-        
-          $block =$_POST['block'];
-          $room =$_POST['room'];
-          $date =$_POST['date'];
-          $leave =$_POST['leave'];
-          $sql= "INSERT INTO `hostel_student_details` (`student_id`,  `department_id`,  `distance`,  `block_no`, 
+          // Check payment status before allocation
+          $sidEsc = mysqli_real_escape_string($con, $id);
+          $rq = mysqli_query($con, "SELECT distance_km, status FROM hostel_requests WHERE student_id='$sidEsc'");
+          if (!$rq || mysqli_num_rows($rq) === 0) {
+            echo '<div class="alert alert-warning"><strong>Blocked:</strong> No hostel request found for this student. Record a request and confirm payment first.</div>';
+          } else {
+            $r = mysqli_fetch_assoc($rq);
+            if ($r['status'] !== 'paid') {
+              echo '<div class="alert alert-warning"><strong>Blocked:</strong> Payment not confirmed (status: '.htmlspecialchars($r['status']).'). Allocation is disabled until payment is marked as paid.</div>';
+            } else {
+              // Use recorded distance as source of truth
+              $dis = $r['distance_km'];
+              
+              $block =$_POST['block'];
+              $room =$_POST['room'];
+              $date =$_POST['date'];
+              $leave =$_POST['leave'];
+              $sql= "INSERT INTO `hostel_student_details` (`student_id`,  `department_id`,  `distance`,  `block_no`, 
           `room_no`, `date_of_addmission`, `date_of_leaving`) VALUES ('$id', '$dept',   '$dis',  '$block', '$room', '$date', '$leave')";
-          if(mysqli_query($con,$sql)){
-            echo
-            '<div class="alert alert-success">
-            <strong>Success!</strong> Your data was inserted.</a>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-          </div>';
-          }else{
-              echo '<div class="alert alert-warning">
-              <strong>Warning!</strong> Invalid data. Please Check Your Data !
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-            </div>';
+              if(mysqli_query($con,$sql)){
+                // Mark request as allocated
+                mysqli_query($con, "UPDATE hostel_requests SET status='allocated' WHERE student_id='$sidEsc'");
+                echo
+                '<div class="alert alert-success">
+                <strong>Success!</strong> Allocation saved.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+              </div>';
+              }else{
+                  echo '<div class="alert alert-warning">
+                  <strong>Warning!</strong> Invalid data. Please Check Your Data !
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                </div>';
+              }
+            }
           }
         }
   
@@ -58,6 +74,7 @@ include_once("../menu.php");
 
         <?php
         $student_id=$name=$dept=$addr =$dist =$dis =$title = $block =$room =$date =$leave =null;
+        $paidReady = false; $reqStatus = null; $reqDistance = null;
         if(isset($_GET['edit'])){
           $student_id = $_GET['edit'];
           $sql ="SELECT * FROM `hostel_student_details` WHERE `student_id` = '$student_id'";
@@ -77,6 +94,16 @@ include_once("../menu.php");
               $leave = $row['date_of_leaving'];
               
               
+          }
+          // Fetch request status for this student
+          $sidEsc = mysqli_real_escape_string($con, $student_id);
+          $rq = mysqli_query($con, "SELECT distance_km, status FROM hostel_requests WHERE student_id='$sidEsc'");
+          if ($rq && mysqli_num_rows($rq) > 0) {
+            $r = mysqli_fetch_assoc($rq);
+            $reqStatus = $r['status'];
+            $reqDistance = $r['distance_km'];
+            if (!$dis) { $dis = $reqDistance; }
+            $paidReady = ($reqStatus === 'paid');
           }
       }
       ?>
@@ -183,13 +210,13 @@ include_once("../menu.php");
        <label for="dis"><i class="fas fa-map-signs"></i>&nbsp;Distance
              <label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;">Home to SLGTI </label>
             </label>
-            <input type="text" class="form-control" id="dis" value="<?php echo $dis; ?>" name="dis" placeholder="in km"  required>
+            <input type="text" class="form-control" id="dis" value="<?php echo $dis; ?>" name="dis" placeholder="in km"  required <?php if(isset($reqDistance)) echo 'readonly'; ?>>
        </div>
        
        <div class="form-group col-md-2  ">
        <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Block No:</label>
         
-        <input type="text" class="form-control" id="block"value="<?php echo $block; ?>" name="block"  required>
+        <input type="text" class="form-control" id="block" value="<?php echo $block; ?>" name="block"  <?php if(isset($reqStatus) && !$paidReady) echo 'disabled'; ?> required>
        </div>
        </div>
 
@@ -199,19 +226,19 @@ include_once("../menu.php");
 <div class="form-group col-md-2  ">
 <label for="hostel"><i class="fas fa-list-ol"></i>&nbsp; Room No:</label>
         
-        <input type="text" class="form-control" id="room" value="<?php echo $room; ?>" name="room"  required>
+        <input type="text" class="form-control" id="room" value="<?php echo $room; ?>" name="room"  <?php if(isset($reqStatus) && !$paidReady) echo 'disabled'; ?> required>
         </div>
         
 
         
         <div class="col-md-3">
         <label for="add"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Addmission</label>
-            <input type="date" class="form-control" id="add" value="<?php echo $date;  ?>" name="date" placeholder="" min="<?php echo  $min = date("Y-m-d"); ?>" required>
+            <input type="date" class="form-control" id="add" value="<?php echo $date;  ?>" name="date" placeholder="" min="<?php echo  $min = date("Y-m-d"); ?>" <?php if(isset($reqStatus) && !$paidReady) echo 'disabled'; ?> required>
           </div>
 
           <div class="col-md-3">
           <label for="leave"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Leaving</label>
-            <input type="date" class="form-control" id="leave" value="<?php echo $leave; ?>" name="leave" placeholder="" min="<?php echo  $min = date("Y-m-d"); ?>" required>
+            <input type="date" class="form-control" id="leave" value="<?php echo $leave; ?>" name="leave" placeholder="" min="<?php echo  $min = date("Y-m-d"); ?>" <?php if(isset($reqStatus) && !$paidReady) echo 'disabled'; ?> required>
           </div>
 
        </div>
@@ -229,7 +256,7 @@ include_once("../menu.php");
       echo'<input type="submit" value="update" name="upt" class="btn btn-primary rounded-pill btn-block waves-effect">';
 
  }else{
-  echo'<input type="submit" value="Allocation" name="allo" class="btn btn-primary rounded-pill btn-block waves-effect">';
+ echo'<input type="submit" value="Allocation" name="allo" class="btn btn-primary rounded-pill btn-block waves-effect" '.((isset($reqStatus) && !$paidReady)?'disabled':'').'>';
  }
  
 ?>

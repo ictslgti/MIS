@@ -7,6 +7,18 @@ include_once("../menu.php");
 ?>
 <!--END DON'T CHANGE THE ORDER-->
 
+<style>
+  /* Scoped styling for Add Staff form */
+  #staff-form .form-group { margin-bottom: 0.9rem; }
+  #staff-form label { font-weight: 600; margin-bottom: .25rem; }
+  #staff-form input.form-control, #staff-form select.custom-select { border-radius: .375rem; }
+  #staff-form .section-title { font-size: 1.15rem; font-weight: 700; margin: .75rem 0 .25rem; }
+  #staff-form .btn-row > * { margin-right: .5rem; margin-bottom: .5rem; }
+  @media (min-width: 992px){
+    #staff-form .col-lg-4, #staff-form .col-lg-3, #staff-form .col-lg-2 { padding-right: 10px; padding-left: 10px; }
+  }
+</style>
+
 <!--BLOCK#2 START YOUR CODE HERE -->
 
 <!-- ADD STAFF PHP CODNG -->
@@ -49,6 +61,14 @@ if(isset($_POST['Add'])){
       $Type=trim($_POST['Type']);
       $status=trim($_POST['status']);
 
+      // Normalize/sanitize inputs
+      $PNO = preg_replace('/[^0-9+]/', '', $PNO);
+      // Normalize dates to YYYY-MM-DD and validate
+      $dobTs = strtotime($DOB);
+      $dojTs = strtotime($DOJ);
+      if ($dobTs) { $DOB = date('Y-m-d', $dobTs); }
+      if ($dojTs) { $DOJ = date('Y-m-d', $dojTs); }
+
       // Additional validation to prevent default placeholders
       $formErrors = [];
       if ($Department_id === 'null') { $formErrors[] = 'Please select a Department.'; }
@@ -56,6 +76,8 @@ if(isset($_POST['Add'])){
       if ($Gender === 'Choose Gender') { $formErrors[] = 'Please select Gender.'; }
       if ($Type === 'Choose Type') { $formErrors[] = 'Please select Type.'; }
       if ($status === 'Choose Status') { $formErrors[] = 'Please select Status.'; }
+      if (!$dobTs) { $formErrors[] = 'Invalid Date of Birth.'; }
+      if (!$dojTs) { $formErrors[] = 'Invalid Date of Join.'; }
 
       if (!empty($formErrors)) {
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">'
@@ -207,7 +229,12 @@ if(isset($_POST['Add'])){
   </div>
 </div>  
 
-<form method="POST" action="#">
+<div class="card shadow-sm mb-4">
+  <div class="card-header bg-light">
+    <strong>Staff Registration</strong>
+  </div>
+  <div class="card-body">
+<form id="staff-form" method="POST" action="#">
   <div class="form-row">
     <div class="form-group col-lg-4">
         <label for="text" class="font-weight-bolder pl-1" >Staff_ID :</label>
@@ -243,7 +270,7 @@ if(isset($_POST['Add'])){
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">Date_of_birth</label><br>
-      <input type="text" name="DOB" value="<?php echo $DOB; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['DOB'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['DOB'])){echo ' is-valid';} ?>"  placeholder="DOB"><br>
+      <input type="date" name="DOB" value="<?php echo $DOB; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['DOB'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['DOB'])){echo ' is-valid';} ?>"  placeholder="YYYY-MM-DD"><br>
     </div>
     <div class="form-group col-lg-4">
       <label for="text" class="font-weight-bolder pl-1">NIC :</label><br>
@@ -262,7 +289,7 @@ if(isset($_POST['Add'])){
     </div>
     <div class="form-group col-lg-4">        
       <label for="text" class="font-weight-bolder pl-1">Date_of_Join :</label><br>
-      <input type="text" name="DOJ" value="<?php echo $DOJ; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['DOJ'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['DOJ'])){echo ' is-valid';} ?>"  placeholder="Date of Join"><br> 
+      <input type="date" name="DOJ" value="<?php echo $DOJ; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['DOJ'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['DOJ'])){echo ' is-valid';} ?>"  placeholder="YYYY-MM-DD"><br> 
     </div>
   </div>
 
@@ -347,7 +374,7 @@ if(isset($_POST['Add'])){
 
   <div class="form-row pt-3">
     <?PHP 
-  echo '<div class="btn-group-horizontal">';
+  echo '<div class="d-flex flex-wrap btn-row">';
 
     if(isset($_GET['edit'])){
       echo '<button type="submit"  value="Update" name="Update" class="btn btn-primary mr-2"><i class="fas fa-user-edit"></i>UPDATE</button>'; 
@@ -366,6 +393,9 @@ if(isset($_POST['Add'])){
       ?>
   </div>
 </form>
+  <div class="border-top pt-3"></div>
+  </div>
+  </div>
 <!--END OF YOUR COD-->
 
 <!-- script  -->

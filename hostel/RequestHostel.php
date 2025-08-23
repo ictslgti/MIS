@@ -49,8 +49,17 @@ include_once ("../menu.php");
 
 </div>
 
+        <?php
+        $ok = isset($_GET['ok']);
+        $err = isset($_GET['err']) ? $_GET['err'] : '';
+        if ($ok) {
+          echo '<div class="alert alert-success">Request submitted. Pay the hostel fee to proceed to allocation.</div>';
+        } elseif ($err) {
+          echo '<div class="alert alert-danger">Unable to submit request. Please enter a valid distance and try again.</div>';
+        }
+        ?>
 
-        <form action="">
+        <form method="post" action="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/controller/HostelRequest.php">
          
         <div class="form-row">
        
@@ -101,8 +110,8 @@ include_once ("../menu.php");
 
         <div class="form-row">
         <div class="form-group col-md-3">
-        <label for="address">Distance</label><label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;">Home to SLGTI </label>
-        <input type="text" class="form-control " id="address" placeholder="distances in Km">
+        <label for="distance_km">Distance</label><label class="note" style="font-size: 13px; margin-bottom: 0; color:#aaa;padding-left: 14px;">Home to SLGTI (km)</label>
+        <input type="number" step="0.01" min="0" class="form-control" id="distance_km" name="distance_km" placeholder="distance in km" required>
         </div>       
 
 
@@ -128,8 +137,8 @@ include_once ("../menu.php");
         
         
         <div class="form-group col-md-3 ">
-        <label for="firstname">Date of requesting</label>
-        <input type="text" class="form-control " id="date" placeholder="dd/mm/yyyy">
+        <label for="date">Date of requesting</label>
+        <input type="date" class="form-control" id="date" value="<?php echo date('Y-m-d'); ?>" disabled>
 
         </div>       
         </div>
@@ -142,8 +151,9 @@ include_once ("../menu.php");
         </div>   
 
         <div class="form-row">
+        <input type="hidden" name="student_id" value="<?php echo isset($_SESSION['user_name']) ? htmlspecialchars($_SESSION['user_name']) : ''; ?>">
         <div class="form-group col-md-4">
-        <button type="button" class="btn btn-primary btn-rounded waves-effect btn-block"><i class="fa fa-paper-plane "></i> Request</button><br>
+        <button type="submit" class="btn btn-primary btn-rounded waves-effect btn-block"><i class="fa fa-paper-plane "></i> Request</button><br>
         </div>    
         
         <div class="form-group col-md-3">

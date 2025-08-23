@@ -34,10 +34,10 @@ if (mysqli_connect_errno()) {
    // echo "Successfully connected to MySQL server<br>";
     
     // Check if database exists
-    $result = mysqli_query($con, "SHOW DATABASES LIKE 'mis'");
+    $result = mysqli_query($con, "SHOW DATABASES LIKE 'sis'");
     if (mysqli_num_rows($result) > 0) {
         //echo "Database 'mis' exists<br>";
-        mysqli_select_db($con, 'mis');
+        mysqli_select_db($con, 'sis');
     } else {
         die("Error: Database 'mis' does not exist. Please create it first.");
     }
