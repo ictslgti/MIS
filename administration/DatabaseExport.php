@@ -1,18 +1,11 @@
-<!-- BLOCK#1 START DON'T CHANGE THE ORDER -->
 <?php
+// Start buffering to avoid premature output breaking download headers
+if (!headers_sent()) { if (!ob_get_level()) { ob_start(); } }
+
 $title = "Database Export | SLGTI";
 include_once("../config.php");
-include_once("../head.php");
-include_once("../menu.php");
 
-// Access control: only admins
-if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'ADM') {
-    http_response_code(403);
-    echo '<div class="alert alert-danger m-3">Access denied. Admins only.</div>';
-    include_once("../footer.php");
-    exit;
-}
-
+// Early export handling BEFORE any HTML output
 function current_database(mysqli $con) {
     $res = mysqli_query($con, "SELECT DATABASE() AS db");
     if ($res && ($row = mysqli_fetch_assoc($res))) {
@@ -91,21 +84,46 @@ function export_database_sql(mysqli $con): string {
     return $out;
 }
 
-// If export requested, stream download (supports POST or GET ?download=1)
+// Direct download path
 if (($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_export'])) ||
     (isset($_GET['download']) && $_GET['download'] == '1')) {
+    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'ADM') {
+        http_response_code(403);
+        header('Content-Type: text/plain; charset=utf-8');
+        echo 'Access denied. Admins only.';
+        if (ob_get_level()) { @ob_end_flush(); }
+        exit;
+    }
+
     $db = current_database($con) ?: 'database';
     $simple = isset($_GET['simple']) && $_GET['simple'] == '1';
     $filename = $simple ? ($db . ".sql") : ($db . "_export_" . date('Ymd_His') . ".sql");
     $sql = export_database_sql($con);
+
+    // Clean any buffered output and send download
+    if (ob_get_length()) { @ob_clean(); }
     header('Content-Type: application/sql');
     header('Content-Disposition: attachment; filename=' . $filename);
     header('Content-Length: ' . strlen($sql));
+    header('X-Content-Type-Options: nosniff');
     echo $sql;
+    if (ob_get_level()) { @ob_end_flush(); }
     exit;
 }
+
+// From here on, render the page (safe to include head/menu)
+include_once("../head.php");
+include_once("../menu.php");
+
+// Access control: only admins for page view
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'ADM') {
+    http_response_code(403);
+    echo '<div class="alert alert-danger m-3">Access denied. Admins only.</div>';
+    include_once("../footer.php");
+    exit;
+}
+
 ?>
-<!--END DON'T CHANGE THE ORDER -->
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <div class="container mt-4">
