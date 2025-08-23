@@ -193,6 +193,12 @@ if (isset($_SESSION['import_flash'])) {
         <div class="col-md-3 mb-3">
           <button type="submit" class="btn btn-success btn-block"><i class="fas fa-user-plus"></i> Add Enrollment</button>
         </div>
+        <div class="col-md-3 mb-3 d-flex align-items-center">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="m_debug" name="manual_debug" value="1">
+            <label class="form-check-label" for="m_debug">Debug</label>
+          </div>
+        </div>
       </div>
     </form>
   </div>

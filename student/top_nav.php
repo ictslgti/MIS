@@ -17,7 +17,7 @@ $studentName = isset($_SESSION['student_name']) ? $_SESSION['student_name'] : ''
   <div class="collapse navbar-collapse" id="studentTopNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="onpeak&offpeak/RequestOnPeak.php">OnPeak Request</a>
+        <a class="nav-link" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/onpeak/RequestOnPeak.php">OnPeak Request</a>
       </li>
     </ul>
 

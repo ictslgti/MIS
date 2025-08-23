@@ -43,6 +43,7 @@ if (isset($_POST['manual']) && $_POST['manual'] === '1') {
     $enroll_date   = trim($_POST['enroll_date'] ?? '');
     $course_mode   = trim($_POST['course_mode'] ?? 'Full');
     $status        = trim($_POST['status'] ?? 'Following');
+    $manual_debug  = isset($_POST['manual_debug']) && $_POST['manual_debug'] === '1';
 
     $allowedModes = ['Part', 'Full'];
     $allowedStatus = ['Following', 'Dropout', 'Completed', 'Long Absent'];
@@ -55,6 +56,20 @@ if (isset($_POST['manual']) && $_POST['manual'] === '1') {
 
     $errMsgs = [];
     $inserted = 0; $updated = 0; $skipped = 0; $errors = 0;
+    $dbg = [
+        'input' => [
+            'student_id' => $student_id,
+            'student_fullname' => $stu_full,
+            'student_nic' => $stu_nic,
+            'course_id' => $course_id,
+            'academic_year' => $academic_year,
+            'enroll_date' => $enroll_date,
+            'course_mode' => $course_mode,
+            'status' => $status,
+        ],
+        'checks' => [],
+        'actions' => [],
+    ];
 
     if ($student_id === '') { $errors++; $errMsgs[] = 'Student ID is required'; }
     if ($course_id === '')  { $errors++; $errMsgs[] = 'Course is required'; }
@@ -82,7 +97,9 @@ if (isset($_POST['manual']) && $_POST['manual'] === '1') {
         mysqli_stmt_bind_param($selCourse, 's', $course_id);
         mysqli_stmt_execute($selCourse);
         mysqli_stmt_store_result($selCourse);
-        if (mysqli_stmt_num_rows($selCourse) === 0) { $errors++; $errMsgs[] = 'Unknown course_id: ' . $course_id; }
+        $course_exists = (mysqli_stmt_num_rows($selCourse) > 0);
+        $dbg['checks']['course_exists'] = $course_exists;
+        if (!$course_exists) { $errors++; $errMsgs[] = 'Unknown course_id: ' . $course_id; }
 
         // Check student exists or create minimal
         if ($errors === 0) {
@@ -90,6 +107,7 @@ if (isset($_POST['manual']) && $_POST['manual'] === '1') {
             mysqli_stmt_execute($selStudent);
             mysqli_stmt_store_result($selStudent);
             $student_exists = (mysqli_stmt_num_rows($selStudent) > 0);
+            $dbg['checks']['student_exists'] = $student_exists;
             if (!$student_exists) {
                 $def_title = 'Mr';
                 $def_email = $student_id . '@slgti.com';
@@ -99,16 +117,24 @@ if (isset($_POST['manual']) && $_POST['manual'] === '1') {
                 $empty = '';
                 $ins_full = ($stu_full !== '' ? $stu_full : $student_id);
                 $ins_ini  = $ins_full;
+                // Bind requires variables by reference (no literals)
+                $def_status = 'Active';
                 mysqli_stmt_bind_param(
                     $insStudent,
                     'ssssssssssssssssssssss',
-                    $student_id, $def_title, $ins_full, $ins_ini, $empty, $empty, $def_email, $stu_nic, $def_profile, $def_dob, $zero, $empty, $zero, $empty, $empty, $empty, $empty, $empty, $empty, $zero, $empty, 'Active'
+                    $student_id, $def_title, $ins_full, $ins_ini, $empty, $empty, $def_email, $stu_nic, $def_profile, $def_dob, $zero, $empty, $zero, $empty, $empty, $empty, $empty, $empty, $empty, $zero, $empty, $def_status
                 );
-                if (!mysqli_stmt_execute($insStudent)) { $errors++; $errMsgs[] = 'Student create failed: ' . mysqli_error($con); }
+                if (!mysqli_stmt_execute($insStudent)) {
+                    $errors++; $errMsgs[] = 'Student create failed: ' . mysqli_error($con);
+                    $dbg['actions'][] = ['student_insert' => ['ok' => false, 'error' => mysqli_error($con)]];
+                } else {
+                    $dbg['actions'][] = ['student_insert' => ['ok' => true, 'affected' => mysqli_stmt_affected_rows($insStudent)]];
+                }
             } else {
                 if ($stu_full !== '' || $stu_nic !== '') {
                     mysqli_stmt_bind_param($updStudent, 'sss', $stu_full, $stu_nic, $student_id);
-                    if (!mysqli_stmt_execute($updStudent)) { $errors++; $errMsgs[] = 'Student update failed: ' . mysqli_error($con); }
+                    if (!mysqli_stmt_execute($updStudent)) { $errors++; $errMsgs[] = 'Student update failed: ' . mysqli_error($con); $dbg['actions'][] = ['student_update' => ['ok' => false, 'error' => mysqli_error($con)]]; }
+                    else { $dbg['actions'][] = ['student_update' => ['ok' => true, 'affected' => mysqli_stmt_affected_rows($updStudent)]]; }
                 }
             }
         }
@@ -120,12 +146,27 @@ if (isset($_POST['manual']) && $_POST['manual'] === '1') {
             mysqli_stmt_execute($selEnroll);
             mysqli_stmt_store_result($selEnroll);
             $exists = (mysqli_stmt_num_rows($selEnroll) > 0);
+            $dbg['checks']['enrollment_exists'] = $exists;
             if ($exists) {
                 mysqli_stmt_bind_param($updEnroll, 'sssssss', $course_mode, $enroll_date, $exit_date, $status, $student_id, $course_id, $academic_year);
-                if (!mysqli_stmt_execute($updEnroll)) { $errors++; $errMsgs[] = 'Update failed: ' . mysqli_error($con); } else { $updated++; }
+                if (!mysqli_stmt_execute($updEnroll)) {
+                    $errors++; $errMsgs[] = 'Update failed: ' . mysqli_error($con);
+                    $dbg['actions'][] = ['enroll_update' => ['ok' => false, 'error' => mysqli_error($con)]];
+                } else {
+                    $aff = mysqli_stmt_affected_rows($updEnroll);
+                    if ($aff > 0) { $updated++; }
+                    $dbg['actions'][] = ['enroll_update' => ['ok' => true, 'affected' => $aff]];
+                }
             } else {
                 mysqli_stmt_bind_param($insEnroll, 'sssssss', $student_id, $course_id, $course_mode, $academic_year, $enroll_date, $exit_date, $status);
-                if (!mysqli_stmt_execute($insEnroll)) { $errors++; $errMsgs[] = 'Insert failed: ' . mysqli_error($con); } else { $inserted++; }
+                if (!mysqli_stmt_execute($insEnroll)) {
+                    $errors++; $errMsgs[] = 'Insert failed: ' . mysqli_error($con);
+                    $dbg['actions'][] = ['enroll_insert' => ['ok' => false, 'error' => mysqli_error($con)]];
+                } else {
+                    $aff = mysqli_stmt_affected_rows($insEnroll);
+                    if ($aff > 0) { $inserted++; }
+                    $dbg['actions'][] = ['enroll_insert' => ['ok' => true, 'affected' => $aff]];
+                }
             }
         }
 
@@ -133,6 +174,24 @@ if (isset($_POST['manual']) && $_POST['manual'] === '1') {
     }
 
     mysqli_close($con);
+
+    // If operation reported success but no rows affected, provide an explicit hint
+    if ($errors === 0 && ($inserted + $updated) === 0) {
+        $errMsgs[] = 'No changes made: record may already exist with the same values.';
+    }
+
+    // Manual debug output
+    if ($manual_debug) {
+        header('Content-Type: application/json');
+        echo json_encode([
+            'input' => $dbg['input'],
+            'checks' => $dbg['checks'],
+            'actions' => $dbg['actions'],
+            'counters' => ['inserted' => $inserted, 'updated' => $updated, 'errors' => $errors],
+            'messages' => $errMsgs,
+        ], JSON_PRETTY_PRINT);
+        exit;
+    }
 
     $_SESSION['import_flash'] = [
         'inserted' => $inserted,
@@ -142,12 +201,14 @@ if (isset($_POST['manual']) && $_POST['manual'] === '1') {
         'messages' => $errMsgs,
         'hint'     => ''
     ];
+    $successMsg = 'Manual add successful';
+    if ($errors === 0 && ($inserted + $updated) === 0) { $successMsg = 'No changes made'; }
     $q = http_build_query([
         'inserted' => $inserted,
         'updated'  => $updated,
         'skipped'  => $skipped,
         'errors'   => $errors,
-        'msg'      => ($errors? ($errMsgs[0] ?? 'Error'): 'Manual add successful'),
+        'msg'      => ($errors? ($errMsgs[0] ?? 'Error'): $successMsg),
     ]);
     header('Location: ../student/ImportStudentEnroll.php?' . $q);
     exit;

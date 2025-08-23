@@ -21,8 +21,9 @@ include_once("../menu.php");
 
 <?php
         if(isset($_GET['edit'])) {
-            $id = $_GET['edit'];
-            $sql = "SELECT * FROM `onpeak_request` where `id` = $id";
+            $id = (int) $_GET['edit'];
+            $owner = mysqli_real_escape_string($con, $_SESSION['user_name']);
+            $sql = "SELECT * FROM `onpeak_request` WHERE `id` = $id AND `student_id` = '$owner'";
             $result = mysqli_query($con, $sql);
                 if (mysqli_num_rows($result)==1) {
                 $row = mysqli_fetch_assoc($result);
@@ -35,31 +36,38 @@ include_once("../menu.php");
                 $return_date = $row['return_date'];
                 $return_time = $row['return_time'];
                 $comment = $row['comment'];
+            } else {
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Invalid request or permission denied.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+                $id = 0;
             }
         }
 
 
 
     if(isset($_POST['upt'])){
-        if( !empty ($_POST['student_id'])&& 
-            !empty ($_POST['department_id'])&&
-            !empty ($_POST['contact_no'])&&
-            !empty ($_POST['reason'])&&
-            !empty ($_POST['exit_date'])&&
-            !empty ($_POST['exit_time'])&&
-            !empty ($_POST['return_date'])&&
-            !empty ($_POST['return_time'])&&
-            !empty ($_POST['comment'])
+        // source ID from hidden field primarily; fallback to query
+        $id = isset($_POST['id']) ? (int) $_POST['id'] : (isset($_GET['edit']) ? (int) $_GET['edit'] : 0);
+        $owner = mysqli_real_escape_string($con, $_SESSION['user_name']);
+        // Basic presence validation
+        if( !empty($_POST['student_id']) &&
+            isset($_POST['department_id']) && $_POST['department_id'] !== '' &&
+            !empty($_POST['contact_no']) &&
+            !empty($_POST['reason']) &&
+            !empty($_POST['exit_date']) &&
+            !empty($_POST['exit_time']) &&
+            !empty($_POST['return_date']) &&
+            !empty($_POST['return_time']) &&
+            !empty($_POST['comment']) &&
+            $id > 0
             ){
-            $id = $_GET['edit'];
-            $department_id = $_POST['department_id'];
-            $contact_no = $_POST['contact_no'];
-            $reason = $_POST['reason'];
-            $exit_date = $_POST['exit_date'];
-            $exit_time = $_POST['exit_time'];
-            $return_date = $_POST['return_date'];
-            $return_time = $_POST['return_time'];
-            $comment = $_POST['comment'];
+            $department_id = mysqli_real_escape_string($con, $_POST['department_id']);
+            $contact_no = mysqli_real_escape_string($con, $_POST['contact_no']);
+            $reason = mysqli_real_escape_string($con, $_POST['reason']);
+            $exit_date = mysqli_real_escape_string($con, $_POST['exit_date']);
+            $exit_time = mysqli_real_escape_string($con, $_POST['exit_time']);
+            $return_date = mysqli_real_escape_string($con, $_POST['return_date']);
+            $return_time = mysqli_real_escape_string($con, $_POST['return_time']);
+            $comment = mysqli_real_escape_string($con, $_POST['comment']);
             $sql = "UPDATE `onpeak_request` 
                 SET `department_id`='$department_id',
                 `contact_no`='$contact_no',
@@ -69,29 +77,39 @@ include_once("../menu.php");
                 `return_date`='$return_date',
                 `return_time`='$return_time',
                 `comment`='$comment'
-                 WHERE `onpeak_request`. `id`= $id";
+                 WHERE `id`= $id AND `student_id` = '$owner'";
             if (mysqli_query($con, $sql)) {
-                echo '
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong> <h5>  Your Request is Update Successfully </h5> </strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-                </div>    
-                ';
-                //echo " New record Updated";
+                if (mysqli_affected_rows($con) > 0) {
+                    echo '
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong> <h5>  Your Request was updated successfully </h5> </strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>    
+                    ';
+                } else {
+                    echo '
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong> <h5> No changes made, or you do not have permission to update this record. </h5> </strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>    
+                    ';
+                }
             } else {
-                 //echo " Error : ". $sql . 
-                //"<br>" . mysqli_error($con);
                 echo '  
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong> <h5> Fill out the empty Field then update the request </h5> </strong>
+                <strong> <h5> Error updating request: '.htmlspecialchars(mysqli_error($con)).' </h5> </strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 ' ;
             }
+     } else {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Please fill out all fields correctly before updating.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
      }
 
     }
@@ -126,7 +144,7 @@ include_once("../menu.php");
                         <label class="input-group-text" for="inputGroupSelect01"> 
                             <i class="fas fa-fingerprint"> </i>&nbsp;&nbsp;Registration No&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
-                    <input class="form-control" value="<?php echo $student_id;?>" name="student_id" type="text" required>
+                    <input class="form-control" value="<?php echo $student_id;?>" name="student_id" type="text" readonly aria-readonly="true" required>
                  </div> 
 
 <br>       
@@ -137,13 +155,14 @@ include_once("../menu.php");
                             <i class="fas fa-school"></i>&nbsp;&nbsp;Department ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </div>
                     <select class="browser-default custom-select" value="<?php echo $department_id;?>" name="department_id"    required>
-                       <option value="1"> Select the Department ID </option> 
+                       <option value=""> Select the Department ID </option> 
                                 <?php
                                     $sql="select * from `department`";
                                     $result = mysqli_query($con,$sql);
                                     if (mysqli_num_rows($result) > 0 ) {
                                     while($row=mysqli_fetch_assoc($result)){
-                                    echo '<option  value="'.$row["department_id"].'" required>'.$row["department_id"].'</option>';
+                                        $sel = ($row["department_id"] == $department_id) ? ' selected' : '';
+                                        echo '<option value="'.$row["department_id"].'"'.$sel.'>'.$row["department_id"].'</option>';
                                     }}   
                                 ?>
                     </select>
@@ -247,7 +266,8 @@ include_once("../menu.php");
                             <div class="mx-auto" style="width: 200px;">
 
                                 <?php
-                                    if (isset($_GET['edit'])) {
+                                    if (isset($_GET['edit']) && isset($id) && $id > 0) {
+                                        echo '<input type="hidden" name="id" value="'.(int)$id.'">';
                                         echo '<button type="submit" class="btn btn-primary " name="upt"> <i class="fab fa-telegram"></i>&nbsp;&nbsp;&nbsp;Update the Request</button>';
                                     } else {
                                         echo '<input type="submit" name="Add" value="Add" >';
