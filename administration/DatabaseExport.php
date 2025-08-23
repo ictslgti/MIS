@@ -91,10 +91,12 @@ function export_database_sql(mysqli $con): string {
     return $out;
 }
 
-// If export requested, stream download
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_export'])) {
+// If export requested, stream download (supports POST or GET ?download=1)
+if (($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_export'])) ||
+    (isset($_GET['download']) && $_GET['download'] == '1')) {
     $db = current_database($con) ?: 'database';
-    $filename = $db . "_export_" . date('Ymd_His') . ".sql";
+    $simple = isset($_GET['simple']) && $_GET['simple'] == '1';
+    $filename = $simple ? ($db . ".sql") : ($db . "_export_" . date('Ymd_His') . ".sql");
     $sql = export_database_sql($con);
     header('Content-Type: application/sql');
     header('Content-Disposition: attachment; filename=' . $filename);
