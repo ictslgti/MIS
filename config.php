@@ -25,22 +25,16 @@ define('DB_PASS','1234');
 // define('DB_PASS',null);
 define('DB_NAME','sis');
 
-// First try without database name to test connection
+// Connect to MySQL (server)
 $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
 
 if (mysqli_connect_errno()) {
     die("Failed to connect to MySQL: " . mysqli_connect_error());
-} else {
-   // echo "Successfully connected to MySQL server<br>";
-    
-    // Check if database exists
-    $result = mysqli_query($con, "SHOW DATABASES LIKE 'mis'");
-    if (mysqli_num_rows($result) > 0) {
-        //echo "Database 'mis' exists<br>";
-        mysqli_select_db($con, 'mis');
-    } else {
-        die("Error: Database 'mis' does not exist. Please create it first.");
-    }
+}
+
+// Select application database defined in DB_NAME
+if (!mysqli_select_db($con, DB_NAME)) {
+    die("Error: Database '" . DB_NAME . "' does not exist. Please create it first.");
 }
 
 //cookie
