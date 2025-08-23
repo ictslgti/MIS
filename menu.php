@@ -612,6 +612,25 @@ if($u_ta=='staff'){
           </li>
           <?php } ?>
 
+          <?php if($_SESSION['user_type'] == 'ADM') { ?>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-cogs"></i>
+              <span>Administration</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/administration/Administration.php">Admin Dashboard</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/administration/DatabaseExport.php">Database Export</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <?php } ?>
+
           <li class="header-menu">
             <span>Extra</span>
           </li>

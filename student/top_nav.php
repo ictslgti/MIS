@@ -19,6 +19,11 @@ $studentName = isset($_SESSION['student_name']) ? $_SESSION['student_name'] : ''
       <li class="nav-item">
         <a class="nav-link" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/onpeak/RequestOnPeak.php">OnPeak Request</a>
       </li>
+      <?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'ADM') { ?>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/administration/DatabaseExport.php">Database Export</a>
+      </li>
+      <?php } ?>
     </ul>
 
     <ul class="navbar-nav ml-auto align-items-center">
@@ -28,6 +33,9 @@ $studentName = isset($_SESSION['student_name']) ? $_SESSION['student_name'] : ''
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="studentTopMenu">
           <a class="dropdown-item" href="/student/Student_profile.php">Profile</a>
+          <?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'ADM') { ?>
+          <a class="dropdown-item" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/administration/DatabaseExport.php">Database Export</a>
+          <?php } ?>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item text-danger" href="/logout.php">Logout</a>
         </div>
