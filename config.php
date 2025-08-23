@@ -31,15 +31,15 @@ $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
 if (mysqli_connect_errno()) {
     die("Failed to connect to MySQL: " . mysqli_connect_error());
 } else {
-   // echo "Successfully connected to MySQL server<br>";
-    
-    // Check if database exists
-    $result = mysqli_query($con, "SHOW DATABASES LIKE 'mis'");
-    if (mysqli_num_rows($result) > 0) {
-        //echo "Database 'mis' exists<br>";
-        mysqli_select_db($con, 'mis');
+    // Check if configured database exists, then select it
+    $dbEsc = mysqli_real_escape_string($con, DB_NAME);
+    $result = mysqli_query($con, "SHOW DATABASES LIKE '$dbEsc'");
+    if ($result && mysqli_num_rows($result) > 0) {
+        if (!mysqli_select_db($con, DB_NAME)) {
+            die("Error: Unable to select database '" . DB_NAME . "'.");
+        }
     } else {
-        die("Error: Database 'mis' does not exist. Please create it first.");
+        die("Error: Database '" . DB_NAME . "' does not exist. Please create it first.");
     }
 }
 

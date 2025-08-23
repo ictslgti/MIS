@@ -26,6 +26,37 @@ $idValue = isset($_POST['id_value']) ? trim($_POST['id_value']) : (isset($_GET['
 $student = null;
 $currentPhotoDataUri = null;
 
+function resize_to_idcard_jpeg($blob, $targetW = 600, $targetH = 800, $quality = 85) {
+  if (!function_exists('imagecreatefromstring')) {
+    return $blob; // GD not available, return original
+  }
+  $src = @imagecreatefromstring($blob);
+  if (!$src) return $blob;
+  $sw = imagesx($src); $sh = imagesy($src);
+  if ($sw < 1 || $sh < 1) { imagedestroy($src); return $blob; }
+
+  // Cover fit with center crop to 3:4 ratio
+  $scale = max($targetW / $sw, $targetH / $sh);
+  $rw = (int)ceil($sw * $scale);
+  $rh = (int)ceil($sh * $scale);
+
+  $tmp = imagecreatetruecolor($rw, $rh);
+  imagecopyresampled($tmp, $src, 0, 0, 0, 0, $rw, $rh, $sw, $sh);
+  imagedestroy($src);
+
+  $dx = (int)max(0, ($rw - $targetW) / 2);
+  $dy = (int)max(0, ($rh - $targetH) / 2);
+  $dst = imagecreatetruecolor($targetW, $targetH);
+  imagecopy($dst, $tmp, 0, 0, $dx, $dy, $targetW, $targetH);
+  imagedestroy($tmp);
+
+  ob_start();
+  imagejpeg($dst, null, $quality);
+  imagedestroy($dst);
+  $out = ob_get_clean();
+  return $out !== false ? $out : $blob;
+}
+
 // Lookup student if filter + value provided
 if ($idValue !== '') {
   if ($selectedType === 'nic') {
@@ -89,11 +120,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
     } else if (strlen($blob) > 8*1024*1024) { // 8MB limit
       $errors[] = 'Image too large (max 8MB).';
     } else {
-      // Save (insert or update)
+      // Resize to ID card size and recompress as JPEG
+      $blob = resize_to_idcard_jpeg($blob, 600, 800, 85);
+
+      // Save (insert or update) using proper BLOB binding
       $stmt = mysqli_prepare($con, "INSERT INTO student_idphoto (student_id, id_photo) VALUES (?, ?) ON DUPLICATE KEY UPDATE id_photo=VALUES(id_photo)");
-      mysqli_stmt_bind_param($stmt, 'sb', $sid, $blob);
-      // Workaround for 'b' param: send in chunks
       $null = NULL;
+      mysqli_stmt_bind_param($stmt, 'sb', $sid, $null);
       mysqli_stmt_send_long_data($stmt, 1, $blob);
       if (mysqli_stmt_execute($stmt)) {
         $success = 'Photo saved successfully.';
@@ -127,9 +160,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
                   <option value="nic" <?php echo $selectedType==='nic'?'selected':''; ?>>NIC</option>
                 </select>
               </div>
-              <div class="form-group col-7">
+              <div class="form-group col-7 position-relative">
                 <label for="id_value">Value</label>
-                <input type="text" class="form-control" id="id_value" name="id_value" value="<?php echo sp_safe($idValue); ?>" placeholder="Enter Student ID or NIC" required>
+                <input type="text" class="form-control" id="id_value" name="id_value" value="<?php echo sp_safe($idValue); ?>" placeholder="Enter Student ID or NIC" autocomplete="off" required>
+                <div id="id_suggestions" class="list-group position-absolute w-100" style="z-index:1050; max-height:220px; overflow:auto; display:none;"></div>
               </div>
             </div>
 
@@ -139,6 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
                 <video id="cam" autoplay playsinline muted style="max-width:100%; width:100%; height:auto;"></video>
                 <canvas id="canvas" style="display:none;"></canvas>
                 <input type="hidden" name="photo_data" id="photo_data">
+                <img id="preview" class="img-thumbnail mt-2" alt="Captured preview" style="max-width:100%; display:none;" />
                 <div class="mt-2">
                   <button type="button" class="btn btn-sm btn-primary" id="btnStart">Start Camera</button>
                   <button type="button" class="btn btn-sm btn-secondary" id="btnCapture">Capture</button>
@@ -194,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
 <!-- WebRTC adapter to normalize getUserMedia across browsers -->
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script>
-(function(){
+function initCameraControls(){
   const cam = document.getElementById('cam');
   const canvas = document.getElementById('canvas');
   const btnStart = document.getElementById('btnStart');
@@ -203,11 +238,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
   const btnSwitch = document.getElementById('btnSwitch');
   const photoData = document.getElementById('photo_data');
   const cameraSection = document.getElementById('cameraSection');
+  const preview = document.getElementById('preview');
   let stream = null;
   let videoInputs = [];
   let currentDeviceIndex = -1;
 
-  // Cross-browser getUserMedia helper
   function getMedia(constraints){
     if (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
       return navigator.mediaDevices.getUserMedia(constraints);
@@ -230,21 +265,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
     [btnStart, btnCapture, btnStop, btnSwitch].forEach(btn => { if (btn) btn.disabled = !enabled; });
   }
 
-  // If camera APIs are not available or context is insecure, hide camera UI and rely on file upload.
   const cameraSupported = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) || !!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
   const secureOk = window.isSecureContext || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
   if (!cameraSupported || !secureOk) {
     setControlsEnabled(false);
-    if (cameraSection) cameraSection.style.display = 'none';
+    if (cameraSection) {
+      const note = document.createElement('div');
+      note.className = 'alert alert-warning py-1 mt-2';
+      note.textContent = 'Camera not available. Use the file upload below. Tip: open via HTTPS or http://localhost to enable camera access.';
+      cameraSection.appendChild(note);
+    }
   }
 
   async function getPreferredStream(){
-    // Try facingMode first (most modern browsers)
     let p = getMedia({ video: { facingMode: { ideal: 'environment' } }, audio: false });
     if (p) {
-      try { return await p; } catch(e) { /* continue to deviceId fallback */ }
+      try { return await p; } catch(e) {}
     }
-    // Fallback: enumerate devices, choose a likely back camera
     if (!(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)) {
       return await getMedia({ video: true, audio: false });
     }
@@ -256,7 +293,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
     if (back && back.deviceId) {
       return await getMedia({ video: { deviceId: { exact: back.deviceId } }, audio: false });
     }
-    // Last resort
     return await getMedia({ video: true, audio: false });
   }
 
@@ -286,6 +322,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
     ctx.drawImage(video, 0, 0, w, h);
     const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
     photoData.value = dataUrl;
+    if (preview) { preview.src = dataUrl; preview.style.display = 'block'; }
   });
 
   btnStop && btnStop.addEventListener('click', () => {
@@ -293,7 +330,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
     cam.srcObject = null;
   });
 
-  // Switch between available cameras (front/back)
   btnSwitch && btnSwitch.addEventListener('click', async () => {
     if (!secureOk) return;
     if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) return;
@@ -302,7 +338,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
         const devices = await navigator.mediaDevices.enumerateDevices();
         videoInputs = devices.filter(d => d.kind === 'videoinput');
       }
-      if (videoInputs.length < 2) return; // nothing to switch
+      if (videoInputs.length < 2) return;
       currentDeviceIndex = (currentDeviceIndex + 1) % videoInputs.length;
       const next = videoInputs[currentDeviceIndex];
       stopStream();
@@ -314,7 +350,87 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
   });
 
   window.addEventListener('beforeunload', stopStream);
-})();
+}
+</script>
+
+<script>
+function initStudentAutocomplete(base){
+  const typeEl = document.getElementById('id_type');
+  const inputEl = document.getElementById('id_value');
+  const listEl = document.getElementById('id_suggestions');
+  const formEl = document.querySelector('form');
+  let timer = null;
+
+  function hideList(){
+    listEl.style.display = 'none';
+    listEl.innerHTML = '';
+  }
+
+  function escapeHtml(text){
+    const div = document.createElement('div');
+    div.innerText = text;
+    return div.innerHTML;
+  }
+
+  function render(items){
+    if (!items || !items.length) { hideList(); return; }
+    listEl.innerHTML = items.map(it => {
+      const value = String(it.value).replace(/"/g,'&quot;');
+      const label = escapeHtml(it.label);
+      return `<a href="#" class="list-group-item list-group-item-action" data-value="${value}">${label}</a>`;
+    }).join('');
+    listEl.style.display = 'block';
+  }
+
+  async function fetchSuggestions(q){
+    const t = typeEl ? typeEl.value : 'student_id';
+    const url = `${base}/controller/StudentSearch.php?q=${encodeURIComponent(q)}&type=${encodeURIComponent(t)}`;
+    try {
+      const resp = await fetch(url, { credentials: 'same-origin' });
+      if (!resp.ok) { hideList(); return; }
+      const data = await resp.json();
+      render(data);
+    } catch (e) {
+      hideList();
+    }
+  }
+
+  if (inputEl){
+    inputEl.addEventListener('input', function(){
+      const q = this.value.trim();
+      if (timer) clearTimeout(timer);
+      if (q.length < 2) { hideList(); return; }
+      timer = setTimeout(() => fetchSuggestions(q), 200);
+    });
+    inputEl.addEventListener('blur', function(){ setTimeout(hideList, 200); });
+  }
+
+  if (listEl){
+    listEl.addEventListener('click', function(e){
+      const a = e.target.closest('a[data-value]');
+      if (!a) return;
+      e.preventDefault();
+      const val = a.getAttribute('data-value');
+      if (inputEl) inputEl.value = val;
+      hideList();
+      if (formEl){
+        const hidden = document.createElement('input');
+        hidden.type = 'hidden';
+        hidden.name = 'id_type';
+        hidden.value = typeEl ? typeEl.value : 'student_id';
+        formEl.appendChild(hidden);
+        formEl.submit();
+      }
+    });
+  }
+}
+
+// Initialize after DOM is ready (vanilla)
+document.addEventListener('DOMContentLoaded', function(){
+  initCameraControls();
+  var base = '<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>';
+  initStudentAutocomplete(base);
+});
 </script>
 
 <!-- BLOCK#3 START DON'T CHANGE THE ORDER -->
