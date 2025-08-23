@@ -4,6 +4,8 @@
 // robust includes from student/
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../head.php';
+// Show student top navigation on this page (place before sidebar so it spans full width)
+require_once __DIR__ . '/top_nav.php';
 require_once __DIR__ . '/../menu.php';
 
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
@@ -103,6 +105,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 <!----END DON'T CHANGE THE ORDER---->
 
 <!---BLOCK 02--->
+<style>
+  /* Hide sidebar and its toggle for a clean request page */
+  #show-sidebar { display: none !important; }
+  #sidebar { display: none !important; }
+  .page-wrapper { padding-left: 0 !important; }
+</style>
 <div class="container mt-3">
   <h2 class="text-center">Hostel Request</h2>
   <p class="text-center">Submit a hostel request using your student details.</p>

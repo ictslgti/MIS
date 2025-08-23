@@ -2,6 +2,40 @@
 include_once("config.php");
 
 $username = $_SESSION['user_name'];
+$__update_ok = false;
+
+// Handle staff profile update before any output
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'update_profile') {
+    $p_name   = isset($_POST['staff_name']) ? trim($_POST['staff_name']) : null;
+    $p_addr   = isset($_POST['staff_address']) ? trim($_POST['staff_address']) : null;
+    $p_dob    = isset($_POST['staff_dob']) ? trim($_POST['staff_dob']) : null;
+    $p_nic    = isset($_POST['staff_nic']) ? trim($_POST['staff_nic']) : null;
+    $p_email  = isset($_POST['staff_email']) ? trim($_POST['staff_email']) : null;
+    $p_pno    = isset($_POST['staff_pno']) ? trim($_POST['staff_pno']) : null;
+    $p_gender = isset($_POST['staff_gender']) ? trim($_POST['staff_gender']) : null;
+
+    // Normalize phone to digits only
+    if ($p_pno !== null) { $p_pno = preg_replace('/[^0-9]/', '', $p_pno); }
+
+    // Normalize DOB to YYYY-MM-DD if valid
+    if (!empty($p_dob)) { $ts = strtotime($p_dob); if ($ts) { $p_dob = date('Y-m-d', $ts); } }
+
+    $sqlUpd = "UPDATE staff SET staff_name=?, staff_address=?, staff_dob=?, staff_nic=?, staff_email=?, staff_pno=?, staff_gender=? WHERE staff_id=?";
+    if ($stmt = mysqli_prepare($con, $sqlUpd)) {
+        mysqli_stmt_bind_param($stmt, 'ssssssss', $p_name, $p_addr, $p_dob, $p_nic, $p_email, $p_pno, $p_gender, $username);
+        if (mysqli_stmt_execute($stmt)) { $__update_ok = true; }
+        mysqli_stmt_close($stmt);
+    }
+
+    if ($__update_ok) {
+        if (!headers_sent()) {
+            header('Location: /Profile.php?updated=1');
+        } else {
+            echo '<script>window.location.href = "/Profile.php?updated=1";</script>';
+        }
+        exit;
+    }
+}
 $StaffID=$Department_name=$StaffName=$Address=$DOB=$NIC=$Email=$PNO=$DOJ=$Gender=$EPF=$Position=$Type=null;
 $sql="SELECT 
     `staff`.`staff_id`,
@@ -62,24 +96,25 @@ function time_elapsed_string($datetime, $full = false) {
     $now = new DateTime;
     $ago = new DateTime($datetime);
     $diff = $now->diff($ago);
+    // Compute weeks without setting dynamic properties on DateInterval
+    $weeks = (int) floor($diff->d / 7);
+    $days  = $diff->d - ($weeks * 7);
 
-    $diff->w = floor($diff->d / 7);
-    $diff->d -= $diff->w * 7;
-
-    $string = array(
-        'y' => 'year',
-        'm' => 'month',
-        'w' => 'week',
-        'd' => 'day',
-        'h' => 'hour',
-        'i' => 'minute',
-        's' => 'second',
+    $units = array(
+        'y' => [$diff->y, 'year'],
+        'm' => [$diff->m, 'month'],
+        'w' => [$weeks,   'week'],
+        'd' => [$days,    'day'],
+        'h' => [$diff->h, 'hour'],
+        'i' => [$diff->i, 'minute'],
+        's' => [$diff->s, 'second'],
     );
-    foreach ($string as $k => &$v) {
-        if ($diff->$k) {
-            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
-        } else {
-            unset($string[$k]);
+
+    $string = array();
+    foreach ($units as $key => $pair) {
+        list($val, $label) = $pair;
+        if ($val) {
+            $string[$key] = $val . ' ' . $label . ($val > 1 ? 's' : '');
         }
     }
 
@@ -91,6 +126,14 @@ function time_elapsed_string($datetime, $full = false) {
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <div class="container">
+    <?php if (isset($_GET['updated']) && $_GET['updated'] === '1'): ?>
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            Profile updated successfully.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
     <div class="row my-2">
         <div class="col-lg-2 order-lg-1 text-center">
 
@@ -122,116 +165,131 @@ function time_elapsed_string($datetime, $full = false) {
                             <span class="badge badge-danger p-2 mb-1"><i class="fa fa-eye"></i> 4.5 Survey Rating</span>
                         </div>
                     </div>
-                    <h5 class="mb-3">User Profile</h5>
-                    <div class="row">
-                        <div class="col-md-2 col-sm-4">
-                            <h6>Full Name</h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"><?php echo $StaffName;?></h6>
-                        </div>
-
-                        <div class="col-md-2 col-sm-4">
-                            <h6>E.P.F. No.</h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"><?php echo $EPF;?></h6>
-                        </div>
-
-                        <div class="col-md-2 col-sm-4">
-                            <h6>Position</h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"><?php echo $Position;?> <span
-                                    class="badge badge-primary"><?php echo $Type;?> </span> </h6>
-                        </div>
-
-
-                        <div class="col-md-2 col-sm-4">
-                            <h6>Date of Joined</h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"><?php echo $DOJ;?></h6>
-                        </div>
-
-                        <div class="col-md-2 col-sm-4">
-                            <h6>Department</h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"><?php echo $Department_name;?></h6>
-                        </div>
-
-                        <div class="col-md-2 col-sm-4">
-                            <h6>NIC Number</h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"><?php echo $NIC;?></h6>
-                        </div>
-
-                        <div class="col-md-2 col-sm-4">
-                            <h6>Date of Birth</h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"><?php echo $DOB;?></h6>
-                        </div>
-
-                        <div class="col-md-2 col-sm-4">
-                            <h6>E-mail</h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"><?php echo $Email;?></h6>
-                        </div>
-
-                        <div class="col-md-2 col-sm-4">
-                            <h6>Mobile No.</h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"><?php echo $PNO;?></h6>
-                        </div>
-
-                        <div class="col-md-2 col-sm-4">
-                            <h6>Address</h6>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <h6 class="text-muted"><?php echo $Address;?></h6>
-                        </div>
-                    <div class="col-md-12">
-                        <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity
-                        </h5>
-                        <table class="table table-sm table-hover table-striped">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <strong>ACHCHUTHAN</strong> joined ACME Project Team in
-                                        <strong>`Collaboration`</strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>Kensington</strong> deleted MyBoard3 in
-                                        <strong>`Discussions`</strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>Skell</strong> deleted his post Look at Why this is.. in
-                                        <strong>`Discussions`</strong>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h5 class="mb-3">User Profile</h5>
+                        <?php if (!isset($_GET['edit'])): ?>
+                            <a class="btn btn-sm btn-outline-primary" href="/Profile.php?edit=1">Edit Profile</a>
+                        <?php endif; ?>
                     </div>
-                </div>
+                    <?php if (isset($_GET['edit'])): ?>
+                        <form method="POST">
+                            <input type="hidden" name="action" value="update_profile" />
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Full Name</label>
+                                    <input type="text" name="staff_name" class="form-control" value="<?php echo htmlspecialchars($StaffName); ?>" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>NIC Number</label>
+                                    <input type="text" name="staff_nic" class="form-control" value="<?php echo htmlspecialchars($NIC); ?>" />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label>Gender</label>
+                                    <select name="staff_gender" class="form-control">
+                                        <option value="Male" <?php echo ($Gender==='Male')?'selected':''; ?>>Male</option>
+                                        <option value="Female" <?php echo ($Gender==='Female')?'selected':''; ?>>Female</option>
+                                        <option value="Transgender" <?php echo ($Gender==='Transgender')?'selected':''; ?>>Transgender</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Date of Birth</label>
+                                    <input type="date" name="staff_dob" class="form-control" value="<?php echo htmlspecialchars($DOB); ?>" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>Mobile No.</label>
+                                    <input type="text" name="staff_pno" class="form-control" value="<?php echo htmlspecialchars($PNO); ?>" />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>E-mail</label>
+                                    <input type="email" name="staff_email" class="form-control" value="<?php echo htmlspecialchars($Email); ?>" />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Address</label>
+                                    <input type="text" name="staff_address" class="form-control" value="<?php echo htmlspecialchars($Address); ?>" />
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-success">Save Changes</button>
+                                <a href="/Profile.php" class="btn btn-secondary ml-2">Cancel</a>
+                            </div>
+                        </form>
+                    <?php else: ?>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-4">
+                                <h6>Full Name</h6>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h6 class="text-muted"><?php echo $StaffName;?></h6>
+                            </div>
+
+                            <div class="col-md-2 col-sm-4">
+                                <h6>E.P.F. No.</h6>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h6 class="text-muted"><?php echo $EPF;?></h6>
+                            </div>
+
+                            <div class="col-md-2 col-sm-4">
+                                <h6>Position</h6>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h6 class="text-muted"><?php echo $Position;?> <span class="badge badge-primary"><?php echo $Type;?> </span> </h6>
+                            </div>
+
+                            <div class="col-md-2 col-sm-4">
+                                <h6>Date of Joined</h6>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h6 class="text-muted"><?php echo $DOJ;?></h6>
+                            </div>
+
+                            <div class="col-md-2 col-sm-4">
+                                <h6>Department</h6>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h6 class="text-muted"><?php echo $Department_name;?></h6>
+                            </div>
+
+                            <div class="col-md-2 col-sm-4">
+                                <h6>NIC Number</h6>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h6 class="text-muted"><?php echo $NIC;?></h6>
+                            </div>
+
+                            <div class="col-md-2 col-sm-4">
+                                <h6>Date of Birth</h6>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h6 class="text-muted"><?php echo $DOB;?></h6>
+                            </div>
+
+                            <div class="col-md-2 col-sm-4">
+                                <h6>E-mail</h6>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h6 class="text-muted"><?php echo $Email;?></h6>
+                            </div>
+
+                            <div class="col-md-2 col-sm-4">
+                                <h6>Mobile No.</h6>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h6 class="text-muted"><?php echo $PNO;?></h6>
+                            </div>
+
+                            <div class="col-md-2 col-sm-4">
+                                <h6>Address</h6>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h6 class="text-muted"><?php echo $Address;?></h6>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 <!--/row-->
             </div>
             <div class="tab-pane" id="EnrolledModules">

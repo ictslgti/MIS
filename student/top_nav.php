@@ -19,6 +19,9 @@ $studentName = isset($_SESSION['student_name']) ? $_SESSION['student_name'] : ''
       <li class="nav-item">
         <a class="nav-link" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/onpeak/RequestOnPeak.php">OnPeak Request</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/student/RequestHostel.php">Hostel Request</a>
+      </li>
       <?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'ADM') { ?>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/administration/DatabaseExport.php?download=1&simple=1">Database Export</a>

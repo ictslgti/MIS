@@ -80,6 +80,61 @@ function export_database_sql(mysqli $con): string {
         }
     }
 
+    // Routines (Procedures & Functions)
+    $out .= "\n--\n-- Routines (Procedures & Functions)\n--\n\n";
+    // Procedures
+    $procRes = mysqli_query($con, "SELECT ROUTINE_NAME FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE='PROCEDURE' AND ROUTINE_SCHEMA = DATABASE()");
+    while ($procRes && ($row = mysqli_fetch_assoc($procRes))) {
+        $name = $row['ROUTINE_NAME'];
+        $cr = mysqli_query($con, "SHOW CREATE PROCEDURE `{$name}`");
+        if ($cr && ($r = mysqli_fetch_assoc($cr))) {
+            $create = $r['Create Procedure'];
+            $out .= "DROP PROCEDURE IF EXISTS `{$name}`;\nDELIMITER ;;\n{$create} ;;\nDELIMITER ;\n\n";
+        }
+    }
+    // Functions
+    $fnRes = mysqli_query($con, "SELECT ROUTINE_NAME FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE='FUNCTION' AND ROUTINE_SCHEMA = DATABASE()");
+    while ($fnRes && ($row = mysqli_fetch_assoc($fnRes))) {
+        $name = $row['ROUTINE_NAME'];
+        $cr = mysqli_query($con, "SHOW CREATE FUNCTION `{$name}`");
+        if ($cr && ($r = mysqli_fetch_assoc($cr))) {
+            $create = $r['Create Function'];
+            $out .= "DROP FUNCTION IF EXISTS `{$name}`;\nDELIMITER ;;\n{$create} ;;\nDELIMITER ;\n\n";
+        }
+    }
+
+    // Triggers
+    $out .= "--\n-- Triggers\n--\n\n";
+    $trgRes = mysqli_query($con, "SHOW TRIGGERS");
+    while ($trgRes && ($row = mysqli_fetch_assoc($trgRes))) {
+        $trgName = $row['Trigger'];
+        $cr = mysqli_query($con, "SHOW CREATE TRIGGER `{$trgName}`");
+        if ($cr && ($r = mysqli_fetch_assoc($cr))) {
+            // Some MySQL versions use 'SQL Original Statement' key
+            $create = isset($r['SQL Original Statement']) ? $r['SQL Original Statement'] : (isset($r['Create Trigger']) ? $r['Create Trigger'] : '');
+            if ($create !== '') {
+                $out .= "DROP TRIGGER IF EXISTS `{$trgName}`;\nDELIMITER ;;\n{$create} ;;\nDELIMITER ;\n\n";
+            }
+        }
+    }
+
+    // Events (if EVENT privilege is enabled)
+    $out .= "--\n-- Events\n--\n\n";
+    $evtRes = mysqli_query($con, "SHOW EVENTS");
+    if ($evtRes) {
+        while ($row = mysqli_fetch_assoc($evtRes)) {
+            if (!isset($row['Name'])) { continue; }
+            $evtName = $row['Name'];
+            $cr = mysqli_query($con, "SHOW CREATE EVENT `{$evtName}`");
+            if ($cr && ($r = mysqli_fetch_assoc($cr))) {
+                $create = isset($r['Create Event']) ? $r['Create Event'] : '';
+                if ($create !== '') {
+                    $out .= "DROP EVENT IF EXISTS `{$evtName}`;\nDELIMITER ;;\n{$create} ;;\nDELIMITER ;\n\n";
+                }
+            }
+        }
+    }
+
     $out .= "SET FOREIGN_KEY_CHECKS=1;\n";
     return $out;
 }

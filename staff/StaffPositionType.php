@@ -2,16 +2,8 @@
 // BLOCK#1 START DON'T CHANGE THE ORDER
 $title = "Staff Position Types | SLGTI";
 include_once("../config.php");
-
-// Admin-only access
-if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'ADM') {
-  include_once("../head.php");
-  include_once("../menu.php");
-  http_response_code(403);
-  echo '<div class="alert alert-danger m-3">Access denied. Admins only.</div>';
-  include_once("../footer.php");
-  exit;
-}
+// Enforce admin-only access via centralized helper
+require_roles('ADM');
 
 include_once("../head.php");
 include_once("../menu.php");

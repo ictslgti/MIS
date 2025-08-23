@@ -1,5 +1,7 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
+// Central auth helpers (roles, permissions)
+require_once __DIR__ . '/auth.php';
 date_default_timezone_set('Asia/Colombo');
 // Base URL where the app is served, computed from filesystem path relative to DOCUMENT_ROOT
 // Result: '' when served at vhost root (e.g., http://sis/), or '/sis' when under a subdirectory (e.g., http://localhost/sis/)
