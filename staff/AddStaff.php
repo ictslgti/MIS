@@ -1,3 +1,15 @@
+<?php
+// Redirect this legacy page to the new unified manager
+require_once __DIR__ . '/../config.php';
+$base = defined('APP_BASE') ? APP_BASE : '';
+if (!headers_sent()) {
+  header('Location: ' . $base . '/staff/StaffManage.php');
+  exit;
+}
+echo '<script>window.location.replace((window.location.origin||"") + "' . $base . '/staff/StaffManage.php");</script>';
+exit;
+?>
+
 <!-- BLOCK#1 START DON'T CHANGE THE ORDER-->
 <?php
 $title = "staff | SLGTI";
@@ -46,23 +58,24 @@ if(isset($_POST['Add'])){
     &&!empty($_POST['status'])){
 
      
-      $StaffID=trim($_POST['StaffID']);
-      $Department_id=trim($_POST['Department_id']);
-      $StaffName=trim($_POST['StaffName']);
-      $Address=trim($_POST['Address']);
-      $DOB=trim($_POST['DOB']);
-      $NIC=trim($_POST['NIC']);
-      $Email=trim($_POST['Email']);
-      $PNO=trim($_POST['PNO']);
-      $DOJ=trim($_POST['DOJ']);
-      $Gender=trim($_POST['Gender']);
-      $EPF=trim($_POST['EPF']);
-      $Position=trim($_POST['Position']);
-      $Type=trim($_POST['Type']);
-      $status=trim($_POST['status']);
+      $StaffID = mysqli_real_escape_string($con, trim($_POST['StaffID']));
+      $Department_id = mysqli_real_escape_string($con, trim($_POST['Department_id']));
+      $StaffName = mysqli_real_escape_string($con, trim($_POST['StaffName']));
+      $Address = mysqli_real_escape_string($con, trim($_POST['Address']));
+      $DOB = mysqli_real_escape_string($con, trim($_POST['DOB']));
+      $NIC = mysqli_real_escape_string($con, trim($_POST['NIC']));
+      $Email = mysqli_real_escape_string($con, trim($_POST['Email']));
+      $PNO = mysqli_real_escape_string($con, trim($_POST['PNO']));
+      $DOJ = mysqli_real_escape_string($con, trim($_POST['DOJ']));
+      $Gender = mysqli_real_escape_string($con, trim($_POST['Gender']));
+      $EPF = mysqli_real_escape_string($con, trim($_POST['EPF']));
+      $Position = mysqli_real_escape_string($con, trim($_POST['Position']));
+      $Type = mysqli_real_escape_string($con, trim($_POST['Type']));
+      $status = mysqli_real_escape_string($con, trim($_POST['status']));
 
       // Normalize/sanitize inputs
-      $PNO = preg_replace('/[^0-9+]/', '', $PNO);
+      // staff_pno is INT in DB, keep digits only
+      $PNO = preg_replace('/[^0-9]/', '', $PNO);
       // Normalize dates to YYYY-MM-DD and validate
       $dobTs = strtotime($DOB);
       $dojTs = strtotime($DOJ);
@@ -92,14 +105,9 @@ if(isset($_POST['Add'])){
 
       if(mysqli_query($con,$sql))
       {
-        echo '
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>'.$StaffName.'</strong> Staff details inserted
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
-          </div>    
-        ';
+        // Redirect to sis/staff/AddStaff after successful insert (host-agnostic)
+        echo '<script>window.location.replace(window.location.origin + "/sis/staff/AddStaff");</script>';
+        
       }
       else{
         
@@ -235,13 +243,14 @@ if(isset($_POST['Add'])){
   </div>
   <div class="card-body">
 <form id="staff-form" method="POST" action="#">
+  <div class="section-title">Personal Information</div>
   <div class="form-row">
     <div class="form-group col-lg-4">
-        <label for="text" class="font-weight-bolder pl-1" >Staff_ID :</label>
-        <input type="text" id="StaffID" name="StaffID" value="<?php echo $StaffID; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['StaffID'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffID'])){echo ' is-valid';} ?>" placeholder="Staff ID">
+        <label for="StaffID" class="font-weight-bolder pl-1" >Staff ID</label>
+        <input required type="text" id="StaffID" name="StaffID" value="<?php echo $StaffID; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['StaffID'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffID'])){echo ' is-valid';} ?>" placeholder="e.g., emp001">
     </div>
     <div class="form-group col-lg-4">
-      <label for="text" class="font-weight-bolder pl-1">Department</label><br>
+      <label for="Department_id" class="font-weight-bolder pl-1">Department</label><br>
         <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Department_id'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Department_id'])){echo ' is-valid';} ?>"  id="Department_id" name="Department_id">
         <option value="null" selected disabled>--Select Department--</option>
             <?php          
@@ -258,45 +267,50 @@ if(isset($_POST['Add'])){
         </select>
     </div>
     <div class="form-group col-lg-4">
-        <label for="text" class="font-weight-bolder pl-1"  >Staff_Name :</label>
-        <input type="text" name="StaffName" value="<?php echo $StaffName; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['StaffName'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffName'])){echo ' is-valid';} ?>"  placeholder="Full Name">
+        <label for="StaffName" class="font-weight-bolder pl-1">Full Name</label>
+        <input required type="text" id="StaffName" name="StaffName" value="<?php echo $StaffName; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['StaffName'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffName'])){echo ' is-valid';} ?>"  placeholder="Full name as per record">
     </div>
   </div>
 
-  <div class="form-row pt-3">
+  <div class="section-title">Contact & Identity</div>
+  <div class="form-row pt-1">
     <div class="form-group col-lg-4">
-      <label for="text" class="font-weight-bolder pl-1" >Address :</label><br>
-      <input type="text" name="Address" value="<?php echo $Address; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Address'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffID'])){echo ' is-valid';} ?>"  placeholder="Address" ><br>
+      <label for="Address" class="font-weight-bolder pl-1">Address</label>
+      <input required type="text" id="Address" name="Address" value="<?php echo $Address; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Address'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['StaffID'])){echo ' is-valid';} ?>"  placeholder="Street, City" >
     </div>
     <div class="form-group col-lg-4">
-      <label for="text" class="font-weight-bolder pl-1">Date_of_birth</label><br>
-      <input type="date" name="DOB" value="<?php echo $DOB; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['DOB'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['DOB'])){echo ' is-valid';} ?>"  placeholder="YYYY-MM-DD"><br>
+      <label for="DOB" class="font-weight-bolder pl-1">Date of Birth</label>
+      <input required type="date" id="DOB" name="DOB" value="<?php echo $DOB; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['DOB'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['DOB'])){echo ' is-valid';} ?>"  placeholder="YYYY-MM-DD">
     </div>
     <div class="form-group col-lg-4">
-      <label for="text" class="font-weight-bolder pl-1">NIC :</label><br>
-      <input type="text" name="NIC" value="<?php echo $NIC; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['NIC'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['NIC'])){echo ' is-valid';} ?>"  placeholder="NIC" ><br>
+      <label for="NIC" class="font-weight-bolder pl-1">NIC</label>
+      <input required type="text" id="NIC" name="NIC" maxlength="12" value="<?php echo $NIC; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['NIC'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['NIC'])){echo ' is-valid';} ?>"  placeholder="e.g., 200123456V or 200123456789">
     </div>
   </div>
 
-  <div class="form-row">
+  <div class="form-row pt-1">
     <div class="form-group col-lg-4">
-      <label for="text" class="font-weight-bolder pl-1">Email :</label><br>
-      <input type="text" name="Email" value="<?php echo $Email; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Email'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Email'])){echo ' is-valid';} ?>"  placeholder="Email " ><br>
+      <label for="Email" class="font-weight-bolder pl-1">Email</label>
+      <input required type="email" id="Email" name="Email" value="<?php echo $Email; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['Email'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Email'])){echo ' is-valid';} ?>"  placeholder="name@example.com" >
     </div>
     <div class="form-group col-lg-4">
-      <label for="text" class="font-weight-bolder pl-1">Telephone no :</label><br>
-      <input type="text" name="PNO" value="<?php echo $PNO; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['PNO'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['PNO'])){echo ' is-valid';} ?>"  placeholder="Telephone no"><br>
+      <label for="PNO" class="font-weight-bolder pl-1">Telephone</label>
+      <div class="input-group">
+        <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-phone"></i></span></div>
+        <input required type="tel" id="PNO" name="PNO" value="<?php echo $PNO; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['PNO'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['PNO'])){echo ' is-valid';} ?>"  placeholder="e.g., 0770123456">
+      </div>
     </div>
     <div class="form-group col-lg-4">        
-      <label for="text" class="font-weight-bolder pl-1">Date_of_Join :</label><br>
-      <input type="date" name="DOJ" value="<?php echo $DOJ; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['DOJ'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['DOJ'])){echo ' is-valid';} ?>"  placeholder="YYYY-MM-DD"><br> 
+      <label for="DOJ" class="font-weight-bolder pl-1">Date of Join</label>
+      <input required type="date" id="DOJ" name="DOJ" value="<?php echo $DOJ; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['DOJ'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['DOJ'])){echo ' is-valid';} ?>"  placeholder="YYYY-MM-DD"> 
     </div>
   </div>
 
+  <div class="section-title">Employment Details</div>
   <div class="form-row">
     <div class="form-group col-lg-4">
-      <label for="text" class="font-weight-bolder pl-1">Gender</label><br>
-        <select class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Gender'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Gender'])){echo ' is-valid';} ?>"  id="Gender" name="Gender">
+      <label for="Gender" class="font-weight-bolder pl-1">Gender</label><br>
+        <select required class="custom-select mr-sm-2<?php  if(isset($_POST['Add']) && empty($_POST['Gender'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Gender'])){echo ' is-valid';} ?>"  id="Gender" name="Gender">
               <option selected disabled>Choose Gender</option>
               <option value="Male"
                <?php if($Gender=="Male")  echo 'selected';?>
@@ -312,12 +326,12 @@ if(isset($_POST['Add'])){
         </select>
     </div>
     <div class="form-group col-lg-4">
-      <label for="text" class="font-weight-bolder pl-1" >EPF NO :</label>
-      <input type="text" name="EPF" value="<?php echo $EPF; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['EPF'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['EPF'])){echo ' is-valid';} ?>"  placeholder="EPF NO" >
+      <label for="EPF" class="font-weight-bolder pl-1" >EPF No</label>
+      <input required type="text" id="EPF" name="EPF" value="<?php echo $EPF; ?>" class="form-control<?php  if(isset($_POST['Add']) && empty($_POST['EPF'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['EPF'])){echo ' is-valid';} ?>"  placeholder="e.g., 0021" >
     </div>
     <div class="form-group col-lg-4">  
-    <label class="font-weight-bolder" for="inlineFormCustomSelect">Position</label>
-          <select class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['Position'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Position'])){echo ' is-valid';} ?>"  id="Position" name="Position">
+    <label class="font-weight-bolder" for="Position">Position</label>
+          <select required class="custom-select<?php  if(isset($_POST['Add']) && empty($_POST['Position'])){echo ' is-invalid';}if(isset($_POST['Add']) && !empty($_POST['Position'])){echo ' is-valid';} ?>"  id="Position" name="Position">
           <option value="null" selected disabled>--Select Position--</option>
             <?php          
               $sql = "SELECT * FROM `staff_position_type` ORDER BY `staff_position`";
@@ -330,7 +344,7 @@ if(isset($_POST['Add'])){
                   }
               }
               ?>
-            </select>
+        </select>
     </div>
     <div class="form-group col-lg-4 pt-2">
       <label for="text" class="font-weight-bolder pl-1">Type :</label><br>

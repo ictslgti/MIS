@@ -161,11 +161,9 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
+                
                 <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/staff/Staff.php">Staffs Info</a>
-                </li>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/staff/AddStaff.php">Add a Staff</a>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/staff/StaffManage.php">Manage Staff</a>
                   <hr>
                 </li>              
                 <li>
