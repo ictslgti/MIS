@@ -13,6 +13,23 @@ $__col = mysqli_query($con, "SHOW COLUMNS FROM `student` LIKE 'student_updated_a
 if ($__col && mysqli_num_rows($__col) === 1) { $hasUpdatedAt = true; }
 if ($__col) { mysqli_free_result($__col); }
 
+// Warden gender-based access setup (determine if WAR and fetch warden gender)
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
+$isWarden = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'WAR';
+$wardenGender = null;
+if ($isWarden && !empty($_SESSION['user_name'])) {
+  if ($__st = mysqli_prepare($con, "SELECT staff_gender FROM staff WHERE staff_id=? LIMIT 1")) {
+    mysqli_stmt_bind_param($__st, 's', $_SESSION['user_name']);
+    mysqli_stmt_execute($__st);
+    $__rs = mysqli_stmt_get_result($__st);
+    if ($__rs) {
+      $__row = mysqli_fetch_assoc($__rs);
+      if ($__row && isset($__row['staff_gender'])) { $wardenGender = $__row['staff_gender']; }
+    }
+    mysqli_stmt_close($__st);
+  }
+}
+
 // Handle profile updates for logged-in student (no Sid view) BEFORE output
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'update_profile' && !isset($_GET['Sid'])) {
   if (session_status() === PHP_SESSION_NONE) { session_start(); }
@@ -121,18 +138,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['do_upload']) && !isse
 }
 if(isset($_GET['Sid']))
 {
- $username =$_GET['Sid'];
- $sql = "SELECT user_name,e.course_id,`student_title`,`student_fullname`,`student_profile_img`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,`student_profile_img`,
+ $username = $_GET['Sid'];
+ // Build base query with optional gender condition for wardens
+ $baseSql = "SELECT user_name,e.course_id,`student_title`,`student_fullname`,`student_profile_img`,`student_ininame`,`student_gender`,`student_civil`,`student_email`,`student_nic`,`student_profile_img`,
 `student_dob`,`student_phone`,`student_address`,`student_zip`,`student_district`,`student_divisions`,`student_provice`,`student_blood`,`student_em_name`,`student_em_address`,
 `student_em_phone`,`student_em_relation`,`student_status`,`course_name`,`department_name`,`course_mode`,course_nvq_level,`academic_year`,`student_enroll_date`,`student_enroll_exit_date`,
-`student_enroll_status`,`user_password_hash`" . ($hasUpdatedAt ? ", `student_updated_at`" : "") . " FROM `student` as s, student_enroll as e, user as u, course as c, department as d WHERE user_name=s.student_id and s.student_id=e.student_id 
- and e.course_id=c.course_id and  c.department_id=d.department_id and `student_enroll_status`='Following' and user_name='$username'";
-$result = mysqli_query($con,$sql);
+`student_enroll_status`,`user_password_hash`" . ($hasUpdatedAt ? ", `student_updated_at`" : "") . " FROM `student` as s, student_enroll as e, user as u, course as c, department as d ";
+ $baseSql .= "WHERE user_name=s.student_id and s.student_id=e.student_id and e.course_id=c.course_id and c.department_id=d.department_id and `student_enroll_status`='Following' and user_name=?";
+ if ($isWarden && $wardenGender) {
+   $baseSql .= " AND s.student_gender=?";
+ }
+ if ($stmt = mysqli_prepare($con, $baseSql)) {
+   if ($isWarden && $wardenGender) {
+     mysqli_stmt_bind_param($stmt, 'ss', $username, $wardenGender);
+   } else {
+     mysqli_stmt_bind_param($stmt, 's', $username);
+   }
+   mysqli_stmt_execute($stmt);
+   $result = mysqli_stmt_get_result($stmt);
+ } else {
+   $result = false;
+ }
 
-  if(mysqli_num_rows($result)==1)
+  if($result && mysqli_num_rows($result)==1)
   {
-    //echo "success";
-    $row =mysqli_fetch_assoc($result);
+    $row = mysqli_fetch_assoc($result);
     //$stid = $row['student_id'];
     $title = $row['student_title'];
     $fname = $row['student_fullname'];
@@ -165,6 +195,10 @@ $result = mysqli_query($con,$sql);
     $pass=$row['user_password_hash'];
     $img=$row['student_profile_img'];
     if ($hasUpdatedAt && isset($row['student_updated_at'])) { $updatedAt = $row['student_updated_at']; }
+  }
+  else if ($isWarden && ($result === false || mysqli_num_rows($result) === 0))
+  {
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Access denied. Wardens can only view students of their own gender.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
   }
 }
 else

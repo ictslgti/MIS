@@ -22,6 +22,31 @@ include_once("../menu.php");
 //$stid = $_SESSION['user_name'];
 $stid = $title = $fname = $ininame = $gender = $civil = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $mode =
 $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = $status = $id =null;
+
+// Warden gender-based filtering
+$isWarden = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'WAR';
+$wardenGender = null;
+if ($isWarden) {
+  $staffId = $_SESSION['user_name'] ?? null;
+  if ($staffId) {
+    $st = mysqli_prepare($con, "SELECT staff_gender FROM staff WHERE staff_id=? LIMIT 1");
+    if ($st) {
+      mysqli_stmt_bind_param($st, 's', $staffId);
+      mysqli_stmt_execute($st);
+      $rs = mysqli_stmt_get_result($st);
+      if ($rs) {
+        $r = mysqli_fetch_assoc($rs);
+        if ($r && isset($r['staff_gender'])) { $wardenGender = $r['staff_gender']; }
+      }
+      mysqli_stmt_close($st);
+    }
+  }
+}
+// Helper: SQL snippet to filter by gender when warden
+$genderFilterSql = '';
+if ($isWarden && $wardenGender) {
+  $genderFilterSql = " AND student_gender='" . mysqli_real_escape_string($con, $wardenGender) . "'";
+}
 ?>
 
 <div class="row">
@@ -38,7 +63,7 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
         <select name="student_id" id="student_id" class="selectpicker show-tick ml-3 w-75" data-live-search="true" data-width="100%" value="">
           <option selected disabled>--Student Id--</option>
           <?php
-            $sql = "SELECT * FROM `student` ORDER BY `student_id` DESC ";
+            $sql = "SELECT student_id FROM `student` WHERE 1=1" . ($genderFilterSql ?: '') . " ORDER BY `student_id` DESC";
             $result = mysqli_query($con, $sql);
             if (mysqli_num_rows($result) > 0) 
             {
@@ -88,6 +113,11 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
           <th scope="col"> NIC </th>
           <th scope="col"> Phone No </th>
           <th scope="col"> Address </th>
+          <?php if ($isWarden): ?>
+            <th scope="col"> Emergency Contact </th>
+            <th scope="col"> Relation </th>
+            <th scope="col"> Emergency Phone </th>
+          <?php endif; ?>
           <th scope="col"> Action </th>
         </tr>
       </thead>
@@ -98,7 +128,7 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
           if(isset($_GET['student_id']))
           {
             $id=$_GET['student_id'];
-          $sql="SELECT `student_id`,`student_fullname`,`student_email`, `student_nic`,`student_phone`, `student_address` FROM `student` WHERE student_id='$id'";
+          $sql="SELECT `student_id`,`student_fullname`,`student_email`, `student_nic`,`student_phone`, `student_address`, `student_em_name`, `student_em_phone`, `student_em_relation` FROM `student` WHERE student_id='".mysqli_real_escape_string($con,$id)."'" . ($genderFilterSql ?: '');
           $result = mysqli_query($con, $sql);
           if (mysqli_num_rows($result)==1)
           {
@@ -114,6 +144,11 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
                 <td>'. $row["student_nic"]."<br>".'</td>
                 <td>'. $row["student_phone"]."<br>".'</td>
                 <td>'. $row["student_address"]."<br>".'</td>
+                <?php if ($isWarden): ?>
+                  <td>'. htmlspecialchars($row["student_em_name"]) ."<br>".'</td>
+                  <td>'. htmlspecialchars($row["student_em_relation"]) ."<br>".'</td>
+                  <td>'. htmlspecialchars($row["student_em_phone"]) ."<br>".'</td>
+                <?php endif; ?>
                 <td>
                 <a href="Student_profile.php?Sid='.$row["student_id"].'&edit=1" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
                 <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i></a>
@@ -137,7 +172,7 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
             if(isset($_GET['status']))
             {
             $status = $_GET['status'];
-            $sql="SELECT * FROM `student` WHERE `student_id` in (select student_id from student_enroll where student_enroll_status='$status')";  
+            $sql="SELECT `student_id`,`student_fullname`,`student_email`, `student_nic`,`student_phone`, `student_address`, `student_em_name`, `student_em_phone`, `student_em_relation` FROM `student` WHERE `student_id` in (select student_id from student_enroll where student_enroll_status='".mysqli_real_escape_string($con,$status)."')" . ($genderFilterSql ?: '');  
             $result = mysqli_query($con,$sql);
             if (mysqli_num_rows($result)>0)
             {
@@ -153,6 +188,11 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
                   <td>'. $row["student_nic"]."<br>".'</td>
                   <td>'. $row["student_phone"]."<br>".'</td>
                   <td>'. $row["student_address"]."<br>".'</td>
+                  <?php if ($isWarden): ?>
+                    <td>'. htmlspecialchars($row["student_em_name"]) ."<br>".'</td>
+                    <td>'. htmlspecialchars($row["student_em_relation"]) ."<br>".'</td>
+                    <td>'. htmlspecialchars($row["student_em_phone"]) ."<br>".'</td>
+                  <?php endif; ?>
                   <td>
                   <a href="Student_profile.php?Sid='.$row["student_id"].'&edit=1" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
                   <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i></a>
@@ -170,8 +210,8 @@ $ename = $eaddress = $ephone = $erelation = $enstatus = $coid = $year = $enroll 
           } 
           else
           {
-          $sql ="SELECT s.student_id,student_title,student_fullname,student_ininame,student_gender,student_email,student_nic,student_dob,student_phone,student_address 
-          FROM student s inner join student_enroll e on s.student_id=e.student_id and student_status='Active' and student_enroll_status='Following'";
+          $sql ="SELECT s.student_id,student_title,student_fullname,student_ininame,student_gender,student_email,student_nic,student_dob,student_phone,student_address, s.student_em_name, s.student_em_phone, s.student_em_relation 
+          FROM student s inner join student_enroll e on s.student_id=e.student_id and student_status='Active' and student_enroll_status='Following'" . ($genderFilterSql ?: '');
           $result = mysqli_query($con, $sql);
           if (mysqli_num_rows($result)>0)
           {

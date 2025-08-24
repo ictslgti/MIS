@@ -12,12 +12,36 @@ if (!isset($_SESSION['user_type']) || !in_array($_SESSION['user_type'], ['ADM','
 }
 
 $base = defined('APP_BASE') ? APP_BASE : '';
-$ok = isset($_GET['ok']);
+$ok = isset($_GET['ok']) ? $_GET['ok'] : '';
 $err = isset($_GET['err']) ? $_GET['err'] : '';
 ?>
 <div class="container mt-4">
-  <?php if ($ok): ?><div class="alert alert-success">Action completed.</div><?php endif; ?>
-  <?php if ($err): ?><div class="alert alert-danger">Action failed: <?php echo htmlspecialchars($err); ?></div><?php endif; ?>
+  <?php if ($ok): ?>
+    <?php
+      $okMsg = 'Action completed.';
+      if ($ok === 'marked_paid') { $okMsg = 'Payment marked as paid.'; }
+    ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <?php echo htmlspecialchars($okMsg); ?>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+  <?php endif; ?>
+  <?php if ($err): ?>
+    <?php
+      $errMap = [
+        'notfound' => 'Hostel request not found for the specified student.',
+        'already_paid' => 'This request has already been marked as paid.',
+        'invalid_status' => 'Only requests in Pending Payment status can be marked as paid.',
+        'db_update' => 'Database update failed. Please try again.',
+        'db' => 'Database error. Please contact administrator.'
+      ];
+      $errMsg = isset($errMap[$err]) ? $errMap[$err] : ('Action failed: ' . $err);
+    ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <?php echo htmlspecialchars($errMsg); ?>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+  <?php endif; ?>
 
   <h3>Hostel Requests</h3>
   <div class="table-responsive mt-3">
