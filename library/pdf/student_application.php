@@ -24,17 +24,24 @@ $res = mysqli_stmt_get_result($stmt);
 $st = mysqli_fetch_assoc($res);
 if (!$st) { die('Student not found'); }
 
-$pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+// Extend TCPDF to add global footer
+class SLGTIPDF extends TCPDF {
+  public function Footer() {
+    $this->SetY(-12);
+    $this->SetFont('helvetica', '', 8);
+    $this->Cell(0, 8, '© Sri Lanka German Training Institute · Developed By SICODE', 0, 0, 'C');
+  }
+}
+
+$pdf = new SLGTIPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator('MIS');
 $pdf->SetAuthor($Sid);
 $pdf->SetTitle('Student Application Form');
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'Student Application Form', 'SLGTI');
-$pdf->setHeaderFont([PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN]);
-$pdf->setFooterFont([PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA]);
-$pdf->SetMargins(10, 12, 10); // tight margins for single A4
-$pdf->SetHeaderMargin(5);
-$pdf->SetFooterMargin(6);
-$pdf->SetAutoPageBreak(TRUE, 8);
+// Use full page: no header, custom footer enabled; adjust margins for footer space
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(true);
+$pdf->SetMargins(6, 8, 6);
+$pdf->SetAutoPageBreak(TRUE, 14); // leave space for footer
 $pdf->setFontSubsetting(true);
 $pdf->setCellPadding(0.5);
 $pdf->SetFont('helvetica', '', 9.5); // slightly smaller to fit one page
@@ -82,10 +89,8 @@ if ($idPhotoBlob) {
 $pdf->SetY($y);
 $pdf->SetRightMargin(PDF_MARGIN_RIGHT);
 
-// 4) Continue with body content in 2-column layout (83% details, 17% photo space)
+// 4) Continue with body content using full width (photo is overlayed at top-right)
 $html = '';
-$html .= '<table width="100%" cellpadding="0" cellspacing="0"><tr>';
-$html .= '<td width="85%" valign="top">';
 $html .= '<table cellpadding="1" cellspacing="0" border="0" width="100%">';
 $rows = [
   ['Student ID', $st['student_id']],
@@ -109,9 +114,6 @@ foreach ($rows as $r) {
   $html .= '<tr><td width="27%" align="right"><b>'.htmlspecialchars($r[0]).'</b></td><td width="73%">'.htmlspecialchars((string)$r[1]).'</td></tr>';
 }
 $html .= '</table>';
-$html .= '</td>';
-$html .= '<td width="15%" valign="top">&nbsp;</td>';
-$html .= '</tr></table>';
 $html .= '<div style="height:4px;"></div>';
 $html .= '<div style="font-weight:600; margin:2px 0;">Emergency Contact</div>';
 $html .= '<table cellpadding="1" cellspacing="0" border="0" width="100%">';

@@ -51,6 +51,18 @@ $requestId = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action']==='request_hostel') {
   $distance = isset($_POST['distance']) ? trim($_POST['distance']) : '';
   $req_date = isset($_POST['request_date']) ? trim($_POST['request_date']) : '';
+  // Enforce one-time request: prevent if already exists in hostel_requests
+  $alreadyRequested = false;
+  if ($chk = mysqli_prepare($con, 'SELECT 1 FROM hostel_requests WHERE student_id = ? LIMIT 1')) {
+    mysqli_stmt_bind_param($chk, 's', $user);
+    mysqli_stmt_execute($chk);
+    mysqli_stmt_store_result($chk);
+    $alreadyRequested = mysqli_stmt_num_rows($chk) > 0;
+    mysqli_stmt_close($chk);
+  }
+  if ($alreadyRequested) {
+    $errorMsg = 'You have already submitted a hostel request. It cannot be submitted again online.';
+  } else {
   // normalize distance for display and numeric decimal(6,2) for hostel_requests
   $distance_km = null; // float for hostel_requests.distance_km
   if ($distance !== '') {
@@ -122,9 +134,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
               UNIQUE KEY `uniq_student` (`student_id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci";
             mysqli_query($con, $createHr);
-            // Also record into hostel_requests table (decimal distance_km, enum status)
+            // Also record into hostel_requests table (decimal distance_km, enum status), insert-only
             if ($distance_km !== null) {
-              if ($hr = mysqli_prepare($con, "INSERT INTO hostel_requests (student_id, distance_km, status) VALUES (?, ?, 'pending_payment') ON DUPLICATE KEY UPDATE distance_km=VALUES(distance_km), status='pending_payment'")) {
+              if ($hr = mysqli_prepare($con, "INSERT INTO hostel_requests (student_id, distance_km, status) VALUES (?, ?, 'pending_payment')")) {
                 mysqli_stmt_bind_param($hr, 'sd', $user, $distance_km);
                 if (!mysqli_stmt_execute($hr)) {
                   // don't override success message, but expose detail if needed
@@ -190,7 +202,21 @@ require_once __DIR__ . '/../menu.php';
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
   <?php endif; ?>
+  <?php
+    // Pre-check: has the student already submitted a hostel request?
+    $alreadyRequestedView = false;
+    if ($chk2 = mysqli_prepare($con, 'SELECT 1 FROM hostel_requests WHERE student_id = ? LIMIT 1')) {
+      mysqli_stmt_bind_param($chk2, 's', $user);
+      mysqli_stmt_execute($chk2);
+      mysqli_stmt_store_result($chk2);
+      $alreadyRequestedView = mysqli_stmt_num_rows($chk2) > 0;
+      mysqli_stmt_close($chk2);
+    }
+  ?>
 
+  <?php if ($alreadyRequestedView): ?>
+    <div class="alert alert-info">You have already submitted a hostel request. You cannot submit another online. Please contact the hostel warden for any changes.</div>
+  <?php else: ?>
   <form method="POST">
     <input type="hidden" name="action" value="request_hostel" />
 
@@ -260,6 +286,7 @@ require_once __DIR__ . '/../menu.php';
     </div>
 
   </form>
+  <?php endif; ?>
 </div>
 
 <!---BLOCK 03--->

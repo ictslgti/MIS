@@ -41,7 +41,7 @@ mysqli_query($con, "CREATE TABLE IF NOT EXISTS hostel_fee_payments (
 $success = $error = '';
 
 // Normalize any hostel_requests rows with empty/NULL/invalid status to 'pending_payment'
-$normalizeSql = "UPDATE hostel_requests SET status='pending_payment' WHERE status IS NULL OR status='' OR status NOT IN ('pending_payment','paid','allocated','rejected')";
+$normalizeSql = "UPDATE hostel_requests SET status='pending_payment' WHERE status IS NULL OR status='' OR status NOT IN ('pending_payment','paid','allocated','rejected','left')";
 mysqli_query($con, $normalizeSql);
 
 // Handle create/update/delete

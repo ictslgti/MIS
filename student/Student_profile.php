@@ -58,6 +58,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     if ($stmt = mysqli_prepare($con, $sqlUpd)) {
       mysqli_stmt_bind_param($stmt, 'sssssssssssssssssss', $p_title, $p_fname, $p_ininame, $p_gender, $p_civil, $p_dob, $p_blood, $u_email, $u_phone, $u_address, $u_zip, $u_district, $u_division, $u_province, $u_ename, $u_ephone, $u_eaddress, $u_erel, $loggedUser);
       if (mysqli_stmt_execute($stmt)) {
+        // Handle optional People's Bank details update as part of profile save
+        $acc = isset($_POST['bank_account_no']) ? trim($_POST['bank_account_no']) : '';
+        $br  = isset($_POST['bank_branch']) ? trim($_POST['bank_branch']) : '';
+        $frontRelPath = null;
+        // Save uploaded bank front page if provided
+        if (isset($_FILES['bank_front']) && $_FILES['bank_front']['error'] !== UPLOAD_ERR_NO_FILE) {
+          if ($_FILES['bank_front']['error'] === UPLOAD_ERR_OK) {
+            $tmp  = $_FILES['bank_front']['tmp_name'];
+            $size = (int)$_FILES['bank_front']['size'];
+            $type = function_exists('mime_content_type') ? mime_content_type($tmp) : '';
+            if ($size > 0 && $size <= 15*1024*1024) {
+              $ok = false; $ext = 'dat';
+              if (stripos((string)$type, 'pdf') !== false) { $ok = true; $ext = 'pdf'; }
+              if (stripos((string)$type, 'jpeg') !== false || stripos((string)$type, 'jpg') !== false) { $ok = true; $ext = 'jpg'; }
+              if (stripos((string)$type, 'png') !== false) { $ok = true; $ext = 'png'; }
+              if ($ok) {
+                $destDir = __DIR__ . '/documentation';
+                if (!is_dir($destDir)) { @mkdir($destDir, 0775, true); }
+                $safeId = preg_replace('/[^A-Za-z0-9_-]/', '_', $loggedUser);
+                $destPath = $destDir . '/' . $safeId . '_bankfront.' . $ext;
+                if (!@move_uploaded_file($tmp, $destPath)) {
+                  $data = @file_get_contents($tmp);
+                  if ($data !== false) { @file_put_contents($destPath, $data); }
+                }
+                if (is_file($destPath)) {
+                  $frontRelPath = 'student/documentation/' . $safeId . '_bankfront.' . $ext;
+                }
+              }
+            }
+          }
+        }
+        // Ensure columns exist before update
+        $dbName = null;
+        if ($dbRes = mysqli_query($con, 'SELECT DATABASE() as db')) { $dbRow = mysqli_fetch_assoc($dbRes); $dbName = $dbRow ? $dbRow['db'] : null; }
+        if ($dbName) {
+          $needCols = [
+            'bank_account_no' => "ALTER TABLE student ADD COLUMN bank_account_no VARCHAR(32) NULL",
+            'bank_branch' => "ALTER TABLE student ADD COLUMN bank_branch VARCHAR(128) NULL",
+            'bank_frontsheet_path' => "ALTER TABLE student ADD COLUMN bank_frontsheet_path VARCHAR(255) NULL",
+            'bank_name' => "ALTER TABLE student ADD COLUMN bank_name VARCHAR(64) NULL",
+          ];
+          foreach ($needCols as $col=>$ddl) {
+            if ($chk = mysqli_prepare($con, "SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=? AND TABLE_NAME='student' AND COLUMN_NAME=? LIMIT 1")) {
+              mysqli_stmt_bind_param($chk, 'ss', $dbName, $col);
+              mysqli_stmt_execute($chk);
+              $cres = mysqli_stmt_get_result($chk);
+              $exists = ($cres && mysqli_num_rows($cres) === 1);
+              mysqli_stmt_close($chk);
+              if (!$exists) { @mysqli_query($con, $ddl); }
+            }
+          }
+        }
+        // Update bank details if any data provided
+        if ($acc !== '' || $br !== '' || $frontRelPath) {
+          $bankName = "People's Bank";
+          $sqlB = 'UPDATE student SET bank_name=?, bank_account_no=?, bank_branch=?' . ($frontRelPath ? ', bank_frontsheet_path=?' : '') . ' WHERE student_id=? LIMIT 1';
+          if ($stB = mysqli_prepare($con, $sqlB)) {
+            if ($frontRelPath) {
+              mysqli_stmt_bind_param($stB, 'sssss', $bankName, $acc, $br, $frontRelPath, $loggedUser);
+            } else {
+              mysqli_stmt_bind_param($stB, 'ssss', $bankName, $acc, $br, $loggedUser);
+            }
+            mysqli_stmt_execute($stB);
+            mysqli_stmt_close($stB);
+          }
+        }
         if ($hasUpdatedAt) {
           if ($ts = mysqli_prepare($con, "UPDATE student SET student_updated_at=NOW() WHERE student_id=?")) {
             mysqli_stmt_bind_param($ts, 's', $loggedUser);
@@ -251,15 +317,19 @@ $result = mysqli_query($con,$sql);
   }
 }
 
-// Fetch uploaded documentation path now that $username is known
+// Fetch uploaded documentation path and bank details now that $username is known
 if (!empty($username)) {
-  $__docStmt = mysqli_prepare($con, "SELECT student_profile_doc FROM student WHERE student_id=? LIMIT 1");
+  $__docStmt = mysqli_prepare($con, "SELECT student_profile_doc, bank_name, bank_account_no, bank_branch, bank_frontsheet_path FROM student WHERE student_id=? LIMIT 1");
   if ($__docStmt) {
     mysqli_stmt_bind_param($__docStmt, 's', $username);
     if (mysqli_stmt_execute($__docStmt)) {
       $__docRes = mysqli_stmt_get_result($__docStmt);
       if ($__docRes && ($__docRow = mysqli_fetch_assoc($__docRes))) {
-        $docPath = isset($__docRow['student_profile_doc']) ? $__docRow['student_profile_doc'] : null;
+        $docPath    = isset($__docRow['student_profile_doc']) ? $__docRow['student_profile_doc'] : null;
+        $bankName   = isset($__docRow['bank_name']) ? $__docRow['bank_name'] : null;
+        $bankAcc    = isset($__docRow['bank_account_no']) ? $__docRow['bank_account_no'] : null;
+        $bankBranch = isset($__docRow['bank_branch']) ? $__docRow['bank_branch'] : null;
+        $bankFront  = isset($__docRow['bank_frontsheet_path']) ? $__docRow['bank_frontsheet_path'] : null;
       }
     }
     mysqli_stmt_close($__docStmt);
@@ -543,8 +613,52 @@ $profileCompletion = $__total > 0 ? (int)round($__filled * 100 / $__total) : 0;
                 <?php } else { ?>
                   <p class="text-muted mb-2">No documentation uploaded.</p>
                 <?php } ?>
-                <?php if (isset($_SESSION['user_type']) && in_array($_SESSION['user_type'], ['ADM','MA2'])) { ?>
+                <?php 
+                  $canUploadDoc = false;
+                  if (isset($_SESSION['user_type'])) {
+                    if (in_array($_SESSION['user_type'], ['ADM','MA2'])) { $canUploadDoc = true; }
+                    if ($_SESSION['user_type'] === 'STU' && isset($_SESSION['user_name']) && $_SESSION['user_name'] === $username) { $canUploadDoc = true; }
+                  }
+                  if ($canUploadDoc) { ?>
                   <a class="btn btn-sm btn-primary ml-2" href="/student/UploadDocumentation.php?Sid=<?php echo urlencode($username); ?>">
+                    <i class="fa fa-upload"></i> Upload / Replace
+                  </a>
+                <?php } ?>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card h-100">
+              <div class="card-header bg-secondary text-white">People's Bank Details</div>
+              <div class="card-body">
+                <div class="mb-2">
+                  <small class="text-muted d-block">Bank</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($bankName ?: "People's Bank"); ?></span>
+                </div>
+                <div class="mb-2">
+                  <small class="text-muted d-block">Account Number</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($bankAcc ?: '—'); ?></span>
+                </div>
+                <div class="mb-3">
+                  <small class="text-muted d-block">Branch</small>
+                  <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($bankBranch ?: '—'); ?></span>
+                </div>
+                <div class="mb-3">
+                  <small class="text-muted d-block">Front Page</small>
+                  <?php if (!empty($bankFront)) { ?>
+                    <a class="btn btn-sm btn-outline-primary" target="_blank" href="/<?php echo htmlspecialchars($bankFront); ?>"><i class="fa fa-eye"></i> View File</a>
+                  <?php } else { ?>
+                    <span class="text-muted">Not uploaded</span>
+                  <?php } ?>
+                </div>
+                <?php 
+                  $canUploadBank = false;
+                  if (isset($_SESSION['user_type'])) {
+                    if (in_array($_SESSION['user_type'], ['ADM','MA2'])) { $canUploadBank = true; }
+                    if ($_SESSION['user_type'] === 'STU' && isset($_SESSION['user_name']) && $_SESSION['user_name'] === $username) { $canUploadBank = true; }
+                  }
+                  if ($canUploadBank) { ?>
+                  <a class="btn btn-sm btn-primary" href="/student/UploadDocumentation.php?Sid=<?php echo urlencode($username); ?>">
                     <i class="fa fa-upload"></i> Upload / Replace
                   </a>
                 <?php } ?>
@@ -679,6 +793,29 @@ $profileCompletion = $__total > 0 ? (int)round($__filled * 100 / $__total) : 0;
             <div class="form-group">
               <label>Divisional Secretariat</label>
               <input type="text" class="form-control" name="division" value="<?php echo htmlspecialchars($division); ?>" />
+            </div>
+            <hr/>
+            <h6 class="mt-3">People's Bank Details</h6>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label>Bank</label>
+                <input type="text" class="form-control" value="People's Bank" readonly />
+              </div>
+              <div class="form-group col-md-4">
+                <label>Account Number</label>
+                <input type="text" class="form-control" name="bank_account_no" pattern="[0-9]{6,20}" title="Enter 6-20 digits" value="<?php echo isset($bankAcc) ? htmlspecialchars($bankAcc) : ''; ?>" />
+              </div>
+              <div class="form-group col-md-4">
+                <label>Branch</label>
+                <input type="text" class="form-control" name="bank_branch" value="<?php echo isset($bankBranch) ? htmlspecialchars($bankBranch) : ''; ?>" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Front Page (PDF/JPG/PNG) - optional</label>
+              <input type="file" class="form-control-file" name="bank_front" accept="application/pdf,image/jpeg,image/png" />
+              <?php if (!empty($bankFront)) { ?>
+                <small class="form-text text-muted">Existing file: <a target="_blank" href="/<?php echo htmlspecialchars($bankFront); ?>">View current</a></small>
+              <?php } ?>
             </div>
             <h6 class="mt-3">Emergency Contact</h6>
             <div class="form-row">
@@ -831,5 +968,6 @@ $profileCompletion = $__total > 0 ? (int)round($__filled * 100 / $__total) : 0;
 <!---BLOCK 03--->
 <!----DON'T CHANGE THE ORDER--->
 <?php 
+$HIDE_FOOTER = true;
 require_once __DIR__ . '/../footer.php';
 ?>

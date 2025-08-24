@@ -4,14 +4,120 @@
 $title = "Upload Student Documentation | SLGTI";
 include_once("../config.php");
 
-// Allow Admins and MA2
-if (!isset($_SESSION['user_type']) || !in_array($_SESSION['user_type'], ['ADM','MA2'])) {
+// Allow Admins, MA2 and Students (students can only upload their own doc)
+if (!isset($_SESSION['user_type']) || !in_array($_SESSION['user_type'], ['ADM','MA2','STU'])) {
   include_once("../head.php");
   include_once("../menu.php");
   http_response_code(403);
   echo '<div class="alert alert-danger m-3">Access denied.</div>';
   include_once("../footer.php");
   exit;
+}
+
+// Handler 2: People's Bank details + front page upload (PDF/JPG/PNG)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_bank'])) {
+  if ($studentId === '') {
+    $errors[] = 'Student ID is required.';
+  } else {
+    $stmt = mysqli_prepare($con, "SELECT 1 FROM student WHERE student_id=? LIMIT 1");
+    mysqli_stmt_bind_param($stmt, 's', $studentId);
+    mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_get_result($stmt);
+    if (!$res || mysqli_num_rows($res) !== 1) { $errors[] = 'Student not found.'; }
+    mysqli_stmt_close($stmt);
+  }
+
+  $acc = isset($_POST['bank_account_no']) ? trim($_POST['bank_account_no']) : '';
+  $br  = isset($_POST['bank_branch']) ? trim($_POST['bank_branch']) : '';
+  if ($acc === '' || $br === '') {
+    $errors[] = 'Bank account number and branch are required.';
+  }
+
+  $frontRelPath = null;
+  if (empty($errors)) {
+    $hasUpload = isset($_FILES['bank_front']) && $_FILES['bank_front']['error'] !== UPLOAD_ERR_NO_FILE;
+    if ($hasUpload) {
+      if ($_FILES['bank_front']['error'] !== UPLOAD_ERR_OK) {
+        $errors[] = 'Failed to read bank front page file.';
+      } else {
+        $tmp = $_FILES['bank_front']['tmp_name'];
+        $name = $_FILES['bank_front']['name'];
+        $size = (int)$_FILES['bank_front']['size'];
+        $type = mime_content_type($tmp);
+        if ($size <= 0) {
+          $errors[] = 'Empty bank front page file.';
+        } elseif ($size > 15*1024*1024) {
+          $errors[] = 'Bank front page too large (max 15MB).';
+        } else {
+          $ok = false; $ext = 'dat';
+          if (stripos($type, 'pdf') !== false) { $ok = true; $ext = 'pdf'; }
+          if (stripos($type, 'jpeg') !== false || stripos($type, 'jpg') !== false) { $ok = true; $ext = 'jpg'; }
+          if (stripos($type, 'png') !== false) { $ok = true; $ext = 'png'; }
+          if (!$ok) { $errors[] = 'Only PDF, JPG, or PNG allowed for bank front page.'; }
+          if (empty($errors)) {
+            $destDir = __DIR__ . '/documentation';
+            if (!is_dir($destDir)) { @mkdir($destDir, 0775, true); }
+            $safeId = preg_replace('/[^A-Za-z0-9_-]/', '_', $studentId);
+            $destPath = $destDir . '/' . $safeId . '_bankfront.' . $ext;
+            if (!@move_uploaded_file($tmp, $destPath)) {
+              $data = file_get_contents($tmp);
+              if ($data === false || file_put_contents($destPath, $data) === false) {
+                $errors[] = 'Failed to save bank front page on server.';
+              }
+            }
+            if (empty($errors)) {
+              $frontRelPath = 'student/documentation/' . $safeId . '_bankfront.' . $ext;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Ensure columns exist: bank_account_no, bank_branch, bank_frontsheet_path, bank_name
+  if (empty($errors)) {
+    $dbNameRes = mysqli_query($con, 'SELECT DATABASE() as db');
+    $dbRow = $dbNameRes ? mysqli_fetch_assoc($dbNameRes) : null;
+    $dbName = $dbRow && isset($dbRow['db']) ? $dbRow['db'] : null;
+    if ($dbName) {
+      $needCols = [
+        'bank_account_no' => "ALTER TABLE student ADD COLUMN bank_account_no VARCHAR(32) NULL",
+        'bank_branch' => "ALTER TABLE student ADD COLUMN bank_branch VARCHAR(128) NULL",
+        'bank_frontsheet_path' => "ALTER TABLE student ADD COLUMN bank_frontsheet_path VARCHAR(255) NULL",
+        'bank_name' => "ALTER TABLE student ADD COLUMN bank_name VARCHAR(64) NULL"
+      ];
+      foreach ($needCols as $col=>$ddl) {
+        $chk = mysqli_prepare($con, "SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=? AND TABLE_NAME='student' AND COLUMN_NAME=? LIMIT 1");
+        mysqli_stmt_bind_param($chk, 'ss', $dbName, $col);
+        mysqli_stmt_execute($chk);
+        $cres = mysqli_stmt_get_result($chk);
+        $exists = ($cres && mysqli_num_rows($cres) === 1);
+        mysqli_stmt_close($chk);
+        if (!$exists) { @mysqli_query($con, $ddl); }
+      }
+    }
+
+    // Build update
+    $sql = 'UPDATE student SET bank_name=?, bank_account_no=?, bank_branch=?' . ($frontRelPath ? ', bank_frontsheet_path=?' : '') . ' WHERE student_id=? LIMIT 1';
+    if ($stU = mysqli_prepare($con, $sql)) {
+      $bankName = "People\'s Bank";
+      if ($frontRelPath) {
+        mysqli_stmt_bind_param($stU, 'sssss', $bankName, $acc, $br, $frontRelPath, $studentId);
+      } else {
+        mysqli_stmt_bind_param($stU, 'ssss', $bankName, $acc, $br, $studentId);
+      }
+      if (!mysqli_stmt_execute($stU)) {
+        $errors[] = 'Failed to save bank details: ' . htmlspecialchars(mysqli_stmt_error($stU));
+      }
+      mysqli_stmt_close($stU);
+    } else {
+      $errors[] = 'Failed to prepare bank details update.';
+    }
+  }
+
+  if (empty($errors)) {
+    $success = 'Bank details saved successfully.';
+  }
 }
 
 include_once("../head.php");
@@ -22,8 +128,17 @@ function sp_safe($s){ return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); 
 
 $errors = [];
 $success = null;
-$studentId = isset($_POST['student_id']) ? trim($_POST['student_id']) : (isset($_GET['Sid']) ? trim($_GET['Sid']) : '');
 
+// Determine effective studentId based on role
+if ($_SESSION['user_type'] === 'STU') {
+  // Students can only upload for themselves
+  $studentId = isset($_SESSION['user_name']) ? trim($_SESSION['user_name']) : '';
+} else {
+  // Admin/MA2 can specify via POST first, then GET Sid
+  $studentId = isset($_POST['student_id']) ? trim($_POST['student_id']) : (isset($_GET['Sid']) ? trim($_GET['Sid']) : '');
+}
+
+// Handler 1: Consolidated documentation PDF
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload_pdf'])) {
   if ($studentId === '') {
     $errors[] = 'Student ID is required.';
@@ -128,11 +243,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload_pdf'])) {
           <?php if (!empty($errors)) { echo '<div class="alert alert-danger py-2">'.sp_safe(implode(' | ', $errors)).'</div>'; }
                 if ($success) { echo '<div class="alert alert-success py-2">'.sp_safe($success).'</div>'; } ?>
           <form method="post" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="student_id">Student ID</label>
-              <input type="text" class="form-control" id="student_id" name="student_id" value="<?php echo sp_safe($studentId); ?>" placeholder="Enter Student ID" required>
-              <small class="form-text text-muted">Use a valid Student Registration Number (e.g., 23CSE001).</small>
-            </div>
+            <?php if ($_SESSION['user_type'] === 'STU') { ?>
+              <div class="form-group">
+                <label>Your Student ID</label>
+                <input type="text" class="form-control" value="<?php echo sp_safe($studentId); ?>" readonly>
+                <input type="hidden" name="student_id" value="<?php echo sp_safe($studentId); ?>">
+              </div>
+            <?php } else { ?>
+              <div class="form-group">
+                <label for="student_id">Student ID</label>
+                <input type="text" class="form-control" id="student_id" name="student_id" value="<?php echo sp_safe($studentId); ?>" placeholder="Enter Student ID" required>
+                <small class="form-text text-muted">Use a valid Student Registration Number (e.g., 23CSE001).</small>
+              </div>
+            <?php } ?>
             <div class="form-group">
               <label for="doc_pdf">PDF File</label>
               <input type="file" class="form-control-file" id="doc_pdf" name="doc_pdf" accept="application/pdf" required>
@@ -145,13 +268,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload_pdf'])) {
     </div>
     <div class="col-lg-6">
       <div class="card mb-3">
-        <div class="card-header"><i class="fa fa-info-circle"></i> Notes</div>
+        <div class="card-header"><i class="fa fa-university"></i> People's Bank Details</div>
         <div class="card-body">
-          <ul class="mb-0">
-            <li><b>File name on server:</b> student/documentation/&lt;StudentID&gt;.pdf</li>
-            <li><b>Saved path in DB:</b> student.student_profile_doc (auto-added if missing)</li>
-            <li><b>Allowed type:</b> PDF only. Max size 15 MB.</li>
-          </ul>
+          <form method="post" enctype="multipart/form-data">
+            <?php if ($_SESSION['user_type'] === 'STU') { ?>
+              <input type="hidden" name="student_id" value="<?php echo sp_safe($studentId); ?>">
+            <?php } else { ?>
+              <div class="form-group">
+                <label for="student_id_bank">Student ID</label>
+                <input type="text" class="form-control" id="student_id_bank" name="student_id" value="<?php echo sp_safe($studentId); ?>" required>
+              </div>
+            <?php } ?>
+            <div class="form-group">
+              <label>Bank Name</label>
+              <input type="text" class="form-control" value="People's Bank" readonly>
+            </div>
+            <div class="form-group">
+              <label for="bank_account_no">Account Number</label>
+              <input type="text" pattern="[0-9]{6,20}" title="Enter 6-20 digits" class="form-control" id="bank_account_no" name="bank_account_no" required>
+            </div>
+            <div class="form-group">
+              <label for="bank_branch">Branch</label>
+              <input type="text" class="form-control" id="bank_branch" name="bank_branch" required>
+            </div>
+            <div class="form-group">
+              <label for="bank_front">Front Page (PDF/JPG/PNG) - optional</label>
+              <input type="file" class="form-control-file" id="bank_front" name="bank_front" accept="application/pdf,image/jpeg,image/png">
+            </div>
+            <button type="submit" name="save_bank" value="1" class="btn btn-success"><i class="fa fa-save"></i> Save Bank Details</button>
+          </form>
         </div>
       </div>
     </div>

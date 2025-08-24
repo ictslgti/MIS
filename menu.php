@@ -152,6 +152,34 @@ if ($u_t === 'STU') {
             </div>
           </li>
         </ul>
+        <?php } elseif ($u_t === 'FIN') { ?>
+        <ul>
+          <li class="header-menu"><span>Finance</span></li>
+          <li>
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/dashboard/index.php">
+              <i class="fa fa-home"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/finance/HostelPayments.php">
+              <i class="fab fa-amazon-pay"></i>
+              <span>Hostel Payments</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/finance/StudentBankDetails.php">
+              <i class="fas fa-university"></i>
+              <span>Student Bank Details</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/finance/HostelFeeReports.php">
+              <i class="fa fa-print"></i>
+              <span>Hostel Fee Reports</span>
+            </a>
+          </li>
+        </ul>
         <?php } else { ?>
         <ul>
           <li class="header-menu">

@@ -24,12 +24,13 @@
 </main>
 </div>
 
-  <!-- <footer class="footer mt-auto py-3 text-center bg-dark">
+  <?php if (empty($HIDE_FOOTER)): ?>
+  <footer class="footer mt-auto py-2 text-center bg-dark text-light" style="font-size: 0.9rem;">
       <div class="container">
-          <span class="text-muted">All Rights Reserved. Designed and Developed by Department of Information and
-              Communication Technology, Sri Lanka-German Training Institute.</span>
+          <span>&copy; Sri Lanka German Training Institute &middot; Developed by SICODE</span>
       </div>
-  </footer> -->
+  </footer>
+  <?php endif; ?>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

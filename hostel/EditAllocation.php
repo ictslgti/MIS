@@ -61,6 +61,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $allocation['allocated_at'] = $allocated_at;
           $allocation['leaving_at'] = $leaving_at;
           $allocation['status'] = $status;
+          // Also keep hostel_requests.status in sync to avoid empty/invalid status
+          $reqStatusMap = [
+            'active'    => 'allocated',
+            'left'      => 'left',
+            'cancelled' => 'rejected'
+          ];
+          if (isset($reqStatusMap[$status])) {
+            if ($stR = mysqli_prepare($con, "UPDATE hostel_requests SET status=? WHERE student_id=?")) {
+              $mapped = $reqStatusMap[$status];
+              mysqli_stmt_bind_param($stR, 'ss', $mapped, $allocation['student_id']);
+              mysqli_stmt_execute($stR);
+              mysqli_stmt_close($stR);
+            }
+          }
         } else {
           $error = 'Update failed: ' . htmlspecialchars(mysqli_stmt_error($stU));
         }

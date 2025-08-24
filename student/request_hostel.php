@@ -58,48 +58,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
       $errorMsg = 'Distance must be numeric (e.g., 12 or 12.5).';
     } else {
       $distance_km = number_format((float)$distance_num, 2, '.', '');
-      // Upsert: create or update the request for this student
-      $sql = "INSERT INTO hostel_requests (student_id, distance_km, status)
-              VALUES (?, ?, ?)
-              ON DUPLICATE KEY UPDATE distance_km = VALUES(distance_km), status = VALUES(status), updated_at = CURRENT_TIMESTAMP";
-      if ($st = mysqli_prepare($con, $sql)) {
-        mysqli_stmt_bind_param($st, 'sds', $user, $distance_km, $status);
-        if (mysqli_stmt_execute($st)) {
-          $successMsg = 'Hostel request saved successfully.';
+      // One-time: prevent creating or modifying if already exists
+      if ($chk = mysqli_prepare($con, 'SELECT 1 FROM hostel_requests WHERE student_id = ? LIMIT 1')) {
+        mysqli_stmt_bind_param($chk, 's', $user);
+        mysqli_stmt_execute($chk);
+        mysqli_stmt_store_result($chk);
+        $exists = mysqli_stmt_num_rows($chk) > 0;
+        mysqli_stmt_close($chk);
+        if ($exists) {
+          $errorMsg = 'You have already submitted a hostel request. It cannot be changed or submitted again.';
         } else {
-          $errorMsg = 'Failed to save: ' . htmlspecialchars(mysqli_stmt_error($st));
+          $sql = "INSERT INTO hostel_requests (student_id, distance_km, status) VALUES (?, ?, ?)";
+          if ($st = mysqli_prepare($con, $sql)) {
+            mysqli_stmt_bind_param($st, 'sds', $user, $distance_km, $status);
+            if (mysqli_stmt_execute($st)) {
+              $successMsg = 'Hostel request submitted successfully.';
+            } else {
+              $errorMsg = 'Failed to save: ' . htmlspecialchars(mysqli_stmt_error($st));
+            }
+            mysqli_stmt_close($st);
+          } else {
+            $errorMsg = 'Failed to prepare save: ' . htmlspecialchars(mysqli_error($con));
+          }
         }
-        mysqli_stmt_close($st);
-      } else {
-        $errorMsg = 'Failed to prepare save: ' . htmlspecialchars(mysqli_error($con));
       }
-    }
-  } elseif ($action === 'delete') {
-    // Delete the student's request
-    if ($st = mysqli_prepare($con, 'DELETE FROM hostel_requests WHERE student_id = ?')) {
-      mysqli_stmt_bind_param($st, 's', $user);
-      if (mysqli_stmt_execute($st)) {
-        $successMsg = 'Hostel request deleted.';
-      } else {
-        $errorMsg = 'Failed to delete: ' . htmlspecialchars(mysqli_stmt_error($st));
-      }
-      mysqli_stmt_close($st);
-    } else {
-      $errorMsg = 'Failed to prepare delete: ' . htmlspecialchars(mysqli_error($con));
-    }
-  } elseif ($action === 'request_again') {
-    // Allow student to request again if not currently allocated
-    // This simply resets status to pending_payment on existing record
-    if ($st = mysqli_prepare($con, 'UPDATE hostel_requests SET status="pending_payment", updated_at=CURRENT_TIMESTAMP WHERE student_id = ?')) {
-      mysqli_stmt_bind_param($st, 's', $user);
-      if (mysqli_stmt_execute($st)) {
-        $successMsg = 'Status reset to pending_payment. You can update your distance and save.';
-      } else {
-        $errorMsg = 'Failed to reset: ' . htmlspecialchars(mysqli_stmt_error($st));
-      }
-      mysqli_stmt_close($st);
-    } else {
-      $errorMsg = 'Failed to prepare reset: ' . htmlspecialchars(mysqli_error($con));
     }
   }
 }
@@ -204,8 +186,8 @@ if ($st3 = mysqli_prepare($con, 'SELECT a.id, a.allocated_at, a.leaving_at, r.ro
   mysqli_stmt_close($st3);
 }
 
-// Only allow Save when status is pending_payment or no request exists
-$canSave = (!$current) || ($current && isset($current['status']) && $current['status'] === 'pending_payment');
+// Only allow Save when no request exists at all (strict one-time request)
+$canSave = (!$current);
 
 // Layout includes
 require_once __DIR__ . '/../head.php';
@@ -313,17 +295,14 @@ require_once __DIR__ . '/../menu.php';
   </div>
   <?php endif; ?>
 
-  <?php if (!$current || !isset($current['status']) || $current['status'] !== 'allocated'): ?>
+  <?php if (!$current): ?>
   <form method="POST" class="mb-3">
     <input type="hidden" name="action" value="save" />
 
     <div class="form-row">
       <div class="form-group col-md-4">
         <label>Distance (km)</label>
-        <input type="text" name="distance_km" class="form-control" placeholder="e.g., 12 or 12.5" value="<?php echo $current ? htmlspecialchars($current['distance_km']) : ''; ?>" <?php echo $canSave ? '' : 'disabled'; ?> required>
-        <?php if (!$canSave && $current): ?>
-          <small class="form-text text-muted">Editing disabled. Status is "<?php echo htmlspecialchars($current['status']); ?>".</small>
-        <?php endif; ?>
+        <input type="text" name="distance_km" class="form-control" placeholder="e.g., 12 or 12.5" value="" required>
       </div>
       <div class="form-group col-md-4">
         <label>Status</label>
@@ -333,26 +312,17 @@ require_once __DIR__ . '/../menu.php';
     </div>
 
     <div class="form-row">
-      <?php if ($canSave): ?>
-        <div class="form-group col-md-3">
-          <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-save"></i> Save</button>
-        </div>
-      <?php endif; ?>
+      <div class="form-group col-md-3">
+        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-save"></i> Save</button>
+      </div>
     </div>
   </form>
   <?php endif; ?>
 
   
 
-  <?php if ($current && isset($current['status']) && $current['status'] !== 'allocated'): ?>
-  <form method="POST" onsubmit="return confirm('Delete your hostel request?');" class="mb-3">
-    <input type="hidden" name="action" value="delete" />
-    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-  </form>
-  <form method="POST" onsubmit="return confirm('Set your request back to pending and edit again?');" class="mb-3">
-    <input type="hidden" name="action" value="request_again" />
-    <button type="submit" class="btn btn-secondary"><i class="fa fa-undo"></i> Request Again</button>
-  </form>
+  <?php if ($current): ?>
+    <div class="alert alert-info">You have already submitted a hostel request. Further changes are not allowed online. Please contact the hostel warden for assistance.</div>
   <?php endif; ?>
 </div>
 <?php
