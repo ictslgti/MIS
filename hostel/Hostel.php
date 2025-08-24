@@ -210,7 +210,10 @@ if ($result && mysqli_num_rows($result) > 0) {
  </div>
 
 <script>
-(function(){
+// Ensure jQuery is loaded by footer.php before using it
+window.addEventListener('load', function(){
+  var $ = window.jQuery;
+  if (!$) { return; }
   function esc(s){ return (s==null? '' : String(s)); }
   var modal = $('#studentInfoModal');
   $(document).on('click', '.js-see-info', function(){
@@ -257,7 +260,7 @@ if ($result && mysqli_num_rows($result) > 0) {
       $('#studentInfoBody').html('<div class="alert alert-danger">Request failed. Please try again.</div>');
     });
   });
-})();
+});
 </script>
 
 <!--END OF YOUR COD-->
