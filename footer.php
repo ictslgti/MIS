@@ -72,11 +72,13 @@ $(this)
 }
 });
 
-$("#close-sidebar").click(function() {
-$(".page-wrapper").removeClass("toggled");
+$("#close-sidebar").on('click', function(e) {
+  e.preventDefault();
+  $(".page-wrapper").removeClass("toggled");
 });
-$("#show-sidebar").click(function() {
-$(".page-wrapper").addClass("toggled");
+$("#show-sidebar").on('click', function(e) {
+  e.preventDefault();
+  $(".page-wrapper").addClass("toggled");
 });
 
   // Responsive behavior: on mobile, start collapsed and auto-close after navigation
@@ -101,7 +103,7 @@ $(".page-wrapper").addClass("toggled");
   });
 
   // After clicking any sidebar link on mobile, hide the sidebar to show content
-  $('#sidebar a').on('click', function() {
+  $('#sidebar a').on('click', function(e) {
     if (isMobile()) {
       $(".page-wrapper").removeClass("toggled");
     }
