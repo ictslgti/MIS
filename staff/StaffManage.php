@@ -136,7 +136,7 @@ $staff_rows = list_staff($con, []);
                     <td><?php echo htmlspecialchars($r['staff_position']); ?></td>
                     <td><?php echo htmlspecialchars($r['staff_status']); ?></td>
                     <td class="text-right actions">
-                      <a class="btn btn-sm btn-primary" href="?edit=<?php echo urlencode($r['staff_id']); ?>">Edit</a>
+                      <a class="btn btn-sm btn-primary" href="staff/StaffManage.php?edit=<?php echo urlencode($r['staff_id']); ?>">Edit</a>
                       <form method="POST" action="" class="d-inline" onsubmit="return confirm('Delete this staff?');">
                         <input type="hidden" name="staff_id" value="<?php echo htmlspecialchars($r['staff_id']); ?>">
                         <input type="hidden" name="action" value="delete">

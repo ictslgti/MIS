@@ -44,11 +44,16 @@ if ($student_id !== '') {
           <option value="">Select...</option>
           <?php
           $q = mysqli_query($con, "SELECT id, name FROM hostels WHERE active=1 ORDER BY name");
-          while ($h = $q && mysqli_fetch_assoc($q)) {
-            echo '<option value="'.(int)$h['id'].'">'.htmlspecialchars($h['name']).'</option>';
+          if ($q) {
+            while ($h = mysqli_fetch_assoc($q)) {
+              echo '<option value="'.(int)$h['id'].'">'.htmlspecialchars($h['name']).'</option>';
+            }
           }
           ?>
         </select>
+        <?php if ($q && mysqli_num_rows($q) === 0): ?>
+          <small class="form-text text-muted">No active hostels found. Add one in Manage Hostels.</small>
+        <?php endif; ?>
       </div>
       <div class="form-group col-md-4">
         <label>Block</label>

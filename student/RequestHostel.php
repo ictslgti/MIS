@@ -1,12 +1,9 @@
-<!------START DON'T CHANGE ORDER HEAD,MANU,FOOTER----->
-<!---BLOCK 01--->
 <?php 
 // robust includes from student/
 require_once __DIR__ . '/../config.php';
-require_once __DIR__ . '/../head.php';
-// Show student top navigation on this page (place before sidebar so it spans full width)
-require_once __DIR__ . '/top_nav.php';
-require_once __DIR__ . '/../menu.php';
+
+// Start output buffering to prevent premature output issues
+if (!headers_sent()) { ob_start(); }
 
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 $user = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null;
@@ -54,13 +51,19 @@ $requestId = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action']==='request_hostel') {
   $distance = isset($_POST['distance']) ? trim($_POST['distance']) : '';
   $req_date = isset($_POST['request_date']) ? trim($_POST['request_date']) : '';
-  // normalize distance, allow numeric or values like "12km"
+  // normalize distance for display and numeric decimal(6,2) for hostel_requests
+  $distance_km = null; // float for hostel_requests.distance_km
   if ($distance !== '') {
     $distance_num = preg_replace('/[^0-9.]/', '', $distance);
-    if ($distance_num !== '') { $distance = $distance_num . 'km'; }
+    if ($distance_num !== '') {
+      $distance_km = round((float)$distance_num, 2);
+      $distance = number_format($distance_km, 2, '.', '') . 'km';
+    }
   }
   if ($distance === '' || $req_date === '') {
     $errorMsg = 'Please provide both Distance and Request Date.';
+  } elseif ($distance_km === null) {
+    $errorMsg = 'Distance must be a number (e.g., 12 or 12.5).';
   } else {
     // ensure department id
     $dept = $stu['department_id'];
@@ -79,21 +82,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
       if (mysqli_fetch_assoc($chkRes)) {
         $errorMsg = 'You already have a hostel record. Contact warden for changes.';
       } else {
-        // insert with blank block/room, leaving date null
-        $ins = "INSERT INTO hostel_student_details (student_id, department_id, distance, block_no, room_no, date_of_addmission, date_of_leaving) VALUES (?,?,?,?,?,?,NULL)";
-        if ($st = mysqli_prepare($con, $ins)) {
-          $block = '';
-          $room = '';
-          mysqli_stmt_bind_param($st, 'ssssss', $user, $dept, $distance, $block, $room, $req_date);
+        // insert with blank block/room. Some DBs may not have date_of_leaving; detect and adapt.
+        $block = '';
+        $room = '';
+        $hasLeaving = false;
+        if ($colRes = mysqli_query($con, "SHOW COLUMNS FROM hostel_student_details LIKE 'date_of_leaving'")) {
+          $hasLeaving = (mysqli_num_rows($colRes) > 0);
+          mysqli_free_result($colRes);
+        }
+        if ($hasLeaving) {
+          $ins = "INSERT INTO hostel_student_details (student_id, department_id, distance, block_no, room_no, date_of_addmission, date_of_leaving) VALUES (?,?,?,?,?,?,?)";
+          if ($st = mysqli_prepare($con, $ins)) {
+            $leaving = '0000-00-00';
+            mysqli_stmt_bind_param($st, 'sssssss', $user, $dept, $distance, $block, $room, $req_date, $leaving);
+          } else {
+            $errorMsg = 'Failed to prepare insert statement: ' . htmlspecialchars(mysqli_error($con));
+          }
+        } else {
+          $ins = "INSERT INTO hostel_student_details (student_id, department_id, distance, block_no, room_no, date_of_addmission) VALUES (?,?,?,?,?,?)";
+          if ($st = mysqli_prepare($con, $ins)) {
+            mysqli_stmt_bind_param($st, 'ssssss', $user, $dept, $distance, $block, $room, $req_date);
+          } else {
+            $errorMsg = 'Failed to prepare insert statement: ' . htmlspecialchars(mysqli_error($con));
+          }
+        }
+        if (isset($st) && $st) {
           if (mysqli_stmt_execute($st)) {
             $requestId = mysqli_insert_id($con);
             $successMsg = 'Hostel request submitted successfully.';
+            // Ensure hostel_requests exists with expected schema, then upsert
+            $createHr = "CREATE TABLE IF NOT EXISTS `hostel_requests` (
+              `id` int unsigned NOT NULL AUTO_INCREMENT,
+              `student_id` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+              `distance_km` decimal(6,2) NOT NULL,
+              `status` enum('pending_payment','paid','allocated','rejected') NOT NULL DEFAULT 'pending_payment',
+              `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+              `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+              PRIMARY KEY (`id`),
+              UNIQUE KEY `uniq_student` (`student_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci";
+            mysqli_query($con, $createHr);
+            // Also record into hostel_requests table (decimal distance_km, enum status)
+            if ($distance_km !== null) {
+              if ($hr = mysqli_prepare($con, "INSERT INTO hostel_requests (student_id, distance_km, status) VALUES (?, ?, 'pending_payment') ON DUPLICATE KEY UPDATE distance_km=VALUES(distance_km), status='pending_payment'")) {
+                mysqli_stmt_bind_param($hr, 'sd', $user, $distance_km);
+                if (!mysqli_stmt_execute($hr)) {
+                  // don't override success message, but expose detail if needed
+                  $errorMsg = 'Saved but failed to log in hostel_requests: ' . htmlspecialchars(mysqli_stmt_error($hr));
+                }
+                mysqli_stmt_close($hr);
+              } else {
+                $errorMsg = 'Saved but failed to prepare hostel_requests insert: ' . htmlspecialchars(mysqli_error($con));
+              }
+            }
           } else {
-            $errorMsg = 'Failed to submit request: ' . htmlspecialchars(mysqli_error($con));
+            $errorMsg = 'Failed to submit request: ' . htmlspecialchars(mysqli_stmt_error($st));
           }
           mysqli_stmt_close($st);
-        } else {
-          $errorMsg = 'Failed to prepare insert statement: ' . htmlspecialchars(mysqli_error($con));
         }
       }
       mysqli_stmt_close($chk);
@@ -101,6 +146,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
   }
 }
+
+// Include layout only after processing to avoid premature HTML output
+require_once __DIR__ . '/../head.php';
+require_once __DIR__ . '/top_nav.php';
+require_once __DIR__ . '/../menu.php';
 ?>
 <!----END DON'T CHANGE THE ORDER---->
 
@@ -216,4 +266,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 <!----DON'T CHANGE THE ORDER--->
 <?php 
 require_once __DIR__ . '/../footer.php';
+// Flush buffered output safely
+if (function_exists('ob_get_level') && ob_get_level() > 0) { @ob_end_flush(); }
 ?>

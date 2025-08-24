@@ -73,6 +73,84 @@ if($u_ta=='staff'){
       </div> -->
       <!-- sidebar-search  -->
       <div class="sidebar-menu">
+        <?php if ($u_t === 'WAR') { ?>
+        <ul>
+          <li class="header-menu"><span>General</span></li>
+          <li>
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/dashboard/index.php">
+              <i class="fa fa-home"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="far fa-building"></i>
+              <span>Hostels</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Requests.php">Hostel Requests</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/AssignHostel.php">Assign Hostel</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/ManageHostel.php">Manage Hostels &amp; Blocks</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/ManageRooms.php">Manage Rooms</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Hostel.php">Hostels Info</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Payments.php">Hostel Payments</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <?php } elseif ($u_t === 'MA2') { ?>
+        <ul>
+          <li class="header-menu"><span>General</span></li>
+          <li>
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/dashboard/index.php">
+              <i class="fa fa-home"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-user-graduate"></i>
+              <span>Students</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/Student.php">Students Info</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/AddStudent.php">Add a Student</a>
+                </li>
+                <hr>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentReEnroll.php">Student Re Enroll</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentEnrollmentReport.php">Student Enrollment Report</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentIDPhoto.php">Student ID Photo</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/ImportStudentEnroll.php">Import Student Enrollment</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <?php } else { ?>
         <ul>
           <li class="header-menu">
             <span>General</span>
@@ -373,6 +451,11 @@ if($u_ta=='staff'){
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Hostel.php">Hostels Info</a>
                 </li><?php } ?>
+                <?php if(can_view(['WAR','ADM'])){ ?>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Payments.php">Hostel Payments</a>
+                </li>
+                <?php } ?>
               </ul>
             </div>
           </li>
@@ -684,6 +767,7 @@ if($u_ta=='staff'){
             </a>
           </li>
         </ul>
+        <?php } ?>
       </div>
       <!-- sidebar-menu  -->
     </div>

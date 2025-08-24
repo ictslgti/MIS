@@ -9,23 +9,29 @@ include_once("../menu.php");
 
 <!--BLOCK#2 START YOUR CODE HERE -->
 <?php 
-if(isset($_GET['delete'])){
-  $student_id = $_GET['delete'];
-  $sql = "DELETE FROM `hostel_student_details` WHERE `hosttler_id`=$student_id";
- if(mysqli_query($con ,$sql)){
-  echo
-  '<div class="alert alert-danger">
-  <strong>Success!</strong> Your data was Deleted.</a>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-</div>';
-   
- }else{
-   echo "error deleting record : ". mysqli_error($con);
- }
- }
-
-
+// Delete an allocation by its ID (from normalized schema)
+if (isset($_GET['delete'])) {
+  $alloc_id = (int)$_GET['delete'];
+  if ($alloc_id > 0) {
+    if ($stDel = mysqli_prepare($con, "DELETE FROM hostel_allocations WHERE id = ?")) {
+      mysqli_stmt_bind_param($stDel, 'i', $alloc_id);
+      $ok = mysqli_stmt_execute($stDel);
+      mysqli_stmt_close($stDel);
+      if ($ok) {
+        echo '<div class="alert alert-danger">
+          <strong>Deleted!</strong> Allocation removed.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+      } else {
+        echo '<div class="alert alert-warning">Error deleting allocation: ' . htmlspecialchars(mysqli_error($con)) . '</div>';
+      }
+    } else {
+      echo '<div class="alert alert-warning">Failed to prepare delete: ' . htmlspecialchars(mysqli_error($con)) . '</div>';
+    }
+  }
+}
 ?>
 
 
@@ -60,18 +66,12 @@ if(isset($_GET['delete'])){
 <table class="table table-hover   mt-4 " id="Hostel accomadation">
 <thead>
 <tr>
-      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Hosttler_id</th>
-      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Student_id</th>
-      <th scope="col"><i class="fas fa-file-signature"></i>&nbsp;Full Name</th>
-      <th scope="col"><i class="fas fa-file-signature"></i>&nbsp;Department</th>
-      <th scope="col"><i class="fas fa-transgender"></i>&nbsp;Gender</th>
-      <th scope="col"><i class="fas fa-map-marked-alt"></i>&nbsp;Address</th>
-      <th scope="col"><i class="fas fa-map-marker-alt"></i>&nbsp;District</th>
-      <th scope="col"><i class="fas fa-map-marker-alt"></i>&nbsp;Distance</th>
-       <th scope="col"><i class="fas fa-list-ol"></i>&nbsp;Block no</th>
-      <th scope="col"><i class="fas fa-list-ol"></i>&nbsp;Room no</th>
-      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Date of Admission</th>
-      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Leaving date</th>
+      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Allocation ID</th>
+      <th scope="col"><i class="far fa-id-card"></i>&nbsp;Student ID</th>
+      <th scope="col"><i class="fas fa-list-ol"></i>&nbsp;Room ID</th>
+      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Allocated At</th>
+      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Leaving At</th>
+      <th scope="col"><i class="fas fa-info-circle"></i>&nbsp;Status</th>
       <th scope="col"><i class="far fa-caret-square-right"></i>&nbsp;Action</th>
     </tr>
 
@@ -84,41 +84,27 @@ if(isset($_GET['delete'])){
 
 <tbody>
 <?php 
-$sql = "SELECT `hostel_student_details`.`hosttler_id`,
-`hostel_student_details`.`student_id`,
-`student`.`student_fullname`,
-`department`.`department_name`,
-`student`.`student_gender`,
-`student`.`student_address`,
-`student`.`student_district`,
-`hostel_student_details`.`distance`,`hostel_student_details`.`block_no`,`hostel_student_details`.`room_no`,`hostel_student_details`.`date_of_addmission`,`hostel_student_details`.`date_of_leaving` from `hostel_student_details`
-LEFT JOIN `student` ON `hostel_student_details`.`student_id`=`student`.`student_id` 
-LEFT JOIN `department` ON `department`.`department_id`=`hostel_student_details`.`department_id`";
+// Use only hostel_allocations columns
+$sql = "SELECT id AS alloc_id, student_id, room_id, allocated_at, leaving_at, status
+        FROM hostel_allocations";
 
 $result = mysqli_query($con, $sql);
-if(mysqli_num_rows($result) > 0){
-  while($row = mysqli_fetch_assoc($result)){
+if ($result && mysqli_num_rows($result) > 0) {
+  while ($row = mysqli_fetch_assoc($result)) {
 echo '<tr>
-<td>'.$row["hosttler_id"].'  </td>
-    <td>'.$row["student_id"].'  </td>
-    <td>'.$row["student_fullname"].'  </td>
-    <td>'.$row["department_name"].' </td>
-    <td>'.$row["student_gender"].'  </td>
-    <td>'.$row["student_address"].'  </td>
-    <td>'.$row["student_district"].'  </td>
-    <td>'.$row["distance"].'  </td>
-    <td>'.$row["block_no"].'  </td>
-    <td>'.$row["room_no"].'  </td>
-    <td>'.$row["date_of_addmission"].'  </td>
-    <td>'.$row["date_of_leaving"].'  </td>
-    
+<td>'.$row["alloc_id"].'</td>
+    <td>'.$row["student_id"].'</td>
+    <td>'.$row["room_id"].'</td>
+    <td>'.$row["allocated_at"].'</td>
+    <td>'.($row["leaving_at"] ?: '').'</td>
+    <td>'.$row["status"].'</td>
     <td>
-    <a data-href="?delete='.$row["hosttler_id"].'" data-toggle="modal" data-target="#confirm-delete">
+    <a data-href="?delete='.$row["alloc_id"].'" data-toggle="modal" data-target="#confirm-delete">
     <button type="button" name="delete" class="btn btn-danger btn-circle">
     <i class="fas fa-trash"></i>
     </button></a>
 
-    <a href="AddHostel.php ?edit='.$row["student_id"].'" >
+    <a href="hostel/EditAllocation.php?id='.$row["alloc_id"].'" >
     <button type="button" class="btn btn-outline-info rounded-pill  waves-effect  ">
     <i class="far fa-edit"></i>
     </button></a></td>
@@ -127,9 +113,12 @@ echo '<tr>
     </tr>';
 
   }
-}
-else{
-  echo "0 result";
+} else {
+  if ($result === false) {
+    echo '<div class="alert alert-danger">Database error: ' . htmlspecialchars(mysqli_error($con)) . '</div>';
+  } else {
+    echo "0 result";
+  }
 }
 
  ?>

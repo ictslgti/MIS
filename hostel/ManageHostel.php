@@ -109,7 +109,7 @@ if (isset($_GET['del_block'])) {
             echo '<strong>Blocks</strong>';
             echo '<ul class="mb-2">';
             while ($b && $bl = mysqli_fetch_assoc($b)) {
-              echo '<li>'.htmlspecialchars($bl['name']).' <a class="text-danger" href="?del_block='.(int)$bl['id'].'" onclick="return confirm(\'Delete block?\')">[delete]</a></li>';
+              echo '<li>'.htmlspecialchars($bl['name']).' <a class="text-danger" href="hostel/ManageHostel.php?del_block='.(int)$bl['id'].'" onclick="return confirm(\'Delete block?\')">[delete]</a></li>';
             }
             echo '</ul>';
             echo '<form method="POST" class="form-inline">';
