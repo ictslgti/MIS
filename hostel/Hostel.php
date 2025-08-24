@@ -14,6 +14,7 @@ if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
 // Detect WAR user and fetch warden gender
 $isWarden = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'WAR';
+$isAdmin  = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'ADM';
 $wardenGender = null;
 if ($isWarden && !empty($_SESSION['user_name'])) {
   if ($st = mysqli_prepare($con, "SELECT staff_gender FROM staff WHERE staff_id=? LIMIT 1")) {
@@ -28,8 +29,11 @@ if ($isWarden && !empty($_SESSION['user_name'])) {
   }
 }
 
-// Delete an allocation by its ID (from normalized schema)
+// Delete an allocation by its ID (Admins only)
 if (isset($_GET['delete'])) {
+  if (!$isAdmin) {
+    echo '<div class="alert alert-warning">You are not allowed to delete allocations.</div>';
+  } else {
   $alloc_id = (int)$_GET['delete'];
   if ($alloc_id > 0) {
     if ($stDel = mysqli_prepare($con, "DELETE FROM hostel_allocations WHERE id = ?")) {
@@ -49,6 +53,7 @@ if (isset($_GET['delete'])) {
     } else {
       echo '<div class="alert alert-warning">Failed to prepare delete: ' . htmlspecialchars(mysqli_error($con)) . '</div>';
     }
+  }
   }
 }
 ?>
@@ -96,9 +101,8 @@ if (isset($_GET['delete'])) {
 <tr>
       <th scope="col"><i class="far fa-id-card"></i>&nbsp;Allocation ID</th>
       <th scope="col"><i class="far fa-id-card"></i>&nbsp;Student ID</th>
+      <th scope="col"><i class="far fa-user"></i>&nbsp;Student Name</th>
       <th scope="col"><i class="fas fa-list-ol"></i>&nbsp;Room ID</th>
-      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Allocated At</th>
-      <th scope="col"><i class="fas fa-calendar-alt"></i>&nbsp;Leaving At</th>
       <th scope="col"><i class="fas fa-info-circle"></i>&nbsp;Status</th>
       <th scope="col"><i class="far fa-caret-square-right"></i>&nbsp;Action</th>
     </tr>
@@ -113,17 +117,19 @@ if (isset($_GET['delete'])) {
 <tbody>
 <?php 
 // Build allocation list query with optional filters and warden gender restriction
-$q = "SELECT a.id AS alloc_id, a.student_id, a.room_id, a.allocated_at, a.leaving_at, a.status FROM hostel_allocations a";
+$q = "SELECT a.id AS alloc_id, a.student_id, s.student_fullname AS student_name, a.room_id, a.status FROM hostel_allocations a";
 $where = [];
 $params = [];
 $types = '';
 
-// If warden, join student to filter by gender
+// Join student for name (always), and if warden, also filter by gender
 if ($isWarden && $wardenGender) {
   $q .= " INNER JOIN student s ON s.student_id = a.student_id";
   $where[] = "s.student_gender = ?";
   $types .= 's';
   $params[] = $wardenGender;
+} else {
+  $q .= " LEFT JOIN student s ON s.student_id = a.student_id";
 }
 
 // Student ID filter
@@ -153,16 +159,17 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo '<tr>';
     echo '<td>'.htmlspecialchars($row["alloc_id"]).'</td>';
     echo '<td>'.htmlspecialchars($row["student_id"]).'</td>';
+    echo '<td>'.htmlspecialchars($row["student_name"] ?? '').'</td>';
     echo '<td>'.htmlspecialchars($row["room_id"]).'</td>';
-    echo '<td>'.htmlspecialchars($row["allocated_at"]).'</td>';
-    echo '<td>'.htmlspecialchars($row["leaving_at"] ?: '').'</td>';
     echo '<td>'.htmlspecialchars($row["status"]).'</td>';
     echo '<td class="d-flex">';
     // Info button
     echo '<button type="button" class="btn btn-sm btn-info mr-2 js-see-info" data-student="'.htmlspecialchars($row["student_id"]).'">See info</button>';
-    // Delete
-    echo '<a data-href="?delete='.htmlspecialchars($row["alloc_id"]).'" data-toggle="modal" data-target="#confirm-delete">';
-    echo '<button type="button" name="delete" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button></a>';
+    // Delete (Admins only)
+    if ($isAdmin) {
+      echo '<a data-href="?delete='.htmlspecialchars($row["alloc_id"]).'" data-toggle="modal" data-target="#confirm-delete">';
+      echo '<button type="button" name="delete" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button></a>';
+    }
     // Edit
     echo '<a href="hostel/EditAllocation.php?id='.htmlspecialchars($row["alloc_id"]).'" class="ml-2">';
     echo '<button type="button" class="btn btn-outline-info rounded-pill"><i class="far fa-edit"></i></button></a>';
@@ -173,7 +180,7 @@ if ($result && mysqli_num_rows($result) > 0) {
   if ($result === false) {
     echo '<div class="alert alert-danger">Database error: ' . htmlspecialchars(mysqli_error($con)) . '</div>';
   } else {
-    echo '<tr><td colspan="7" class="text-center text-muted">No allocations found</td></tr>';
+    echo '<tr><td colspan="6" class="text-center text-muted">No allocations found</td></tr>';
   }
 }
 

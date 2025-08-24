@@ -14,6 +14,18 @@ if (!isset($_SESSION['user_type']) || !in_array($_SESSION['user_type'], ['ADM','
 $base = defined('APP_BASE') ? APP_BASE : '';
 $student_id = isset($_GET['student_id']) ? trim($_GET['student_id']) : '';
 
+// Determine warden gender if WAR
+$wardenGender = null;
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'WAR' && !empty($_SESSION['user_name'])) {
+  if ($st = mysqli_prepare($con, "SELECT staff_gender FROM staff WHERE staff_id=? LIMIT 1")) {
+    mysqli_stmt_bind_param($st, 's', $_SESSION['user_name']);
+    mysqli_stmt_execute($st);
+    $rs = mysqli_stmt_get_result($st);
+    if ($rs) { $r = mysqli_fetch_assoc($rs); if ($r && isset($r['staff_gender'])) { $wardenGender = $r['staff_gender']; } }
+    mysqli_stmt_close($st);
+  }
+}
+
 // Load request ensure it's paid
 $req = null;
 if ($student_id !== '') {
@@ -43,15 +55,30 @@ if ($student_id !== '') {
         <select name="hostel_id" id="hostel_id" class="form-control" required>
           <option value="">Select...</option>
           <?php
-          $q = mysqli_query($con, "SELECT id, name FROM hostels WHERE active=1 ORDER BY name");
-          if ($q) {
-            while ($h = mysqli_fetch_assoc($q)) {
-              echo '<option value="'.(int)$h['id'].'">'.htmlspecialchars($h['name']).'</option>';
+          $hostelCount = 0;
+          if ($_SESSION['user_type'] === 'WAR' && $wardenGender) {
+            if ($stH = mysqli_prepare($con, "SELECT id, name FROM hostels WHERE active=1 AND (gender='Mixed' OR gender=?) ORDER BY name")) {
+              mysqli_stmt_bind_param($stH, 's', $wardenGender);
+              mysqli_stmt_execute($stH);
+              $resH = mysqli_stmt_get_result($stH);
+              while ($resH && $h = mysqli_fetch_assoc($resH)) {
+                $hostelCount++;
+                echo '<option value="'.(int)$h['id'].'">'.htmlspecialchars($h['name']).'</option>';
+              }
+              mysqli_stmt_close($stH);
+            }
+          } else {
+            $q = mysqli_query($con, "SELECT id, name FROM hostels WHERE active=1 ORDER BY name");
+            if ($q) {
+              while ($h = mysqli_fetch_assoc($q)) {
+                $hostelCount++;
+                echo '<option value="'.(int)$h['id'].'">'.htmlspecialchars($h['name']).'</option>';
+              }
             }
           }
           ?>
         </select>
-        <?php if ($q && mysqli_num_rows($q) === 0): ?>
+        <?php if ($hostelCount === 0): ?>
           <small class="form-text text-muted">No active hostels found. Add one in Manage Hostels.</small>
         <?php endif; ?>
       </div>

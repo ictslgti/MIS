@@ -4,7 +4,7 @@ $title = "Student ID Photo | SLGTI";
 include_once("../config.php");
 
 // Allow Admins (and optionally staff). Adjust as needed.
-if (!isset($_SESSION['user_type']) || !in_array($_SESSION['user_type'], ['ADM'])) {
+if (!isset($_SESSION['user_type']) || !in_array($_SESSION['user_type'], ['ADM','MA2'])) {
   include_once("../head.php");
   include_once("../menu.php");
   http_response_code(403);
@@ -140,9 +140,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
 }
 ?>
 
+<style>
+  /* ID card 3:4 framing and alignment */
+  #cameraSection { background: #f8f9fa; }
+  .idcard-box { position: relative; width: 100%; max-width: 300px; margin: 0 auto; }
+  .idcard-box::before { content: ""; display: block; padding-top: 133.333%; }
+  .idcard-box > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border: 2px dashed #17a2b8; border-radius: 6px; }
+  .idcard-preview { width: 100%; max-width: 300px; aspect-ratio: 3 / 4; object-fit: cover; display: none; }
+  .idcard-controls .btn { min-width: 90px; }
+  @media (min-width: 992px) { .idcard-col-left { border-right: 1px solid #eee; } }
+  .form-row .form-group label { font-weight: 600; }
+  #id_suggestions a { font-size: 0.9rem; }
+  .card-header { font-weight: 600; }
+</style>
+
 <div class="container mt-3">
   <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-5 idcard-col-left">
       <div class="card mb-3">
         <div class="card-header d-flex justify-content-between align-items-center">
           <span><i class="fas fa-id-card"></i> Student ID Photo</span>
@@ -170,15 +184,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_photo'])) {
             <div class="form-group">
               <label>Capture via Camera</label>
               <div id="cameraSection" class="border rounded p-2 text-center">
-                <video id="cam" autoplay playsinline muted style="max-width:100%; width:100%; height:auto;"></video>
+                <div class="idcard-box">
+                  <video id="cam" autoplay playsinline muted></video>
+                </div>
                 <canvas id="canvas" style="display:none;"></canvas>
                 <input type="hidden" name="photo_data" id="photo_data">
-                <img id="preview" class="img-thumbnail mt-2" alt="Captured preview" style="max-width:100%; display:none;" />
-                <div class="mt-2">
-                  <button type="button" class="btn btn-sm btn-primary" id="btnStart">Start Camera</button>
-                  <button type="button" class="btn btn-sm btn-secondary" id="btnCapture">Capture</button>
-                  <button type="button" class="btn btn-sm btn-outline-danger" id="btnStop">Stop</button>
-                  <button type="button" class="btn btn-sm btn-info" id="btnSwitch">Switch Camera</button>
+                <img id="preview" class="img-thumbnail idcard-preview mt-2" alt="Captured preview" />
+                <div class="mt-2 idcard-controls">
+                  <button type="button" class="btn btn-sm btn-primary" id="btnStart"><i class="fa fa-video"></i> Start</button>
+                  <button type="button" class="btn btn-sm btn-secondary" id="btnCapture"><i class="fa fa-camera"></i> Capture</button>
+                  <button type="button" class="btn btn-sm btn-outline-danger" id="btnStop"><i class="fa fa-stop"></i> Stop</button>
+                  <button type="button" class="btn btn-sm btn-info" id="btnSwitch"><i class="fa fa-sync"></i> Switch</button>
                 </div>
               </div>
               <small class="form-text text-muted">Or upload a file below.</small>
@@ -314,12 +330,27 @@ function initCameraControls(){
   btnCapture && btnCapture.addEventListener('click', () => {
     if (!stream) { alert('Start the camera first.'); return; }
     const video = cam;
-    const w = video.videoWidth || 640;
-    const h = video.videoHeight || 480;
-    canvas.width = w;
-    canvas.height = h;
+    const vw = video.videoWidth || 640;
+    const vh = video.videoHeight || 480;
+    // Target 3:4 portrait crop from the video frame
+    const targetRatio = 3/4;
+    let sw = vw; let sh = Math.round(vw / targetRatio); // width-driven
+    if (sh > vh) { // height too big, fall back to height-driven
+      sh = vh;
+      sw = Math.round(vh * targetRatio);
+    }
+    const sx = Math.round((vw - sw) / 2);
+    const sy = Math.round((vh - sh) / 2);
+
+    // Draw into fixed 600x800 canvas for consistent ID-card output
+    const outW = 600, outH = 800;
+    canvas.width = outW;
+    canvas.height = outH;
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(video, 0, 0, w, h);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(video, sx, sy, sw, sh, 0, 0, outW, outH);
+
     const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
     photoData.value = dataUrl;
     if (preview) { preview.src = dataUrl; preview.style.display = 'block'; }

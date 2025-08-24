@@ -12,6 +12,18 @@ if (!isset($_SESSION['user_type']) || !in_array($_SESSION['user_type'], ['ADM','
   exit;
 }
 
+// Determine warden gender if WAR
+$wardenGender = null;
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'WAR' && !empty($_SESSION['user_name'])) {
+  if ($st = mysqli_prepare($con, "SELECT staff_gender FROM staff WHERE staff_id=? LIMIT 1")) {
+    mysqli_stmt_bind_param($st, 's', $_SESSION['user_name']);
+    mysqli_stmt_execute($st);
+    $rs = mysqli_stmt_get_result($st);
+    if ($rs) { $r = mysqli_fetch_assoc($rs); if ($r && isset($r['staff_gender'])) { $wardenGender = $r['staff_gender']; } }
+    mysqli_stmt_close($st);
+  }
+}
+
 // Ensure table exists
 mysqli_query($con, "CREATE TABLE IF NOT EXISTS hostel_fee_payments (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -27,6 +39,10 @@ mysqli_query($con, "CREATE TABLE IF NOT EXISTS hostel_fee_payments (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
 
 $success = $error = '';
+
+// Normalize any hostel_requests rows with empty/NULL/invalid status to 'pending_payment'
+$normalizeSql = "UPDATE hostel_requests SET status='pending_payment' WHERE status IS NULL OR status='' OR status NOT IN ('pending_payment','paid','allocated','rejected')";
+mysqli_query($con, $normalizeSql);
 
 // Handle create/update/delete
 $action = isset($_POST['action']) ? $_POST['action'] : (isset($_GET['action']) ? $_GET['action'] : '');
@@ -44,8 +60,21 @@ if ($action === 'create' || $action === 'update') {
     $error = 'Please provide Allocation, Month (YYYY-MM), Amount > 0 and Paid On date.';
   } else {
     // Ensure allocation exists
+    $allowed = true;
+    if ($wardenGender) {
+      // Check that selected allocation belongs to allowed hostel gender
+      $sqlG = "SELECT h.gender FROM hostels h INNER JOIN hostel_blocks b ON b.hostel_id=h.id INNER JOIN hostel_rooms r ON r.block_id=b.id INNER JOIN hostel_allocations a ON a.room_id=r.id WHERE a.id=? LIMIT 1";
+      if ($stG = mysqli_prepare($con, $sqlG)) {
+        mysqli_stmt_bind_param($stG, 'i', $allocation_id);
+        mysqli_stmt_execute($stG);
+        $rsG = mysqli_stmt_get_result($stG);
+        $rowG = $rsG ? mysqli_fetch_assoc($rsG) : null;
+        mysqli_stmt_close($stG);
+        if (!$rowG || !($rowG['gender'] === 'Mixed' || $rowG['gender'] === $wardenGender)) { $allowed = false; }
+      }
+    }
     $chk = mysqli_query($con, 'SELECT id FROM hostel_allocations WHERE id='.(int)$allocation_id);
-    if (!$chk || !mysqli_fetch_assoc($chk)) {
+    if (!$chk || !mysqli_fetch_assoc($chk) || !$allowed) {
       $error = 'Invalid allocation ID.';
     } else if ($action === 'create') {
       $st = mysqli_prepare($con, 'INSERT INTO hostel_fee_payments (allocation_id, month_year, amount, paid_on, method, notes) VALUES (?,?,?,?,?,?)');
@@ -81,11 +110,28 @@ if ($action === 'delete') {
   }
 }
 
-// For form: list allocations select
+// For form: list allocations select (gender-filter for WAR)
 $allocOptions = [];
-$q = mysqli_query($con, "SELECT a.id, a.student_id, a.status FROM hostel_allocations a ORDER BY a.id DESC");
-if ($q) {
-  while ($r = mysqli_fetch_assoc($q)) { $allocOptions[] = $r; }
+if ($wardenGender) {
+  $sql = "SELECT a.id, a.student_id, a.status
+          FROM hostel_allocations a
+          INNER JOIN hostel_rooms r ON r.id=a.room_id
+          INNER JOIN hostel_blocks b ON b.id=r.block_id
+          INNER JOIN hostels h ON h.id=b.hostel_id
+          WHERE (h.gender='Mixed' OR h.gender=?)
+          ORDER BY a.id DESC";
+  if ($stA = mysqli_prepare($con, $sql)) {
+    mysqli_stmt_bind_param($stA, 's', $wardenGender);
+    mysqli_stmt_execute($stA);
+    $resA = mysqli_stmt_get_result($stA);
+    while ($resA && $r = mysqli_fetch_assoc($resA)) { $allocOptions[] = $r; }
+    mysqli_stmt_close($stA);
+  }
+} else {
+  $q = mysqli_query($con, "SELECT a.id, a.student_id, a.status FROM hostel_allocations a ORDER BY a.id DESC");
+  if ($q) {
+    while ($r = mysqli_fetch_assoc($q)) { $allocOptions[] = $r; }
+  }
 }
 
 // If editing
@@ -173,8 +219,28 @@ if ($action === 'edit') {
       </thead>
       <tbody>
         <?php
-          $sql = "SELECT p.*, a.student_id FROM hostel_fee_payments p JOIN hostel_allocations a ON a.id = p.allocation_id ORDER BY p.paid_on DESC, p.id DESC";
-          $res = mysqli_query($con, $sql);
+          if ($wardenGender) {
+            $sql = "SELECT p.*, a.student_id
+                    FROM hostel_fee_payments p
+                    JOIN hostel_allocations a ON a.id = p.allocation_id
+                    JOIN hostel_rooms r ON r.id = a.room_id
+                    JOIN hostel_blocks b ON b.id = r.block_id
+                    JOIN hostels h ON h.id = b.hostel_id
+                    WHERE (h.gender='Mixed' OR h.gender=?)
+                    ORDER BY p.paid_on DESC, p.id DESC";
+            if ($stL = mysqli_prepare($con, $sql)) {
+              mysqli_stmt_bind_param($stL, 's', $wardenGender);
+              mysqli_stmt_execute($stL);
+              $res = mysqli_stmt_get_result($stL);
+              mysqli_stmt_close($stL);
+            } else {
+              $error = 'Failed to load payments list: '.htmlspecialchars(mysqli_error($con));
+              $res = false;
+            }
+          } else {
+            $sql = "SELECT p.*, a.student_id FROM hostel_fee_payments p JOIN hostel_allocations a ON a.id = p.allocation_id ORDER BY p.paid_on DESC, p.id DESC";
+            $res = mysqli_query($con, $sql);
+          }
           if ($res && mysqli_num_rows($res) > 0) {
             while ($r = mysqli_fetch_assoc($res)) {
               echo '<tr>';

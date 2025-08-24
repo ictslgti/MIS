@@ -17,13 +17,11 @@ if ($alloc_id <= 0) {
 
 // Fetch allocation
 $allocation = null;
-if ($st = mysqli_prepare($con, 'SELECT id, student_id, room_id, allocated_at, leaving_at, status FROM hostel_allocations WHERE id = ?')) {
-  mysqli_stmt_bind_param($st, 'i', $alloc_id);
-  if (mysqli_stmt_execute($st)) {
-    $res = mysqli_stmt_get_result($st);
-    if ($res) { $allocation = mysqli_fetch_assoc($res); mysqli_free_result($res); }
-  }
-  mysqli_stmt_close($st);
+$st = mysqli_prepare($con, 'SELECT id, student_id, room_id, allocated_at, leaving_at, status FROM hostel_allocations WHERE id = ?');
+mysqli_stmt_bind_param($st, 'i', $alloc_id);
+if (mysqli_stmt_execute($st)) {
+  $res = mysqli_stmt_get_result($st);
+  if ($res) { $allocation = mysqli_fetch_assoc($res); mysqli_free_result($res); }
 }
 if (!$allocation) {
   echo '<div class="alert alert-danger m-3">Allocation not found.</div>';
@@ -47,10 +45,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$q || !mysqli_fetch_assoc($q)) {
       $error = 'Selected room does not exist.';
     } else {
+      // If room is changed, override allocated_at to today to mark the change time
+      $roomChanged = ((int)$allocation['room_id'] !== $room_id);
+      if ($roomChanged) {
+        $allocated_at = date('Y-m-d');
+      }
       if ($stU = mysqli_prepare($con, 'UPDATE hostel_allocations SET room_id=?, allocated_at=?, leaving_at=?, status=? WHERE id=?')) {
         mysqli_stmt_bind_param($stU, 'isssi', $room_id, $allocated_at, $leaving_at, $status, $alloc_id);
         if (mysqli_stmt_execute($stU)) {
-          $success = 'Allocation updated successfully.';
+          $success = $roomChanged
+            ? ('Room changed on '.$allocated_at.' and allocation updated successfully.')
+            : 'Allocation updated successfully.';
           // Refresh loaded data
           $allocation['room_id'] = $room_id;
           $allocation['allocated_at'] = $allocated_at;

@@ -30,6 +30,20 @@ mysqli_query($con, $createSql);
 
 $validStatuses = ['pending_payment','paid','allocated','rejected'];
 
+// Ensure payments table exists (in case admin page hasn't created it yet)
+mysqli_query($con, "CREATE TABLE IF NOT EXISTS hostel_fee_payments (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  allocation_id INT UNSIGNED NOT NULL,
+  month_year CHAR(7) NOT NULL,
+  amount DECIMAL(10,2) NOT NULL,
+  paid_on DATE NOT NULL,
+  method VARCHAR(30) DEFAULT NULL,
+  notes VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY(id),
+  UNIQUE KEY uniq_alloc_month (allocation_id, month_year),
+  CONSTRAINT fk_pay_alloc_student FOREIGN KEY (allocation_id) REFERENCES hostel_allocations(id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+
 // Handle actions
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
   $action = $_POST['action'];
@@ -72,6 +86,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
       mysqli_stmt_close($st);
     } else {
       $errorMsg = 'Failed to prepare delete: ' . htmlspecialchars(mysqli_error($con));
+    }
+  } elseif ($action === 'request_again') {
+    // Allow student to request again if not currently allocated
+    // This simply resets status to pending_payment on existing record
+    if ($st = mysqli_prepare($con, 'UPDATE hostel_requests SET status="pending_payment", updated_at=CURRENT_TIMESTAMP WHERE student_id = ?')) {
+      mysqli_stmt_bind_param($st, 's', $user);
+      if (mysqli_stmt_execute($st)) {
+        $successMsg = 'Status reset to pending_payment. You can update your distance and save.';
+      } else {
+        $errorMsg = 'Failed to reset: ' . htmlspecialchars(mysqli_stmt_error($st));
+      }
+      mysqli_stmt_close($st);
+    } else {
+      $errorMsg = 'Failed to prepare reset: ' . htmlspecialchars(mysqli_error($con));
     }
   }
 }
@@ -233,6 +261,56 @@ require_once __DIR__ . '/../menu.php';
       </ul>
     </div>
   </div>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Payment History</h5>
+      <div class="table-responsive">
+        <table class="table table-sm table-striped table-bordered mb-0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Allocation</th>
+              <th>Month</th>
+              <th>Amount</th>
+              <th>Paid On</th>
+              <th>Method</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+              $sql = "SELECT p.* FROM hostel_fee_payments p
+                      JOIN hostel_allocations a ON a.id = p.allocation_id
+                      WHERE a.student_id = ?
+                      ORDER BY p.paid_on DESC, p.id DESC";
+              if ($st = mysqli_prepare($con, $sql)) {
+                mysqli_stmt_bind_param($st, 's', $user);
+                if (mysqli_stmt_execute($st)) {
+                  $res = mysqli_stmt_get_result($st);
+                  if ($res && mysqli_num_rows($res) > 0) {
+                    while ($r = mysqli_fetch_assoc($res)) {
+                      echo '<tr>';
+                      echo '<td>'.(int)$r['id'].'</td>';
+                      echo '<td>#'.(int)$r['allocation_id'].'</td>';
+                      echo '<td>'.htmlspecialchars($r['month_year']).'</td>';
+                      echo '<td>'.number_format((float)$r['amount'], 2).'</td>';
+                      echo '<td>'.htmlspecialchars($r['paid_on']).'</td>';
+                      echo '<td>'.htmlspecialchars($r['method']).'</td>';
+                      echo '<td>'.htmlspecialchars($r['notes']).'</td>';
+                      echo '</tr>';
+                    }
+                  } else {
+                    echo '<tr><td colspan="7" class="text-center">No payments found.</td></tr>';
+                  }
+                }
+                mysqli_stmt_close($st);
+              }
+            ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
   <?php endif; ?>
 
   <?php if (!$current || !isset($current['status']) || $current['status'] !== 'allocated'): ?>
@@ -270,6 +348,10 @@ require_once __DIR__ . '/../menu.php';
   <form method="POST" onsubmit="return confirm('Delete your hostel request?');" class="mb-3">
     <input type="hidden" name="action" value="delete" />
     <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+  </form>
+  <form method="POST" onsubmit="return confirm('Set your request back to pending and edit again?');" class="mb-3">
+    <input type="hidden" name="action" value="request_again" />
+    <button type="submit" class="btn btn-secondary"><i class="fa fa-undo"></i> Request Again</button>
   </form>
   <?php endif; ?>
 </div>

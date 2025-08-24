@@ -100,6 +100,7 @@ if (isset($_GET['updated']) && $_GET['updated'] === '1' && !isset($_GET['Sid']))
 }
 $stid = $title = $fname = $ininame = $gender = $civil = $img = $email = $nic = $dob = $phone = $address = $zip = $district = $division = $province = $blood = $mode = $depth = $level =
 $ename = $eaddress = $ephone = $id =$erelation = $enstatus = $coid = $year = $enroll = $exit = $qutype = $index = $yoe = $subject = $results = $pass = $npass = $cpass = $updatedAt = null;
+$docPath = null;
 
 // (removed duplicate POST handler; handled at the top before any output)
 // Handle profile image upload for logged-in student (no Sid view)
@@ -247,6 +248,21 @@ $result = mysqli_query($con,$sql);
     $id=$row['course_id'];
     $pass=$row['user_password_hash'];
     $img=$row['student_profile_img'];
+  }
+}
+
+// Fetch uploaded documentation path now that $username is known
+if (!empty($username)) {
+  $__docStmt = mysqli_prepare($con, "SELECT student_profile_doc FROM student WHERE student_id=? LIMIT 1");
+  if ($__docStmt) {
+    mysqli_stmt_bind_param($__docStmt, 's', $username);
+    if (mysqli_stmt_execute($__docStmt)) {
+      $__docRes = mysqli_stmt_get_result($__docStmt);
+      if ($__docRes && ($__docRow = mysqli_fetch_assoc($__docRes))) {
+        $docPath = isset($__docRow['student_profile_doc']) ? $__docRow['student_profile_doc'] : null;
+      }
+    }
+    mysqli_stmt_close($__docStmt);
   }
 }
 
@@ -513,6 +529,25 @@ $profileCompletion = $__total > 0 ? (int)round($__filled * 100 / $__total) : 0;
                   <small class="text-muted d-block">Divisional Secretariat</small>
                   <span class="text-dark font-weight-bold"><?php echo htmlspecialchars($division ?: '—'); ?></span>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-4">
+            <div class="card h-100">
+              <div class="card-header bg-secondary text-white">Documentation (PDF)</div>
+              <div class="card-body">
+                <?php if (!empty($docPath)) { ?>
+                  <p class="mb-2">A consolidated documentation PDF has been uploaded.</p>
+                  <a class="btn btn-sm btn-outline-primary" target="_blank" href="/<?php echo htmlspecialchars($docPath); ?>"><i class="fa fa-eye"></i> View PDF</a>
+                <?php } else { ?>
+                  <p class="text-muted mb-2">No documentation uploaded.</p>
+                <?php } ?>
+                <?php if (isset($_SESSION['user_type']) && in_array($_SESSION['user_type'], ['ADM','MA2'])) { ?>
+                  <a class="btn btn-sm btn-primary ml-2" href="/student/UploadDocumentation.php?Sid=<?php echo urlencode($username); ?>">
+                    <i class="fa fa-upload"></i> Upload / Replace
+                  </a>
+                <?php } ?>
               </div>
             </div>
           </div>

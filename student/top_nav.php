@@ -20,13 +20,7 @@ $studentName = isset($_SESSION['student_name']) ? $_SESSION['student_name'] : ''
         <a class="nav-link" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/onpeak/RequestOnPeak.php">OnPeak Request</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/student/request_hostel.php">Hostel Request</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/student/hostelinfo.php">My Hostel</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/student/hostelpayments.php">My Payments</a>
+        <a class="nav-link" href="<?php echo (defined('APP_BASE') ? APP_BASE : ''); ?>/student/request_hostel.php">Hostel</a>
       </li>
       <?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'ADM') { ?>
       <li class="nav-item">

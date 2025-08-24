@@ -30,6 +30,11 @@ if($u_ta=='staff'){
   }
 }
 
+// For student users, do not render the sidebar at all
+if ($u_t === 'STU') {
+  return; // stop including this file silently for students
+}
+
 ?>
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
@@ -93,15 +98,6 @@ if($u_ta=='staff'){
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Requests.php">Hostel Requests</a>
                 </li>
                 <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/AssignHostel.php">Assign Hostel</a>
-                </li>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/ManageHostel.php">Manage Hostels &amp; Blocks</a>
-                </li>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/ManageRooms.php">Manage Rooms</a>
-                </li>
-                <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Hostel.php">Hostels Info</a>
                 </li>
                 <li>
@@ -142,6 +138,12 @@ if($u_ta=='staff'){
                 </li>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentIDPhoto.php">Student ID Photo</a>
+                </li>
+                <li>
+                  <a href="#" onclick="(function(){var sid=prompt('Enter Student ID to download Application Form:'); if(sid){ window.open('<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/library/pdf/student_application.php?Sid='+encodeURIComponent(sid), '_blank'); }})(); return false;">Download Student Application</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/UploadDocumentation.php">Upload Student Documentation (PDF)</a>
                 </li>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/ImportStudentEnroll.php">Import Student Enrollment</a>
@@ -228,19 +230,12 @@ if($u_ta=='staff'){
               </ul>
             </div>
           </li>
-          <!-- Student Hostels quick access -->
-          <li class="sidebar-dropdown">
-            <a href="#">
+          <!-- Student Hostel unified link -->
+          <li>
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/request_hostel.php">
               <i class="far fa-building"></i>
-              <span>Hostels</span>
+              <span>Hostel</span>
             </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/RequestHostel.php">Request a Hostel</a>
-                </li>
-              </ul>
-            </div>
           </li>
           <?php } ?>
           <?php if($_SESSION['user_type']!='STU' && !is_role('IN2')){ ?> <li class="sidebar-dropdown">
@@ -293,6 +288,9 @@ if($u_ta=='staff'){
                 </li>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/StudentIDPhoto.php">Student ID Photo</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/UploadDocumentation.php">Upload Student Documentation (PDF)</a>
                 </li>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/ImportStudentEnroll.php">Import Student Enrollment</a>
@@ -435,26 +433,36 @@ if($u_ta=='staff'){
             </a>
             <div class="sidebar-submenu">
               <ul>
-                <li><?php if(can_view(['WAR','ADM'])){ ?>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Requests.php">Hostel Requests</a>
-                </li>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/AssignHostel.php">Assign Hostel</a>
-                </li>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/ManageHostel.php">Manage Hostels &amp; Blocks</a>
-                </li>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/ManageRooms.php">Manage Rooms</a>
-                  <hr>
-                </li>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Hostel.php">Hostels Info</a>
-                </li><?php } ?>
-                <?php if(can_view(['WAR','ADM'])){ ?>
-                <li>
-                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Payments.php">Hostel Payments</a>
-                </li>
+                <?php if($u_t==='WAR'){ ?>
+                  <li>
+                    <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Requests.php">Hostel Requests</a>
+                  </li>
+                  <li>
+                    <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Hostel.php">Hostels Info</a>
+                  </li>
+                  <li>
+                    <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Payments.php">Hostel Payments</a>
+                  </li>
+                <?php } elseif($u_t==='ADM'){ ?>
+                  <li>
+                    <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Requests.php">Hostel Requests</a>
+                  </li>
+                  <li>
+                    <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/AssignHostel.php">Assign Hostel</a>
+                  </li>
+                  <li>
+                    <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/ManageHostel.php">Manage Hostels &amp; Blocks</a>
+                  </li>
+                  <li>
+                    <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/ManageRooms.php">Manage Rooms</a>
+                    <hr>
+                  </li>
+                  <li>
+                    <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Hostel.php">Hostels Info</a>
+                  </li>
+                  <li>
+                    <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/hostel/Payments.php">Hostel Payments</a>
+                  </li>
                 <?php } ?>
               </ul>
             </div>

@@ -40,6 +40,37 @@ $occRow = $q2 ? mysqli_fetch_assoc($q2) : ['occupied'=>0];
 $occ = (int)$occRow['occupied'];
 if ($occ >= $cap) { redirect_back_alloc(['err'=>'full']); }
 
+// If WAR, enforce gender-based hostel restriction (hostel gender must be Mixed or match warden's gender)
+if ($_SESSION['user_type'] === 'WAR') {
+  // Get warden gender
+  $wardenGender = null;
+  if (!empty($_SESSION['user_name'])) {
+    if ($stG = mysqli_prepare($con, "SELECT staff_gender FROM staff WHERE staff_id=? LIMIT 1")) {
+      mysqli_stmt_bind_param($stG, 's', $_SESSION['user_name']);
+      mysqli_stmt_execute($stG);
+      $rsG = mysqli_stmt_get_result($stG);
+      if ($rsG) { $rg = mysqli_fetch_assoc($rsG); if ($rg && isset($rg['staff_gender'])) { $wardenGender = $rg['staff_gender']; } }
+      mysqli_stmt_close($stG);
+    }
+  }
+  if ($wardenGender) {
+    // Find hostel gender for the selected room
+    $sqlHg = "SELECT h.gender FROM hostels h INNER JOIN hostel_blocks b ON b.hostel_id=h.id INNER JOIN hostel_rooms r ON r.block_id=b.id WHERE r.id=? LIMIT 1";
+    if ($stH = mysqli_prepare($con, $sqlHg)) {
+      mysqli_stmt_bind_param($stH, 'i', $room_id);
+      mysqli_stmt_execute($stH);
+      $rsH = mysqli_stmt_get_result($stH);
+      $hostel = $rsH ? mysqli_fetch_assoc($rsH) : null;
+      mysqli_stmt_close($stH);
+      if (!$hostel) { redirect_back_alloc(['err'=>'room']); }
+      $hg = $hostel['gender'];
+      if (!($hg === 'Mixed' || $hg === $wardenGender)) {
+        redirect_back_alloc(['err'=>'gender']);
+      }
+    }
+  }
+}
+
 // Deactivate any existing active allocation for this student
 mysqli_query($con, "UPDATE hostel_allocations SET status='left' WHERE student_id='".mysqli_real_escape_string($con, $student_id)."' AND status='active'");
 
