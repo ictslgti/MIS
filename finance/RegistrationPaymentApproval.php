@@ -51,6 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_payment'])) {
   if ($student_id === '') { $err = 'Student is required'; }
   elseif ($pays_amount <= 0) { $err = 'Amount must be greater than 0'; }
   elseif ($pays_qty <= 0) { $err = 'Quantity must be at least 1'; }
+  elseif ($payment_type === '') { $err = 'Payment type is required'; }
+  elseif ($payment_reason === '') { $err = 'Payment reason is required'; }
 
   if ($err === '') {
     // If department selected, ensure the student belongs to that department
@@ -75,13 +77,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_payment'])) {
         mysqli_stmt_close($chk);
       }
     }
-    if ($stmt = mysqli_prepare($con, "INSERT INTO `pays` (`student_id`,`payment_type`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_date`,`pays_department`,`approved`) VALUES (?,?,?,?,?, ?, CURDATE(), ?, 0)")) {
+    // Ensure the payment_reason exists to satisfy FK constraint
+    if ($pr = mysqli_prepare($con, "SELECT 1 FROM payment WHERE payment_reason=? LIMIT 1")) {
+      mysqli_stmt_bind_param($pr, 's', $payment_reason);
+      mysqli_stmt_execute($pr);
+      mysqli_stmt_store_result($pr);
+      if (mysqli_stmt_num_rows($pr) === 0) {
+        mysqli_stmt_close($pr);
+        $qs = $_GET; $qs['flash'] = 'add_error'; $qs['msg'] = 'Invalid payment reason. Please choose from the list.';
+        $base = (defined('APP_BASE') ? APP_BASE : '');
+        header('Location: ' . $base . '/finance/RegistrationPaymentApproval.php?' . http_build_query($qs));
+        exit;
+      }
+      mysqli_stmt_close($pr);
+    }
+    if ($stmt = mysqli_prepare($con, "INSERT INTO `pays` (`student_id`,`payment_type`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_date`,`pays_department`,`approved`,`approved_at`,`approved_by`) VALUES (?,?,?,?,?, ?, CURDATE(), ?, 0, NULL, NULL)")) {
       $bindOk = mysqli_stmt_bind_param($stmt, 'ssssdis', $student_id, $payment_type, $payment_reason, $pays_note, $pays_amount, $pays_qty, $pays_department);
       $execOk = $bindOk && mysqli_stmt_execute($stmt);
-      $affected = $execOk ? mysqli_stmt_affected_rows($stmt) : 0;
-      $errMsg = $execOk ? '' : mysqli_stmt_error($stmt);
+      // Use insert_id to determine success more reliably than affected_rows
+      $insertId = $execOk ? mysqli_insert_id($con) : 0;
+      $stmtErr = $execOk ? '' : mysqli_stmt_error($stmt);
       mysqli_stmt_close($stmt);
-      $qs = $_GET; $qs['flash'] = ($affected > 0) ? 'added' : 'add_failed'; if ($errMsg) { $qs['msg'] = $errMsg; }
+      $qs = $_GET;
+      if ($insertId > 0) {
+        $qs['flash'] = 'added';
+      } else {
+        $qs['flash'] = 'add_failed';
+        // Provide more context for troubleshooting
+        $dbErr = mysqli_error($con);
+        $msg = trim($stmtErr . (strlen($stmtErr) && strlen($dbErr) ? ' | ' : '') . $dbErr);
+        if ($msg !== '') { $qs['msg'] = $msg; }
+      }
       $base = (defined('APP_BASE') ? APP_BASE : '');
       header('Location: ' . $base . '/finance/RegistrationPaymentApproval.php?' . http_build_query($qs));
       exit;
@@ -106,6 +132,10 @@ include_once(__DIR__ . '/../menu.php');
 
 // Data for Add Payment form
 $formDept = isset($_GET['form_dept']) ? trim($_GET['form_dept']) : '';
+$formType = isset($_GET['form_ptype']) ? trim($_GET['form_ptype']) : '';
+if ($formType === '') { $formType = 'Registration'; }
+$formStudent = isset($_GET['form_student']) ? trim($_GET['form_student']) : '';
+$formReason = isset($_GET['form_reason']) ? trim($_GET['form_reason']) : '';
 $deptRes = mysqli_query($con, "SELECT department_id, department_name FROM department ORDER BY department_name");
 if ($formDept !== '') {
   $sqlStudents = "SELECT s.student_id, s.student_fullname
@@ -119,6 +149,10 @@ if ($formDept !== '') {
   // No department chosen yet; return empty result to force selection
   $studentsRes = false;
 }
+// Payment type/reason for Add form
+$addTypesRes = mysqli_query($con, "SELECT DISTINCT payment_type FROM payment ORDER BY payment_type");
+// Always load reasons for the current (possibly defaulted) type
+$addReasonsRes = mysqli_query($con, "SELECT payment_reason FROM payment WHERE payment_type='" . mysqli_real_escape_string($con, $formType) . "' ORDER BY payment_reason");
 ?>
 <div class="container mt-3">
   <?php if (isset($_GET['flash'])) { $f=$_GET['flash']; ?>
@@ -148,7 +182,7 @@ if ($formDept !== '') {
           <select name="student_id" class="form-control" id="studentSelect" <?php echo ($formDept==='')?'disabled':''; ?> required>
             <option value=""><?php echo ($formDept==='')?'-- Select Department First --':'-- Select Student --'; ?></option>
             <?php if ($studentsRes && mysqli_num_rows($studentsRes)>0) { while($s=mysqli_fetch_assoc($studentsRes)) { ?>
-              <option value="<?php echo htmlspecialchars($s['student_id']); ?>"><?php echo htmlspecialchars($s['student_fullname'].' ('.$s['student_id'].')'); ?></option>
+              <option value="<?php echo htmlspecialchars($s['student_id']); ?>" <?php echo ($formStudent!=='' && $formStudent===$s['student_id'])?'selected':''; ?>><?php echo htmlspecialchars($s['student_fullname'].' ('.$s['student_id'].')'); ?></option>
             <?php } } ?>
           </select>
         </div>
@@ -164,11 +198,21 @@ if ($formDept !== '') {
       <div class="form-row">
         <div class="form-group col-md-3">
           <label>Payment Type</label>
-          <input type="text" name="payment_type" class="form-control" value="Registration">
+          <select name="payment_type" class="form-control" id="formTypeSelect">
+            <option value="">-- Select Type --</option>
+            <?php if ($addTypesRes && mysqli_num_rows($addTypesRes)>0) { mysqli_data_seek($addTypesRes, 0); while($t=mysqli_fetch_assoc($addTypesRes)) { ?>
+              <option value="<?php echo htmlspecialchars($t['payment_type']); ?>" <?php echo ($formType===$t['payment_type'])?'selected':''; ?>><?php echo htmlspecialchars($t['payment_type']); ?></option>
+            <?php } } ?>
+          </select>
         </div>
         <div class="form-group col-md-3">
           <label>Payment Reason</label>
-          <input type="text" name="payment_reason" class="form-control" value="Registration Fee">
+          <select name="payment_reason" class="form-control" id="formReasonSelect" required>
+            <option value="">-- Select Reason --</option>
+            <?php if ($addReasonsRes && mysqli_num_rows($addReasonsRes)>0) { while($r=mysqli_fetch_assoc($addReasonsRes)) { ?>
+              <option value="<?php echo htmlspecialchars($r['payment_reason']); ?>" <?php echo ($formReason!=='' && $formReason===$r['payment_reason'])?'selected':''; ?>><?php echo htmlspecialchars($r['payment_reason']); ?></option>
+            <?php } } ?>
+          </select>
         </div>
         <div class="form-group col-md-6">
           <label>Note</label>
@@ -188,6 +232,23 @@ if ($formDept !== '') {
           var val = this.value || '';
           var url = new URL(window.location.href);
           url.searchParams.set('form_dept', val);
+          window.location.href = url.toString();
+        });
+      }
+      var typeSel = document.getElementById('formTypeSelect');
+      if (typeSel) {
+        typeSel.addEventListener('change', function(){
+          var val = this.value || '';
+          var url = new URL(window.location.href);
+          url.searchParams.set('form_ptype', val);
+          // Keep currently selected department for convenience
+          var dept = document.getElementById('formDeptSelect');
+          if (dept) { url.searchParams.set('form_dept', dept.value || ''); }
+          // Preserve currently selected student when changing type
+          var st = document.getElementById('studentSelect');
+          if (st && st.value) { url.searchParams.set('form_student', st.value); }
+          // Clear form_reason when type changes to avoid mismatches
+          url.searchParams.delete('form_reason');
           window.location.href = url.toString();
         });
       }
@@ -304,7 +365,7 @@ $res = mysqli_query($con, $sql);
               <th>Student ID</th>
               <th>Name</th>
               <th>Department</th>
-              <th>Type</th>
+              <th>Note</th>
               <th>Reason</th>
               <th>Amount</th>
               <th>Qty</th>
@@ -320,7 +381,7 @@ $res = mysqli_query($con, $sql);
               <td><?php echo htmlspecialchars($row['student_id']); ?></td>
               <td><?php echo htmlspecialchars($row['student_fullname'] ?: '-'); ?></td>
               <td><?php echo htmlspecialchars($row['department_name'] ?: ($row['pays_department'] ?: '-')); ?></td>
-              <td><?php echo htmlspecialchars($row['payment_type']); ?></td>
+              <td><?php echo htmlspecialchars(($row['pays_note'] !== null && $row['pays_note'] !== '') ? $row['pays_note'] : '-'); ?></td>
               <td><?php echo htmlspecialchars($row['payment_reason']); ?></td>
               <td><?php echo number_format((float)$row['pays_amount'], 2); ?></td>
               <td><?php echo (int)$row['pays_qty']; ?></td>
