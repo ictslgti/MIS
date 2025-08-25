@@ -167,13 +167,15 @@ const base = '<?php echo $base; ?>';
 const hostelSel = document.getElementById('hostel_id');
 const blockSel = document.getElementById('block_id');
 const roomSel = document.getElementById('room_id');
+const studentGender = '<?php echo isset($stuGender) && $stuGender ? htmlspecialchars($stuGender, ENT_QUOTES, 'UTF-8') : ''; ?>';
 
 hostelSel && hostelSel.addEventListener('change', async (e) => {
   blockSel.innerHTML = '<option value="">Loading...</option>';
   roomSel.innerHTML = '<option value="">Select block first</option>';
   const hid = e.target.value;
   if (!hid) { blockSel.innerHTML = '<option value="">Select...</option>'; return; }
-  const r = await fetch(base + '/hostel/blocks_api.php?hostel_id=' + encodeURIComponent(hid));
+  const url = base + '/hostel/blocks_api.php?hostel_id=' + encodeURIComponent(hid) + (studentGender ? ('&student_gender=' + encodeURIComponent(studentGender)) : '');
+  const r = await fetch(url);
   const data = await r.json();
   blockSel.innerHTML = '<option value="">Select...</option>' + data.map(b => `<option value="${b.id}">${b.name}</option>`).join('');
 });
@@ -182,7 +184,8 @@ blockSel && blockSel.addEventListener('change', async (e) => {
   roomSel.innerHTML = '<option value="">Loading...</option>';
   const bid = e.target.value;
   if (!bid) { roomSel.innerHTML = '<option value="">Select...</option>'; return; }
-  const r = await fetch(base + '/hostel/rooms_api.php?block_id=' + encodeURIComponent(bid));
+  const url = base + '/hostel/rooms_api.php?block_id=' + encodeURIComponent(bid) + (studentGender ? ('&student_gender=' + encodeURIComponent(studentGender)) : '');
+  const r = await fetch(url);
   const data = await r.json();
   roomSel.innerHTML = '<option value="">Select...</option>' + data.map(rm => `<option value="${rm.id}">${rm.room_no} (cap ${rm.capacity}, occ ${rm.occupied})</option>`).join('');
 });

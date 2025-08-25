@@ -5,6 +5,10 @@ header('Content-Type: application/json');
 if (!isset($_GET['hostel_id'])) { echo json_encode([]); exit; }
 $hid = (int)$_GET['hostel_id'];
 
+// Optional student gender from query
+$studentGender = isset($_GET['student_gender']) ? trim($_GET['student_gender']) : null;
+if ($studentGender === '') { $studentGender = null; }
+
 // Determine warden gender if WAR
 $wardenGender = null;
 if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'WAR' && !empty($_SESSION['user_name'])) {
@@ -17,16 +21,28 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'WAR' && !empty(
   }
 }
 
-// Build query with hostel gender constraint for WAR
+// Build query with hostel gender constraints
+$params = [$hid];
+$types  = 'i';
+$conds  = [];
+
 if ($wardenGender) {
-  $sql = "SELECT b.id, b.name FROM hostel_blocks b INNER JOIN hostels h ON h.id=b.hostel_id WHERE b.hostel_id=? AND (h.gender='Mixed' OR h.gender=?) ORDER BY b.name";
-  $stmt = mysqli_prepare($con, $sql);
-  mysqli_stmt_bind_param($stmt, 'is', $hid, $wardenGender);
+  $conds[] = "(h.gender='Mixed' OR h.gender=?)";
+  $params[] = $wardenGender; $types .= 's';
+}
+if ($studentGender) {
+  $conds[] = "(h.gender='Mixed' OR h.gender=?)";
+  $params[] = $studentGender; $types .= 's';
+}
+
+if (!empty($conds)) {
+  $sql = "SELECT b.id, b.name FROM hostel_blocks b INNER JOIN hostels h ON h.id=b.hostel_id WHERE b.hostel_id=? AND " . implode(' AND ', $conds) . " ORDER BY b.name";
 } else {
   $sql = "SELECT b.id, b.name FROM hostel_blocks b WHERE b.hostel_id=? ORDER BY b.name";
-  $stmt = mysqli_prepare($con, $sql);
-  mysqli_stmt_bind_param($stmt, 'i', $hid);
 }
+
+$stmt = mysqli_prepare($con, $sql);
+if ($stmt) { mysqli_stmt_bind_param($stmt, $types, ...$params); }
 
 $out = [];
 if ($stmt) {

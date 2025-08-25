@@ -5,6 +5,10 @@ header('Content-Type: application/json');
 if (!isset($_GET['block_id'])) { echo json_encode([]); exit; }
 $bid = (int)$_GET['block_id'];
 
+// Optional student gender from query
+$studentGender = isset($_GET['student_gender']) ? trim($_GET['student_gender']) : null;
+if ($studentGender === '') { $studentGender = null; }
+
 // Determine warden gender if WAR
 $wardenGender = null;
 if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'WAR' && !empty($_SESSION['user_name'])) {
@@ -17,25 +21,28 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'WAR' && !empty(
   }
 }
 
+// Build query and parameters
+$params = [$bid];
+$types  = 'i';
+$conds  = ["r.block_id = ?"];
+
 if ($wardenGender) {
-  $sql = "SELECT r.id, r.room_no, r.capacity,
-                 (SELECT COUNT(*) FROM hostel_allocations a WHERE a.room_id=r.id AND a.status='active') AS occupied
-          FROM hostel_rooms r
-          INNER JOIN hostel_blocks b ON b.id = r.block_id
-          INNER JOIN hostels h ON h.id = b.hostel_id
-          WHERE r.block_id = ? AND (h.gender='Mixed' OR h.gender=?)
-          ORDER BY r.room_no";
-  $stmt = mysqli_prepare($con, $sql);
-  mysqli_stmt_bind_param($stmt, 'is', $bid, $wardenGender);
-} else {
-  $sql = "SELECT r.id, r.room_no, r.capacity,
-                 (SELECT COUNT(*) FROM hostel_allocations a WHERE a.room_id=r.id AND a.status='active') AS occupied
-          FROM hostel_rooms r
-          WHERE r.block_id = ?
-          ORDER BY r.room_no";
-  $stmt = mysqli_prepare($con, $sql);
-  mysqli_stmt_bind_param($stmt, 'i', $bid);
+  $conds[] = "(h.gender='Mixed' OR h.gender=?)"; $params[] = $wardenGender; $types .= 's';
 }
+if ($studentGender) {
+  $conds[] = "(h.gender='Mixed' OR h.gender=?)"; $params[] = $studentGender; $types .= 's';
+}
+
+$sql = "SELECT r.id, r.room_no, r.capacity,
+               (SELECT COUNT(*) FROM hostel_allocations a WHERE a.room_id=r.id AND a.status='active') AS occupied
+        FROM hostel_rooms r
+        INNER JOIN hostel_blocks b ON b.id = r.block_id
+        INNER JOIN hostels h ON h.id = b.hostel_id
+        WHERE ".implode(' AND ', $conds)."
+        ORDER BY r.room_no";
+
+$stmt = mysqli_prepare($con, $sql);
+if ($stmt) { mysqli_stmt_bind_param($stmt, $types, ...$params); }
 
 if ($stmt) { mysqli_stmt_execute($stmt); $res = mysqli_stmt_get_result($stmt); }
 $out = [];
