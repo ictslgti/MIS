@@ -123,7 +123,8 @@ if (isset($_GET['del_room'])) {
             $params[] = $filterHostelId;
             $types .= 'i';
           }
-          $sql .= " ORDER BY h.name, b.name, r.room_no";
+          // Order by hostel name, then numeric room number (2 before 10), then block name for tie-break
+          $sql .= " ORDER BY h.name, CAST(r.room_no AS UNSIGNED), b.name";
 
           if ($types !== '') {
             $stmt = mysqli_prepare($con, $sql);
