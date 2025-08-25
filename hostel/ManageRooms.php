@@ -77,6 +77,26 @@ if (isset($_GET['del_room'])) {
   <div class="card mt-4">
     <div class="card-header">Rooms</div>
     <div class="card-body table-responsive">
+      <?php
+        // Selected hostel filter (0 = all)
+        $filterHostelId = isset($_GET['filter_hostel']) ? (int)$_GET['filter_hostel'] : 0;
+      ?>
+      <form method="GET" class="form-inline mb-3">
+        <label class="mr-2 mb-2">Filter by Hostel:</label>
+        <select name="filter_hostel" class="form-control mr-2 mb-2" onchange="this.form.submit()">
+          <option value="0">All Hostels</option>
+          <?php
+            $hs = mysqli_query($con, "SELECT id, name FROM hostels WHERE active=1 ORDER BY name");
+            while ($hs && $hrow = mysqli_fetch_assoc($hs)) {
+              $sel = ($filterHostelId === (int)$hrow['id']) ? 'selected' : '';
+              echo '<option value="'.(int)$hrow['id'].'" '.$sel.'>'.htmlspecialchars($hrow['name']).'</option>';
+            }
+          ?>
+        </select>
+        <noscript>
+          <button type="submit" class="btn btn-secondary mb-2">Apply</button>
+        </noscript>
+      </form>
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -92,13 +112,31 @@ if (isset($_GET['del_room'])) {
         <tbody>
           <?php
           $sql = "SELECT r.id, r.room_no, r.capacity, b.name AS block_name, h.name AS hostel_name,
-                  (SELECT COUNT(*) FROM hostel_allocations a WHERE a.room_id=r.id AND a.status='active') AS occupied
+                         (SELECT COUNT(*) FROM hostel_allocations a WHERE a.room_id=r.id AND a.status='active') AS occupied
                   FROM hostel_rooms r
                   JOIN hostel_blocks b ON b.id=r.block_id
-                  JOIN hostels h ON h.id=b.hostel_id
-                  ORDER BY h.name, b.name, r.room_no";
-          $q = mysqli_query($con, $sql);
-          while ($q && $row = mysqli_fetch_assoc($q)) {
+                  JOIN hostels h ON h.id=b.hostel_id";
+          $params = [];
+          $types = '';
+          if ($filterHostelId > 0) {
+            $sql .= " WHERE h.id = ?";
+            $params[] = $filterHostelId;
+            $types .= 'i';
+          }
+          $sql .= " ORDER BY h.name, b.name, r.room_no";
+
+          if ($types !== '') {
+            $stmt = mysqli_prepare($con, $sql);
+            if ($stmt) {
+              mysqli_stmt_bind_param($stmt, $types, ...$params);
+              mysqli_stmt_execute($stmt);
+              $result = mysqli_stmt_get_result($stmt);
+            } else { $result = false; }
+          } else {
+            $result = mysqli_query($con, $sql);
+          }
+
+          while ($result && $row = mysqli_fetch_assoc($result)) {
             echo '<tr>';
             echo '<td>'.(int)$row['id'].'</td>';
             echo '<td>'.htmlspecialchars($row['hostel_name']).'</td>';
