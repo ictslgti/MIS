@@ -135,27 +135,28 @@ if ($isWarden && $wardenGender) {
             $num=1;
             while($row = mysqli_fetch_assoc($result))
             {
-              echo '
-              <tr style="text-align:left";>
-                <td scope="row">'.$num."<br>".'</td>
-                <td>'. $row["student_id"]."<br>".'</td>
-                <td>'. $row["student_fullname"]."<br>".'</td>
-                <td>'. $row["student_email"]."<br>".'</td>
-                <td>'. $row["student_nic"]."<br>".'</td>
-                <td>'. $row["student_phone"]."<br>".'</td>
-                <td>'. $row["student_address"]."<br>".'</td>
-                <?php if ($isWarden): ?>
-                  <td>'. htmlspecialchars($row["student_em_name"]) ."<br>".'</td>
-                  <td>'. htmlspecialchars($row["student_em_relation"]) ."<br>".'</td>
-                  <td>'. htmlspecialchars($row["student_em_phone"]) ."<br>".'</td>
-                <?php endif; ?>
-                <td>
-                <a href="Student_profile.php?Sid='.$row["student_id"].'&edit=1" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
-                <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i></a>
-                </td>
-              </tr> ';
+              echo '<tr style="text-align:left">';
+              echo '<td scope="row">'.($num).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_id"]).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_fullname"]).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_email"]).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_nic"]).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_phone"]).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_address"]).'<br></td>';
+              if ($isWarden) {
+                echo '<td>'.htmlspecialchars($row["student_em_name"]).'<br></td>';
+                echo '<td>'.htmlspecialchars($row["student_em_relation"]).'<br></td>';
+                echo '<td>'.htmlspecialchars($row["student_em_phone"]).'<br></td>';
+              }
+              $base = (defined('APP_BASE') ? APP_BASE : '');
+              $viewUrl = $base . '/student/Student_profile.php?Sid='.urlencode($row["student_id"]);
+              $editUrl = $viewUrl.'&edit=1';
+              echo '<td>';
+              echo '<a href="'.$editUrl.'" class="btn btn-sm btn-success" title="Edit"><i class="far fa-edit"></i></a> ';
+              echo '| <a href="'.$viewUrl.'" class="btn btn-info" title="View"><i class="fas fa-angle-double-right"></i></a>';
+              echo '</td>';
+              echo '</tr>';
               $num=$num+1;
-              
             }
           }
             echo '<button type="submit" value="inactive" name="back" class="btn btn-info mr-2"><i class="fas fa-angle-double-left"></i>Back</button>';
@@ -179,25 +180,27 @@ if ($isWarden && $wardenGender) {
               $num=1;
               while($row = mysqli_fetch_assoc($result))
               {
-                echo '
-                <tr style="text-align:left";>
-                  <td scope="row">'.$num."<br>".'</td>
-                  <td>'. $row["student_id"]."<br>".'</td>
-                  <td>'. $row["student_fullname"]."<br>".'</td>
-                  <td>'. $row["student_email"]."<br>".'</td>
-                  <td>'. $row["student_nic"]."<br>".'</td>
-                  <td>'. $row["student_phone"]."<br>".'</td>
-                  <td>'. $row["student_address"]."<br>".'</td>
-                  <?php if ($isWarden): ?>
-                    <td>'. htmlspecialchars($row["student_em_name"]) ."<br>".'</td>
-                    <td>'. htmlspecialchars($row["student_em_relation"]) ."<br>".'</td>
-                    <td>'. htmlspecialchars($row["student_em_phone"]) ."<br>".'</td>
-                  <?php endif; ?>
-                  <td>
-                  <a href="Student_profile.php?Sid='.$row["student_id"].'&edit=1" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
-                  <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i></a>
-                  </td>
-                </tr> ';
+                echo '<tr style="text-align:left">';
+                echo '<td scope="row">'.($num).'<br></td>';
+                echo '<td>'.htmlspecialchars($row["student_id"]).'<br></td>';
+                echo '<td>'.htmlspecialchars($row["student_fullname"]).'<br></td>';
+                echo '<td>'.htmlspecialchars($row["student_email"]).'<br></td>';
+                echo '<td>'.htmlspecialchars($row["student_nic"]).'<br></td>';
+                echo '<td>'.htmlspecialchars($row["student_phone"]).'<br></td>';
+                echo '<td>'.htmlspecialchars($row["student_address"]).'<br></td>';
+                if ($isWarden) {
+                  echo '<td>'.htmlspecialchars($row["student_em_name"]).'<br></td>';
+                  echo '<td>'.htmlspecialchars($row["student_em_relation"]).'<br></td>';
+                  echo '<td>'.htmlspecialchars($row["student_em_phone"]).'<br></td>';
+                }
+                $base = (defined('APP_BASE') ? APP_BASE : '');
+                $viewUrl = $base . '/student/Student_profile.php?Sid='.urlencode($row["student_id"]);
+                $editUrl = $viewUrl.'&edit=1';
+                echo '<td>';
+                echo '<a href="'.$editUrl.'" class="btn btn-sm btn-success" title="Edit"><i class="far fa-edit"></i></a> ';
+                echo '| <a href="'.$viewUrl.'" class="btn btn-info" title="View"><i class="fas fa-angle-double-right"></i></a>';
+                echo '</td>';
+                echo '</tr>';
                 $num=$num+1;
               }
             }
@@ -218,20 +221,21 @@ if ($isWarden && $wardenGender) {
             $num=1;
             while($row = mysqli_fetch_assoc($result))
             {
-              echo '
-              <tr style="text-align:left";>
-                  <td scope="row">'.$num."<br>".'</td>
-                  <td>'. $row["student_id"]."<br>".'</td>
-                  <td>'. $row["student_fullname"]."<br>".'</td>
-                  <td>'. $row["student_email"]."<br>".'</td>
-                  <td>'. $row["student_nic"]."<br>".'</td>
-                  <td>'. $row["student_phone"]."<br>".'</td>
-                  <td>'. $row["student_address"]."<br>".'</td>
-                  <td>
-                  <a href="Student_profile.php?Sid='.$row["student_id"].'&edit=1" class="btn btn-sm btn-success"><i class="far fa-edit"></i></a> |
-                  <a href="Student_profile.php?Sid='.$row["student_id"].'" class="btn btn-info"> <i class="fas fa-angle-double-right"></i></a>
-                  </td>
-              </tr> ';
+              echo '<tr style="text-align:left">';
+              echo '<td scope="row">'.($num).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_id"]).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_fullname"]).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_email"]).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_nic"]).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_phone"]).'<br></td>';
+              echo '<td>'.htmlspecialchars($row["student_address"]).'<br></td>';
+              $viewUrl = 'Student_profile.php?Sid='.urlencode($row["student_id"]);
+              $editUrl = $viewUrl.'&edit=1';
+              echo '<td>';
+              echo '<a href="'.$editUrl.'" class="btn btn-sm btn-success" title="Edit"><i class="far fa-edit"></i></a> ';
+              echo '| <a href="'.$viewUrl.'" class="btn btn-info" title="View"><i class="fas fa-angle-double-right"></i></a>';
+              echo '</td>';
+              echo '</tr>';
               $num=$num+1;
             }
           }

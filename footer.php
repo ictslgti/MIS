@@ -24,13 +24,7 @@
 </main>
 </div>
 
-  <?php if (empty($HIDE_FOOTER)): ?>
-  <footer class="footer mt-auto py-2 text-center bg-dark text-light" style="font-size: 0.9rem;">
-      <div class="container">
-          <span>&copy; Sri Lanka German Training Institute &middot; Developed by SICODE</span>
-      </div>
-  </footer>
-  <?php endif; ?>
+  <?php /* Footer removed globally as requested. Keeping scripts below intact. */ ?>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

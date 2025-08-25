@@ -6,6 +6,70 @@ if (!headers_sent()) { ob_start(); }
 // Always include root-level files using absolute paths
 require_once __DIR__ . '/../config.php';
 
+// One-time Student Code of Conduct acceptance handling (pre-render)
+// Applies only when the logged-in user is a student viewing their own profile (no Sid param)
+if (session_status() === PHP_SESSION_NONE) { session_start(); }
+$__requireConduct = false;
+$__conductChecked = false;
+$__loggedIsStudent = isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'STU';
+$__loggedStudentId = ($__loggedIsStudent && empty($_GET['Sid']) && isset($_SESSION['user_name'])) ? $_SESSION['user_name'] : null;
+
+if ($__loggedStudentId) {
+  // Ensure optional acceptance column exists once
+  $__dbName = null;
+  if ($__dbRes = mysqli_query($con, 'SELECT DATABASE() as db')) { $__dbRow = mysqli_fetch_assoc($__dbRes); $__dbName = $__dbRow ? $__dbRow['db'] : null; }
+  if ($__dbName) {
+    if ($__chk = mysqli_prepare($con, "SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA=? AND TABLE_NAME='student' AND COLUMN_NAME='student_conduct_accepted_at' LIMIT 1")) {
+      mysqli_stmt_bind_param($__chk, 's', $__dbName);
+      mysqli_stmt_execute($__chk);
+      $__cres = mysqli_stmt_get_result($__chk);
+      $__exists = ($__cres && mysqli_num_rows($__cres) === 1);
+      mysqli_stmt_close($__chk);
+      if (!($__exists)) {
+        @mysqli_query($con, "ALTER TABLE student ADD COLUMN student_conduct_accepted_at DATETIME NULL");
+      }
+    }
+  }
+
+  // Handle Accept/Decline postbacks
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['conduct_action'])) {
+    $act = $_POST['conduct_action'];
+    if ($act === 'accept') {
+      if ($__st = mysqli_prepare($con, "UPDATE student SET student_conduct_accepted_at=NOW() WHERE student_id=? LIMIT 1")) {
+        mysqli_stmt_bind_param($__st, 's', $__loggedStudentId);
+        mysqli_stmt_execute($__st);
+        mysqli_stmt_close($__st);
+      }
+      if (!headers_sent()) {
+        header('Location: /student/Student_profile.php?accepted=1');
+      } else {
+        echo '<script>window.location.href = "/student/Student_profile.php?accepted=1";</script>';
+      }
+      exit;
+    } elseif ($act === 'decline') {
+      // Log the user out if they decline
+      if (!headers_sent()) {
+        header('Location: /logout.php');
+      } else {
+        echo '<script>window.location.href = "/logout.php";</script>';
+      }
+      exit;
+    }
+  }
+
+  // Check acceptance status
+  if ($__st = mysqli_prepare($con, "SELECT student_conduct_accepted_at FROM student WHERE student_id=? LIMIT 1")) {
+    mysqli_stmt_bind_param($__st, 's', $__loggedStudentId);
+    mysqli_stmt_execute($__st);
+    $__rs = mysqli_stmt_get_result($__st);
+    if ($__rs && ($__row = mysqli_fetch_assoc($__rs))) {
+      $__conductChecked = true;
+      $__requireConduct = empty($__row['student_conduct_accepted_at']);
+    }
+    mysqli_stmt_close($__st);
+  }
+}
+
 
 // Check once if optional last-updated column exists
 $hasUpdatedAt = false;
@@ -152,6 +216,32 @@ require_once __DIR__ . '/../head.php';
 require_once __DIR__ . '/top_nav.php';
 ?>
 <?php /** END DON'T CHANGE THE ORDER (moved to PHP comment) */ ?>
+
+<?php if ($__loggedStudentId && $__conductChecked && $__requireConduct): ?>
+  <div class="container mt-4">
+    <div class="card shadow-sm">
+      <div class="card-header bg-warning text-dark">
+        <strong>Student Code of Conduct</strong>
+      </div>
+      <div class="card-body">
+        <p class="text-muted">Please read and accept the Student Code of Conduct to continue using the system.</p>
+        <div class="embed-responsive embed-responsive-4by3 mb-3" style="height:75vh;">
+          <iframe class="embed-responsive-item" src="<?php echo (defined('APP_BASE')?APP_BASE:''); ?>/library/pdf/Student%20Code%20of%20Conduct.pdf#view=FitH" title="Student Code of Conduct" style="width:100%; height:100%; border:1px solid #ddd;"></iframe>
+        </div>
+        <form method="post" class="d-flex">
+          <input type="hidden" name="conduct_action" value="accept">
+          <button type="submit" class="btn btn-success mr-2"><i class="fa fa-check"></i> I have read and agree</button>
+        </form>
+        <form method="post" class="d-inline-block mt-2">
+          <input type="hidden" name="conduct_action" value="decline">
+          <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fa fa-sign-out-alt"></i> Decline and sign out</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <?php include_once __DIR__ . '/../footer.php'; ?>
+  <?php if (!headers_sent()) { ob_end_flush(); } ?>
+  <?php return; endif; ?>
 
 
 <!---BLOCK 02--->
@@ -624,6 +714,13 @@ $profileCompletion = $__total > 0 ? (int)round($__filled * 100 / $__total) : 0;
                     <i class="fa fa-upload"></i> Upload / Replace
                   </a>
                 <?php } ?>
+                <hr class="my-3">
+                <div>
+                  <p class="mb-2">Student Code of Conduct</p>
+                  <a class="btn btn-sm btn-outline-secondary" target="_blank" href="<?php echo (defined('APP_BASE')?APP_BASE:''); ?>/library/pdf/Student%20Code%20of%20Conduct.pdf">
+                    <i class="fa fa-file-pdf"></i> View Code of Conduct
+                  </a>
+                </div>
               </div>
             </div>
           </div>

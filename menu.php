@@ -151,6 +151,12 @@ if ($u_t === 'STU') {
               </ul>
             </div>
           </li>
+          <li>
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/finance/RegistrationPaymentsApproved.php">
+              <i class="fa fa-check"></i>
+              <span>Approved Registration Payments</span>
+            </a>
+          </li>
         </ul>
         <?php } elseif ($u_t === 'FIN') { ?>
         <ul>
@@ -177,6 +183,18 @@ if ($u_t === 'STU') {
             <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/finance/HostelFeeReports.php">
               <i class="fa fa-print"></i>
               <span>Hostel Fee Reports</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/finance/RegistrationPaymentApproval.php">
+              <i class="fa fa-check-circle"></i>
+              <span>Registration Payment Approval</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/finance/NormalizeRegistrationReason.php">
+              <i class="fa fa-tools"></i>
+              <span>Normalize Registration Reason</span>
             </a>
           </li>
         </ul>
@@ -306,6 +324,9 @@ if ($u_t === 'STU') {
                 </li>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/AddStudent.php">Add a Student</a>
+                </li>
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/student/ManageStudents.php">Manage Students</a>
                 </li>
                 <hr>
                 <li>
@@ -636,6 +657,9 @@ if ($u_t === 'STU') {
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/payment/Payment.php">Make a Payment</a>
                   <hr>
                 </li>           
+                <li>
+                  <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/finance/RegistrationPaymentApproval.php">Registration Payment Approval</a>
+                </li>
                 <li>
                   <a href="<?php echo defined('APP_BASE') ? APP_BASE : ''; ?>/payment/PaymentsReport.php">Payments Report</a>
                 </li>
