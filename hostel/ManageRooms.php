@@ -107,7 +107,7 @@ if (isset($_GET['del_room'])) {
             echo '<td>'.(int)$row['capacity'].'</td>';
             echo '<td>'.(int)$row['occupied'].'</td>';
             $disabled = ((int)$row['occupied']>0)?'disabled title="Room has active allocations"':'';
-            echo '<td><a class="btn btn-sm btn-outline-danger '.$disabled.'" href="?del_room='.(int)$row['id'].'" onclick="return '.(((int)$row['occupied']>0)?'false':'confirm(\'Delete room?\')').';">Delete</a></td>';
+            echo '<td><a class="btn btn-sm btn-outline-danger '.$disabled.'" href="hostel/ManageRooms.php?del_room='.(int)$row['id'].'" onclick="return '.(((int)$row['occupied']>0)?'false':'confirm(\'Delete room?\')').';">Delete</a></td>';
             echo '</tr>';
           }
           ?>
