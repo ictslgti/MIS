@@ -46,7 +46,13 @@ if ($student_id !== '') {
     $rs2 = mysqli_stmt_get_result($st2);
     $stu = $rs2 ? mysqli_fetch_assoc($rs2) : null;
     mysqli_stmt_close($st2);
-    if ($stu && !empty($stu['student_gender'])) { $stuGender = $stu['student_gender']; }
+    if ($stu && isset($stu['student_gender'])) {
+      $g = trim((string)$stu['student_gender']);
+      if (strcasecmp($g, 'male')===0) { $stuGender = 'Male'; }
+      elseif (strcasecmp($g, 'female')===0) { $stuGender = 'Female'; }
+      elseif (strcasecmp($g, 'mixed')===0) { $stuGender = 'Mixed'; } // unlikely but normalize
+      else { $stuGender = $g !== '' ? $g : null; }
+    }
   }
 }
 ?>
@@ -78,9 +84,6 @@ if ($student_id !== '') {
             <div class="mr-3"><strong>Request:</strong> <?php echo htmlspecialchars($req['status']); ?></div>
           <?php endif; ?>
         </div>
-        <?php if ($_SESSION['user_type']==='WAR' && $wardenGender && $stuGender && $stuGender!==$wardenGender): ?>
-          <small class="text-muted d-block mt-2">Note: Student gender (<?php echo htmlspecialchars($stuGender); ?>) differs from your warden gender (<?php echo htmlspecialchars($wardenGender); ?>). Only Mixed hostels will be shown.</small>
-        <?php endif; ?>
       </div>
     </div>
   <?php endif; ?>
@@ -95,37 +98,44 @@ if ($student_id !== '') {
           <option value="">Select...</option>
           <?php
           $hostelCount = 0;
-          // Build allowed genders set: always allow Mixed, plus student's gender if set.
-          $allowed = ['Mixed'];
-          if ($stuGender) { $allowed[] = $stuGender; }
-          // If WAR and has a gender, intersect with warden's allowed set ['Mixed', wardenGender]
-          if ($_SESSION['user_type'] === 'WAR' && $wardenGender) {
-            if (!in_array($wardenGender, $allowed, true)) {
-              $allowed = ['Mixed']; // only Mixed overlaps
-            } else {
-              $allowed = ['Mixed', $wardenGender];
-            }
-          }
-          $allowed = array_values(array_unique($allowed));
+          // Allowed genders: union of Mixed + student gender (if set) + warden gender (if WAR), including synonyms
+          $expand = function($g) {
+            if (!$g) return [];
+            $g = trim($g);
+            if (strcasecmp($g,'Male')===0) return ['Male','Boys','Boy'];
+            if (strcasecmp($g,'Female')===0) return ['Female','Girls','Girl','Ladies'];
+            if (strcasecmp($g,'Mixed')===0) return ['Mixed'];
+            // Also map common synonyms back to canonical sets
+            if (strcasecmp($g,'Boys')===0 || strcasecmp($g,'Boy')===0) return ['Male','Boys','Boy'];
+            if (strcasecmp($g,'Girls')===0 || strcasecmp($g,'Girl')===0 || strcasecmp($g,'Ladies')===0) return ['Female','Girls','Girl','Ladies'];
+            return [$g];
+          };
 
-          // Prepare query with dynamic IN list
-          $placeholders = implode(',', array_fill(0, count($allowed), '?'));
-          $sqlH = "SELECT id, name FROM hostels WHERE active=1 AND gender IN ($placeholders) ORDER BY name";
-          if ($stH = mysqli_prepare($con, $sqlH)) {
-            $types = str_repeat('s', count($allowed));
-            mysqli_stmt_bind_param($stH, $types, ...$allowed);
-            mysqli_stmt_execute($stH);
-            $resH = mysqli_stmt_get_result($stH);
-            while ($resH && $h = mysqli_fetch_assoc($resH)) {
-              $hostelCount++;
-              echo '<option value="'.(int)$h['id'].'">'.htmlspecialchars($h['name']).'</option>';
-            }
-            mysqli_stmt_close($stH);
-          }
+          $allowedSet = ['Mixed' => true];
+          foreach ($expand($stuGender) as $v) { $allowedSet[$v] = true; }
+          $wg = $wardenGender;
+          if ($wg) { $wg = (strcasecmp($wg,'male')===0?'Male':(strcasecmp($wg,'female')===0?'Female':$wg)); }
+          foreach ($expand($wg) as $v) { $allowedSet[$v] = true; }
+          $allowed = array_keys($allowedSet);
+
+           // Prepare query with dynamic IN list
+           $placeholders = implode(',', array_fill(0, count($allowed), '?'));
+           $sqlH = "SELECT id, name FROM hostels WHERE active=1 AND gender IN ($placeholders) ORDER BY name";
+           if ($stH = mysqli_prepare($con, $sqlH)) {
+             $types = str_repeat('s', count($allowed));
+             mysqli_stmt_bind_param($stH, $types, ...$allowed);
+             mysqli_stmt_execute($stH);
+             $resH = mysqli_stmt_get_result($stH);
+             while ($resH && $h = mysqli_fetch_assoc($resH)) {
+               $hostelCount++;
+               echo '<option value="'.(int)$h['id'].'">'.htmlspecialchars($h['name']).'</option>';
+             }
+             mysqli_stmt_close($stH);
+           }
           ?>
         </select>
         <?php if ($hostelCount === 0): ?>
-          <small class="form-text text-muted">No compatible hostels found. Ensure hostels exist for the student's gender or Mixed.</small>
+          <small class="form-text text-muted">No compatible hostels found. Ensure hostels exist for the student's/warden's gender or Mixed.</small>
         <?php endif; ?>
       </div>
       <div class="form-group col-md-4">
@@ -171,7 +181,7 @@ const studentGender = '<?php echo isset($stuGender) && $stuGender ? htmlspecialc
 
 hostelSel && hostelSel.addEventListener('change', async (e) => {
   blockSel.innerHTML = '<option value="">Loading...</option>';
-  roomSel.innerHTML = '<option value="">Select block first</option>';
+  roomSel.innerHTML = '<option value=\"\">Select block first</option>';
   const hid = e.target.value;
   if (!hid) { blockSel.innerHTML = '<option value="">Select...</option>'; return; }
   const url = base + '/hostel/blocks_api.php?hostel_id=' + encodeURIComponent(hid) + (studentGender ? ('&student_gender=' + encodeURIComponent(studentGender)) : '');

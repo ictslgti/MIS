@@ -21,25 +21,34 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'WAR' && !empty(
   }
 }
 
-// Build query with hostel gender constraints
+// Helper: expand gender synonyms
+$expand = function($g) {
+  if (!$g) return [];
+  $g = trim($g);
+  if (strcasecmp($g,'Male')===0 || strcasecmp($g,'Boys')===0 || strcasecmp($g,'Boy')===0) return ['Male','Boys','Boy'];
+  if (strcasecmp($g,'Female')===0 || strcasecmp($g,'Girls')===0 || strcasecmp($g,'Girl')===0 || strcasecmp($g,'Ladies')===0) return ['Female','Girls','Girl','Ladies'];
+  if (strcasecmp($g,'Mixed')===0) return ['Mixed'];
+  return [$g];
+};
+
 $params = [$hid];
 $types  = 'i';
-$conds  = [];
+$condParts = [];
+$condParts[] = "b.hostel_id=?";
 
-if ($wardenGender) {
-  $conds[] = "(h.gender='Mixed' OR h.gender=?)";
-  $params[] = $wardenGender; $types .= 's';
-}
-if ($studentGender) {
-  $conds[] = "(h.gender='Mixed' OR h.gender=?)";
-  $params[] = $studentGender; $types .= 's';
+// Always allow Mixed explicitly in SQL OR chain
+$genderConds = ["h.gender='Mixed'"];
+
+$want = [];
+foreach ([$wardenGender, $studentGender] as $g) { foreach ($expand($g) as $v) { $want[$v] = true; } }
+$wantList = array_keys($want);
+if (!empty($wantList)) {
+  $place = implode(',', array_fill(0, count($wantList), '?'));
+  $genderConds[] = "h.gender IN ($place)";
+  foreach ($wantList as $v) { $params[] = $v; $types .= 's'; }
 }
 
-if (!empty($conds)) {
-  $sql = "SELECT b.id, b.name FROM hostel_blocks b INNER JOIN hostels h ON h.id=b.hostel_id WHERE b.hostel_id=? AND " . implode(' AND ', $conds) . " ORDER BY b.name";
-} else {
-  $sql = "SELECT b.id, b.name FROM hostel_blocks b WHERE b.hostel_id=? ORDER BY b.name";
-}
+$sql = "SELECT b.id, b.name FROM hostel_blocks b INNER JOIN hostels h ON h.id=b.hostel_id WHERE ".implode(' AND ', $condParts)." AND (".implode(' OR ', $genderConds).") ORDER BY b.name";
 
 $stmt = mysqli_prepare($con, $sql);
 if ($stmt) { mysqli_stmt_bind_param($stmt, $types, ...$params); }
