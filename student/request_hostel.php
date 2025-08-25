@@ -186,8 +186,8 @@ if ($st3 = mysqli_prepare($con, 'SELECT a.id, a.allocated_at, a.leaving_at, r.ro
   mysqli_stmt_close($st3);
 }
 
-// Only allow Save when no request exists at all (strict one-time request)
-$canSave = (!$current);
+// Only allow Save when no request exists AND no active allocation exists
+$canSave = (!$current && !$activeAlloc);
 
 // Layout includes
 require_once __DIR__ . '/../head.php';
@@ -295,7 +295,7 @@ require_once __DIR__ . '/../menu.php';
   </div>
   <?php endif; ?>
 
-  <?php if (!$current): ?>
+  <?php if ($canSave): ?>
   <form method="POST" class="mb-3">
     <input type="hidden" name="action" value="save" />
 

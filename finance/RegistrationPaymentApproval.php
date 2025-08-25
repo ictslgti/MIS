@@ -53,21 +53,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_payment'])) {
   elseif ($pays_qty <= 0) { $err = 'Quantity must be at least 1'; }
 
   if ($err === '') {
-    $sql = sprintf(
-      "INSERT INTO `pays` (`student_id`,`payment_type`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_date`,`pays_department`,`approved`) VALUES ('%s','%s','%s','%s',%s,%d,CURDATE(),'%s',0)",
-      mysqli_real_escape_string($con, $student_id),
-      mysqli_real_escape_string($con, $payment_type),
-      mysqli_real_escape_string($con, $payment_reason),
-      mysqli_real_escape_string($con, $pays_note),
-      (string)$pays_amount,
-      $pays_qty,
-      mysqli_real_escape_string($con, $pays_department)
-    );
-    mysqli_query($con, $sql);
-    $qs = $_GET; $qs['flash'] = (mysqli_affected_rows($con) > 0) ? 'added' : 'add_failed';
-    $base = (defined('APP_BASE') ? APP_BASE : '');
-    header('Location: ' . $base . '/finance/RegistrationPaymentApproval.php?' . http_build_query($qs));
-    exit;
+    // If department selected, ensure the student belongs to that department
+    if ($pays_department !== '') {
+      $chkSql = "SELECT 1
+                 FROM student s
+                 JOIN student_enroll se ON se.student_id = s.student_id AND se.student_enroll_status='Following'
+                 JOIN course c ON c.course_id = se.course_id
+                 WHERE s.student_id = ? AND c.department_id = ?
+                 LIMIT 1";
+      if ($chk = mysqli_prepare($con, $chkSql)) {
+        mysqli_stmt_bind_param($chk, 'ss', $student_id, $pays_department);
+        mysqli_stmt_execute($chk);
+        mysqli_stmt_store_result($chk);
+        if (mysqli_stmt_num_rows($chk) === 0) {
+          mysqli_stmt_close($chk);
+          $qs = $_GET; $qs['flash'] = 'add_error'; $qs['msg'] = 'Selected student is not in the chosen department.';
+          $base = (defined('APP_BASE') ? APP_BASE : '');
+          header('Location: ' . $base . '/finance/RegistrationPaymentApproval.php?' . http_build_query($qs));
+          exit;
+        }
+        mysqli_stmt_close($chk);
+      }
+    }
+    if ($stmt = mysqli_prepare($con, "INSERT INTO `pays` (`student_id`,`payment_type`,`payment_reason`,`pays_note`,`pays_amount`,`pays_qty`,`pays_date`,`pays_department`,`approved`) VALUES (?,?,?,?,?, ?, CURDATE(), ?, 0)")) {
+      $bindOk = mysqli_stmt_bind_param($stmt, 'ssssdis', $student_id, $payment_type, $payment_reason, $pays_note, $pays_amount, $pays_qty, $pays_department);
+      $execOk = $bindOk && mysqli_stmt_execute($stmt);
+      $affected = $execOk ? mysqli_stmt_affected_rows($stmt) : 0;
+      $errMsg = $execOk ? '' : mysqli_stmt_error($stmt);
+      mysqli_stmt_close($stmt);
+      $qs = $_GET; $qs['flash'] = ($affected > 0) ? 'added' : 'add_failed'; if ($errMsg) { $qs['msg'] = $errMsg; }
+      $base = (defined('APP_BASE') ? APP_BASE : '');
+      header('Location: ' . $base . '/finance/RegistrationPaymentApproval.php?' . http_build_query($qs));
+      exit;
+    } else {
+      $qs = $_GET; $qs['flash'] = 'add_failed'; $qs['msg'] = mysqli_error($con);
+      $base = (defined('APP_BASE') ? APP_BASE : '');
+      header('Location: ' . $base . '/finance/RegistrationPaymentApproval.php?' . http_build_query($qs));
+      exit;
+    }
   } else {
     // Preserve inline error via query string
     $qs = $_GET; $qs['flash'] = 'add_error'; $qs['msg'] = $err;
@@ -82,8 +105,20 @@ include_once(__DIR__ . '/../head.php');
 include_once(__DIR__ . '/../menu.php');
 
 // Data for Add Payment form
+$formDept = isset($_GET['form_dept']) ? trim($_GET['form_dept']) : '';
 $deptRes = mysqli_query($con, "SELECT department_id, department_name FROM department ORDER BY department_name");
-$studentsRes = mysqli_query($con, "SELECT s.student_id, s.student_fullname FROM student s LEFT JOIN student_enroll se ON se.student_id=s.student_id AND se.student_enroll_status='Following' ORDER BY s.student_fullname");
+if ($formDept !== '') {
+  $sqlStudents = "SELECT s.student_id, s.student_fullname
+                  FROM student s
+                  JOIN student_enroll se ON se.student_id = s.student_id AND se.student_enroll_status='Following'
+                  JOIN course c ON c.course_id = se.course_id
+                  WHERE c.department_id = '" . mysqli_real_escape_string($con, $formDept) . "'
+                  ORDER BY s.student_fullname";
+  $studentsRes = mysqli_query($con, $sqlStudents);
+} else {
+  // No department chosen yet; return empty result to force selection
+  $studentsRes = false;
+}
 ?>
 <div class="container mt-3">
   <?php if (isset($_GET['flash'])) { $f=$_GET['flash']; ?>
@@ -95,13 +130,23 @@ $studentsRes = mysqli_query($con, "SELECT s.student_id, s.student_fullname FROM 
 
   <div class="card mb-3">
     <div class="card-header">Add Registration Payment</div>
-    <form method="post" class="card-body">
+    <form method="post" class="card-body" id="addPaymentForm">
       <input type="hidden" name="create_payment" value="1">
       <div class="form-row">
         <div class="form-group col-md-4">
+          <label>Department</label>
+          <select name="pays_department" class="form-control" id="formDeptSelect">
+            <option value="">-- Select Department --</option>
+            <?php if ($deptRes && mysqli_num_rows($deptRes)>0) { mysqli_data_seek($deptRes, 0); while($d=mysqli_fetch_assoc($deptRes)) { ?>
+              <option value="<?php echo htmlspecialchars($d['department_id']); ?>" <?php echo ($formDept===$d['department_id'])?'selected':''; ?>><?php echo htmlspecialchars($d['department_name']); ?></option>
+            <?php } } ?>
+          </select>
+          <small class="form-text text-muted">Select a department to load its students.</small>
+        </div>
+        <div class="form-group col-md-4">
           <label>Student</label>
-          <select name="student_id" class="form-control" required>
-            <option value="">-- Select Student --</option>
+          <select name="student_id" class="form-control" id="studentSelect" <?php echo ($formDept==='')?'disabled':''; ?> required>
+            <option value=""><?php echo ($formDept==='')?'-- Select Department First --':'-- Select Student --'; ?></option>
             <?php if ($studentsRes && mysqli_num_rows($studentsRes)>0) { while($s=mysqli_fetch_assoc($studentsRes)) { ?>
               <option value="<?php echo htmlspecialchars($s['student_id']); ?>"><?php echo htmlspecialchars($s['student_fullname'].' ('.$s['student_id'].')'); ?></option>
             <?php } } ?>
@@ -114,15 +159,6 @@ $studentsRes = mysqli_query($con, "SELECT s.student_id, s.student_fullname FROM 
         <div class="form-group col-md-2">
           <label>Qty</label>
           <input type="number" min="1" name="pays_qty" class="form-control" value="1" required>
-        </div>
-        <div class="form-group col-md-4">
-          <label>Department</label>
-          <select name="pays_department" class="form-control">
-            <option value="">-- Optional --</option>
-            <?php if ($deptRes && mysqli_num_rows($deptRes)>0) { while($d=mysqli_fetch_assoc($deptRes)) { ?>
-              <option value="<?php echo htmlspecialchars($d['department_id']); ?>"><?php echo htmlspecialchars($d['department_name']); ?></option>
-            <?php } } ?>
-          </select>
         </div>
       </div>
       <div class="form-row">
@@ -144,6 +180,19 @@ $studentsRes = mysqli_query($con, "SELECT s.student_id, s.student_fullname FROM 
       </div>
     </form>
   </div>
+  <script>
+    (function(){
+      var deptSel = document.getElementById('formDeptSelect');
+      if (deptSel) {
+        deptSel.addEventListener('change', function(){
+          var val = this.value || '';
+          var url = new URL(window.location.href);
+          url.searchParams.set('form_dept', val);
+          window.location.href = url.toString();
+        });
+      }
+    })();
+  </script>
 <?php
 // Filters
 $status = isset($_GET['status']) ? $_GET['status'] : 'pending'; // pending|approved|all
