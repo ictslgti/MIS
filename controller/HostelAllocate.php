@@ -40,6 +40,34 @@ $occRow = $q2 ? mysqli_fetch_assoc($q2) : ['occupied'=>0];
 $occ = (int)$occRow['occupied'];
 if ($occ >= $cap) { redirect_back_alloc(['err'=>'full']); }
 
+// Fetch student's gender
+$stuGender = null;
+if ($stS = mysqli_prepare($con, "SELECT student_gender FROM student WHERE student_id=? LIMIT 1")) {
+  mysqli_stmt_bind_param($stS, 's', $student_id);
+  mysqli_stmt_execute($stS);
+  $rsS = mysqli_stmt_get_result($stS);
+  if ($rsS) { $rowS = mysqli_fetch_assoc($rsS); if ($rowS && isset($rowS['student_gender'])) { $stuGender = $rowS['student_gender']; } }
+  mysqli_stmt_close($stS);
+}
+
+// Find hostel gender for the selected room
+$sqlHg = "SELECT h.gender FROM hostels h INNER JOIN hostel_blocks b ON b.hostel_id=h.id INNER JOIN hostel_rooms r ON r.block_id=b.id WHERE r.id=? LIMIT 1";
+$hostelGender = null;
+if ($stH = mysqli_prepare($con, $sqlHg)) {
+  mysqli_stmt_bind_param($stH, 'i', $room_id);
+  mysqli_stmt_execute($stH);
+  $rsH = mysqli_stmt_get_result($stH);
+  $hostel = $rsH ? mysqli_fetch_assoc($rsH) : null;
+  mysqli_stmt_close($stH);
+  if (!$hostel) { redirect_back_alloc(['err'=>'room']); }
+  $hostelGender = $hostel['gender'];
+}
+
+// Enforce student-hostel gender compatibility: Mixed or matches student's gender
+if ($hostelGender && $stuGender && !($hostelGender === 'Mixed' || $hostelGender === $stuGender)) {
+  redirect_back_alloc(['err'=>'stu_gender']);
+}
+
 // If WAR, enforce gender-based hostel restriction (hostel gender must be Mixed or match warden's gender)
 if ($_SESSION['user_type'] === 'WAR') {
   // Get warden gender
@@ -54,19 +82,8 @@ if ($_SESSION['user_type'] === 'WAR') {
     }
   }
   if ($wardenGender) {
-    // Find hostel gender for the selected room
-    $sqlHg = "SELECT h.gender FROM hostels h INNER JOIN hostel_blocks b ON b.hostel_id=h.id INNER JOIN hostel_rooms r ON r.block_id=b.id WHERE r.id=? LIMIT 1";
-    if ($stH = mysqli_prepare($con, $sqlHg)) {
-      mysqli_stmt_bind_param($stH, 'i', $room_id);
-      mysqli_stmt_execute($stH);
-      $rsH = mysqli_stmt_get_result($stH);
-      $hostel = $rsH ? mysqli_fetch_assoc($rsH) : null;
-      mysqli_stmt_close($stH);
-      if (!$hostel) { redirect_back_alloc(['err'=>'room']); }
-      $hg = $hostel['gender'];
-      if (!($hg === 'Mixed' || $hg === $wardenGender)) {
-        redirect_back_alloc(['err'=>'gender']);
-      }
+    if (!($hostelGender === 'Mixed' || $hostelGender === $wardenGender)) {
+      redirect_back_alloc(['err'=>'gender']);
     }
   }
 }

@@ -37,6 +37,18 @@ if ($student_id !== '') {
   mysqli_stmt_close($st);
 }
 
+// Load student basic details (name, gender, dept/phone optional)
+$stu = null; $stuGender = null;
+if ($student_id !== '') {
+  if ($st2 = mysqli_prepare($con, "SELECT student_fullname, student_gender, student_phone, student_department FROM student WHERE student_id=? LIMIT 1")) {
+    mysqli_stmt_bind_param($st2, 's', $student_id);
+    mysqli_stmt_execute($st2);
+    $rs2 = mysqli_stmt_get_result($st2);
+    $stu = $rs2 ? mysqli_fetch_assoc($rs2) : null;
+    mysqli_stmt_close($st2);
+    if ($stu && !empty($stu['student_gender'])) { $stuGender = $stu['student_gender']; }
+  }
+}
 ?>
 <div class="container mt-4">
   <h3>Assign Hostel</h3>
@@ -44,6 +56,33 @@ if ($student_id !== '') {
     <div class="alert alert-warning">No request found for this student.</div>
   <?php elseif ($req['status'] !== 'paid'): ?>
     <div class="alert alert-info">Request status is <?php echo htmlspecialchars($req['status']); ?>. Only 'paid' requests can be assigned.</div>
+  <?php endif; ?>
+
+  <?php if ($stu): ?>
+    <div class="card mb-3">
+      <div class="card-body py-2">
+        <div class="d-flex flex-wrap align-items-center">
+          <div class="mr-3"><strong>ID:</strong> <?php echo htmlspecialchars($student_id); ?></div>
+          <div class="mr-3"><strong>Name:</strong> <?php echo htmlspecialchars($stu['student_fullname'] ?? ''); ?></div>
+          <div class="mr-3"><strong>Gender:</strong> 
+            <?php if ($stuGender): ?>
+              <span class="badge badge-<?php echo ($stuGender==='Male'?'primary':($stuGender==='Female'?'danger':'secondary')); ?>"><?php echo htmlspecialchars($stuGender); ?></span>
+            <?php else: ?>
+              <span class="text-muted">Not set</span>
+            <?php endif; ?>
+          </div>
+          <?php if (isset($req['distance_km'])): ?>
+            <div class="mr-3"><strong>Distance:</strong> <?php echo (float)$req['distance_km']; ?> km</div>
+          <?php endif; ?>
+          <?php if (isset($req['status'])): ?>
+            <div class="mr-3"><strong>Request:</strong> <?php echo htmlspecialchars($req['status']); ?></div>
+          <?php endif; ?>
+        </div>
+        <?php if ($_SESSION['user_type']==='WAR' && $wardenGender && $stuGender && $stuGender!==$wardenGender): ?>
+          <small class="text-muted d-block mt-2">Note: Student gender (<?php echo htmlspecialchars($stuGender); ?>) differs from your warden gender (<?php echo htmlspecialchars($wardenGender); ?>). Only Mixed hostels will be shown.</small>
+        <?php endif; ?>
+      </div>
+    </div>
   <?php endif; ?>
 
   <form method="POST" action="<?php echo $base; ?>/controller/HostelAllocate.php">
@@ -56,30 +95,37 @@ if ($student_id !== '') {
           <option value="">Select...</option>
           <?php
           $hostelCount = 0;
+          // Build allowed genders set: always allow Mixed, plus student's gender if set.
+          $allowed = ['Mixed'];
+          if ($stuGender) { $allowed[] = $stuGender; }
+          // If WAR and has a gender, intersect with warden's allowed set ['Mixed', wardenGender]
           if ($_SESSION['user_type'] === 'WAR' && $wardenGender) {
-            if ($stH = mysqli_prepare($con, "SELECT id, name FROM hostels WHERE active=1 AND (gender='Mixed' OR gender=?) ORDER BY name")) {
-              mysqli_stmt_bind_param($stH, 's', $wardenGender);
-              mysqli_stmt_execute($stH);
-              $resH = mysqli_stmt_get_result($stH);
-              while ($resH && $h = mysqli_fetch_assoc($resH)) {
-                $hostelCount++;
-                echo '<option value="'.(int)$h['id'].'">'.htmlspecialchars($h['name']).'</option>';
-              }
-              mysqli_stmt_close($stH);
+            if (!in_array($wardenGender, $allowed, true)) {
+              $allowed = ['Mixed']; // only Mixed overlaps
+            } else {
+              $allowed = ['Mixed', $wardenGender];
             }
-          } else {
-            $q = mysqli_query($con, "SELECT id, name FROM hostels WHERE active=1 ORDER BY name");
-            if ($q) {
-              while ($h = mysqli_fetch_assoc($q)) {
-                $hostelCount++;
-                echo '<option value="'.(int)$h['id'].'">'.htmlspecialchars($h['name']).'</option>';
-              }
+          }
+          $allowed = array_values(array_unique($allowed));
+
+          // Prepare query with dynamic IN list
+          $placeholders = implode(',', array_fill(0, count($allowed), '?'));
+          $sqlH = "SELECT id, name FROM hostels WHERE active=1 AND gender IN ($placeholders) ORDER BY name";
+          if ($stH = mysqli_prepare($con, $sqlH)) {
+            $types = str_repeat('s', count($allowed));
+            mysqli_stmt_bind_param($stH, $types, ...$allowed);
+            mysqli_stmt_execute($stH);
+            $resH = mysqli_stmt_get_result($stH);
+            while ($resH && $h = mysqli_fetch_assoc($resH)) {
+              $hostelCount++;
+              echo '<option value="'.(int)$h['id'].'">'.htmlspecialchars($h['name']).'</option>';
             }
+            mysqli_stmt_close($stH);
           }
           ?>
         </select>
         <?php if ($hostelCount === 0): ?>
-          <small class="form-text text-muted">No active hostels found. Add one in Manage Hostels.</small>
+          <small class="form-text text-muted">No compatible hostels found. Ensure hostels exist for the student's gender or Mixed.</small>
         <?php endif; ?>
       </div>
       <div class="form-group col-md-4">

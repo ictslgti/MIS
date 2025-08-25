@@ -56,16 +56,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_bank'])) {
           if (!$ok) { $errors[] = 'Only PDF, JPG, or PNG allowed for bank front page.'; }
           if (empty($errors)) {
             $destDir = __DIR__ . '/documentation';
-            if (!is_dir($destDir)) { @mkdir($destDir, 0775, true); }
+            if (!is_dir($destDir)) {
+              if (!mkdir($destDir, 0775, true)) {
+                $errors[] = 'Failed to create destination directory: ' . htmlspecialchars($destDir);
+              }
+            }
+            if (empty($errors) && !is_writable($destDir)) {
+              $errors[] = 'Destination directory is not writable: ' . htmlspecialchars($destDir);
+            }
             $safeId = preg_replace('/[^A-Za-z0-9_-]/', '_', $studentId);
             $destPath = $destDir . '/' . $safeId . '_bankfront.' . $ext;
-            if (!@move_uploaded_file($tmp, $destPath)) {
-              $data = file_get_contents($tmp);
-              if ($data === false || file_put_contents($destPath, $data) === false) {
-                $errors[] = 'Failed to save bank front page on server.';
+            if (empty($errors)) {
+              if (!move_uploaded_file($tmp, $destPath)) {
+                $data = @file_get_contents($tmp);
+                if ($data === false || @file_put_contents($destPath, $data) === false) {
+                  $lastErr = error_get_last();
+                  $errors[] = 'Failed to save bank front page on server at ' . htmlspecialchars($destPath) .
+                              (isset($lastErr['message']) ? (' | Reason: ' . htmlspecialchars($lastErr['message'])) : '');
+                }
               }
             }
             if (empty($errors)) {
+              @chmod($destPath, 0664);
               $frontRelPath = 'student/documentation/' . $safeId . '_bankfront.' . $ext;
             }
           }
@@ -177,19 +189,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload_pdf'])) {
     // Ensure destination dir exists
     $destDir = __DIR__ . '/documentation';
     if (!is_dir($destDir)) {
-      @mkdir($destDir, 0775, true);
+      if (!mkdir($destDir, 0775, true)) {
+        $errors[] = 'Failed to create destination directory: ' . htmlspecialchars($destDir);
+      }
+    }
+    if (empty($errors) && !is_writable($destDir)) {
+      $errors[] = 'Destination directory is not writable: ' . htmlspecialchars($destDir);
     }
 
     $destPath = $destDir . '/' . preg_replace('/[^A-Za-z0-9_-]/', '_', $studentId) . '.pdf';
-    if (!@move_uploaded_file($tmp, $destPath)) {
-      // Some servers require copy
-      $data = file_get_contents($tmp);
-      if ($data === false || file_put_contents($destPath, $data) === false) {
-        $errors[] = 'Failed to save file on server.';
+    if (empty($errors)) {
+      if (!move_uploaded_file($tmp, $destPath)) {
+        // Some servers require copy
+        $data = @file_get_contents($tmp);
+        if ($data === false || @file_put_contents($destPath, $data) === false) {
+          $lastErr = error_get_last();
+          $errors[] = 'Failed to save file on server at ' . htmlspecialchars($destPath) .
+                      (isset($lastErr['message']) ? (' | Reason: ' . htmlspecialchars($lastErr['message'])) : '');
+        }
       }
     }
 
     if (empty($errors)) {
+      @chmod($destPath, 0664);
       $relPath = 'student/documentation/' . preg_replace('/[^A-Za-z0-9_-]/', '_', $studentId) . '.pdf';
 
       // Ensure column student_profile_doc exists; if not, add it
